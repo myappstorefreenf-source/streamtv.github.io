@@ -11,44 +11,69 @@ const KEY_BACK = 27;
 let currentFocus = null;
 let isVideoPlaying = false; 
 
-// 3. 🎯 MAPA DE VIDEOS (¡IMPORTANTE! AQUÍ SE CAMBIAN LOS VIDEOS)
-// Usa solo el ID del video de YouTube (los 11 caracteres después de v= o youtu.be/)
+// ----------------------------------------------------
+// === LÓGICA DE VISIBILIDAD DE BOTÓN DE VOLVER ===
+// ----------------------------------------------------
+let buttonTimer = null;
+
+/**
+ * Muestra el botón de volver y lo oculta después de 3 segundos de inactividad.
+ */
+function showBackButtonTemporary() {
+    const backButton = document.getElementById('back-button');
+    
+    // 1. Limpiar el temporizador anterior
+    clearTimeout(buttonTimer);
+
+    // 2. Mostrar el botón
+    backButton.classList.add('visible');
+    
+    // 3. Establecer el nuevo temporizador para ocultarlo
+    buttonTimer = setTimeout(() => {
+        // Solo ocultamos si no tiene el foco actualmente (ej: si se está usando el D-Pad)
+        if (document.activeElement !== backButton) {
+            backButton.classList.remove('visible');
+        }
+    }, 3000); // 3 segundos
+}
+
+// ----------------------------------------------------
+// 3. 🎯 MAPA DE VIDEOS 
+// ----------------------------------------------------
 const VIDEO_MAP = {
     // ID DEL BANNER
     'hero-1':'KjhWL-7cmws', 
     
-    // IDS DE LA CUADRÍCULA (incluyendo el último ID: iqeatp1VXVA)
-            'g-2-1': 'iqeatp1VXVA', // Video A
-            'g-2-2': 'NcdYo_eMv4U', // Video B
-            'g-2-3': 'QskN9E6mCFk', // Video C
-            'g-2-4': 'fsSryNsqPDY', // Video D
-            'g-3-1': 'cHFL7a3-2aY', // Video E
-            'g-3-2': '6_HQd1qnmxQ', // Video F
-            'g-3-3': 'hpfTQF3q4qs', // Video G
-            'g-3-4': 'KjhWL-7cmws', // Video H
+    // IDS DE LA CUADRÍCULA 
+    'g-2-1': 'iqeatp1VXVA', 
+    'g-2-2': 'NcdYo_eMv4U', 
+    'g-2-3': 'QskN9E6mCFk', 
+    'g-2-4': 'fsSryNsqPDY', 
+    'g-3-1': 'cHFL7a3-2aY', 
+    'g-3-2': '6_HQd1qnmxQ', 
+    'g-3-3': 'hpfTQF3q4qs', 
+    'g-3-4': 'KjhWL-7cmws', 
+    'g-4-1': 'WLg7dt0i9Jo', 
+    'g-4-2': 'MNd_6q7FBxc',   
 };
 
 // Función auxiliar para generar URL del thumbnail de YouTube
 function getThumbnailUrl(videoId, type = 'mqdefault') {
-    // default, hqdefault, mqdefault, sddefault, maxresdefault
     return `https://i.ytimg.com/vi/${videoId}/${type}.jpg`;
 }
 
 /**
- * 🖼️ Carga todas las miniaturas al cargar la página (llamado por <body>).
+ * 🖼️ Carga todas las miniaturas al cargar la página.
  */
 window.setThumbnails = function() {
-    // Cuadrícula (g-x-x)
     document.querySelectorAll('.video-grid .movie-card img').forEach(imgElement => {
-        const id = imgElement.id.replace('img-', ''); // g-2-1
+        const id = imgElement.id.replace('img-', ''); 
         const videoId = VIDEO_MAP[id];
-        if (videoId) {
-            // Usamos 'mqdefault' para miniaturas de póster (verticales)
+        if (videoId && videoId.length === 11) {
             imgElement.src = getThumbnailUrl(videoId, 'mqdefault');
         }
     });
 
-    // Foco inicial
     const initialFocus = document.getElementById('nav-peliculas');
     if (initialFocus) {
         initialFocus.focus();
@@ -56,11 +81,12 @@ window.setThumbnails = function() {
     }
 };
 
+// ----------------------------------------------------
 // 4. Control del Reproductor de Video
+// ----------------------------------------------------
 
 /**
- * 🎥 Muestra el reproductor y carga el video.
- * Recibe el ID de YouTube o una URL directa MP4.
+ * 🎥 Muestra el reproductor, carga el video. Se ha eliminado la solicitud automática de pantalla completa para Chrome.
  */
 window.showVideoPlayer = function(videoIdentifier) {
     const playerContainer = document.getElementById('video-player-container');
@@ -72,23 +98,31 @@ window.showVideoPlayer = function(videoIdentifier) {
     
     let embedUrl = '';
     
-    // Si el identificador es un ID de YouTube (lo más probable en este contexto)
     if (videoIdentifier.length === 11) {
         const videoId = videoIdentifier;
-        // Parámetros para incrustación en WebView
         embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&hl=es`;
     } else {
-        // Si es una URL directa (ej: .mp4)
         embedUrl = videoIdentifier;
     }
 
-    // Mostrar el reproductor y cargar la URL
     playerContainer.style.display = 'block';
     isVideoPlaying = true;
     videoElement.src = embedUrl;
     
-    // Poner el foco en el botón de atrás
-    setTimeout(() => { backButton.focus(); }, 100);
+    // ⚠️ PANTALLA COMPLETA AUTOMÁTICA (Comentado para evitar errores en navegadores de escritorio)
+    // if (playerContainer.requestFullscreen) {
+    //     playerContainer.requestFullscreen();
+    // } else if (playerContainer.webkitRequestFullscreen) {
+    //     playerContainer.webkitRequestFullscreen();
+    // } else if (playerContainer.msRequestFullscreen) {
+    //     playerContainer.msRequestFullscreen();
+    // }
+    
+    // Poner el foco en el botón de atrás Y mostrarlo temporalmente
+    setTimeout(() => { 
+        // backButton.focus(); // Se quita el foco explícito para mejor UX en desktop
+        showBackButtonTemporary();
+    }, 100);
 };
 
 /**
@@ -97,12 +131,22 @@ window.showVideoPlayer = function(videoIdentifier) {
 window.hideVideoPlayer = function() {
     const playerContainer = document.getElementById('video-player-container');
     const videoElement = document.getElementById('main-video-player');
+    const backButton = document.getElementById('back-button'); // Necesario para limpiar la clase
 
     // Limpiar el src para detener el video
     videoElement.src = ''; 
     playerContainer.style.display = 'none';
     isVideoPlaying = false;
 
+    // LIMPIEZA DEL BOTÓN DE VOLVER
+    clearTimeout(buttonTimer); 
+    backButton.classList.remove('visible'); // Asegura que la clase se elimine
+
+    // Salir del modo fullscreen si está activo
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    }
+    
     document.getElementById('header').style.display = 'flex'; 
     document.getElementById('main-content').style.display = 'block';
     
@@ -123,17 +167,18 @@ window.handleSelection = function(id) {
     const videoId = VIDEO_MAP[id];
     
     if (videoId) {
-        // Pasamos el ID del video a la función showVideoPlayer
         showVideoPlayer(videoId);
     } else if (id.startsWith('nav-')) {
-        // Elemento de navegación
-        alert(`Navegando a: ${id}`);
+        // ⚠️ CORREGIDO: Usar console.log en lugar de alert()
+        console.log(`Navegación simulada a: ${id}`);
         return;
     }
 };
 
 
-// 5. Lógica de Navegación D-Pad
+// ----------------------------------------------------
+// 5. Lógica de Navegación D-Pad y Event Listeners
+// ----------------------------------------------------
 
 function findNextFocus(direction) {
     if (!currentFocus) return null;
@@ -177,6 +222,8 @@ document.addEventListener('keydown', (event) => {
     }
 
     if (isVideoPlaying) {
+        // MOSTRAR BOTÓN DE VOLVER AL PULSAR CUALQUIER TECLA (D-PAD)
+        showBackButtonTemporary();
         return; 
     }
     
@@ -207,5 +254,19 @@ document.addEventListener('keydown', (event) => {
         currentFocus = nextElement;
         
         currentFocus.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    }
+});
+
+// 6. Detección de Mouse/Táctil
+// Estos eventos activan la visibilidad del botón si el video está en reproducción.
+document.addEventListener('mousemove', () => {
+    if (isVideoPlaying) {
+        showBackButtonTemporary();
+    }
+});
+
+document.addEventListener('touchstart', () => {
+    if (isVideoPlaying) {
+        showBackButtonTemporary();
     }
 });

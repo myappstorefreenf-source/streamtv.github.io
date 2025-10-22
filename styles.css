@@ -1,11 +1,11 @@
 /* ======================================= */
-/* === ESTILOS CSS PARA ANDROID TV (10ft) */
+/* === ESTILOS BASE (TABLET/TV) === */
 /* ======================================= */
 :root {
     --color-bg: #141414;
     --color-text: #ffffff;
     --color-focus: #e50914; /* Rojo de foco (Netflix style) */
-    --safe-margin: 90px;
+    --safe-margin: 90px; /* Margen grande para TV */
 }
 
 body {
@@ -18,7 +18,7 @@ body {
     overflow-y: auto; 
 }
 
-/* 1. Foco: El estilo más importante para TV */
+/* 1. Foco: Importante para navegación D-pad en TV */
 .focusable {
     transition: all 0.2s ease-in-out;
     outline: none; 
@@ -39,7 +39,7 @@ body {
     transform: none;
 }
 
-/* 2. Reproductor de Video (Pantalla completa) */
+/* 2. Reproductor y Botón de Atrás */
 #video-player-container {
     position: fixed;
     top: 0;
@@ -106,7 +106,7 @@ header {
 }
 
 .video-grid {
-    /* 4 columnas */
+    /* 4 columnas para TV */
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     gap: 40px; 
@@ -127,4 +127,58 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* ======================================= */
+/* === DISEÑO RESPONSIVE PARA CELULARES === */
+/* ======================================= */
+
+@media (max-width: 768px) {
+    /* Reducir márgenes y tamaños para pantallas pequeñas */
+    :root {
+        --safe-margin: 20px;
+    }
+
+    body {
+        padding: var(--safe-margin);
+    }
+
+    .logo {
+        font-size: 32px;
+    }
+
+    .nav-item {
+        font-size: 18px;
+        margin-left: 15px;
+    }
+
+    .hero-movie {
+        height: 300px; /* Reducir altura del banner */
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+    
+    .hero-movie h1 {
+        font-size: 24px;
+    }
+
+    /* Cambiar la cuadrícula a 2 o 3 columnas para móviles */
+    .video-grid {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 15px;
+    }
+    
+    /* Eliminar el zoom y la sombra de foco para dispositivos táctiles */
+    .focusable:focus {
+        box-shadow: none;
+        transform: none; 
+    }
+    
+    /* Ajustar el botón de atrás para que no estorbe */
+    #back-button {
+        top: 20px; 
+        left: 20px; 
+        font-size: 16px; 
+        padding: 10px;
+    }
 }

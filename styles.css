@@ -1,11 +1,11 @@
 /* ======================================= */
-/* === ESTILOS BASE (TABLET/TV) === */
+/* === ESTILOS CSS PARA ANDROID TV (10ft) */
 /* ======================================= */
 :root {
     --color-bg: #141414;
     --color-text: #ffffff;
     --color-focus: #e50914; /* Rojo de foco (Netflix style) */
-    --safe-margin: 90px; /* Margen grande para TV */
+    --safe-margin: 90px;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
     overflow-y: auto; 
 }
 
-/* 1. Foco: Importante para navegación D-pad en TV */
+/* 1. Foco: El estilo más importante para TV */
 .focusable {
     transition: all 0.2s ease-in-out;
     outline: none; 
@@ -39,7 +39,7 @@ body {
     transform: none;
 }
 
-/* 2. Reproductor y Botón de Atrás */
+/* 2. Reproductor de Video (Pantalla completa) */
 #video-player-container {
     position: fixed;
     top: 0;
@@ -55,6 +55,7 @@ body {
     height: 100%;
 }
 
+/* ⚠️ BOTÓN DE VOLVER: Estilos base, oculto por defecto */
 #back-button {
     position: absolute; 
     top: 120px; 
@@ -66,6 +67,17 @@ body {
     color: white; 
     border: none; 
     border-radius: 5px; 
+
+    /* ESTILOS PARA OCULTAR POR DEFECTO */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; 
+    pointer-events: none; /* Asegura que no bloquee la interacción */
+}
+
+/* ⚠️ CLASE PARA MOSTRAR EL BOTÓN (Activada por JavaScript) */
+#back-button.visible {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* 3. Estructura y Header */
@@ -87,7 +99,7 @@ header {
 .hero-movie {
     height: 600px;
     /* IMAGEN DEL BANNER - ID ACTUAL: bd7PTHImmaI */
-    background: url('https://i.ytimg.com/vi/bd7PTHImmaI/maxresdefault.jpg') center / cover no-repeat;
+    background: url('https://i.ytimg.com/vi/KjhWL-7cmws/maxresdefault.jpg') center / cover no-repeat;
     display: flex;
     align-items: flex-end;
     padding: 40px;
@@ -106,9 +118,9 @@ header {
 }
 
 .video-grid {
-    /* 4 columnas para TV */
+    /* ⚠️ CAMBIO SOLICITADO: 5 columnas para hacer las miniaturas más chicas */
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(5, 1fr); 
     gap: 40px; 
     padding-bottom: 30px;
 }
@@ -128,7 +140,18 @@ header {
     height: 100%;
     object-fit: cover;
 }
+/* 5. Estilos Responsive (Asegurando 4 columnas en móvil para que se vean más chicas) */
+@media (max-width: 768px) {
+    body {
+        padding: 50px 20px 0 20px; /* Reducir márgenes en móvil */
+    }
 
+    /* ⚠️ CAMBIO SOLICITADO: 4 columnas en móvil para miniaturas más pequeñas */
+    .video-grid {
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 15px;
+    }
+}
 /* ======================================= */
 /* === DISEÑO RESPONSIVE PARA CELULARES === */
 /* ======================================= */

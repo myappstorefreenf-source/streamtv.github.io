@@ -1,0 +1,130 @@
+/* ======================================= */
+/* === ESTILOS CSS PARA ANDROID TV (10ft) */
+/* ======================================= */
+:root {
+    --color-bg: #141414;
+    --color-text: #ffffff;
+    --color-focus: #e50914; /* Rojo de foco (Netflix style) */
+    --safe-margin: 90px;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: var(--safe-margin) var(--safe-margin) 0 var(--safe-margin);
+    overflow-x: hidden;
+    overflow-y: auto; 
+}
+
+/* 1. Foco: El estilo más importante para TV */
+.focusable {
+    transition: all 0.2s ease-in-out;
+    outline: none; 
+    cursor: pointer;
+}
+
+.focusable:focus {
+    box-shadow: 0 0 0 8px var(--color-focus); 
+    transform: scale(1.08); /* Zoom al enfocar */
+    z-index: 10;
+    border-radius: 8px;
+}
+
+.nav-item:focus {
+    color: var(--color-focus);
+    font-weight: bold;
+    box-shadow: none;
+    transform: none;
+}
+
+/* 2. Reproductor de Video (Pantalla completa) */
+#video-player-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    z-index: 1000; 
+}
+
+#main-video-player {
+    width: 100%;
+    height: 100%;
+}
+
+#back-button {
+    position: absolute; 
+    top: 120px; 
+    left: 120px; 
+    z-index: 1001; 
+    padding: 15px; 
+    font-size: 24px; 
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+}
+
+/* 3. Estructura y Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(to bottom, var(--color-bg) 70%, rgba(20, 20, 20, 0));
+    padding-top: 20px;
+    z-index: 20;
+}
+
+.logo { font-size: 48px; font-weight: bold; color: var(--color-focus); }
+.nav-item { color: var(--color-text); text-decoration: none; font-size: 28px; margin-left: 40px; padding: 5px 10px; }
+
+.hero-movie {
+    height: 600px;
+    /* IMAGEN DEL BANNER - ID ACTUAL: bd7PTHImmaI */
+    background: url('https://i.ytimg.com/vi/bd7PTHImmaI/maxresdefault.jpg') center / cover no-repeat;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+    margin-bottom: 80px;
+    border-radius: 10px;
+}
+
+/* 4. Cuadrícula de Miniaturas */
+.grid-gallery-container {
+    margin-bottom: 80px;
+}
+
+.grid-gallery-container h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.video-grid {
+    /* 4 columnas */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 40px; 
+    padding-bottom: 30px;
+}
+
+.video-grid .movie-card {
+    width: 100%;
+    height: auto; 
+    aspect-ratio: 2/3; /* Proporción 2:3 para pósters de películas */
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-grid .movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

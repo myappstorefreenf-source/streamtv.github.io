@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MovieTube (Usabilidad Fix)</title>
+    <title>MovieTube (Controles Agrupados y Seek)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       /* Estilos generales */
@@ -18,6 +18,16 @@
           -webkit-box-orient: vertical;
           overflow: hidden;
           max-height: 3rem; 
+      }
+      /* Estilos para asegurar que el reproductor ocupe el área máxima sin scroll */
+      #youtube-player-container {
+        /* Permite que el iframe dentro de él tome todo el espacio */
+        display: flex;
+      }
+      .youtube-iframe {
+          width: 100%; 
+          height: 100%;
+          border: none;
       }
     </style>
   </head>
@@ -70,19 +80,19 @@
       }
 
       // ----------------------------------------------------------------------
-      // COMPONENTE ReproductorEnFoco (OPTIMIZADO)
+      // COMPONENTE ReproductorEnFoco (OPTIMIZADO CON CONTROLES DE SEEK)
       // ----------------------------------------------------------------------
 
       function ReproductorEnFoco({ videoUrl, onBack }) {
           const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
           const playerRef = React.useRef(null); 
-          const backButtonRef = React.useRef(null); // Ref para el botón de Volver
+          const backButtonRef = React.useRef(null); // Ref para el foco inicial
           
           const [isMuted, setIsMuted] = React.useState(true);
           const [isPlaying, setIsPlaying] = React.useState(false);
 
           React.useEffect(() => {
-              // 🔑 CORRECCIÓN 3: Forzar el foco al botón de Volver inmediatamente
+              // Foco al botón de Volver al entrar
               if (backButtonRef.current) {
                   backButtonRef.current.focus();
               }
@@ -95,11 +105,13 @@
               
               const newPlayer = new window.YT.Player(playerId, {
                   videoId: videoId,
+                  // Nota: 'className' no está en playerVars, debe ser aplicado al div contenedor
                   playerVars: {
                       'autoplay': 1,
                       'controls': 0, 
-                      'mute': 1, // Mantenemos el mute inicial OBLIGATORIO para el autoplay
+                      'mute': 1, 
                       'disablekb': 1, 
+                      'widget_referrer': window.location.href // Previene errores de seguridad en algunos navegadores
                   },
                   events: {
                       'onReady': (event) => {
@@ -109,8 +121,6 @@
                               newPlayer.unMute(); 
                               setIsMuted(false);
                           }
-                          // Nota: El foco se queda en el botón de Volver para facilitar la salida.
-                          // Los botones de control están después en el orden de tabulación.
                       },
                       'onStateChange': (event) => {
                         if (event.data === window.YT.PlayerState.PLAYING) {
@@ -131,7 +141,7 @@
           }, [videoId, isYouTube]);
 
 
-          // MÉTODOS DE CONTROL
+          // MÉTODOS DE CONTROL DE REPRODUCCIÓN
           const togglePlayPause = () => {
               const player = playerRef.current;
               if (!player) return;
@@ -155,46 +165,50 @@
                   setIsMuted(true);
               }
           };
+          
+          // NUEVAS FUNCIONES DE SEEK
+          const seekRelative = (seconds) => {
+            const player = playerRef.current;
+            if (!player) return;
+
+            const newTime = player.getCurrentTime() + seconds;
+            // seekTo(segundos, allowSeekAhead)
+            player.seekTo(newTime, true); 
+          }
+          
+          const rewind = () => seekRelative(-10); // Retrocede 10 segundos
+          const fastForward = () => seekRelative(10); // Avanza 10 segundos
 
 
           // ICONOS (SVG)
-          // 🔑 CORRECCIÓN 2: Se redujo el tamaño de los iconos de h-8 w-8 a h-5 w-5
+          // 🔑 CORRECCIÓN 3: Reducción adicional de iconos a h-4 w-4 y p-2
+          const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
           const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002z" clipRule="evenodd" /></svg>;
           const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 011 1v4a1 1 0 11-2 0V7a1 1 0 011-1zm-3 4a1 1 0 002 0V7a1 1 0 00-2 0v4z" clipRule="evenodd" /></svg>;
           const VolumeIcon = () => isMuted ? 
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zm10.024 2.193a1 1 0 010 1.414L17.243 10l2.164 2.163a1 1 0 01-1.414 1.414L15.829 11.414l-2.163 2.164a1 1 0 01-1.414-1.414L14.414 10l-2.163-2.163a1 1 0 011.414-1.414l2.163 2.164 2.164-2.163a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
               :
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 5.059a1 1 0 011.414 0 9 9 0 010 12.582 1 1 0 11-1.414-1.414 7 7 0 000-9.754 1 1 0 010-1.414zM16.071 3.645a1 1 0 011.414 0 11 11 0 010 15.69 1 1 0 11-1.414-1.414 9 9 0 000-12.862 1 1 0 010-1.414z" clipRule="evenodd" /></svg>;
+          const RewindIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8.445 14.832A1 1 0 0010 14V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4zM14.445 14.832A1 1 0 0016 14V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z" /></svg>;
+          const FastForwardIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4zM10.555 5.168A1 1 0 009 6v8a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4z" /></svg>;
 
 
           return (
               <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
                   
-                  {/* Botón Volver */}
-                  <button 
-                      onClick={onBack}
-                      ref={backButtonRef} // 🔑 CORRECCIÓN 3: Referencia para el foco inicial
-                      className="absolute top-4 left-4 p-3 bg-gray-700 text-white rounded-full text-lg z-50 
-                                transition-all hover:bg-gray-600 focus:ring-4 focus:ring-red-500 focus:outline-none"
-                      tabIndex="0" 
-                  >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                      </svg>
-                  </button>
-
                   {/* Contenedor del Reproductor y Controles */}
-                  {/* 🔑 CORRECCIÓN 1: Aseguramos que el contenedor de video ocupe todo el espacio. */}
-                  <div className="w-full h-full p-4 flex flex-col items-center justify-center relative">
+                  <div className="w-full h-full flex flex-col items-center justify-center relative">
                       
                       {/* Contenedor para inyectar el Iframe de YouTube API */}
-                      <div className="w-full h-full relative">
-                          <div id="youtube-player-container" className="w-full h-full rounded-xl shadow-2xl">
+                      {/* 🔑 CORRECCIÓN 1: Contenedor principal de video ocupa todo el espacio disponible */}
+                      <div className="w-full h-full max-w-screen-xl max-h-[80vh] relative flex items-center justify-center">
+                          {/* El div 'youtube-player-container' se crea con 100% de width/height por defecto por la API */}
+                          <div id="youtube-player-container" className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden">
                               {/* Contenido de fallback para videos no-YouTube */}
                               {!isYouTube && (
                                   <iframe
                                       tabIndex="0"
-                                      className="w-full h-full rounded-xl shadow-2xl bg-gray-900 border-none"
+                                      className="youtube-iframe rounded-xl shadow-2xl bg-gray-900"
                                       src={videoUrl}
                                       allow="autoplay; fullscreen"
                                       allowFullScreen
@@ -203,28 +217,64 @@
                           </div>
                       </div>
 
-                      {/* Controles Personalizados (Enfocables) */}
+                      {/* Controles Personalizados (Agrupados y Más Pequeños) */}
                       {isYouTube && (
-                          <div className="flex space-x-6 mt-4 p-2 bg-gray-800 rounded-xl shadow-2xl">
+                          <div className="flex space-x-4 mt-6 p-3 bg-gray-800 rounded-xl shadow-2xl">
                               
-                              {/* Botón Mute/Unmute */}
+                              {/* 🔑 CORRECCIÓN 2: Botón Volver al Catálogo (primer foco) */}
                               <button 
-                                  onClick={toggleMute}
-                                  className="text-white p-3 rounded-full bg-red-600 hover:bg-red-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
-                                  tabIndex="0"
+                                  onClick={onBack}
+                                  ref={backButtonRef}
+                                  className="text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none transition-all"
+                                  tabIndex="0" 
+                                  title="Volver al Catálogo"
                               >
-                                  <VolumeIcon />
+                                  <BackIcon />
+                              </button>
+
+                              {/* 🔑 CORRECCIÓN 1: Botón Retroceso (Rewind) */}
+                              <button 
+                                  onClick={rewind}
+                                  className="text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none transition-all"
+                                  tabIndex="0"
+                                  title="Retroceder 10 segundos"
+                              >
+                                  <RewindIcon />
                               </button>
 
                               {/* Botón Play/Pause */}
                               <button 
                                   onClick={togglePlayPause}
-                                  className="text-white p-3 rounded-full bg-red-600 hover:bg-red-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                  className="text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none transition-all"
                                   tabIndex="0"
+                                  title={isPlaying ? "Pausar" : "Reproducir"}
                               >
                                   {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                              </button>
+                              
+                              {/* Botón Mute/Unmute */}
+                              <button 
+                                  onClick={toggleMute}
+                                  className="text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none transition-all"
+                                  tabIndex="0"
+                                  title={isMuted ? "Desactivar silencio" : "Silenciar"}
+                              >
+                                  <VolumeIcon />
+                              </button>
+
+                              {/* 🔑 CORRECCIÓN 1: Botón Avance Rápido (Fast Forward) */}
+                              <button 
+                                  onClick={fastForward}
+                                  className="text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none transition-all"
+                                  tabIndex="0"
+                                  title="Avanzar 10 segundos"
+                              >
+                                  <FastForwardIcon />
                               </button>
                               
                           </div>
@@ -236,7 +286,7 @@
 
 
       // ----------------------------------------------------------------------
-      // COMPONENTES HERO BANNER Y TARJETA (Optimizado el tamaño del catálogo)
+      // COMPONENTES HERO BANNER Y TARJETA (Mismos que el paso anterior)
       // ----------------------------------------------------------------------
 
       const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
@@ -317,7 +367,7 @@
       }
 
       // ----------------------------------------------------------------------
-      // COMPONENTE PRINCIPAL APP (CORREGIDO EL GRID)
+      // COMPONENTE PRINCIPAL APP
       // ----------------------------------------------------------------------
 
       function App() {
@@ -357,7 +407,6 @@
                       Explorar Videos
                   </h1>
 
-                  {/* 🔑 CORRECCIÓN 5: Catálogo ahora en 4 columnas en pantallas grandes. */}
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     <ReproductorDeVideo titulo="Controlable con D-Pad" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
                     <ReproductorDeVideo titulo="Trailer de Película" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />

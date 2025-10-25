@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MovieTube (Foco Corregido)</title>
+    <title>MovieTube (Foco al Botón al Mostrar)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       /* Estilos generales */
@@ -59,6 +59,7 @@
       };
 
       const CONTROLS_TIMEOUT = 3000; // 3 segundos para ocultar controles
+      const YT = window.YT; 
 
       // ----------------------------------------------------------------------
       // LÓGICA DE CONVERSIÓN Y EXTRACCIÓN DE ID
@@ -89,25 +90,26 @@
       }
 
       // ----------------------------------------------------------------------
-      // COMPONENTE ReproductorEnFoco (CONTROLES AUTO-OCULTABLES Y FOCO CORREGIDO)
+      // COMPONENTE ReproductorEnFoco (FIX FOCO Y AUTO-OCULTAMIENTO)
       // ----------------------------------------------------------------------
 
       function ReproductorEnFoco({ videoUrl, onBack }) {
           const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
           const playerRef = React.useRef(null); 
-          const playerContainerRef = React.useRef(null); // Nuevo: Ref al div principal para el foco inicial
-          const backButtonRef = React.useRef(null); 
+          const playerContainerRef = React.useRef(null); 
+          const backButtonRef = React.useRef(null); // Ref al primer botón para forzar el foco
           
           const [isMuted, setIsMuted] = React.useState(true);
           const [isPlaying, setIsPlaying] = React.useState(false);
-          const [showControls, setShowControls] = React.useState(false);
+          const [showControls, setShowControls] = React.useState(false); // 🔑 Corregido a false: Empieza oculto
           const timeoutRef = React.useRef(null); 
 
           // Función para resetear el temporizador de ocultación
           const resetControlTimeout = React.useCallback(() => {
-              // 1. Sólo mostrar controles
+              // 1. Mostrar controles (si están ocultos)
               if (!showControls) {
                   setShowControls(true);
+                  // El foco se manejará en el useEffect de abajo
               }
               
               // 2. Limpiar el temporizador anterior
@@ -120,18 +122,23 @@
                   setShowControls(false);
               }, CONTROLS_TIMEOUT);
           }, [showControls]);
+          
+          // 🔑 Nuevo useEffect para manejar el foco cuando los controles aparecen
+          React.useEffect(() => {
+              if (showControls && backButtonRef.current) {
+                  // Forzar el foco al primer botón cuando los controles aparecen
+                  backButtonRef.current.focus();
+              }
+          }, [showControls]);
 
 
           React.useEffect(() => {
-              // **🔑 CORRECCIÓN 1:** Al cargar el componente, enfocar el contenedor principal del video.
-              // Esto permite que el usuario use el D-Pad inmediatamente para interactuar.
+              // 1. Forzar foco en el contenedor principal al inicio para capturar la primera pulsación de tecla
               if (playerContainerRef.current) {
                   playerContainerRef.current.focus();
               }
               
-              // Mostrar controles inicialmente, luego se ocultarán por el temporizador.
-              resetControlTimeout(); 
-
+              // 2. Si no es YouTube o no hay ID, salir
               if (!isYouTube || !videoId || !window.YT) {
                   return;
               }
@@ -143,20 +150,25 @@
                   playerVars: {
                       'autoplay': 1,
                       'controls': 0, 
-                      'mute': 1, // Obligatorio para autoplay
+                      'mute': 1, 
                       'disablekb': 1, 
                       'widget_referrer': window.location.href
                   },
                   events: {
-                      'onReady': () => {
+                      'onReady': (event) => {
                           playerRef.current = newPlayer; 
-                          if (newPlayer.isMuted()) {
-                              newPlayer.unMute(); 
+                          
+                          // Aseguramos que el video no se pause solo al quitar el mute
+                          if (event.target.isMuted()) {
+                              event.target.unMute(); 
                               setIsMuted(false);
+                          }
+                          if (event.target.getPlayerState() !== YT.PlayerState.PLAYING) {
+                              event.target.playVideo();
                           }
                       },
                       'onStateChange': (event) => {
-                        if (event.data === window.YT.PlayerState.PLAYING) {
+                        if (event.data === YT.PlayerState.PLAYING) {
                             setIsPlaying(true);
                         } else {
                             setIsPlaying(false);
@@ -175,14 +187,14 @@
                       playerRef.current = null;
                   }
               };
-          }, [videoId, isYouTube, resetControlTimeout]);
+          }, [videoId, isYouTube]); // Dependencias: videoId, isYouTube
 
           // MÉTODOS DE CONTROL DE REPRODUCCIÓN (Llaman a resetControlTimeout)
           const togglePlayPause = () => {
               const player = playerRef.current;
               if (!player) return;
 
-              if (player.getPlayerState() === window.YT.PlayerState.PLAYING) {
+              if (player.getPlayerState() === YT.PlayerState.PLAYING) {
                   player.pauseVideo();
               } else {
                   player.playVideo();
@@ -223,7 +235,7 @@
               onBack();
           }
 
-          // ICONOS (SVG) - Mismos tamaños que el paso anterior
+          // ICONOS (SVG) - Sin cambios
           const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
           const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002z" clipRule="evenodd" /></svg>;
           const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 011 1v4a1 1 0 11-2 0V7a1 1 0 011-1zm-3 4a1 1 0 002 0V7a1 1 0 00-2 0v4z" clipRule="evenodd" /></svg>;
@@ -237,10 +249,10 @@
 
           return (
               <div 
-                  ref={playerContainerRef} // Ref para el foco inicial
+                  ref={playerContainerRef}
                   className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center"
-                  onKeyDown={resetControlTimeout} 
-                  tabIndex={0} // Permite que el div principal reciba el foco
+                  onKeyDown={resetControlTimeout} // Captura cualquier tecla para mostrar los controles
+                  tabIndex={0} 
                   style={{outline: 'none'}} 
               >
                   
@@ -269,13 +281,12 @@
                                           transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                           >
                               
-                              {/* Botón Volver al Catálogo */}
+                              {/* Botón Volver al Catálogo (Recibe el foco al mostrarse) */}
                               <button 
                                   onClick={handleOnBack}
                                   ref={backButtonRef}
                                   className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
                                             focus:ring-4 focus:ring-white focus:outline-none"
-                                  // 🔑 CORRECCIÓN 2: Solo enfocar si está visible. No tiene foco inicial.
                                   tabIndex={showControls ? 0 : -1} 
                                   title="Volver al Catálogo"
                               >
@@ -332,7 +343,6 @@
               </div>
           );
       }
-
 
       // ----------------------------------------------------------------------
       // COMPONENTES HERO BANNER Y TARJETA (Sin cambios)
@@ -416,7 +426,7 @@
       }
 
       // ----------------------------------------------------------------------
-      // COMPONENTE PRINCIPAL APP
+      // COMPONENTE PRINCIPAL APP (Sin cambios)
       // ----------------------------------------------------------------------
 
       function App() {

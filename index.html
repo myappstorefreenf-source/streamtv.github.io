@@ -17,7 +17,7 @@
       .focus\:ring-4:focus {
         outline: none;
       }
-      /* NUEVO: Estilo para truncar títulos a dos líneas y mantener altura uniforme */
+      /* Estilo para truncar títulos a dos líneas y mantener altura uniforme */
       .line-clamp-2 {
           display: -webkit-box;
           -webkit-line-clamp: 2;
@@ -46,9 +46,7 @@
           let videoId = defaultVideoId;
           let isYouTube = false;
 
-          // 1. Detección de URL de YouTube
           if (url) {
-              // Regex para detectar URL de YouTube (soporta watch?v=, youtu.be/, /embed/)
               const youtubeRegex = /(?:youtube\.com|youtu\.be)\/(?:v=|embed\/|watch\?v=|\/v\/)?([a-zA-Z0-9_-]{11})/;
               const match = url.match(youtubeRegex);
 
@@ -58,26 +56,17 @@
               }
           }
 
-          // 2. Construcción de URLs según el tipo
           if (isYouTube) {
-              // YouTube: Usar embed URL con autoplay y miniatura.
-              // Se añade &mute=1 para que el autoplay funcione mejor en navegadores modernos.
-              const urlEmbed = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
-              // Miniatura de alta resolución por defecto
+              // Parámetros de YouTube: autoplay y mute para mejorar compatibilidad, pero con controls
+              const urlEmbed = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1`;
               const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`; 
               return { videoId, urlEmbed, thumbnailUrl, isYouTube };
           } else {
-              // No-YouTube (video externo o genérico)
-
               let urlEmbed = url; 
-              // Si no es un archivo de video simple (como .mp4), intentamos añadir parámetros de incrustación.
-              // Esto es un intento de "mejor esfuerzo" para el autoplay en embeds externos.
               if (!url.toLowerCase().match(/\.(mp4|webm|ogg)$/)) {
                  const separator = url.includes('?') ? '&' : '?';
                  urlEmbed = `${url}${separator}autoplay=1`;
               }
-
-              // Usamos un placeholder genérico para videos externos
               const thumbnailUrl = "https://placehold.co/1920x1080/1F2937/fff?text=VIDEO+EXTERNO"; 
               return { videoId: null, urlEmbed, thumbnailUrl, isYouTube: false };
           }
@@ -90,27 +79,36 @@
 
       // Muestra el reproductor a pantalla completa cuando el usuario selecciona un video.
       function ReproductorEnFoco({ videoUrl, onBack }) {
-          // obtenerVideoInfo ahora funciona para YouTube y videos externos
           const { urlEmbed } = obtenerVideoInfo(videoUrl);
           
-          // Crear la referencia para el iframe
+          // Referencia para el iframe y para el botón de Volver
           const iframeRef = React.useRef(null); 
+          const backButtonRef = React.useRef(null);
 
           React.useEffect(() => {
-              // Mover el foco al iframe al montar para permitir la interacción con el reproductor.
+              // Al montar, forzamos el foco al iframe/contenedor
               if (iframeRef.current) {
                   iframeRef.current.focus(); 
               }
               
-              // Opcional: Asegurar que el botón "Volver" esté enfocable (ya lo es con tabIndex="0"),
-              // pero NO forzar el foco allí para no interrumpir el control del video.
-          }, []);
+              // Función para manejar la tecla ESC y el D-Pad "Atrás"
+              const handleKeyDown = (event) => {
+                  if (event.key === 'Escape') {
+                      onBack();
+                  }
+              };
+              document.addEventListener('keydown', handleKeyDown);
+              return () => {
+                  document.removeEventListener('keydown', handleKeyDown);
+              };
+          }, [onBack]);
 
 
           return (
               <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
-                  {/* Botón Volver - Crucial para la navegación de TV */}
+                  {/* Botón Volver - Usaremos la ref para el foco de vuelta */}
                   <button 
+                      ref={backButtonRef}
                       id="back-button"
                       onClick={onBack}
                       className="absolute top-4 left-4 p-3 bg-gray-700 text-white rounded-full text-lg z-50 
@@ -147,13 +145,13 @@
 
 
       // COMPONENTE HERO BANNER
-      function HeroBanner({ titulo, descripcion, videoUrl, onPlay }) {
+      const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
           const { thumbnailUrl } = obtenerVideoInfo(videoUrl);
 
           return (
               <div 
                   className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-10 rounded-xl shadow-2xl"
-                  tabIndex="-1" // No enfocable, solo para asegurar que no se enfoque por error
+                  tabIndex="-1" 
                   style={{ backgroundImage: `url('${thumbnailUrl}'), url('https://placehold.co/1920x1080/0d1117/333?text=CARGANDO...')` }}
               >
                   {/* Capa de contraste oscuro */}
@@ -168,56 +166,47 @@
                           {descripcion}
                       </p>
 
-                      {/* Botón de acción, usa onClick para cambiar el estado */}
+                      {/* Botón de acción con la referencia para el foco */}
                       <button 
-                          onClick={() => onPlay(videoUrl)} // Llama a la función que cambia el estado de App
+                          ref={ref} // <--- REFERENCIA ASIGNADA AQUÍ
+                          onClick={() => onPlay(videoUrl)} 
                           className="inline-block px-8 py-3 bg-red-600 text-white font-bold rounded-lg shadow-lg 
                                   transition-all duration-300 hover:bg-red-700 
                                   focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
-                          tabIndex="0" // Enfocable con control remoto
+                          tabIndex="0" 
                       >
                           Ver Ahora
                       </button>
                   </div>
               </div>
           );
-      }
+      });
+      // Aseguramos que el componente tenga un nombre para debugging
+      HeroBanner.displayName = 'HeroBanner';
 
 
       // COMPONENTE TARJETA DE VIDEO (En la lista)
       function ReproductorDeVideo(props) {
-        // Obtenemos el ID, la URL de la miniatura y el tipo de video
         const { videoId, thumbnailUrl, isYouTube } = obtenerVideoInfo(props.url);
-
-        // Definimos el placeholder genérico final
         const genericPlaceholderUrl = "https://placehold.co/600x337/333/fff?text=VIDEO+EXTERNO";
 
-        // Lógica de manejo de errores de imagen más robusta (para evitar bucles de error/scoping)
         const handleImageError = (e) => {
-            e.target.onerror = null; // Previene bucles infinitos
-
-            // Caso 1: Es YouTube, y falló la 'maxresdefault'. Intentar con 'hqdefault'.
+            e.target.onerror = null; 
             if (isYouTube && videoId && e.target.src.includes('maxresdefault')) {
-                // Usamos la URL de calidad media
                 e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
                 return;
             } 
-
-            // Caso 2: Es un video externo (isYouTube=false) o falló la hqdefault (si venía del Caso 1).
-            // Establecer el placeholder final
             e.target.src = genericPlaceholderUrl;
         };
 
         return (
-          // Tarjeta de video con manejo de foco visible para TV (D-Pad)
           <div 
             className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg 
                         transition-all duration-300 hover:shadow-2xl hover:scale-[1.05] 
                         focus:ring-4 focus:ring-red-500 focus:outline-none"
-            onClick={() => props.onPlay(props.url)} // Llama a la función que cambia el estado
-            tabIndex="0" // Permite enfocar con el control remoto
+            onClick={() => props.onPlay(props.url)} 
+            tabIndex="0" 
           >
-            {/* Miniatura del video */}
             <img 
                 src={thumbnailUrl} 
                 onError={handleImageError} 
@@ -226,11 +215,9 @@
             />
 
             <div className="p-4">
-              {/* Aplicamos la clase line-clamp-2 para forzar la uniformidad de altura del título */}
               <h2 className="text-lg font-semibold text-red-400 group-focus:text-red-300 line-clamp-2">
                 {props.titulo || "Título del Video"}
               </h2>
-              {/* Muestra la fuente del video */}
               <p className="mt-1 text-gray-400 text-sm">
                 Fuente: {isYouTube ? "YouTube" : "Externa"}
               </p>
@@ -240,94 +227,60 @@
         );
       }
 
-      // 6. COMPONENTE PRINCIPAL DE LA APLICACIÓN (Maneja el estado)
+      // COMPONENTE PRINCIPAL DE LA APLICACIÓN (Maneja el estado)
       function App() {
-          // Estado para saber qué video debe estar a pantalla completa (si es null, muestra la lista)
           const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
+          // Referencia para el botón al que queremos volver el foco
+          const heroButtonRef = React.useRef(null); 
 
-          // Si hay un video seleccionado, solo renderiza el reproductor a pantalla completa
+          // Función mejorada para volver a la lista y REENFOCAR
+          const handleBack = React.useCallback(() => {
+              setVideoEnFocoUrl(null);
+              // Al volver al menú principal, forzamos el foco al botón "Ver Ahora" del Hero Banner.
+              // Usamos un pequeño timeout para asegurar que el DOM se haya renderizado antes de enfocar.
+              setTimeout(() => {
+                  if (heroButtonRef.current) {
+                      heroButtonRef.current.focus();
+                  }
+              }, 0);
+          }, []);
+
+
           if (videoEnFocoUrl) {
               return <ReproductorEnFoco 
                   videoUrl={videoEnFocoUrl} 
-                  onBack={() => setVideoEnFocoUrl(null)} // Función para volver a la lista
+                  onBack={handleBack} 
               />;
           }
 
-          // URL del video principal (usada por el Banner y la primera tarjeta)
           const heroVideoUrl ="https://youtu.be/GwPAvxA62Do?si=aK5qDPYMPfpkTS8o";
 
-          // EJEMPLO DE VIDEO EXTERNO MP4 (se reproduce directamente en el iframe)
-          const externalVideoUrl = "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4";
-
-          // EJEMPLO DE EMBED GENÉRICO (se usa una página de prueba con video para demostrar la funcionalidad de iframe)
-          const genericEmbedUrl = "https://html5test.com/video-test.html";
-
-          // Si no hay video seleccionado, renderiza la interfaz principal (Hero Banner + Lista)
           return (
               <div className="p-4 md:p-8 max-w-7xl mx-auto">
-                  {/* HERO BANNER */}
+                  {/* HERO BANNER - Pasamos la referencia para que su botón sea enfocable */}
                   <HeroBanner 
+                      ref={heroButtonRef} // <--- PASAMOS LA REFERENCIA
                       titulo="Estreno de la Semana"
                       descripcion="No te pierdas el documental más aclamado sobre la vida en Marte y su colonización."
                       videoUrl={heroVideoUrl}
-                      onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
+                      onPlay={setVideoEnFocoUrl} 
                   />
 
-                  {/* Título de la sección de la lista */}
                   <h1 className="text-3xl font-bold mb-6 text-red-600">
                       Explorar Videos
                   </h1>
 
                   {/* LISTA DE VIDEOS (GRID) */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {/* Fila 1 */}
-                    <ReproductorDeVideo 
-                        titulo="Documental de Marte" 
-                        url={heroVideoUrl}
-                        onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
-                    />
-                    <ReproductorDeVideo 
-                        titulo="Trailer de Película (MP4)" // <-- VIDEO EXTERNO MP4
-                        url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" 
-                        onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
-                    />
-                    <ReproductorDeVideo 
-                        titulo="Tutorial de React JS" 
-                        url="https://youtu.be/epUe_LPcq-k?si=8dmditU-6Y2ieEd"
-                        onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
-                    />
-                    {/* Fila 2 */}
-                    <ReproductorDeVideo 
-                        titulo="Tecnología 2025: Un vistazo al futuro de los gadgets y la robótica en el nuevo año." 
-                        url="https://youtu.be/P59WtHvSd18?si=Qz-lcl-a1MrNU5b8"
-                        onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
-                    />
-                    <ReproductorDeVideo 
-                        titulo="Clásico de los 80s (Música)" 
-                        url="https://youtu.be/T8SYLvGEBkk?si=4QnLS9WPwQu4cQgo" 
-                        onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
-                    />
-                    <ReproductorDeVideo 
-                        titulo="Viaje por la Galaxia" 
-                        url="https://youtu.be/chmuJSP-V8Y?si=YHCUZ3fSuhpIGqNg" 
-                        onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
-                    />
-                    {/* Fila 3 */}
-                    <ReproductorDeVideo 
-                        titulo="Entrevista a Chef Famoso (Embed Genérico)" 
-                        url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" // <-- URL de prueba genérica con intento de autoplay
-                        onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
-                    />
-                    <ReproductorDeVideo 
-                        titulo="Recetas Rápidas" 
-                        url="https://youtu.be/gwkUDXSGbxg?si=eLcpoLsvJP6kr7d2" 
-                        onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
-                    />
-                    <ReproductorDeVideo 
-                        titulo="El Misterio del Lago" 
-                        url="https://youtu.be/qYfJ36XxEpc?si=_SicDPM0kU8WR_AY" 
-                        onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
-                    />
+                    <ReproductorDeVideo titulo="Documental de Marte" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Trailer de Película" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Tutorial de React JS" url="https://youtu.be/epUe_LPcq-k?si=8dmditU-6Y2ieEd" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Tecnología 2025: Un vistazo al futuro" url="https://youtu.be/P59WtHvSd18?si=Qz-lcl-a1MrNU5b8" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Clásico de los 80s (Música)" url="https://youtu.be/T8SYLvGEBkk?si=4QnLS9WPwQu4cQgo" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Viaje por la Galaxia" url="https://youtu.be/chmuJSP-V8Y?si=YHCUZ3fSuhpIGqNg" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Entrevista a Chef Famoso" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Recetas Rápidas" url="https://youtu.be/gwkUDXSGbxg?si=eLcpoLsvJP6kr7d2" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="El Misterio del Lago" url="https://youtu.be/qYfJ36XxEpc?si=_SicDPM0kU8WR_AY" onPlay={setVideoEnFocoUrl} />
                   </div>
               </div>
           );

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MovieTube (API Control)</title>
+    <title>MovieTube (API Control Fix)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       /* Estilos generales */
@@ -39,9 +39,6 @@
       // Variable global para almacenar el objeto de los videos que están listos para la API
       window.onYouTubeIframeAPIReady = () => {
         console.log("YouTube API lista.");
-        // Después de que la API esté lista, notificamos a React que debe re-renderizarse 
-        // o podemos usar un evento si la estructura de la app fuera más compleja.
-        // Por simplicidad, React reaccionará cuando se intente renderizar el componente.
       };
 
       // ----------------------------------------------------------------------
@@ -64,60 +61,64 @@
           }
 
           if (isYouTube) {
-              // URL base para el contenedor de la API (solo necesitamos el ID)
               const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`; 
               return { videoId, thumbnailUrl, isYouTube };
           } else {
-              // Para videos externos, mantenemos la lógica anterior
               const thumbnailUrl = "https://placehold.co/1920x1080/1F2937/fff?text=VIDEO+EXTERNO"; 
               return { videoId: null, thumbnailUrl, isYouTube: false };
           }
       }
 
       // ----------------------------------------------------------------------
-      // COMPONENTE ReproductorEnFoco (CON CONTROLES PERSONALIZADOS)
+      // COMPONENTE ReproductorEnFoco (CORREGIDO)
       // ----------------------------------------------------------------------
 
       function ReproductorEnFoco({ videoUrl, onBack }) {
           const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
-          const [player, setPlayer] = React.useState(null);
+          // Usamos una ref para almacenar el objeto player, ya que no queremos que cambie el estado de la UI
+          const playerRef = React.useRef(null); 
+          
           const [isMuted, setIsMuted] = React.useState(true);
           const [isPlaying, setIsPlaying] = React.useState(false);
-          const controlButtonRef = React.useRef(null); // Ref para el primer botón de control
+          const controlButtonRef = React.useRef(null); 
 
           // 2. Hook para inicializar el reproductor con la API de YouTube
           React.useEffect(() => {
-              if (!isYouTube || !videoId || !window.YT || player) {
-                  return; // Si no es YouTube o el reproductor ya existe, salir
+              if (!isYouTube || !videoId || !window.YT) {
+                  return;
               }
 
-              // El ID del div donde se inyectará el reproductor
               const playerId = 'youtube-player-container'; 
               
-              // Inicialización del nuevo objeto YT.Player
               const newPlayer = new window.YT.Player(playerId, {
                   videoId: videoId,
                   playerVars: {
                       'autoplay': 1,
-                      'controls': 0, // Deshabilitar controles nativos de YouTube
-                      'mute': 1, // Mutear para asegurar el autoplay
-                      'disablekb': 1, // Deshabilitar controles de teclado de YouTube (opcional, pero ayuda)
+                      'controls': 0, 
+                      'mute': 1, // Mantenemos el mute inicial OBLIGATORIO para el autoplay
+                      'disablekb': 1, 
                   },
                   events: {
                       'onReady': (event) => {
-                          setPlayer(newPlayer);
-                          newPlayer.unMute(); // Desmutear al estar listo para que el usuario controle el audio
-                          setIsMuted(false);
+                          // Almacenamos el player en la REF
+                          playerRef.current = newPlayer; 
+                          
+                          // 🔑 CORRECCIÓN 1: Desmutear después de que esté listo para que el usuario controle
+                          if (newPlayer.isMuted()) {
+                              newPlayer.unMute(); 
+                              setIsMuted(false);
+                          }
+
                           // Forzar el foco al primer botón de control al cargar el reproductor
                           if (controlButtonRef.current) {
                               controlButtonRef.current.focus(); 
                           }
                       },
                       'onStateChange': (event) => {
-                        // Actualizar estado de Play/Pause
+                        // 🔑 CORRECCIÓN 2: Actualizar el estado de reproducción
                         if (event.data === window.YT.PlayerState.PLAYING) {
                             setIsPlaying(true);
-                        } else if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
+                        } else {
                             setIsPlaying(false);
                         }
                       }
@@ -126,25 +127,33 @@
 
               // Función de limpieza para destruir el reproductor al desmontar
               return () => {
-                  if (newPlayer && typeof newPlayer.destroy === 'function') {
-                      newPlayer.destroy();
+                  if (playerRef.current && typeof playerRef.current.destroy === 'function') {
+                      playerRef.current.destroy();
+                      playerRef.current = null;
                   }
               };
-          }, [videoId, isYouTube, player]);
+          }, [videoId, isYouTube]);
 
 
           // MÉTODOS DE CONTROL
           const togglePlayPause = () => {
+              // 🔑 CORRECCIÓN 3: Usar la referencia del player
+              const player = playerRef.current;
               if (!player) return;
+
               if (player.getPlayerState() === window.YT.PlayerState.PLAYING) {
                   player.pauseVideo();
               } else {
                   player.playVideo();
               }
+              // El estado de isPlaying se actualizará automáticamente en onStateChange
           };
 
           const toggleMute = () => {
+              // 🔑 CORRECCIÓN 4: Usar la referencia del player
+              const player = playerRef.current;
               if (!player) return;
+
               if (player.isMuted()) {
                   player.unMute();
                   setIsMuted(false);
@@ -156,6 +165,7 @@
 
 
           // ICONOS (SVG)
+          // ... (Los iconos SVG son los mismos)
           const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002z" clipRule="evenodd" /></svg>;
           const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 011 1v4a1 1 0 11-2 0V7a1 1 0 011-1zm-3 4a1 1 0 002 0V7a1 1 0 00-2 0v4z" clipRule="evenodd" /></svg>;
           const VolumeIcon = () => isMuted ? 
@@ -182,9 +192,8 @@
                   {/* Contenedor del Reproductor y Controles */}
                   <div className="w-full h-full p-4 flex flex-col items-center justify-center relative">
                       
-                      {/* 3. Contenedor para inyectar el Iframe de YouTube API */}
+                      {/* Contenedor para inyectar el Iframe de YouTube API */}
                       <div className="aspect-video w-full max-w-screen-xl relative">
-                          {/* El Iframe se inyectará aquí por la API, pero el div debe estar visible y tener el ID */}
                           <div id="youtube-player-container" className="w-full h-full rounded-xl shadow-2xl">
                               {/* Contenido de fallback para videos no-YouTube */}
                               {!isYouTube && (
@@ -199,14 +208,14 @@
                           </div>
                       </div>
 
-                      {/* 4. Controles Personalizados (Enfocables) */}
+                      {/* Controles Personalizados (Enfocables) */}
                       {isYouTube && (
                           <div className="flex space-x-6 mt-8 p-4 bg-gray-800 rounded-xl shadow-2xl">
                               
                               {/* Botón Mute/Unmute */}
                               <button 
                                   onClick={toggleMute}
-                                  ref={controlButtonRef} // Asignamos la ref al primer botón para enfoque inicial
+                                  ref={controlButtonRef} 
                                   className="text-white p-3 rounded-full bg-red-600 hover:bg-red-700 
                                             focus:ring-4 focus:ring-white focus:outline-none"
                                   tabIndex="0"
@@ -224,10 +233,6 @@
                                   {isPlaying ? <PauseIcon /> : <PlayIcon />}
                               </button>
                               
-                              {/* Puedes añadir más controles (ej. pantalla completa, avance) */}
-                              {/* Nota: El control de volumen es más complejo y requeriría un slider, 
-                                          pero el MUTE es un buen inicio */}
-
                           </div>
                       )}
                   </div>
@@ -237,7 +242,7 @@
 
 
       // ----------------------------------------------------------------------
-      // COMPONENTES HERO BANNER Y TARJETA (sin cambios relevantes en la lógica D-Pad)
+      // COMPONENTES HERO BANNER Y TARJETA (Los mismos)
       // ----------------------------------------------------------------------
 
       const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
@@ -318,7 +323,7 @@
       }
 
       // ----------------------------------------------------------------------
-      // COMPONENTE PRINCIPAL APP (Maneja el estado y el foco al volver)
+      // COMPONENTE PRINCIPAL APP (El mismo)
       // ----------------------------------------------------------------------
 
       function App() {

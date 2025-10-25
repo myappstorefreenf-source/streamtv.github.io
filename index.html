@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>MovieTube (TV)</title>
-    <!-- Carga de Tailwind CSS para estilos modernos y responsivos -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       /* Estilo para asegurar que el iframe no tenga bordes */
@@ -29,15 +28,13 @@
       }
     </style>
   </head>
-  <!-- El cuerpo usa clases de Tailwind para un fondo oscuro y mínimo de altura -->
   <body class="bg-gray-900 text-white min-h-screen">
     <div id="root"></div>
 
-    <!-- Scripts de React, ReactDOM y Babel -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
+
     <script type="text/babel">
       // ----------------------------------------------------------------------
       // LÓGICA DE CONVERSIÓN DE URL Y EXTRACCIÓN DE ID
@@ -48,13 +45,13 @@
           const defaultVideoId = 'dQw4w9WgXcQ'; // ID por defecto (Rick Roll)
           let videoId = defaultVideoId;
           let isYouTube = false;
-          
+
           // 1. Detección de URL de YouTube
           if (url) {
               // Regex para detectar URL de YouTube (soporta watch?v=, youtu.be/, /embed/)
               const youtubeRegex = /(?:youtube\.com|youtu\.be)\/(?:v=|embed\/|watch\?v=|\/v\/)?([a-zA-Z0-9_-]{11})/;
               const match = url.match(youtubeRegex);
-              
+
               if (match && match[1]) {
                   videoId = match[1];
                   isYouTube = true;
@@ -71,7 +68,7 @@
               return { videoId, urlEmbed, thumbnailUrl, isYouTube };
           } else {
               // No-YouTube (video externo o genérico)
-              
+
               let urlEmbed = url; 
               // Si no es un archivo de video simple (como .mp4), intentamos añadir parámetros de incrustación.
               // Esto es un intento de "mejor esfuerzo" para el autoplay en embeds externos.
@@ -79,7 +76,7 @@
                  const separator = url.includes('?') ? '&' : '?';
                  urlEmbed = `${url}${separator}autoplay=1`;
               }
-              
+
               // Usamos un placeholder genérico para videos externos
               const thumbnailUrl = "https://placehold.co/1920x1080/1F2937/fff?text=VIDEO+EXTERNO"; 
               return { videoId: null, urlEmbed, thumbnailUrl, isYouTube: false };
@@ -90,18 +87,23 @@
       // ----------------------------------------------------------------------
       // COMPONENTES PRINCIPALES
       // ----------------------------------------------------------------------
-      
+
       // Muestra el reproductor a pantalla completa cuando el usuario selecciona un video.
       function ReproductorEnFoco({ videoUrl, onBack }) {
           // obtenerVideoInfo ahora funciona para YouTube y videos externos
           const { urlEmbed } = obtenerVideoInfo(videoUrl);
+          
+          // Crear la referencia para el iframe
+          const iframeRef = React.useRef(null); 
 
-          // Asegura que el foco vuelva al botón "Volver" al montar el componente (para D-Pad)
           React.useEffect(() => {
-              const backButton = document.getElementById('back-button');
-              if (backButton) {
-                  backButton.focus();
+              // Mover el foco al iframe al montar para permitir la interacción con el reproductor.
+              if (iframeRef.current) {
+                  iframeRef.current.focus(); 
               }
+              
+              // Opcional: Asegurar que el botón "Volver" esté enfocable (ya lo es con tabIndex="0"),
+              // pero NO forzar el foco allí para no interrumpir el control del video.
           }, []);
 
 
@@ -126,6 +128,10 @@
                   <div className="w-full h-full p-4 flex items-center justify-center">
                       <div className="aspect-video w-full max-w-screen-xl">
                           <iframe
+                          // Asignar la referencia al iframe
+                          ref={iframeRef} 
+                          // Hacer el iframe enfocable
+                          tabIndex="0"
                           className="reproductor-iframe w-full h-full rounded-xl shadow-2xl"
                           src={urlEmbed}
                           title="Video en Foco"
@@ -143,7 +149,7 @@
       // COMPONENTE HERO BANNER
       function HeroBanner({ titulo, descripcion, videoUrl, onPlay }) {
           const { thumbnailUrl } = obtenerVideoInfo(videoUrl);
-          
+
           return (
               <div 
                   className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-10 rounded-xl shadow-2xl"
@@ -152,7 +158,7 @@
               >
                   {/* Capa de contraste oscuro */}
                   <div className="absolute inset-0 bg-black/60"></div>
-                  
+
                   {/* Contenido del Banner */}
                   <div className="relative p-10 max-w-xl">
                       <h2 className="text-5xl font-extrabold mb-3 text-white drop-shadow-lg">
@@ -161,7 +167,7 @@
                       <p className="text-lg mb-6 text-gray-200 drop-shadow-md">
                           {descripcion}
                       </p>
-                      
+
                       {/* Botón de acción, usa onClick para cambiar el estado */}
                       <button 
                           onClick={() => onPlay(videoUrl)} // Llama a la función que cambia el estado de App
@@ -189,19 +195,19 @@
         // Lógica de manejo de errores de imagen más robusta (para evitar bucles de error/scoping)
         const handleImageError = (e) => {
             e.target.onerror = null; // Previene bucles infinitos
-            
+
             // Caso 1: Es YouTube, y falló la 'maxresdefault'. Intentar con 'hqdefault'.
             if (isYouTube && videoId && e.target.src.includes('maxresdefault')) {
                 // Usamos la URL de calidad media
                 e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
                 return;
             } 
-            
+
             // Caso 2: Es un video externo (isYouTube=false) o falló la hqdefault (si venía del Caso 1).
             // Establecer el placeholder final
             e.target.src = genericPlaceholderUrl;
         };
-        
+
         return (
           // Tarjeta de video con manejo de foco visible para TV (D-Pad)
           <div 
@@ -229,7 +235,7 @@
                 Fuente: {isYouTube ? "YouTube" : "Externa"}
               </p>
             </div>
-            
+
           </div>
         );
       }
@@ -249,10 +255,10 @@
 
           // URL del video principal (usada por el Banner y la primera tarjeta)
           const heroVideoUrl ="https://youtu.be/GwPAvxA62Do?si=aK5qDPYMPfpkTS8o";
-          
+
           // EJEMPLO DE VIDEO EXTERNO MP4 (se reproduce directamente en el iframe)
           const externalVideoUrl = "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4";
-          
+
           // EJEMPLO DE EMBED GENÉRICO (se usa una página de prueba con video para demostrar la funcionalidad de iframe)
           const genericEmbedUrl = "https://html5test.com/video-test.html";
 
@@ -271,7 +277,7 @@
                   <h1 className="text-3xl font-bold mb-6 text-red-600">
                       Explorar Videos
                   </h1>
-                  
+
                   {/* LISTA DE VIDEOS (GRID) */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {/* Fila 1 */}
@@ -334,4 +340,3 @@
     </script>
   </body>
 </html>
-

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MovieTube (Controles Auto-Ocultables)</title>
+    <title>MovieTube (Foco Corregido)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       /* Estilos generales */
@@ -89,31 +89,25 @@
       }
 
       // ----------------------------------------------------------------------
-      // COMPONENTE ReproductorEnFoco (CONTROLES AUTO-OCULTABLES)
+      // COMPONENTE ReproductorEnFoco (CONTROLES AUTO-OCULTABLES Y FOCO CORREGIDO)
       // ----------------------------------------------------------------------
 
       function ReproductorEnFoco({ videoUrl, onBack }) {
           const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
           const playerRef = React.useRef(null); 
-          const controlContainerRef = React.useRef(null); // Contenedor padre de los controles
-          const backButtonRef = React.useRef(null); // Ref para el foco inicial
+          const playerContainerRef = React.useRef(null); // Nuevo: Ref al div principal para el foco inicial
+          const backButtonRef = React.useRef(null); 
           
           const [isMuted, setIsMuted] = React.useState(true);
           const [isPlaying, setIsPlaying] = React.useState(false);
-          const [showControls, setShowControls] = React.useState(false); // Estado para mostrar/ocultar
-          const timeoutRef = React.useRef(null); // Ref para el temporizador de ocultación
+          const [showControls, setShowControls] = React.useState(false);
+          const timeoutRef = React.useRef(null); 
 
           // Función para resetear el temporizador de ocultación
           const resetControlTimeout = React.useCallback(() => {
-              // 1. Mostrar controles y enfocar al botón de Volver
+              // 1. Sólo mostrar controles
               if (!showControls) {
                   setShowControls(true);
-                  // Usamos setTimeout para asegurar que el DOM se actualice antes de enfocar
-                  setTimeout(() => {
-                      if (backButtonRef.current) {
-                          backButtonRef.current.focus();
-                      }
-                  }, 50); 
               }
               
               // 2. Limpiar el temporizador anterior
@@ -121,7 +115,7 @@
                   clearTimeout(timeoutRef.current);
               }
 
-              // 3. Establecer un nuevo temporizador
+              // 3. Establecer un nuevo temporizador para ocultar
               timeoutRef.current = setTimeout(() => {
                   setShowControls(false);
               }, CONTROLS_TIMEOUT);
@@ -129,8 +123,14 @@
 
 
           React.useEffect(() => {
-              // 1. Mostrar controles y establecer el temporizador al cargar el componente
-              resetControlTimeout();
+              // **🔑 CORRECCIÓN 1:** Al cargar el componente, enfocar el contenedor principal del video.
+              // Esto permite que el usuario use el D-Pad inmediatamente para interactuar.
+              if (playerContainerRef.current) {
+                  playerContainerRef.current.focus();
+              }
+              
+              // Mostrar controles inicialmente, luego se ocultarán por el temporizador.
+              resetControlTimeout(); 
 
               if (!isYouTube || !videoId || !window.YT) {
                   return;
@@ -143,7 +143,7 @@
                   playerVars: {
                       'autoplay': 1,
                       'controls': 0, 
-                      'mute': 1, 
+                      'mute': 1, // Obligatorio para autoplay
                       'disablekb': 1, 
                       'widget_referrer': window.location.href
                   },
@@ -175,12 +175,13 @@
                       playerRef.current = null;
                   }
               };
-          }, [videoId, isYouTube, resetControlTimeout]); // Dependencias: videoId, isYouTube y la función de callback
+          }, [videoId, isYouTube, resetControlTimeout]);
 
-          // MÉTODOS DE CONTROL DE REPRODUCCIÓN (Ahora llaman a resetControlTimeout)
+          // MÉTODOS DE CONTROL DE REPRODUCCIÓN (Llaman a resetControlTimeout)
           const togglePlayPause = () => {
               const player = playerRef.current;
               if (!player) return;
+
               if (player.getPlayerState() === window.YT.PlayerState.PLAYING) {
                   player.pauseVideo();
               } else {
@@ -216,15 +217,13 @@
           const fastForward = () => seekRelative(10); // Avanza 10 segundos
 
           const handleOnBack = () => {
-              // Limpiamos el temporizador antes de salir para evitar efectos secundarios
               if (timeoutRef.current) {
                   clearTimeout(timeoutRef.current);
               }
               onBack();
           }
 
-          // ICONOS (SVG)
-          // 🔑 CORRECCIÓN 4: Reducción adicional de iconos a h-4 w-4
+          // ICONOS (SVG) - Mismos tamaños que el paso anterior
           const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
           const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002z" clipRule="evenodd" /></svg>;
           const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 011 1v4a1 1 0 11-2 0V7a1 1 0 011-1zm-3 4a1 1 0 002 0V7a1 1 0 00-2 0v4z" clipRule="evenodd" /></svg>;
@@ -237,12 +236,12 @@
 
 
           return (
-              // 🔑 Corrección 2: Agregamos onKeyDown para detectar pulsaciones de teclas y mostrar controles
               <div 
+                  ref={playerContainerRef} // Ref para el foco inicial
                   className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center"
                   onKeyDown={resetControlTimeout} 
-                  tabIndex={0} 
-                  style={{outline: 'none'}} // Ocultar el outline de foco por defecto en el div padre
+                  tabIndex={0} // Permite que el div principal reciba el foco
+                  style={{outline: 'none'}} 
               >
                   
                   {/* Contenedor del Reproductor */}
@@ -253,7 +252,7 @@
                           <div id="youtube-player-container" className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden">
                               {!isYouTube && (
                                   <iframe
-                                      tabIndex="-1" // Deshabilitamos el foco en el iframe de fallback
+                                      tabIndex="-1" 
                                       className="youtube-iframe rounded-xl shadow-2xl bg-gray-900"
                                       src={videoUrl}
                                       allow="autoplay; fullscreen"
@@ -263,10 +262,9 @@
                           </div>
                       </div>
 
-                      {/* 🔑 Corrección 1 & 3: Controles Auto-Ocultables */}
+                      {/* Controles Auto-Ocultables */}
                       {isYouTube && (
                           <div 
-                              ref={controlContainerRef}
                               className={`absolute bottom-10 flex space-x-4 p-3 bg-gray-800/80 rounded-xl shadow-2xl 
                                           transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                           >
@@ -277,7 +275,8 @@
                                   ref={backButtonRef}
                                   className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
                                             focus:ring-4 focus:ring-white focus:outline-none"
-                                  tabIndex={showControls ? 0 : -1} // Sólo enfocable si está visible
+                                  // 🔑 CORRECCIÓN 2: Solo enfocar si está visible. No tiene foco inicial.
+                                  tabIndex={showControls ? 0 : -1} 
                                   title="Volver al Catálogo"
                               >
                                   <BackIcon />
@@ -336,7 +335,7 @@
 
 
       // ----------------------------------------------------------------------
-      // COMPONENTES HERO BANNER Y TARJETA
+      // COMPONENTES HERO BANNER Y TARJETA (Sin cambios)
       // ----------------------------------------------------------------------
 
       const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {

@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MovieTube (TV)</title>
+    <title>MovieTube (API Control)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      /* Estilo para asegurar que el iframe no tenga bordes */
-      .reproductor-iframe {
-        border: none;
-      }
-      /* Estilo base para el Hero Banner (se sobrescribe dinámicamente) */
+      /* Estilos generales */
       .hero-background {
           background-size: cover;
           background-position: center;
       }
-      /* Estilo para mejorar el foco en TV (D-Pad) */
       .focus\:ring-4:focus {
         outline: none;
       }
-      /* Estilo para truncar títulos a dos líneas y mantener altura uniforme */
       .line-clamp-2 {
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
-          /* Altura máxima aproximada para 2 líneas de texto "text-lg" */
           max-height: 3rem; 
       }
     </style>
@@ -34,15 +27,29 @@
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
 
     <script type="text/babel">
+      
+      // Variable global para almacenar el objeto de los videos que están listos para la API
+      window.onYouTubeIframeAPIReady = () => {
+        console.log("YouTube API lista.");
+        // Después de que la API esté lista, notificamos a React que debe re-renderizarse 
+        // o podemos usar un evento si la estructura de la app fuera más compleja.
+        // Por simplicidad, React reaccionará cuando se intente renderizar el componente.
+      };
+
       // ----------------------------------------------------------------------
-      // LÓGICA DE CONVERSIÓN DE URL Y EXTRACCIÓN DE ID
+      // LÓGICA DE CONVERSIÓN Y EXTRACCIÓN DE ID
       // ----------------------------------------------------------------------
 
-      // Función para obtener el ID, la URL de incrustación, la URL de la miniatura y el tipo de fuente
       function obtenerVideoInfo(url) {
-          const defaultVideoId = 'dQw4w9WgXcQ'; // ID por defecto (Rick Roll)
+          const defaultVideoId = 'dQw4w9WgXcQ';
           let videoId = defaultVideoId;
           let isYouTube = false;
 
@@ -57,94 +64,182 @@
           }
 
           if (isYouTube) {
-              // Parámetros de YouTube: autoplay y mute para mejorar compatibilidad, pero con controls
-              const urlEmbed = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1`;
+              // URL base para el contenedor de la API (solo necesitamos el ID)
               const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`; 
-              return { videoId, urlEmbed, thumbnailUrl, isYouTube };
+              return { videoId, thumbnailUrl, isYouTube };
           } else {
-              let urlEmbed = url; 
-              if (!url.toLowerCase().match(/\.(mp4|webm|ogg)$/)) {
-                 const separator = url.includes('?') ? '&' : '?';
-                 urlEmbed = `${url}${separator}autoplay=1`;
-              }
+              // Para videos externos, mantenemos la lógica anterior
               const thumbnailUrl = "https://placehold.co/1920x1080/1F2937/fff?text=VIDEO+EXTERNO"; 
-              return { videoId: null, urlEmbed, thumbnailUrl, isYouTube: false };
+              return { videoId: null, thumbnailUrl, isYouTube: false };
           }
       }
 
-
       // ----------------------------------------------------------------------
-      // COMPONENTES PRINCIPALES
+      // COMPONENTE ReproductorEnFoco (CON CONTROLES PERSONALIZADOS)
       // ----------------------------------------------------------------------
 
-      // Muestra el reproductor a pantalla completa cuando el usuario selecciona un video.
       function ReproductorEnFoco({ videoUrl, onBack }) {
-          const { urlEmbed } = obtenerVideoInfo(videoUrl);
-          
-          // Referencia para el iframe y para el botón de Volver
-          const iframeRef = React.useRef(null); 
-          const backButtonRef = React.useRef(null);
+          const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
+          const [player, setPlayer] = React.useState(null);
+          const [isMuted, setIsMuted] = React.useState(true);
+          const [isPlaying, setIsPlaying] = React.useState(false);
+          const controlButtonRef = React.useRef(null); // Ref para el primer botón de control
 
+          // 2. Hook para inicializar el reproductor con la API de YouTube
           React.useEffect(() => {
-              // Al montar, forzamos el foco al iframe/contenedor
-              if (iframeRef.current) {
-                  iframeRef.current.focus(); 
+              if (!isYouTube || !videoId || !window.YT || player) {
+                  return; // Si no es YouTube o el reproductor ya existe, salir
               }
+
+              // El ID del div donde se inyectará el reproductor
+              const playerId = 'youtube-player-container'; 
               
-              // Función para manejar la tecla ESC y el D-Pad "Atrás"
-              const handleKeyDown = (event) => {
-                  if (event.key === 'Escape') {
-                      onBack();
+              // Inicialización del nuevo objeto YT.Player
+              const newPlayer = new window.YT.Player(playerId, {
+                  videoId: videoId,
+                  playerVars: {
+                      'autoplay': 1,
+                      'controls': 0, // Deshabilitar controles nativos de YouTube
+                      'mute': 1, // Mutear para asegurar el autoplay
+                      'disablekb': 1, // Deshabilitar controles de teclado de YouTube (opcional, pero ayuda)
+                  },
+                  events: {
+                      'onReady': (event) => {
+                          setPlayer(newPlayer);
+                          newPlayer.unMute(); // Desmutear al estar listo para que el usuario controle el audio
+                          setIsMuted(false);
+                          // Forzar el foco al primer botón de control al cargar el reproductor
+                          if (controlButtonRef.current) {
+                              controlButtonRef.current.focus(); 
+                          }
+                      },
+                      'onStateChange': (event) => {
+                        // Actualizar estado de Play/Pause
+                        if (event.data === window.YT.PlayerState.PLAYING) {
+                            setIsPlaying(true);
+                        } else if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
+                            setIsPlaying(false);
+                        }
+                      }
+                  }
+              });
+
+              // Función de limpieza para destruir el reproductor al desmontar
+              return () => {
+                  if (newPlayer && typeof newPlayer.destroy === 'function') {
+                      newPlayer.destroy();
                   }
               };
-              document.addEventListener('keydown', handleKeyDown);
-              return () => {
-                  document.removeEventListener('keydown', handleKeyDown);
-              };
-          }, [onBack]);
+          }, [videoId, isYouTube, player]);
+
+
+          // MÉTODOS DE CONTROL
+          const togglePlayPause = () => {
+              if (!player) return;
+              if (player.getPlayerState() === window.YT.PlayerState.PLAYING) {
+                  player.pauseVideo();
+              } else {
+                  player.playVideo();
+              }
+          };
+
+          const toggleMute = () => {
+              if (!player) return;
+              if (player.isMuted()) {
+                  player.unMute();
+                  setIsMuted(false);
+              } else {
+                  player.mute();
+                  setIsMuted(true);
+              }
+          };
+
+
+          // ICONOS (SVG)
+          const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002z" clipRule="evenodd" /></svg>;
+          const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 011 1v4a1 1 0 11-2 0V7a1 1 0 011-1zm-3 4a1 1 0 002 0V7a1 1 0 00-2 0v4z" clipRule="evenodd" /></svg>;
+          const VolumeIcon = () => isMuted ? 
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zm10.024 2.193a1 1 0 010 1.414L17.243 10l2.164 2.163a1 1 0 01-1.414 1.414L15.829 11.414l-2.163 2.164a1 1 0 01-1.414-1.414L14.414 10l-2.163-2.163a1 1 0 011.414-1.414l2.163 2.164 2.164-2.163a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+              :
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 5.059a1 1 0 011.414 0 9 9 0 010 12.582 1 1 0 11-1.414-1.414 7 7 0 000-9.754 1 1 0 010-1.414zM16.071 3.645a1 1 0 011.414 0 11 11 0 010 15.69 1 1 0 11-1.414-1.414 9 9 0 000-12.862 1 1 0 010-1.414z" clipRule="evenodd" /></svg>;
 
 
           return (
               <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
-                  {/* Botón Volver - Usaremos la ref para el foco de vuelta */}
+                  
+                  {/* Botón Volver */}
                   <button 
-                      ref={backButtonRef}
-                      id="back-button"
                       onClick={onBack}
                       className="absolute top-4 left-4 p-3 bg-gray-700 text-white rounded-full text-lg z-50 
-                                transition-all hover:bg-gray-600 
-                                focus:ring-4 focus:ring-red-500 focus:outline-none"
-                      tabIndex="0" // Enfocable con control remoto
+                                transition-all hover:bg-gray-600 focus:ring-4 focus:ring-red-500 focus:outline-none"
+                      tabIndex="0" 
                   >
-                      {/* Icono de flecha (SVG) */}
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                       </svg>
                   </button>
 
-                  {/* Contenedor responsivo 16:9 para el iframe */}
-                  <div className="w-full h-full p-4 flex items-center justify-center">
-                      <div className="aspect-video w-full max-w-screen-xl">
-                          <iframe
-                          // Asignar la referencia al iframe
-                          ref={iframeRef} 
-                          // Hacer el iframe enfocable
-                          tabIndex="0"
-                          className="reproductor-iframe w-full h-full rounded-xl shadow-2xl"
-                          src={urlEmbed}
-                          title="Video en Foco"
-                          // Permisos para reproducir videos y usar controles
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                          allowFullScreen
-                          ></iframe>
+                  {/* Contenedor del Reproductor y Controles */}
+                  <div className="w-full h-full p-4 flex flex-col items-center justify-center relative">
+                      
+                      {/* 3. Contenedor para inyectar el Iframe de YouTube API */}
+                      <div className="aspect-video w-full max-w-screen-xl relative">
+                          {/* El Iframe se inyectará aquí por la API, pero el div debe estar visible y tener el ID */}
+                          <div id="youtube-player-container" className="w-full h-full rounded-xl shadow-2xl">
+                              {/* Contenido de fallback para videos no-YouTube */}
+                              {!isYouTube && (
+                                  <iframe
+                                      tabIndex="0"
+                                      className="w-full h-full rounded-xl shadow-2xl bg-gray-900 border-none"
+                                      src={videoUrl}
+                                      allow="autoplay; fullscreen"
+                                      allowFullScreen
+                                  ></iframe>
+                              )}
+                          </div>
                       </div>
+
+                      {/* 4. Controles Personalizados (Enfocables) */}
+                      {isYouTube && (
+                          <div className="flex space-x-6 mt-8 p-4 bg-gray-800 rounded-xl shadow-2xl">
+                              
+                              {/* Botón Mute/Unmute */}
+                              <button 
+                                  onClick={toggleMute}
+                                  ref={controlButtonRef} // Asignamos la ref al primer botón para enfoque inicial
+                                  className="text-white p-3 rounded-full bg-red-600 hover:bg-red-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                  tabIndex="0"
+                              >
+                                  <VolumeIcon />
+                              </button>
+
+                              {/* Botón Play/Pause */}
+                              <button 
+                                  onClick={togglePlayPause}
+                                  className="text-white p-3 rounded-full bg-red-600 hover:bg-red-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                  tabIndex="0"
+                              >
+                                  {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                              </button>
+                              
+                              {/* Puedes añadir más controles (ej. pantalla completa, avance) */}
+                              {/* Nota: El control de volumen es más complejo y requeriría un slider, 
+                                          pero el MUTE es un buen inicio */}
+
+                          </div>
+                      )}
                   </div>
               </div>
           );
       }
 
 
-      // COMPONENTE HERO BANNER
+      // ----------------------------------------------------------------------
+      // COMPONENTES HERO BANNER Y TARJETA (sin cambios relevantes en la lógica D-Pad)
+      // ----------------------------------------------------------------------
+
       const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
           const { thumbnailUrl } = obtenerVideoInfo(videoUrl);
 
@@ -154,10 +249,8 @@
                   tabIndex="-1" 
                   style={{ backgroundImage: `url('${thumbnailUrl}'), url('https://placehold.co/1920x1080/0d1117/333?text=CARGANDO...')` }}
               >
-                  {/* Capa de contraste oscuro */}
                   <div className="absolute inset-0 bg-black/60"></div>
 
-                  {/* Contenido del Banner */}
                   <div className="relative p-10 max-w-xl">
                       <h2 className="text-5xl font-extrabold mb-3 text-white drop-shadow-lg">
                           {titulo}
@@ -166,9 +259,8 @@
                           {descripcion}
                       </p>
 
-                      {/* Botón de acción con la referencia para el foco */}
                       <button 
-                          ref={ref} // <--- REFERENCIA ASIGNADA AQUÍ
+                          ref={ref} 
                           onClick={() => onPlay(videoUrl)} 
                           className="inline-block px-8 py-3 bg-red-600 text-white font-bold rounded-lg shadow-lg 
                                   transition-all duration-300 hover:bg-red-700 
@@ -181,11 +273,9 @@
               </div>
           );
       });
-      // Aseguramos que el componente tenga un nombre para debugging
       HeroBanner.displayName = 'HeroBanner';
 
 
-      // COMPONENTE TARJETA DE VIDEO (En la lista)
       function ReproductorDeVideo(props) {
         const { videoId, thumbnailUrl, isYouTube } = obtenerVideoInfo(props.url);
         const genericPlaceholderUrl = "https://placehold.co/600x337/333/fff?text=VIDEO+EXTERNO";
@@ -227,17 +317,16 @@
         );
       }
 
-      // COMPONENTE PRINCIPAL DE LA APLICACIÓN (Maneja el estado)
+      // ----------------------------------------------------------------------
+      // COMPONENTE PRINCIPAL APP (Maneja el estado y el foco al volver)
+      // ----------------------------------------------------------------------
+
       function App() {
           const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
-          // Referencia para el botón al que queremos volver el foco
           const heroButtonRef = React.useRef(null); 
 
-          // Función mejorada para volver a la lista y REENFOCAR
           const handleBack = React.useCallback(() => {
               setVideoEnFocoUrl(null);
-              // Al volver al menú principal, forzamos el foco al botón "Ver Ahora" del Hero Banner.
-              // Usamos un pequeño timeout para asegurar que el DOM se haya renderizado antes de enfocar.
               setTimeout(() => {
                   if (heroButtonRef.current) {
                       heroButtonRef.current.focus();
@@ -257,11 +346,10 @@
 
           return (
               <div className="p-4 md:p-8 max-w-7xl mx-auto">
-                  {/* HERO BANNER - Pasamos la referencia para que su botón sea enfocable */}
                   <HeroBanner 
-                      ref={heroButtonRef} // <--- PASAMOS LA REFERENCIA
+                      ref={heroButtonRef}
                       titulo="Estreno de la Semana"
-                      descripcion="No te pierdas el documental más aclamado sobre la vida en Marte y su colonización."
+                      descripcion="Controles D-Pad funcionales en reproductor."
                       videoUrl={heroVideoUrl}
                       onPlay={setVideoEnFocoUrl} 
                   />
@@ -270,15 +358,14 @@
                       Explorar Videos
                   </h1>
 
-                  {/* LISTA DE VIDEOS (GRID) */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <ReproductorDeVideo titulo="Documental de Marte" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Controlable con D-Pad" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
                     <ReproductorDeVideo titulo="Trailer de Película" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
                     <ReproductorDeVideo titulo="Tutorial de React JS" url="https://youtu.be/epUe_LPcq-k?si=8dmditU-6Y2ieEd" onPlay={setVideoEnFocoUrl} />
-                    <ReproductorDeVideo titulo="Tecnología 2025: Un vistazo al futuro" url="https://youtu.be/P59WtHvSd18?si=Qz-lcl-a1MrNU5b8" onPlay={setVideoEnFocoUrl} />
-                    <ReproductorDeVideo titulo="Clásico de los 80s (Música)" url="https://youtu.be/T8SYLvGEBkk?si=4QnLS9WPwQu4cQgo" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Tecnología 2025" url="https://youtu.be/P59WtHvSd18?si=Qz-lcl-a1MrNU5b8" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Clásico de los 80s" url="https://youtu.be/T8SYLvGEBkk?si=4QnLS9WPwQu4cQgo" onPlay={setVideoEnFocoUrl} />
                     <ReproductorDeVideo titulo="Viaje por la Galaxia" url="https://youtu.be/chmuJSP-V8Y?si=YHCUZ3fSuhpIGqNg" onPlay={setVideoEnFocoUrl} />
-                    <ReproductorDeVideo titulo="Entrevista a Chef Famoso" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Entrevista a Chef" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
                     <ReproductorDeVideo titulo="Recetas Rápidas" url="https://youtu.be/gwkUDXSGbxg?si=eLcpoLsvJP6kr7d2" onPlay={setVideoEnFocoUrl} />
                     <ReproductorDeVideo titulo="El Misterio del Lago" url="https://youtu.be/qYfJ36XxEpc?si=_SicDPM0kU8WR_AY" onPlay={setVideoEnFocoUrl} />
                   </div>

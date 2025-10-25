@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MovieTube (Foco al Botón al Mostrar)</title>
+    <title>MovieTube (Barra de Progreso y Tiempos)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       /* Estilos generales */
@@ -36,6 +36,14 @@
           transform: scale(1.1);
           outline: none;
       }
+      /* Estilo para la barra de progreso */
+      .progress-bar-container {
+          height: 10px; /* Altura de la barra base */
+      }
+      .progress-fill {
+          height: 100%;
+          transition: width 0.1s linear; /* Transición para un movimiento suave */
+      }
     </style>
   </head>
   <body class="bg-gray-900 text-white min-h-screen">
@@ -60,6 +68,26 @@
 
       const CONTROLS_TIMEOUT = 3000; // 3 segundos para ocultar controles
       const YT = window.YT; 
+
+      // ----------------------------------------------------------------------
+      // UTILERÍAS: CONVERSIÓN DE SEGUNDOS A FORMATO HH:MM:SS
+      // ----------------------------------------------------------------------
+
+      function formatTime(seconds) {
+          if (isNaN(seconds) || seconds < 0) return '00:00';
+          
+          const h = Math.floor(seconds / 3600);
+          const m = Math.floor((seconds % 3600) / 60);
+          const s = Math.floor(seconds % 60);
+
+          const parts = [m, s];
+          if (h > 0) {
+              parts.unshift(h); // Agregar horas si es necesario
+              return parts.map(v => v.toString().padStart(2, '0')).join(':');
+          }
+          
+          return parts.map(v => v.toString().padStart(2, '0')).join(':');
+      }
 
       // ----------------------------------------------------------------------
       // LÓGICA DE CONVERSIÓN Y EXTRACCIÓN DE ID
@@ -90,55 +118,74 @@
       }
 
       // ----------------------------------------------------------------------
-      // COMPONENTE ReproductorEnFoco (FIX FOCO Y AUTO-OCULTAMIENTO)
+      // COMPONENTE ReproductorEnFoco 
       // ----------------------------------------------------------------------
 
       function ReproductorEnFoco({ videoUrl, onBack }) {
           const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
           const playerRef = React.useRef(null); 
           const playerContainerRef = React.useRef(null); 
-          const backButtonRef = React.useRef(null); // Ref al primer botón para forzar el foco
+          const backButtonRef = React.useRef(null); 
           
           const [isMuted, setIsMuted] = React.useState(true);
           const [isPlaying, setIsPlaying] = React.useState(false);
-          const [showControls, setShowControls] = React.useState(false); // 🔑 Corregido a false: Empieza oculto
+          const [showControls, setShowControls] = React.useState(false); 
+          const [currentTime, setCurrentTime] = React.useState(0); // 🔑 Nuevo: Tiempo actual
+          const [duration, setDuration] = React.useState(0);         // 🔑 Nuevo: Duración total
           const timeoutRef = React.useRef(null); 
+          const progressIntervalRef = React.useRef(null); // 🔑 Nuevo: Intervalo para la barra de progreso
+
 
           // Función para resetear el temporizador de ocultación
           const resetControlTimeout = React.useCallback(() => {
-              // 1. Mostrar controles (si están ocultos)
               if (!showControls) {
                   setShowControls(true);
-                  // El foco se manejará en el useEffect de abajo
               }
               
-              // 2. Limpiar el temporizador anterior
               if (timeoutRef.current) {
                   clearTimeout(timeoutRef.current);
               }
 
-              // 3. Establecer un nuevo temporizador para ocultar
               timeoutRef.current = setTimeout(() => {
                   setShowControls(false);
               }, CONTROLS_TIMEOUT);
           }, [showControls]);
           
-          // 🔑 Nuevo useEffect para manejar el foco cuando los controles aparecen
+          // 🔑 useEffect para manejar el foco cuando los controles aparecen
           React.useEffect(() => {
               if (showControls && backButtonRef.current) {
-                  // Forzar el foco al primer botón cuando los controles aparecen
                   backButtonRef.current.focus();
               }
           }, [showControls]);
 
+          // 🔑 Función para iniciar la actualización del tiempo
+          const startProgressInterval = React.useCallback(() => {
+              if (progressIntervalRef.current) {
+                  clearInterval(progressIntervalRef.current);
+              }
+              progressIntervalRef.current = setInterval(() => {
+                  const player = playerRef.current;
+                  if (player && typeof player.getCurrentTime === 'function') {
+                      setCurrentTime(player.getCurrentTime());
+                      setDuration(player.getDuration()); // Actualizamos la duración por si cambia
+                  }
+              }, 250); // Actualiza cada 250ms para un progreso suave
+          }, []);
+
+          // 🔑 Función para detener la actualización del tiempo
+          const stopProgressInterval = React.useCallback(() => {
+              if (progressIntervalRef.current) {
+                  clearInterval(progressIntervalRef.current);
+                  progressIntervalRef.current = null;
+              }
+          }, []);
+
 
           React.useEffect(() => {
-              // 1. Forzar foco en el contenedor principal al inicio para capturar la primera pulsación de tecla
               if (playerContainerRef.current) {
                   playerContainerRef.current.focus();
               }
               
-              // 2. Si no es YouTube o no hay ID, salir
               if (!isYouTube || !videoId || !window.YT) {
                   return;
               }
@@ -158,7 +205,6 @@
                       'onReady': (event) => {
                           playerRef.current = newPlayer; 
                           
-                          // Aseguramos que el video no se pause solo al quitar el mute
                           if (event.target.isMuted()) {
                               event.target.unMute(); 
                               setIsMuted(false);
@@ -170,8 +216,10 @@
                       'onStateChange': (event) => {
                         if (event.data === YT.PlayerState.PLAYING) {
                             setIsPlaying(true);
+                            startProgressInterval(); // 🔑 Iniciar la actualización de tiempos
                         } else {
                             setIsPlaying(false);
+                            stopProgressInterval();  // 🔑 Detener la actualización si no está en PLAYING
                         }
                       }
                   }
@@ -179,6 +227,7 @@
 
               // Limpieza
               return () => {
+                  stopProgressInterval(); // Asegurar detener el intervalo al desmontar
                   if (timeoutRef.current) {
                       clearTimeout(timeoutRef.current);
                   }
@@ -187,9 +236,10 @@
                       playerRef.current = null;
                   }
               };
-          }, [videoId, isYouTube]); // Dependencias: videoId, isYouTube
+          }, [videoId, isYouTube, startProgressInterval, stopProgressInterval]); 
 
-          // MÉTODOS DE CONTROL DE REPRODUCCIÓN (Llaman a resetControlTimeout)
+          // LÓGICA DE CONTROL DE REPRODUCCIÓN
+          // ... (mantienen resetControlTimeout)
           const togglePlayPause = () => {
               const player = playerRef.current;
               if (!player) return;
@@ -222,11 +272,27 @@
 
             const newTime = player.getCurrentTime() + seconds;
             player.seekTo(newTime, true); 
+            setCurrentTime(newTime); // Actualizar inmediatamente el tiempo
             resetControlTimeout();
           }
+
+          // 🔑 Función de navegación (Scrubbing)
+          const handleSeek = (e) => {
+              const player = playerRef.current;
+              if (!player || duration === 0) return;
+
+              const rect = e.currentTarget.getBoundingClientRect();
+              const clickX = e.clientX - rect.left;
+              const percent = clickX / rect.width;
+              const newTime = duration * percent;
+
+              player.seekTo(newTime, true);
+              setCurrentTime(newTime); // Actualizar inmediatamente el tiempo
+              resetControlTimeout(); 
+          };
           
-          const rewind = () => seekRelative(-10); // Retrocede 10 segundos
-          const fastForward = () => seekRelative(10); // Avanza 10 segundos
+          const rewind = () => seekRelative(-10); 
+          const fastForward = () => seekRelative(10); 
 
           const handleOnBack = () => {
               if (timeoutRef.current) {
@@ -234,6 +300,9 @@
               }
               onBack();
           }
+          
+          // Cálculo del porcentaje de progreso
+          const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
           // ICONOS (SVG) - Sin cambios
           const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
@@ -251,7 +320,7 @@
               <div 
                   ref={playerContainerRef}
                   className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center"
-                  onKeyDown={resetControlTimeout} // Captura cualquier tecla para mostrar los controles
+                  onKeyDown={resetControlTimeout} 
                   tabIndex={0} 
                   style={{outline: 'none'}} 
               >
@@ -274,69 +343,92 @@
                           </div>
                       </div>
 
-                      {/* Controles Auto-Ocultables */}
+                      {/* 🔑 CONTROLES COMPLETOS (Barra + Botones + Tiempos) */}
                       {isYouTube && (
                           <div 
-                              className={`absolute bottom-10 flex space-x-4 p-3 bg-gray-800/80 rounded-xl shadow-2xl 
-                                          transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                              className={`absolute bottom-10 w-full max-w-xl flex flex-col p-4 rounded-xl shadow-2xl 
+                                          transition-opacity duration-300 ${showControls ? 'opacity-100 bg-gray-800/80' : 'opacity-0 pointer-events-none'}`}
                           >
-                              
-                              {/* Botón Volver al Catálogo (Recibe el foco al mostrarse) */}
-                              <button 
-                                  onClick={handleOnBack}
-                                  ref={backButtonRef}
-                                  className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
-                                  tabIndex={showControls ? 0 : -1} 
-                                  title="Volver al Catálogo"
-                              >
-                                  <BackIcon />
-                              </button>
+                            
+                            {/* 🔑 BARRA DE PROGRESO */}
+                            <div 
+                                onClick={handleSeek}
+                                className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group mb-2"
+                                tabIndex={showControls ? 0 : -1} 
+                                title="Barra de Progreso (Click para Saltar)"
+                            >
+                                <div 
+                                    className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500" 
+                                    style={{ width: `${progressPercent}%` }}
+                                ></div>
+                            </div>
 
-                              {/* Botón Retroceso (Rewind) */}
-                              <button 
-                                  onClick={rewind}
-                                  className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
-                                  tabIndex={showControls ? 0 : -1}
-                                  title="Retroceder 10 segundos"
-                              >
-                                  <RewindIcon />
-                              </button>
+                            {/* 🔑 TIEMPOS */}
+                            <div className="flex justify-between text-sm font-mono text-gray-300 mb-4">
+                                <span>{formatTime(currentTime)}</span>
+                                <span>{formatTime(duration)}</span>
+                            </div>
 
-                              {/* Botón Play/Pause */}
-                              <button 
-                                  onClick={togglePlayPause}
-                                  className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
-                                  tabIndex={showControls ? 0 : -1}
-                                  title={isPlaying ? "Pausar" : "Reproducir"}
-                              >
-                                  {isPlaying ? <PauseIcon /> : <PlayIcon />}
-                              </button>
-                              
-                              {/* Botón Mute/Unmute */}
-                              <button 
-                                  onClick={toggleMute}
-                                  className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
-                                  tabIndex={showControls ? 0 : -1}
-                                  title={isMuted ? "Desactivar silencio" : "Silenciar"}
-                              >
-                                  <VolumeIcon />
-                              </button>
+                            {/* Botones de Control */}
+                            <div className="flex justify-center space-x-4">
+                                
+                                {/* Botón Volver al Catálogo (Recibe el foco al mostrarse) */}
+                                <button 
+                                    onClick={handleOnBack}
+                                    ref={backButtonRef}
+                                    className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
+                                                focus:ring-4 focus:ring-white focus:outline-none"
+                                    tabIndex={showControls ? 0 : -1} 
+                                    title="Volver al Catálogo"
+                                >
+                                    <BackIcon />
+                                </button>
 
-                              {/* Botón Avance Rápido (Fast Forward) */}
-                              <button 
-                                  onClick={fastForward}
-                                  className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
-                                  tabIndex={showControls ? 0 : -1}
-                                  title="Avanzar 10 segundos"
-                              >
-                                  <FastForwardIcon />
-                              </button>
-                              
+                                {/* Botón Retroceso (Rewind) */}
+                                <button 
+                                    onClick={rewind}
+                                    className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
+                                                focus:ring-4 focus:ring-white focus:outline-none"
+                                    tabIndex={showControls ? 0 : -1}
+                                    title="Retroceder 10 segundos"
+                                >
+                                    <RewindIcon />
+                                </button>
+
+                                {/* Botón Play/Pause */}
+                                <button 
+                                    onClick={togglePlayPause}
+                                    className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
+                                                focus:ring-4 focus:ring-white focus:outline-none"
+                                    tabIndex={showControls ? 0 : -1}
+                                    title={isPlaying ? "Pausar" : "Reproducir"}
+                                >
+                                    {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                                </button>
+                                
+                                {/* Botón Mute/Unmute */}
+                                <button 
+                                    onClick={toggleMute}
+                                    className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
+                                                focus:ring-4 focus:ring-white focus:outline-none"
+                                    tabIndex={showControls ? 0 : -1}
+                                    title={isMuted ? "Desactivar silencio" : "Silenciar"}
+                                >
+                                    <VolumeIcon />
+                                </button>
+
+                                {/* Botón Avance Rápido (Fast Forward) */}
+                                <button 
+                                    onClick={fastForward}
+                                    className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
+                                                focus:ring-4 focus:ring-white focus:outline-none"
+                                    tabIndex={showControls ? 0 : -1}
+                                    title="Avanzar 10 segundos"
+                                >
+                                    <FastForwardIcon />
+                                </button>
+                                
+                            </div>
                           </div>
                       )}
                   </div>

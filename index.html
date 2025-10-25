@@ -1,88 +1,275 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>StreamTV - Webview TV App</title>
+<html>
+  <head>
+    <title>MovieTube (TV)</title>
+    <!-- Carga de Tailwind CSS para estilos modernos y responsivos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Estilo para asegurar que el iframe no tenga bordes */
+      .reproductor-iframe {
+        border: none;
+      }
+      /* Estilo base para el Hero Banner (se sobrescribe dinámicamente) */
+      .hero-background {
+          background-size: cover;
+          background-position: center;
+      }
+    </style>
+  </head>
+  <!-- El cuerpo usa clases de Tailwind para un fondo oscuro y mínimo de altura -->
+  <body class="bg-gray-900 text-white min-h-screen">
+    <div id="root"></div>
+
+    <!-- Scripts de React, ReactDOM y Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body onload="setThumbnails()">
+    <script type="text/babel">
+      // ----------------------------------------------------------------------
+      // LÓGICA DE CONVERSIÓN DE URL Y EXTRACCIÓN DE ID
+      // ----------------------------------------------------------------------
 
-    <section id="video-player-container" style="display: none;">
-        <iframe 
-            id="main-video-player" 
-            width="100%" 
-            height="100%" 
-            frameborder="0" 
-            allow="autoplay; encrypted-media; fullscreen"
-            allowfullscreen
-        ></iframe>
+      // Función para obtener el ID, la URL de incrustación y la URL de la miniatura
+      function obtenerVideoInfo(url) {
+          const defaultVideoId = 'dQw4w9WgXcQ'; // ID por defecto (Rick Roll)
+          let videoId = defaultVideoId;
+          
+          if (url) {
+              // Regex robusta para URLs normales, acortadas (youtu.be), y de incrustación
+              const regex = /(?:v=|\/embed\/|\/watch\?v=|youtu\.be\/|\/v\/)([a-zA-Z0-9_-]{11})/;
+              const match = url.match(regex);
+              
+              if (match && match[1]) {
+                  videoId = match[1];
+              }
+          }
+
+          // Construcción de URLs
+          const urlEmbed = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+          const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`; // Intenta cargar la mejor calidad
+
+          return { videoId, urlEmbed, thumbnailUrl };
+      }
+
+
+      // ----------------------------------------------------------------------
+      // COMPONENTES PRINCIPALES
+      // ----------------------------------------------------------------------
+      
+      // Muestra el reproductor a pantalla completa cuando el usuario selecciona un video.
+      function ReproductorEnFoco({ videoUrl, onBack }) {
+          const { urlEmbed } = obtenerVideoInfo(videoUrl);
+
+          // Asegura que el foco vuelva al botón "Volver" al montar el componente (para D-Pad)
+          React.useEffect(() => {
+              const backButton = document.getElementById('back-button');
+              if (backButton) {
+                  backButton.focus();
+              }
+          }, []);
+
+
+          return (
+              <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
+                  {/* Botón Volver - Crucial para la navegación de TV */}
+                  <button 
+                      id="back-button"
+                      onClick={onBack}
+                      className="absolute top-4 left-4 p-3 bg-gray-700 text-white rounded-full text-lg z-50 
+                                 transition-all hover:bg-gray-600 
+                                 focus:ring-4 focus:ring-red-500 focus:outline-none"
+                      tabIndex="0" // Enfocable con control remoto
+                  >
+                      {/* Icono de flecha (SVG) */}
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                      </svg>
+                  </button>
+
+                  {/* Contenedor responsivo 16:9 para el iframe */}
+                  <div className="w-full h-full p-4 flex items-center justify-center">
+                      <div className="aspect-video w-full max-w-screen-xl">
+                          <iframe
+                          className="reproductor-iframe w-full h-full rounded-xl shadow-2xl"
+                          src={urlEmbed}
+                          title="Video en Foco"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                          allowFullScreen
+                          ></iframe>
+                      </div>
+                  </div>
+              </div>
+          );
+      }
+
+
+      // COMPONENTE HERO BANNER
+      function HeroBanner({ titulo, descripcion, videoUrl, onPlay }) {
+          const { thumbnailUrl } = obtenerVideoInfo(videoUrl);
+          
+          return (
+              <div 
+                  className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-10 rounded-xl shadow-2xl"
+                  tabIndex="-1" // No enfocable
+                  style={{ backgroundImage: `url('${thumbnailUrl}'), url('https://placehold.co/1920x1080/0d1117/333?text=CARGANDO...')` }}
+              >
+                  {/* Capa de contraste oscuro */}
+                  <div className="absolute inset-0 bg-black/60"></div>
+                  
+                  {/* Contenido del Banner */}
+                  <div className="relative p-10 max-w-xl">
+                      <h2 className="text-5xl font-extrabold mb-3 text-white drop-shadow-lg">
+                          {titulo}
+                      </h2>
+                      <p className="text-lg mb-6 text-gray-200 drop-shadow-md">
+                          {descripcion}
+                      </p>
+                      
+                      {/* Botón de acción, usa onClick para cambiar el estado */}
+                      <button 
+                          onClick={() => onPlay(videoUrl)} // Llama a la función que cambia el estado de App
+                          className="inline-block px-8 py-3 bg-red-600 text-white font-bold rounded-lg shadow-lg 
+                                     transition-all duration-300 hover:bg-red-700 
+                                     focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
+                          tabIndex="0" // Enfocable con control remoto
+                      >
+                          Ver Ahora
+                      </button>
+                  </div>
+              </div>
+          );
+      }
+
+
+      // COMPONENTE TARJETA DE VIDEO (En la lista)
+      function ReproductorDeVideo(props) {
+        // Obtenemos el ID y la URL de la miniatura
+        const { videoId, thumbnailUrl } = obtenerVideoInfo(props.url);
         
-        <button id="back-button" class="focusable" data-row="-1" data-col="0" onclick="hideVideoPlayer()">
-            ← Volver a Inicio
-        </button>
-    </section>
-
-    <header id="header">
-        <div class="logo">StreamTV</div>
-        <nav>
-            <a href="#" class="nav-item focusable" id="nav-peliculas" data-row="0" data-col="1"></a>
-            <a href="#" class="nav-item focusable" id="nav-series" data-row="0" data-col="2"></a>
-            <a href="#" class="nav-item focusable" id="nav-buscar" data-row="0" data-col="3"></a>
-        </nav>
-    </header>
-
-    <main id="main-content">
+        // Usamos una miniatura de calidad media como fallback
+        const fallbackThumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
         
-        <section class="hero-section">
-            <div class="hero-movie focusable" id="hero-1" data-row="1" data-col="1" onclick="handleSelection('hero-1')">
-                <div class="hero-info">
-                    <h1>Destacado de la Semana</h1>
-                    <button>▶ Reproducir Ahora</button>
-                </div>
+        return (
+          // Tarjeta de video con manejo de foco visible para TV (D-Pad)
+          <div 
+            className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg 
+                       transition-all duration-300 hover:shadow-2xl hover:scale-[1.05] 
+                       focus:ring-4 focus:ring-red-500 focus:outline-none"
+            onClick={() => props.onPlay(props.url)} // Llama a la función que cambia el estado
+            tabIndex="0" // Permite enfocar con el control remoto
+          >
+            {/* Miniatura del video (usando el ID) */}
+            <img 
+                src={thumbnailUrl} 
+                // Si falla la miniatura de alta calidad (maxresdefault), usa la de calidad media (hqdefault)
+                onError={(e) => { 
+                    if (e.target.src !== fallbackThumbnail) {
+                        e.target.src = fallbackThumbnail;
+                    } else {
+                        // Si falla la calidad media, usa el placeholder
+                        e.target.onerror = null; 
+                        e.target.src="https://placehold.co/600x337/333/fff?text=VIDEO";
+                    }
+                }}
+                className="w-full aspect-video object-cover transition duration-500 group-hover:opacity-75"
+                alt={`Miniatura de ${props.titulo}`}
+            />
+
+            <div className="p-4">
+              <h2 className="text-lg font-semibold text-red-400 group-focus:text-red-300">
+                {props.titulo || "Título del Video"}
+              </h2>
+              <p className="mt-1 text-gray-400 text-sm">Click para ver en pantalla completa.</p>
             </div>
-        </section>
+            
+          </div>
+        );
+      }
 
-        <section class="grid-gallery-container">
-            <h2> Películas</h2>
-            <div class="video-grid" id="video-grid">
-                
-                <div class="movie-card focusable" data-row="2" data-col="1" onclick="handleSelection('g-2-1')">
-                    <img id="img-g-2-1" src="" alt="Peli A">
-                </div>
-                <div class="movie-card focusable" data-row="2" data-col="2" onclick="handleSelection('g-2-2')">
-                    <img id="img-g-2-2" src="" alt="Peli B">
-                </div>
-                <div class="movie-card focusable" data-row="2" data-col="3" onclick="handleSelection('g-2-3')">
-                    <img id="img-g-2-3" src="" alt="Peli C">
-                </div>
-                <div class="movie-card focusable" data-row="2" data-col="4" onclick="handleSelection('g-2-4')">
-                    <img id="img-g-2-4" src="" alt="Peli D">
-                </div>
+      // 6. COMPONENTE PRINCIPAL DE LA APLICACIÓN (Maneja el estado)
+      function App() {
+          // Estado para saber qué video debe estar a pantalla completa (si es null, muestra la lista)
+          const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
 
-                <div class="movie-card focusable" data-row="3" data-col="1" onclick="handleSelection('g-3-1')">
-                    <img id="img-g-3-1" src="" alt="Peli E">
-                </div>
-                <div class="movie-card focusable" data-row="3" data-col="2" onclick="handleSelection('g-3-2')">
-                    <img id="img-g-3-2" src="" alt="Peli F">
-                </div>
-                <div class="movie-card focusable" data-row="3" data-col="3" onclick="handleSelection('g-3-3')">
-                    <img id="img-g-3-3" src="" alt="Peli G">
-                </div>
-                <div class="movie-card focusable" data-row="3" data-col="4" onclick="handleSelection('g-3-4')">
-                    <img id="img-g-3-4" src="" alt="Peli H">
-                </div>
-                <div class="movie-card focusable" data-row="4" data-col="1" onclick="handleSelection('g-4-1')">
-                    <img id="img-g-4-1" src="" alt="Peli I">
-                </div>
-                <div class="movie-card focusable" data-row="4" data-col="2" onclick="handleSelection('g-4-2')">
-                    <img id="img-g-4-2" src="" alt="Peli J">
-            </div>
-        </section>
+          // Si hay un video seleccionado, solo renderiza el reproductor a pantalla completa
+          if (videoEnFocoUrl) {
+              return <ReproductorEnFoco 
+                  videoUrl={videoEnFocoUrl} 
+                  onBack={() => setVideoEnFocoUrl(null)} // Función para volver a la lista
+              />;
+          }
 
-    </main>
-    
-    <script src="app.js"></script>
-</body>
+          // URL del video principal (usada por el Banner y la primera tarjeta)
+          const heroVideoUrl ="https://youtu.be/GwPAvxA62Do?si=aK5qDPYMPfpkTS8o";
+
+          // Si no hay video seleccionado, renderiza la interfaz principal (Hero Banner + Lista)
+          return (
+              <div className="p-4 md:p-8 max-w-7xl mx-auto">
+                  {/* HERO BANNER */}
+                  <HeroBanner 
+                      titulo="Estreno de la Semana"
+                      descripcion="No te pierdas el documental más aclamado sobre la vida en Marte y su colonización."
+                      videoUrl={heroVideoUrl}
+                      onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
+                  />
+
+                  {/* Título de la sección de la lista */}
+                  <h1 className="text-3xl font-bold mb-6 text-red-600">
+                    Explorar Videos
+                  </h1>
+                  
+                  {/* LISTA DE VIDEOS (GRID) */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <ReproductorDeVideo 
+                      titulo="Documental de Marte" 
+                      url={heroVideoUrl}
+                      onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
+                    />
+                    <ReproductorDeVideo 
+                      titulo="Tutorial de React JS" 
+                      url="https://youtu.be/epUe_LPcq-k?si=8dmditU-6Y2ieEd"
+                      onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
+                    />
+                    <ReproductorDeVideo 
+                      titulo="Tecnología 2025" 
+                      url="https://youtu.be/P59WtHvSd18?si=Qz-lcl-a1MrNU5b8"
+                      onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
+                    />
+                    <ReproductorDeVideo 
+                      titulo="Video Retro Clásico" 
+                      url="https://youtu.be/T8SYLvGEBkk?si=4QnLS9WPwQu4cQgo" // El video por defecto
+                      onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
+                    />
+                     <ReproductorDeVideo 
+                      titulo="Video Retro Clásico" 
+                      url="https://youtu.be/chmuJSP-V8Y?si=YHCUZ3fSuhpIGqNg" // El video por defecto
+                      onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
+                    />
+                     <ReproductorDeVideo 
+                      titulo="Video Retro Clásico" 
+                      url="https://youtu.be/WLg7dt0i9Jo?si=d_ZDZrtFHTjVt5op" // El video por defecto
+                      onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
+                    />
+                     <ReproductorDeVideo 
+                      titulo="Video Retro Clásico" 
+                      url="https://youtu.be/gwkUDXSGbxg?si=eLcpoLsvJP6kr7d2" // El video por defecto
+                      onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
+                    />
+                     <ReproductorDeVideo 
+                      titulo="Video Retro Clásico" 
+                      url="https://youtu.be/qYfJ36XxEpc?si=_SicDPM0kU8WR_AY" // El video por defecto
+                      onPlay={setVideoEnFocoUrl} // Pasa la función para iniciar la reproducción
+                    />
+                  </div>
+              </div>
+          );
+      }
+
+      // 7. MONTAJE DE LA APLICACIÓN
+      const rootElement = document.getElementById('root');
+      const root = ReactDOM.createRoot(rootElement);
+      root.render(<App />);
+    </script>
+  </body>
 </html>

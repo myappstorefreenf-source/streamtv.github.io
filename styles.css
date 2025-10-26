@@ -1,207 +1,43 @@
-/* ======================================= */
-/* === ESTILOS CSS PARA ANDROID TV (10ft) */
-/* ======================================= */
-:root {
-    --color-bg: #141414;
-    --color-text: #ffffff;
-    --color-focus: #e50914; /* Rojo de foco (Netflix style) */
-    --safe-margin: 90px;
+/* Estilos generales */
+.hero-background {
+    background-size: cover;
+    background-position: center;
 }
-
-body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: var(--safe-margin) var(--safe-margin) 0 var(--safe-margin);
-    overflow-x: hidden;
-    overflow-y: auto; 
+.focus\:ring-4:focus {
+    outline: none;
 }
-
-/* 1. Foco: El estilo más importante para TV */
-.focusable {
-    transition: all 0.2s ease-in-out;
-    outline: none; 
-    cursor: pointer;
-}
-
-.focusable:focus {
-    box-shadow: 0 0 0 8px var(--color-focus); 
-    transform: scale(1.08); /* Zoom al enfocar */
-    z-index: 10;
-    border-radius: 8px;
-}
-
-.nav-item:focus {
-    color: var(--color-focus);
-    font-weight: bold;
-    box-shadow: none;
-    transform: none;
-}
-
-/* 2. Reproductor de Video (Pantalla completa) */
-#video-player-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: black;
-    z-index: 1000; 
-}
-
-#main-video-player {
-    width: 100%;
-    height: 100%;
-}
-
-/* ⚠️ BOTÓN DE VOLVER: Estilos base, oculto por defecto */
-#back-button {
-    position: absolute; 
-    top: 120px; 
-    left: 120px; 
-    z-index: 1001; 
-    padding: 15px; 
-    font-size: 24px; 
-    background-color: rgba(51, 51, 51, 0.8);
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-
-    /* ESTILOS PARA OCULTAR POR DEFECTO */
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out; 
-    pointer-events: none; /* Asegura que no bloquee la interacción */
-}
-
-/* ⚠️ CLASE PARA MOSTRAR EL BOTÓN (Activada por JavaScript) */
-#back-button.visible {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* 3. Estructura y Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 50px;
-    position: sticky;
-    top: 0;
-    background: linear-gradient(to bottom, var(--color-bg) 70%, rgba(20, 20, 20, 0));
-    padding-top: 20px;
-    z-index: 20;
-}
-
-.logo { font-size: 48px; font-weight: bold; color: var(--color-focus); }
-.nav-item { color: var(--color-text); text-decoration: none; font-size: 28px; margin-left: 40px; padding: 5px 10px; }
-
-.hero-movie {
-    height: 600px;
-    /* IMAGEN DEL BANNER - ID ACTUAL: bd7PTHImmaI */
-    background: url('https://i.ytimg.com/vi/KjhWL-7cmws/maxresdefault.jpg') center / cover no-repeat;
-    display: flex;
-    align-items: flex-end;
-    padding: 40px;
-    margin-bottom: 80px;
-    border-radius: 10px;
-}
-
-/* 4. Cuadrícula de Miniaturas */
-.grid-gallery-container {
-    margin-bottom: 80px;
-}
-
-.grid-gallery-container h2 {
-    font-size: 40px;
-    margin-bottom: 30px;
-}
-
-.video-grid {
-    /* ⚠️ CAMBIO SOLICITADO: 5 columnas para hacer las miniaturas más chicas */
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); 
-    gap: 40px; 
-    padding-bottom: 30px;
-}
-
-.video-grid .movie-card {
-    width: 100%;
-    height: auto; 
-    aspect-ratio: 2/3; /* Proporción 2:3 para pósters de películas */
-    background-color: #222;
-    border-radius: 8px;
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    position: relative;
+    max-height: 3rem; 
 }
-
-.video-grid .movie-card img {
-    width: 100%;
+/* Estilos para asegurar que el reproductor ocupe el área máxima sin scroll */
+#youtube-player-container {
+    display: flex;
+}
+.youtube-iframe {
+    width: 100%; 
     height: 100%;
-    object-fit: cover;
+    border: none;
 }
-/* 5. Estilos Responsive (Asegurando 4 columnas en móvil para que se vean más chicas) */
-@media (max-width: 768px) {
-    body {
-        padding: 50px 20px 0 20px; /* Reducir márgenes en móvil */
-    }
-
-    /* ⚠️ CAMBIO SOLICITADO: 4 columnas en móvil para miniaturas más pequeñas */
-    .video-grid {
-        grid-template-columns: repeat(4, 1fr); 
-        gap: 15px;
-    }
+/* Estilos específicos para los botones de control */
+.control-button {
+    transition: background-color 0.2s, transform 0.2s;
 }
-/* ======================================= */
-/* === DISEÑO RESPONSIVE PARA CELULARES === */
-/* ======================================= */
-
-@media (max-width: 768px) {
-    /* Reducir márgenes y tamaños para pantallas pequeñas */
-    :root {
-        --safe-margin: 20px;
-    }
-
-    body {
-        padding: var(--safe-margin);
-    }
-
-    .logo {
-        font-size: 32px;
-    }
-
-    .nav-item {
-        font-size: 18px;
-        margin-left: 15px;
-    }
-
-    .hero-movie {
-        height: 300px; /* Reducir altura del banner */
-        padding: 20px;
-        margin-bottom: 40px;
-    }
-    
-    .hero-movie h1 {
-        font-size: 24px;
-    }
-
-    /* Cambiar la cuadrícula a 2 o 3 columnas para móviles */
-    .video-grid {
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 15px;
-    }
-    
-    /* Eliminar el zoom y la sombra de foco para dispositivos táctiles */
-    .focusable:focus {
-        box-shadow: none;
-        transform: none; 
-    }
-    
-    /* Ajustar el botón de atrás para que no estorbe */
-    #back-button {
-        top: 20px; 
-        left: 20px; 
-        font-size: 16px; 
-        padding: 10px;
-    }
+.control-button:focus {
+    transform: scale(1.1);
+    outline: none;
+}
+/* Estilo para la barra de progreso */
+.progress-bar-container {
+    height: 10px; /* Altura de la barra base */
+    /* Añadido para posicionar el buffer */
+    position: relative; 
+}
+.progress-fill {
+    height: 100%;
+    transition: width 0.1s linear; /* Transición para un movimiento suave */
+    position: relative; /* Asegurar que la barra roja esté sobre el buffer */
 }

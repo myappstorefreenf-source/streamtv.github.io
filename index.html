@@ -39,10 +39,13 @@
       /* Estilo para la barra de progreso */
       .progress-bar-container {
           height: 10px; /* Altura de la barra base */
+          /* Añadido para posicionar el buffer */
+          position: relative; 
       }
       .progress-fill {
           height: 100%;
           transition: width 0.1s linear; /* Transición para un movimiento suave */
+          position: relative; /* Asegurar que la barra roja esté sobre el buffer */
       }
     </style>
   </head>
@@ -60,7 +63,7 @@
     </script>
 
     <script type="text/babel">
-      
+
       // Variable global para almacenar el objeto de los videos que están listos para la API
       window.onYouTubeIframeAPIReady = () => {
         console.log("YouTube API lista.");
@@ -75,7 +78,7 @@
 
       function formatTime(seconds) {
           if (isNaN(seconds) || seconds < 0) return '00:00';
-          
+
           const h = Math.floor(seconds / 3600);
           const m = Math.floor((seconds % 3600) / 60);
           const s = Math.floor(seconds % 60);
@@ -85,7 +88,7 @@
               parts.unshift(h); // Agregar horas si es necesario
               return parts.map(v => v.toString().padStart(2, '0')).join(':');
           }
-          
+
           return parts.map(v => v.toString().padStart(2, '0')).join(':');
       }
 
@@ -126,14 +129,15 @@
           const playerRef = React.useRef(null); 
           const playerContainerRef = React.useRef(null); 
           const backButtonRef = React.useRef(null); 
-          
+
           const [isMuted, setIsMuted] = React.useState(true);
           const [isPlaying, setIsPlaying] = React.useState(false);
           const [showControls, setShowControls] = React.useState(false); 
-          const [currentTime, setCurrentTime] = React.useState(0); // 🔑 Nuevo: Tiempo actual
-          const [duration, setDuration] = React.useState(0);         // 🔑 Nuevo: Duración total
+          const [currentTime, setCurrentTime] = React.useState(0); 
+          const [duration, setDuration] = React.useState(0);
+          const [bufferedPercent, setBufferedPercent] = React.useState(0); // 💡 Nuevo: Progreso de Buffer
           const timeoutRef = React.useRef(null); 
-          const progressIntervalRef = React.useRef(null); // 🔑 Nuevo: Intervalo para la barra de progreso
+          const progressIntervalRef = React.useRef(null); 
 
 
           // Función para resetear el temporizador de ocultación
@@ -141,7 +145,7 @@
               if (!showControls) {
                   setShowControls(true);
               }
-              
+
               if (timeoutRef.current) {
                   clearTimeout(timeoutRef.current);
               }
@@ -150,15 +154,15 @@
                   setShowControls(false);
               }, CONTROLS_TIMEOUT);
           }, [showControls]);
-          
-          // 🔑 useEffect para manejar el foco cuando los controles aparecen
+
+          // useEffect para manejar el foco cuando los controles aparecen
           React.useEffect(() => {
               if (showControls && backButtonRef.current) {
                   backButtonRef.current.focus();
               }
           }, [showControls]);
 
-          // 🔑 Función para iniciar la actualización del tiempo
+          // Función para iniciar la actualización del tiempo y buffer
           const startProgressInterval = React.useCallback(() => {
               if (progressIntervalRef.current) {
                   clearInterval(progressIntervalRef.current);
@@ -167,12 +171,16 @@
                   const player = playerRef.current;
                   if (player && typeof player.getCurrentTime === 'function') {
                       setCurrentTime(player.getCurrentTime());
-                      setDuration(player.getDuration()); // Actualizamos la duración por si cambia
+                      setDuration(player.getDuration()); 
+                      
+                      // Actualizar el buffer
+                      const bufferedFraction = player.getVideoLoadedFraction(); 
+                      setBufferedPercent(bufferedFraction * 100);
                   }
-              }, 250); // Actualiza cada 250ms para un progreso suave
+              }, 250); 
           }, []);
 
-          // 🔑 Función para detener la actualización del tiempo
+          // Función para detener la actualización del tiempo
           const stopProgressInterval = React.useCallback(() => {
               if (progressIntervalRef.current) {
                   clearInterval(progressIntervalRef.current);
@@ -185,13 +193,13 @@
               if (playerContainerRef.current) {
                   playerContainerRef.current.focus();
               }
-              
+
               if (!isYouTube || !videoId || !window.YT) {
                   return;
               }
 
               const playerId = 'youtube-player-container'; 
-              
+
               const newPlayer = new window.YT.Player(playerId, {
                   videoId: videoId,
                   playerVars: {
@@ -204,7 +212,7 @@
                   events: {
                       'onReady': (event) => {
                           playerRef.current = newPlayer; 
-                          
+
                           if (event.target.isMuted()) {
                               event.target.unMute(); 
                               setIsMuted(false);
@@ -216,10 +224,10 @@
                       'onStateChange': (event) => {
                         if (event.data === YT.PlayerState.PLAYING) {
                             setIsPlaying(true);
-                            startProgressInterval(); // 🔑 Iniciar la actualización de tiempos
+                            startProgressInterval(); 
                         } else {
                             setIsPlaying(false);
-                            stopProgressInterval();  // 🔑 Detener la actualización si no está en PLAYING
+                            stopProgressInterval();  
                         }
                       }
                   }
@@ -227,7 +235,7 @@
 
               // Limpieza
               return () => {
-                  stopProgressInterval(); // Asegurar detener el intervalo al desmontar
+                  stopProgressInterval(); 
                   if (timeoutRef.current) {
                       clearTimeout(timeoutRef.current);
                   }
@@ -239,7 +247,6 @@
           }, [videoId, isYouTube, startProgressInterval, stopProgressInterval]); 
 
           // LÓGICA DE CONTROL DE REPRODUCCIÓN
-          // ... (mantienen resetControlTimeout)
           const togglePlayPause = () => {
               const player = playerRef.current;
               if (!player) return;
@@ -265,18 +272,18 @@
               }
               resetControlTimeout();
           };
-          
+
           const seekRelative = (seconds) => {
             const player = playerRef.current;
             if (!player) return;
 
             const newTime = player.getCurrentTime() + seconds;
             player.seekTo(newTime, true); 
-            setCurrentTime(newTime); // Actualizar inmediatamente el tiempo
+            setCurrentTime(newTime); 
             resetControlTimeout();
           }
 
-          // 🔑 Función de navegación (Scrubbing)
+          // Función de navegación (Scrubbing)
           const handleSeek = (e) => {
               const player = playerRef.current;
               if (!player || duration === 0) return;
@@ -287,10 +294,10 @@
               const newTime = duration * percent;
 
               player.seekTo(newTime, true);
-              setCurrentTime(newTime); // Actualizar inmediatamente el tiempo
+              setCurrentTime(newTime); 
               resetControlTimeout(); 
           };
-          
+
           const rewind = () => seekRelative(-10); 
           const fastForward = () => seekRelative(10); 
 
@@ -300,7 +307,7 @@
               }
               onBack();
           }
-          
+
           // Cálculo del porcentaje de progreso
           const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
@@ -324,13 +331,19 @@
                   tabIndex={0} 
                   style={{outline: 'none'}} 
               >
-                  
+
                   {/* Contenedor del Reproductor */}
                   <div className="w-full h-full flex flex-col items-center justify-center relative">
-                      
+
                       {/* Contenedor de Iframe */}
                       <div className="w-full h-full max-w-screen-xl max-h-[80vh] relative flex items-center justify-center">
-                          <div id="youtube-player-container" className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden">
+                          
+                          {/* 🔑 CORRECCIÓN APLICADA: tabIndex="-1" para evitar que el foco entre al iframe */}
+                          <div 
+                              id="youtube-player-container" 
+                              tabIndex="-1" 
+                              className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden"
+                          >
                               {!isYouTube && (
                                   <iframe
                                       tabIndex="-1" 
@@ -343,27 +356,34 @@
                           </div>
                       </div>
 
-                      {/* 🔑 CONTROLES COMPLETOS (Barra + Botones + Tiempos) */}
+                      {/* CONTROLES COMPLETOS (Barra + Botones + Tiempos) */}
                       {isYouTube && (
                           <div 
                               className={`absolute bottom-10 w-full max-w-xl flex flex-col p-4 rounded-xl shadow-2xl 
                                           transition-opacity duration-300 ${showControls ? 'opacity-100 bg-gray-800/80' : 'opacity-0 pointer-events-none'}`}
                           >
-                            
-                            {/* 🔑 BARRA DE PROGRESO */}
+
+                            {/* BARRA DE PROGRESO */}
                             <div 
                                 onClick={handleSeek}
                                 className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group mb-2"
                                 tabIndex={showControls ? 0 : -1} 
                                 title="Barra de Progreso (Click para Saltar)"
                             >
+                                {/* INDICADOR DE BUFFER */}
                                 <div 
-                                    className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500" 
+                                    className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" 
+                                    style={{ width: `${bufferedPercent}%` }}
+                                ></div>
+
+                                {/* INDICADOR DE TIEMPO REPRODUCIDO */}
+                                <div 
+                                    className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative" 
                                     style={{ width: `${progressPercent}%` }}
                                 ></div>
                             </div>
 
-                            {/* 🔑 TIEMPOS */}
+                            {/* TIEMPOS */}
                             <div className="flex justify-between text-sm font-mono text-gray-300 mb-4">
                                 <span>{formatTime(currentTime)}</span>
                                 <span>{formatTime(duration)}</span>
@@ -371,7 +391,7 @@
 
                             {/* Botones de Control */}
                             <div className="flex justify-center space-x-4">
-                                
+
                                 {/* Botón Volver al Catálogo (Recibe el foco al mostrarse) */}
                                 <button 
                                     onClick={handleOnBack}
@@ -405,7 +425,7 @@
                                 >
                                     {isPlaying ? <PauseIcon /> : <PlayIcon />}
                                 </button>
-                                
+
                                 {/* Botón Mute/Unmute */}
                                 <button 
                                     onClick={toggleMute}
@@ -427,7 +447,7 @@
                                 >
                                     <FastForwardIcon />
                                 </button>
-                                
+
                             </div>
                           </div>
                       )}
@@ -566,7 +586,7 @@
                     <ReproductorDeVideo titulo="Clásico de los 80s (Música)" url="https://youtu.be/T8SYLvGEBkk?si=4QnLS9WPwQu4cQgo" onPlay={setVideoEnFocoUrl} />
                     <ReproductorDeVideo titulo="Viaje por la Galaxia" url="https://youtu.be/chmuJSP-V8Y?si=YHCUZ3fSuhpIGqNg" onPlay={setVideoEnFocoUrl} />
                     <ReproductorDeVideo titulo="Jeppers Creepers" url= "https://youtu.be/hmKnm2jH_2Y?si=2qWanAyVpHHkUAWo" onPlay={setVideoEnFocoUrl} />
-<ReproductorDeVideo titulo="Entrevista a Chef Famoso" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
+                    <ReproductorDeVideo titulo="Entrevista a Chef Famoso" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
                     <ReproductorDeVideo titulo="Recetas Rápidas" url="https://youtu.be/gwkUDXSGbxg?si=eLcpoLsvJP6kr7d2" onPlay={setVideoEnFocoUrl} />
                     <ReproductorDeVideo titulo="El Misterio del Lago" url="https://youtu.be/qYfJ36XxEpc?si=_SicDPM0kU8WR_AY" onPlay={setVideoEnFocoUrl} />
                   </div>

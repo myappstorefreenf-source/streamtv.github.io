@@ -1,272 +1,535 @@
-// 1. Códigos de Tecla D-pad (Android TV)
-const KEY_LEFT = 21;
-const KEY_UP = 19;
-const KEY_RIGHT = 22;
-const KEY_DOWN = 20;
-const KEY_ENTER = 23; 
-const KEY_SELECT = 66; 
-const KEY_BACK = 27;
+// Variable global para almacenar el objeto de los videos que están listos para la API
+window.onYouTubeIframeAPIReady = () => {
+    console.log("YouTube API lista.");
+};
 
-// 2. Estado de la App
-let currentFocus = null;
-let isVideoPlaying = false; 
+const CONTROLS_TIMEOUT = 3000; // 3 segundos para ocultar controles
+const YT = window.YT; 
 
-// ----------------------------------------------------
-// === LÓGICA DE VISIBILIDAD DE BOTÓN DE VOLVER ===
-// ----------------------------------------------------
-let buttonTimer = null;
+// ----------------------------------------------------------------------
+// UTILERÍAS: CONVERSIÓN DE SEGUNDOS A FORMATO HH:MM:SS
+// ----------------------------------------------------------------------
 
-/**
- * Muestra el botón de volver y lo oculta después de 3 segundos de inactividad.
- */
-function showBackButtonTemporary() {
-    const backButton = document.getElementById('back-button');
-    
-    // 1. Limpiar el temporizador anterior
-    clearTimeout(buttonTimer);
+function formatTime(seconds) {
+    if (isNaN(seconds) || seconds < 0) return '00:00';
 
-    // 2. Mostrar el botón
-    backButton.classList.add('visible');
-    
-    // 3. Establecer el nuevo temporizador para ocultarlo
-    buttonTimer = setTimeout(() => {
-        // Solo ocultamos si no tiene el foco actualmente (ej: si se está usando el D-Pad)
-        if (document.activeElement !== backButton) {
-            backButton.classList.remove('visible');
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = Math.floor(seconds % 60);
+
+    const parts = [m, s];
+    if (h > 0) {
+        parts.unshift(h); // Agregar horas si es necesario
+        return parts.map(v => v.toString().padStart(2, '0')).join(':');
+    }
+
+    return parts.map(v => v.toString().padStart(2, '0')).join(':');
+}
+
+// ----------------------------------------------------------------------
+// LÓGICA DE CONVERSIÓN Y EXTRACCIÓN DE ID
+// ----------------------------------------------------------------------
+
+function obtenerVideoInfo(url) {
+    const defaultVideoId = 'dQw4w9WgXcQ';
+    let videoId = defaultVideoId;
+    let isYouTube = false;
+
+    if (url) {
+        const youtubeRegex = /(?:youtube\.com|youtu\.be)\/(?:v=|embed\/|watch\?v=|\/v\/)?([a-zA-Z0-9_-]{11})/;
+        const match = url.match(youtubeRegex);
+
+        if (match && match[1]) {
+            videoId = match[1];
+            isYouTube = true;
         }
-    }, 3000); // 3 segundos
+    }
+
+    if (isYouTube) {
+        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`; 
+        return { videoId, thumbnailUrl, isYouTube };
+    } else {
+        const thumbnailUrl = "https://placehold.co/1920x1080/1F2937/fff?text=VIDEO+EXTERNO"; 
+        return { videoId: null, thumbnailUrl, isYouTube: false };
+    }
 }
 
-// ----------------------------------------------------
-// 3. 🎯 MAPA DE VIDEOS 
-// ----------------------------------------------------
-const VIDEO_MAP = {
-    // ID DEL BANNER
-    'hero-1':'KjhWL-7cmws', 
-    
-    // IDS DE LA CUADRÍCULA 
-    'g-2-1': 'iqeatp1VXVA', 
-    'g-2-2': 'NcdYo_eMv4U', 
-    'g-2-3': 'QskN9E6mCFk', 
-    'g-2-4': 'fsSryNsqPDY', 
-    'g-3-1': 'cHFL7a3-2aY', 
-    'g-3-2': '6_HQd1qnmxQ', 
-    'g-3-3': 'hpfTQF3q4qs', 
-    'g-3-4': 'KjhWL-7cmws', 
-    'g-4-1': 'WLg7dt0i9Jo', 
-    'g-4-2': 'MNd_6q7FBxc',   
-};
+// ----------------------------------------------------------------------
+// COMPONENTE ReproductorEnFoco 
+// ----------------------------------------------------------------------
 
-// Función auxiliar para generar URL del thumbnail de YouTube
-function getThumbnailUrl(videoId, type = 'mqdefault') {
-    return `https://i.ytimg.com/vi/${videoId}/${type}.jpg`;
-}
+function ReproductorEnFoco({ videoUrl, onBack }) {
+    const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
+    const playerRef = React.useRef(null); 
+    const playerContainerRef = React.useRef(null); 
+    const backButtonRef = React.useRef(null); 
 
-/**
- * 🖼️ Carga todas las miniaturas al cargar la página.
- */
-window.setThumbnails = function() {
-    document.querySelectorAll('.video-grid .movie-card img').forEach(imgElement => {
-        const id = imgElement.id.replace('img-', ''); 
-        const videoId = VIDEO_MAP[id];
-        if (videoId && videoId.length === 11) {
-            imgElement.src = getThumbnailUrl(videoId, 'mqdefault');
+    const [isMuted, setIsMuted] = React.useState(true);
+    const [isPlaying, setIsPlaying] = React.useState(false);
+    const [showControls, setShowControls] = React.useState(false); 
+    const [currentTime, setCurrentTime] = React.useState(0); 
+    const [duration, setDuration] = React.useState(0);
+    const [bufferedPercent, setBufferedPercent] = React.useState(0); // 💡 Progreso de Buffer
+    const timeoutRef = React.useRef(null); 
+    const progressIntervalRef = React.useRef(null); 
+
+
+    // Función para resetear el temporizador de ocultación
+    const resetControlTimeout = React.useCallback(() => {
+        if (!showControls) {
+            setShowControls(true);
         }
-    });
 
-    const initialFocus = document.getElementById('nav-peliculas');
-    if (initialFocus) {
-        initialFocus.focus();
-        currentFocus = initialFocus;
-    }
-};
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
 
-// ----------------------------------------------------
-// 4. Control del Reproductor de Video
-// ----------------------------------------------------
+        timeoutRef.current = setTimeout(() => {
+            setShowControls(false);
+        }, CONTROLS_TIMEOUT);
+    }, [showControls]);
 
-/**
- * 🎥 Muestra el reproductor, carga el video. Se ha eliminado la solicitud automática de pantalla completa para Chrome.
- */
-window.showVideoPlayer = function(videoIdentifier) {
-    const playerContainer = document.getElementById('video-player-container');
-    const videoElement = document.getElementById('main-video-player');
-    const backButton = document.getElementById('back-button');
+    // useEffect para manejar el foco cuando los controles aparecen
+    React.useEffect(() => {
+        if (showControls && backButtonRef.current) {
+            backButtonRef.current.focus();
+        }
+    }, [showControls]);
 
-    document.getElementById('header').style.display = 'none';
-    document.getElementById('main-content').style.display = 'none';
-    
-    let embedUrl = '';
-    
-    if (videoIdentifier.length === 11) {
-        const videoId = videoIdentifier;
-        embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&hl=es`;
-    } else {
-        embedUrl = videoIdentifier;
-    }
+    // Función para iniciar la actualización del tiempo y buffer
+    const startProgressInterval = React.useCallback(() => {
+        if (progressIntervalRef.current) {
+            clearInterval(progressIntervalRef.current);
+        }
+        progressIntervalRef.current = setInterval(() => {
+            const player = playerRef.current;
+            if (player && typeof player.getCurrentTime === 'function') {
+                setCurrentTime(player.getCurrentTime());
+                setDuration(player.getDuration()); 
+                
+                // Actualizar el buffer
+                const bufferedFraction = player.getVideoLoadedFraction(); 
+                setBufferedPercent(bufferedFraction * 100);
+            }
+        }, 250); 
+    }, []);
 
-    playerContainer.style.display = 'block';
-    isVideoPlaying = true;
-    videoElement.src = embedUrl;
-    
-    // ⚠️ PANTALLA COMPLETA AUTOMÁTICA (Comentado para evitar errores en navegadores de escritorio)
-    // if (playerContainer.requestFullscreen) {
-    //     playerContainer.requestFullscreen();
-    // } else if (playerContainer.webkitRequestFullscreen) {
-    //     playerContainer.webkitRequestFullscreen();
-    // } else if (playerContainer.msRequestFullscreen) {
-    //     playerContainer.msRequestFullscreen();
-    // }
-    
-    // Poner el foco en el botón de atrás Y mostrarlo temporalmente
-    setTimeout(() => { 
-        // backButton.focus(); // Se quita el foco explícito para mejor UX en desktop
-        showBackButtonTemporary();
-    }, 100);
-};
-
-/**
- * Oculta el reproductor y vuelve a la cuadrícula.
- */
-window.hideVideoPlayer = function() {
-    const playerContainer = document.getElementById('video-player-container');
-    const videoElement = document.getElementById('main-video-player');
-    const backButton = document.getElementById('back-button'); // Necesario para limpiar la clase
-
-    // Limpiar el src para detener el video
-    videoElement.src = ''; 
-    playerContainer.style.display = 'none';
-    isVideoPlaying = false;
-
-    // LIMPIEZA DEL BOTÓN DE VOLVER
-    clearTimeout(buttonTimer); 
-    backButton.classList.remove('visible'); // Asegura que la clase se elimine
-
-    // Salir del modo fullscreen si está activo
-    if (document.fullscreenElement) {
-        document.exitFullscreen();
-    }
-    
-    document.getElementById('header').style.display = 'flex'; 
-    document.getElementById('main-content').style.display = 'block';
-    
-    if (currentFocus) {
-        currentFocus.focus();
-        currentFocus.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-    } else {
-         document.getElementById('nav-peliculas').focus();
-    }
-};
-
-/**
- * Función de Acción (Manejador de selección - se llama con ENTER o click)
- */
-window.handleSelection = function(id) {
-    console.log("Elemento seleccionado/clicado: " + id);
-    
-    const videoId = VIDEO_MAP[id];
-    
-    if (videoId) {
-        showVideoPlayer(videoId);
-    } else if (id.startsWith('nav-')) {
-        // ⚠️ CORREGIDO: Usar console.log en lugar de alert()
-        console.log(`Navegación simulada a: ${id}`);
-        return;
-    }
-};
+    // Función para detener la actualización del tiempo
+    const stopProgressInterval = React.useCallback(() => {
+        if (progressIntervalRef.current) {
+            clearInterval(progressIntervalRef.current);
+            progressIntervalRef.current = null;
+        }
+    }, []);
 
 
-// ----------------------------------------------------
-// 5. Lógica de Navegación D-Pad y Event Listeners
-// ----------------------------------------------------
+    React.useEffect(() => {
+        if (playerContainerRef.current) {
+            playerContainerRef.current.focus();
+        }
 
-function findNextFocus(direction) {
-    if (!currentFocus) return null;
-
-    const currentRow = parseInt(currentFocus.getAttribute('data-row'));
-    const currentCol = parseInt(currentFocus.getAttribute('data-col'));
-    
-    let nextRow = currentRow;
-    let nextCol = currentCol;
-
-    if (direction === 'right') { nextCol++; } 
-    else if (direction === 'left') { nextCol--; } 
-    else if (direction === 'down') { nextRow++; } 
-    else if (direction === 'up') { nextRow--; }
-
-    // Lógica de salto entre filas
-    if (currentRow === 1 && direction === 'up') {
-        return document.querySelector(`[data-row="0"][data-col="${currentCol}"]`);
-    }
-    if (currentRow === 0 && nextRow === 1 && direction === 'down') {
-        return document.querySelector(`[data-row="1"][data-col="1"]`);
-    }
-    if (currentRow === 1 && nextRow === 2 && direction === 'down') {
-        return document.querySelector(`[data-row="2"][data-col="1"]`);
-    }
-    
-    let nextElement = document.querySelector(`[data-row="${nextRow}"][data-col="${nextCol}"]`);
-    
-    return nextElement;
-}
-
-// Manejador principal de teclado
-document.addEventListener('keydown', (event) => {
-    
-    if (event.keyCode === KEY_BACK || event.keyCode === 8) {
-        if (isVideoPlaying) {
-            event.preventDefault(); 
-            hideVideoPlayer();
+        if (!isYouTube || !videoId || !window.YT) {
             return;
         }
-    }
 
-    if (isVideoPlaying) {
-        // MOSTRAR BOTÓN DE VOLVER AL PULSAR CUALQUIER TECLA (D-PAD)
-        showBackButtonTemporary();
-        return; 
-    }
-    
-    let nextElement = null;
-    let direction = null;
+        const playerId = 'youtube-player-container'; 
 
-    switch (event.keyCode) {
-        case KEY_RIGHT: direction = 'right'; break;
-        case KEY_LEFT: direction = 'left'; break;
-        case KEY_DOWN: direction = 'down'; break;
-        case KEY_UP: direction = 'up'; break;
-        case KEY_ENTER:
-        case KEY_SELECT:
-            if (currentFocus) {
-                currentFocus.click();
+        const newPlayer = new window.YT.Player(playerId, {
+            videoId: videoId,
+            playerVars: {
+                'autoplay': 1,
+                'controls': 0, 
+                'mute': 1, 
+                'disablekb': 1, 
+                'widget_referrer': window.location.href
+            },
+            events: {
+                'onReady': (event) => {
+                    playerRef.current = newPlayer; 
+
+                    if (event.target.isMuted()) {
+                        event.target.unMute(); 
+                        setIsMuted(false);
+                    }
+                    if (event.target.getPlayerState() !== YT.PlayerState.PLAYING) {
+                        event.target.playVideo();
+                    }
+                },
+                'onStateChange': (event) => {
+                  if (event.data === YT.PlayerState.PLAYING) {
+                      setIsPlaying(true);
+                      startProgressInterval(); 
+                  } else {
+                      setIsPlaying(false);
+                      stopProgressInterval();  
+                  }
+                }
             }
-            return; 
-        default:
-            return; 
+        });
+
+        // Limpieza
+        return () => {
+            stopProgressInterval(); 
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+            if (playerRef.current && typeof playerRef.current.destroy === 'function') {
+                playerRef.current.destroy();
+                playerRef.current = null;
+            }
+        };
+    }, [videoId, isYouTube, startProgressInterval, stopProgressInterval]); 
+
+    // LÓGICA DE CONTROL DE REPRODUCCIÓN
+    const togglePlayPause = () => {
+        const player = playerRef.current;
+        if (!player) return;
+
+        if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+            player.pauseVideo();
+        } else {
+            player.playVideo();
+        }
+        resetControlTimeout();
+    };
+
+    const toggleMute = () => {
+        const player = playerRef.current;
+        if (!player) return;
+
+        if (player.isMuted()) {
+            player.unMute();
+            setIsMuted(false);
+        } else {
+            player.mute();
+            setIsMuted(true);
+        }
+        resetControlTimeout();
+    };
+
+    const seekRelative = (seconds) => {
+      const player = playerRef.current;
+      if (!player) return;
+
+      const newTime = player.getCurrentTime() + seconds;
+      player.seekTo(newTime, true); 
+      setCurrentTime(newTime); 
+      resetControlTimeout();
     }
 
-    nextElement = findNextFocus(direction);
+    // Función de navegación (Scrubbing)
+    const handleSeek = (e) => {
+        const player = playerRef.current;
+        if (!player || duration === 0) return;
 
-    if (nextElement && nextElement !== currentFocus) {
-        event.preventDefault(); 
-        
-        nextElement.focus();
-        currentFocus = nextElement;
-        
-        currentFocus.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        const rect = e.currentTarget.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const percent = clickX / rect.width;
+        const newTime = duration * percent;
+
+        player.seekTo(newTime, true);
+        setCurrentTime(newTime); 
+        resetControlTimeout(); 
+    };
+
+    const rewind = () => seekRelative(-10); 
+    const fastForward = () => seekRelative(10); 
+
+    const handleOnBack = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+        onBack();
     }
+
+    // Cálculo del porcentaje de progreso
+    const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+    // ICONOS (SVG)
+    const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
+    const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002z" clipRule="evenodd" /></svg>;
+    const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 011 1v4a1 1 0 11-2 0V7a1 1 0 011-1zm-3 4a1 1 0 002 0V7a1 1 0 00-2 0v4z" clipRule="evenodd" /></svg>;
+    const VolumeIcon = () => isMuted ? 
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zm10.024 2.193a1 1 0 010 1.414L17.243 10l2.164 2.163a1 1 0 01-1.414 1.414L15.829 11.414l-2.163 2.164a1 1 0 01-1.414-1.414L14.414 10l-2.163-2.163a1 1 0 011.414-1.414l2.163 2.164 2.164-2.163a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+        :
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 5.059a1 1 0 011.414 0 9 9 0 010 12.582 1 1 0 11-1.414-1.414 7 7 0 000-9.754 1 1 0 010-1.414zM16.071 3.645a1 1 0 011.414 0 11 11 0 010 15.69 1 1 0 11-1.414-1.414 9 9 0 000-12.862 1 1 0 010-1.414z" clipRule="evenodd" /></svg>;
+    const RewindIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M8.445 14.832A1 1 0 0010 14V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4zM14.445 14.832A1 1 0 0016 14V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z" /></svg>;
+    const FastForwardIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4zM10.555 5.168A1 1 0 009 6v8a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4z" /></svg>;
+
+
+    return (
+        <div 
+            ref={playerContainerRef}
+            className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center"
+            onClick={resetControlTimeout} // También mostrar controles al hacer clic
+            onKeyDown={resetControlTimeout} 
+            tabIndex={0} 
+            style={{outline: 'none'}} 
+        >
+
+            {/* Contenedor del Reproductor */}
+            <div className="w-full h-full flex flex-col items-center justify-center relative">
+
+                {/* Contenedor de Iframe */}
+                <div className="w-full h-full max-w-screen-xl max-h-[80vh] relative flex items-center justify-center">
+                    
+                    {/* Contenedor del reproductor de YouTube (donde la API inyecta el iframe) */}
+                    <div 
+                        id="youtube-player-container" 
+                        tabIndex="-1" 
+                        className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden"
+                    >
+                        {!isYouTube && (
+                            <iframe
+                                tabIndex="-1" 
+                                className="youtube-iframe rounded-xl shadow-2xl bg-gray-900"
+                                src={videoUrl}
+                                allow="autoplay; fullscreen"
+                                allowFullScreen
+                            ></iframe>
+                        )}
+                    </div>
+                </div>
+
+                {/* CONTROLES COMPLETOS (Barra + Botones + Tiempos) */}
+                {isYouTube && (
+                    <div 
+                        className={`absolute bottom-10 w-full max-w-xl flex flex-col p-4 rounded-xl shadow-2xl 
+                                transition-opacity duration-300 ${showControls ? 'opacity-100 bg-gray-800/80' : 'opacity-0 pointer-events-none'}`}
+                    >
+
+                        {/* BARRA DE PROGRESO */}
+                        <div 
+                            onClick={handleSeek}
+                            className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group mb-2"
+                            tabIndex={showControls ? 0 : -1} 
+                            title="Barra de Progreso (Click para Saltar)"
+                        >
+                            {/* INDICADOR DE BUFFER */}
+                            <div 
+                                className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" 
+                                style={{ width: `${bufferedPercent}%` }}
+                            ></div>
+
+                            {/* INDICADOR DE TIEMPO REPRODUCIDO */}
+                            <div 
+                                className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative" 
+                                style={{ width: `${progressPercent}%` }}
+                            ></div>
+                        </div>
+
+                        {/* TIEMPOS */}
+                        <div className="flex justify-between text-sm font-mono text-gray-300 mb-4">
+                            <span>{formatTime(currentTime)}</span>
+                            <span>{formatTime(duration)}</span>
+                        </div>
+
+                        {/* Botones de Control */}
+                        <div className="flex justify-center space-x-4">
+
+                            {/* Botón Volver al Catálogo (Recibe el foco al mostrarse) */}
+                            <button 
+                                onClick={handleOnBack}
+                                ref={backButtonRef}
+                                className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                tabIndex={showControls ? 0 : -1} 
+                                title="Volver al Catálogo"
+                            >
+                                <BackIcon />
+                            </button>
+
+                            {/* Botón Retroceso (Rewind) */}
+                            <button 
+                                onClick={rewind}
+                                className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                tabIndex={showControls ? 0 : -1}
+                                title="Retroceder 10 segundos"
+                            >
+                                <RewindIcon />
+                            </button>
+
+                            {/* Botón Play/Pause */}
+                            <button 
+                                onClick={togglePlayPause}
+                                className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                tabIndex={showControls ? 0 : -1}
+                                title={isPlaying ? "Pausar" : "Reproducir"}
+                            >
+                                {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                            </button>
+
+                            {/* Botón Mute/Unmute */}
+                            <button 
+                                onClick={toggleMute}
+                                className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                tabIndex={showControls ? 0 : -1}
+                                title={isMuted ? "Desactivar silencio" : "Silenciar"}
+                            >
+                                <VolumeIcon />
+                            </button>
+
+                            {/* Botón Avance Rápido (Fast Forward) */}
+                            <button 
+                                onClick={fastForward}
+                                className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
+                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                tabIndex={showControls ? 0 : -1}
+                                title="Avanzar 10 segundos"
+                            >
+                                <FastForwardIcon />
+                            </button>
+
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+// ----------------------------------------------------------------------
+// COMPONENTES HERO BANNER Y TARJETA (Sin cambios)
+// ----------------------------------------------------------------------
+
+const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
+    const { thumbnailUrl } = obtenerVideoInfo(videoUrl);
+
+    return (
+        <div 
+            className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-8 rounded-xl shadow-2xl"
+            tabIndex="-1" 
+            style={{ backgroundImage: `url('${thumbnailUrl}'), url('https://placehold.co/1920x1080/0d1117/333?text=CARGANDO...')` }}
+        >
+            <div className="absolute inset-0 bg-black/60"></div>
+
+            <div className="relative p-8 max-w-xl">
+                <h2 className="text-4xl font-extrabold mb-2 text-white drop-shadow-lg">
+                    {titulo}
+                </h2>
+                <p className="text-base mb-4 text-gray-200 drop-shadow-md">
+                    {descripcion}
+                </p>
+
+                <button 
+                    ref={ref}
+                    onClick={() => onPlay(videoUrl)} 
+                    className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg 
+                                transition-all duration-300 hover:bg-red-700 
+                                focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
+                    tabIndex="0" 
+                >
+                    Ver Ahora
+                </button>
+            </div>
+        </div>
+    );
 });
+HeroBanner.displayName = 'HeroBanner';
 
-// 6. Detección de Mouse/Táctil
-// Estos eventos activan la visibilidad del botón si el video está en reproducción.
-document.addEventListener('mousemove', () => {
-    if (isVideoPlaying) {
-        showBackButtonTemporary();
-    }
-});
 
-document.addEventListener('touchstart', () => {
-    if (isVideoPlaying) {
-        showBackButtonTemporary();
+function ReproductorDeVideo(props) {
+    const { videoId, thumbnailUrl, isYouTube } = obtenerVideoInfo(props.url);
+    const genericPlaceholderUrl = "https://placehold.co/600x337/333/fff?text=VIDEO+EXTERNO";
+
+    const handleImageError = (e) => {
+        e.target.onerror = null; 
+        if (isYouTube && videoId && e.target.src.includes('maxresdefault')) {
+            e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+            return;
+        } 
+        e.target.src = genericPlaceholderUrl;
+    };
+
+    return (
+        <div 
+            className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg 
+                        transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] 
+                        focus:ring-4 focus:ring-red-500 focus:outline-none"
+            onClick={() => props.onPlay(props.url)} 
+            tabIndex="0" 
+        >
+            <img 
+                src={thumbnailUrl} 
+                onError={handleImageError} 
+                className="w-full aspect-video object-cover transition duration-500 group-hover:opacity-75"
+                alt={`Miniatura de ${props.titulo}`}
+            />
+
+            <div className="p-3">
+                <h2 className="text-base font-semibold text-red-400 group-focus:text-red-300 line-clamp-2">
+                    {props.titulo || "Título del Video"}
+                </h2>
+                <p className="mt-1 text-gray-400 text-xs">
+                    Fuente: {isYouTube ? "YouTube" : "Externa"}
+                </p>
+            </div>
+
+        </div>
+    );
+}
+
+// ----------------------------------------------------------------------
+// COMPONENTE PRINCIPAL APP
+// ----------------------------------------------------------------------
+
+function App() {
+    const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
+    const heroButtonRef = React.useRef(null); 
+
+    const handleBack = React.useCallback(() => {
+        setVideoEnFocoUrl(null);
+        setTimeout(() => {
+            if (heroButtonRef.current) {
+                heroButtonRef.current.focus();
+            }
+        }, 0);
+    }, []);
+
+
+    if (videoEnFocoUrl) {
+        return <ReproductorEnFoco 
+            videoUrl={videoEnFocoUrl} 
+            onBack={handleBack} 
+        />;
     }
-});
+
+    const heroVideoUrl ="https://youtu.be/GwPAvxA62Do?si=aK5qDPYMPfpkTS8o";
+
+    return (
+        <div className="p-4 md:p-8 max-w-7xl mx-auto">
+            <HeroBanner 
+                ref={heroButtonRef}
+                titulo="Estreno de la Semana"
+                descripcion="Controles D-Pad funcionales y catálogo optimizado."
+                videoUrl={heroVideoUrl}
+                onPlay={setVideoEnFocoUrl} 
+            />
+
+            <h1 className="text-2xl font-bold mb-4 text-red-600">
+                Explorar Videos
+            </h1>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <ReproductorDeVideo titulo="Controlable con D-Pad" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Trailer de Película" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Tutorial de React JS" url="https://youtu.be/epUe_LPcq-k?si=8dmditU-6Y2ieEd" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Tecnología" url="https://youtu.be/P59WtHvSd18?si=Qz-lcl-a1MrNU5b8" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Clásico de los 80s (Música)" url="https://youtu.be/T8SYLvGEBkk?si=4QnLS9WPwQu4cQgo" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Viaje por la Galaxia" url="https://youtu.be/chmuJSP-V8Y?si=YHCUZ3fSuhpIGqNg" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Jeppers Creepers" url= "https://youtu.be/hmKnm2jH_2Y?si=2qWanAyVpHHkUAWo" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Entrevista a Chef Famoso" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Recetas Rápidas" url="https://youtu.be/gwkUDXSGbxg?si=eLcpoLsvJP6kr7d2" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="El Misterio del Lago" url="https://youtu.be/qYfJ36XxEpc?si=_SicDPM0kU8WR_AY" onPlay={setVideoEnFocoUrl} />
+            </div>
+        </div>
+    );
+}
+
+// 7. MONTAJE DE LA APLICACIÓN
+const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(rootElement);
+root.render(<App />);

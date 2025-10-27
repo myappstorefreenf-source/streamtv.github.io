@@ -534,7 +534,36 @@ function App() {
                 <ReproductorDeVideo titulo="Invasion Oculta" url="https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="El come huesos" url="https://youtu.be/d-eK3h5uDho?si=Gy3NDGqI-rAG4wz-" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Bermudas Avismo en el mar del norte" url="https://youtu.be/gwkUDXSGbxg?si=z966wQgljQviO304" onPlay={setVideoEnFocoUrl} />
-
+                <ReproductorDeVideo titulo="La proxima generacion" url="https://youtu.be/ebvujopachw?si=FoZlTIM73kMVhB7o" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Dominion" url="https://youtu.be/Z7yjm-pFDS8?si=-ArxZEOaaRjMZ6Cp" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+v
                 
             </div>
         </div>
@@ -545,5 +574,4 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
-
 

@@ -497,7 +497,7 @@ function App() {
         />;
     }
 
-    const heroVideoUrl ="https://youtu.be/GwPAvxA62Do?si=aK5qDPYMPfpkTS8o";
+    const heroVideoUrl ="https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9eZPpS";
 
     return (
         <div className="p-4 md:p-8 max-w-7xl mx-auto">
@@ -510,20 +510,32 @@ function App() {
             />
 
             <h1 className="text-2xl font-bold mb-4 text-red-600">
-                Explorar Videos
+                Peliculas
             </h1>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <ReproductorDeVideo titulo="Controlable con D-Pad" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Trailer de Película" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Tutorial de React JS" url="https://youtu.be/epUe_LPcq-k?si=8dmditU-6Y2ieEd" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Tecnología" url="https://youtu.be/P59WtHvSd18?si=Qz-lcl-a1MrNU5b8" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Clásico de los 80s (Música)" url="https://youtu.be/T8SYLvGEBkk?si=4QnLS9WPwQu4cQgo" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Viaje por la Galaxia" url="https://youtu.be/chmuJSP-V8Y?si=YHCUZ3fSuhpIGqNg" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Nephilim" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Simbad la aventura del minotauro" url="https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Alien Convergence" url="https://youtu.be/w6DKhpKjMTE?si=j-7kNNoz93l0UZk9" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Yeti el hombre de la nieve" url="https://youtu.be/_OWD2gaWdOM?si=M-7yKl2zS51hCOvf" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Invasion letal" url="https://youtu.be/DXmynnoZ8X8?si=iw3LVlBhXPAr5C2l" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Cazador de demonios" url="https://youtu.be/UHvttPWH--Q?si=6yON_SdMIwywMJSC" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Jeppers Creepers" url= "https://youtu.be/hmKnm2jH_2Y?si=2qWanAyVpHHkUAWo" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Entrevista a Chef Famoso" url="https://youtu.be/9eGzFLWuSmY?si=cGpQoCGegKj2LI2k" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Recetas Rápidas" url="https://youtu.be/gwkUDXSGbxg?si=eLcpoLsvJP6kr7d2" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="El Misterio del Lago" url="https://youtu.be/qYfJ36XxEpc?si=_SicDPM0kU8WR_AY" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Target Earth" url="https://youtu.be/cHFL7a3-2aY?si=4KHcRxuBCuWZjVxV" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="40 dias y noches" url="https://youtu.be/QdvMupiWUd8?si=2wbVNPZTkB7o8Z9b" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Legion de Heroes" url="https://youtu.be/g4r-cpKVEos?si=5cA99gki-Nc9BYNC" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Hulk 2" url="https://youtu.be/rf_ixD_yD_4?si=k28TepUpPchZr2TV" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Guerra de otro mundo" url="https://youtu.be/Mr2JAzHAquo?si=62pLmQ9gmkKfQa90" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Angeles vs Zombies" url="https://youtu.be/TVazxWtCr_E?si=q7ws8E5kkuHRZ6Qe" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Tierra perdida" url="https://youtu.be/QVj2CVk-Nio?si=MQH3We5LeRLL3_jO" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Donha" url="https://youtu.be/NcdYo_eMv4U?si=t_oDPCj8TNRQNVkC" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Impacto inminente" url="https://youtu.be/5pEFz_e7bSw?si=hyV51hXmHV7ROgux" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Supervivencia" url="https://youtu.be/10Lzga1uDpM?si=mEYDmw8WHhMT8Vx9" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Invasion Oculta" url="https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="El come huesos" url="https://youtu.be/d-eK3h5uDho?si=Gy3NDGqI-rAG4wz-" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Bermudas Avismo en el mar del norte" url="https://youtu.be/gwkUDXSGbxg?si=z966wQgljQviO304" onPlay={setVideoEnFocoUrl} />
+
+                
             </div>
         </div>
     );

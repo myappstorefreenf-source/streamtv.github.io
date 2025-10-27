@@ -535,7 +535,6 @@ function App() {
                 <ReproductorDeVideo titulo="El come huesos" url="https://youtu.be/d-eK3h5uDho?si=Gy3NDGqI-rAG4wz-" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Bermudas Avismo en el mar del norte" url="https://youtu.be/gwkUDXSGbxg?si=z966wQgljQviO304" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="La proxima generacion" url="https://youtu.be/ebvujopachw?si=FoZlTIM73kMVhB7o" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Blitz" url="https://youtu.be/HgaotZxjHqc?si=Dm47Nmu0vYahSnod" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Secret Agent" url="https://youtu.be/X_dGD9oapyU?si=8CHKRMbktTSTH0W_" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="La Profesora Psicopata" url="https://youtu.be/fbdupvcfO6Q?si=fIRyTIZP0PFZbwUA" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="El secreto del Arca" url="https://youtu.be/pQ4bcl-5so0?si=nidy7Y0Z4ig4qLaI" onPlay={setVideoEnFocoUrl} />
@@ -545,7 +544,7 @@ function App() {
                 <ReproductorDeVideo titulo="Starcraft" url="https://youtu.be/6_HQd1qnmxQ?si=rIOlxLjj_wj8L3Bk" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Venganza Mortal" url="https://youtu.be/VtIbY43Zajg?si=IudJM1cVTfB59uX7" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="The ninth gate" url="https://youtu.be/QskN9E6mCFk?si=iiRzaIMOX5yTxQQM" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Blitz" url="https://youtu.be/HgaotZxjHqc?si=Dm47Nmu0vYahSnod" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
@@ -574,5 +573,6 @@ v
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 

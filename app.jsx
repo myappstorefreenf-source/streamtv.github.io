@@ -545,23 +545,23 @@ function App() {
                 <ReproductorDeVideo titulo="Venganza Mortal" url="https://youtu.be/VtIbY43Zajg?si=IudJM1cVTfB59uX7" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="The ninth gate" url="https://youtu.be/QskN9E6mCFk?si=iiRzaIMOX5yTxQQM" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Blitz" url="https://youtu.be/HgaotZxjHqc?si=Dm47Nmu0vYahSnod" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="" url="" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Reino Perdido" url="peliculas cmpletas audio latino" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Tierra perdida" url="peliculas cmpletas audio latino" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Piratas del tesoro" url="https://youtu.be/Oh2x2KqrRDg?si=x5nrT14dLRHHfpFI" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Indiana Jone el Gran circulo" url="https://youtu.be/KONzw7qwEuA?si=X5gKKX3QzncutoIH" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Pasajeros" url="https://youtu.be/sg4HgAHmRac?si=3eH3jOjcPmqf3agq" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="La Rebelion" url="https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="El 5to elemento" url="https://youtu.be/iqeatp1VXVA?si=nDi2V3NTNBgjj03f" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="El vuelo nocturno" url="https://youtu.be/LSRbDYaCes4?si=AoQuLAdm6shAFo_X" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Cazadores del mas alla" url="https://youtu.be/eww-r8o-JOc?si=xARiJSGOx4KM0DVk" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="El defensor" url="https://youtu.be/hhnYJ9h4qXg?si=y7fi1a2zGs6K0L80" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Identidad alterada" url="https://youtu.be/Huoda3CKCBY?si=0Sl_sRT2ekJ2a6yC" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Furia de los siglos" url="https://youtu.be/z2FQd1m63yo?si=WoCrG87EvdH2wIkz" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Colombiana 2" url="https://youtu.be/O8mFkQtbZBU?si=w4JVJRk8w5NCqX4r" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="The Mud" url="https://youtu.be/RAFQBNlL0aw?si=Mpk5QJx6tYE0_RNC" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="La aventura de Aladino" url="https://youtu.be/fsSryNsqPDY?si=4DJz6qAjS1tbotxj" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Peligro en el Amazonas" url="https://youtu.be/JDOoSVKh5gc?si=On_VQV5CuB_dFo1I" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Puños Mortales" url="https://youtu.be/uLNcc-ZHgpI?si=U09AK69YpHfGl2NH" onPlay={setVideoEnFocoUrl} />
 v
                 
             </div>
@@ -573,6 +573,7 @@ v
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 
 

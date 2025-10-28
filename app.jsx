@@ -545,6 +545,7 @@ function App() {
                 <ReproductorDeVideo titulo="Venganza Mortal" url="https://youtu.be/VtIbY43Zajg?si=IudJM1cVTfB59uX7" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="The ninth gate" url="https://youtu.be/QskN9E6mCFk?si=iiRzaIMOX5yTxQQM" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Blitz" url="https://youtu.be/HgaotZxjHqc?si=Dm47Nmu0vYahSnod" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Blitz" url="https://youtu.be/HgaotZxjHqc?si=Dm47Nmu0vYahSnod" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Reino Perdido" url="peliculas cmpletas audio latino" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Tierra perdida" url="peliculas cmpletas audio latino" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Piratas del tesoro" url="https://youtu.be/Oh2x2KqrRDg?si=x5nrT14dLRHHfpFI" onPlay={setVideoEnFocoUrl} />
@@ -573,6 +574,7 @@ v
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 
 

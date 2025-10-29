@@ -1,303 +1,260 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import ReactDOM from 'react-dom/client';
+// Variables y constantes globales
+const CONTROLS_TIMEOUT = 3000; 
+const YT = window.YT; 
 
 // ----------------------------------------------------------------------
-// UTILIDADES
+// UTILERÍAS: CONVERSIÓN DE SEGUNDOS A FORMATO HH:MM:SS
 // ----------------------------------------------------------------------
 
-/**
- * Función para extraer el ID de YouTube y la información de la miniatura.
- * @param {string} url - URL del video.
- * @returns {{videoId: string | null, thumbnailUrl: string | null, isYouTube: boolean}}
- */
-const obtenerVideoInfo = (url) => {
-    if (!url) return { videoId: null, thumbnailUrl: null, isYouTube: false };
+function formatTime(seconds) {
+    if (isNaN(seconds) || seconds < 0) return '00:00';
 
-    // Regex para URLs estándar y acortadas de YouTube
-    const youtubeRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
-    const match = url.match(youtubeRegex);
-    
-    const videoId = match ? match[1] : null;
-    const isYouTube = !!videoId;
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = Math.floor(seconds % 60);
 
-    let thumbnailUrl = 'https://placehold.co/600x337/333/fff?text=VIDEO+EXTERNO';
-    if (isYouTube) {
-        // Se intenta obtener la miniatura de alta calidad (maxresdefault)
-        thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-    } else {
-        // Para videos no-YouTube, se usa un placeholder genérico
-        thumbnailUrl = 'https://placehold.co/600x337/333/fff?text=VIDEO+EXTERNO';
+    const parts = [m, s];
+    if (h > 0) {
+        parts.unshift(h); 
+        return parts.map(v => v.toString().padStart(2, '0')).join(':');
     }
 
-    return { videoId, thumbnailUrl, isYouTube };
-};
-
-/**
- * Función para formatear el tiempo en segundos a formato MM:SS o HH:MM:SS.
- * @param {number} seconds - Tiempo en segundos.
- * @returns {string} Tiempo formateado.
- */
-const formatTime = (seconds) => {
-    if (isNaN(seconds) || seconds < 0) return '0:00';
-    const date = new Date(0);
-    date.setSeconds(seconds);
-    const timeString = date.toISOString().substring(11, 19);
-    // Elimina el '00:' inicial si el video dura menos de una hora
-    return seconds >= 3600 ? timeString : timeString.substring(3);
-};
+    return parts.map(v => v.toString().padStart(2, '0')).join(':');
+}
 
 // ----------------------------------------------------------------------
-// REPRODUCTOR EN FOCO (CUSTOM CONTROLS)
+// LÓGICA DE CONVERSIÓN Y EXTRACCIÓN DE ID
+// ----------------------------------------------------------------------
+
+function obtenerVideoInfo(url) {
+    const defaultVideoId = 'dQw4w9WgXcQ';
+    let videoId = defaultVideoId;
+    let isYouTube = false;
+
+    if (url) {
+        const youtubeRegex = /(?:youtube\.com|youtu\.be)\/(?:v=|embed\/|watch\?v=|\/v\/)?([a-zA-Z0-9_-]{11})/;
+        const match = url.match(youtubeRegex);
+
+        if (match && match[1]) {
+            videoId = match[1];
+            isYouTube = true;
+        }
+    }
+
+    if (isYouTube) {
+        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`; 
+        return { videoId, thumbnailUrl, isYouTube };
+    } else {
+        const thumbnailUrl = "https://placehold.co/1920x1080/1F2937/fff?text=VIDEO+EXTERNO"; 
+        return { videoId: null, thumbnailUrl, isYouTube: false };
+    }
+}
+
+// ----------------------------------------------------------------------
+// COMPONENTE ReproductorEnFoco (CON CORRECCIÓN ESTRICTA DEL REINICIO)
 // ----------------------------------------------------------------------
 
 function ReproductorEnFoco({ videoUrl, onBack }) {
     const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
+    const playerRef = React.useRef(null); 
+    const playerContainerRef = React.useRef(null); 
+    const backButtonRef = React.useRef(null); 
     
-    // Estados del Reproductor Custom
-    const [player, setPlayer] = useState(null);
-    const [isPlayerReady, setIsPlayerReady] = useState(false);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [duration, setDuration] = useState(0);
-    const [isMuted, setIsMuted] = useState(false);
-    const [bufferedPercent, setBufferedPercent] = useState(0);
-    
-    // Controles de UI
-    const [showControls, setShowControls] = useState(true);
-    const controlTimeoutRef = useRef(null);
-    const playerContainerRef = useRef(null);
-    const backButtonRef = useRef(null);
+    // Estados principales
+    const [isMuted, setIsMuted] = React.useState(true);
+    const [isPlaying, setIsPlaying] = React.useState(false);
+    const [showControls, setShowControls] = React.useState(true); 
+    const [currentTime, setCurrentTime] = React.useState(0); 
+    const [duration, setDuration] = React.useState(0);
+    const [bufferedPercent, setBufferedPercent] = React.useState(0); 
 
-    // Velocidad de avance/retroceso en segundos
-    const SEEK_TIME = 10;
+    // Refs para temporizadores e intervalos
+    const timeoutRef = React.useRef(null); 
+    const progressIntervalRef = React.useRef(null); 
+    const isPlayingRef = React.useRef(false); 
 
-    // 1. CARGA DEL API DE YOUTUBE (se ejecuta solo una vez al cargar el script)
-    useEffect(() => {
-        // Solo cargar si es un video de YouTube y la API no está cargada
-        if (!isYouTube || window.YT) return;
-
-        // Función para cargar la API de IFrame de YouTube
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        // Define la función global de la API de YouTube
-        window.onYouTubeIframeAPIReady = () => {
-            console.log('YouTube IFrame API Ready');
-            // Se asume que el player se creará en el siguiente useEffect
-        };
-
-        // Cleanup function (no es estrictamente necesaria para el script, pero buena práctica)
-        return () => {
-            if (window.onYouTubeIframeAPIReady) {
-                delete window.onYouTubeIframeAPIReady;
+    // Funciones de control estables (useCallback)
+    const startProgressInterval = React.useCallback(() => {
+        if (progressIntervalRef.current) {
+            clearInterval(progressIntervalRef.current);
+        }
+        progressIntervalRef.current = setInterval(() => {
+            const player = playerRef.current;
+            if (player && typeof player.getCurrentTime === 'function') {
+                setCurrentTime(player.getCurrentTime());
+                setDuration(player.getDuration()); 
+                const bufferedFraction = player.getVideoLoadedFraction(); 
+                setBufferedPercent(bufferedFraction * 100);
             }
-        };
-    }, [isYouTube]);
+        }, 250); 
+    }, []);
 
-    // 2. INICIALIZACIÓN Y LIMPIEZA DEL PLAYER (se ejecuta al montar y cuando el videoId cambia)
-    useEffect(() => {
-        if (!isYouTube || !videoId || !window.YT) return;
-
-        // Crea el reproductor de YouTube
-        const createPlayer = () => {
-            const newPlayer = new window.YT.Player('youtube-player-container', {
-                videoId: videoId,
-                playerVars: {
-                    'autoplay': 1,      // Iniciar automáticamente
-                    'controls': 0,      // Ocultar controles nativos
-                    'modestbranding': 1, // Sin el logo de YouTube grande
-                    'rel': 0,           // No mostrar videos relacionados al final
-                    'showinfo': 0,      // No mostrar título/información
-                    'enablejsapi': 1    // Habilitar la API de JS
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-            setPlayer(newPlayer);
-        };
-        
-        // Si el player ya existe y el videoId cambia, destrúyelo
-        if (player) {
-            player.destroy();
-            setPlayer(null);
-        }
-
-        // Si la API está lista, crea el reproductor inmediatamente
-        if (window.YT) {
-            createPlayer();
-        } else {
-             // Si la API no está lista (lo cual no debería pasar si isYouTube es true), usa un timeout
-             // Esto se hace como fallback, pero el 1er useEffect debería haber garantizado YT.
-            window.onYouTubeIframeAPIReady = () => {
-                createPlayer();
-                window.onYouTubeIframeAPIReady = null; // Limpiar la función global después de usarla
-            };
-        }
-
-
-        // Cleanup function
-        return () => {
-            if (player) {
-                player.destroy();
-                setPlayer(null);
-            }
-            setIsPlayerReady(false);
-            setIsPlaying(false);
-            setDuration(0);
-
-            if (controlTimeoutRef.current) {
-                clearTimeout(controlTimeoutRef.current);
-            }
-        };
-    }, [videoId, isYouTube]); // Dependencias: ID de video e indicador de YouTube
-
-    // 3. HANDLERS DE EVENTOS Y BUCLE DE ACTUALIZACIÓN
-    
-    // Evento onReady del Player
-    const onPlayerReady = (event) => {
-        setIsPlayerReady(true);
-        // Establecer el foco en el contenedor del reproductor para manejar teclas
-        if (playerContainerRef.current) {
-            // Asegura que el contenedor del reproductor esté enfocado al inicio
-            playerContainerRef.current.focus(); 
-        }
-        setDuration(event.target.getDuration());
-        setIsMuted(event.target.isMuted());
-        event.target.playVideo();
-        updatePlayerState(event.target);
-    };
-
-    // Evento onStateChange del Player
-    const onPlayerStateChange = (event) => {
-        // Los estados: -1 (Unstarted), 0 (Ended), 1 (Playing), 2 (Paused), 3 (Buffering), 5 (Cued)
-        if (event.data === window.YT.PlayerState.PLAYING) {
-            setIsPlaying(true);
-            resetControlTimeout(); // Reiniciar el timeout al empezar a reproducir
-        } else if (event.data === window.YT.PlayerState.PAUSED) {
-            setIsPlaying(false);
-            resetControlTimeout(true); // Mostrar controles indefinidamente al pausar
-        } else if (event.data === window.YT.PlayerState.ENDED) {
-            setIsPlaying(false);
-            resetControlTimeout(true);
-        } else if (event.data === window.YT.PlayerState.BUFFERING) {
-            // Se considera "jugando" mientras está cargando
-            // No cambiamos isPlaying a true aquí, confiamos en el estado PLAYING
-        }
-    };
-
-    // Bucle para actualizar el tiempo cada 250ms
-    useEffect(() => {
-        let interval;
-        if (isPlayerReady && isPlaying) {
-            interval = setInterval(() => {
-                if (player) {
-                    updatePlayerState(player);
-                }
-            }, 250);
-        } else {
-            clearInterval(interval);
-        }
-        return () => clearInterval(interval);
-    }, [isPlayerReady, isPlaying, player]);
-
-    // Función de actualización de estado del player
-    const updatePlayerState = (p) => {
-        setCurrentTime(p.getCurrentTime());
-        // Cálculo del porcentaje de buffer:
-        // Obtener el rango de tiempo más cargado
-        const loadedTime = p.getLoadedFraction() * p.getDuration();
-        const bufferPercent = p.getDuration() > 0 ? (loadedTime / p.getDuration()) * 100 : 0;
-        setBufferedPercent(bufferPercent);
-
-        // Sincronizar estado de mute
-        setIsMuted(p.isMuted());
-    };
-
-    // 4. FUNCIONES DE CONTROL DEL REPRODUCTOR
-    
-    const resetControlTimeout = useCallback((permanent = false) => {
-        if (controlTimeoutRef.current) {
-            clearTimeout(controlTimeoutRef.current);
-        }
-        setShowControls(true);
-        if (!permanent) {
-            // Ocultar controles después de 3 segundos de inactividad
-            controlTimeoutRef.current = setTimeout(() => {
-                setShowControls(false);
-            }, 3000);
+    const stopProgressInterval = React.useCallback(() => {
+        if (progressIntervalRef.current) {
+            clearInterval(progressIntervalRef.current);
+            progressIntervalRef.current = null;
         }
     }, []);
 
-    const togglePlayPause = useCallback(() => {
-        if (!player || !isPlayerReady) return;
+    const resetControlTimeout = React.useCallback(() => {
+        setShowControls(true); 
 
-        if (isPlaying) {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+        if (isPlayingRef.current) { 
+             timeoutRef.current = setTimeout(() => {
+                setShowControls(false);
+            }, CONTROLS_TIMEOUT);
+        }
+    }, []);
+
+    // Sincronización de Refs y Estados
+    React.useEffect(() => {
+        isPlayingRef.current = isPlaying;
+    }, [isPlaying]);
+
+    React.useEffect(() => {
+        if (playerContainerRef.current) {
+            playerContainerRef.current.focus();
+        }
+        if (showControls && backButtonRef.current) {
+            backButtonRef.current.focus();
+        }
+    }, [showControls]);
+
+
+    // 🔴 BLOQUE CRÍTICO: Inicialización del Reproductor 🔴
+    React.useEffect(() => {
+        if (!isYouTube || !videoId || !window.YT) {
+            return;
+        }
+
+        const playerId = 'youtube-player-container'; 
+
+        const newPlayer = new window.YT.Player(playerId, {
+            videoId: videoId,
+            playerVars: {
+                'autoplay': 1,
+                'controls': 0, 
+                'mute': 1, 
+                'disablekb': 1, 
+                'widget_referrer': window.location.href
+            },
+            events: {
+                'onReady': (event) => {
+                    playerRef.current = event.target; 
+                    resetControlTimeout(); 
+
+                    if (event.target.isMuted()) {
+                        event.target.unMute(); 
+                        setIsMuted(false);
+                    }
+                },
+                'onStateChange': (event) => {
+                  const state = event.data;
+                  
+                  if (state === YT.PlayerState.PLAYING) {
+                      setIsPlaying(true);
+                      startProgressInterval(); 
+                      resetControlTimeout(); 
+                      
+                  } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.BUFFERING) {
+                      setIsPlaying(false);
+                      stopProgressInterval(); 
+                      
+                  } else if (state === YT.PlayerState.ENDED) {
+                      setIsPlaying(false);
+                      stopProgressInterval(); 
+                      if (timeoutRef.current) {
+                          clearTimeout(timeoutRef.current);
+                      }
+                      setShowControls(true); 
+                  }
+                }
+            }
+        });
+
+        // Limpieza: Destruye el reproductor al desmontar el componente o cambiar el videoId.
+        return () => {
+            stopProgressInterval(); 
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+            if (playerRef.current && typeof playerRef.current.destroy === 'function') {
+                playerRef.current.destroy();
+                playerRef.current = null;
+            }
+        };
+    }, [videoId, isYouTube, startProgressInterval, stopProgressInterval, resetControlTimeout]); 
+    // ----------------------------------------------------------------------
+    
+    // LÓGICA DE CONTROL DE REPRODUCCIÓN (Toggle, Seek, Keys)
+    const togglePlayPause = () => {
+        const player = playerRef.current;
+        if (!player) return;
+
+        if (player.getPlayerState() === YT.PlayerState.PLAYING) {
             player.pauseVideo();
         } else {
             player.playVideo();
         }
-        // El estado isPlaying se actualizará en onPlayerStateChange
         resetControlTimeout();
-    }, [player, isPlayerReady, isPlaying, resetControlTimeout]);
+    };
 
-    const rewind = useCallback(() => {
-        if (!player || !isPlayerReady) return;
-        const newTime = Math.max(0, currentTime - SEEK_TIME);
-        player.seekTo(newTime, true);
-        setCurrentTime(newTime);
-        resetControlTimeout();
-    }, [player, isPlayerReady, currentTime, resetControlTimeout]);
+    const toggleMute = () => {
+        const player = playerRef.current;
+        if (!player) return;
 
-    const fastForward = useCallback(() => {
-        if (!player || !isPlayerReady) return;
-        const newTime = Math.min(duration, currentTime + SEEK_TIME);
-        player.seekTo(newTime, true);
-        setCurrentTime(newTime);
-        resetControlTimeout();
-    }, [player, isPlayerReady, currentTime, duration, resetControlTimeout]);
-
-    const toggleMute = useCallback(() => {
-        if (!player || !isPlayerReady) return;
-        if (isMuted) {
+        if (player.isMuted()) {
             player.unMute();
+            setIsMuted(false);
         } else {
             player.mute();
+            setIsMuted(true);
         }
-        setIsMuted(!isMuted); // Actualizar inmediatamente el estado de la UI
         resetControlTimeout();
-    }, [player, isPlayerReady, isMuted, resetControlTimeout]);
+    };
+    
+    const seekRelative = (seconds) => {
+        const player = playerRef.current;
+        if (!player) return;
 
-    const handleSeek = useCallback((e) => {
-        if (!player || !isPlayerReady || duration === 0) return;
+        const newTime = player.getCurrentTime() + seconds;
+        player.seekTo(newTime, true); 
+        setCurrentTime(newTime); 
+        resetControlTimeout();
+    }
+
+    const handleSeek = (e) => {
+        const player = playerRef.current;
+        if (!player || duration === 0) return;
 
         const rect = e.currentTarget.getBoundingClientRect();
-        const clickPositionX = e.clientX - rect.left;
-        const percentage = clickPositionX / rect.width;
-        const newTime = duration * percentage;
-        
-        player.seekTo(newTime, true);
-        setCurrentTime(newTime);
-        resetControlTimeout();
-    }, [player, isPlayerReady, duration, resetControlTimeout]);
+        const clickX = e.clientX - rect.left;
+        const percent = clickX / rect.width;
+        const newTime = duration * percent;
 
-    const handleOnBack = useCallback(() => {
-        if (player) {
-            // Asegúrate de que el reproductor se detenga antes de salir
-            player.stopVideo(); 
+        player.seekTo(newTime, true);
+        setCurrentTime(newTime); 
+        resetControlTimeout(); 
+    };
+
+    const rewind = () => seekRelative(-10); 
+    const fastForward = () => seekRelative(10); 
+
+    const handleOnBack = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
         }
         onBack();
-    }, [onBack, player]);
-
-    // LÓGICA DE TECLADO 
+    }
+    
     const handleKeyDown = (e) => {
-        // Mantiene el foco en el contenedor del reproductor y gestiona el timeout de los controles
+        if (!isYouTube) return; 
+
         resetControlTimeout(); 
-        
-        // Maneja las teclas de control primarias (D-Pad, Enter/Space, Mute)
+
         switch (e.key) {
             case 'Enter':
             case ' ': 
@@ -312,29 +269,20 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 e.preventDefault(); 
                 fastForward();
                 break;
-            // ----------------------------------------------------
-            // SOLUCIÓN MEJORADA PARA LA TECLA VOLVER:
-            // Incluimos 'ArrowUp' como alternativa común en controles de TV.
-            // ----------------------------------------------------
             case 'Escape': 
             case 'Backspace': 
-            case 'ArrowUp': // <--- ¡NUEVA TECLA AÑADIDA AQUÍ!
                 e.preventDefault();
-                handleOnBack(); // Llama a la función de volver al catálogo
-                break;
-            // ----------------------------------------------------
-            case 'm': // Tecla 'm' para mutear (común en reproductores web)
-                toggleMute();
+                handleOnBack();
                 break;
             default:
                 break;
         }
     };
 
-    // Cálculo del porcentaje de progreso (proporcionado por el usuario)
+    // Cálculo del porcentaje de progreso
     const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
     
-    // ICONOS (SVG) (proporcionados por el usuario)
+    // ICONOS (SVG)
     const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
     const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002z" clipRule="evenodd" /></svg>;
     const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 011 1v4a1 1 0 11-2 0V7a1 1 0 011-1zm-3 4a1 1 0 002 0V7a1 1 0 00-2 0v4z" clipRule="evenodd" /></svg>;
@@ -345,20 +293,6 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     const RewindIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M8.445 14.832A1 1 0 0010 14V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4zM14.445 14.832A1 1 0 0016 14V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z" /></svg>;
     const FastForwardIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4zM10.555 5.168A1 1 0 009 6v8a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4z" /></svg>;
 
-    // Mostrar un indicador de carga mientras el player se prepara
-    if (isYouTube && !isPlayerReady) {
-        return (
-            <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
-                <div className="text-white text-xl flex flex-col items-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-10 w-10 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <p className="mt-4">Cargando reproductor de YouTube...</p>
-                </div>
-            </div>
-        );
-    }
 
     return (
         <div 
@@ -367,20 +301,15 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             onClick={resetControlTimeout} 
             onKeyDown={handleKeyDown} 
             tabIndex={0} 
-            // Esto es crucial para que el contenedor pueda recibir eventos de teclado
-            style={{outline: 'none', background: 'black'}} 
+            style={{outline: 'none'}} 
         >
             <div className="w-full h-full flex flex-col items-center justify-center relative">
                 <div className="w-full h-full max-w-screen-xl max-h-[80vh] relative flex items-center justify-center">
                     <div 
                         id="youtube-player-container" 
                         tabIndex="-1" 
-                        // Se ajusta el contenedor para ser un aspect-video y centrado
                         className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden"
-                        // Estilo para asegurar que el iframe ocupe todo el espacio de su contenedor
-                        style={{ aspectRatio: '16 / 9', maxWidth: '100%', maxHeight: '100%' }} 
                     >
-                        {/* Se renderiza el iframe para videos NO-YouTube */}
                         {!isYouTube && (
                             <iframe
                                 tabIndex="-1" 
@@ -388,26 +317,21 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                                 src={videoUrl}
                                 allow="autoplay; fullscreen"
                                 allowFullScreen
-                                title="Video Externo"
                             ></iframe>
                         )}
-                        {/* Para videos de YouTube, el API crea un iframe dentro del div#youtube-player-container */}
                     </div>
                 </div>
 
                 {/* CONTROLES COMPLETOS (Barra + Botones + Tiempos) */}
-                {/* Nota: Los controles solo se muestran para el reproductor de YouTube con controles customizados */}
                 {isYouTube && (
                     <div 
                         className={`absolute bottom-10 w-full max-w-xl flex flex-col p-4 rounded-xl shadow-2xl 
-                                transition-opacity duration-300 ${showControls ? 'opacity-100 bg-gray-800/80' : 'opacity-0 pointer-events-none'}
-                                ${isPlayerReady ? '' : 'hidden'}`} // Ocultar si el player no está listo
+                                transition-opacity duration-300 ${showControls ? 'opacity-100 bg-gray-800/80' : 'opacity-0 pointer-events-none'}`}
                     >
                         {/* BARRA DE PROGRESO */}
                         <div 
                             onClick={handleSeek}
                             className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group mb-2 h-1.5 relative"
-                            // tabIndex solo debe estar activo si los controles son visibles
                             tabIndex={showControls ? 0 : -1} 
                             title="Barra de Progreso (Click para Saltar)"
                         >
@@ -437,9 +361,8 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                                 ref={backButtonRef}
                                 className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
                                             focus:ring-4 focus:ring-white focus:outline-none"
-                                // Asegura que el botón sea navegable solo si los controles están visibles
                                 tabIndex={showControls ? 0 : -1} 
-                                title="Volver al Catálogo (Escape / Flecha Arriba)"
+                                title="Volver al Catálogo (Tecla Escape)"
                             >
                                 <BackIcon />
                             </button>
@@ -497,18 +420,12 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
 
 const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
     const { thumbnailUrl } = obtenerVideoInfo(videoUrl);
-    const genericPlaceholderUrl = "https://placehold.co/1920x1080/0d1117/333?text=CARGANDO...";
 
     return (
         <div 
             className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-8 rounded-xl shadow-2xl bg-cover bg-center"
             tabIndex="-1" 
-            style={{ 
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('${thumbnailUrl}'), url('${genericPlaceholderUrl}')`,
-                // Ajustes para que la imagen de fondo cubra bien el área
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-            }}
+            style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('${thumbnailUrl}'), url('https://placehold.co/1920x1080/0d1117/333?text=CARGANDO...')` }}
         >
             <div className="relative p-8 max-w-xl">
                 <h2 className="text-4xl font-extrabold mb-2 text-white drop-shadow-lg">
@@ -522,8 +439,8 @@ const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, 
                     ref={ref}
                     onClick={() => onPlay(videoUrl)} 
                     className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg 
-                                 transition-all duration-300 hover:bg-red-700 
-                                 focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
+                                transition-all duration-300 hover:bg-red-700 
+                                focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                     tabIndex="0" 
                 >
                     Ver Ahora
@@ -539,7 +456,6 @@ function ReproductorDeVideo(props) {
     const { videoId, thumbnailUrl, isYouTube } = obtenerVideoInfo(props.url);
     const genericPlaceholderUrl = "https://placehold.co/600x337/333/fff?text=VIDEO+EXTERNO";
 
-    // Maneja errores de carga de miniaturas, cayendo a una imagen de baja calidad o a un placeholder genérico
     const handleImageError = (e) => {
         e.target.onerror = null; 
         if (isYouTube && videoId && e.target.src.includes('maxresdefault')) {
@@ -582,14 +498,11 @@ function ReproductorDeVideo(props) {
 // ----------------------------------------------------------------------
 
 function App() {
-    // Estado para saber qué video está en reproducción/foco
-    const [videoEnFocoUrl, setVideoEnFocoUrl] = useState(null);
-    const heroButtonRef = useRef(null); 
+    const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
+    const heroButtonRef = React.useRef(null); 
 
-    // Callback para volver al catálogo y restaurar el foco al botón principal
-    const handleBack = useCallback(() => {
+    const handleBack = React.useCallback(() => {
         setVideoEnFocoUrl(null);
-        // Usar setTimeout para permitir que la vista se re-renderice antes de intentar enfocar
         setTimeout(() => {
             if (heroButtonRef.current) {
                 heroButtonRef.current.focus();
@@ -608,7 +521,7 @@ function App() {
     const heroVideoUrl ="https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9eZPpS";
 
     return (
-        <div className="p-4 md:p-8 max-w-7xl mx-auto min-h-screen font-sans bg-gray-900 text-white">
+        <div className="p-4 md:p-8 max-w-7xl mx-auto min-h-screen bg-gray-900 text-white">
             <HeroBanner 
                 ref={heroButtonRef}
                 titulo="Estreno de la Semana"
@@ -618,18 +531,16 @@ function App() {
             />
 
             <h1 className="text-2xl font-bold mb-4 text-red-600">
-                Películas Recomendadas
+                Peliculas
             </h1>
 
-           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                 <ReproductorDeVideo titulo="Nephilim" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Simbad la aventura del minotauro" url="https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Alien Convergence" url="https://youtu.be/w6DKhpKjMTE?si=j-7kNNoz93l0UZk9" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Yeti el hombre de la nieve" url="https://youtu.be/_OWD2gaWdOM?si=M-7yKl2zS51hCOvf" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="D-railed" url="https://youtu.be/Ggz2LT9hVb0?si=UYnxkh9g7UH1G8uB" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="The Last Sharknado: It's About Time" url="https://www.youtube.com/watch?v=Fj-y5gN-FvA" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Deep Blue Sea 3" url="https://www.youtube.com/watch?v=68fJ66Uv2O4" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Another Sci-Fi Movie (External)" url="https://www.w3schools.com/html/mov_bbb.mp4" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Invasion letal" url="https://youtu.be/DXmynnoZ8X8?si=iw3LVlBhXPAr5C2l" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Otro Video Externo" url="https://external-video-url.com/video.mp4" onPlay={setVideoEnFocoUrl} />
             </div>
         </div>
     );
@@ -639,3 +550,4 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+

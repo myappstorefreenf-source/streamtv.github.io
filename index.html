@@ -30,52 +30,16 @@
         .player-container:focus {
              outline: none; /* Ocultar el molesto anillo de foco en el modo de pantalla completa */
         }
-        
-        /* --- INICIO: Estilos agregados para mejorar la UI y la compatibilidad --- */
-        .hero-background {
-            background-size: cover;
-            background-position: center;
-        }
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            max-height: 3rem; 
-        }
-        /* Estilos para asegurar que el reproductor ocupe el área máxima sin scroll */
-        #youtube-player-container {
-            display: flex;
-        }
-        .youtube-iframe {
-            width: 100%; 
-            height: 100%;
-            border: none;
-        }
-        /* Estilos específicos para los botones de control (Combinando con los existentes) */
+
+        /* Clases para animación de botones al enfocar/presionar */
         .control-button {
-            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s ease-in-out; /* Combinado */
+            transition: all 0.2s ease-in-out;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
         }
         .control-button:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6);
         }
-        .control-button:focus {
-            transform: scale(1.1); /* Estilo de foco del usuario */
-            outline: none;
-        }
-        /* Estilo para la barra de progreso */
-        .progress-bar-container {
-            height: 10px; 
-            position: relative; 
-        }
-        .progress-fill {
-            height: 100%;
-            transition: width 0.1s linear; 
-            position: relative; 
-        }
-        /* --- FIN: Estilos agregados --- */
     </style>
     
     <!-- Carga de librerías React y Babel Standalone -->
@@ -175,11 +139,11 @@
                 // Solo cargar si es un video de YouTube y la API no está cargada
                 if (!isYouTube || window.YT) return;
 
-                // Función para cargar la API de IFrame de YouTube
-                const tag = document.createElement('script');
-                tag.src = "https://www.youtube.com/iframe_api";
-                const firstScriptTag = document.getElementsByTagName('script')[0];
-                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                // Esta parte debería ser manejada por el <script> en el <head>, pero lo dejamos para robustez
+                // const tag = document.createElement('script');
+                // tag.src = "https://www.youtube.com/iframe_api";
+                // const firstScriptTag = document.getElementsByTagName('script')[0];
+                // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
                 // Define la función global de la API de YouTube
                 window.onYouTubeIframeAPIReady = () => {
@@ -187,7 +151,7 @@
                     // Se asume que el player se creará en el siguiente useEffect
                 };
 
-                // Cleanup function (no es estrictamente necesaria para el script, pero buena práctica)
+                // Cleanup function
                 return () => {
                     if (window.onYouTubeIframeAPIReady) {
                         delete window.onYouTubeIframeAPIReady;
@@ -229,8 +193,7 @@
                 if (window.YT) {
                     createPlayer();
                 } else {
-                    // Si la API no está lista (lo cual no debería pasar si isYouTube es true), usa un timeout
-                    // Esto se hace como fallback, pero el 1er useEffect debería haber garantizado YT.
+                    // Si la API no está lista, espera a que esté
                     window.onYouTubeIframeAPIReady = () => {
                         createPlayer();
                         window.onYouTubeIframeAPIReady = null; // Limpiar la función global después de usarla
@@ -259,7 +222,7 @@
             // Evento onReady del Player
             const onPlayerReady = (event) => {
                 setIsPlayerReady(true);
-                // El foco ya está garantizado por el useEffect debajo, pero se mantiene aquí por si acaso.
+                // Enfocar el contenedor para capturar las pulsaciones de teclado inmediatamente.
                 if (playerContainerRef.current) {
                     playerContainerRef.current.focus(); 
                 }
@@ -277,10 +240,8 @@
                 }
                 // Agregamos un listener para re-enfocar si el foco se pierde accidentalmente
                 const handleBlur = () => {
-                    if (videoEnFocoUrl) { // Solo si el reproductor está activo
-                        // Esto puede ser demasiado agresivo en algunos navegadores, pero es un buen intento
-                        // setTimeout(() => playerContainerRef.current?.focus(), 50);
-                    }
+                    // Solo intentar re-enfocar si el reproductor está activo
+                    // setTimeout(() => playerContainerRef.current?.focus(), 50);
                 };
 
                 const container = playerContainerRef.current;
@@ -304,10 +265,8 @@
                 } else if (event.data === window.YT.PlayerState.ENDED) {
                     setIsPlaying(false);
                     resetControlTimeout(true);
-                } else if (event.data === window.YT.PlayerState.BUFFERING) {
-                    // Se considera "jugando" mientras está cargando
-                    // No cambiamos isPlaying a true aquí, confiamos en el estado PLAYING
-                }
+                } 
+                // No es necesario manejar BUFFERING aquí, ya que el estado PLAYING lo cubrirá al reanudar
             };
 
             // Bucle para actualizar el tiempo cada 250ms
@@ -329,7 +288,6 @@
             const updatePlayerState = (p) => {
                 setCurrentTime(p.getCurrentTime());
                 // Cálculo del porcentaje de buffer:
-                // Obtener el rango de tiempo más cargado
                 const loadedTime = p.getLoadedFraction() * p.getDuration();
                 const bufferPercent = p.getDuration() > 0 ? (loadedTime / p.getDuration()) * 100 : 0;
                 setBufferedPercent(bufferPercent);
@@ -416,7 +374,7 @@
             // LÓGICA DE TECLADO 
             const handleKeyDown = (e) => {
                 // --- PARA DEPURACIÓN: Comprueba si esta función se está ejecutando ---
-                // console.log('Tecla presionada:', e.key); 
+                console.log('Tecla presionada:', e.key);
                 // ---------------------------------------------------------------------
 
                 // Mantiene el foco en el contenedor del reproductor y gestiona el timeout de los controles
@@ -438,7 +396,7 @@
                         fastForward();
                         break;
                     // ----------------------------------------------------
-                    // TECLAS DE VOLVER AL CATÁLOGO: Escape, Backspace o Flecha Arriba
+                    // TECLAS PARA VOLVER:
                     // ----------------------------------------------------
                     case 'Escape': 
                     case 'Backspace': 
@@ -458,8 +416,8 @@
             // Cálculo del porcentaje de progreso (proporcionado por el usuario)
             const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
             
-            // ICONOS (SVG) (proporcionados por el usuario)
-            const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinecap="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
+            // ICONOS (SVG)
+            const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
             const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002z" clipRule="evenodd" /></svg>;
             const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 011 1v4a1 1 0 11-2 0V7a1 1 0 011-1zm-3 4a1 1 0 002 0V7a1 1 0 00-2 0v4z" clipRule="evenodd" /></svg>;
             const VolumeIcon = () => isMuted ? 
@@ -487,7 +445,7 @@
             return (
                 <div 
                     ref={playerContainerRef}
-                    className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center player-container"
+                    className="player-container fixed inset-0 bg-black z-50 flex flex-col items-center justify-center"
                     onClick={resetControlTimeout} 
                     onKeyDown={handleKeyDown} 
                     tabIndex={0} 
@@ -500,15 +458,15 @@
                                 id="youtube-player-container" 
                                 tabIndex="-1" 
                                 // Se ajusta el contenedor para ser un aspect-video y centrado
-                                className="aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden"
+                                className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden"
                                 // Estilo para asegurar que el iframe ocupe todo el espacio de su contenedor
-                                style={{ aspectRatio: '16 / 9', maxWidth: '100%', maxHeight: '100%', width: '100%', height: '100%' }} 
+                                style={{ aspectRatio: '16 / 9', maxWidth: '100%', maxHeight: '100%' }} 
                             >
                                 {/* Se renderiza el iframe para videos NO-YouTube */}
                                 {!isYouTube && (
                                     <iframe
                                         tabIndex="-1" 
-                                        className="youtube-iframe rounded-xl shadow-2xl bg-gray-900"
+                                        className="youtube-iframe rounded-xl shadow-2xl bg-gray-900 w-full h-full"
                                         src={videoUrl}
                                         allow="autoplay; fullscreen"
                                         allowFullScreen
@@ -530,7 +488,7 @@
                                 {/* BARRA DE PROGRESO */}
                                 <div 
                                     onClick={handleSeek}
-                                    className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group mb-2 relative"
+                                    className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group mb-2 h-1.5 relative"
                                     // tabIndex solo debe estar activo si los controles son visibles
                                     tabIndex={showControls ? 0 : -1} 
                                     title="Barra de Progreso (Click para Saltar)"
@@ -543,7 +501,7 @@
 
                                     {/* INDICADOR DE TIEMPO REPRODUCIDO */}
                                     <div 
-                                        className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative" 
+                                        className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative h-full" 
                                         style={{ width: `${progressPercent}%` }}
                                     ></div>
                                 </div>
@@ -625,7 +583,7 @@
 
             return (
                 <div 
-                    className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-8 rounded-xl shadow-2xl"
+                    className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-8 rounded-xl shadow-2xl bg-cover bg-center"
                     tabIndex="-1" 
                     style={{ 
                         backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('${thumbnailUrl}'), url('${genericPlaceholderUrl}')`,
@@ -646,8 +604,8 @@
                             ref={ref}
                             onClick={() => onPlay(videoUrl)} 
                             className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg 
-                                         transition-all duration-300 hover:bg-red-700 
-                                         focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
+                                        transition-all duration-300 hover:bg-red-700 
+                                        focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                             tabIndex="0" 
                         >
                             Ver Ahora
@@ -729,6 +687,7 @@
                 />;
             }
 
+            // Video de prueba
             const heroVideoUrl ="https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9eZPpS";
 
             return (
@@ -745,7 +704,7 @@
                         Películas Recomendadas
                     </h1>
 
-                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                         <ReproductorDeVideo titulo="Nephilim" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
                         <ReproductorDeVideo titulo="Simbad la aventura del minotauro" url="https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N" onPlay={setVideoEnFocoUrl} />
                         <ReproductorDeVideo titulo="Alien Convergence" url="https://youtu.be/w6DKhpKjMTE?si=j-7kNNoz93l0UZk9" onPlay={setVideoEnFocoUrl} />
@@ -753,7 +712,8 @@
                         <ReproductorDeVideo titulo="D-railed" url="https://youtu.be/Ggz2LT9hVb0?si=UYnxkh9g7UH1G8uB" onPlay={setVideoEnFocoUrl} />
                         <ReproductorDeVideo titulo="The Last Sharknado: It's About Time" url="https://www.youtube.com/watch?v=Fj-y5gN-FvA" onPlay={setVideoEnFocoUrl} />
                         <ReproductorDeVideo titulo="Deep Blue Sea 3" url="https://www.youtube.com/watch?v=68fJ66Uv2O4" onPlay={setVideoEnFocoUrl} />
-                        <ReproductorDeVideo titulo="Another Sci-Fi Movie (External)" url="https://www.w3schools.com/html/mov_bbb.mp4" onPlay={setVideoEnFocoUrl} />
+                        {/* Ejemplo de video externo, no de YouTube */}
+                        <ReproductorDeVideo titulo="Another Sci-Fi Movie (External)" url="https://www.w3schools.com/html/mov_bbb.mp4" onPlay={setVideoEnFocoUrl} /> 
                     </div>
                 </div>
             );
@@ -761,8 +721,11 @@
 
         // Montaje de la aplicación
         const rootElement = document.getElementById('root');
-        const root = ReactDOM.createRoot(rootElement);
-        root.render(<App />);
+        // Usar la función de inicialización de React 18
+        if (rootElement) {
+            const root = ReactDOM.createRoot(rootElement);
+            root.render(<App />);
+        }
     </script>
 </body>
 </html>

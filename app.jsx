@@ -554,13 +554,72 @@ function App() {
                 Peliculas
             </h1>
 
-            <div className="grid grid-cols-2 sm:grid-cols-6 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-4">
                 <ReproductorDeVideo titulo="Nephilim" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Simbad la aventura del minotauro" url="https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Alien Convergence" url="https://youtu.be/w6DKhpKjMTE?si=j-7kNNoz93l0UZk9" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Yeti el hombre de la nieve" url="https://youtu.be/_OWD2gaWdOM?si=M-7yKl2zS51hCOvf" onPlay={setVideoEnFocoUrl} />
                 <ReproductorDeVideo titulo="Invasion letal" url="https://youtu.be/DXmynnoZ8X8?si=iw3LVlBhXPAr5C2l" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Otro Video Externo" url="https://external-video-url.com/video.mp4" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Cazador de demonios" url="https://youtu.be/UHvttPWH--Q?si=6yON_SdMIwywMJSC" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Jeppers Creepers" url= "https://youtu.be/hmKnm2jH_2Y?si=2qWanAyVpHHkUAWo" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Target Earth" url="https://youtu.be/cHFL7a3-2aY?si=4KHcRxuBCuWZjVxV" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="40 dias y noches" url="https://youtu.be/QdvMupiWUd8?si=2wbVNPZTkB7o8Z9b" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Legion de Heroes" url="https://youtu.be/g4r-cpKVEos?si=5cA99gki-Nc9BYNC" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Hulk 2" url="https://youtu.be/rf_ixD_yD_4?si=k28TepUpPchZr2TV" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Guerra de otro mundo" url="https://youtu.be/Mr2JAzHAquo?si=62pLmQ9gmkKfQa90" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Angeles vs Zombies" url="https://youtu.be/TVazxWtCr_E?si=q7ws8E5kkuHRZ6Qe" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Tierra perdida" url="https://youtu.be/QVj2CVk-Nio?si=MQH3We5LeRLL3_jO" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Donha" url="https://youtu.be/NcdYo_eMv4U?si=t_oDPCj8TNRQNVkC" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Impacto inminente" url="https://youtu.be/5pEFz_e7bSw?si=hyV51hXmHV7ROgux" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Supervivencia" url="https://youtu.be/10Lzga1uDpM?si=mEYDmw8WHhMT8Vx9" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Invasion Oculta" url="https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="El come huesos" url="https://youtu.be/d-eK3h5uDho?si=Gy3NDGqI-rAG4wz-" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Bermudas Avismo en el mar del norte" url="https://youtu.be/gwkUDXSGbxg?si=z966wQgljQviO304" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="La proxima generacion" url="https://youtu.be/ebvujopachw?si=FoZlTIM73kMVhB7o" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Secret Agent" url="https://youtu.be/X_dGD9oapyU?si=8CHKRMbktTSTH0W_" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="La Profesora Psicopata" url="https://youtu.be/fbdupvcfO6Q?si=fIRyTIZP0PFZbwUA" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="El secreto del Arca" url="https://youtu.be/pQ4bcl-5so0?si=nidy7Y0Z4ig4qLaI" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Drive" url="https://youtu.be/58yz3VijEcM?si=vitikf-8kg7LplPa" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Deep sea pithon" url="https://youtu.be/9yS6iJSrCAk?si=fMDse0Q2ltCkRb3H" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="impacto Final" url="https://youtu.be/42uqz1rMJVE?si=VKb63Pld6X3eshC6" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Starcraft" url="https://youtu.be/6_HQd1qnmxQ?si=rIOlxLjj_wj8L3Bk" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Venganza Mortal" url="https://youtu.be/VtIbY43Zajg?si=IudJM1cVTfB59uX7" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="The ninth gate" url="https://youtu.be/QskN9E6mCFk?si=iiRzaIMOX5yTxQQM" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Piratas del tesoro" url="https://youtu.be/Oh2x2KqrRDg?si=x5nrT14dLRHHfpFI" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Indiana Jone el Gran circulo" url="https://youtu.be/KONzw7qwEuA?si=X5gKKX3QzncutoIH" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Pasajeros" url="https://youtu.be/sg4HgAHmRac?si=3eH3jOjcPmqf3agq" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="La Rebelion" url="https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="El 5to elemento" url="https://youtu.be/iqeatp1VXVA?si=nDi2V3NTNBgjj03f" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Cazadores del mas alla" url="https://youtu.be/eww-r8o-JOc?si=xARiJSGOx4KM0DVk" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="El defensor" url="https://youtu.be/hhnYJ9h4qXg?si=y7fi1a2zGs6K0L80" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Identidad alterada" url="https://youtu.be/Huoda3CKCBY?si=0Sl_sRT2ekJ2a6yC" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Furia de los siglos" url="https://youtu.be/z2FQd1m63yo?si=WoCrG87EvdH2wIkz" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Colombiana 2" url="https://youtu.be/O8mFkQtbZBU?si=w4JVJRk8w5NCqX4r" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="The Mud" url="https://youtu.be/RAFQBNlL0aw?si=Mpk5QJx6tYE0_RNC" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="La aventura de Aladino" url="https://youtu.be/fsSryNsqPDY?si=4DJz6qAjS1tbotxj" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Peligro en el Amazonas" url="https://youtu.be/JDOoSVKh5gc?si=On_VQV5CuB_dFo1I" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Diamantes de sangre" url="https://youtu.be/4pa862ZDFcA?si=qFRCPE3imUfWmFLn" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Codigo de venganza" url="https://youtu.be/T9r-ov2kfaw?si=8VSGJx4IqOAmtC6x" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Hard target" url="https://youtu.be/ABDYUbHkf18?si=Ce0AVEwzUa55rots" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Air colision" url="https://youtu.be/znfZrxm4Wwc?si=wDjI2OrDqB3pPYaj" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Agente de inteligencia" url="https://youtu.be/H2ZXxag2WrM?si=SNcQ1b3-vESRGzCy" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Calificaciones Mortales" url="https://youtu.be/_j2VVJSwpy4?si=GJZ9I1bUlXYufDFr" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Rescate" url="https://youtu.be/Cci1N25m9MU?si=HjyjkXsEWZKmTMAa" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Tumba abierta" url="https://youtu.be/F1MQUkFKwjU?si=DG-mKXkPJxAQspbJ" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Jeepers creepers 2" url="https://youtu.be/2oX9KsBtVfY?si=tmODVRS9CkBTYLz_" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Jeepers Creepers 3" url="https://youtu.be/q6XSShKe-9c?si=LsECidR-qCG1r4JN" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Guerra del desierto" url="https://youtu.be/plkx8J1cxe4?si=X7KFK9VV9JecGzsK" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="El renacer de los heroes" url="https://youtu.be/mrtzpYuDNZA?si=HksJO454Rl4br0Xm" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Virus" url="https://youtu.be/T7hhuUKl2Nc?si=ysIlmatmK79DenKe" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Tears on the sun" url="https://youtu.be/ZwfQ1xtssIs?si=m3yMI1v5nkMQI9zT" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Fuego en los cielos" url="https://youtu.be/Pc410AWg4gM?si=qZGwEBKqAQ7X5ajN" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="En nombre de mis hijos" url="https://youtu.be/7XpgTVBfo9k?si=FYyZxENw-ttKZSZS" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Bajo un mismo techo" url="https://youtu.be/4My3KEB8QIo?si=Hu0nZivaJlaMrne8" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Killer Shark" url="https://youtu.be/lqBOR1N_XU8?si=g-hgKcgdwsaObzac" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Comodo vs Cobra" url="https://youtu.be/37O8qW7WBCI?si=HuN9_lxGrcoB3OHH" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Comodo" url="https://youtu.be/YQ8jHZZIRVc?si=mkt64P-dpd98DmGV" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="Black Waterk" url="https://youtu.be/6fiaMiJJ9MA?si=fbTiVDzt-9EIsVdm" onPlay={setVideoEnFocoUrl} />
+                <ReproductorDeVideo titulo="D-railed" url="https://youtu.be/Ggz2LT9hVb0?si=UYnxkh9g7UH1G8uB" onPlay={setVideoEnFocoUrl} />
             </div>
         </div>
     );
@@ -571,4 +630,5 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 

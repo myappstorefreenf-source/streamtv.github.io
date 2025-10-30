@@ -1,5 +1,5 @@
 // Variables y constantes globales
-const CONTROLS_TIMEOUT = 3000; 
+const CONTROLS_TIMEOUT = 1000; 
 const YT = window.YT; 
 
 // ----------------------------------------------------------------------
@@ -301,17 +301,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     // Cálculo del porcentaje de progreso
     const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
     
-    // ICONOS (SVG)
-    const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
-    const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002a1 1 0 000-1.664z" clipRule="evenodd" /></svg>;
-    const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 011 1v4a1 1 0 11-2 0V7a1 1 0 011-1zm-3 4a1 1 0 002 0V7a1 1 0 00-2 0v4z" clipRule="evenodd" /></svg>;
-    const VolumeIcon = () => isMuted ? 
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zm10.024 2.193a1 1 0 010 1.414L17.243 10l2.164 2.163a1 1 0 01-1.414 1.414L15.829 11.414l-2.163 2.164a1 1 0 01-1.414-1.414L14.414 10l-2.163-2.163a1 1 0 011.414-1.414l2.163 2.164 2.164-2.163a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-        :
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 5.059a1 1 0 011.414 0 9 9 0 010 12.582 1 1 0 11-1.414-1.414 7 7 0 000-9.754 1 1 0 010-1.414zM16.071 3.645a1 1 0 011.414 0 11 11 0 010 15.69 1 1 0 11-1.414-1.414 9 9 0 000-12.862 1 1 0 010-1.414z" clipRule="evenodd" /></svg>;
-    const RewindIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M8.445 14.832A1 1 0 0010 14V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4zM14.445 14.832A1 1 0 0016 14V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z" /></svg>;
-    const FastForwardIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4zM10.555 5.168A1 1 0 009 6v8a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4z" /></svg>;
-    
+  
     return (
         <div 
             ref={playerContainerRef}
@@ -374,56 +364,11 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
 
                         {/* Botones de Control */}
                         <div className="flex justify-center space-x-4">
-                            <button 
-                                onClick={handleOnBack}
-                                ref={backButtonRef}
-                                className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
-                                         focus:ring-4 focus:ring-white focus:outline-none"
-                                tabIndex={showControls ? 0 : -1} 
-                                title="Volver al Catálogo (Tecla Escape)"
-                            >
-                                <BackIcon />
-                            </button>
+                         
+                                                       
 
-                            <button 
-                                onClick={rewind}
-                                className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
-                                         focus:ring-4 focus:ring-white focus:outline-none"
-                                tabIndex={showControls ? 0 : -1}
-                                title="Retroceder 10 segundos (Tecla Izquierda)"
-                            >
-                                <RewindIcon />
-                            </button>
-
-                            <button 
-                                onClick={togglePlayPause}
-                                className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
-                                         focus:ring-4 focus:ring-white focus:outline-none"
-                                tabIndex={showControls ? 0 : -1}
-                                title={isPlaying ? "Pausar (Tecla Enter/Espacio)" : "Reproducir (Tecla Enter/Espacio)"}
-                            >
-                                {isPlaying ? <PauseIcon /> : <PlayIcon />}
-                            </button>
-
-                            <button 
-                                onClick={toggleMute}
-                                className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
-                                         focus:ring-4 focus:ring-white focus:outline-none"
-                                tabIndex={showControls ? 0 : -1}
-                                title={isMuted ? "Desactivar silencio" : "Silenciar"}
-                            >
-                                <VolumeIcon />
-                            </button>
-
-                            <button 
-                                onClick={fastForward}
-                                className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
-                                         focus:ring-4 focus:ring-white focus:outline-none"
-                                tabIndex={showControls ? 0 : -1}
-                                title="Avanzar 10 segundos (Tecla Derecha)"
-                            >
-                                <FastForwardIcon />
-                            </button>
+                            
+                            
                         </div>
                     </div>
                 )}
@@ -630,5 +575,6 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 

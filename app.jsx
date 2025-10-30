@@ -333,8 +333,8 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 {/* CONTROLES COMPLETOS (Barra + Botones + Tiempos) */}
                 {isYouTube && (
                     <div 
-                        className={`absolute bottom-10 w-full max-w-xl flex flex-col p-4 rounded-xl shadow-2xl 
-                                 transition-opacity duration-300 ${showControls ? 'opacity-100 bg-gray-800/80' : 'opacity-0 pointer-events-none'}`}
+                       className={`absolute bottom-0 w-full flex flex-col px-10 py -0.1
+                transition-opacity duration-300 ${showControls ? 'opacity-100 bg-gradient-to-t from-gray-900/90 to-transparent' : 'opacity-0 pointer-events-none'}`}
                     >
                         {/* BARRA DE PROGRESO */}
                         <div 
@@ -575,6 +575,7 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 
 

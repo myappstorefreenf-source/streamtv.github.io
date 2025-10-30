@@ -270,7 +270,9 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 fastForward();
                 break;
             case 'Escape': 
-            case 'Backspace': 
+            case 'Backspace':
+            case 'Back':           // ← agrega esto
+            case 'BrowserBack':    // ← y esto
                 e.preventDefault();
                 handleOnBack();
                 break;
@@ -550,4 +552,3 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
-

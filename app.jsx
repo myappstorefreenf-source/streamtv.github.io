@@ -104,8 +104,8 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         }
         if (isPlayingRef.current) { 
              timeoutRef.current = setTimeout(() => {
-                setShowControls(false);
-            }, CONTROLS_TIMEOUT);
+                 setShowControls(false);
+             }, CONTROLS_TIMEOUT);
         }
     }, []);
 
@@ -124,6 +124,21 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     }, [showControls]);
 
 
+    // 🚨 CORRECCIÓN CLAVE A: ESCUCHA DE TECLADO EN TODO EL DOCUMENTO (WebView Fix) 🚨
+    React.useEffect(() => {
+        // Solo aplica la escucha global si estamos usando YouTube (donde el iframe puede robar el foco)
+        if (!isYouTube) return; 
+        
+        // Vincula el listener a TODO el documento. Crucial para capturar la tecla 'BrowserBack'
+        document.addEventListener('keydown', handleKeyDown);
+
+        // Función de limpieza
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isYouTube, handleKeyDown]); // Depende de isYouTube y handleKeyDown
+
+    
     // 🔴 BLOQUE CRÍTICO: Inicialización del Reproductor 🔴
     React.useEffect(() => {
         if (!isYouTube || !videoId || !window.YT) {
@@ -152,25 +167,25 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                     }
                 },
                 'onStateChange': (event) => {
-                  const state = event.data;
-                  
-                  if (state === YT.PlayerState.PLAYING) {
-                      setIsPlaying(true);
-                      startProgressInterval(); 
-                      resetControlTimeout(); 
-                      
-                  } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.BUFFERING) {
-                      setIsPlaying(false);
-                      stopProgressInterval(); 
-                      
-                  } else if (state === YT.PlayerState.ENDED) {
-                      setIsPlaying(false);
-                      stopProgressInterval(); 
-                      if (timeoutRef.current) {
-                          clearTimeout(timeoutRef.current);
-                      }
-                      setShowControls(true); 
-                  }
+                    const state = event.data;
+                    
+                    if (state === YT.PlayerState.PLAYING) {
+                        setIsPlaying(true);
+                        startProgressInterval(); 
+                        resetControlTimeout(); 
+                        
+                    } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.BUFFERING) {
+                        setIsPlaying(false);
+                        stopProgressInterval(); 
+                        
+                    } else if (state === YT.PlayerState.ENDED) {
+                        setIsPlaying(false);
+                        stopProgressInterval(); 
+                        if (timeoutRef.current) {
+                            clearTimeout(timeoutRef.current);
+                        }
+                        setShowControls(true); 
+                    }
                 }
             }
         });
@@ -244,9 +259,11 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     const fastForward = () => seekRelative(10); 
 
     const handleOnBack = () => {
+        // Detener el timeout para los controles antes de salir
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
         }
+        // Llama a la prop onBack, que maneja el cambio de estado en el padre (App)
         onBack();
     }
     
@@ -271,10 +288,10 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 break;
             case 'Escape': 
             case 'Backspace':
-            case 'Back':           // ← agrega esto
-            case 'BrowserBack':    // ← y esto
+            case 'Back': 
+            case 'BrowserBack': // Captura la tecla inyectada desde Android
                 e.preventDefault();
-                handleOnBack();
+                handleOnBack(); // Ejecuta la función para volver al catálogo
                 break;
             default:
                 break;
@@ -286,7 +303,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     
     // ICONOS (SVG)
     const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
-    const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002z" clipRule="evenodd" /></svg>;
+    const PlayIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4.004a1 1 0 001.555.832l3.224-2.002a1 1 0 000-1.664l-3.224-2.002a1 1 0 000-1.664z" clipRule="evenodd" /></svg>;
     const PauseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 011 1v4a1 1 0 11-2 0V7a1 1 0 011-1zm-3 4a1 1 0 002 0V7a1 1 0 00-2 0v4z" clipRule="evenodd" /></svg>;
     const VolumeIcon = () => isMuted ? 
         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zm10.024 2.193a1 1 0 010 1.414L17.243 10l2.164 2.163a1 1 0 01-1.414 1.414L15.829 11.414l-2.163 2.164a1 1 0 01-1.414-1.414L14.414 10l-2.163-2.163a1 1 0 011.414-1.414l2.163 2.164 2.164-2.163a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
@@ -294,8 +311,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 5.059a1 1 0 011.414 0 9 9 0 010 12.582 1 1 0 11-1.414-1.414 7 7 0 000-9.754 1 1 0 010-1.414zM16.071 3.645a1 1 0 011.414 0 11 11 0 010 15.69 1 1 0 11-1.414-1.414 9 9 0 000-12.862 1 1 0 010-1.414z" clipRule="evenodd" /></svg>;
     const RewindIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M8.445 14.832A1 1 0 0010 14V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4zM14.445 14.832A1 1 0 0016 14V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z" /></svg>;
     const FastForwardIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4zM10.555 5.168A1 1 0 009 6v8a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4z" /></svg>;
-
-
+    
     return (
         <div 
             ref={playerContainerRef}
@@ -328,7 +344,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 {isYouTube && (
                     <div 
                         className={`absolute bottom-10 w-full max-w-xl flex flex-col p-4 rounded-xl shadow-2xl 
-                                transition-opacity duration-300 ${showControls ? 'opacity-100 bg-gray-800/80' : 'opacity-0 pointer-events-none'}`}
+                                 transition-opacity duration-300 ${showControls ? 'opacity-100 bg-gray-800/80' : 'opacity-0 pointer-events-none'}`}
                     >
                         {/* BARRA DE PROGRESO */}
                         <div 
@@ -362,7 +378,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                                 onClick={handleOnBack}
                                 ref={backButtonRef}
                                 className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                         focus:ring-4 focus:ring-white focus:outline-none"
                                 tabIndex={showControls ? 0 : -1} 
                                 title="Volver al Catálogo (Tecla Escape)"
                             >
@@ -372,7 +388,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                             <button 
                                 onClick={rewind}
                                 className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                         focus:ring-4 focus:ring-white focus:outline-none"
                                 tabIndex={showControls ? 0 : -1}
                                 title="Retroceder 10 segundos (Tecla Izquierda)"
                             >
@@ -382,7 +398,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                             <button 
                                 onClick={togglePlayPause}
                                 className="control-button text-white p-2 rounded-full bg-red-600 hover:bg-red-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                         focus:ring-4 focus:ring-white focus:outline-none"
                                 tabIndex={showControls ? 0 : -1}
                                 title={isPlaying ? "Pausar (Tecla Enter/Espacio)" : "Reproducir (Tecla Enter/Espacio)"}
                             >
@@ -392,7 +408,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                             <button 
                                 onClick={toggleMute}
                                 className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                         focus:ring-4 focus:ring-white focus:outline-none"
                                 tabIndex={showControls ? 0 : -1}
                                 title={isMuted ? "Desactivar silencio" : "Silenciar"}
                             >
@@ -402,7 +418,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                             <button 
                                 onClick={fastForward}
                                 className="control-button text-white p-2 rounded-full bg-gray-600 hover:bg-gray-700 
-                                            focus:ring-4 focus:ring-white focus:outline-none"
+                                         focus:ring-4 focus:ring-white focus:outline-none"
                                 tabIndex={showControls ? 0 : -1}
                                 title="Avanzar 10 segundos (Tecla Derecha)"
                             >
@@ -441,8 +457,8 @@ const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, 
                     ref={ref}
                     onClick={() => onPlay(videoUrl)} 
                     className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg 
-                                transition-all duration-300 hover:bg-red-700 
-                                focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
+                             transition-all duration-300 hover:bg-red-700 
+                             focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                     tabIndex="0" 
                 >
                     Ver Ahora
@@ -470,8 +486,8 @@ function ReproductorDeVideo(props) {
     return (
         <div 
             className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg 
-                        transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] 
-                        focus:ring-4 focus:ring-red-500 focus:outline-none"
+                         transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] 
+                         focus:ring-4 focus:ring-red-500 focus:outline-none"
             onClick={() => props.onPlay(props.url)} 
             tabIndex="0" 
         >
@@ -503,13 +519,15 @@ function App() {
     const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
     const heroButtonRef = React.useRef(null); 
 
+    // 🚨 CORRECCIÓN CLAVE B: Aumentar el tiempo de espera para el re-enfoque 🚨
     const handleBack = React.useCallback(() => {
         setVideoEnFocoUrl(null);
         setTimeout(() => {
             if (heroButtonRef.current) {
+                // Devolver el foco al botón del HeroBanner
                 heroButtonRef.current.focus();
             }
-        }, 0);
+        }, 50); // Tiempo incrementado (antes era 0)
     }, []);
 
 
@@ -549,6 +567,7 @@ function App() {
 }
 
 // Montaje de la aplicación
+// NOTA: Esto asume que tienes ReactDOM importado o accesible globalmente (ej: usando un CDN)
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);

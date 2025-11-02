@@ -48,3 +48,6 @@
 .ocultar-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Edge, Opera */
 }
+.ocultar-scrollbar::-webkit-scrollbar {
+    display: none;
+}

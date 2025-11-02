@@ -92,7 +92,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         }
     }, []);
 
-    // AJUSTE CLAVE: Lógica de timeout para ocultar los controles
+    // Lógica de timeout para ocultar los controles
     const resetControlTimeout = React.useCallback(() => {
         setShowControls(true); 
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -126,7 +126,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         }
     }, [showControls]);
     
-    // AÑADIDO: Si el foco cambia a un control, reinicia el timeout sin ocultar.
+    // Si el foco cambia a un control, reinicia el timeout sin ocultar.
     React.useEffect(() => {
         const handleFocusChange = () => {
              // Si el foco entra en un control, aseguramos que los controles se muestren
@@ -213,12 +213,13 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             case 'Enter': case ' ': 
                 e.preventDefault(); 
                 
+                // CORRECCIÓN CLAVE: Pausa/Play con Enter/OK siempre que el foco no esté en el botón Volver.
                 if (isFocusOnBackButton) {
-                    // CORRECCIÓN CLAVE 1: Vuelve al catálogo si el foco está en el botón "Volver"
+                    // Prioridad 1: Si el foco está en el botón Volver, SALIR.
                     handleOnBack();
                 } 
-                else if (isFocusOnPlayerContainer) {
-                    // CORRECCIÓN CLAVE 2: Pausar/Reproducir si el foco está en el contenedor principal (video)
+                else { 
+                    // Prioridad 2: Si el foco NO está en Volver (está en el video o la barra), PAUSAR/REPRODUCIR.
                     const playerState = playerRef.current?.getPlayerState();
                     if (playerState === YT.PlayerState.PLAYING || playerState === YT.PlayerState.BUFFERING) {
                         playerRef.current.pauseVideo();
@@ -829,6 +830,9 @@ function App() {
 }
 
 // Montaje de la aplicación
-const rootElement = document.getElementById('root');
-const root = ReactDOM.createRoot(rootElement);
-root.render(<App />);
+// NOTA: Para que esto funcione, debes tener los scripts de React, ReactDOM, 
+// y la API de YouTube Iframe Player cargados ANTES de este código, 
+// y un elemento <div id="root"> en tu HTML.
+ const rootElement = document.getElementById('root');
+ const root = ReactDOM.createRoot(rootElement);
+ root.render(<App />);

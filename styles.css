@@ -41,3 +41,10 @@
     transition: width 0.1s linear; /* Transición para un movimiento suave */
     position: relative; /* Asegurar que la barra roja esté sobre el buffer */
 }
+.ocultar-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.ocultar-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge, Opera */
+}

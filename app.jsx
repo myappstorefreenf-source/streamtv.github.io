@@ -55,7 +55,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     const playerRef = React.useRef(null); 
     const playerContainerRef = React.useRef(null); 
     const backButtonRef = React.useRef(null); 
-    const progressBarRef = React.useRef(null); // Ref para la barra de progreso
+    const progressBarRef = React.useRef(null); 
     
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [showControls, setShowControls] = React.useState(true); 
@@ -66,6 +66,11 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     const timeoutRef = React.useRef(null); 
     const progressIntervalRef = React.useRef(null); 
     const isPlayingRef = React.useRef(false); 
+
+    const isControlFocused = React.useCallback(() => {
+        const active = document.activeElement;
+        return active === backButtonRef.current || active === progressBarRef.current;
+    }, []);
 
     const startProgressInterval = React.useCallback(() => {
         if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
@@ -87,10 +92,14 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         }
     }, []);
 
+    // AJUSTE CLAVE: Lógica de timeout para ocultar los controles
     const resetControlTimeout = React.useCallback(() => {
         setShowControls(true); 
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        if (isPlayingRef.current) { 
+        
+        // Solo iniciamos el timeout si el video está reproduciéndose Y
+        // el foco NO está en un control interactivo (botón Volver o Barra)
+        if (isPlayingRef.current && !isControlFocused()) { 
              timeoutRef.current = setTimeout(() => {
                  setShowControls(false);
                  // Mueve el foco al contenedor principal cuando los controles se ocultan
@@ -99,13 +108,13 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                  }
              }, CONTROLS_TIMEOUT);
         }
-    }, []);
+    }, [isControlFocused]);
 
     React.useEffect(() => {
         isPlayingRef.current = isPlaying;
     }, [isPlaying]);
 
-    // Lógica de Foco: Enfoca el botón al mostrar, o el contenedor al ocultar.
+    // Lógica de Foco Inicial: Enfoca el botón al mostrar, o el contenedor al ocultar.
     React.useEffect(() => {
         if (showControls) {
             // Cuando los controles aparecen, siempre enfocamos el botón Volver primero
@@ -116,6 +125,23 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
              playerContainerRef.current.focus();
         }
     }, [showControls]);
+    
+    // AÑADIDO: Si el foco cambia a un control, reinicia el timeout sin ocultar.
+    React.useEffect(() => {
+        const handleFocusChange = () => {
+             // Si el foco entra en un control, aseguramos que los controles se muestren
+             if (isControlFocused()) {
+                 setShowControls(true);
+                 if (timeoutRef.current) clearTimeout(timeoutRef.current); // Detenemos el auto-ocultamiento
+             } else {
+                 // Si el foco sale de un control (ej: al contenedor), reiniciamos el timeout
+                 resetControlTimeout();
+             }
+        };
+
+        window.addEventListener('focusin', handleFocusChange);
+        return () => window.removeEventListener('focusin', handleFocusChange);
+    }, [isControlFocused, resetControlTimeout]);
 
     React.useEffect(() => {
         if (!isYouTube || !videoId || !window.YT) return;
@@ -174,19 +200,24 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             
             if (!showControls) {
                 setShowControls(true); 
-                resetControlTimeout(); 
+                // El useEffect se encargará de enfocar el botón Volver
                 return;
             }
         }
 
-        // Si los controles están visibles, reinicia el timeout.
+        // Siempre reinicia el contador de auto-ocultamiento al presionar cualquier tecla D-Pad/Enter
         resetControlTimeout(); 
         
         switch (e.key) {
             case 'Enter': case ' ': 
                 e.preventDefault(); 
-                // Pausar/Reproducir si el foco está en el contenedor principal (video)
-                if (currentFocusedElement === playerContainerRef.current) {
+                
+                if (currentFocusedElement === backButtonRef.current) {
+                    // CORRECCIÓN 1: Vuelve al catálogo
+                    handleOnBack();
+                } 
+                else if (currentFocusedElement === playerContainerRef.current) {
+                    // CORRECCIÓN 2: Pausar/Reproducir si el foco está en el contenedor principal
                     playerRef.current?.getPlayerState() === YT.PlayerState.PLAYING ? playerRef.current.pauseVideo() : playerRef.current.playVideo();
                 }
                 break;
@@ -194,23 +225,23 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             // 2. Navegación D-Pad Vertical entre Controles (Volver <-> Barra)
             case 'ArrowDown': 
                 if (currentFocusedElement === backButtonRef.current) {
-                    progressBarRef.current?.focus(); // Foco al siguiente elemento
+                    progressBarRef.current?.focus(); 
                 } else if (showControls) {
-                    // Si ya estamos en la barra (o en el contenedor), saltamos adelante 10s.
-                    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
+                    // Si ya estamos en la barra, o en el contenedor, saltamos adelante 10s.
+                     playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
                 }
                 break;
                 
             case 'ArrowUp': 
                 if (currentFocusedElement === progressBarRef.current) {
-                    backButtonRef.current?.focus(); // Foco al elemento anterior
+                    backButtonRef.current?.focus(); 
                 } else if (showControls) {
-                    // Si ya estamos en el botón Volver (o en el contenedor), saltamos atrás 10s.
+                    // Si ya estamos en el botón Volver, no hay nada arriba, saltamos atrás 10s.
                     playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
                 }
                 break;
                 
-            // 3. Navegación D-Pad Horizontal (Salto 10s si los controles están visibles)
+            // 3. Navegación D-Pad Horizontal (Salto 10s)
             case 'ArrowLeft': 
                  if (showControls) playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
                  break;

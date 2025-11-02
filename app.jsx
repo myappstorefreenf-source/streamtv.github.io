@@ -335,7 +335,7 @@ function TarjetaMas({ onShowAll, count, categoryIndex }) {
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTE MasVideosGrid (Con Navegación 2D Forzada)
+// COMPONENTE MasVideosGrid (Con Navegación 2D Forzada y Enter)
 // ----------------------------------------------------------------------
 
 function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
@@ -353,9 +353,8 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
     const handleGridDpadNavigation = React.useCallback((event) => {
         const currentFocusedElement = document.activeElement;
         
-        // Elementos enfocables en la grid (Tarjetas de Video + Botón Cerrar)
         const focusableElements = Array.from(
-            gridRef.current.querySelectorAll('button[tabindex="0"], div.video-card[tabindex="0"]')
+            gridRef.current.querySelectorAll('button[tabIndex="0"], div.video-card[tabIndex="0"]')
         ).filter(el => el.offsetParent !== null);
         
         let currentIndex = focusableElements.indexOf(currentFocusedElement);
@@ -367,16 +366,21 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
             return;
         }
 
+        // --- MANEJO DE ACCIÓN OK / ENTER ---
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault(); 
+            currentFocusedElement.click(); // Simula el clic en el elemento enfocado
+            return; 
+        }
+
         // Manejo de la tecla 'Back' para salir del Grid
         if (event.key === 'Escape' || event.key === 'Backspace' || event.key === 'Back' || event.key === 'BrowserBack') {
             onClose();
             return; 
         }
 
-        event.preventDefault(); // Detenemos el scroll nativo.
+        event.preventDefault(); 
 
-        // NOTA: El número de columnas debe coincidir con el CSS (grid-cols-6)
-        // El botón Cerrar es el índice 0. Las tarjetas comienzan en el índice 1.
         const columns = 6; 
         let nextIndex = currentIndex;
 
@@ -391,14 +395,13 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
                 break;
             case 'ArrowDown':
                 if (currentIndex === 0) {
-                    nextIndex = 1; // De Cerrar (0) a la primera tarjeta (1)
+                    nextIndex = 1; 
                 } else {
                     nextIndex = currentIndex + columns;
                 }
                 if (nextIndex >= focusableElements.length) nextIndex = currentIndex;
                 break;
             case 'ArrowUp':
-                // De las primeras filas al botón Cerrar (0)
                 if (currentIndex > 0 && currentIndex <= columns) {
                     nextIndex = 0; 
                 } else if (currentIndex > columns) {
@@ -427,7 +430,6 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
     React.useEffect(() => {
         const gridElement = gridRef.current;
         if (gridElement) {
-            // Se usa capture: true para asegurarse de capturar los eventos dentro del Grid.
             gridElement.addEventListener('keydown', handleGridDpadNavigation, true); 
         }
         return () => {
@@ -439,11 +441,9 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
 
 
     return (
-        // Se añade tabIndex=0 al contenedor para que el keydown handler funcione
         <div ref={gridRef} className="mas-videos-grid fixed inset-0 bg-gray-900/95 z-40 overflow-y-auto p-4 md:p-8" tabIndex={0} style={{ outline: 'none' }}>
             <div className="max-w-7xl mx-auto">
                 
-                {/* Cabecera y Botón Cerrar */}
                 <div className="flex justify-between items-center mb-6 sticky top-0 bg-gray-900/90 py-2 z-10">
                     <h1 className="text-3xl font-bold text-red-600 capitalize">
                         Todos los Videos de {categoria}
@@ -459,7 +459,6 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
                     </button>
                 </div>
 
-                {/* Cuadrícula de Videos */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                     {videos.map((video, index) => (
                         <ReproductorDeVideo 
@@ -467,7 +466,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
                             titulo={video.titulo} 
                             url={video.url} 
                             onPlay={onPlay} 
-                            categoryIndex={-1} // Índice -1 para asegurar que no interfieren con el flujo principal del carrusel.
+                            categoryIndex={-1} 
                         />
                     ))}
                 </div>
@@ -481,7 +480,6 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
 // ----------------------------------------------------------------------
 
 const CATALOGO = {
-    // ... (Tu objeto CATALOGO completo se mantiene aquí)
     accion: [
         { titulo: "Nephilim", url: "https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9eZPpS" },
         { titulo: "Simbad la aventura del minotauro", url: "https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N" },
@@ -559,7 +557,7 @@ const CATALOGO = {
 };
 
 // ----------------------------------------------------------------------
-// COMPONENTE PRINCIPAL APP (D-Pad Handler con Navegación Vertical Forzada)
+// COMPONENTE PRINCIPAL APP (D-Pad Handler con Navegación Vertical Forzada y Enter)
 // ----------------------------------------------------------------------
 
 function App() {
@@ -580,15 +578,13 @@ function App() {
     // CONTROLADOR DE NAVEGACIÓN D-PAD CATÁLOGO (CARRUSELES)
     // ------------------------------------------------------
     const handleDpadNavigation = React.useCallback((event) => {
-        // Solo aplica si NO estamos en el reproductor o en la grid
         if (videoEnFocoUrl || mostrarMasGrid) return; 
 
         const currentFocusedElement = document.activeElement;
         
-        // Elementos enfocables en el catálogo principal
         const focusableElements = Array.from(
-            document.querySelectorAll('button[tabindex="0"], div.video-card[tabindex="0"]')
-        ).filter(el => el.offsetParent !== null && !el.closest('.mas-videos-grid')); // Filtra la Grid
+            document.querySelectorAll('button[tabIndex="0"], div.video-card[tabIndex="0"]')
+        ).filter(el => el.offsetParent !== null && !el.closest('.mas-videos-grid')); 
         
         const isInteractiveElement = currentFocusedElement && 
             (currentFocusedElement.classList.contains('video-card') || 
@@ -598,22 +594,20 @@ function App() {
 
         event.preventDefault(); 
 
+        // --- MANEJO DE ACCIÓN OK / ENTER ---
+        if (event.key === 'Enter' || event.key === ' ') {
+             currentFocusedElement.click(); 
+             return; 
+        }
+
         const currentIndex = focusableElements.indexOf(currentFocusedElement);
         let nextElement = null;
-        let nextIndex = -1;
 
         // 1. NAVEGACIÓN HORIZONTAL (ArrowRight / ArrowLeft)
         if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
-            if (event.key === 'ArrowRight') {
-                nextIndex = currentIndex + 1;
-                if (nextIndex < focusableElements.length) { 
-                    nextElement = focusableElements[nextIndex];
-                }
-            } else if (event.key === 'ArrowLeft') {
-                nextIndex = currentIndex - 1;
-                if (nextIndex >= 0) {
-                    nextElement = focusableElements[nextIndex];
-                }
+            let nextIndex = event.key === 'ArrowRight' ? currentIndex + 1 : currentIndex - 1;
+            if (nextIndex >= 0 && nextIndex < focusableElements.length) {
+                nextElement = focusableElements[nextIndex];
             }
         } 
         
@@ -624,11 +618,9 @@ function App() {
             
             if (event.key === 'ArrowDown') {
                 
-                // Salto del Hero (0) a la primera fila (1)
                 if (currentCategoryIndex === 0) {
                     nextElement = focusableElements.find(el => el.dataset.categoryIndex === '1');
                 } 
-                // Salto entre filas del Catálogo
                 else {
                     const nextCategoryIndex = currentCategoryIndex + 1;
                     nextElement = focusableElements.find(el => el.dataset.categoryIndex === nextCategoryIndex.toString());
@@ -636,12 +628,9 @@ function App() {
                 
             } else if (event.key === 'ArrowUp') {
                 
-                // Salto de la primera fila (1) al Hero (0)
                 if (currentCategoryIndex === 1) {
                     nextElement = heroButtonRef.current;
-                }
-                // Salto entre filas del Catálogo (hacia arriba)
-                else if (currentCategoryIndex > 1) {
+                } else if (currentCategoryIndex > 1) {
                     const prevCategoryIndex = currentCategoryIndex - 1;
                     nextElement = focusableElements.find(el => el.dataset.categoryIndex === prevCategoryIndex.toString());
                 }
@@ -668,7 +657,7 @@ function App() {
         };
     }, [handleDpadNavigation]);
     
-    // Foco Inicial (al Hero Banner)
+    // Foco Inicial
     React.useEffect(() => {
         if (!videoEnFocoUrl && !mostrarMasGrid) {
             setTimeout(() => {
@@ -678,8 +667,6 @@ function App() {
             }, 100);
         }
     }, [videoEnFocoUrl, mostrarMasGrid]);
-    
-    // NOTE: El manejo de la tecla ESC/Back para la Grid fue movido dentro de MasVideosGrid.
 
     if (videoEnFocoUrl) {
         return <ReproductorEnFoco videoUrl={videoEnFocoUrl} onBack={handleBack} />;

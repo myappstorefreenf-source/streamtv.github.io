@@ -45,7 +45,7 @@ function obtenerVideoInfo(url) {
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTE ReproductorEnFoco (Reproductor a Pantalla Completa)
+// COMPONENTE ReproductorEnFoco (Reproductor a Pantalla Completa con Foco Corregido)
 // ----------------------------------------------------------------------
 
 function ReproductorEnFoco({ videoUrl, onBack }) {
@@ -90,6 +90,10 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         if (isPlayingRef.current) { 
              timeoutRef.current = setTimeout(() => {
                  setShowControls(false);
+                 // Mueve el foco al contenedor principal cuando los controles se ocultan
+                 if (playerContainerRef.current) {
+                     playerContainerRef.current.focus(); 
+                 }
              }, CONTROLS_TIMEOUT);
         }
     }, []);
@@ -98,9 +102,13 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         isPlayingRef.current = isPlaying;
     }, [isPlaying]);
 
+    // Lógica de Foco: Enfoca el botón al mostrar, o el contenedor al ocultar.
     React.useEffect(() => {
-        if (playerContainerRef.current) playerContainerRef.current.focus();
-        if (showControls && backButtonRef.current) backButtonRef.current.focus();
+        if (showControls && backButtonRef.current) {
+            backButtonRef.current.focus();
+        } else if (!showControls && playerContainerRef.current) {
+             playerContainerRef.current.focus();
+        }
     }, [showControls]);
 
     React.useEffect(() => {
@@ -342,14 +350,12 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
     const gridRef = React.useRef(null);
     const closeButtonRef = React.useRef(null);
     
-    // 1. Lógica de Foco Inicial
     React.useEffect(() => {
         if (closeButtonRef.current) {
             closeButtonRef.current.focus();
         }
     }, []);
 
-    // 2. D-Pad Navigation Handler (Lógica 2D)
     const handleGridDpadNavigation = React.useCallback((event) => {
         const currentFocusedElement = document.activeElement;
         
@@ -369,7 +375,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
         // --- MANEJO DE ACCIÓN OK / ENTER ---
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault(); 
-            currentFocusedElement.click(); // Simula el clic en el elemento enfocado
+            currentFocusedElement.click(); 
             return; 
         }
 
@@ -426,7 +432,6 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
         }
     }, [videos, onClose]);
 
-    // 3. Listener de Teclado del Grid
     React.useEffect(() => {
         const gridElement = gridRef.current;
         if (gridElement) {
@@ -557,7 +562,7 @@ const CATALOGO = {
 };
 
 // ----------------------------------------------------------------------
-// COMPONENTE PRINCIPAL APP (D-Pad Handler con Navegación Vertical Forzada y Enter)
+// COMPONENTE PRINCIPAL APP
 // ----------------------------------------------------------------------
 
 function App() {
@@ -574,9 +579,6 @@ function App() {
         }, 50); 
     }, []);
 
-    // ------------------------------------------------------
-    // CONTROLADOR DE NAVEGACIÓN D-PAD CATÁLOGO (CARRUSELES)
-    // ------------------------------------------------------
     const handleDpadNavigation = React.useCallback((event) => {
         if (videoEnFocoUrl || mostrarMasGrid) return; 
 

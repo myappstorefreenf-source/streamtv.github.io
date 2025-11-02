@@ -1,11 +1,12 @@
 // Este código asume que React, ReactDOM, y window.YT están cargados en el entorno global.
-// Se recomienda usar Tailwind CSS para los estilos.
+// Requiere la configuración de un entorno React y la inclusión de Tailwind CSS.
 
 // ----------------------------------------------------------------------
 // UTILERÍAS Y LÓGICA DE VIDEO
 // ----------------------------------------------------------------------
 
 const CONTROLS_TIMEOUT = 3000; 
+// Asegúrate de que YT esté disponible globalmente (cargando la API de YouTube Iframe)
 const YT = window.YT; 
 
 function formatTime(seconds) {
@@ -46,7 +47,7 @@ function obtenerVideoInfo(url) {
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTE ReproductorEnFoco (Reproductor a Pantalla Completa con Foco Corregido)
+// COMPONENTE ReproductorEnFoco (Reproductor a Pantalla Completa)
 // ----------------------------------------------------------------------
 
 function ReproductorEnFoco({ videoUrl, onBack }) {
@@ -54,6 +55,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     const playerRef = React.useRef(null); 
     const playerContainerRef = React.useRef(null); 
     const backButtonRef = React.useRef(null); 
+    const progressBarRef = React.useRef(null); // Ref para la barra de progreso
     
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [showControls, setShowControls] = React.useState(true); 
@@ -105,8 +107,11 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
 
     // Lógica de Foco: Enfoca el botón al mostrar, o el contenedor al ocultar.
     React.useEffect(() => {
-        if (showControls && backButtonRef.current) {
-            backButtonRef.current.focus();
+        if (showControls) {
+            // Cuando los controles aparecen, siempre enfocamos el botón Volver primero
+            if (backButtonRef.current) {
+                backButtonRef.current.focus();
+            }
         } else if (!showControls && playerContainerRef.current) {
              playerContainerRef.current.focus();
         }
@@ -157,15 +162,18 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         onBack();
     }
     
+    // LÓGICA DE NAVEGACIÓN D-PAD EN EL REPRODUCTOR
     const handleKeyDown = (e) => {
         if (!isYouTube) return; 
         
+        const currentFocusedElement = document.activeElement;
+
         // 1. Manejo de la reaparición de controles con D-Pad
         if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
             e.preventDefault();
             
             if (!showControls) {
-                setShowControls(true); // El useEffect moverá el foco al botón Volver
+                setShowControls(true); 
                 resetControlTimeout(); 
                 return;
             }
@@ -177,18 +185,40 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         switch (e.key) {
             case 'Enter': case ' ': 
                 e.preventDefault(); 
-                // Pausar/Reproducir si el foco está en el contenedor principal (controles ocultos)
-                if (document.activeElement === playerContainerRef.current) {
+                // Pausar/Reproducir si el foco está en el contenedor principal (video)
+                if (currentFocusedElement === playerContainerRef.current) {
                     playerRef.current?.getPlayerState() === YT.PlayerState.PLAYING ? playerRef.current.pauseVideo() : playerRef.current.playVideo();
                 }
-                // Si el foco está en el botón Volver, el `onClick` del botón se activa automáticamente.
                 break;
+                
+            // 2. Navegación D-Pad Vertical entre Controles (Volver <-> Barra)
+            case 'ArrowDown': 
+                if (currentFocusedElement === backButtonRef.current) {
+                    progressBarRef.current?.focus(); // Foco al siguiente elemento
+                } else if (showControls) {
+                    // Si ya estamos en la barra (o en el contenedor), saltamos adelante 10s.
+                    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
+                }
+                break;
+                
+            case 'ArrowUp': 
+                if (currentFocusedElement === progressBarRef.current) {
+                    backButtonRef.current?.focus(); // Foco al elemento anterior
+                } else if (showControls) {
+                    // Si ya estamos en el botón Volver (o en el contenedor), saltamos atrás 10s.
+                    playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
+                }
+                break;
+                
+            // 3. Navegación D-Pad Horizontal (Salto 10s si los controles están visibles)
             case 'ArrowLeft': 
                  if (showControls) playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
                  break;
+                 
             case 'ArrowRight': 
                  if (showControls) playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
                  break;
+                 
             case 'Escape': case 'Backspace': case 'Back': case 'BrowserBack': 
                 e.preventDefault();
                 handleOnBack(); 
@@ -250,8 +280,9 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                             <div className="flex items-center space-x-3 w-full bg-gradient-to-t from-gray-900/90 to-transparent py-3 px-5">
                                 <span className="text-sm font-mono text-gray-300 whitespace-nowrap">{formatTime(currentTime)}</span>
                                 <div 
-                                    className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group h-[2px] relative" 
-                                    tabIndex={-1} 
+                                    ref={progressBarRef} 
+                                    className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group h-2 relative transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900" 
+                                    tabIndex={showControls ? 0 : -1} 
                                     title="Barra de Progreso"
                                 >
                                     <div className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" style={{ width: `${bufferedPercent}%` }}></div>
@@ -596,6 +627,7 @@ function App() {
         }, 50); 
     }, []);
 
+    // LÓGICA DE NAVEGACIÓN D-PAD EN EL CATÁLOGO
     const handleDpadNavigation = React.useCallback((event) => {
         if (videoEnFocoUrl || mostrarMasGrid) return; 
 

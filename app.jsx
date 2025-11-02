@@ -1,7 +1,7 @@
 // Este código asume que React, ReactDOM, y window.YT están cargados en el entorno global.
 
 // ----------------------------------------------------------------------
-// UTILERÍAS Y LÓGICA DE VIDEO (SIN CAMBIOS)
+// UTILERÍAS Y LÓGICA DE VIDEO
 // ----------------------------------------------------------------------
 
 const CONTROLS_TIMEOUT = 3000; 
@@ -9,17 +9,14 @@ const YT = window.YT;
 
 function formatTime(seconds) {
     if (isNaN(seconds) || seconds < 0) return '00:00';
-
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor(seconds % 60);
-
     const parts = [m, s];
     if (h > 0) {
         parts.unshift(h); 
         return parts.map(v => v.toString().padStart(2, '0')).join(':');
     }
-
     return parts.map(v => v.toString().padStart(2, '0')).join(':');
 }
 
@@ -102,48 +99,33 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     }, [isPlaying]);
 
     React.useEffect(() => {
-        // Foco al contenedor principal y al botón de Volver si los controles están visibles
         if (playerContainerRef.current) playerContainerRef.current.focus();
         if (showControls && backButtonRef.current) backButtonRef.current.focus();
     }, [showControls]);
 
     React.useEffect(() => {
         if (!isYouTube || !videoId || !window.YT) return;
-
         const playerId = 'youtube-player-container'; 
-
         const newPlayer = new window.YT.Player(playerId, {
             videoId: videoId,
             playerVars: {
-                'autoplay': 1,
-                'controls': 0, 
-                'mute': 1, 
-                'disablekb': 1, 
+                'autoplay': 1, 'controls': 0, 'mute': 1, 'disablekb': 1, 
                 'widget_referrer': window.location.href
             },
             events: {
                 'onReady': (event) => {
                     playerRef.current = event.target; 
                     resetControlTimeout(); 
-                    if (event.target.isMuted()) {
-                        event.target.unMute(); 
-                    }
+                    if (event.target.isMuted()) event.target.unMute(); 
                 },
                 'onStateChange': (event) => {
                     const state = event.data;
-                    
                     if (state === YT.PlayerState.PLAYING) {
-                        setIsPlaying(true);
-                        startProgressInterval(); 
-                        resetControlTimeout(); 
-                        
+                        setIsPlaying(true); startProgressInterval(); resetControlTimeout(); 
                     } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.BUFFERING) {
-                        setIsPlaying(false);
-                        stopProgressInterval(); 
-                        
+                        setIsPlaying(false); stopProgressInterval(); 
                     } else if (state === YT.PlayerState.ENDED) {
-                        setIsPlaying(false);
-                        stopProgressInterval(); 
+                        setIsPlaying(false); stopProgressInterval(); 
                         if (timeoutRef.current) clearTimeout(timeoutRef.current);
                         setShowControls(true); 
                     }
@@ -168,12 +150,9 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     
     const handleKeyDown = (e) => {
         if (!isYouTube) return; 
-
         resetControlTimeout(); 
-
         switch (e.key) {
-            case 'Enter':
-            case ' ': 
+            case 'Enter': case ' ': 
                 e.preventDefault(); 
                 playerRef.current?.getPlayerState() === YT.PlayerState.PLAYING ? playerRef.current.pauseVideo() : playerRef.current.playVideo();
                 break;
@@ -185,10 +164,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 e.preventDefault(); 
                 playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
                 break;
-            case 'Escape': 
-            case 'Backspace': 
-            case 'Back': // Para TV Remotes
-            case 'BrowserBack': // Para TV Remotes
+            case 'Escape': case 'Backspace': case 'Back': case 'BrowserBack': 
                 e.preventDefault();
                 handleOnBack(); 
                 break;
@@ -217,7 +193,6 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                         tabIndex="-1" 
                         className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden"
                     >
-                         {/* Fallback para videos externos o si YT no carga */}
                         {!isYouTube && (
                             <iframe
                                 tabIndex="-1" 
@@ -229,21 +204,16 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                         )}
                     </div>
                 </div>
-
-                {/* CONTROLES SIMPLIFICADOS (Barra Fina y Botón Volver) */}
                 {isYouTube && (
                     <div 
-                        className={`absolute top-0 bottom-0 w-full flex flex-col p-10 
-                                transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                        className={`absolute top-0 bottom-0 w-full flex flex-col p-10 transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                         style={{maxWidth: '100%', maxHeight: '100%'}} 
                     >
-                        {/* Contenedor del Botón Volver (Arriba a la izquierda) */}
                         <div className="flex justify-start w-full absolute top-5 left-5 p-5">
                              <button
                                 ref={backButtonRef}
                                 onClick={handleOnBack}
-                                className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-red-700 
-                                           focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
+                                className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
                                 title="Volver al catálogo"
                                 tabIndex={showControls ? 0 : -1}
                             >
@@ -251,30 +221,17 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                                 <span className="text-xs">Volver</span>
                             </button>
                         </div>
-
-
-                        {/* Contenedor de la barra de progreso (Abajo) */}
                         <div className="flex flex-col justify-end h-full w-full">
                             <div className="flex items-center space-x-3 w-full bg-gradient-to-t from-gray-900/90 to-transparent py-3 px-5">
-                                
                                 <span className="text-sm font-mono text-gray-300 whitespace-nowrap">{formatTime(currentTime)}</span>
-                                
                                 <div 
                                     className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group h-[2px] relative" 
-                                    // tabIndex=-1: Se maneja con las flechas del D-Pad en el div principal.
                                     tabIndex={-1} 
                                     title="Barra de Progreso"
                                 >
-                                    <div 
-                                        className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" 
-                                        style={{ width: `${bufferedPercent}%` }}
-                                    ></div>
-                                    <div 
-                                        className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative h-full" 
-                                        style={{ width: `${progressPercent}%` }}
-                                    ></div>
+                                    <div className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" style={{ width: `${bufferedPercent}%` }}></div>
+                                    <div className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative h-full" style={{ width: `${progressPercent}%` }}></div>
                                 </div>
-
                                 <span className="text-sm font-mono text-gray-300 whitespace-nowrap">{formatTime(duration)}</span>
                             </div>
                         </div>
@@ -286,12 +243,11 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTES DE CATÁLOGO
+// COMPONENTES DE CATÁLOGO CON data-category-index
 // ----------------------------------------------------------------------
 
 const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
     const { thumbnailUrl } = obtenerVideoInfo(videoUrl);
-
     return (
         <div 
             className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-8 rounded-xl shadow-2xl bg-cover bg-center"
@@ -299,20 +255,14 @@ const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, 
             style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('${thumbnailUrl}'), url('https://placehold.co/1920x1080/0d1117/333?text=CARGANDO...')` }}
         >
             <div className="relative p-8 max-w-xl">
-                <h2 className="text-4xl font-extrabold mb-2 text-white drop-shadow-lg">
-                    {titulo}
-                </h2>
-                <p className="text-base mb-4 text-gray-200 drop-shadow-md">
-                    {descripcion}
-                </p>
-
+                <h2 className="text-4xl font-extrabold mb-2 text-white drop-shadow-lg">{titulo}</h2>
+                <p className="text-base mb-4 text-gray-200 drop-shadow-md">{descripcion}</p>
                 <button 
                     ref={ref}
                     onClick={() => onPlay(videoUrl)} 
-                    className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg 
-                                transition-all duration-300 hover:bg-red-700 
-                                focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
-                    tabIndex="0" // CRUCIAL para navegación D-Pad
+                    className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg transition-all duration-300 hover:bg-red-700 focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
+                    tabIndex="0" 
+                    data-category-index="0" // HERO tiene índice 0
                 >
                     Ver Ahora
                 </button>
@@ -337,12 +287,10 @@ function ReproductorDeVideo(props) {
 
     return (
         <div 
-            // CLASE video-card para ser identificada por el D-Pad Handler
-            className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg 
-                        transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col h-full
-                        focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
+            className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col h-full focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
             onClick={() => props.onPlay(props.url)} 
-            tabIndex="0" // CRUCIAL: HACE LA TARJETA ENFOCABLE
+            tabIndex="0" 
+            data-category-index={props.categoryIndex} // Aplicado
         >
             <img 
                 src={thumbnailUrl} 
@@ -350,22 +298,15 @@ function ReproductorDeVideo(props) {
                 className="w-full aspect-video object-cover transition duration-500 group-hover:opacity-75"
                 alt={`Miniatura de ${props.titulo}`}
             />
-
             <div className="p-3 flex-grow">
-                <h2 className="text-base font-semibold text-red-400 group-focus:text-red-300 line-clamp-2">
-                    {props.titulo || "Título del Video"}
-                </h2>
-                <p className="mt-1 text-gray-400 text-xs">
-                    Fuente: {isYouTube ? "YouTube" : "Externa"}
-                </p>
+                <h2 className="text-base font-semibold text-red-400 group-focus:text-red-300 line-clamp-2">{props.titulo || "Título del Video"}</h2>
+                <p className="mt-1 text-gray-400 text-xs">Fuente: {isYouTube ? "YouTube" : "Externa"}</p>
             </div>
-
         </div>
     );
 }
 
 function VideoCarousel({ children }) {
-    // La clase 'ocultar-scrollbar' es necesaria en CSS externo si se desea ocultar el scrollbar nativo
     return (
         <div className="flex overflow-x-auto space-x-4 p-2 pb-4 items-stretch ocultar-scrollbar">
             {children}
@@ -373,22 +314,19 @@ function VideoCarousel({ children }) {
     );
 }
 
-function TarjetaMas({ onShowAll, count }) {
+function TarjetaMas({ onShowAll, count, categoryIndex }) {
     return (
         <div 
-            // CLASE video-card para ser identificada por el D-Pad Handler
-            className="video-card flex-shrink-0 w-full cursor-pointer group relative overflow-hidden bg-gray-700 rounded-xl shadow-lg 
-                        transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col items-center justify-center h-full
-                        focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
+            className="video-card flex-shrink-0 w-full cursor-pointer group relative overflow-hidden bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col items-center justify-center h-full focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
             onClick={onShowAll}
-            tabIndex="0" // CRUCIAL: HACE LA TARJETA ENFOCABLE
+            tabIndex="0" 
+            data-category-index={categoryIndex} // Aplicado
         >
             <div className="text-center p-4">
                 <p className="text-6xl font-extrabold text-white mb-2">+</p>
                 <h2 className="text-xl font-bold text-white line-clamp-2">Ver Más</h2>
                 <p className="text-sm text-gray-300 mt-1 font-semibold">({count} videos más)</p>
             </div>
-            
             <div className="w-full aspect-video bg-gray-600/50 flex items-center justify-center flex-grow">
                 <span className="text-sm text-white/70">Toca para ver la cuadrícula</span>
             </div>
@@ -396,15 +334,122 @@ function TarjetaMas({ onShowAll, count }) {
     );
 }
 
+// ----------------------------------------------------------------------
+// COMPONENTE MasVideosGrid (Con Navegación 2D Forzada)
+// ----------------------------------------------------------------------
+
 function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
+    const gridRef = React.useRef(null);
+    const closeButtonRef = React.useRef(null);
+    
+    // 1. Lógica de Foco Inicial
+    React.useEffect(() => {
+        if (closeButtonRef.current) {
+            closeButtonRef.current.focus();
+        }
+    }, []);
+
+    // 2. D-Pad Navigation Handler (Lógica 2D)
+    const handleGridDpadNavigation = React.useCallback((event) => {
+        const currentFocusedElement = document.activeElement;
+        
+        // Elementos enfocables en la grid (Tarjetas de Video + Botón Cerrar)
+        const focusableElements = Array.from(
+            gridRef.current.querySelectorAll('button[tabindex="0"], div.video-card[tabindex="0"]')
+        ).filter(el => el.offsetParent !== null);
+        
+        let currentIndex = focusableElements.indexOf(currentFocusedElement);
+
+        if (currentIndex === -1) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                 closeButtonRef.current?.focus();
+            }
+            return;
+        }
+
+        // Manejo de la tecla 'Back' para salir del Grid
+        if (event.key === 'Escape' || event.key === 'Backspace' || event.key === 'Back' || event.key === 'BrowserBack') {
+            onClose();
+            return; 
+        }
+
+        event.preventDefault(); // Detenemos el scroll nativo.
+
+        // NOTA: El número de columnas debe coincidir con el CSS (grid-cols-6)
+        // El botón Cerrar es el índice 0. Las tarjetas comienzan en el índice 1.
+        const columns = 6; 
+        let nextIndex = currentIndex;
+
+        switch (event.key) {
+            case 'ArrowRight':
+                nextIndex = currentIndex + 1;
+                if (nextIndex >= focusableElements.length) nextIndex = currentIndex; 
+                break;
+            case 'ArrowLeft':
+                nextIndex = currentIndex - 1;
+                if (nextIndex < 0) nextIndex = currentIndex;
+                break;
+            case 'ArrowDown':
+                if (currentIndex === 0) {
+                    nextIndex = 1; // De Cerrar (0) a la primera tarjeta (1)
+                } else {
+                    nextIndex = currentIndex + columns;
+                }
+                if (nextIndex >= focusableElements.length) nextIndex = currentIndex;
+                break;
+            case 'ArrowUp':
+                // De las primeras filas al botón Cerrar (0)
+                if (currentIndex > 0 && currentIndex <= columns) {
+                    nextIndex = 0; 
+                } else if (currentIndex > columns) {
+                    nextIndex = currentIndex - columns;
+                }
+                else {
+                    nextIndex = currentIndex;
+                }
+                break;
+            default:
+                return;
+        }
+
+        const nextElement = focusableElements[nextIndex];
+        if (nextElement) {
+            nextElement.focus();
+            nextElement.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest', 
+                inline: 'nearest' 
+            });
+        }
+    }, [videos, onClose]);
+
+    // 3. Listener de Teclado del Grid
+    React.useEffect(() => {
+        const gridElement = gridRef.current;
+        if (gridElement) {
+            // Se usa capture: true para asegurarse de capturar los eventos dentro del Grid.
+            gridElement.addEventListener('keydown', handleGridDpadNavigation, true); 
+        }
+        return () => {
+            if (gridElement) {
+                gridElement.removeEventListener('keydown', handleGridDpadNavigation, true);
+            }
+        };
+    }, [handleGridDpadNavigation]);
+
+
     return (
-        <div className="fixed inset-0 bg-gray-900/95 z-40 overflow-y-auto p-4 md:p-8">
+        // Se añade tabIndex=0 al contenedor para que el keydown handler funcione
+        <div ref={gridRef} className="mas-videos-grid fixed inset-0 bg-gray-900/95 z-40 overflow-y-auto p-4 md:p-8" tabIndex={0} style={{ outline: 'none' }}>
             <div className="max-w-7xl mx-auto">
+                
+                {/* Cabecera y Botón Cerrar */}
                 <div className="flex justify-between items-center mb-6 sticky top-0 bg-gray-900/90 py-2 z-10">
                     <h1 className="text-3xl font-bold text-red-600 capitalize">
                         Todos los Videos de {categoria}
                     </h1>
                     <button 
+                        ref={closeButtonRef}
                         onClick={onClose}
                         className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg transition-all duration-300 hover:bg-red-700 
                                    focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
@@ -414,6 +459,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
                     </button>
                 </div>
 
+                {/* Cuadrícula de Videos */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                     {videos.map((video, index) => (
                         <ReproductorDeVideo 
@@ -421,6 +467,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
                             titulo={video.titulo} 
                             url={video.url} 
                             onPlay={onPlay} 
+                            categoryIndex={-1} // Índice -1 para asegurar que no interfieren con el flujo principal del carrusel.
                         />
                     ))}
                 </div>
@@ -434,6 +481,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
 // ----------------------------------------------------------------------
 
 const CATALOGO = {
+    // ... (Tu objeto CATALOGO completo se mantiene aquí)
     accion: [
         { titulo: "Nephilim", url: "https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9eZPpS" },
         { titulo: "Simbad la aventura del minotauro", url: "https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N" },
@@ -511,7 +559,7 @@ const CATALOGO = {
 };
 
 // ----------------------------------------------------------------------
-// COMPONENTE PRINCIPAL APP (D-Pad Handler Implementado)
+// COMPONENTE PRINCIPAL APP (D-Pad Handler con Navegación Vertical Forzada)
 // ----------------------------------------------------------------------
 
 function App() {
@@ -523,82 +571,104 @@ function App() {
         setVideoEnFocoUrl(null);
         setTimeout(() => {
             if (heroButtonRef.current) {
-                // Devolvemos el foco al botón principal para reanudar la navegación D-Pad.
                 heroButtonRef.current.focus();
             }
         }, 50); 
     }, []);
 
     // ------------------------------------------------------
-    // CONTROLADOR DE NAVEGACIÓN D-PAD FORZADA (MEJORADO)
+    // CONTROLADOR DE NAVEGACIÓN D-PAD CATÁLOGO (CARRUSELES)
     // ------------------------------------------------------
     const handleDpadNavigation = React.useCallback((event) => {
+        // Solo aplica si NO estamos en el reproductor o en la grid
         if (videoEnFocoUrl || mostrarMasGrid) return; 
 
         const currentFocusedElement = document.activeElement;
         
-        // Obtener todos los elementos enfocables visibles
+        // Elementos enfocables en el catálogo principal
         const focusableElements = Array.from(
             document.querySelectorAll('button[tabindex="0"], div.video-card[tabindex="0"]')
-        ).filter(el => el.offsetParent !== null); // Solo elementos visibles
+        ).filter(el => el.offsetParent !== null && !el.closest('.mas-videos-grid')); // Filtra la Grid
+        
+        const isInteractiveElement = currentFocusedElement && 
+            (currentFocusedElement.classList.contains('video-card') || 
+             currentFocusedElement.tagName === 'BUTTON');
 
-        // 1. Manejo de navegación horizontal (carruseles)
+        if (!isInteractiveElement) return;
+
+        event.preventDefault(); 
+
+        const currentIndex = focusableElements.indexOf(currentFocusedElement);
+        let nextElement = null;
+        let nextIndex = -1;
+
+        // 1. NAVEGACIÓN HORIZONTAL (ArrowRight / ArrowLeft)
         if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
-            const isInteractiveElement = currentFocusedElement && 
-                (currentFocusedElement.classList.contains('video-card') || 
-                 currentFocusedElement.tagName === 'BUTTON');
-
-            if (isInteractiveElement) {
-                event.preventDefault(); 
-                const currentIndex = focusableElements.indexOf(currentFocusedElement);
-                let nextIndex = -1;
-
-                if (event.key === 'ArrowRight') {
-                    nextIndex = currentIndex + 1;
-                    if (nextIndex >= focusableElements.length) nextIndex = -1;
-                } else if (event.key === 'ArrowLeft') {
-                    nextIndex = currentIndex - 1;
-                    if (nextIndex < 0) nextIndex = -1;
+            if (event.key === 'ArrowRight') {
+                nextIndex = currentIndex + 1;
+                if (nextIndex < focusableElements.length) { 
+                    nextElement = focusableElements[nextIndex];
                 }
-                
-                const nextElement = focusableElements[nextIndex];
-
-                if (nextElement) {
-                    nextElement.focus();
-                    nextElement.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'nearest', 
-                        inline: 'center' 
-                    });
+            } else if (event.key === 'ArrowLeft') {
+                nextIndex = currentIndex - 1;
+                if (nextIndex >= 0) {
+                    nextElement = focusableElements[nextIndex];
                 }
             }
         } 
         
-        // 2. Manejo del salto vertical (del botón Hero a la 1ra tarjeta)
-        else if (event.key === 'ArrowDown') {
-            // Si estamos en el botón del Heroe, salta a la primera tarjeta del catálogo
-            if (currentFocusedElement === heroButtonRef.current) {
-                event.preventDefault(); 
-                const firstCard = focusableElements.find(el => el.classList.contains('video-card'));
-                if (firstCard) {
-                    firstCard.focus();
-                    firstCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // 2. NAVEGACIÓN VERTICAL FORZADA (ArrowDown / ArrowUp)
+        else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            
+            const currentCategoryIndex = currentFocusedElement === heroButtonRef.current ? 0 : parseInt(currentFocusedElement.dataset.categoryIndex, 10);
+            
+            if (event.key === 'ArrowDown') {
+                
+                // Salto del Hero (0) a la primera fila (1)
+                if (currentCategoryIndex === 0) {
+                    nextElement = focusableElements.find(el => el.dataset.categoryIndex === '1');
+                } 
+                // Salto entre filas del Catálogo
+                else {
+                    const nextCategoryIndex = currentCategoryIndex + 1;
+                    nextElement = focusableElements.find(el => el.dataset.categoryIndex === nextCategoryIndex.toString());
+                }
+                
+            } else if (event.key === 'ArrowUp') {
+                
+                // Salto de la primera fila (1) al Hero (0)
+                if (currentCategoryIndex === 1) {
+                    nextElement = heroButtonRef.current;
+                }
+                // Salto entre filas del Catálogo (hacia arriba)
+                else if (currentCategoryIndex > 1) {
+                    const prevCategoryIndex = currentCategoryIndex - 1;
+                    nextElement = focusableElements.find(el => el.dataset.categoryIndex === prevCategoryIndex.toString());
                 }
             }
+        }
+
+        // 3. Aplicar foco y scroll 
+        if (nextElement) {
+            nextElement.focus();
+            nextElement.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: event.key === 'ArrowUp' || event.key === 'ArrowDown' ? 'start' : 'nearest', 
+                inline: 'center' 
+            });
         }
         
     }, [videoEnFocoUrl, mostrarMasGrid]);
 
-    // Listener global para el D-Pad
+    // Listener global para el D-Pad (solo para el catálogo)
     React.useEffect(() => {
         window.addEventListener('keydown', handleDpadNavigation);
         return () => {
             window.removeEventListener('keydown', handleDpadNavigation);
         };
     }, [handleDpadNavigation]);
-    // ------------------------------------------------------
-
-    // Foco Inicial (Asegurado)
+    
+    // Foco Inicial (al Hero Banner)
     React.useEffect(() => {
         if (!videoEnFocoUrl && !mostrarMasGrid) {
             setTimeout(() => {
@@ -609,24 +679,10 @@ function App() {
         }
     }, [videoEnFocoUrl, mostrarMasGrid]);
     
-    // Manejo del botón de escape en la cuadrícula y en el reproductor
-    React.useEffect(() => {
-        const handleEscape = (event) => {
-            if ((event.key === 'Escape' || event.key === 'Backspace' || event.key === 'Back') && mostrarMasGrid) {
-                event.preventDefault();
-                setMostrarMasGrid(null);
-            }
-        };
-        window.addEventListener('keydown', handleEscape);
-        return () => window.removeEventListener('keydown', handleEscape);
-    }, [mostrarMasGrid]);
-
+    // NOTE: El manejo de la tecla ESC/Back para la Grid fue movido dentro de MasVideosGrid.
 
     if (videoEnFocoUrl) {
-        return <ReproductorEnFoco 
-            videoUrl={videoEnFocoUrl} 
-            onBack={handleBack} 
-        />;
+        return <ReproductorEnFoco videoUrl={videoEnFocoUrl} onBack={handleBack} />;
     }
     
     if (mostrarMasGrid) {
@@ -639,6 +695,7 @@ function App() {
     }
 
     const heroVideoUrl ="https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9eZPpS";
+    let categoryIndex = 1; 
 
     return (
         <div className="p-4 md:p-8 max-w-7xl mx-auto min-h-screen bg-gray-900 text-white">
@@ -655,38 +712,34 @@ function App() {
             {/* SECCIONES DE CATEGORÍA CON CARRUSEL Y TARJETA 'MÁS' */}
             {Object.entries(CATALOGO).map(([categoria, videos]) => {
                 
+                const currentCategoryIndex = categoryIndex++; 
                 const limiteCarrusel = 10;
                 const tieneMas = videos.length > limiteCarrusel;
-                
                 const videosEnCarrusel = tieneMas ? videos.slice(0, limiteCarrusel - 1) : videos.slice(0, limiteCarrusel);
                 const videosRestantesCount = videos.length - videosEnCarrusel.length;
 
                 return (
                     <div key={categoria} className="mb-10">
-                        
-                        <h1 className="text-2xl font-bold mb-4 text-red-600 capitalize">
-                            {categoria}
-                        </h1>
-
+                        <h1 className="text-2xl font-bold mb-4 text-red-600 capitalize">{categoria}</h1>
                         <VideoCarousel>
                             
-                            {/* Videos Normales en el Carrusel (Moviecards) */}
                             {videosEnCarrusel.map((video, index) => (
                                 <div key={index} className="flex-shrink-0 w-40 sm:w-52 lg:w-64">
                                     <ReproductorDeVideo 
                                         titulo={video.titulo} 
                                         url={video.url} 
-                                    onPlay={setVideoEnFocoUrl} 
+                                        onPlay={setVideoEnFocoUrl} 
+                                        categoryIndex={currentCategoryIndex} 
                                     />
                                 </div>
                             ))}
 
-                            {/* Tarjeta "Más" */}
                             {videosRestantesCount > 0 && (
                                 <div className="flex-shrink-0 w-40 sm:w-52 lg:w-64">
                                     <TarjetaMas 
                                         count={videosRestantesCount}
                                         onShowAll={() => setMostrarMasGrid({ categoria, videos })}
+                                        categoryIndex={currentCategoryIndex} 
                                     />
                                 </div>
                             )}

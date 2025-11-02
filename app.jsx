@@ -1,9 +1,7 @@
-// Variables y constantes globales
-const CONTROLS_TIMEOUT = 1000; 
-const YT = window.YT; 
+// Este código asume que React, ReactDOM, y window.YT están cargados en el entorno global.
 
 // ----------------------------------------------------------------------
-// UTILERÍAS: CONVERSIÓN DE SEGUNDOS A FORMATO HH:MM:SS
+// UTILERÍAS: CONVERSIÓN Y ANÁLISIS DE VIDEO (SIN CAMBIOS)
 // ----------------------------------------------------------------------
 
 function formatTime(seconds) {
@@ -22,12 +20,8 @@ function formatTime(seconds) {
     return parts.map(v => v.toString().padStart(2, '0')).join(':');
 }
 
-// ----------------------------------------------------------------------
-// LÓGICA DE CONVERSIÓN Y EXTRACCIÓN DE ID
-// ----------------------------------------------------------------------
-
 function obtenerVideoInfo(url) {
-    const defaultVideoId = 'dQw4w9WgXcQ';
+    const defaultVideoId = 'dQw4w9WgXcQ'; 
     let videoId = defaultVideoId;
     let isYouTube = false;
 
@@ -51,8 +45,11 @@ function obtenerVideoInfo(url) {
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTE ReproductorEnFoco (CON CORRECCIÓN ESTRICTA DEL REINICIO)
+// COMPONENTE ReproductorEnFoco (MODIFICADO)
 // ----------------------------------------------------------------------
+
+const CONTROLS_TIMEOUT = 3000; 
+const YT = window.YT; 
 
 function ReproductorEnFoco({ videoUrl, onBack }) {
     const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
@@ -60,7 +57,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     const playerContainerRef = React.useRef(null); 
     const backButtonRef = React.useRef(null); 
     
-    // Estados principales
+    // Mantenemos estados internos aunque no usemos todos los botones de control
     const [isMuted, setIsMuted] = React.useState(true);
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [showControls, setShowControls] = React.useState(true); 
@@ -68,12 +65,10 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     const [duration, setDuration] = React.useState(0);
     const [bufferedPercent, setBufferedPercent] = React.useState(0); 
 
-    // Refs para temporizadores e intervalos
     const timeoutRef = React.useRef(null); 
     const progressIntervalRef = React.useRef(null); 
     const isPlayingRef = React.useRef(false); 
 
-    // Funciones de control estables (useCallback)
     const startProgressInterval = React.useCallback(() => {
         if (progressIntervalRef.current) {
             clearInterval(progressIntervalRef.current);
@@ -109,7 +104,6 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         }
     }, []);
 
-    // Sincronización de Refs y Estados
     React.useEffect(() => {
         isPlayingRef.current = isPlaying;
     }, [isPlaying]);
@@ -118,28 +112,13 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         if (playerContainerRef.current) {
             playerContainerRef.current.focus();
         }
+        // Enfoca el botón de volver si los controles se muestran
         if (showControls && backButtonRef.current) {
             backButtonRef.current.focus();
         }
     }, [showControls]);
 
 
-    // 🚨 CORRECCIÓN CLAVE A: ESCUCHA DE TECLADO EN TODO EL DOCUMENTO (WebView Fix) 🚨
-    React.useEffect(() => {
-        // Solo aplica la escucha global si estamos usando YouTube (donde el iframe puede robar el foco)
-        if (!isYouTube) return; 
-        
-        // Vincula el listener a TODO el documento. Crucial para capturar la tecla 'BrowserBack'
-        document.addEventListener('keydown', handleKeyDown);
-
-        // Función de limpieza
-        return () => {
-            document.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [isYouTube, handleKeyDown]); // Depende de isYouTube y handleKeyDown
-
-    
-    // 🔴 BLOQUE CRÍTICO: Inicialización del Reproductor 🔴
     React.useEffect(() => {
         if (!isYouTube || !videoId || !window.YT) {
             return;
@@ -190,7 +169,6 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             }
         });
 
-        // Limpieza: Destruye el reproductor al desmontar el componente o cambiar el videoId.
         return () => {
             stopProgressInterval(); 
             if (timeoutRef.current) {
@@ -202,9 +180,9 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             }
         };
     }, [videoId, isYouTube, startProgressInterval, stopProgressInterval, resetControlTimeout]); 
-    // ----------------------------------------------------------------------
     
-    // LÓGICA DE CONTROL DE REPRODUCCIÓN (Toggle, Seek, Keys)
+    // Funciones de control de reproducción eliminadas o simplificadas
+    // Se mantienen para permitir la interacción del usuario si toca la pantalla o presiona espacio/flechas.
     const togglePlayPause = () => {
         const player = playerRef.current;
         if (!player) return;
@@ -217,20 +195,6 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         resetControlTimeout();
     };
 
-    const toggleMute = () => {
-        const player = playerRef.current;
-        if (!player) return;
-
-        if (player.isMuted()) {
-            player.unMute();
-            setIsMuted(false);
-        } else {
-            player.mute();
-            setIsMuted(true);
-        }
-        resetControlTimeout();
-    };
-    
     const seekRelative = (seconds) => {
         const player = playerRef.current;
         if (!player) return;
@@ -259,11 +223,9 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     const fastForward = () => seekRelative(10); 
 
     const handleOnBack = () => {
-        // Detener el timeout para los controles antes de salir
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
         }
-        // Llama a la prop onBack, que maneja el cambio de estado en el padre (App)
         onBack();
     }
     
@@ -272,41 +234,41 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
 
         resetControlTimeout(); 
 
+        // Se mantienen las funciones de teclado a pesar de no haber botones visuales
         switch (e.key) {
             case 'Enter':
             case ' ': 
                 e.preventDefault(); 
-                togglePlayPause();
+                togglePlayPause(); // Permite pausar/reproducir con espacio
                 break;
             case 'ArrowLeft': 
                 e.preventDefault(); 
-                rewind();
+                rewind(); // Permite retroceder con flecha izquierda
                 break;
             case 'ArrowRight': 
                 e.preventDefault(); 
-                fastForward();
+                fastForward(); // Permite avanzar con flecha derecha
                 break;
             case 'Escape': 
-            case 'Backspace':
-            case 'Back': 
-            case 'BrowserBack': // Captura la tecla inyectada desde Android
+            case 'Backspace': 
                 e.preventDefault();
-                handleOnBack(); // Ejecuta la función para volver al catálogo
+                handleOnBack();
                 break;
             default:
                 break;
         }
     };
 
-    // Cálculo del porcentaje de progreso
     const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
     
-  
+    // ICONO DE VOLVER (SVG)
+    const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
+
     return (
         <div 
             ref={playerContainerRef}
             className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center"
-            onClick={resetControlTimeout} 
+            onClick={resetControlTimeout} // Al hacer clic, se muestran los controles
             onKeyDown={handleKeyDown} 
             tabIndex={0} 
             style={{outline: 'none'}} 
@@ -318,6 +280,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                         tabIndex="-1" 
                         className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden"
                     >
+                        {/* Reproductor de video no-YouTube */}
                         {!isYouTube && (
                             <iframe
                                 tabIndex="-1" 
@@ -330,45 +293,55 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                     </div>
                 </div>
 
-                {/* CONTROLES COMPLETOS (Barra + Botones + Tiempos) */}
+                {/* CONTROLES SIMPLIFICADOS (Barra Fina y Botón Volver) */}
                 {isYouTube && (
                     <div 
-                       className={`absolute bottom-0 w-full flex flex-col px-10 py -0.1
-                transition-opacity duration-300 ${showControls ? 'opacity-100 bg-gradient-to-t from-gray-900/90 to-transparent' : 'opacity-0 pointer-events-none'}`}
+                        className={`absolute top-0 bottom-0 w-full flex flex-col p-10 
+                                transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                        style={{maxWidth: '100%', maxHeight: '100%'}} 
                     >
-                        {/* BARRA DE PROGRESO */}
-                        <div 
-                            onClick={handleSeek}
-                            className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group mb-2 h-1.5 relative"
-                            tabIndex={showControls ? 0 : -1} 
-                            title="Barra de Progreso (Click para Saltar)"
-                        >
-                            {/* INDICADOR DE BUFFER */}
-                            <div 
-                                className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" 
-                                style={{ width: `${bufferedPercent}%` }}
-                            ></div>
-
-                            {/* INDICADOR DE TIEMPO REPRODUCIDO */}
-                            <div 
-                                className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative h-full" 
-                                style={{ width: `${progressPercent}%` }}
-                            ></div>
+                        {/* Contenedor del Botón Volver (Arriba a la izquierda) */}
+                        <div className="flex justify-start w-full absolute top-5 left-5 p-5">
+                             <button
+                                ref={backButtonRef}
+                                onClick={handleOnBack}
+                                className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
+                                title="Volver al catálogo"
+                                tabIndex={showControls ? 0 : -1}
+                            >
+                                <BackIcon />
+                                <span className="text-xs">Volver</span>
+                            </button>
                         </div>
 
-                        {/* TIEMPOS */}
-                        <div className="flex justify-between text-sm font-mono text-gray-300 mb-4">
-                            <span>{formatTime(currentTime)}</span>
-                            <span>{formatTime(duration)}</span>
-                        </div>
 
-                        {/* Botones de Control */}
-                        <div className="flex justify-center space-x-4">
-                         
-                                                       
+                        {/* Contenedor de la barra de progreso (Abajo) */}
+                        <div className="flex flex-col justify-end h-full w-full">
+                            <div className="flex items-center space-x-3 w-full bg-gradient-to-t from-gray-900/90 to-transparent py-3 px-5">
+                                
+                                {/* TIEMPO ACTUAL */}
+                                <span className="text-sm font-mono text-gray-300 whitespace-nowrap">{formatTime(currentTime)}</span>
+                                
+                                {/* BARRA DE PROGRESO */}
+                                <div 
+                                    onClick={handleSeek}
+                                    className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group h-[2px] relative" 
+                                    tabIndex={showControls ? 0 : -1} 
+                                    title="Barra de Progreso (Click para Saltar)"
+                                >
+                                    <div 
+                                        className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" 
+                                        style={{ width: `${bufferedPercent}%` }}
+                                    ></div>
+                                    <div 
+                                        className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative h-full" 
+                                        style={{ width: `${progressPercent}%` }}
+                                    ></div>
+                                </div>
 
-                            
-                            
+                                {/* DURACIÓN TOTAL */}
+                                <span className="text-sm font-mono text-gray-300 whitespace-nowrap">{formatTime(duration)}</span>
+                            </div>
                         </div>
                     </div>
                 )}
@@ -377,8 +350,9 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     );
 }
 
+
 // ----------------------------------------------------------------------
-// COMPONENTES HERO BANNER Y TARJETA 
+// COMPONENTE HeroBanner (SIN CAMBIOS)
 // ----------------------------------------------------------------------
 
 const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
@@ -402,8 +376,8 @@ const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, 
                     ref={ref}
                     onClick={() => onPlay(videoUrl)} 
                     className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg 
-                             transition-all duration-300 hover:bg-red-700 
-                             focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
+                                transition-all duration-300 hover:bg-red-700 
+                                focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                     tabIndex="0" 
                 >
                     Ver Ahora
@@ -414,6 +388,9 @@ const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, 
 });
 HeroBanner.displayName = 'HeroBanner';
 
+// ----------------------------------------------------------------------
+// COMPONENTE ReproductorDeVideo (Miniatura) - (SIN CAMBIOS)
+// ----------------------------------------------------------------------
 
 function ReproductorDeVideo(props) {
     const { videoId, thumbnailUrl, isYouTube } = obtenerVideoInfo(props.url);
@@ -431,8 +408,8 @@ function ReproductorDeVideo(props) {
     return (
         <div 
             className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg 
-                         transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] 
-                         focus:ring-4 focus:ring-red-500 focus:outline-none"
+                        transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col h-full
+                        focus:ring-4 focus:ring-red-500 focus:outline-none"
             onClick={() => props.onPlay(props.url)} 
             tabIndex="0" 
         >
@@ -443,7 +420,7 @@ function ReproductorDeVideo(props) {
                 alt={`Miniatura de ${props.titulo}`}
             />
 
-            <div className="p-3">
+            <div className="p-3 flex-grow">
                 <h2 className="text-base font-semibold text-red-400 group-focus:text-red-300 line-clamp-2">
                     {props.titulo || "Título del Video"}
                 </h2>
@@ -457,23 +434,187 @@ function ReproductorDeVideo(props) {
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTE PRINCIPAL APP
+// COMPONENTE VideoCarousel (Oculta Scrollbar) - (SIN CAMBIOS)
+// ----------------------------------------------------------------------
+
+function VideoCarousel({ children }) {
+    return (
+        // Clase 'ocultar-scrollbar' para esconder la barra de navegación
+        <div className="flex overflow-x-auto space-x-4 p-2 pb-4 items-stretch ocultar-scrollbar">
+            {children}
+        </div>
+    );
+}
+
+// ----------------------------------------------------------------------
+// COMPONENTE TarjetaMas (Mismo tamaño que miniatura) - (SIN CAMBIOS)
+// ----------------------------------------------------------------------
+
+function TarjetaMas({ onShowAll, count }) {
+    return (
+        <div 
+            className="flex-shrink-0 w-full cursor-pointer group relative overflow-hidden bg-gray-700 rounded-xl shadow-lg 
+                        transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col items-center justify-center h-full
+                        focus:ring-4 focus:ring-red-500 focus:outline-none"
+            onClick={onShowAll}
+            tabIndex="0"
+        >
+            <div className="text-center p-4">
+                <p className="text-6xl font-extrabold text-white mb-2">+</p>
+                <h2 className="text-xl font-bold text-white line-clamp-2">Ver Más</h2>
+                <p className="text-sm text-gray-300 mt-1 font-semibold">({count} videos más)</p>
+            </div>
+            
+            <div className="w-full aspect-video bg-gray-600/50 flex items-center justify-center flex-grow">
+                <span className="text-sm text-white/70">Toca para ver la cuadrícula</span>
+            </div>
+        </div>
+    );
+}
+
+// ----------------------------------------------------------------------
+// COMPONENTE MasVideosGrid (Vista de cuadrícula completa) - (SIN CAMBIOS)
+// ----------------------------------------------------------------------
+
+function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
+    return (
+        <div className="fixed inset-0 bg-gray-900/95 z-40 overflow-y-auto p-4 md:p-8">
+            <div className="max-w-7xl mx-auto">
+                <div className="flex justify-between items-center mb-6 sticky top-0 bg-gray-900/90 py-2 z-10">
+                    <h1 className="text-3xl font-bold text-red-600 capitalize">
+                        Todos los Videos de {categoria}
+                    </h1>
+                    <button 
+                        onClick={onClose}
+                        className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg transition-all duration-300 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
+                    >
+                        Cerrar (ESC)
+                    </button>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                    {videos.map((video, index) => (
+                        <ReproductorDeVideo 
+                            key={index} 
+                            titulo={video.titulo} 
+                            url={video.url} 
+                            onPlay={onPlay} 
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// ----------------------------------------------------------------------
+// Catálogo de Videos Organizado por Categorías (SIN CAMBIOS)
+// ----------------------------------------------------------------------
+
+const CATALOGO = {
+    accion: [
+        { titulo: "Nephilim", url: "https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9eZPpS" },
+        { titulo: "Simbad la aventura del minotauro", url: "https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N" },
+        { titulo: "Alien Convergence", url: "https://youtu.be/w6DKhpKjMTE?si=j-7kNNoz93l0UZk9" },
+        { titulo: "Yeti el hombre de la nieve", url: "https://youtu.be/_OWD2gaWdOM?si=M-7yKl2zS51hCOvf" },
+        { titulo: "Invasion letal", url: "https://youtu.be/DXmynnoZ8X8?si=iw3LVlBhXPAr5C2l" },
+        { titulo: "Cazador de demonios", url: "https://youtu.be/UHvttPWH--Q?si=6yON_SdMIwywMJSC" },
+        { titulo: "Target Earth", url: "https://youtu.be/cHFL7a3-2aY?si=4KHcRxuBCuWZjVxV" },
+        { titulo: "40 dias y noches", url: "https://youtu.be/QdvMupiWUd8?si=2wbVNPZTkB7o8Z9b" },
+        { titulo: "Legion de Heroes", url: "https://youtu.be/g4r-cpKVEos?si=5cA99gki-Nc9BYNC" },
+        { titulo: "Hulk 2", url: "https://youtu.be/rf_ixD_yD_4?si=k28TepUpPchZr2TV" },
+        { titulo: "Guerra de otro mundo", url: "https://youtu.be/Mr2JAzHAquo?si=62pLmQ9gmkKfQa90" },
+        { titulo: "Angeles vs Zombies", url: "https://youtu.be/TVazxWtCr_E?si=q7ws8E5kkuHRZ6Qe" },
+        { titulo: "Tierra perdida", url: "https://youtu.be/QVj2CVk-Nio?si=MQH3We5LeRLL3_jO" },
+        { titulo: "Impacto inminente", url: "https://youtu.be/5pEFz_e7bSw?si=hyV51hXmHV7ROgux" },
+        { titulo: "Supervivencia", url: "https://youtu.be/10Lzga1uDpM?si=mEYDmw8WHhMT8Vx9" },
+        { titulo: "Invasion Oculta", url: "https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" },
+        { titulo: "El come huesos", url: "https://youtu.be/d-eK3h5uDho?si=Gy3NDGqI-rAG4wz-" },
+        { titulo: "Bermudas Avismo en el mar del norte", url: "https://youtu.be/gwkUDXSGbxg?si=z966wQgljQviO304" },
+        { titulo: "La proxima generacion", url: "https://youtu.be/ebvujopachw?si=FoZlTIM73kMVhB7o" },
+        { titulo: "Secret Agent", url: "https://youtu.be/X_dGD9oapyU?si=8CHKRMbktTSTH0W_" },
+        { titulo: "El secreto del Arca", url: "https://youtu.be/pQ4bcl-5so0?si=nidy7Y0Z4ig4qLaI" },
+        { titulo: "Drive", url: "https://youtu.be/58yz3VijEcM?si=vitikf-8kg7LplPa" },
+        { titulo: "Deep sea pithon", url: "https://youtu.be/9yS6iJSrCAk?si=fMDse0Q2ltCkRb3H" },
+        { titulo: "impacto Final", url: "https://youtu.be/42uqz1rMJVE?si=VKb63Pld6X3eshC6" },
+        { titulo: "Starcraft", url: "https://youtu.be/6_HQd1qnmxQ?si=rIOlxLjj_wj8L3Bk" },
+        { titulo: "Venganza Mortal", url: "https://youtu.be/VtIbY43Zajg?si=IudJM1cVTfB59uX7" },
+        { titulo: "Piratas del tesoro", url: "https://youtu.be/Oh2x2KqrRDg?si=x5nrT14dLRHHfpFI" },
+        { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKKX3QzncutoIH" },
+        { titulo: "La Rebelion", url: "https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" },
+        { titulo: "El 5to elemento", url: "https://youtu.be/iqeatp1VXVA?si=nDi2V3NTNBgjj03f" },
+        { titulo: "El defensor", url: "https://youtu.be/hhnYJ9h4qXg?si=y7fi1a2zGs6K0L80" },
+        { titulo: "Furia de los siglos", url: "https://youtu.be/z2FQd1m63yo?si=WoCrG87EvdH2wIkz" },
+        { titulo: "Colombiana 2", url: "https://youtu.be/O8mFkQtbZBU?si=w4JVJRk8w5NCqX4r" },
+        { titulo: "Peligro en el Amazonas", url: "https://youtu.be/JDOoSVKh5gc?si=On_VQV5CuB_dFo1I" },
+        { titulo: "Diamantes de sangre", url: "https://youtu.be/4pa862ZDFcA?si=qFRCPE3imUfWmFLn" },
+        { titulo: "Codigo de venganza", url: "https://youtu.be/T9r-ov2kfaw?si=8VSGJx4IqOAmtC6x" },
+        { titulo: "Hard target", url: "https://youtu.be/ABDYUbHkf18?si=Ce0AVEwzUa55rots" },
+        { titulo: "Air colision", url: "https://youtu.be/znfZrxm4Wwc?si=wDjI2OrDqB3pPYaj" },
+        { titulo: "Agente de inteligencia", url: "https://youtu.be/H2ZXxag2WrM?si=SNcQ1b3-vESRGzCy" },
+        { titulo: "Rescate", url: "https://youtu.be/Cci1N25m9MU?si=HjyjkXsEWZKmTMAa" },
+        { titulo: "Guerra del desierto", url: "https://youtu.be/plkx8J1cxe4?si=X7KFK9VV9JecGzsK" },
+        { titulo: "El renacer de los heroes", url: "https://youtu.be/mrtzpYuDNZA?si=HksJO454Rl4br0Xm" },
+        { titulo: "Virus", url: "https://youtu.be/T7hhuUKl2Nc?si=ysIlmatmK79DenKe" },
+        { titulo: "Tears on the sun", url: "https://youtu.be/ZwfQ1xtssIs?si=m3yMI1v5nkMQI9zT" },
+        { titulo: "Fuego en los cielos", url: "https://youtu.be/Pc410AWg4gM?si=qZGwEBKqAQ7X5ajN" },
+        { titulo: "Killer Shark", url: "https://youtu.be/lqBOR1N_XU8?si=g-hgKcgdwsaObzac" },
+        { titulo: "Comodo vs Cobra", url: "https://youtu.be/37O8qW7WBCI?si=HuN9_lxGrcoB3OHH" },
+        { titulo: "Comodo", url: "https://youtu.be/YQ8jHZZIRVc?si=mkt64P-dpd98DmGV" },
+        { titulo: "Black Waterk", url: "https://youtu.be/6fiaMiJJ9MA?si=fbTiVDzt-9EIsVdm" },
+        { titulo: "D-railed", url: "https://mitelefe.com/vivo/" } 
+    ],
+    thriller: [
+        { titulo: "Jeepers Creepers", url: "https://youtu.be/hmKnm2jH_2Y?si=2qWanAyVpHHkUAWo" },
+        { titulo: "La Profesora Psicopata", url: "https://youtu.be/fbdupvcfO6Q?si=fIRyTIZP0PFZbwUA" },
+        { titulo: "The ninth gate", url: "https://youtu.be/QskN9E6mCFk?si=iiRzaIMOX5yTxQQM" },
+        { titulo: "Pasajeros", url: "https://youtu.be/sg4HgAHmRac?si=3eH3jOjcPmqf3agq" },
+        { titulo: "Cazadores del mas alla", url: "https://youtu.be/eww-r8o-JOc?si=xARiJSGOx4KM0DVk" },
+        { titulo: "Identidad alterada", url: "https://youtu.be/Huoda3CKCBY?si=0Sl_sRT2ekJ2a6yC" },
+        { titulo: "Calificaciones Mortales", url: "https://youtu.be/_j2VVJSwpy4?si=GJZ9I1bUlXYufDFr" },
+        { titulo: "Tumba abierta", url: "https://youtu.be/F1MQUkFKwjU?si=DG-mKXkPJxAQspbJ" },
+        { titulo: "Jeepers creepers 2", url: "https://youtu.be/2oX9KsBtVfY?si=tmODVRS9CkBTYLz_" },
+        { titulo: "Jeepers Creepers 3", url: "https://youtu.be/q6XSShKe-9c?si=LsECidR-qCG1r4JN" },
+        { titulo: "Sombra en la pared", url: "https://youtu.be/GJZ9I1bUlXYufDFr" },
+        { titulo: "El coleccionista", url: "https://youtu.be/DG-mKXkPJxAQspbJ" },
+    ],
+    comedia: [
+        { titulo: "Donha", url: "https://youtu.be/NcdYo_eMv4U?si=t_oDPCj8TNRQNVkC" },
+        { titulo: "El Mud", url: "https://youtu.be/RAFQBNlL0aw?si=Mpk5QJx6tYE0_RNC" },
+        { titulo: "La aventura de Aladino", url: "https://youtu.be/fsSryNsqPDY?si=4DJz6qAjS1tbotxj" },
+        { titulo: "En nombre de mis hijos", url: "https://youtu.be/7XpgTVBfo9k?si=FYyZxENw-ttKZSZS" },
+        { titulo: "Bajo un mismo techo", url: "https://youtu.be/4My3KEB8QIo?si=Hu0nZivaJlaMrne8" },
+        { titulo: "Un dia de locos", url: "https://youtu.be/4My3KEB8QIo?si=Hu0nZivaJlaMrne8" },
+    ]
+};
+
+// ----------------------------------------------------------------------
+// COMPONENTE PRINCIPAL APP (SIN CAMBIOS)
 // ----------------------------------------------------------------------
 
 function App() {
     const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
+    const [mostrarMasGrid, setMostrarMasGrid] = React.useState(null); 
     const heroButtonRef = React.useRef(null); 
 
-    // 🚨 CORRECCIÓN CLAVE B: Aumentar el tiempo de espera para el re-enfoque 🚨
     const handleBack = React.useCallback(() => {
         setVideoEnFocoUrl(null);
         setTimeout(() => {
             if (heroButtonRef.current) {
-                // Devolver el foco al botón del HeroBanner
                 heroButtonRef.current.focus();
             }
-        }, 50); // Tiempo incrementado (antes era 0)
+        }, 50); 
     }, []);
+
+    React.useEffect(() => {
+        const handleEscape = (event) => {
+            if (event.key === 'Escape' && mostrarMasGrid) {
+                setMostrarMasGrid(null);
+            }
+        };
+        window.addEventListener('keydown', handleEscape);
+        return () => window.removeEventListener('keydown', handleEscape);
+    }, [mostrarMasGrid]);
 
 
     if (videoEnFocoUrl) {
@@ -482,11 +623,22 @@ function App() {
             onBack={handleBack} 
         />;
     }
+    
+    if (mostrarMasGrid) {
+        return <MasVideosGrid 
+            categoria={mostrarMasGrid.categoria}
+            videos={mostrarMasGrid.videos}
+            onPlay={setVideoEnFocoUrl}
+            onClose={() => setMostrarMasGrid(null)}
+        />;
+    }
 
-    const heroVideoUrl ="https://youtu.be/gZLvwCXlVFU?si=bp-GuZvAHr1sOJ5P";
+    const heroVideoUrl ="https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9eZPpS";
 
     return (
         <div className="p-4 md:p-8 max-w-7xl mx-auto min-h-screen bg-gray-900 text-white">
+            
+            {/* HERO BANNER */}
             <HeroBanner 
                 ref={heroButtonRef}
                 titulo="Estreno de la Semana"
@@ -495,113 +647,54 @@ function App() {
                 onPlay={setVideoEnFocoUrl} 
             />
 
-            <h1 className="text-2xl font-bold mb-4 text-red-600">
-                Peliculas
-            </h1>
+            {/* SECCIONES DE CATEGORÍA CON CARRUSEL Y TARJETA 'MÁS' */}
+            {Object.entries(CATALOGO).map(([categoria, videos]) => {
+                
+                const limiteCarrusel = 10;
+                const tieneMas = videos.length > limiteCarrusel;
+                
+                const videosEnCarrusel = tieneMas ? videos.slice(0, limiteCarrusel - 1) : videos.slice(0, limiteCarrusel);
+                const videosRestantesCount = videos.length - videosEnCarrusel.length;
 
-            <div className="grid grid-cols-2 sm:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-4">
-                <ReproductorDeVideo titulo="The Guardians" url={heroVideoUrl} onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Simbad la aventura del minotauro" url="https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Alien Convergence" url="https://youtu.be/w6DKhpKjMTE?si=j-7kNNoz93l0UZk9" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Yeti el hombre de la nieve" url="https://youtu.be/_OWD2gaWdOM?si=M-7yKl2zS51hCOvf" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Invasion letal" url="https://youtu.be/DXmynnoZ8X8?si=iw3LVlBhXPAr5C2l" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Cazador de demonios" url="https://youtu.be/UHvttPWH--Q?si=6yON_SdMIwywMJSC" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Jeppers Creepers" url= "https://youtu.be/hmKnm2jH_2Y?si=2qWanAyVpHHkUAWo" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Target Earth" url="https://youtu.be/cHFL7a3-2aY?si=4KHcRxuBCuWZjVxV" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="40 dias y noches" url="https://youtu.be/QdvMupiWUd8?si=2wbVNPZTkB7o8Z9b" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Legion de Heroes" url="https://youtu.be/g4r-cpKVEos?si=5cA99gki-Nc9BYNC" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Hulk 2" url="https://youtu.be/rf_ixD_yD_4?si=k28TepUpPchZr2TV" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Guerra de otro mundo" url="https://youtu.be/Mr2JAzHAquo?si=62pLmQ9gmkKfQa90" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Angeles vs Zombies" url="https://youtu.be/TVazxWtCr_E?si=q7ws8E5kkuHRZ6Qe" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Tierra perdida" url="https://youtu.be/QVj2CVk-Nio?si=MQH3We5LeRLL3_jO" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Donha" url="https://youtu.be/NcdYo_eMv4U?si=t_oDPCj8TNRQNVkC" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Impacto inminente" url="https://youtu.be/5pEFz_e7bSw?si=hyV51hXmHV7ROgux" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Supervivencia" url="https://youtu.be/10Lzga1uDpM?si=mEYDmw8WHhMT8Vx9" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Invasion Oculta" url="https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="El come huesos" url="https://youtu.be/d-eK3h5uDho?si=Gy3NDGqI-rAG4wz-" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Bermudas Avismo en el mar del norte" url="https://youtu.be/gwkUDXSGbxg?si=z966wQgljQviO304" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="La proxima generacion" url="https://youtu.be/ebvujopachw?si=FoZlTIM73kMVhB7o" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Secret Agent" url="https://youtu.be/X_dGD9oapyU?si=8CHKRMbktTSTH0W_" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="La Profesora Psicopata" url="https://youtu.be/fbdupvcfO6Q?si=fIRyTIZP0PFZbwUA" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="El secreto del Arca" url="https://youtu.be/pQ4bcl-5so0?si=nidy7Y0Z4ig4qLaI" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Drive" url="https://youtu.be/58yz3VijEcM?si=vitikf-8kg7LplPa" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Deep sea pithon" url="https://youtu.be/9yS6iJSrCAk?si=fMDse0Q2ltCkRb3H" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="impacto Final" url="https://youtu.be/42uqz1rMJVE?si=VKb63Pld6X3eshC6" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Starcraft" url="https://youtu.be/6_HQd1qnmxQ?si=rIOlxLjj_wj8L3Bk" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Venganza Mortal" url="https://youtu.be/VtIbY43Zajg?si=IudJM1cVTfB59uX7" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="The ninth gate" url="https://youtu.be/QskN9E6mCFk?si=iiRzaIMOX5yTxQQM" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Piratas del tesoro" url="https://youtu.be/Oh2x2KqrRDg?si=x5nrT14dLRHHfpFI" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Indiana Jone el Gran circulo" url="https://youtu.be/KONzw7qwEuA?si=X5gKKX3QzncutoIH" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Pasajeros" url="https://youtu.be/sg4HgAHmRac?si=3eH3jOjcPmqf3agq" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="La Rebelion" url="https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="El 5to elemento" url="https://youtu.be/iqeatp1VXVA?si=nDi2V3NTNBgjj03f" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Cazadores del mas alla" url="https://youtu.be/eww-r8o-JOc?si=xARiJSGOx4KM0DVk" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="El defensor" url="https://youtu.be/hhnYJ9h4qXg?si=y7fi1a2zGs6K0L80" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Identidad alterada" url="https://youtu.be/Huoda3CKCBY?si=0Sl_sRT2ekJ2a6yC" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Furia de los siglos" url="https://youtu.be/z2FQd1m63yo?si=WoCrG87EvdH2wIkz" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Colombiana 2" url="https://youtu.be/O8mFkQtbZBU?si=w4JVJRk8w5NCqX4r" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="La aventura de Aladino" url="https://youtu.be/fsSryNsqPDY?si=4DJz6qAjS1tbotxj" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Peligro en el Amazonas" url="https://youtu.be/JDOoSVKh5gc?si=On_VQV5CuB_dFo1I" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Diamantes de sangre" url="https://youtu.be/4pa862ZDFcA?si=qFRCPE3imUfWmFLn" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Codigo de venganza" url="https://youtu.be/T9r-ov2kfaw?si=8VSGJx4IqOAmtC6x" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Hard target" url="https://youtu.be/ABDYUbHkf18?si=Ce0AVEwzUa55rots" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Air colision" url="https://youtu.be/znfZrxm4Wwc?si=wDjI2OrDqB3pPYaj" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Agente de inteligencia" url="https://youtu.be/H2ZXxag2WrM?si=SNcQ1b3-vESRGzCy" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Calificaciones Mortales" url="https://youtu.be/_j2VVJSwpy4?si=GJZ9I1bUlXYufDFr" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Rescate" url="https://youtu.be/Cci1N25m9MU?si=HjyjkXsEWZKmTMAa" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Tumba abierta" url="https://youtu.be/F1MQUkFKwjU?si=DG-mKXkPJxAQspbJ" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Jeepers creepers 2" url="https://youtu.be/2oX9KsBtVfY?si=tmODVRS9CkBTYLz_" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Jeepers Creepers 3" url="https://youtu.be/q6XSShKe-9c?si=LsECidR-qCG1r4JN" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Guerra del desierto" url="https://youtu.be/plkx8J1cxe4?si=X7KFK9VV9JecGzsK" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="El renacer de los heroes" url="https://youtu.be/mrtzpYuDNZA?si=HksJO454Rl4br0Xm" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Virus" url="https://youtu.be/T7hhuUKl2Nc?si=ysIlmatmK79DenKe" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Fuego en los cielos" url="https://youtu.be/Pc410AWg4gM?si=qZGwEBKqAQ7X5ajN" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="En nombre de mis hijos" url="https://youtu.be/7XpgTVBfo9k?si=FYyZxENw-ttKZSZS" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Killer Shark" url="https://youtu.be/lqBOR1N_XU8?si=g-hgKcgdwsaObzac" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Comodo vs Cobra" url="https://youtu.be/37O8qW7WBCI?si=HuN9_lxGrcoB3OHH" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Comodo" url="https://youtu.be/YQ8jHZZIRVc?si=mkt64P-dpd98DmGV" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Black Waterk" url="https://youtu.be/6fiaMiJJ9MA?si=fbTiVDzt-9EIsVdm" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Furia Letal" url="https://youtu.be/J7zTs1pFJ2k?si=AWEDASzFuZWxiQaQ" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="D-railed" url="https://youtu.be/Ggz2LT9hVb0?si=UYnxkh9g7UH1G8uB" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="El renacimiento de la momia" url="https://youtu.be/ab6o7xQvJD8?si=mYVr94XYiHKBzIzk" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Tenpestad mortal" url="https://youtu.be/z1Thzde7NYo?si=bxcWCrtECPlYtp6q" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Aventura en el Amzonas" url="https://youtu.be/UcS5h6WauJg?si=1S7j-ESwReWlHRRp" onPlay={setVideoEnFocoUrl} />
-                <ReproductorDeVideo titulo="Depredador Alien" url="https://youtu.be/1dABUbBCc3Q?si=kFDB8t99vvspfWpW" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="mmester spion" url="https://youtu.be/muhrlJK-dTo?si=K5FmnpdrrZUNdjz1" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="The Terminator" url="https://youtu.be/iV0jmEi3pTk?si=bTea69DbH5-Yyy-o" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="¡Y donde esta el dinero?" url="https://youtu.be/iNu85eeKBSQ?si=5Hz23L4bvhEVS6km" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Rescate en el tiempo" url="https://youtu.be/dehsDu4Lb1k?si=qcGo-BkcQ_kinaAE" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Instinto Predador" url="https://youtu.be/ba7vKP8uCa8?si=b2ZYZhdy0d6htK1q" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Wasabi" url="https://youtu.be/xvr4KLDI6Y4?si=w-4S0SZCztsPS6Ug" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="El imperio de los lobos" url="https://youtu.be/FEmoVl9WeX4?si=KiZmg3GD3JLRHxUE" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="La furia de la montaña" url="https://youtu.be/V-FN_RxL72s?si=NxzrqcnjT_fz2nN0" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Peligro en la montaña" url="https://youtu.be/uJ8R_dmirzc?si=c4TaWMSKphz9ER45" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Desatre en el vuelo US57" url="https://youtu.be/hx8aWvloRxA?si=5Lel_oT3d5cjEUHD" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Pasajero 23" url="https://youtu.be/QF-1zg2EFxA?si=tj8jILsjNAvFlK0S" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Desastre inminente" url="https://youtu.be/BIpk3l6gumg?si=Lda-67_uKqmEBsA0" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Surf sangriento" url="https://youtu.be/-x5z1AtR2MA?si=P1rvwfHSqKSIpQME" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Piraña 2" url="https://youtu.be/VA87w9OtiO4?si=GZcXcK-TlbsSg3Rl" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Acuario de la muerte" url="https://youtu.be/ha3z2RC2YHk?si=dvhqvhT3AD3egWAE" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="La maldicion de la caja" url="https://youtu.be/TR5Fb4iboMs?si=aYOfEPBnB-KqgDwk" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Nocturne" url="https://youtu.be/owIS51MPm28?si=3eukLIZJT_53FeyB" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Ohio 1978" url="https://youtu.be/noUW4oxGE00?si=s-WI2AaEi-YM5Kra" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="El ultimo viaje" url="https://youtu.be/noUW4oxGE00?si=s-WI2AaEi-YM5Kra" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Tu madre o la mia" url="https://youtu.be/QaH8WK9ochk?si=xAUZgp1qVoiSFV-j" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Atraco familiar" url="https://youtu.be/R4TZ6r_af8A?si=X0JXcE-Nm7r2cvIZ" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Matrimonio por accidente" url="https://youtu.be/2V70FBroV9Y?si=TtNINxq3HWDF9uiv" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="El empleado del mes" url="https://youtu.be/ZwX0--f7Z3c?si=fxUex49D9rPgj3Ml" onPlay={setVideoEnFocoUrl} />
-                 <ReproductorDeVideo titulo="Sin aliento" url="https://youtu.be/jXfS73Tp4LQ?si=EsTjxoZ0HSZ0xqT1" onPlay={setVideoEnFocoUrl} />
-          
-            </div>
+                return (
+                    <div key={categoria} className="mb-10">
+                        
+                        <h1 className="text-2xl font-bold mb-4 text-red-600 capitalize">
+                            {categoria}
+                        </h1>
+
+                        <VideoCarousel>
+                            
+                            {/* Videos Normales en el Carrusel (Miniaturas) */}
+                            {videosEnCarrusel.map((video, index) => (
+                                <div key={index} className="flex-shrink-0 w-40 sm:w-52 lg:w-64">
+                                    <ReproductorDeVideo 
+                                        titulo={video.titulo} 
+                                        url={video.url} 
+                                        onPlay={setVideoEnFocoUrl} 
+                                    />
+                                </div>
+                            ))}
+
+                            {/* Tarjeta "Más" (Mismo tamaño que las miniaturas) */}
+                            {videosRestantesCount > 0 && (
+                                <div className="flex-shrink-0 w-40 sm:w-52 lg:w-64">
+                                    <TarjetaMas 
+                                        count={videosRestantesCount}
+                                        onShowAll={() => setMostrarMasGrid({ categoria, videos })}
+                                    />
+                                </div>
+                            )}
+                            
+                        </VideoCarousel>
+                    </div>
+                );
+            })}
         </div>
     );
 }
 
 // Montaje de la aplicación
-// NOTA: Esto asume que tienes ReactDOM importado o accesible globalmente (ej: usando un CDN)
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
-
-
-

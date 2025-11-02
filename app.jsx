@@ -193,6 +193,8 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         if (!isYouTube) return; 
         
         const currentFocusedElement = document.activeElement;
+        const isFocusOnPlayerContainer = currentFocusedElement === playerContainerRef.current;
+        const isFocusOnBackButton = currentFocusedElement === backButtonRef.current;
 
         // 1. Manejo de la reaparición de controles con D-Pad
         if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
@@ -200,7 +202,6 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             
             if (!showControls) {
                 setShowControls(true); 
-                // El useEffect se encargará de enfocar el botón Volver
                 return;
             }
         }
@@ -212,22 +213,27 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             case 'Enter': case ' ': 
                 e.preventDefault(); 
                 
-                if (currentFocusedElement === backButtonRef.current) {
-                    // CORRECCIÓN 1: Vuelve al catálogo
+                if (isFocusOnBackButton) {
+                    // CORRECCIÓN CLAVE 1: Vuelve al catálogo si el foco está en el botón "Volver"
                     handleOnBack();
                 } 
-                else if (currentFocusedElement === playerContainerRef.current) {
-                    // CORRECCIÓN 2: Pausar/Reproducir si el foco está en el contenedor principal
-                    playerRef.current?.getPlayerState() === YT.PlayerState.PLAYING ? playerRef.current.pauseVideo() : playerRef.current.playVideo();
+                else if (isFocusOnPlayerContainer) {
+                    // CORRECCIÓN CLAVE 2: Pausar/Reproducir si el foco está en el contenedor principal (video)
+                    const playerState = playerRef.current?.getPlayerState();
+                    if (playerState === YT.PlayerState.PLAYING || playerState === YT.PlayerState.BUFFERING) {
+                        playerRef.current.pauseVideo();
+                    } else if (playerState === YT.PlayerState.PAUSED) {
+                        playerRef.current.playVideo();
+                    }
                 }
                 break;
                 
             // 2. Navegación D-Pad Vertical entre Controles (Volver <-> Barra)
             case 'ArrowDown': 
-                if (currentFocusedElement === backButtonRef.current) {
+                if (isFocusOnBackButton) {
                     progressBarRef.current?.focus(); 
-                } else if (showControls) {
-                    // Si ya estamos en la barra, o en el contenedor, saltamos adelante 10s.
+                } else if (showControls && (isFocusOnPlayerContainer || currentFocusedElement === progressBarRef.current)) {
+                     // Si los controles están visibles y el foco está en la barra o en el video, saltamos adelante 10s.
                      playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
                 }
                 break;
@@ -235,19 +241,20 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             case 'ArrowUp': 
                 if (currentFocusedElement === progressBarRef.current) {
                     backButtonRef.current?.focus(); 
-                } else if (showControls) {
-                    // Si ya estamos en el botón Volver, no hay nada arriba, saltamos atrás 10s.
+                } else if (showControls && (isFocusOnPlayerContainer || isFocusOnBackButton)) {
+                    // Si los controles están visibles y el foco está en el botón Volver o en el video, saltamos atrás 10s.
                     playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
                 }
                 break;
                 
             // 3. Navegación D-Pad Horizontal (Salto 10s)
             case 'ArrowLeft': 
-                 if (showControls) playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
-                 break;
-                 
             case 'ArrowRight': 
-                 if (showControls) playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
+                 // Permite el seek rápido si el foco está en el video o en cualquier control visible.
+                 if (showControls || isFocusOnPlayerContainer) {
+                     const seekTime = e.key === 'ArrowRight' ? 10 : -10;
+                     playerRef.current?.seekTo(playerRef.current.getCurrentTime() + seekTime, true);
+                 }
                  break;
                  
             case 'Escape': case 'Backspace': case 'Back': case 'BrowserBack': 
@@ -565,7 +572,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
 
 const CATALOGO = {
     accion: [
-        { titulo: "Nephilim", url: "https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9eZPpS" },
+        { titulo: "Nephilim", url: "https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9ePPpS" },
         { titulo: "Simbad la aventura del minotauro", url: "https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N" },
         { titulo: "Alien Convergence", url: "https://youtu.be/w6DKhpKjMTE?si=j-7kNNoz93l0UZk9" },
         { titulo: "Yeti el hombre de la nieve", url: "https://youtu.be/_OWD2gaWdOM?si=M-7yKl2zS51hCOvf" },
@@ -617,7 +624,7 @@ const CATALOGO = {
         { titulo: "D-railed", url: "https://mitelefe.com/vivo/" } 
     ],
     thriller: [
-        { titulo: "Jeepers Creepers", url: "https://youtu.be/hmKnm2jH_2Y?si=2qWanAyVpHHkUAWo" },
+        { titulo: "Jeepers Creepers", url: "https://youtu.be/hmKnm2jH_2Y?si=2qWanAyVpHhKUAWo" },
         { titulo: "La Profesora Psicopata", url: "https://youtu.be/fbdupvcfO6Q?si=fIRyTIZP0PFZbwUA" },
         { titulo: "The ninth gate", url: "https://youtu.be/QskN9E6mCFk?si=iiRzaIMOX5yTxQQM" },
         { titulo: "Pasajeros", url: "https://youtu.be/sg4HgAHmRac?si=3eH3jOjcPmqf3agq" },
@@ -763,7 +770,7 @@ function App() {
         />;
     }
 
-    const heroVideoUrl ="https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9eZPpS";
+    const heroVideoUrl ="https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9ePPpS";
     let categoryIndex = 1; 
 
     return (

@@ -1,4 +1,5 @@
 // Este código asume que React, ReactDOM, y window.YT están cargados en el entorno global.
+// Se recomienda usar Tailwind CSS para los estilos.
 
 // ----------------------------------------------------------------------
 // UTILERÍAS Y LÓGICA DE VIDEO
@@ -158,20 +159,36 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     
     const handleKeyDown = (e) => {
         if (!isYouTube) return; 
+        
+        // 1. Manejo de la reaparición de controles con D-Pad
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+            e.preventDefault();
+            
+            if (!showControls) {
+                setShowControls(true); // El useEffect moverá el foco al botón Volver
+                resetControlTimeout(); 
+                return;
+            }
+        }
+
+        // Si los controles están visibles, reinicia el timeout.
         resetControlTimeout(); 
+        
         switch (e.key) {
             case 'Enter': case ' ': 
                 e.preventDefault(); 
-                playerRef.current?.getPlayerState() === YT.PlayerState.PLAYING ? playerRef.current.pauseVideo() : playerRef.current.playVideo();
+                // Pausar/Reproducir si el foco está en el contenedor principal (controles ocultos)
+                if (document.activeElement === playerContainerRef.current) {
+                    playerRef.current?.getPlayerState() === YT.PlayerState.PLAYING ? playerRef.current.pauseVideo() : playerRef.current.playVideo();
+                }
+                // Si el foco está en el botón Volver, el `onClick` del botón se activa automáticamente.
                 break;
             case 'ArrowLeft': 
-                e.preventDefault(); 
-                playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
-                break;
+                 if (showControls) playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
+                 break;
             case 'ArrowRight': 
-                e.preventDefault(); 
-                playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
-                break;
+                 if (showControls) playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
+                 break;
             case 'Escape': case 'Backspace': case 'Back': case 'BrowserBack': 
                 e.preventDefault();
                 handleOnBack(); 
@@ -270,7 +287,7 @@ const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, 
                     onClick={() => onPlay(videoUrl)} 
                     className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg transition-all duration-300 hover:bg-red-700 focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                     tabIndex="0" 
-                    data-category-index="0" // HERO tiene índice 0
+                    data-category-index="0" 
                 >
                     Ver Ahora
                 </button>
@@ -298,7 +315,7 @@ function ReproductorDeVideo(props) {
             className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col h-full focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
             onClick={() => props.onPlay(props.url)} 
             tabIndex="0" 
-            data-category-index={props.categoryIndex} // Aplicado
+            data-category-index={props.categoryIndex} 
         >
             <img 
                 src={thumbnailUrl} 
@@ -328,7 +345,7 @@ function TarjetaMas({ onShowAll, count, categoryIndex }) {
             className="video-card flex-shrink-0 w-full cursor-pointer group relative overflow-hidden bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col items-center justify-center h-full focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
             onClick={onShowAll}
             tabIndex="0" 
-            data-category-index={categoryIndex} // Aplicado
+            data-category-index={categoryIndex} 
         >
             <div className="text-center p-4">
                 <p className="text-6xl font-extrabold text-white mb-2">+</p>

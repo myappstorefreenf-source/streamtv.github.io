@@ -5,7 +5,8 @@
 // UTILERÍAS Y LÓGICA DE VIDEO
 // ----------------------------------------------------------------------
 
-const CONTROLS_TIMEOUT = 3000; 
+// Tiempo de espera para ocultar los controles: 3000ms (3 segundos)
+const CONTROLS_TIMEOUT = 1000; 
 // Asegúrate de que YT esté disponible globalmente (cargando la API de YouTube Iframe)
 const YT = window.YT; 
 
@@ -69,6 +70,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
 
     const isControlFocused = React.useCallback(() => {
         const active = document.activeElement;
+        // Solo consideramos los botones de control (Volver y Barra)
         return active === backButtonRef.current || active === progressBarRef.current;
     }, []);
 
@@ -91,58 +93,68 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             progressIntervalRef.current = null;
         }
     }, []);
-
-    // Lógica de timeout para ocultar los controles
+    
+    // AJUSTE CRUCIAL: Lógica de timeout para ocultar los controles
     const resetControlTimeout = React.useCallback(() => {
+        // Al interactuar o al reinicio, siempre mostramos los controles
         setShowControls(true); 
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         
-        // Solo iniciamos el timeout si el video está reproduciéndose Y
-        // el foco NO está en un control interactivo (botón Volver o Barra)
+        // Si está en pausa, aseguramos que se muestren permanentemente.
+        if (!isPlayingRef.current) {
+            setShowControls(true);
+            return; 
+        }
+
+        // Si está reproduciendo, programamos el ocultamiento (solo si el foco NO está en un control)
         if (isPlayingRef.current && !isControlFocused()) { 
              timeoutRef.current = setTimeout(() => {
                  setShowControls(false);
-                 // Mueve el foco al contenedor principal cuando los controles se ocultan
-                 if (playerContainerRef.current) {
-                     playerContainerRef.current.focus(); 
+                 // 1. Mover el foco al contenedor principal.
+                 playerContainerRef.current?.focus(); 
+                 // 2. CORRECCIÓN: Desenfocar el elemento si aún estuviera por error.
+                 if (isControlFocused()) {
+                     document.activeElement.blur(); 
                  }
              }, CONTROLS_TIMEOUT);
         }
     }, [isControlFocused]);
 
+    // Sincroniza el estado de reproducción y asegura el timeout
     React.useEffect(() => {
         isPlayingRef.current = isPlaying;
-    }, [isPlaying]);
+        resetControlTimeout(); 
+    }, [isPlaying, resetControlTimeout]);
 
-    // Lógica de Foco Inicial: Enfoca el botón al mostrar, o el contenedor al ocultar.
+
+    // Lógica de Foco: Mover el foco al lugar correcto cuando la visibilidad cambia.
     React.useEffect(() => {
         if (showControls) {
-            // Cuando los controles aparecen, siempre enfocamos el botón Volver primero
-            if (backButtonRef.current) {
-                backButtonRef.current.focus();
+            // Cuando los controles aparecen, enfocamos Volver si no estamos ya en un control.
+            if (!isControlFocused()) {
+                backButtonRef.current?.focus();
             }
-        } else if (!showControls && playerContainerRef.current) {
-             playerContainerRef.current.focus();
+        } else if (!showControls) {
+             // Cuando se ocultan, el foco vuelve al contenedor para capturar la interacción.
+             playerContainerRef.current?.focus();
         }
-    }, [showControls]);
+    }, [showControls, isControlFocused]);
     
-    // Si el foco cambia a un control, reinicia el timeout sin ocultar.
+    // Manejo de foco: Si el foco entra en un control, aseguramos que se muestre (y cancelamos el timeout)
     React.useEffect(() => {
         const handleFocusChange = () => {
-             // Si el foco entra en un control, aseguramos que los controles se muestren
+             // Si el foco acaba de entrar en un control interactivo (Volver o Barra)
              if (isControlFocused()) {
                  setShowControls(true);
-                 if (timeoutRef.current) clearTimeout(timeoutRef.current); // Detenemos el auto-ocultamiento
-             } else {
-                 // Si el foco sale de un control (ej: al contenedor), reiniciamos el timeout
-                 resetControlTimeout();
+                 if (timeoutRef.current) clearTimeout(timeoutRef.current); 
              }
         };
 
         window.addEventListener('focusin', handleFocusChange);
         return () => window.removeEventListener('focusin', handleFocusChange);
-    }, [isControlFocused, resetControlTimeout]);
-
+    }, [isControlFocused]);
+    
+    // Manejo de la API de YouTube
     React.useEffect(() => {
         if (!isYouTube || !videoId || !window.YT) return;
         const playerId = 'youtube-player-container'; 
@@ -161,9 +173,9 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 'onStateChange': (event) => {
                     const state = event.data;
                     if (state === YT.PlayerState.PLAYING) {
-                        setIsPlaying(true); startProgressInterval(); resetControlTimeout(); 
+                        setIsPlaying(true); startProgressInterval();
                     } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.BUFFERING) {
-                        setIsPlaying(false); stopProgressInterval(); 
+                        setIsPlaying(false); stopProgressInterval(); setShowControls(true); 
                     } else if (state === YT.PlayerState.ENDED) {
                         setIsPlaying(false); stopProgressInterval(); 
                         if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -200,26 +212,26 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
             e.preventDefault();
             
-            if (!showControls) {
+            // Si el foco está en el contenedor (controles ocultos) y se presiona D-Pad, reaparecen.
+            if (!showControls && isFocusOnPlayerContainer) {
                 setShowControls(true); 
                 return;
             }
         }
 
-        // Siempre reinicia el contador de auto-ocultamiento al presionar cualquier tecla D-Pad/Enter
+        // Si estamos interactuando (controles visibles o Enter/OK), reiniciamos el temporizador.
         resetControlTimeout(); 
         
         switch (e.key) {
             case 'Enter': case ' ': 
                 e.preventDefault(); 
                 
-                // CORRECCIÓN CLAVE: Pausa/Play con Enter/OK siempre que el foco no esté en el botón Volver.
+                // Prioridad 1: Si el foco está en el botón Volver, SALIR.
                 if (isFocusOnBackButton) {
-                    // Prioridad 1: Si el foco está en el botón Volver, SALIR.
                     handleOnBack();
                 } 
+                // Prioridad 2: Si está en el video (contenedor) o la barra, PAUSAR/REPRODUCIR.
                 else { 
-                    // Prioridad 2: Si el foco NO está en Volver (está en el video o la barra), PAUSAR/REPRODUCIR.
                     const playerState = playerRef.current?.getPlayerState();
                     if (playerState === YT.PlayerState.PLAYING || playerState === YT.PlayerState.BUFFERING) {
                         playerRef.current.pauseVideo();
@@ -229,12 +241,16 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 }
                 break;
                 
-            // 2. Navegación D-Pad Vertical entre Controles (Volver <-> Barra)
+            // 2. Navegación D-Pad Vertical (solo si los controles están visibles)
             case 'ArrowDown': 
                 if (isFocusOnBackButton) {
                     progressBarRef.current?.focus(); 
-                } else if (showControls && (isFocusOnPlayerContainer || currentFocusedElement === progressBarRef.current)) {
-                     // Si los controles están visibles y el foco está en la barra o en el video, saltamos adelante 10s.
+                } else if (showControls && currentFocusedElement === progressBarRef.current) {
+                     // Si el foco está en la barra, y presionamos abajo, hacemos seek
+                     playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
+                }
+                // Si el foco está en el contenedor (oculto) y presionamos Down, hacemos seek
+                else if (isFocusOnPlayerContainer) {
                      playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
                 }
                 break;
@@ -242,17 +258,21 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             case 'ArrowUp': 
                 if (currentFocusedElement === progressBarRef.current) {
                     backButtonRef.current?.focus(); 
-                } else if (showControls && (isFocusOnPlayerContainer || isFocusOnBackButton)) {
-                    // Si los controles están visibles y el foco está en el botón Volver o en el video, saltamos atrás 10s.
+                } else if (showControls && isFocusOnBackButton) {
+                    // Si el foco está en el botón Volver y presionamos arriba, hacemos seek
                     playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
+                }
+                // Si el foco está en el contenedor (oculto) y presionamos Up, hacemos seek
+                else if (isFocusOnPlayerContainer) {
+                     playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
                 }
                 break;
                 
-            // 3. Navegación D-Pad Horizontal (Salto 10s)
+            // 3. Navegación D-Pad Horizontal (Salto 10s) - Funciona con controles ocultos.
             case 'ArrowLeft': 
             case 'ArrowRight': 
-                 // Permite el seek rápido si el foco está en el video o en cualquier control visible.
-                 if (showControls || isFocusOnPlayerContainer) {
+                 // Permite el seek rápido si el foco está en el video (contenedor) o en la barra de progreso
+                 if (isFocusOnPlayerContainer || currentFocusedElement === progressBarRef.current) {
                      const seekTime = e.key === 'ArrowRight' ? 10 : -10;
                      playerRef.current?.seekTo(playerRef.current.getCurrentTime() + seekTime, true);
                  }
@@ -300,6 +320,8 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 </div>
                 {isYouTube && (
                     <div 
+                        // pointer-events-none previene que los elementos dentro sean interactuables con el mouse/touch
+                        // y ayuda a que el motor de foco los ignore cuando la opacidad es 0.
                         className={`absolute top-0 bottom-0 w-full flex flex-col p-10 transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                         style={{maxWidth: '100%', maxHeight: '100%'}} 
                     >
@@ -309,7 +331,8 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                                 onClick={handleOnBack}
                                 className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
                                 title="Volver al catálogo"
-                                tabIndex={showControls ? 0 : -1}
+                                // CRUCIAL: Desactivamos el foco si los controles no se muestran.
+                                tabIndex={showControls ? 0 : -1} 
                             >
                                 <BackIcon />
                                 <span className="text-xs">Volver</span>
@@ -321,8 +344,9 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                                 <div 
                                     ref={progressBarRef} 
                                     className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group h-2 relative transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900" 
-                                    tabIndex={showControls ? 0 : -1} 
                                     title="Barra de Progreso"
+                                    // CRUCIAL: Desactivamos el foco si los controles no se muestran.
+                                    tabIndex={showControls ? 0 : -1} 
                                 >
                                     <div className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" style={{ width: `${bufferedPercent}%` }}></div>
                                     <div className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative h-full" style={{ width: `${progressPercent}%` }}></div>
@@ -828,11 +852,18 @@ function App() {
         </div>
     );
 }
+const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(rootElement);
+root.render(<App />);
+// Para ejecutar este código en un entorno web, debes montarlo usando React:
+/*
+// 1. Asegúrate de tener un div con id="root" en tu HTML.
+// 2. Asegúrate de cargar los scripts de React, ReactDOM y la API de YouTube Iframe Player:
+//    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+//    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+//    <script src="https://www.youtube.com/iframe_api"></script>
+// 3. Usa Babel o un preprocesador para convertir el JSX si es necesario.
 
-// Montaje de la aplicación
-// NOTA: Para que esto funcione, debes tener los scripts de React, ReactDOM, 
-// y la API de YouTube Iframe Player cargados ANTES de este código, 
-// y un elemento <div id="root"> en tu HTML.
- const rootElement = document.getElementById('root');
- const root = ReactDOM.createRoot(rootElement);
- root.render(<App />);
+// Ejemplo de montaje:
+
+*/

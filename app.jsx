@@ -54,7 +54,7 @@ function obtenerVideoInfo(url) {
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTE ReproductorEnFoco (Sin Cambios)
+// COMPONENTE ReproductorEnFoco (CON CORRECCIÓN DE SALIDA)
 // ----------------------------------------------------------------------
 
 function ReproductorEnFoco({ videoUrl, onBack }) {
@@ -62,7 +62,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     const playerRef = React.useRef(null);
     const playerContainerRef = React.useRef(null);
     const progressBarRef = React.useRef(null);
-    const backButtonRef = React.useRef(null);
+    const backButtonRef = React.useRef(null); // Ref del botón Volver
     
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [showControls, setShowControls] = React.useState(true);
@@ -95,7 +95,6 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         }
     }, []);
     
-    // Lógica de timeout para ocultar los controles
     const resetControlTimeout = React.useCallback(() => {
         setShowControls(true);
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -113,13 +112,11 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         }
     }, []);
 
-    // Sincroniza el estado de reproducción y asegura el timeout
     React.useEffect(() => {
         isPlayingRef.current = isPlaying;
         resetControlTimeout();
     }, [isPlaying, resetControlTimeout]);
 
-    // Foco Inicial y al reaparecer controles
     React.useEffect(() => {
         if (showControls) {
             const timer = setTimeout(() => {
@@ -131,7 +128,6 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         }
     }, [showControls]);
     
-    // Manejo de la API de YouTube (sin cambios)
     React.useEffect(() => {
         if (!isYouTube || !videoId || !window.YT) return;
         const playerId = 'youtube-player-container';
@@ -177,70 +173,89 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         onBack();
     }
     
-    // --- LÓGICA DE CONTROL DE VIDEO ---
     const handleKeyDown = React.useCallback((e) => {
         const player = playerRef.current;
         if (!player || !isYouTube) return;
         
-        e.preventDefault(); 
+        // NO HACEMOS e.preventDefault() AQUÍ si el foco NO está en el contenedor principal
+        
         resetControlTimeout();
         
         if (!showControls) {
              if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(e.key)) {
+                e.preventDefault(); 
                 setShowControls(true);
                 return; 
              }
         }
         
+        // Siempre permitir salir con Escape/Back
         if (e.key === 'Escape' || e.key === 'Backspace' || e.key === 'Back' || e.key === 'BrowserBack') {
+            e.preventDefault();
             handleOnBack();
             return;
         }
 
-        if (e.key === 'Enter' || e.key === ' ') {
-            const playerState = player.getPlayerState();
-            if (playerState === YT.PlayerState.PLAYING) {
-                player.pauseVideo();
-            } else if (playerState === YT.PlayerState.PAUSED || playerState === YT.PlayerState.BUFFERING) {
-                player.playVideo();
+        // Si el foco está en el contenedor principal (controles ocultos) o en la barra de progreso:
+        if (document.activeElement === playerContainerRef.current || document.activeElement === progressBarRef.current) {
+            
+            // Pausar/Play si no está en el botón Volver
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const playerState = player.getPlayerState();
+                if (playerState === YT.PlayerState.PLAYING) {
+                    player.pauseVideo();
+                } else if (playerState === YT.PlayerState.PAUSED || playerState === YT.PlayerState.BUFFERING) {
+                    player.playVideo();
+                }
+                return;
             }
-            return;
+
+            // Seek
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                seekingRef.current = true;
+                const seekAmount = 10; 
+                let newTime = player.getCurrentTime();
+                if (e.key === 'ArrowLeft') {
+                    newTime = Math.max(0, newTime - seekAmount);
+                } else {
+                    newTime = Math.min(player.getDuration(), newTime + seekAmount);
+                }
+                player.seekTo(newTime, true);
+                setCurrentTime(newTime);
+                
+                setTimeout(() => {
+                    seekingRef.current = false;
+                    resetControlTimeout(); 
+                }, 500); 
+                return;
+            }
         }
 
-        const seekAmount = 10; 
-        let newTime;
-        
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-            seekingRef.current = true;
-            newTime = player.getCurrentTime();
-            if (e.key === 'ArrowLeft') {
-                newTime = Math.max(0, newTime - seekAmount);
-            } else {
-                newTime = Math.min(player.getDuration(), newTime + seekAmount);
-            }
-            player.seekTo(newTime, true);
-            setCurrentTime(newTime);
-            
-            setTimeout(() => {
-                seekingRef.current = false;
-                resetControlTimeout(); 
-            }, 500); 
-            return;
-        }
-        
         // Manejo de Foco de Controles (ArrowUp / ArrowDown)
         if (e.key === 'ArrowUp') {
+            e.preventDefault();
             backButtonRef.current?.focus();
             return;
         }
         
-        if (e.key === 'ArrowDown') {
+        if (e.key === 'ArrowDown' && document.activeElement === backButtonRef.current) {
+            e.preventDefault();
             progressBarRef.current?.focus();
             return;
         }
 
     }, [isYouTube, resetControlTimeout, showControls, handleOnBack]);
-
+    
+    // --- FUNCIÓN CRUCIAL: Manejar el OK/Enter en el botón Volver ---
+    const handleBackKeyDown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault(); // Detenemos el evento para que NO PAUSE EL VIDEO
+            handleOnBack(); // Ejecutamos la acción de volver
+        }
+    };
+    
     // Listener de Teclas (solo cuando el reproductor está visible)
     React.useEffect(() => {
         const container = playerContainerRef.current;
@@ -254,7 +269,6 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         };
     }, [handleKeyDown]);
     
-    // Función para manejar el "click" en la barra de progreso (para touch/mouse)
     const handleProgressClick = (e) => {
         if (!progressBarRef.current || !playerRef.current) return;
         const rect = progressBarRef.current.getBoundingClientRect();
@@ -308,6 +322,8 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                              <button
                                  ref={backButtonRef}
                                  onClick={handleOnBack}
+                                 // APLICAMOS LA CORRECCIÓN AQUÍ: Capturar OK/Enter para salir
+                                 onKeyDown={handleBackKeyDown}
                                  className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
                                  title="Volver al catálogo"
                                  tabIndex={0} 
@@ -340,40 +356,33 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTE HeroBanner (Modificado para ser enfocable)
+// COMPONENTES DE CATÁLOGO (Restaurado a la versión de botón)
 // ----------------------------------------------------------------------
 
 const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
     const { thumbnailUrl } = obtenerVideoInfo(videoUrl);
     return (
         <div 
-            // El banner completo es el elemento enfocable
-            ref={ref} 
-            onClick={() => onPlay(videoUrl)} // Ejecuta Play al hacer click/OK
-            className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-8 rounded-xl shadow-2xl bg-cover bg-center cursor-pointer 
-                       transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] focus:ring-[8px] focus:ring-white focus:ring-offset-4 focus:ring-offset-gray-900 focus:outline-none"
-            tabIndex="0" // Permite que el banner reciba el foco
+            className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-8 rounded-xl shadow-2xl bg-cover bg-center"
+            tabIndex="-1" 
             style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('${thumbnailUrl}'), url('https://placehold.co/1920x1080/0d1117/333?text=CARGANDO...')` }}
         >
             <div className="relative p-8 max-w-xl">
                 <h2 className="text-4xl font-extrabold mb-2 text-white drop-shadow-lg">{titulo}</h2>
                 <p className="text-base mb-4 text-gray-200 drop-shadow-md">{descripcion}</p>
-                
-                {/* Indicador visual de la acción (no un botón real) */}
-                <div 
-                    className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg"
+                <button 
+                    ref={ref}
+                    onClick={() => onPlay(videoUrl)} 
+                    className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg transition-all duration-300 hover:bg-red-700 focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
+                    tabIndex="0" 
                 >
-                    ▷ Presiona OK para Ver Ahora
-                </div>
+                    Ver Ahora
+                </button>
             </div>
         </div>
     );
 });
 HeroBanner.displayName = 'HeroBanner';
-
-// ----------------------------------------------------------------------
-// RESTO DE COMPONENTES (Sin cambios significativos)
-// ----------------------------------------------------------------------
 
 function ReproductorDeVideo(props) {
     const { videoId, thumbnailUrl, isYouTube } = obtenerVideoInfo(props.url);
@@ -393,7 +402,7 @@ function ReproductorDeVideo(props) {
             className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col h-full focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
             onClick={() => props.onPlay(props.url)} 
             tabIndex="0" 
-            ref={props.forwardedRef} // Para acceder a la ref del primer video
+            ref={props.forwardedRef} 
         >
             <img 
                 src={thumbnailUrl} 
@@ -595,42 +604,34 @@ const CATALOGO = {
 };
 
 // ----------------------------------------------------------------------
-// COMPONENTE PRINCIPAL APP (Con Corrección de Salto Vertical - Apuntando al Banner)
+// COMPONENTE PRINCIPAL APP (Restaurado a la versión de botón)
 // ----------------------------------------------------------------------
 
 function App() {
     const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
     const [mostrarMasGrid, setMostrarMasGrid] = React.useState(null); 
-    const heroBannerRef = React.useRef(null); // Referencia al Banner completo
-    const firstVideoRef = React.useRef(null); // Referencia al primer video del catálogo
+    const heroButtonRef = React.useRef(null); 
+    const firstVideoRef = React.useRef(null); 
 
     const handleBack = React.useCallback(() => {
         setVideoEnFocoUrl(null);
         setTimeout(() => {
-            // Regresar el foco al banner al salir del reproductor
-            heroBannerRef.current?.focus();
+            if (heroButtonRef.current) {
+                heroButtonRef.current.focus();
+            }
         }, 50); 
     }, []);
     
-    // --- Lógica de Corrección: Forzar el salto del Banner a la Lista ---
+    // Lógica de corrección para el salto inicial (Banner -> Primera Tarjeta)
     const handleNavigationFix = React.useCallback((event) => {
-        // Usamos el heroBannerRef como punto de partida
-        if (event.key === 'ArrowDown' && document.activeElement === heroBannerRef.current) {
-            // Si presionamos 'Abajo' estando en el Banner
+        if (event.key === 'ArrowDown' && document.activeElement === heroButtonRef.current) {
             event.preventDefault(); 
             if (firstVideoRef.current) {
-                firstVideoRef.current.focus(); // Forzamos el foco al primer video
+                firstVideoRef.current.focus();
             }
-        }
-        
-        if (event.key === 'ArrowUp' && firstVideoRef.current && document.activeElement === firstVideoRef.current) {
-            // Si presionamos 'Arriba' desde el primer video
-            event.preventDefault(); 
-            heroBannerRef.current?.focus(); // Volvemos el foco al Banner
         }
     }, []);
     
-    // Agregamos el listener global para capturar la tecla mientras estemos en el catálogo
     React.useEffect(() => {
         if (!videoEnFocoUrl && !mostrarMasGrid) {
             window.addEventListener('keydown', handleNavigationFix);
@@ -642,11 +643,10 @@ function App() {
         };
     }, [videoEnFocoUrl, mostrarMasGrid, handleNavigationFix]);
 
-    // Foco Inicial (al cargar o salir del reproductor/grid)
     React.useEffect(() => {
         if (!videoEnFocoUrl && !mostrarMasGrid) {
             setTimeout(() => {
-                heroBannerRef.current?.focus(); // Foco inicial en el banner
+                heroButtonRef.current?.focus();
             }, 100);
         }
     }, [videoEnFocoUrl, mostrarMasGrid]);
@@ -662,7 +662,7 @@ function App() {
             onPlay={setVideoEnFocoUrl}
             onClose={() => {
                 setMostrarMasGrid(null);
-                 setTimeout(() => heroBannerRef.current?.focus(), 50);
+                 setTimeout(() => heroButtonRef.current?.focus(), 50);
             }}
         />;
     }
@@ -673,11 +673,11 @@ function App() {
     return (
         <div className="p-4 md:p-8 max-w-7xl mx-auto min-h-screen bg-gray-900 text-white">
             
-            {/* HERO BANNER - Ahora es el elemento enfocable */}
+            {/* HERO BANNER con botón enfocado */}
             <HeroBanner 
-                ref={heroBannerRef}
+                ref={heroButtonRef}
                 titulo="Estreno de la Semana"
-                descripcion="Nephilim: Una aventura épica de ciencia ficción. Presiona OK para Ver Ahora."
+                descripcion="Nephilim: Una aventura épica de ciencia ficción."
                 videoUrl={heroVideoUrl}
                 onPlay={setVideoEnFocoUrl} 
             />
@@ -690,7 +690,6 @@ function App() {
                 const videosEnCarrusel = tieneMas ? videos.slice(0, limiteCarrusel - 1) : videos.slice(0, limiteCarrusel);
                 const videosRestantesCount = videos.length - videosEnCarrusel.length;
                 
-                // Determinamos si es el primer carrusel para adjuntar la referencia
                 const currentIsFirstCarousel = isFirstCarousel;
                 if (isFirstCarousel) {
                     isFirstCarousel = false;

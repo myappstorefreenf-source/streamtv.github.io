@@ -1,14 +1,20 @@
-// Este código asume que React, ReactDOM, y window.YT están cargados en el entorno global.
-// Requiere la configuración de un entorno React y la inclusión de Tailwind CSS.
+// ESTE CÓDIGO DEPENDE DE QUE LA API DE YOUTUBE IFRAME ESTÉ CARGADA EN EL HTML:
+/*
+<script>
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+</script>
+*/
+
+// Tiempo de espera para ocultar los controles: 3000ms (3 segundos)
+const CONTROLS_TIMEOUT = 3000;
+const YT = window.YT; // Asegúrate de que YT esté disponible globalmente
 
 // ----------------------------------------------------------------------
 // UTILERÍAS Y LÓGICA DE VIDEO
 // ----------------------------------------------------------------------
-
-// Tiempo de espera para ocultar los controles: 3000ms (3 segundos)
-const CONTROLS_TIMEOUT = 3000; 
-// Asegúrate de que YT esté disponible globalmente (cargando la API de YouTube Iframe)
-const YT = window.YT; 
 
 function formatTime(seconds) {
     if (isNaN(seconds) || seconds < 0) return '00:00';
@@ -17,14 +23,14 @@ function formatTime(seconds) {
     const s = Math.floor(seconds % 60);
     const parts = [m, s];
     if (h > 0) {
-        parts.unshift(h); 
+        parts.unshift(h);
         return parts.map(v => v.toString().padStart(2, '0')).join(':');
     }
     return parts.map(v => v.toString().padStart(2, '0')).join(':');
 }
 
 function obtenerVideoInfo(url) {
-    const defaultVideoId = 'dQw4w9WgXcQ'; 
+    const defaultVideoId = 'dQw4w9WgXcQ';
     let videoId = defaultVideoId;
     let isYouTube = false;
 
@@ -39,53 +45,47 @@ function obtenerVideoInfo(url) {
     }
 
     if (isYouTube) {
-        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`; 
+        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
         return { videoId, thumbnailUrl, isYouTube };
     } else {
-        const thumbnailUrl = "https://placehold.co/1920x1080/1F2937/fff?text=VIDEO+EXTERNO"; 
+        const thumbnailUrl = "https://placehold.co/1920x1080/1F2937/fff?text=VIDEO+EXTERNO";
         return { videoId: null, thumbnailUrl, isYouTube: false };
     }
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTE ReproductorEnFoco (Reproductor a Pantalla Completa - Foco invisible corregido)
+// COMPONENTE ReproductorEnFoco (Reproductor a Pantalla Completa CON CONTROL DE ESTADO)
 // ----------------------------------------------------------------------
 
 function ReproductorEnFoco({ videoUrl, onBack }) {
     const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
-    const playerRef = React.useRef(null); 
-    const playerContainerRef = React.useRef(null); 
-    const backButtonRef = React.useRef(null); 
-    const progressBarRef = React.useRef(null); 
+    const playerRef = React.useRef(null);
+    const playerContainerRef = React.useRef(null);
+    const progressBarRef = React.useRef(null);
+    const backButtonRef = React.useRef(null);
     
     const [isPlaying, setIsPlaying] = React.useState(false);
-    // showControls controla si los elementos están MONTADOS en el DOM
-    const [showControls, setShowControls] = React.useState(true); 
-    const [currentTime, setCurrentTime] = React.useState(0); 
+    const [showControls, setShowControls] = React.useState(true);
+    const [currentTime, setCurrentTime] = React.useState(0);
     const [duration, setDuration] = React.useState(0);
-    const [bufferedPercent, setBufferedPercent] = React.useState(0); 
+    const [bufferedPercent, setBufferedPercent] = React.useState(0);
 
-    const timeoutRef = React.useRef(null); 
-    const progressIntervalRef = React.useRef(null); 
-    const isPlayingRef = React.useRef(false); 
-
-    const isControlFocused = React.useCallback(() => {
-        const active = document.activeElement;
-        // Solo puede estar enfocado si los controles están montados
-        return showControls && (active === backButtonRef.current || active === progressBarRef.current);
-    }, [showControls]);
+    const timeoutRef = React.useRef(null);
+    const progressIntervalRef = React.useRef(null);
+    const isPlayingRef = React.useRef(false);
+    const seekingRef = React.useRef(false); // Para evitar conflicto entre D-Pad y click
 
     const startProgressInterval = React.useCallback(() => {
         if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
         progressIntervalRef.current = setInterval(() => {
             const player = playerRef.current;
-            if (player && typeof player.getCurrentTime === 'function') {
+            if (player && typeof player.getCurrentTime === 'function' && !seekingRef.current) {
                 setCurrentTime(player.getCurrentTime());
-                setDuration(player.getDuration()); 
-                const bufferedFraction = player.getVideoLoadedFraction(); 
+                setDuration(player.getDuration());
+                const bufferedFraction = player.getVideoLoadedFraction();
                 setBufferedPercent(bufferedFraction * 100);
             }
-        }, 250); 
+        }, 250);
     }, []);
 
     const stopProgressInterval = React.useCallback(() => {
@@ -95,23 +95,20 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         }
     }, []);
     
-    // Lógica de timeout para ocultar los controles (Desmontaje)
+    // Lógica de timeout para ocultar los controles
     const resetControlTimeout = React.useCallback(() => {
-        setShowControls(true); 
+        setShowControls(true);
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         
         if (!isPlayingRef.current) {
             setShowControls(true);
-            return; 
+            return;
         }
 
-        // Si está reproduciendo, programamos el ocultamiento
-        if (isPlayingRef.current) { 
+        if (isPlayingRef.current) {
              timeoutRef.current = setTimeout(() => {
-                 // 1. Mover el foco al contenedor principal antes de desmontar los controles.
-                 playerContainerRef.current?.focus(); 
-                 
-                 // 2. Desmontar el JSX.
+                 // Aseguramos que el foco regrese al contenedor invisible para que D-Pad lo reactive
+                 playerContainerRef.current?.focus();
                  setShowControls(false);
              }, CONTROLS_TIMEOUT);
         }
@@ -120,159 +117,163 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     // Sincroniza el estado de reproducción y asegura el timeout
     React.useEffect(() => {
         isPlayingRef.current = isPlaying;
-        resetControlTimeout(); 
+        resetControlTimeout();
     }, [isPlaying, resetControlTimeout]);
 
-
-    // Lógica de Foco: Mover el foco al lugar correcto cuando la visibilidad cambia (POST-RENDERIZADO).
+    // Foco Inicial y al reaparecer controles
     React.useEffect(() => {
         if (showControls) {
-            // Esperamos un ciclo para asegurar el montaje del elemento
+            // Enfocamos el botón de retroceso al aparecer los controles
             const timer = setTimeout(() => {
                 backButtonRef.current?.focus();
             }, 50);
             return () => clearTimeout(timer);
         } else if (!showControls) {
-             // El foco ya debería estar aquí, solo lo aseguramos
+            // Aseguramos el foco en el contenedor cuando los controles se ocultan
              playerContainerRef.current?.focus();
         }
     }, [showControls]);
     
-    // Manejo de foco: Si el foco entra en un control, aseguramos que se muestre (y cancelamos el timeout)
-    React.useEffect(() => {
-        const handleFocusChange = () => {
-             // Si el foco acaba de entrar en un control (y solo si los controles están montados)
-             if (showControls && isControlFocused()) {
-                 if (timeoutRef.current) clearTimeout(timeoutRef.current); 
-             }
-        };
-
-        window.addEventListener('focusin', handleFocusChange);
-        return () => window.removeEventListener('focusin', handleFocusChange);
-    }, [isControlFocused, showControls]);
-    
-    // Manejo de la API de YouTube
+    // Manejo de la API de YouTube (sin cambios)
     React.useEffect(() => {
         if (!isYouTube || !videoId || !window.YT) return;
-        const playerId = 'youtube-player-container'; 
+        const playerId = 'youtube-player-container';
         const newPlayer = new window.YT.Player(playerId, {
             videoId: videoId,
             playerVars: {
-                'autoplay': 1, 'controls': 0, 'mute': 1, 'disablekb': 1, 
+                'autoplay': 1, 'controls': 0, 'mute': 1, 'disablekb': 1, // Deshabilitamos controles nativos
                 'widget_referrer': window.location.href
             },
             events: {
                 'onReady': (event) => {
-                    playerRef.current = event.target; 
-                    resetControlTimeout(); 
-                    if (event.target.isMuted()) event.target.unMute(); 
+                    playerRef.current = event.target;
+                    resetControlTimeout();
+                    if (event.target.isMuted()) event.target.unMute();
                 },
                 'onStateChange': (event) => {
                     const state = event.data;
                     if (state === YT.PlayerState.PLAYING) {
                         setIsPlaying(true); startProgressInterval();
                     } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.BUFFERING) {
-                        setIsPlaying(false); stopProgressInterval(); setShowControls(true); 
+                        setIsPlaying(false); stopProgressInterval(); setShowControls(true);
                     } else if (state === YT.PlayerState.ENDED) {
-                        setIsPlaying(false); stopProgressInterval(); 
+                        setIsPlaying(false); stopProgressInterval();
                         if (timeoutRef.current) clearTimeout(timeoutRef.current);
-                        setShowControls(true); 
+                        setShowControls(true);
                     }
                 }
             }
         });
 
         return () => {
-            stopProgressInterval(); 
+            stopProgressInterval();
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
             if (playerRef.current && typeof playerRef.current.destroy === 'function') {
                 playerRef.current.destroy();
                 playerRef.current = null;
             }
         };
-    }, [videoId, isYouTube, startProgressInterval, stopProgressInterval, resetControlTimeout]); 
+    }, [videoId, isYouTube, startProgressInterval, stopProgressInterval, resetControlTimeout]);
     
     const handleOnBack = () => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         onBack();
     }
     
-    // LÓGICA DE NAVEGACIÓN D-PAD EN EL REPRODUCTOR (Corregida)
-    const handleKeyDown = (e) => {
-        if (!isYouTube) return; 
+    // --- LÓGICA DE CONTROL DE VIDEO (RESTAURADA) ---
+    const handleKeyDown = React.useCallback((e) => {
+        const player = playerRef.current;
+        if (!player || !isYouTube) return;
         
-        const currentFocusedElement = document.activeElement;
-        const isFocusOnPlayerContainer = currentFocusedElement === playerContainerRef.current;
+        e.preventDefault(); 
+        resetControlTimeout();
+        
+        if (!showControls) {
+             // Si se presiona cualquier tecla de navegación cuando los controles están ocultos, los mostramos
+             if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(e.key)) {
+                setShowControls(true);
+                return; 
+             }
+        }
+        
+        // Manejo de la tecla 'Back' para salir del reproductor
+        if (e.key === 'Escape' || e.key === 'Backspace' || e.key === 'Back' || e.key === 'BrowserBack') {
+            handleOnBack();
+            return;
+        }
 
-        // 1. Manejo de la reaparición de controles con D-Pad
-        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-            e.preventDefault();
-            
-            // Si el foco está en el contenedor (controles ocultos) y se presiona D-Pad, reaparecen.
-            if (!showControls && isFocusOnPlayerContainer) {
-                setShowControls(true); 
-                return;
+        // Manejo de Play/Pause (OK/Enter/Space)
+        if (e.key === 'Enter' || e.key === ' ') {
+            const playerState = player.getPlayerState();
+            if (playerState === YT.PlayerState.PLAYING) {
+                player.pauseVideo();
+            } else if (playerState === YT.PlayerState.PAUSED || playerState === YT.PlayerState.BUFFERING) {
+                player.playVideo();
             }
+            return;
         }
 
-        // Si estamos interactuando (controles visibles o Enter/OK), reiniciamos el temporizador.
-        resetControlTimeout(); 
+        const seekAmount = 10; // Segundos a adelantar/retroceder
+        let newTime;
         
-        // Estas variables dependen de que los controles estén actualmente montados (showControls=true)
-        const isFocusOnBackButton = showControls && currentFocusedElement === backButtonRef.current;
-        const isFocusOnProgressBar = showControls && currentFocusedElement === progressBarRef.current;
-
-        switch (e.key) {
-            case 'Enter': case ' ': 
-                e.preventDefault(); 
-                
-                if (isFocusOnBackButton) {
-                    handleOnBack();
-                } else { 
-                    // Pausa/Reproducción al presionar Enter/OK en cualquier otro lugar (video, barra)
-                    const playerState = playerRef.current?.getPlayerState();
-                    if (playerState === YT.PlayerState.PLAYING || playerState === YT.PlayerState.BUFFERING) {
-                        playerRef.current.pauseVideo();
-                    } else if (playerState === YT.PlayerState.PAUSED) {
-                        playerRef.current.playVideo();
-                    }
-                }
-                break;
-                
-            // 2. NAVEGACIÓN VERTICAL (Solo movimiento de foco, NO seek)
-            case 'ArrowDown': 
-                if (isFocusOnBackButton) {
-                    // De Volver -> a la Barra de Progreso
-                    progressBarRef.current?.focus(); 
-                } 
-                // Si pulsa Down estando en la Barra, no pasa nada más.
-                break;
-                
-            case 'ArrowUp': 
-                if (isFocusOnProgressBar) {
-                    // De Barra de Progreso -> a Volver
-                    backButtonRef.current?.focus(); 
-                } 
-                // Si pulsa Up estando en Volver, no pasa nada más.
-                break;
-                
-            // 3. NAVEGACIÓN HORIZONTAL (Exclusivo para Salto 10s - Seek)
-            case 'ArrowLeft': 
-            case 'ArrowRight': 
-                 // Permite el seek rápido si el foco está en el video (contenedor) o en la barra de progreso
-                 if (isFocusOnPlayerContainer || isFocusOnProgressBar) {
-                     const seekTime = e.key === 'ArrowRight' ? 10 : -10;
-                     playerRef.current?.seekTo(playerRef.current.getCurrentTime() + seekTime, true);
-                 }
-                 break;
-                 
-            case 'Escape': case 'Backspace': case 'Back': case 'BrowserBack': 
-                e.preventDefault();
-                handleOnBack(); 
-                break;
-            default:
-                break;
+        // Manejo de Adelantar/Retroceder (ArrowLeft / ArrowRight)
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            seekingRef.current = true;
+            newTime = player.getCurrentTime();
+            if (e.key === 'ArrowLeft') {
+                newTime = Math.max(0, newTime - seekAmount);
+            } else {
+                newTime = Math.min(player.getDuration(), newTime + seekAmount);
+            }
+            player.seekTo(newTime, true);
+            setCurrentTime(newTime);
+            
+            // Reanudar el timeout de ocultar controles después de 500ms
+            setTimeout(() => {
+                seekingRef.current = false;
+                resetControlTimeout(); 
+            }, 500); 
+            return;
         }
+        
+        // Manejo de Foco de Controles (ArrowUp / ArrowDown)
+        if (e.key === 'ArrowUp') {
+            // Si presionas Arriba, vas al botón de Retroceso
+            backButtonRef.current?.focus();
+            return;
+        }
+        
+        if (e.key === 'ArrowDown') {
+             // Si presionas Abajo, vas a la Barra de Progreso
+            progressBarRef.current?.focus();
+            return;
+        }
+
+    }, [isYouTube, resetControlTimeout, showControls, handleOnBack]);
+
+    // Listener de Teclas (solo cuando el reproductor está visible)
+    React.useEffect(() => {
+        const container = playerContainerRef.current;
+        if (container) {
+            container.addEventListener('keydown', handleKeyDown);
+        }
+        return () => {
+            if (container) {
+                container.removeEventListener('keydown', handleKeyDown);
+            }
+        };
+    }, [handleKeyDown]);
+    
+    // Función para manejar el "click" en la barra de progreso (para touch/mouse)
+    const handleProgressClick = (e) => {
+        if (!progressBarRef.current || !playerRef.current) return;
+        const rect = progressBarRef.current.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const percent = clickX / rect.width;
+        const newTime = playerRef.current.getDuration() * percent;
+        playerRef.current.seekTo(newTime, true);
+        setCurrentTime(newTime);
+        resetControlTimeout();
     };
 
     const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
@@ -283,8 +284,6 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         <div 
             ref={playerContainerRef}
             className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center"
-            onClick={resetControlTimeout} 
-            onKeyDown={handleKeyDown} 
             tabIndex={0} 
             style={{outline: 'none'}} 
         >
@@ -294,6 +293,12 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                         id="youtube-player-container" 
                         tabIndex="-1" 
                         className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden"
+                        // Capturamos el clic sobre el video para Play/Pause/Mostrar controles
+                        onClick={() => {
+                            // Simulamos la pulsación 'Enter' para usar la misma lógica de Play/Pause
+                            handleKeyDown({ key: 'Enter', preventDefault: () => {} });
+                            resetControlTimeout();
+                        }}
                     >
                         {!isYouTube && (
                             <iframe
@@ -314,15 +319,15 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                     >
                         <div className="flex justify-start w-full absolute top-5 left-5 p-5">
                              <button
-                                ref={backButtonRef}
-                                onClick={handleOnBack}
-                                className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
-                                title="Volver al catálogo"
-                                tabIndex={0} // Al estar renderizado, es enfocable
-                            >
-                                <BackIcon />
-                                <span className="text-xs">Volver</span>
-                            </button>
+                                 ref={backButtonRef}
+                                 onClick={handleOnBack}
+                                 className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
+                                 title="Volver al catálogo"
+                                 tabIndex={0} // Necesario para que sea enfocable por D-Pad
+                             >
+                                 <BackIcon />
+                                 <span className="text-xs">Volver</span>
+                             </button>
                         </div>
                         <div className="flex flex-col justify-end h-full w-full">
                             <div className="flex items-center space-x-3 w-full bg-gradient-to-t from-gray-900/90 to-transparent py-3 px-5">
@@ -331,7 +336,8 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                                     ref={progressBarRef} 
                                     className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group h-2 relative transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900" 
                                     title="Barra de Progreso"
-                                    tabIndex={0} // Al estar renderizado, es enfocable
+                                    tabIndex={0} // Necesario para que sea enfocable por D-Pad
+                                    onClick={handleProgressClick}
                                 >
                                     <div className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" style={{ width: `${bufferedPercent}%` }}></div>
                                     <div className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative h-full" style={{ width: `${progressPercent}%` }}></div>
@@ -347,7 +353,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTES DE CATÁLOGO CON data-category-index
+// COMPONENTES DE CATÁLOGO (SIN Lógica D-Pad)
 // ----------------------------------------------------------------------
 
 const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
@@ -366,7 +372,6 @@ const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, 
                     onClick={() => onPlay(videoUrl)} 
                     className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg transition-all duration-300 hover:bg-red-700 focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                     tabIndex="0" 
-                    data-category-index="0" 
                 >
                     Ver Ahora
                 </button>
@@ -394,7 +399,6 @@ function ReproductorDeVideo(props) {
             className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col h-full focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
             onClick={() => props.onPlay(props.url)} 
             tabIndex="0" 
-            data-category-index={props.categoryIndex} 
         >
             <img 
                 src={thumbnailUrl} 
@@ -418,13 +422,12 @@ function VideoCarousel({ children }) {
     );
 }
 
-function TarjetaMas({ onShowAll, count, categoryIndex }) {
+function TarjetaMas({ onShowAll, count }) {
     return (
         <div 
             className="video-card flex-shrink-0 w-full cursor-pointer group relative overflow-hidden bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col items-center justify-center h-full focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
             onClick={onShowAll}
             tabIndex="0" 
-            data-category-index={categoryIndex} 
         >
             <div className="text-center p-4">
                 <p className="text-6xl font-extrabold text-white mb-2">+</p>
@@ -439,123 +442,45 @@ function TarjetaMas({ onShowAll, count, categoryIndex }) {
 }
 
 // ----------------------------------------------------------------------
-// COMPONENTE MasVideosGrid (Con Navegación 2D Forzada y Enter)
+// COMPONENTE MasVideosGrid (SIN Lógica D-Pad manual, solo foco inicial)
 // ----------------------------------------------------------------------
 
 function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
-    const gridRef = React.useRef(null);
     const closeButtonRef = React.useRef(null);
     
+    // Enfocamos el botón Cerrar al abrir el Grid para asegurar la salida
     React.useEffect(() => {
         if (closeButtonRef.current) {
             closeButtonRef.current.focus();
         }
     }, []);
-
-    const handleGridDpadNavigation = React.useCallback((event) => {
-        const currentFocusedElement = document.activeElement;
-        
-        const focusableElements = Array.from(
-            gridRef.current.querySelectorAll('button[tabIndex="0"], div.video-card[tabIndex="0"]')
-        ).filter(el => el.offsetParent !== null);
-        
-        let currentIndex = focusableElements.indexOf(currentFocusedElement);
-
-        if (currentIndex === -1) {
-            if (event.key === 'Enter' || event.key === ' ') {
-                 closeButtonRef.current?.focus();
-            }
-            return;
-        }
-
-        // --- MANEJO DE ACCIÓN OK / ENTER ---
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault(); 
-            currentFocusedElement.click(); 
-            return; 
-        }
-
-        // Manejo de la tecla 'Back' para salir del Grid
+    
+    // Permitimos que la tecla 'Back' salga del Grid
+    const handleBackKey = React.useCallback((event) => {
         if (event.key === 'Escape' || event.key === 'Backspace' || event.key === 'Back' || event.key === 'BrowserBack') {
-            onClose();
-            return; 
+             event.preventDefault();
+             onClose();
         }
-
-        event.preventDefault(); 
-
-        const columns = 6; 
-        let nextIndex = currentIndex;
-
-        switch (event.key) {
-            case 'ArrowRight':
-                nextIndex = currentIndex + 1;
-                if (nextIndex >= focusableElements.length) nextIndex = currentIndex; 
-                break;
-            case 'ArrowLeft':
-                nextIndex = currentIndex - 1;
-                if (nextIndex < 0) nextIndex = currentIndex;
-                break;
-            case 'ArrowDown':
-                // Navegación vertical forzada en la cuadrícula (salto de fila)
-                if (currentIndex === 0) {
-                    nextIndex = 1; 
-                } else {
-                    nextIndex = currentIndex + columns;
-                }
-                if (nextIndex >= focusableElements.length) nextIndex = currentIndex;
-                break;
-            case 'ArrowUp':
-                // Navegación vertical forzada en la cuadrícula (salto de fila)
-                if (currentIndex > 0 && currentIndex <= columns) {
-                    nextIndex = 0; // Volver al botón Cerrar
-                } else if (currentIndex > columns) {
-                    nextIndex = currentIndex - columns;
-                }
-                else {
-                    nextIndex = currentIndex;
-                }
-                break;
-            default:
-                return;
-        }
-
-        const nextElement = focusableElements[nextIndex];
-        if (nextElement) {
-            nextElement.focus();
-            nextElement.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'nearest', 
-                inline: 'nearest' 
-            });
-        }
-    }, [videos, onClose]);
+    }, [onClose]);
 
     React.useEffect(() => {
-        const gridElement = gridRef.current;
-        if (gridElement) {
-            gridElement.addEventListener('keydown', handleGridDpadNavigation, true); 
-        }
-        return () => {
-            if (gridElement) {
-                gridElement.removeEventListener('keydown', handleGridDpadNavigation, true);
-            }
-        };
-    }, [handleGridDpadNavigation]);
-
+        window.addEventListener('keydown', handleBackKey);
+        return () => window.removeEventListener('keydown', handleBackKey);
+    }, [handleBackKey]);
 
     return (
-        <div ref={gridRef} className="mas-videos-grid fixed inset-0 bg-gray-900/95 z-40 overflow-y-auto p-4 md:p-8" tabIndex={0} style={{ outline: 'none' }}>
+        <div className="mas-videos-grid fixed inset-0 bg-gray-900/95 z-40 overflow-y-auto p-4 md:p-8" tabIndex={-1} style={{ outline: 'none' }}>
             <div className="max-w-7xl mx-auto">
                 
                 <div className="flex justify-between items-center mb-6 sticky top-0 bg-gray-900/90 py-2 z-10">
-                    <h1 className="text-3xl font-bold text-withe-600 capitalize">
+                    <h1 className="text-3xl font-bold text-red-600 capitalize">
                          {categoria}
                     </h1>
                     <button 
                         ref={closeButtonRef}
                         onClick={onClose}
                         className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg transition-all duration-300 hover:bg-red-700 
-                                   focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
+                                 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
                         tabIndex="0" 
                     >
                         Cerrar (ESC)
@@ -569,7 +494,6 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
                             titulo={video.titulo} 
                             url={video.url} 
                             onPlay={onPlay} 
-                            categoryIndex={-1} 
                         />
                     ))}
                 </div>
@@ -579,7 +503,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
 }
 
 // ----------------------------------------------------------------------
-// CATÁLOGO
+// CATÁLOGO DE DATOS (CATALOGO)
 // ----------------------------------------------------------------------
 
 const CATALOGO = {
@@ -588,13 +512,13 @@ const CATALOGO = {
         { titulo: "El come huesos", url: "https://youtu.be/d-eK3h5uDho?si=Gy3NDGqI-rAG4wz-" },
         { titulo: "Peligro en el Amazonas", url: "https://youtu.be/JDOoSVKh5gc?si=On_VQV5CuB_dFo1I" },
         { titulo: "Invasion Oculta", url: "https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" },
-                { titulo: "impacto Final", url: "https://youtu.be/42uqz1rMJVE?si=VKb63Pld6X3eshC6" },
+        { titulo: "impacto Final", url: "https://youtu.be/42uqz1rMJVE?si=VKb63Pld6X3eshC6" },
         { titulo: "Starcraft", url: "https://youtu.be/6_HQd1qnmxQ?si=rIOlxLjj_wj8L3Bk" },
         { titulo: "Venganza Mortal", url: "https://youtu.be/VtIbY43Zajg?si=IudJM1cVTfB59uX7" },
         { titulo: "Piratas del tesoro", url: "https://youtu.be/Oh2x2KqrRDg?si=x5nrT14dLRHHfpFI" },
         { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKKX3QznCutoIH" },
         { titulo: "La Rebelion", url: "https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" },
-         { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKKX3QznCutoIH" },
+        { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKKX3QznCutoIH" },
         { titulo: "La Rebelion", url: "https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" },
         
     ],
@@ -614,7 +538,7 @@ const CATALOGO = {
         { titulo: "Impacto inminente", url: "https://youtu.be/5pEFz_e7bSw?si=hyV51hXmHV7ROgux" },
         { titulo: "Supervivencia", url: "https://youtu.be/10Lzga1uDpM?si=mEYDmw8WHhMT8Vx9" },
         
-   
+    
         { titulo: "Invasion Oculta", url: "https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" },
         { titulo: "Bermudas Avismo en el mar del norte", url: "https://youtu.be/gwkUDXSGbxg?si=z966wQgljQviO304" },
         { titulo: "La proxima generacion", url: "https://youtu.be/ebvujopachw?si=FoZlTIM73kMVhB7o" },
@@ -676,7 +600,7 @@ const CATALOGO = {
 };
 
 // ----------------------------------------------------------------------
-// COMPONENTE PRINCIPAL APP
+// COMPONENTE PRINCIPAL APP (SIN Lógica de Navegación del Catálogo)
 // ----------------------------------------------------------------------
 
 function App() {
@@ -692,89 +616,8 @@ function App() {
             }
         }, 50); 
     }, []);
-
-    // LÓGICA DE NAVEGACIÓN D-PAD EN EL CATÁLOGO
-    const handleDpadNavigation = React.useCallback((event) => {
-        if (videoEnFocoUrl || mostrarMasGrid) return; 
-
-        const currentFocusedElement = document.activeElement;
-        
-        const focusableElements = Array.from(
-            document.querySelectorAll('button[tabIndex="0"], div.video-card[tabIndex="0"]')
-        ).filter(el => el.offsetParent !== null && !el.closest('.mas-videos-grid')); 
-        
-        const isInteractiveElement = currentFocusedElement && 
-            (currentFocusedElement.classList.contains('video-card') || 
-             currentFocusedElement.tagName === 'BUTTON');
-
-        if (!isInteractiveElement) return;
-
-        event.preventDefault(); 
-
-        // --- MANEJO DE ACCIÓN OK / ENTER ---
-        if (event.key === 'Enter' || event.key === ' ') {
-             currentFocusedElement.click(); 
-             return; 
-        }
-
-        const currentIndex = focusableElements.indexOf(currentFocusedElement);
-        let nextElement = null;
-
-        // 1. NAVEGACIÓN HORIZONTAL (ArrowRight / ArrowLeft)
-        if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
-            let nextIndex = event.key === 'ArrowRight' ? currentIndex + 1 : currentIndex - 1;
-            if (nextIndex >= 0 && nextIndex < focusableElements.length) {
-                nextElement = focusableElements[nextIndex];
-            }
-        } 
-        
-        // 2. NAVEGACIÓN VERTICAL FORZADA (ArrowDown / ArrowUp)
-        else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-            
-            const currentCategoryIndex = currentFocusedElement === heroButtonRef.current ? 0 : parseInt(currentFocusedElement.dataset.categoryIndex, 10);
-            
-            if (event.key === 'ArrowDown') {
-                
-                if (currentCategoryIndex === 0) {
-                    nextElement = focusableElements.find(el => el.dataset.categoryIndex === '1');
-                } 
-                else {
-                    const nextCategoryIndex = currentCategoryIndex + 1;
-                    nextElement = focusableElements.find(el => el.dataset.categoryIndex === nextCategoryIndex.toString());
-                }
-                
-            } else if (event.key === 'ArrowUp') {
-                
-                if (currentCategoryIndex === 1) {
-                    nextElement = heroButtonRef.current;
-                } else if (currentCategoryIndex > 1) {
-                    const prevCategoryIndex = currentCategoryIndex - 1;
-                    nextElement = focusableElements.find(el => el.dataset.categoryIndex === prevCategoryIndex.toString());
-                }
-            }
-        }
-
-        // 3. Aplicar foco y scroll 
-        if (nextElement) {
-            nextElement.focus();
-            nextElement.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: event.key === 'ArrowUp' || event.key === 'ArrowDown' ? 'start' : 'nearest', 
-                inline: 'center' 
-            });
-        }
-        
-    }, [videoEnFocoUrl, mostrarMasGrid]);
-
-    // Listener global para el D-Pad (solo para el catálogo)
-    React.useEffect(() => {
-        window.addEventListener('keydown', handleDpadNavigation);
-        return () => {
-            window.removeEventListener('keydown', handleDpadNavigation);
-        };
-    }, [handleDpadNavigation]);
     
-    // Foco Inicial
+    // Foco Inicial (solo al cargar o salir del reproductor/grid)
     React.useEffect(() => {
         if (!videoEnFocoUrl && !mostrarMasGrid) {
             setTimeout(() => {
@@ -794,13 +637,16 @@ function App() {
             categoria={mostrarMasGrid.categoria}
             videos={mostrarMasGrid.videos}
             onPlay={setVideoEnFocoUrl}
-            onClose={() => setMostrarMasGrid(null)}
+            onClose={() => {
+                setMostrarMasGrid(null);
+                // Al cerrar el Grid, enfocamos el botón Hero para mantener el foco en la UI
+                 setTimeout(() => heroButtonRef.current?.focus(), 50);
+            }}
         />;
     }
 
     const heroVideoUrl ="https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9ePPpS";
-    let categoryIndex = 1; 
-
+    
     return (
         <div className="p-4 md:p-8 max-w-7xl mx-auto min-h-screen bg-gray-900 text-white">
             
@@ -816,7 +662,6 @@ function App() {
             {/* SECCIONES DE CATEGORÍA CON CARRUSEL Y TARJETA 'MÁS' */}
             {Object.entries(CATALOGO).map(([categoria, videos]) => {
                 
-                const currentCategoryIndex = categoryIndex++; 
                 const limiteCarrusel = 10;
                 const tieneMas = videos.length > limiteCarrusel;
                 const videosEnCarrusel = tieneMas ? videos.slice(0, limiteCarrusel - 1) : videos.slice(0, limiteCarrusel);
@@ -833,7 +678,6 @@ function App() {
                                         titulo={video.titulo} 
                                         url={video.url} 
                                         onPlay={setVideoEnFocoUrl} 
-                                        categoryIndex={currentCategoryIndex} 
                                     />
                                 </div>
                             ))}
@@ -843,7 +687,6 @@ function App() {
                                     <TarjetaMas 
                                         count={videosRestantesCount}
                                         onShowAll={() => setMostrarMasGrid({ categoria, videos })}
-                                        categoryIndex={currentCategoryIndex} 
                                     />
                                 </div>
                             )}
@@ -855,7 +698,6 @@ function App() {
         </div>
     );
 }
-
 
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);

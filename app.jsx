@@ -1,4 +1,4 @@
-// Este código asume que React, ReactDOM, y window.YT están cargados en el entorno global.
+<div key={index} className// Este código asume que React, ReactDOM, y window.YT están cargados en el entorno global.
 // Requiere la configuración de un entorno React y la inclusión de Tailwind CSS.
 
 // ----------------------------------------------------------------------
@@ -825,7 +825,7 @@ function App() {
                         <VideoCarousel>
                             
                             {videosEnCarrusel.map((video, index) => (
-                                <div key={index} className="flex-shrink-0 w-20 sm:w-52 lg:w-64">
+                                <div key={index} className="flex-shrink-0 w-20 sm:w-52 lg:w-58">
                                     <ReproductorDeVideo 
                                         titulo={video.titulo} 
                                         url={video.url} 
@@ -857,6 +857,7 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 
 

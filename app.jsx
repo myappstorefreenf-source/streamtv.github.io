@@ -314,15 +314,15 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                     >
                         <div className="flex justify-start w-full absolute top-5 left-5 p-5">
                              <button
-                                ref={backButtonRef}
-                                onClick={handleOnBack}
-                                className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
-                                title="Volver al catálogo"
-                                tabIndex={0} // Al estar renderizado, es enfocable
-                            >
-                                <BackIcon />
-                                <span className="text-xs">Volver</span>
-                            </button>
+                                 ref={backButtonRef}
+                                 onClick={handleOnBack}
+                                 className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
+                                 title="Volver al catálogo"
+                                 tabIndex={0} // Al estar renderizado, es enfocable
+                             >
+                                 <BackIcon />
+                                 <span className="text-xs">Volver</span>
+                             </button>
                         </div>
                         <div className="flex flex-col justify-end h-full w-full">
                             <div className="flex items-center space-x-3 w-full bg-gradient-to-t from-gray-900/90 to-transparent py-3 px-5">
@@ -588,13 +588,13 @@ const CATALOGO = {
         { titulo: "El come huesos", url: "https://youtu.be/d-eK3h5uDho?si=Gy3NDGqI-rAG4wz-" },
         { titulo: "Peligro en el Amazonas", url: "https://youtu.be/JDOoSVKh5gc?si=On_VQV5CuB_dFo1I" },
         { titulo: "Invasion Oculta", url: "https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" },
-                { titulo: "impacto Final", url: "https://youtu.be/42uqz1rMJVE?si=VKb63Pld6X3eshC6" },
+        { titulo: "impacto Final", url: "https://youtu.be/42uqz1rMJVE?si=VKb63Pld6X3eshC6" },
         { titulo: "Starcraft", url: "https://youtu.be/6_HQd1qnmxQ?si=rIOlxLjj_wj8L3Bk" },
         { titulo: "Venganza Mortal", url: "https://youtu.be/VtIbY43Zajg?si=IudJM1cVTfB59uX7" },
         { titulo: "Piratas del tesoro", url: "https://youtu.be/Oh2x2KqrRDg?si=x5nrT14dLRHHfpFI" },
         { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKKX3QznCutoIH" },
         { titulo: "La Rebelion", url: "https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" },
-         { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKKX3QznCutoIH" },
+        { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKKX3QznCutoIH" },
         { titulo: "La Rebelion", url: "https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" },
         
     ],
@@ -614,7 +614,6 @@ const CATALOGO = {
         { titulo: "Impacto inminente", url: "https://youtu.be/5pEFz_e7bSw?si=hyV51hXmHV7ROgux" },
         { titulo: "Supervivencia", url: "https://youtu.be/10Lzga1uDpM?si=mEYDmw8WHhMT8Vx9" },
         
-   
         { titulo: "Invasion Oculta", url: "https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" },
         { titulo: "Bermudas Avismo en el mar del norte", url: "https://youtu.be/gwkUDXSGbxg?si=z966wQgljQviO304" },
         { titulo: "La proxima generacion", url: "https://youtu.be/ebvujopachw?si=FoZlTIM73kMVhB7o" },
@@ -693,7 +692,7 @@ function App() {
         }, 50); 
     }, []);
 
-    // LÓGICA DE NAVEGACIÓN D-PAD EN EL CATÁLOGO
+    // LÓGICA DE NAVEGACIÓN D-PAD EN EL CATÁLOGO (CORREGIDA)
     const handleDpadNavigation = React.useCallback((event) => {
         if (videoEnFocoUrl || mostrarMasGrid) return; 
 
@@ -754,13 +753,13 @@ function App() {
             }
         }
 
-        // 3. Aplicar foco y scroll 
+        // 3. Aplicar foco y scroll (CORRECCIÓN IMPLEMENTADA AQUÍ)
         if (nextElement) {
             nextElement.focus();
             nextElement.scrollIntoView({ 
                 behavior: 'smooth', 
-                block: event.key === 'ArrowUp' || event.key === 'ArrowDown' ? 'start' : 'nearest', 
-                inline: 'center' 
+                block: 'center', // Alinea el elemento en el centro vertical
+                inline: 'center' // Alinea el elemento en el centro horizontal
             });
         }
         

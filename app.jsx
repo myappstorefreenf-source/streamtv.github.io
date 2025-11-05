@@ -1,4 +1,4 @@
-<div key={index} className// Este código asume que React, ReactDOM, y window.YT están cargados en el entorno global.
+// Este código asume que React, ReactDOM, y window.YT están cargados en el entorno global.
 // Requiere la configuración de un entorno React y la inclusión de Tailwind CSS.
 
 // ----------------------------------------------------------------------
@@ -857,6 +857,7 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 
 

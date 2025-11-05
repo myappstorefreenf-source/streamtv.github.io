@@ -560,7 +560,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-7 lg:grid-cols-7 xl:grid-cols-7 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                     {videos.map((video, index) => (
                         <ReproductorDeVideo 
                             key={index} 
@@ -825,7 +825,7 @@ function App() {
                         <VideoCarousel>
                             
                             {videosEnCarrusel.map((video, index) => (
-                                <div key={index} className="flex-shrink-0 w-40 sm:w-52 lg:w-55">
+                                <div key={index} className="flex-shrink-0 w-40 sm:w52 lg:w-55">
                                     <ReproductorDeVideo 
                                         titulo={video.titulo} 
                                         url={video.url} 
@@ -857,10 +857,5 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
-
-
-
-
-
 
 

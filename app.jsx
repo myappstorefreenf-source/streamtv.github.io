@@ -316,7 +316,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                              <button
                                  ref={backButtonRef}
                                  onClick={handleOnBack}
-                                 className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
+                                 className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
                                  title="Volver al catálogo"
                                  tabIndex={0} // Al estar renderizado, es enfocable
                              >
@@ -329,12 +329,12 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                                 <span className="text-sm font-mono text-gray-300 whitespace-nowrap">{formatTime(currentTime)}</span>
                                 <div 
                                     ref={progressBarRef} 
-                                    className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group h-2 relative transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900" 
+                                    className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group h-2 relative transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900" 
                                     title="Barra de Progreso"
                                     tabIndex={0} // Al estar renderizado, es enfocable
                                 >
                                     <div className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" style={{ width: `${bufferedPercent}%` }}></div>
-                                    <div className="progress-fill bg-red-600 rounded-full group-hover:bg-red-500 relative h-full" style={{ width: `${progressPercent}%` }}></div>
+                                    <div className="progress-fill bg-blue-600 rounded-full group-hover:bg-blue-500 relative h-full" style={{ width: `${progressPercent}%` }}></div>
                                 </div>
                                 <span className="text-sm font-mono text-gray-300 whitespace-nowrap">{formatTime(duration)}</span>
                             </div>
@@ -364,7 +364,7 @@ const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, 
                 <button 
                     ref={ref}
                     onClick={() => onPlay(videoUrl)} 
-                    className="inline-block px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-lg transition-all duration-300 hover:bg-red-700 focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
+                    className="inline-block px-6 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-700 focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
                     tabIndex="0" 
                     data-category-index="0" 
                 >
@@ -391,7 +391,7 @@ function ReproductorDeVideo(props) {
 
     return (
         <div 
-            className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col h-full focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
+            className="video-card cursor-pointer group relative overflow-hidden bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col h-full focus:ring-[8px] focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
             onClick={() => props.onPlay(props.url)} 
             tabIndex="0" 
             data-category-index={props.categoryIndex} 
@@ -399,11 +399,11 @@ function ReproductorDeVideo(props) {
             <img 
                 src={thumbnailUrl} 
                 onError={handleImageError} 
-                className="w-full aspect-video object-cover transition duration-500 group-hover:opacity-75"
+                className="w-full aspect-[3/4] object-cover transition duration-500 group-hover:opacity-75"
                 alt={`Miniatura de ${props.titulo}`}
             />
             <div className="p-3 flex-grow">
-                <h2 className="text-base font-semibold text-red-400 group-focus:text-red-300 line-clamp-2">{props.titulo || "Título del Video"}</h2>
+                <h2 className="text-base font-semibold text-blue-400 group-focus:text-blue-300 line-clamp-2">{props.titulo || "Título del Video"}</h2>
                 <p className="mt-1 text-gray-400 text-xs">Fuente: {isYouTube ? "YouTube" : "Externa"}</p>
             </div>
         </div>
@@ -421,19 +421,17 @@ function VideoCarousel({ children }) {
 function TarjetaMas({ onShowAll, count, categoryIndex }) {
     return (
         <div 
-            className="video-card flex-shrink-0 w-full cursor-pointer group relative overflow-hidden bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col items-center justify-center h-full focus:ring-[8px] focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
+            className="video-card flex-shrink-0 w-full cursor-pointer group relative overflow-hidden bg-gray-700 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col items-center justify-center h-full focus:ring-[8px] focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none focus:shadow-xl"
             onClick={onShowAll}
             tabIndex="0" 
             data-category-index={categoryIndex} 
         >
             <div className="text-center p-4">
-                <p className="text-6xl font-extrabold text-white mb-2">+</p>
+                            <p className="text-6xl font-extrabold text-white mb-2">+</p>
                 <h2 className="text-xl font-bold text-white line-clamp-2">Ver Más</h2>
                 <p className="text-sm text-gray-300 mt-1 font-semibold">({count} videos más)</p>
             </div>
-            <div className="w-full aspect-video bg-gray-600/50 flex items-center justify-center flex-grow">
-                <span className="text-sm text-white/70">Toca para ver la cuadrícula</span>
-            </div>
+           
         </div>
     );
 }
@@ -554,11 +552,11 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
                     <button 
                         ref={closeButtonRef}
                         onClick={onClose}
-                        className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg transition-all duration-300 hover:bg-red-700 
+                        className="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg transition-all duration-300 hover:bg-blue-500
                                    focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
                         tabIndex="0" 
                     >
-                        Cerrar (ESC)
+                        Cerrar
                     </button>
                 </div>
 
@@ -823,7 +821,7 @@ function App() {
 
                 return (
                     <div key={categoria} className="mb-10">
-                        <h1 className="text-2xl font-bold mb-4 text-red-600 capitalize">{categoria}</h1>
+                        <h1 className="text-2xl font-bold mb-4 text-blue-600 capitalize">{categoria}</h1>
                         <VideoCarousel>
                             
                             {videosEnCarrusel.map((video, index) => (
@@ -859,3 +857,4 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+

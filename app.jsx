@@ -825,8 +825,8 @@ function App() {
                         <VideoCarousel>
                             
                             {videosEnCarrusel.map((video, index) => (
-                                <div key={index} className="flex-shrink-0 w-40 sm:w-52 lg:w-30">
-                                    <ReproductorDeVideo 
+                                <div key={index} className="flex-shrink-0 w-40 sm:w-32 lg:w-30">
+                                  <ReproductorDeVideo 
                                         titulo={video.titulo} 
                                         url={video.url} 
                                         onPlay={setVideoEnFocoUrl} 
@@ -836,7 +836,7 @@ function App() {
                             ))}
 
                             {videosRestantesCount > 0 && (
-                                <div className="flex-shrink-0 w-40 sm:w-52 lg:w-30">
+                                <div className="flex-shrink-0 w-40 sm:w-32 lg:w-30">
                                     <TarjetaMas 
                                         count={videosRestantesCount}
                                         onShowAll={() => setMostrarMasGrid({ categoria, videos })}

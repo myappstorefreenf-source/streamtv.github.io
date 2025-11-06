@@ -560,7 +560,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-7 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-8 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                     {videos.map((video, index) => (
                         <ReproductorDeVideo 
                             key={index} 

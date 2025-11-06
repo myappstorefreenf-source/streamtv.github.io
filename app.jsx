@@ -560,7 +560,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-8 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-6 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                     {videos.map((video, index) => (
                         <ReproductorDeVideo 
                             key={index} 
@@ -825,7 +825,7 @@ function App() {
                         <VideoCarousel>
                             
                             {videosEnCarrusel.map((video, index) => (
-                                <div key={index} className="flex-shrink-0 w-40 sm:w-52 lg:w-40">
+                                <div key={index} className="flex-shrink-0 w-40 sm:w-52 lg:w-30">
                                     <ReproductorDeVideo 
                                         titulo={video.titulo} 
                                         url={video.url} 
@@ -836,7 +836,7 @@ function App() {
                             ))}
 
                             {videosRestantesCount > 0 && (
-                                <div className="flex-shrink-0 w-40 sm:w-52 lg:w-40">
+                                <div className="flex-shrink-0 w-40 sm:w-52 lg:w-30">
                                     <TarjetaMas 
                                         count={videosRestantesCount}
                                         onShowAll={() => setMostrarMasGrid({ categoria, videos })}

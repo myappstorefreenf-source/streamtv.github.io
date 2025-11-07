@@ -1,5 +1,7 @@
-// Este código asume que React, ReactDOM, y window.YT están cargados en el entorno global.
-// Requiere la configuración de un entorno React y la inclusión de Tailwind CSS.
+//import React from 'react';
+//import ReactDOM from 'react-dom/client'; 
+// Este import de React y ReactDOM es solo para que el código sea ejecutable en un entorno React.
+// En tu archivo JSX original, asume que React y window.YT están disponibles.
 
 // ----------------------------------------------------------------------
 // UTILERÍAS Y LÓGICA DE VIDEO
@@ -68,6 +70,11 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
     const timeoutRef = React.useRef(null); 
     const progressIntervalRef = React.useRef(null); 
     const isPlayingRef = React.useRef(false); 
+    
+    // NUEVAS REFERENCIAS PARA SEEK SOSTENIDO
+    const seekIntervalRef = React.useRef(null); 
+    const seekSpeedRef = React.useRef(10);     
+    const lastKeyRef = React.useRef(null);      
 
     const isControlFocused = React.useCallback(() => {
         const active = document.activeElement;
@@ -116,6 +123,25 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
              }, CONTROLS_TIMEOUT);
         }
     }, []);
+    
+    // LÓGICA DE AVANCE/RETROCESO SOSTENIDO
+    const handleContinuousSeek = React.useCallback((direction) => {
+        const player = playerRef.current;
+        if (!player || typeof player.getCurrentTime !== 'function') return;
+
+        // Limita la velocidad máxima para evitar saltos inmanejables (e.g., max 60s/intervalo)
+        seekSpeedRef.current = Math.min(seekSpeedRef.current + 5, 60); 
+        
+        const seekTime = direction === 'right' ? seekSpeedRef.current : -seekSpeedRef.current;
+        
+        // El salto real (la suma del tiempo actual + el delta)
+        const newTime = player.getCurrentTime() + seekTime; 
+        
+        player.seekTo(newTime, true);
+        setCurrentTime(newTime); // Actualizamos el estado para la UI inmediatamente
+
+        resetControlTimeout(); // Mantenemos los controles visibles
+    }, [resetControlTimeout]); 
 
     // Sincroniza el estado de reproducción y asegura el timeout
     React.useEffect(() => {
@@ -185,6 +211,8 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         return () => {
             stopProgressInterval(); 
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            // Asegurarse de limpiar también el intervalo de seek al desmontar
+            if (seekIntervalRef.current) clearInterval(seekIntervalRef.current);
             if (playerRef.current && typeof playerRef.current.destroy === 'function') {
                 playerRef.current.destroy();
                 playerRef.current = null;
@@ -256,16 +284,41 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 // Si pulsa Up estando en Volver, no pasa nada más.
                 break;
                 
-            // 3. NAVEGACIÓN HORIZONTAL (Exclusivo para Salto 10s - Seek)
+            // 3. NAVEGACIÓN HORIZONTAL (Exclusivo para Salto 10s - Seek SOSTENIDO)
             case 'ArrowLeft': 
             case 'ArrowRight': 
-                 // Permite el seek rápido si el foco está en el video (contenedor) o en la barra de progreso
-                 if (isFocusOnPlayerContainer || isFocusOnProgressBar) {
-                     const seekTime = e.key === 'ArrowRight' ? 10 : -10;
-                     playerRef.current?.seekTo(playerRef.current.getCurrentTime() + seekTime, true);
-                 }
-                 break;
-                 
+                // e.preventDefault() ya se llamó arriba.
+
+                // Si ya estamos en un intervalo de seek, no hacemos nada a menos que cambiemos de dirección
+                if (seekIntervalRef.current) {
+                    if (lastKeyRef.current !== e.key) {
+                        clearInterval(seekIntervalRef.current);
+                        seekIntervalRef.current = null;
+                        seekSpeedRef.current = 10;
+                    } else {
+                        return; // Mantenemos el seek actual
+                    }
+                }
+
+                // Permite el seek rápido si el foco está en el video (contenedor) o en la barra de progreso
+                if (isFocusOnPlayerContainer || isFocusOnProgressBar) {
+                    const direction = e.key === 'ArrowRight' ? 'right' : 'left';
+                    const seekTime = direction === 'right' ? 10 : -10;
+                    
+                    // 1. Salto inicial de 10 segundos
+                    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + seekTime, true);
+                    
+                    // 2. Iniciamos el intervalo para el salto sostenido
+                    lastKeyRef.current = e.key;
+                    seekIntervalRef.current = setInterval(() => {
+                        handleContinuousSeek(direction);
+                    }, 400); // 400ms de retardo antes de que el avance rápido se active
+                    
+                    // 3. Reiniciamos la velocidad al valor inicial de 10s
+                    seekSpeedRef.current = 10;
+                }
+                break;
+                
             case 'Escape': case 'Backspace': case 'Back': case 'BrowserBack': 
                 e.preventDefault();
                 handleOnBack(); 
@@ -274,6 +327,19 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                 break;
         }
     };
+    
+    // FUNCIÓN PARA DETENER EL SEEK SOSTENIDO (onKeyUp)
+    const handleKeyUp = React.useCallback((e) => {
+        // Detener el intervalo solo si se suelta ArrowLeft o ArrowRight
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            if (seekIntervalRef.current) {
+                clearInterval(seekIntervalRef.current);
+                seekIntervalRef.current = null;
+                seekSpeedRef.current = 10; // Reiniciamos la velocidad
+                lastKeyRef.current = null;
+            }
+        }
+    }, []);
 
     const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
     
@@ -285,6 +351,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
             className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center"
             onClick={resetControlTimeout} 
             onKeyDown={handleKeyDown} 
+            onKeyUp={handleKeyUp} 
             tabIndex={0} 
             style={{outline: 'none'}} 
         >
@@ -427,11 +494,11 @@ function TarjetaMas({ onShowAll, count, categoryIndex }) {
             data-category-index={categoryIndex} 
         >
             <div className="text-center p-4">
-                            <p className="text-6xl font-extrabold text-white mb-2">+</p>
+                                         <p className="text-6xl font-extrabold text-white mb-2">+</p>
                 <h2 className="text-xl font-bold text-white line-clamp-2">Ver Más</h2>
                 <p className="text-sm text-gray-300 mt-1 font-semibold">({count} videos más)</p>
             </div>
-           
+            
         </div>
     );
 }
@@ -540,20 +607,20 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
         };
     }, [handleGridDpadNavigation]);
 
-//sticky sacado para fijar barra delante del  top
+//sticky sacado para fijar barra delante del  top
     return (
         <div ref={gridRef} className="mas-videos-grid fixed inset-0 bg-gray-900/95 z-40 overflow-y-auto p-4 md:p-8" tabIndex={0} style={{ outline: 'none' }}>
             <div className="max-w-7xl mx-auto">
                 
-                <div className="flex justify-between items-center mb-6  top-0 bg-gray-900/90 py-2 z-10">
+                <div className="flex justify-between items-center mb-6  top-0 bg-gray-900/90 py-2 z-10">
                     <h1 className="text-3xl font-bold text-withe-600 capitalize">
-                         {categoria}
+                             {categoria}
                     </h1>
                     <button 
                         ref={closeButtonRef}
                         onClick={onClose}
                         className="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg transition-all duration-300 hover:bg-blue-500
-                                   focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
+                                       focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
                         tabIndex="0" 
                     >
                         Cerrar
@@ -592,7 +659,7 @@ const CATALOGO = {
         { titulo: "Piratas del tesoro", url: "https://youtu.be/Oh2x2KqrRDg?si=x5nrT14dLRHHfpFI" },
         { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKKX3QznCutoIH" },
         { titulo: "La Rebelion", url: "https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" },
-        { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKKX3QznCutoIH" },
+        { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKK3QznCutoIH" },
         { titulo: "La Rebelion", url: "https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" },
         
     ],
@@ -623,7 +690,7 @@ const CATALOGO = {
         { titulo: "Starcraft", url: "https://youtu.be/6_HQd1qnmxQ?si=rIOlxLjj_wj8L3Bk" },
         { titulo: "Venganza Mortal", url: "https://youtu.be/VtIbY43Zajg?si=IudJM1cVTfB59uX7" },
         { titulo: "Piratas del tesoro", url: "https://youtu.be/Oh2x2KqrRDg?si=x5nrT14dLRHHfpFI" },
-        { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKKX3QznCutoIH" },
+        { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKK3QznCutoIH" },
         { titulo: "La Rebelion", url: "https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" },
         { titulo: "El 5to elemento", url: "https://youtu.be/iqeatp1VXVA?si=nDi2V3NTNBgjj03f" },
         { titulo: "El defensor", url: "https://youtu.be/hhnYJ9h4qXg?si=y7fi1a2zGs6K0L80" },
@@ -826,22 +893,22 @@ function App() {
                             
                             {videosEnCarrusel.map((video, index) => (
                                 <div key={index} className="flex-shrink-0 w-40 sm:w-32 lg:w-30">
-                                  <ReproductorDeVideo 
-                                        titulo={video.titulo} 
-                                        url={video.url} 
-                                        onPlay={setVideoEnFocoUrl} 
-                                        categoryIndex={currentCategoryIndex} 
-                                    />
+                                     <ReproductorDeVideo 
+                                         titulo={video.titulo} 
+                                         url={video.url} 
+                                         onPlay={setVideoEnFocoUrl} 
+                                         categoryIndex={currentCategoryIndex} 
+                                     />
                                 </div>
                             ))}
 
                             {videosRestantesCount > 0 && (
                                 <div className="flex-shrink-0 w-40 sm:w-32 lg:w-30">
-                                    <TarjetaMas 
-                                        count={videosRestantesCount}
-                                        onShowAll={() => setMostrarMasGrid({ categoria, videos })}
-                                        categoryIndex={currentCategoryIndex} 
-                                    />
+                                     <TarjetaMas 
+                                         count={videosRestantesCount}
+                                         onShowAll={() => setMostrarMasGrid({ categoria, videos })}
+                                         categoryIndex={currentCategoryIndex} 
+                                     />
                                 </div>
                             )}
                             
@@ -853,8 +920,9 @@ function App() {
     );
 }
 
+ const rootElement = document.getElementById('root');
+ const root = ReactDOM.createRoot(rootElement);
+ root.render(<App />);
 
-const rootElement = document.getElementById('root');
-const root = ReactDOM.createRoot(rootElement);
-root.render(<App />);
-
+// NOTA: Las últimas 3 líneas comentadas asumen que estás usando React 18+. 
+// Descoméntalas e inserta este código en un archivo JS/TSX si quieres ejecutarlo.

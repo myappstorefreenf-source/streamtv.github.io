@@ -744,6 +744,34 @@ const CATALOGO = {
 // ----------------------------------------------------------------------
 
 function App() {
+    // Agrega esta función al scope global (por ejemplo, al principio de tu archivo App.js)
+// O mejor aún, añádela como un React.useEffect en el componente App.
+
+React.useEffect(() => {
+    // La función que Android llama al pulsar ATRÁS
+    window.consumeBackButton = () => {
+        // Estado 1: Video Reproduciéndose
+        if (videoEnFocoUrl) {
+            handleBack(); // Cierra el reproductor
+            return true; // Retorna 'true' para indicar a Android que la web manejó el evento
+        }
+
+        // Estado 2: Grid de "Ver Más" abierto
+        if (mostrarMasGrid) {
+            setMostrarMasGrid(null); // Cierra la cuadrícula
+            return true; // Retorna 'true'
+        }
+
+        // Estado 3: En el Catálogo Principal (Carrusel)
+        // En este punto, no consumimos el evento, permitimos que pase al nativo.
+        return false; // Retorna 'false' para que Android maneje la salida o recarga.
+    };
+    
+    // Cleanup opcional al desmontar el componente (aunque en un WebView no es común)
+    return () => {
+        window.consumeBackButton = () => false;
+    };
+}, [videoEnFocoUrl, mostrarMasGrid, handleBack]); // Dependencias: Estados que definen los niveles
     const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
     const [mostrarMasGrid, setMostrarMasGrid] = React.useState(null); 
     const heroButtonRef = React.useRef(null); 
@@ -790,6 +818,7 @@ function App() {
             if (nextIndex >= 0 && nextIndex < focusableElements.length) {
                 nextElement = focusableElements[nextIndex];
             }
+            
         } 
         
         // 2. NAVEGACIÓN VERTICAL FORZADA (ArrowDown / ArrowUp)

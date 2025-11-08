@@ -1,49 +1,459 @@
 //import React from 'react';
-//import ReactDOM from 'react-dom/client';
+//import ReactDOM from 'react-dom/client'; 
+// Este import de React y ReactDOM es solo para que el código sea ejecutable en un entorno React.
+// En tu archivo JSX original, asume que React y window.YT están disponibles.
 
-// ======================================================================
-// CONSTANTES Y UTILIDADES
-// ======================================================================
+// ----------------------------------------------------------------------
+// UTILERÍAS Y LÓGICA DE VIDEO
+// ----------------------------------------------------------------------
 
-const PROGRESS_STORAGE_KEY = 'videoPlaybackProgress';
+// Tiempo de espera para ocultar los controles: 3000ms (3 segundos)
+const CONTROLS_TIMEOUT = 3000; 
+// Asegúrate de que YT esté disponible globalmente (cargando la API de YouTube Iframe)
+const YT = window.YT; 
 
-// Función auxiliar para obtener la URL de la miniatura de YouTube
-function getYouTubeThumbnail(url) {
-    try {
-        const urlObj = new URL(url);
-        // Si es un enlace mitelefe.com (no YouTube), devolvemos un placeholder
-        if (!urlObj.hostname.includes('youtu.be') && !urlObj.hostname.includes('youtube.com')) {
-            return "https://via.placeholder.com/160x213.png?text=Video+Externo";
-        }
-        
-        let videoId = '';
-        if (urlObj.hostname === 'youtu.be') {
-            videoId = urlObj.pathname.substring(1).split('?')[0];
-        } else if (urlObj.searchParams.get('v')) {
-            videoId = urlObj.searchParams.get('v');
-        }
-        
-        if (videoId) {
-            return `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-        }
-    } catch (e) {
-        // En caso de error (URL inválida, etc.)
-        return "https://via.placeholder.com/160x213.png?text=Error";
+function formatTime(seconds) {
+    if (isNaN(seconds) || seconds < 0) return '00:00';
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = Math.floor(seconds % 60);
+    const parts = [m, s];
+    if (h > 0) {
+        parts.unshift(h); 
+        return parts.map(v => v.toString().padStart(2, '0')).join(':');
     }
-    return "https://via.placeholder.com/160x213.png?text=Cargando";
+    return parts.map(v => v.toString().padStart(2, '0')).join(':');
 }
 
-// ======================================================================
-// COMPONENTES BÁSICOS
-// ======================================================================
+function obtenerVideoInfo(url) {
+    const defaultVideoId = 'dQw4w9WgXcQ'; 
+    let videoId = defaultVideoId;
+    let isYouTube = false;
 
-// Componente: ReproductorDeVideo
+    if (url) {
+        const youtubeRegex = /(?:youtube\.com|youtu\.be)\/(?:v=|embed\/|watch\?v=|\/v\/)?([a-zA-Z0-9_-]{11})/;
+        const match = url.match(youtubeRegex);
+
+        if (match && match[1]) {
+            videoId = match[1];
+            isYouTube = true;
+        }
+    }
+
+    if (isYouTube) {
+        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`; 
+        return { videoId, thumbnailUrl, isYouTube };
+    } else {
+        const thumbnailUrl = "https://placehold.co/1920x1080/1F2937/fff?text=VIDEO+EXTERNO"; 
+        return { videoId: null, thumbnailUrl, isYouTube: false };
+    }
+}
+
+// ----------------------------------------------------------------------
+// COMPONENTE ReproductorEnFoco (Reproductor a Pantalla Completa - Foco invisible corregido)
+// ----------------------------------------------------------------------
+
+function ReproductorEnFoco({ videoUrl, onBack }) {
+    const { videoId, isYouTube } = obtenerVideoInfo(videoUrl);
+    const playerRef = React.useRef(null); 
+    const playerContainerRef = React.useRef(null); 
+    const backButtonRef = React.useRef(null); 
+    const progressBarRef = React.useRef(null); 
+    
+    const [isPlaying, setIsPlaying] = React.useState(false);
+    // showControls controla si los elementos están MONTADOS en el DOM
+    const [showControls, setShowControls] = React.useState(true); 
+    const [currentTime, setCurrentTime] = React.useState(0); 
+    const [duration, setDuration] = React.useState(0);
+    const [bufferedPercent, setBufferedPercent] = React.useState(0); 
+
+    const timeoutRef = React.useRef(null); 
+    const progressIntervalRef = React.useRef(null); 
+    const isPlayingRef = React.useRef(false); 
+    
+    // NUEVAS REFERENCIAS PARA SEEK SOSTENIDO
+    const seekIntervalRef = React.useRef(null); 
+    const seekSpeedRef = React.useRef(10);     
+    const lastKeyRef = React.useRef(null);      
+
+    const isControlFocused = React.useCallback(() => {
+        const active = document.activeElement;
+        // Solo puede estar enfocado si los controles están montados
+        return showControls && (active === backButtonRef.current || active === progressBarRef.current);
+    }, [showControls]);
+
+    const startProgressInterval = React.useCallback(() => {
+        if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
+        progressIntervalRef.current = setInterval(() => {
+            const player = playerRef.current;
+            if (player && typeof player.getCurrentTime === 'function') {
+                setCurrentTime(player.getCurrentTime());
+                setDuration(player.getDuration()); 
+                const bufferedFraction = player.getVideoLoadedFraction(); 
+                setBufferedPercent(bufferedFraction * 100);
+            }
+        }, 250); 
+    }, []);
+
+    const stopProgressInterval = React.useCallback(() => {
+        if (progressIntervalRef.current) {
+            clearInterval(progressIntervalRef.current);
+            progressIntervalRef.current = null;
+        }
+    }, []);
+    
+    // Lógica de timeout para ocultar los controles (Desmontaje)
+    const resetControlTimeout = React.useCallback(() => {
+        setShowControls(true); 
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        
+        if (!isPlayingRef.current) {
+            setShowControls(true);
+            return; 
+        }
+
+        // Si está reproduciendo, programamos el ocultamiento
+        if (isPlayingRef.current) { 
+             timeoutRef.current = setTimeout(() => {
+                 // 1. Mover el foco al contenedor principal antes de desmontar los controles.
+                 playerContainerRef.current?.focus(); 
+                 
+                 // 2. Desmontar el JSX.
+                 setShowControls(false);
+             }, CONTROLS_TIMEOUT);
+        }
+    }, []);
+    
+    // LÓGICA DE AVANCE/RETROCESO SOSTENIDO
+    const handleContinuousSeek = React.useCallback((direction) => {
+        const player = playerRef.current;
+        if (!player || typeof player.getCurrentTime !== 'function') return;
+
+        // Limita la velocidad máxima para evitar saltos inmanejables (e.g., max 60s/intervalo)
+        seekSpeedRef.current = Math.min(seekSpeedRef.current + 5, 60); 
+        
+        const seekTime = direction === 'right' ? seekSpeedRef.current : -seekSpeedRef.current;
+        
+        // El salto real (la suma del tiempo actual + el delta)
+        const newTime = player.getCurrentTime() + seekTime; 
+        
+        player.seekTo(newTime, true);
+        setCurrentTime(newTime); // Actualizamos el estado para la UI inmediatamente
+
+        resetControlTimeout(); // Mantenemos los controles visibles
+    }, [resetControlTimeout]); 
+
+    // Sincroniza el estado de reproducción y asegura el timeout
+    React.useEffect(() => {
+        isPlayingRef.current = isPlaying;
+        resetControlTimeout(); 
+    }, [isPlaying, resetControlTimeout]);
+
+
+    // Lógica de Foco: Mover el foco al lugar correcto cuando la visibilidad cambia (POST-RENDERIZADO).
+    React.useEffect(() => {
+        if (showControls) {
+            // Esperamos un ciclo para asegurar el montaje del elemento
+            const timer = setTimeout(() => {
+                backButtonRef.current?.focus();
+            }, 50);
+            return () => clearTimeout(timer);
+        } else if (!showControls) {
+             // El foco ya debería estar aquí, solo lo aseguramos
+             playerContainerRef.current?.focus();
+        }
+    }, [showControls]);
+    
+    // Manejo de foco: Si el foco entra en un control, aseguramos que se muestre (y cancelamos el timeout)
+    React.useEffect(() => {
+        const handleFocusChange = () => {
+             // Si el foco acaba de entrar en un control (y solo si los controles están montados)
+             if (showControls && isControlFocused()) {
+                 if (timeoutRef.current) clearTimeout(timeoutRef.current); 
+             }
+        };
+
+        window.addEventListener('focusin', handleFocusChange);
+        return () => window.removeEventListener('focusin', handleFocusChange);
+    }, [isControlFocused, showControls]);
+    
+    // Manejo de la API de YouTube
+    React.useEffect(() => {
+        if (!isYouTube || !videoId || !window.YT) return;
+        const playerId = 'youtube-player-container'; 
+        const newPlayer = new window.YT.Player(playerId, {
+            videoId: videoId,
+            playerVars: {
+                'autoplay': 1, 'controls': 0, 'mute': 1, 'disablekb': 1, 
+                'widget_referrer': window.location.href
+            },
+            events: {
+                'onReady': (event) => {
+                    playerRef.current = event.target; 
+                    resetControlTimeout(); 
+                    if (event.target.isMuted()) event.target.unMute(); 
+                },
+                'onStateChange': (event) => {
+                    const state = event.data;
+                    if (state === YT.PlayerState.PLAYING) {
+                        setIsPlaying(true); startProgressInterval();
+                    } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.BUFFERING) {
+                        setIsPlaying(false); stopProgressInterval(); setShowControls(true); 
+                    } else if (state === YT.PlayerState.ENDED) {
+                        setIsPlaying(false); stopProgressInterval(); 
+                        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                        setShowControls(true); 
+                    }
+                }
+            }
+        });
+
+        return () => {
+            stopProgressInterval(); 
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            // Asegurarse de limpiar también el intervalo de seek al desmontar
+            if (seekIntervalRef.current) clearInterval(seekIntervalRef.current);
+            if (playerRef.current && typeof playerRef.current.destroy === 'function') {
+                playerRef.current.destroy();
+                playerRef.current = null;
+            }
+        };
+    }, [videoId, isYouTube, startProgressInterval, stopProgressInterval, resetControlTimeout]); 
+    
+    const handleOnBack = () => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        onBack();
+    }
+    
+    // LÓGICA DE NAVEGACIÓN D-PAD EN EL REPRODUCTOR (Corregida)
+    const handleKeyDown = (e) => {
+        if (!isYouTube) return; 
+        
+        const currentFocusedElement = document.activeElement;
+        const isFocusOnPlayerContainer = currentFocusedElement === playerContainerRef.current;
+
+        // 1. Manejo de la reaparición de controles con D-Pad
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+            e.preventDefault();
+            
+            // Si el foco está en el contenedor (controles ocultos) y se presiona D-Pad, reaparecen.
+            if (!showControls && isFocusOnPlayerContainer) {
+                setShowControls(true); 
+                return;
+            }
+        }
+
+        // Si estamos interactuando (controles visibles o Enter/OK), reiniciamos el temporizador.
+        resetControlTimeout(); 
+        
+        // Estas variables dependen de que los controles estén actualmente montados (showControls=true)
+        const isFocusOnBackButton = showControls && currentFocusedElement === backButtonRef.current;
+        const isFocusOnProgressBar = showControls && currentFocusedElement === progressBarRef.current;
+
+        switch (e.key) {
+            case 'Enter': case ' ': 
+                e.preventDefault(); 
+                
+                if (isFocusOnBackButton) {
+                    handleOnBack();
+                } else { 
+                    // Pausa/Reproducción al presionar Enter/OK en cualquier otro lugar (video, barra)
+                    const playerState = playerRef.current?.getPlayerState();
+                    if (playerState === YT.PlayerState.PLAYING || playerState === YT.PlayerState.BUFFERING) {
+                        playerRef.current.pauseVideo();
+                    } else if (playerState === YT.PlayerState.PAUSED) {
+                        playerRef.current.playVideo();
+                    }
+                }
+                break;
+                
+            // 2. NAVEGACIÓN VERTICAL (Solo movimiento de foco, NO seek)
+            case 'ArrowDown': 
+                if (isFocusOnBackButton) {
+                    // De Volver -> a la Barra de Progreso
+                    progressBarRef.current?.focus(); 
+                } 
+                // Si pulsa Down estando en la Barra, no pasa nada más.
+                break;
+                
+            case 'ArrowUp': 
+                if (isFocusOnProgressBar) {
+                    // De Barra de Progreso -> a Volver
+                    backButtonRef.current?.focus(); 
+                } 
+                // Si pulsa Up estando en Volver, no pasa nada más.
+                break;
+                
+            // 3. NAVEGACIÓN HORIZONTAL (Exclusivo para Salto 10s - Seek SOSTENIDO)
+            case 'ArrowLeft': 
+            case 'ArrowRight': 
+                // e.preventDefault() ya se llamó arriba.
+
+                // Si ya estamos en un intervalo de seek, no hacemos nada a menos que cambiemos de dirección
+                if (seekIntervalRef.current) {
+                    if (lastKeyRef.current !== e.key) {
+                        clearInterval(seekIntervalRef.current);
+                        seekIntervalRef.current = null;
+                        seekSpeedRef.current = 10;
+                    } else {
+                        return; // Mantenemos el seek actual
+                    }
+                }
+
+                // Permite el seek rápido si el foco está en el video (contenedor) o en la barra de progreso
+                if (isFocusOnPlayerContainer || isFocusOnProgressBar) {
+                    const direction = e.key === 'ArrowRight' ? 'right' : 'left';
+                    const seekTime = direction === 'right' ? 10 : -10;
+                    
+                    // 1. Salto inicial de 10 segundos
+                    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + seekTime, true);
+                    
+                    // 2. Iniciamos el intervalo para el salto sostenido
+                    lastKeyRef.current = e.key;
+                    seekIntervalRef.current = setInterval(() => {
+                        handleContinuousSeek(direction);
+                    }, 400); // 400ms de retardo antes de que el avance rápido se active
+                    
+                    // 3. Reiniciamos la velocidad al valor inicial de 10s
+                    seekSpeedRef.current = 10;
+                }
+                break;
+                
+            case 'Escape': case 'Backspace': case 'Back': case 'BrowserBack': 
+                e.preventDefault();
+                handleOnBack(); 
+                break;
+            default:
+                break;
+        }
+    };
+    
+    // FUNCIÓN PARA DETENER EL SEEK SOSTENIDO (onKeyUp)
+    const handleKeyUp = React.useCallback((e) => {
+        // Detener el intervalo solo si se suelta ArrowLeft o ArrowRight
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            if (seekIntervalRef.current) {
+                clearInterval(seekIntervalRef.current);
+                seekIntervalRef.current = null;
+                seekSpeedRef.current = 10; // Reiniciamos la velocidad
+                lastKeyRef.current = null;
+            }
+        }
+    }, []);
+
+    const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
+    
+    const BackIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
+
+    return (
+        <div 
+            ref={playerContainerRef}
+            className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center"
+            onClick={resetControlTimeout} 
+            onKeyDown={handleKeyDown} 
+            onKeyUp={handleKeyUp} 
+            tabIndex={0} 
+            style={{outline: 'none'}} 
+        >
+            <div className="w-full h-full flex flex-col items-center justify-center relative">
+                <div className="w-full h-full max-w-screen-xl max-h-[80vh] relative flex items-center justify-center">
+                    <div 
+                        id="youtube-player-container" 
+                        tabIndex="-1" 
+                        className="w-full h-full aspect-video rounded-xl shadow-2xl bg-gray-900 overflow-hidden"
+                    >
+                        {!isYouTube && (
+                            <iframe
+                                tabIndex="-1" 
+                                className="youtube-iframe rounded-xl shadow-2xl bg-gray-900 w-full h-full"
+                                src={videoUrl}
+                                allow="autoplay; fullscreen"
+                                allowFullScreen
+                            ></iframe>
+                        )}
+                    </div>
+                </div>
+                {/* SOLUCIÓN DEFINITIVA: Renderizado Condicional de los Controles */}
+                {isYouTube && showControls && (
+                    <div 
+                        className={`absolute top-0 bottom-0 w-full flex flex-col p-10 transition-opacity duration-300 opacity-100`}
+                        style={{maxWidth: '100%', maxHeight: '100%'}} 
+                    >
+                        <div className="flex justify-start w-full absolute top-5 left-5 p-5">
+                             <button
+                                 ref={backButtonRef}
+                                 onClick={handleOnBack}
+                                 className="flex items-center space-x-2 p-2 rounded-full bg-gray-800/80 text-white shadow-lg transition-all duration-200 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
+                                 title="Volver al catálogo"
+                                 tabIndex={0} // Al estar renderizado, es enfocable
+                             >
+                                 <BackIcon />
+                                 <span className="text-xs">Volver</span>
+                             </button>
+                        </div>
+                        <div className="flex flex-col justify-end h-full w-full">
+                            <div className="flex items-center space-x-3 w-full bg-gradient-to-t from-gray-900/90 to-transparent py-3 px-5">
+                                <span className="text-sm font-mono text-gray-300 whitespace-nowrap">{formatTime(currentTime)}</span>
+                                <div 
+                                    ref={progressBarRef} 
+                                    className="progress-bar-container w-full bg-gray-600 rounded-full cursor-pointer group h-2 relative transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900" 
+                                    title="Barra de Progreso"
+                                    tabIndex={0} // Al estar renderizado, es enfocable
+                                >
+                                    <div className="absolute top-0 left-0 h-full bg-gray-400 opacity-50 rounded-full" style={{ width: `${bufferedPercent}%` }}></div>
+                                    <div className="progress-fill bg-blue-600 rounded-full group-hover:bg-blue-500 relative h-full" style={{ width: `${progressPercent}%` }}></div>
+                                </div>
+                                <span className="text-sm font-mono text-gray-300 whitespace-nowrap">{formatTime(duration)}</span>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+// ----------------------------------------------------------------------
+// COMPONENTES DE CATÁLOGO CON data-category-index
+// ----------------------------------------------------------------------
+
+const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
+    const { thumbnailUrl } = obtenerVideoInfo(videoUrl);
+    return (
+        <div 
+            className="hero-background w-full min-h-[50vh] flex items-end relative overflow-hidden mb-8 rounded-xl shadow-2xl bg-cover bg-center"
+            tabIndex="-1" 
+            style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('${thumbnailUrl}'), url('https://placehold.co/1920x1080/0d1117/333?text=CARGANDO...')` }}
+        >
+            <div className="relative p-8 max-w-xl">
+                <h2 className="text-4xl font-extrabold mb-2 text-white drop-shadow-lg">{titulo}</h2>
+                <p className="text-base mb-4 text-gray-200 drop-shadow-md">{descripcion}</p>
+                <button 
+                    ref={ref}
+                    onClick={() => onPlay(videoUrl)} 
+                    className="inline-block px-6 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-700 focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 focus:outline-none"
+                    tabIndex="0" 
+                    data-category-index="0" 
+                >
+                    Ver Ahora
+                </button>
+            </div>
+        </div>
+    );
+});
+HeroBanner.displayName = 'HeroBanner';
+
 function ReproductorDeVideo(props) {
-    const thumbnailUrl = getYouTubeThumbnail(props.url);
-    const isYouTube = props.url.includes("youtu");
+    const { videoId, thumbnailUrl, isYouTube } = obtenerVideoInfo(props.url);
+    const genericPlaceholderUrl = "https://placehold.co/600x337/333/fff?text=VIDEO+EXTERNO";
 
     const handleImageError = (e) => {
-        e.target.src = "https://via.placeholder.com/160x213.png?text=No+Thumbnail";
+        e.target.onerror = null; 
+        if (isYouTube && videoId && e.target.src.includes('maxresdefault')) {
+            e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+            return;
+        } 
+        e.target.src = genericPlaceholderUrl;
     };
 
     return (
@@ -67,7 +477,6 @@ function ReproductorDeVideo(props) {
     );
 }
 
-// Componente: VideoCarousel
 function VideoCarousel({ children }) {
     return (
         <div className="flex overflow-x-auto space-x-4 p-2 pb-4 items-stretch ocultar-scrollbar">
@@ -76,7 +485,6 @@ function VideoCarousel({ children }) {
     );
 }
 
-// Componente: TarjetaMas
 function TarjetaMas({ onShowAll, count, categoryIndex }) {
     return (
         <div 
@@ -86,85 +494,19 @@ function TarjetaMas({ onShowAll, count, categoryIndex }) {
             data-category-index={categoryIndex} 
         >
             <div className="text-center p-4">
-                <p className="text-6xl font-extrabold text-white mb-2">+</p>
+                                         <p className="text-6xl font-extrabold text-white mb-2">+</p>
                 <h2 className="text-xl font-bold text-white line-clamp-2">Ver Más</h2>
                 <p className="text-sm text-gray-300 mt-1 font-semibold">({count} videos más)</p>
             </div>
-        </div>
-    );
-}
-
-// ======================================================================
-// COMPONENTE: ReproductorEnFoco (MODIFICADO para guardado de progreso)
-// ======================================================================
-
-function ReproductorEnFoco({ videoUrl, onBack, onStop }) {
-    // Estado para simular el tiempo de reproducción actual
-    const [playbackTime, setPlaybackTime] = React.useState(0);
-    const closeButtonRef = React.useRef(null);
-    const initialTimeMatch = videoUrl.match(/t=(\d+)/);
-    const initialTime = initialTimeMatch ? parseInt(initialTimeMatch[1], 10) : 0;
-    const cleanUrl = videoUrl.split('?')[0]; 
-
-    // Simulación: Iniciar conteo de tiempo desde el inicio o el tiempo de reanudación
-    React.useEffect(() => {
-        setPlaybackTime(initialTime);
-        const interval = setInterval(() => {
-            setPlaybackTime(prevTime => prevTime + 1);
-        }, 1000);
-        
-        closeButtonRef.current?.focus();
-        
-        return () => clearInterval(interval);
-    }, [initialTime]);
-    
-    // Función que se llama al salir
-    const handleExit = () => {
-        // 💡 Llama a la función de guardado con el tiempo actual antes de retroceder
-        onStop(cleanUrl, playbackTime); 
-        onBack();
-    };
-
-    // La URL de YouTube para el iframe, usando el tiempo de inicio
-    const embedUrl = `https://www.youtube.com/embed/${getYouTubeThumbnail(videoUrl).split('/')[4]}?autoplay=1&start=${initialTime}`;
-
-    return (
-        <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center p-4">
-             {/* 💡 IFRAME DE VIDEO - Usa la URL con el parámetro 'start' */}
-            <iframe 
-                className="w-full max-w-4xl aspect-video bg-gray-900 shadow-2xl rounded-xl"
-                src={embedUrl}
-                title="Reproductor de video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-            ></iframe>
             
-            <div className="mt-6 text-center">
-                 <h1 className="text-lg text-gray-400 mb-2">
-                    {cleanUrl}
-                </h1>
-                <p className="text-white text-xl font-bold mb-4">
-                    Progreso Guardado (Simulado): **{Math.floor(playbackTime)} segundos**
-                </p>
-                <button 
-                    ref={closeButtonRef}
-                    onClick={handleExit}
-                    className="px-8 py-3 bg-blue-600 text-white font-bold rounded-lg transition-all duration-300 hover:bg-blue-500
-                                focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
-                    tabIndex="0" 
-                >
-                    SALIR (Guardar Progreso)
-                </button>
-            </div>
         </div>
     );
 }
 
+// ----------------------------------------------------------------------
+// COMPONENTE MasVideosGrid (Con Navegación 2D Forzada y Enter)
+// ----------------------------------------------------------------------
 
-// ======================================================================
-// COMPONENTE: MasVideosGrid (Sin cambios en su lógica principal)
-// ======================================================================
 function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
     const gridRef = React.useRef(null);
     const closeButtonRef = React.useRef(null);
@@ -265,19 +607,20 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
         };
     }, [handleGridDpadNavigation]);
 
+//sticky sacado para fijar barra delante del  top
     return (
         <div ref={gridRef} className="mas-videos-grid fixed inset-0 bg-gray-900/95 z-40 overflow-y-auto p-4 md:p-8" tabIndex={0} style={{ outline: 'none' }}>
             <div className="max-w-7xl mx-auto">
                 
-                <div className="flex justify-between items-center mb-6  top-0 bg-gray-900/90 py-2 z-10">
+                <div className="flex justify-between items-center mb-6  top-0 bg-gray-900/90 py-2 z-10">
                     <h1 className="text-3xl font-bold text-withe-600 capitalize">
-                                 {categoria}
+                             {categoria}
                     </h1>
                     <button 
                         ref={closeButtonRef}
                         onClick={onClose}
                         className="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg transition-all duration-300 hover:bg-blue-500
-                                    focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
+                                       focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
                         tabIndex="0" 
                     >
                         Cerrar
@@ -300,41 +643,9 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
     );
 }
 
-// ======================================================================
-// COMPONENTE: HeroBanner (Sin cambios)
-// ======================================================================
-
-const HeroBanner = React.forwardRef(({ titulo, descripcion, videoUrl, onPlay }, ref) => {
-    const thumbnailUrl = getYouTubeThumbnail(videoUrl);
-    const handleImageError = (e) => {
-        e.target.src = "https://via.placeholder.com/1280x720.png?text=Hero+Image";
-    };
-
-    return (
-        <div 
-            ref={ref}
-            className="group relative h-96 bg-cover bg-center rounded-xl shadow-2xl mb-12 focus:ring-[8px] focus:ring-blue-600 focus:ring-offset-4 focus:ring-offset-gray-900 focus:outline-none transition-all duration-300 transform hover:scale-[1.01]"
-            style={{ backgroundImage: `url(${thumbnailUrl})` }}
-            tabIndex="0"
-            data-category-index="0"
-            onClick={() => onPlay(videoUrl)}
-        >
-            <div className="absolute inset-0 bg-black/50 rounded-xl flex items-end p-6">
-                <div className="max-w-xl text-white">
-                    <h1 className="text-4xl font-extrabold mb-2">{titulo}</h1>
-                    <p className="text-lg mb-4">{descripcion}</p>
-                    <button className="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg transition-all duration-300 hover:bg-blue-500">
-                        ▶ Reproducir Ahora
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-});
-
-// ======================================================================
-// CATÁLOGO DE VIDEOS
-// ======================================================================
+// ----------------------------------------------------------------------
+// CATÁLOGO
+// ----------------------------------------------------------------------
 
 const CATALOGO = {
     terror: [
@@ -350,6 +661,7 @@ const CATALOGO = {
         { titulo: "La Rebelion", url: "https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" },
         { titulo: "Indiana Jone el Gran circulo", url: "https://youtu.be/KONzw7qwEuA?si=X5gKK3QznCutoIH" },
         { titulo: "La Rebelion", url: "https://youtu.be/V0nxRnf2Izs?si=O04xJbq9fsL3CIxn" },
+        
     ],
     accion: [
         { titulo: "Nephilim", url: "https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9ePPpS" },
@@ -366,6 +678,7 @@ const CATALOGO = {
         { titulo: "Tierra perdida", url: "https://youtu.be/QVj2CVk-Nio?si=MQH3We5LeRLL3_jO" },
         { titulo: "Impacto inminente", url: "https://youtu.be/5pEFz_e7bSw?si=hyV51hXmHV7ROgux" },
         { titulo: "Supervivencia", url: "https://youtu.be/10Lzga1uDpM?si=mEYDmw8WHhMT8Vx9" },
+        
         { titulo: "Invasion Oculta", url: "https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" },
         { titulo: "Bermudas Avismo en el mar del norte", url: "https://youtu.be/gwkUDXSGbxg?si=z966wQgljQviO304" },
         { titulo: "La proxima generacion", url: "https://youtu.be/ebvujopachw?si=FoZlTIM73kMVhB7o" },
@@ -423,82 +736,36 @@ const CATALOGO = {
         { titulo: "Bajo un mismo techo", url: "https://youtu.be/4My3KEB8QIo?si=Hu0nZivaJlaMrne8" },
         { titulo: "Un dia de locos", url: "https://youtu.be/4My3KEB8QIo?si=Hu0nZivaJlaMrne8" },
     ]
+    
 };
 
-// ======================================================================
-// COMPONENTE PRINCIPAL APP (Con Lógica de Progreso y D-Pad)
-// ======================================================================
+// ----------------------------------------------------------------------
+// COMPONENTE PRINCIPAL APP
+// ----------------------------------------------------------------------
 
 function App() {
     
     // Estados principales
     const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
     const [mostrarMasGrid, setMostrarMasGrid] = React.useState(null); 
-    // 💡 NUEVO ESTADO para el progreso (URL sin parámetros)
-    const [lastProgress, setLastProgress] = React.useState(null); 
-    
     const heroButtonRef = React.useRef(null); 
-    const isReadyRef = React.useRef(false); 
-
-    // ----------------------------------------------------------------------
-    // LÓGICA DE PROGRESO DE REPRODUCCIÓN
-    // ----------------------------------------------------------------------
-
-    // Función para guardar el progreso (llamada desde ReproductorEnFoco)
-    const handleVideoProgress = React.useCallback((url, time) => {
-        // Guardar solo si el tiempo es significativo (> 10 segundos)
-        if (time > 10) {
-            const progress = { url, time: Math.floor(time) };
-            localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(progress));
-            setLastProgress(progress);
-        } else {
-            handleClearProgress();
-        }
-    }, []);
-
-    // Función para limpiar el progreso (video visto o empezar de nuevo)
-    const handleClearProgress = React.useCallback(() => {
-        localStorage.removeItem(PROGRESS_STORAGE_KEY);
-        setLastProgress(null);
-    }, []);
-
-    // Cargar progreso guardado al montar la App
-    React.useEffect(() => {
-        const savedProgress = localStorage.getItem(PROGRESS_STORAGE_KEY);
-        if (savedProgress) {
-            try {
-                const progress = JSON.parse(savedProgress);
-                if (progress.url && progress.time > 10) { 
-                    setLastProgress(progress);
-                }
-            } catch (e) {
-                console.error("Error al cargar el progreso:", e);
-            }
-        }
-    }, []);
-
-    // ----------------------------------------------------------------------
-    // LÓGICA DE NAVEGACIÓN Y BACK (Botón Atrás)
-    // ----------------------------------------------------------------------
+    const isReadyRef = React.useRef(false); // Bandera para el foco inicial
 
     // 1. MANEJO DEL BOTÓN ATRÁS EN EL REPRODUCTOR
-    // Se llama *después* de que ReproductorEnFoco guarde el tiempo.
     const handleBack = React.useCallback(() => {
         setVideoEnFocoUrl(null);
+        // Devolver foco al Hero Banner
         setTimeout(() => {
-             // Intenta devolver el foco al botón de Continuar Viendo si existe, sino al Hero
-             const resumeButton = document.querySelector('.resume-video-card');
-             if (resumeButton) {
-                resumeButton.focus();
-             } else if (heroButtonRef.current) {
+            if (heroButtonRef.current) {
                 heroButtonRef.current.focus();
-             }
+            }
         }, 50); 
     }, []);
 
     // 2. MANEJO DEL BOTÓN ATRÁS EN LA CUADRÍCULA
     const handleCloseGrid = React.useCallback(() => {
         setMostrarMasGrid(null);
+        // Devolver foco al Hero Banner (o al último elemento enfocado)
         setTimeout(() => {
             if (heroButtonRef.current) {
                  heroButtonRef.current.focus();
@@ -506,29 +773,40 @@ function App() {
         }, 50); 
     }, []);
 
-    // Lógica principal de retroceso para Android/Escape
+
+    // =========================================================================
+    // 💡 IMPLEMENTACIÓN CLAVE PARA ANDROID/KOTLIN: window.consumeBackButton()
+    // Define la lógica de retroceso que Kotlin llama.
+    // =========================================================================
     const consumeBackButton = React.useCallback(() => {
-        if (videoEnFocoUrl) {
-            // Llama a handleExit en ReproductorEnFoco para guardar progreso antes de handleBack
-            const exitButton = document.querySelector('.mas-videos-grid .close-button'); // Ficticio, en real hay que disparar onStop
-            if (exitButton) exitButton.click(); 
-            return true; // La web maneja el retroceso
-        }
         
-        if (mostrarMasGrid) {
-            handleCloseGrid(); 
+        // 1. ¿Estamos en el Reproductor de Video (nivel más profundo)?
+        if (videoEnFocoUrl) {
+            handleBack(); // Retrocede al catálogo/grid
             return true; 
         }
         
-        return false; // El nativo debe salir de la App
-    }, [videoEnFocoUrl, mostrarMasGrid, handleCloseGrid]);
+        // 2. ¿Estamos en la Cuadrícula de Videos (nivel intermedio)?
+        if (mostrarMasGrid) {
+            handleCloseGrid(); // Retrocede al catálogo principal
+            return true; 
+        }
+        
+        // 3. Estamos en el Catálogo Principal (nivel más alto).
+        // Android/Kotlin debe gestionar la salida de la App.
+        return false; 
+    }, [videoEnFocoUrl, mostrarMasGrid, handleBack, handleCloseGrid]);
 
-    // Exponer la función global y manejar la tecla ESCAPE
+    // Exponer la función al ámbito global y manejar la tecla ESCAPE
     React.useEffect(() => {
+        // Asignar la función global para Kotlin
         window.consumeBackButton = consumeBackButton;
         
+        // Manejar la tecla ESCAPE/Backspace (típica de mandos de TV)
         const handleEscape = (event) => {
             if (event.key === 'Escape' || event.key === 'Backspace') {
+                 // Si consumeBackButton devuelve true (la web retrocede),
+                 // prevenimos la acción por defecto del navegador.
                  if (consumeBackButton()) {
                     event.preventDefault();
                  }
@@ -540,22 +818,22 @@ function App() {
              window.removeEventListener('keydown', handleEscape);
         };
     }, [consumeBackButton]);
-    
-    // LÓGICA DE NAVEGACIÓN D-PAD EN EL CATÁLOGO (Sin cambios)
+    // =========================================================================
+
+
+    // LÓGICA DE NAVEGACIÓN D-PAD EN EL CATÁLOGO (CORREGIDA)
     const handleDpadNavigation = React.useCallback((event) => {
         if (videoEnFocoUrl || mostrarMasGrid) return; 
 
         const currentFocusedElement = document.activeElement;
         
         const focusableElements = Array.from(
-            document.querySelectorAll('button[tabIndex="0"], div.video-card[tabIndex="0"], .resume-video-card[tabIndex="0"]')
+            document.querySelectorAll('button[tabIndex="0"], div.video-card[tabIndex="0"]')
         ).filter(el => el.offsetParent !== null && !el.closest('.mas-videos-grid')); 
         
         const isInteractiveElement = currentFocusedElement && 
             (currentFocusedElement.classList.contains('video-card') || 
-             currentFocusedElement.classList.contains('resume-video-card') ||
-             currentFocusedElement.tagName === 'BUTTON' ||
-             currentFocusedElement.tagName === 'DIV' && currentFocusedElement.dataset.categoryIndex);
+             currentFocusedElement.tagName === 'BUTTON');
 
         if (!isInteractiveElement) return;
 
@@ -582,15 +860,10 @@ function App() {
         // 2. NAVEGACIÓN VERTICAL FORZADA (ArrowDown / ArrowUp)
         else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
             
-            // Asigna 0 al Hero/Resume Banner, y el resto por data-category-index
-            let currentCategoryIndex = -1;
-            if (currentFocusedElement === heroButtonRef.current || currentFocusedElement.classList.contains('resume-video-card')) {
-                currentCategoryIndex = 0;
-            } else {
-                currentCategoryIndex = parseInt(currentFocusedElement.dataset.categoryIndex, 10);
-            }
+            const currentCategoryIndex = currentFocusedElement === heroButtonRef.current ? 0 : parseInt(currentFocusedElement.dataset.categoryIndex, 10);
             
             if (event.key === 'ArrowDown') {
+                
                 if (currentCategoryIndex === 0) {
                     nextElement = focusableElements.find(el => el.dataset.categoryIndex === '1');
                 } 
@@ -602,8 +875,7 @@ function App() {
             } else if (event.key === 'ArrowUp') {
                 
                 if (currentCategoryIndex === 1) {
-                    // Si viene del primer carrusel, va al Hero/Resume Banner (índice 0)
-                    nextElement = focusableElements.find(el => el.classList.contains('resume-video-card')) || heroButtonRef.current;
+                    nextElement = heroButtonRef.current;
                 } else if (currentCategoryIndex > 1) {
                     const prevCategoryIndex = currentCategoryIndex - 1;
                     nextElement = focusableElements.find(el => el.dataset.categoryIndex === prevCategoryIndex.toString());
@@ -623,7 +895,7 @@ function App() {
         
     }, [videoEnFocoUrl, mostrarMasGrid]);
 
-    // Listener global para el D-Pad
+    // Listener global para el D-Pad (solo para el catálogo)
     React.useEffect(() => {
         window.addEventListener('keydown', handleDpadNavigation);
         return () => {
@@ -635,25 +907,16 @@ function App() {
     React.useEffect(() => {
         if (!videoEnFocoUrl && !mostrarMasGrid && !isReadyRef.current) {
             setTimeout(() => {
-                const initialFocusElement = document.querySelector('.resume-video-card') || heroButtonRef.current;
-                if (initialFocusElement) {
-                     initialFocusElement.focus();
-                     isReadyRef.current = true;
+                if (heroButtonRef.current) {
+                     heroButtonRef.current.focus();
+                     isReadyRef.current = true; // Evitar el re-foco innecesario
                 }
             }, 100);
         }
     }, [videoEnFocoUrl, mostrarMasGrid]);
 
-    // ----------------------------------------------------------------------
-    // RENDERIZADO CONDICIONAL
-    // ----------------------------------------------------------------------
-
     if (videoEnFocoUrl) {
-        return <ReproductorEnFoco 
-            videoUrl={videoEnFocoUrl} 
-            onBack={handleBack} 
-            onStop={handleVideoProgress} 
-        />;
+        return <ReproductorEnFoco videoUrl={videoEnFocoUrl} onBack={handleBack} />;
     }
     
     if (mostrarMasGrid) {
@@ -661,7 +924,7 @@ function App() {
             categoria={mostrarMasGrid.categoria}
             videos={mostrarMasGrid.videos}
             onPlay={setVideoEnFocoUrl}
-            onClose={handleCloseGrid}
+            onClose={handleCloseGrid} // Usar la función con lógica de foco
         />;
     }
 
@@ -671,41 +934,7 @@ function App() {
     return (
         <div className="p-4 md:p-8 max-w-7xl mx-auto min-h-screen bg-gray-900 text-white">
             
-            {/* 💡 SECCIÓN: CONTINUAR VIENDO */}
-            {lastProgress && (
-                <div className="mb-12 p-4 border border-blue-600 rounded-xl bg-gray-800">
-                    <h1 className="text-2xl font-bold mb-4 text-blue-400">🎬 Continuar Viendo</h1>
-                    <div 
-                        className="resume-video-card cursor-pointer group relative bg-gray-700 rounded-xl shadow-lg p-4 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] focus:ring-4 focus:ring-blue-600 focus:outline-none"
-                        onClick={() => {
-                            // Construye la URL con el tiempo de reanudación
-                            const resumeUrl = `${lastProgress.url.split('?')[0]}?t=${Math.floor(lastProgress.time)}`;
-                            setVideoEnFocoUrl(resumeUrl);
-                        }}
-                        tabIndex="0"
-                        data-category-index="0"
-                    >
-                        <p className="text-lg font-semibold text-white line-clamp-1">
-                            **Reanudar Video**
-                        </p>
-                        <p className="text-sm text-gray-300 mt-1">
-                            Continuar en **{Math.floor(lastProgress.time)} segundos**.
-                        </p>
-                        <button 
-                            onClick={(e) => {
-                                e.stopPropagation(); 
-                                handleClearProgress();
-                            }}
-                            className="mt-2 px-3 py-1 text-xs bg-red-700 hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-white"
-                        >
-                            Empezar de Nuevo
-                        </button>
-                    </div>
-                </div>
-            )}
-            
             {/* HERO BANNER */}
-            {/* Si hay progreso, el Hero Banner usa categoryIndex="1" para la navegación vertical */}
             <HeroBanner 
                 ref={heroButtonRef}
                 titulo="Estreno de la Semana"
@@ -723,6 +952,7 @@ function App() {
                 const videosEnCarrusel = tieneMas ? videos.slice(0, limiteCarrusel - 1) : videos.slice(0, limiteCarrusel);
                 const videosRestantesCount = videos.length - videosEnCarrusel.length;
 
+                // CORRECCIÓN DE TAMAÑO: Reemplazar lg:w-30 (que no existe) por un valor válido de Tailwind, por ejemplo, lg:w-40 (160px)
                 const cardClasses = "flex-shrink-0 w-40 sm:w-32 lg:w-40";
 
                 return (
@@ -733,11 +963,11 @@ function App() {
                             {videosEnCarrusel.map((video, index) => (
                                 <div key={index} className={cardClasses}>
                                    <ReproductorDeVideo 
-                                         titulo={video.titulo} 
-                                         url={video.url} 
-                                         onPlay={setVideoEnFocoUrl} 
-                                         categoryIndex={currentCategoryIndex} 
-                                     />
+                                        titulo={video.titulo} 
+                                        url={video.url} 
+                                        onPlay={setVideoEnFocoUrl} 
+                                        categoryIndex={currentCategoryIndex} 
+                                    />
                                 </div>
                             ))}
 
@@ -760,8 +990,9 @@ function App() {
     );
 }
 
-// Inicialización de React
-const rootElement = document.getElementById('root');
-const root = ReactDOM.createRoot(rootElement);
-root.render(<App />);
+ const rootElement = document.getElementById('root');
+ const root = ReactDOM.createRoot(rootElement);
+ root.render(<App />);
 
+// NOTA: Las últimas 3 líneas comentadas asumen que estás usando React 18+. 
+// Descoméntalas e inserta este código en un archivo JS/TSX si quieres ejecutarlo.

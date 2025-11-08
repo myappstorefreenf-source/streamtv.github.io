@@ -742,40 +742,16 @@ const CATALOGO = {
 // ----------------------------------------------------------------------
 // COMPONENTE PRINCIPAL APP
 // ----------------------------------------------------------------------
-
 function App() {
-    // Agrega esta función al scope global (por ejemplo, al principio de tu archivo App.js)
-// O mejor aún, añádela como un React.useEffect en el componente App.
-
-React.useEffect(() => {
-    // La función que Android llama al pulsar ATRÁS
-    window.consumeBackButton = () => {
-        // Estado 1: Video Reproduciéndose
-        if (videoEnFocoUrl) {
-            handleBack(); // Cierra el reproductor
-            return true; // Retorna 'true' para indicar a Android que la web manejó el evento
-        }
-
-        // Estado 2: Grid de "Ver Más" abierto
-        if (mostrarMasGrid) {
-            setMostrarMasGrid(null); // Cierra la cuadrícula
-            return true; // Retorna 'true'
-        }
-
-        // Estado 3: En el Catálogo Principal (Carrusel)
-        // En este punto, no consumimos el evento, permitimos que pase al nativo.
-        return false; // Retorna 'false' para que Android maneje la salida o recarga.
-    };
     
-    // Cleanup opcional al desmontar el componente (aunque en un WebView no es común)
-    return () => {
-        window.consumeBackButton = () => false;
-    };
-}, [videoEnFocoUrl, mostrarMasGrid, handleBack]); // Dependencias: Estados que definen los niveles
+    // ----------------------------------------------------------------------
+    // 1. DECLARACIONES DE ESTADOS, REF y CALLBACKS (DEBEN IR AL PRINCIPIO)
+    // ----------------------------------------------------------------------
     const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
     const [mostrarMasGrid, setMostrarMasGrid] = React.useState(null); 
     const heroButtonRef = React.useRef(null); 
 
+    // Función para cerrar el reproductor y devolver el foco.
     const handleBack = React.useCallback(() => {
         setVideoEnFocoUrl(null);
         setTimeout(() => {
@@ -785,8 +761,10 @@ React.useEffect(() => {
         }, 50); 
     }, []);
 
-    // LÓGICA DE NAVEGACIÓN D-PAD EN EL CATÁLOGO (CORREGIDA)
+    // La función que manejas actualmente para la navegación con el D-PAD
     const handleDpadNavigation = React.useCallback((event) => {
+        // ... (Tu lógica de navegación D-PAD existente aquí) ...
+        
         if (videoEnFocoUrl || mostrarMasGrid) return; 
 
         const currentFocusedElement = document.activeElement;
@@ -816,7 +794,7 @@ React.useEffect(() => {
         if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
             let nextIndex = event.key === 'ArrowRight' ? currentIndex + 1 : currentIndex - 1;
             if (nextIndex >= 0 && nextIndex < focusableElements.length) {
-                nextElement = focusableElements[nextIndex];
+                 nextElement = focusableElements[nextIndex];
             }
             
         } 
@@ -846,6 +824,81 @@ React.useEffect(() => {
                 }
             }
         }
+        
+        if (nextElement) {
+            nextElement.focus();
+            // Desplazamiento opcional para asegurar que el elemento sea visible
+            // nextElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
+        }
+    }, [videoEnFocoUrl, mostrarMasGrid]); // Dependencias para que se recree si el estado cambia
+
+
+    // ----------------------------------------------------------------------
+    // 2. LÓGICA DE NAVEGACIÓN ATRÁS (BRIDGE CON ANDROID) - ¡NUEVO!
+    // ----------------------------------------------------------------------
+    React.useEffect(() => {
+        // 🚨 Esta función es llamada por el código nativo de Kotlin al pulsar ATRÁS.
+        window.consumeBackButton = () => {
+            
+            // NIVEL 3: Video Reproduciéndose (Cerrar Reproductor)
+            if (videoEnFocoUrl) {
+                handleBack(); 
+                return true; // Web manejó el evento (ir a Nivel 2)
+            }
+
+            // NIVEL 2: Grid de "Ver Más" abierto (Cerrar Grid)
+            if (mostrarMasGrid) {
+                setMostrarMasGrid(null); // Cierra la cuadrícula
+                return true; // Web manejó el evento (ir a Nivel 1)
+            }
+
+            // NIVEL 1: Catálogo Principal 
+            // Permite que Android ejecute su lógica de doble pulsación para salir/recargar.
+            return false; 
+        };
+        
+        return () => {
+            window.consumeBackButton = () => false;
+        };
+        
+    }, [videoEnFocoUrl, mostrarMasGrid, handleBack]); 
+
+
+    // ----------------------------------------------------------------------
+    // 3. LISTENERS GLOBALES (D-PAD y Limpieza)
+    // ----------------------------------------------------------------------
+    React.useEffect(() => {
+        document.addEventListener('keydown', handleDpadNavigation);
+        return () => {
+            document.removeEventListener('keydown', handleDpadNavigation);
+        };
+    }, [handleDpadNavigation]);
+
+
+    // ----------------------------------------------------------------------
+    // 4. RENDERIZADO (El resto de tu código que define la UI)
+    // ----------------------------------------------------------------------
+    
+    // ... (El JSX de tu aplicación: if (videoEnFocoUrl), if (mostrarMasGrid), return (...))
+    // Nota: Necesito el resto de tu JSX para darte el código completo del return, pero asumo que va aquí.
+    
+    // Ejemplo de cómo se vería el inicio del return (si no está en modo foco):
+    /*
+    if (videoEnFocoUrl) {
+        return <ReproductorEnFoco videoUrl={videoEnFocoUrl} onBack={handleBack} />;
+    }
+    
+    if (mostrarMasGrid) {
+        return <MasVideosGrid {...} onClose={() => setMostrarMasGrid(null)} />;
+    }
+
+    return (
+        <div className="p-4 ...">
+            ...
+        </div>
+    );
+    */
+}
 
         // 3. Aplicar foco y scroll (CORRECCIÓN IMPLEMENTADA AQUÍ)
         if (nextElement) {

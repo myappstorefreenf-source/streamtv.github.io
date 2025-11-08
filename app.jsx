@@ -742,18 +742,19 @@ const CATALOGO = {
 // ----------------------------------------------------------------------
 // COMPONENTE PRINCIPAL APP
 // ----------------------------------------------------------------------
+
 function App() {
     
-    // ----------------------------------------------------------------------
-    // 1. DECLARACIONES DE ESTADOS, REF y CALLBACKS (DEBEN IR AL PRINCIPIO)
-    // ----------------------------------------------------------------------
+    // Estados principales
     const [videoEnFocoUrl, setVideoEnFocoUrl] = React.useState(null);
     const [mostrarMasGrid, setMostrarMasGrid] = React.useState(null); 
     const heroButtonRef = React.useRef(null); 
+    const isReadyRef = React.useRef(false); // Bandera para el foco inicial
 
-    // Función para cerrar el reproductor y devolver el foco.
+    // 1. MANEJO DEL BOTÓN ATRÁS EN EL REPRODUCTOR
     const handleBack = React.useCallback(() => {
         setVideoEnFocoUrl(null);
+        // Devolver foco al Hero Banner
         setTimeout(() => {
             if (heroButtonRef.current) {
                 heroButtonRef.current.focus();
@@ -761,10 +762,67 @@ function App() {
         }, 50); 
     }, []);
 
-    // La función que manejas actualmente para la navegación con el D-PAD
-    const handleDpadNavigation = React.useCallback((event) => {
-        // ... (Tu lógica de navegación D-PAD existente aquí) ...
+    // 2. MANEJO DEL BOTÓN ATRÁS EN LA CUADRÍCULA
+    const handleCloseGrid = React.useCallback(() => {
+        setMostrarMasGrid(null);
+        // Devolver foco al Hero Banner (o al último elemento enfocado)
+        setTimeout(() => {
+            if (heroButtonRef.current) {
+                 heroButtonRef.current.focus();
+            }
+        }, 50); 
+    }, []);
+
+
+    // =========================================================================
+    // 💡 IMPLEMENTACIÓN CLAVE PARA ANDROID/KOTLIN: window.consumeBackButton()
+    // Define la lógica de retroceso que Kotlin llama.
+    // =========================================================================
+    const consumeBackButton = React.useCallback(() => {
         
+        // 1. ¿Estamos en el Reproductor de Video (nivel más profundo)?
+        if (videoEnFocoUrl) {
+            handleBack(); // Retrocede al catálogo/grid
+            return true; 
+        }
+        
+        // 2. ¿Estamos en la Cuadrícula de Videos (nivel intermedio)?
+        if (mostrarMasGrid) {
+            handleCloseGrid(); // Retrocede al catálogo principal
+            return true; 
+        }
+        
+        // 3. Estamos en el Catálogo Principal (nivel más alto).
+        // Android/Kotlin debe gestionar la salida de la App.
+        return false; 
+    }, [videoEnFocoUrl, mostrarMasGrid, handleBack, handleCloseGrid]);
+
+    // Exponer la función al ámbito global y manejar la tecla ESCAPE
+    React.useEffect(() => {
+        // Asignar la función global para Kotlin
+        window.consumeBackButton = consumeBackButton;
+        
+        // Manejar la tecla ESCAPE/Backspace (típica de mandos de TV)
+        const handleEscape = (event) => {
+            if (event.key === 'Escape' || event.key === 'Backspace') {
+                 // Si consumeBackButton devuelve true (la web retrocede),
+                 // prevenimos la acción por defecto del navegador.
+                 if (consumeBackButton()) {
+                    event.preventDefault();
+                 }
+            }
+        };
+
+        window.addEventListener('keydown', handleEscape);
+        return () => {
+             window.removeEventListener('keydown', handleEscape);
+        };
+    }, [consumeBackButton]);
+    // =========================================================================
+
+
+    // LÓGICA DE NAVEGACIÓN D-PAD EN EL CATÁLOGO (CORREGIDA)
+    const handleDpadNavigation = React.useCallback((event) => {
         if (videoEnFocoUrl || mostrarMasGrid) return; 
 
         const currentFocusedElement = document.activeElement;
@@ -794,7 +852,7 @@ function App() {
         if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
             let nextIndex = event.key === 'ArrowRight' ? currentIndex + 1 : currentIndex - 1;
             if (nextIndex >= 0 && nextIndex < focusableElements.length) {
-                 nextElement = focusableElements[nextIndex];
+                nextElement = focusableElements[nextIndex];
             }
             
         } 
@@ -824,89 +882,14 @@ function App() {
                 }
             }
         }
-        
-        if (nextElement) {
-            nextElement.focus();
-            // Desplazamiento opcional para asegurar que el elemento sea visible
-            // nextElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
-        }
-    }, [videoEnFocoUrl, mostrarMasGrid]); // Dependencias para que se recree si el estado cambia
 
-
-    // ----------------------------------------------------------------------
-    // 2. LÓGICA DE NAVEGACIÓN ATRÁS (BRIDGE CON ANDROID) - ¡NUEVO!
-    // ----------------------------------------------------------------------
-    React.useEffect(() => {
-        // 🚨 Esta función es llamada por el código nativo de Kotlin al pulsar ATRÁS.
-        window.consumeBackButton = () => {
-            
-            // NIVEL 3: Video Reproduciéndose (Cerrar Reproductor)
-            if (videoEnFocoUrl) {
-                handleBack(); 
-                return true; // Web manejó el evento (ir a Nivel 2)
-            }
-
-            // NIVEL 2: Grid de "Ver Más" abierto (Cerrar Grid)
-            if (mostrarMasGrid) {
-                setMostrarMasGrid(null); // Cierra la cuadrícula
-                return true; // Web manejó el evento (ir a Nivel 1)
-            }
-
-            // NIVEL 1: Catálogo Principal 
-            // Permite que Android ejecute su lógica de doble pulsación para salir/recargar.
-            return false; 
-        };
-        
-        return () => {
-            window.consumeBackButton = () => false;
-        };
-        
-    }, [videoEnFocoUrl, mostrarMasGrid, handleBack]); 
-
-
-    // ----------------------------------------------------------------------
-    // 3. LISTENERS GLOBALES (D-PAD y Limpieza)
-    // ----------------------------------------------------------------------
-    React.useEffect(() => {
-        document.addEventListener('keydown', handleDpadNavigation);
-        return () => {
-            document.removeEventListener('keydown', handleDpadNavigation);
-        };
-    }, [handleDpadNavigation]);
-
-
-    // ----------------------------------------------------------------------
-    // 4. RENDERIZADO (El resto de tu código que define la UI)
-    // ----------------------------------------------------------------------
-    
-    // ... (El JSX de tu aplicación: if (videoEnFocoUrl), if (mostrarMasGrid), return (...))
-    // Nota: Necesito el resto de tu JSX para darte el código completo del return, pero asumo que va aquí.
-    
-    // Ejemplo de cómo se vería el inicio del return (si no está en modo foco):
-    /*
-    if (videoEnFocoUrl) {
-        return <ReproductorEnFoco videoUrl={videoEnFocoUrl} onBack={handleBack} />;
-    }
-    
-    if (mostrarMasGrid) {
-        return <MasVideosGrid {...} onClose={() => setMostrarMasGrid(null)} />;
-    }
-
-    return (
-        <div className="p-4 ...">
-            ...
-        </div>
-    );
-    */
-}
-
-        // 3. Aplicar foco y scroll (CORRECCIÓN IMPLEMENTADA AQUÍ)
+        // 3. Aplicar foco y scroll 
         if (nextElement) {
             nextElement.focus();
             nextElement.scrollIntoView({ 
                 behavior: 'smooth', 
-                block: 'center', // Alinea el elemento en el centro vertical
-                inline: 'center' // Alinea el elemento en el centro horizontal
+                block: 'center', 
+                inline: 'center' 
             });
         }
         
@@ -922,10 +905,11 @@ function App() {
     
     // Foco Inicial
     React.useEffect(() => {
-        if (!videoEnFocoUrl && !mostrarMasGrid) {
+        if (!videoEnFocoUrl && !mostrarMasGrid && !isReadyRef.current) {
             setTimeout(() => {
                 if (heroButtonRef.current) {
                      heroButtonRef.current.focus();
+                     isReadyRef.current = true; // Evitar el re-foco innecesario
                 }
             }, 100);
         }
@@ -940,7 +924,7 @@ function App() {
             categoria={mostrarMasGrid.categoria}
             videos={mostrarMasGrid.videos}
             onPlay={setVideoEnFocoUrl}
-            onClose={() => setMostrarMasGrid(null)}
+            onClose={handleCloseGrid} // Usar la función con lógica de foco
         />;
     }
 
@@ -968,33 +952,37 @@ function App() {
                 const videosEnCarrusel = tieneMas ? videos.slice(0, limiteCarrusel - 1) : videos.slice(0, limiteCarrusel);
                 const videosRestantesCount = videos.length - videosEnCarrusel.length;
 
+                // CORRECCIÓN DE TAMAÑO: Reemplazar lg:w-30 (que no existe) por un valor válido de Tailwind, por ejemplo, lg:w-40 (160px)
+                const cardClasses = "flex-shrink-0 w-40 sm:w-32 lg:w-40";
+
                 return (
                     <div key={categoria} className="mb-10">
                         <h1 className="text-2xl font-bold mb-4 text-blue-600 capitalize">{categoria}</h1>
                         <VideoCarousel>
                             
                             {videosEnCarrusel.map((video, index) => (
-                                <div key={index} className="flex-shrink-0 w-40 sm:w-32 lg:w-30">
-                                     <ReproductorDeVideo 
-                                         titulo={video.titulo} 
-                                         url={video.url} 
-                                         onPlay={setVideoEnFocoUrl} 
-                                         categoryIndex={currentCategoryIndex} 
-                                     />
+                                <div key={index} className={cardClasses}>
+                                   <ReproductorDeVideo 
+                                        titulo={video.titulo} 
+                                        url={video.url} 
+                                        onPlay={setVideoEnFocoUrl} 
+                                        categoryIndex={currentCategoryIndex} 
+                                    />
                                 </div>
                             ))}
 
                             {videosRestantesCount > 0 && (
-                                <div className="flex-shrink-0 w-40 sm:w-32 lg:w-30">
-                                     <TarjetaMas 
-                                         count={videosRestantesCount}
-                                         onShowAll={() => setMostrarMasGrid({ categoria, videos })}
-                                         categoryIndex={currentCategoryIndex} 
-                                     />
+                                <div className={cardClasses}>
+                                    <TarjetaMas 
+                                        count={videosRestantesCount}
+                                        onShowAll={() => setMostrarMasGrid({ categoria, videos })}
+                                        categoryIndex={currentCategoryIndex} 
+                                    />
                                 </div>
                             )}
                             
                         </VideoCarousel>
+                        
                     </div>
                 );
             })}

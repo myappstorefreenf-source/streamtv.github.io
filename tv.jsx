@@ -7,8 +7,7 @@
 const REMOTE_M3U_URL = 'https://raw.githubusercontent.com/myappstorefreenf-source/streamtv.github.io/main/playlist.m3u'; 
 const DEFAULT_START_CHANNEL_URL = 'https://live.airederadiotv.airederadiotv.sml/play/playlist.m3u8'; 
 
-// CONFIGURACIÓN DEL PROXY 
-const PROXY_BASE_URL = "https://myappstore.free.nf/proxy.php"; 
+// 💡 NOTA IMPORTANTE: Se ha eliminado la constante PROXY_BASE_URL.
 // ----------------------------------------------------------------------
 // 0. PARSEADOR M3U Y CARGA REMOTA 
 // ----------------------------------------------------------------------
@@ -59,7 +58,7 @@ const fetchM3UContent = async (url) => {
     }
 };
 // ----------------------------------------------------------------------
-// 1. COMPONENTE VIDEO CARD (OPTIMIZADO con React.memo)
+// 1. COMPONENTE VIDEO CARD (Optimizado con React.memo)
 // ----------------------------------------------------------------------
 const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive, isFocusable }, ref) => {
     const handlePlay = () => onPlay(video.url); 
@@ -102,7 +101,7 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
            prevProps.index === nextProps.index;
 });
 // ----------------------------------------------------------------------
-// 2. COMPONENTE VIDEO PLAYER
+// 2. COMPONENTE VIDEO PLAYER (Adaptado para URLs Directas)
 // ----------------------------------------------------------------------
 const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
     
@@ -120,8 +119,8 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
              delete video.__hlsInstance;
         }
         
-        // Uso de HLS.js
-        if (window.Hls && Hls.isSupported() && url.includes(PROXY_BASE_URL)) {
+        // Uso de HLS.js (Se usa si el navegador lo soporta, sin chequeos de proxy)
+        if (window.Hls && Hls.isSupported()) { 
             hls = new Hls();
             hls.loadSource(url); 
             hls.attachMedia(video);
@@ -152,7 +151,7 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
             });
 
         } else {
-            // Reproducción nativa
+            // Reproducción nativa (Fallback)
             console.warn("Reproducción nativa. URL:", url);
             video.src = url;
             video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
@@ -204,49 +203,7 @@ function App() {
     const [focusedIndex, setFocusedIndex] = React.useState(-1);
     const allChannels = videoCatalog || [];
 
-    // FUNCIÓN PARA CONSTRUIR LA URL DEL PROXY
-    const buildProxyUrl = React.useCallback((originalUrl) => {
-        return `${PROXY_BASE_URL}?url=${encodeURIComponent(originalUrl)}`;
-    }, []);
-
-    // Función auxiliar para forzar el foco a un índice específico 
-    const focusChannelCard = React.useCallback((indexToFocus) => {
-        // Corrección: si el foco es -1, ir al primero
-        if (indexToFocus === -1 && allChannels.length > 0) {
-            indexToFocus = 0; 
-        }
-
-        if (indexToFocus !== -1) {
-             setFocusedIndex(indexToFocus); 
-             
-             // Usar un setTimeout pequeño (0 o 10) para permitir que el DOM se actualice
-             setTimeout(() => {
-                 const card = document.querySelector(`.video-card[data-index="${indexToFocus}"][tabIndex="0"]`);
-                 if (card) {
-                     card.focus();
-                     
-                     // Usamos 'smooth' para una mejor UX de TV, pero 'instant' es más ligero si hay lag.
-                     card.scrollIntoView({ 
-                         behavior: 'smooth', 
-                         block: 'nearest' 
-                     });
-                 } else if (allChannels.length > 0) {
-                     document.querySelector('.video-card[data-index="0"][tabIndex="0"]')?.focus();
-                 }
-             }, 10); // Tiempo reducido a 10ms
-        }
-    }, [allChannels.length]);
-
-    // NUEVA FUNCIÓN PARA ABRIR EL MENÚ (Usada por el botón de acceso rápido)
-    const openMenu = React.useCallback(() => {
-        setIsMenuVisible(true);
-        // Solo intentar enfocar si hay canales
-        if (allChannels.length > 0) {
-             setTimeout(focusChannelCard, 0, focusedIndex);
-        }
-    }, [focusedIndex, focusChannelCard, allChannels.length]);
-
-    // --- Carga de la lista M3U ---
+    // --- Carga de la lista M3U (Usa la URL original directamente) ---
     React.useEffect(() => {
         fetchM3UContent(REMOTE_M3U_URL).then(data => {
             setVideoCatalog(data);
@@ -255,33 +212,72 @@ function App() {
                  const defaultChannelIndex = data.findIndex(c => c.url === DEFAULT_START_CHANNEL_URL);
                  const initialUrl = defaultChannelIndex !== -1 ? DEFAULT_START_CHANNEL_URL : data[0].url;
                  
-                 setCurrentChannelUrl(buildProxyUrl(initialUrl));
+                 // 💡 CAMBIO: Usar la URL original directamente
+                 setCurrentChannelUrl(initialUrl); 
                  
                  setFocusedIndex(defaultChannelIndex !== -1 ? defaultChannelIndex : 0);
             }
         });
-    }, [buildProxyUrl]);
+    }, []);
     
-    // --- Lógica de Reproducción (usa useCallback para estabilidad de props) ---
+    // --- Lógica de Reproducción (Usa la URL original directamente) ---
     const handlePlayChannel = React.useCallback((originalUrl) => {
-        const proxiedUrl = buildProxyUrl(originalUrl);
-
-        setCurrentChannelUrl(proxiedUrl); 
+        // 💡 CAMBIO: Usar la URL original directamente
+        setCurrentChannelUrl(originalUrl); 
+        
         const newIndex = allChannels.findIndex(c => c.url === originalUrl); 
         setFocusedIndex(newIndex);
         
         setIsMenuVisible(false);
-    }, [allChannels, buildProxyUrl]); // Dependencias estables
+    }, [allChannels]);
 
     
     const handleVideoEnd = React.useCallback(() => {
           setIsMenuVisible(true);
-          setTimeout(focusChannelCard, 50, focusedIndex);
+          // Se usa 50ms para asegurar que el re-render de la lista ocurra antes del foco.
+          setTimeout(focusChannelCard, 50, focusedIndex); 
     }, [focusedIndex, focusChannelCard]);
 
 
+    // Función auxiliar para forzar el foco a un índice específico 
+    const focusChannelCard = React.useCallback((indexToFocus) => {
+        
+        if (indexToFocus === -1 && allChannels.length > 0) {
+            indexToFocus = 0; 
+        }
+
+        if (indexToFocus !== -1) {
+             setFocusedIndex(indexToFocus); 
+             
+             // Tiempo reducido a 10ms (optimización de performance)
+             setTimeout(() => {
+                 const card = document.querySelector(`.video-card[data-index="${indexToFocus}"][tabIndex="0"]`);
+                 if (card) {
+                     card.focus();
+                     
+                     card.scrollIntoView({ 
+                         behavior: 'smooth', 
+                         block: 'nearest' 
+                     });
+                 } else if (allChannels.length > 0) {
+                     document.querySelector('.video-card[data-index="0"][tabIndex="0"]')?.focus();
+                 }
+             }, 10); 
+        }
+    }, [allChannels.length]);
+
+    // FUNCIÓN PARA ABRIR EL MENÚ 
+    const openMenu = React.useCallback(() => {
+        setIsMenuVisible(true);
+        // Solo intentar enfocar si hay canales
+        if (allChannels.length > 0) {
+             setTimeout(focusChannelCard, 0, focusedIndex);
+        }
+    }, [focusedIndex, focusChannelCard, allChannels.length]);
+
+
     // ------------------------------------------------------------
-    // --- LÓGICA DE NAVEGACIÓN D-PAD ---
+    // --- LÓGICA DE NAVEGACIÓN D-PAD (optimizado) ---
     // ------------------------------------------------------------
     const handleDpadNavigation = React.useCallback((event) => {
         

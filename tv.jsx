@@ -2,12 +2,13 @@
 // (por ejemplo, cargadas vía CDN: https://unpkg.com/react@18/umd/react.development.js, https://unpkg.com/react-dom@18/umd/react-dom.development.js, https://cdn.jsdelivr.net/npm/hls.js@latest)
 
 // ----------------------------------------------------------------------
-// 0. CONFIGURACIÓN   https://raw.githubusercontent.com/myappstorefreenf-source/streamtv.github.io/main/playlist.m3u
+// 0. CONFIGURACIÓN
 // ----------------------------------------------------------------------
-// 🚨🚨 REEMPLAZA ESTA URL CON TU ENLACE M3U REMOTO 🚨🚨
 const REMOTE_M3U_URL = 'https://raw.githubusercontent.com/myappstorefreenf-source/streamtv.github.io/main/playlist.m3u'; 
-// URL de canal inicial. Elige un canal seguro para que inicie al cargar.
 const DEFAULT_START_CHANNEL_URL = 'https://live.airederadiotv.airederadiotv.sml/play/playlist.m3u8'; 
+
+// CONFIGURACIÓN DEL PROXY 
+const PROXY_BASE_URL = "https://myappstore.free.nf/proxy.php"; 
 // ----------------------------------------------------------------------
 // 0. PARSEADOR M3U Y CARGA REMOTA 
 // ----------------------------------------------------------------------
@@ -58,12 +59,12 @@ const fetchM3UContent = async (url) => {
     }
 };
 // ----------------------------------------------------------------------
-// 1. COMPONENTE VIDEO CARD (Para lista vertical)
+// 1. COMPONENTE VIDEO CARD (OPTIMIZADO con React.memo)
 // ----------------------------------------------------------------------
-const VideoCard = React.forwardRef(({ video, onPlay, index, isActive, isFocusable }, ref) => {
-    const handlePlay = () => onPlay(video.url);
+const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive, isFocusable }, ref) => {
+    const handlePlay = () => onPlay(video.url); 
     
-    // Si el menú no está visible, el tabIndex debe ser -1 para prevenir la navegación por Tab
+    // Solo hacemos el componente enfocable si el menú está visible
     const tabIndexValue = isFocusable ? "0" : "-1"; 
 
     return (
@@ -81,7 +82,7 @@ const VideoCard = React.forwardRef(({ video, onPlay, index, isActive, isFocusabl
             }}
             tabIndex={tabIndexValue} 
             data-index={index} 
-            role="button" // Añadir role para accesibilidad
+            role="button"
         >
             <img 
                 src={video.logoUrl || 'https://via.placeholder.com/64x64?text=NO+LOGO'}
@@ -94,30 +95,35 @@ const VideoCard = React.forwardRef(({ video, onPlay, index, isActive, isFocusabl
             </p>
         </div>
     );
+}), (prevProps, nextProps) => {
+    // Función de comparación: Solo re-renderiza si la actividad o enfocabilidad cambia
+    return prevProps.isActive === nextProps.isActive && 
+           prevProps.isFocusable === nextProps.isFocusable &&
+           prevProps.index === nextProps.index;
 });
 // ----------------------------------------------------------------------
-// 2. COMPONENTE VIDEO PLAYER (Simplificado para el Overlay)
+// 2. COMPONENTE VIDEO PLAYER
 // ----------------------------------------------------------------------
 const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
     
     React.useEffect(() => {
         const video = ref.current;
         if (!video || !url) return;
-        const cleanUrl = url.split('?')[0];
+        
         let hls;
         const handleEnded = () => onFinish();
         video.addEventListener('ended', handleEnded);
 
-        // Limpiar instancia HLS anterior
+        // Limpiar instancia HLS anterior (Vital para liberar recursos en TV Box)
         if (video.__hlsInstance) {
              video.__hlsInstance.destroy();
              delete video.__hlsInstance;
         }
         
         // Uso de HLS.js
-        if (window.Hls && Hls.isSupported() && !cleanUrl.toLowerCase().endsWith('.mp4')) {
+        if (window.Hls && Hls.isSupported() && url.includes(PROXY_BASE_URL)) {
             hls = new Hls();
-            hls.loadSource(cleanUrl); 
+            hls.loadSource(url); 
             hls.attachMedia(video);
             video.__hlsInstance = hls;
             
@@ -125,7 +131,7 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
                  video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
             });
 
-            // 💡 MEJORA: Manejo de errores fatales de HLS.js para mayor robustez
+            // Manejo de errores fatales de HLS.js
             hls.on(Hls.Events.ERROR, function (event, data) {
                 if (data.fatal) {
                     switch(data.type) {
@@ -144,14 +150,15 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
                     }
                 }
             });
-            // --------------------------------------------------------------------
 
         } else {
-            // Reproducción nativa (MP4, etc.)
-            video.src = cleanUrl;
+            // Reproducción nativa
+            console.warn("Reproducción nativa. URL:", url);
+            video.src = url;
             video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
         }
         
+        // Retorno para limpieza: Destruye HLS y remueve el listener
         return () => {
             video.removeEventListener('ended', handleEnded);
              if (video.__hlsInstance) {
@@ -181,13 +188,13 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
                 height='100%'
                 playsInline
                 autoPlay
-                controls={false}
+                controls={false} // Deshabilitar controles nativos
             />
         </div>
     );
 });
 // ----------------------------------------------------------------------
-// 3. COMPONENTE PRINCIPAL APP (Lista Simple Superpuesta)
+// 3. COMPONENTE PRINCIPAL APP
 // ----------------------------------------------------------------------
 function App() {
     const [videoCatalog, setVideoCatalog] = React.useState(null); 
@@ -197,88 +204,97 @@ function App() {
     const [focusedIndex, setFocusedIndex] = React.useState(-1);
     const allChannels = videoCatalog || [];
 
+    // FUNCIÓN PARA CONSTRUIR LA URL DEL PROXY
+    const buildProxyUrl = React.useCallback((originalUrl) => {
+        return `${PROXY_BASE_URL}?url=${encodeURIComponent(originalUrl)}`;
+    }, []);
+
+    // Función auxiliar para forzar el foco a un índice específico 
+    const focusChannelCard = React.useCallback((indexToFocus) => {
+        // Corrección: si el foco es -1, ir al primero
+        if (indexToFocus === -1 && allChannels.length > 0) {
+            indexToFocus = 0; 
+        }
+
+        if (indexToFocus !== -1) {
+             setFocusedIndex(indexToFocus); 
+             
+             // Usar un setTimeout pequeño (0 o 10) para permitir que el DOM se actualice
+             setTimeout(() => {
+                 const card = document.querySelector(`.video-card[data-index="${indexToFocus}"][tabIndex="0"]`);
+                 if (card) {
+                     card.focus();
+                     
+                     // Usamos 'smooth' para una mejor UX de TV, pero 'instant' es más ligero si hay lag.
+                     card.scrollIntoView({ 
+                         behavior: 'smooth', 
+                         block: 'nearest' 
+                     });
+                 } else if (allChannels.length > 0) {
+                     document.querySelector('.video-card[data-index="0"][tabIndex="0"]')?.focus();
+                 }
+             }, 10); // Tiempo reducido a 10ms
+        }
+    }, [allChannels.length]);
+
+    // NUEVA FUNCIÓN PARA ABRIR EL MENÚ (Usada por el botón de acceso rápido)
+    const openMenu = React.useCallback(() => {
+        setIsMenuVisible(true);
+        // Solo intentar enfocar si hay canales
+        if (allChannels.length > 0) {
+             setTimeout(focusChannelCard, 0, focusedIndex);
+        }
+    }, [focusedIndex, focusChannelCard, allChannels.length]);
+
     // --- Carga de la lista M3U ---
     React.useEffect(() => {
         fetchM3UContent(REMOTE_M3U_URL).then(data => {
             setVideoCatalog(data);
             
             if (data.length > 0) {
-                 // Busca el índice del canal de inicio o usa el primero
                  const defaultChannelIndex = data.findIndex(c => c.url === DEFAULT_START_CHANNEL_URL);
                  const initialUrl = defaultChannelIndex !== -1 ? DEFAULT_START_CHANNEL_URL : data[0].url;
                  
-                 setCurrentChannelUrl(initialUrl);
-                 // Establece el foco inicial en el canal de inicio o en el primero (0)
+                 setCurrentChannelUrl(buildProxyUrl(initialUrl));
+                 
                  setFocusedIndex(defaultChannelIndex !== -1 ? defaultChannelIndex : 0);
             }
         });
-    }, []);
+    }, [buildProxyUrl]);
     
-    // --- Lógica de Reproducción ---
-    const handlePlayChannel = React.useCallback((url) => {
-        setCurrentChannelUrl(url); 
-        // Actualiza el focusedIndex al canal reproducido para el foco futuro
-        const newIndex = allChannels.findIndex(c => c.url === url);
+    // --- Lógica de Reproducción (usa useCallback para estabilidad de props) ---
+    const handlePlayChannel = React.useCallback((originalUrl) => {
+        const proxiedUrl = buildProxyUrl(originalUrl);
+
+        setCurrentChannelUrl(proxiedUrl); 
+        const newIndex = allChannels.findIndex(c => c.url === originalUrl); 
         setFocusedIndex(newIndex);
         
-        setIsMenuVisible(false); // Oculta el menú al seleccionar un canal
-    }, [allChannels]);
+        setIsMenuVisible(false);
+    }, [allChannels, buildProxyUrl]); // Dependencias estables
 
     
     const handleVideoEnd = React.useCallback(() => {
           setIsMenuVisible(true);
-          // Si el video termina, el foco volverá automáticamente al último canal reproducido
           setTimeout(focusChannelCard, 50, focusedIndex);
-    }, [focusedIndex]);
+    }, [focusedIndex, focusChannelCard]);
 
 
-    // Función auxiliar para forzar el foco a un índice específico
-    const focusChannelCard = React.useCallback((indexToFocus) => {
-        if (indexToFocus === -1 && allChannels.length > 0) {
-            indexToFocus = 0; // Foco al primero si es -1
-        }
-
-        if (indexToFocus !== -1) {
-             setTimeout(() => {
-                 const card = document.querySelector(`.video-card[data-index="${indexToFocus}"][tabIndex="0"]`);
-                 if (card) {
-                     card.focus();
-                     
-                     // 💡 CORRECCIÓN PARA EL SCROLL FLUIDO: 
-                     // Usamos 'instant' para que no haya animación de scroll que cause saltos.
-                     // 'nearest' para que solo se mueva si está fuera de la vista.
-                     card.scrollIntoView({ 
-                         behavior: 'instant', 
-                         block: 'nearest' 
-                     });
-                 } else if (allChannels.length > 0) {
-                     // Fallback si no encuentra el elemento, ir al primero
-                     document.querySelector('.video-card[data-index="0"][tabIndex="0"]')?.focus();
-                 }
-             }, 50);
-             setFocusedIndex(indexToFocus); // Sincroniza el estado
-        }
-    }, [allChannels.length]);
-    
     // ------------------------------------------------------------
-    // --- LÓGICA DE NAVEGACIÓN D-PAD (Lista Única Vertical) ---
+    // --- LÓGICA DE NAVEGACIÓN D-PAD ---
     // ------------------------------------------------------------
     const handleDpadNavigation = React.useCallback((event) => {
         
         const key = event.key;
-        // Solo D-PAD y Enter/Space deben ser manejados aquí (y prevenir el default)
         const isDpadKey = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(key);
         
         // 1. Lógica de apertura/cierre del menú (Tecla Izquierda ←)
         if (key === 'ArrowLeft') {
-             event.preventDefault(); // Siempre prevenir para ArrowLeft
+             event.preventDefault(); 
              if (isMenuVisible) {
-                 // Ocultar si está visible
                  setIsMenuVisible(false);
              } else {
-                 // Mostrar si está oculto y forzar el foco al último índice enfocado
-                 setIsMenuVisible(true);
-                 focusChannelCard(focusedIndex); 
+                 openMenu(); 
              }
              return;
         }
@@ -286,8 +302,7 @@ function App() {
         // Si el menú está oculto, solo Enter/Space puede abrirlo.
         if (!isMenuVisible) {
              if (key === 'Enter' || key === ' ') {
-                 setIsMenuVisible(true);
-                 focusChannelCard(focusedIndex);
+                 openMenu(); 
                  event.preventDefault();
              }
              return;
@@ -297,25 +312,23 @@ function App() {
         if (isDpadKey) {
              event.preventDefault(); 
         } else {
-            // Permitir otras teclas (ej. Tab, letras) si no son D-Pad
             return; 
         }
 
-        // 2. Navegación en el Menú Visible (Lógica principal)
+        // 2. Navegación en el Menú Visible
         
         // --- Lógica de Enter/Espacio (Reproducir) ---
         if (key === 'Enter' || key === ' ') {
-             // Reproduce el canal del índice enfocado
              const channelToPlay = allChannels[focusedIndex];
              if (channelToPlay) {
                  handlePlayChannel(channelToPlay.url);
              } else {
-                 focusChannelCard(0); // Si el foco se perdió, intenta ir al primero
+                 focusChannelCard(0); 
              }
              return;
         }
 
-        // --- NAVEGACIÓN DENTRO DEL CATÁLOGO DE CANALES (Vertical y Horizontal) ---
+        // --- NAVEGACIÓN DENTRO DEL CATÁLOGO DE CANALES (Ciclo vertical) ---
         
         if (key === 'ArrowUp' || key === 'ArrowDown') {
              const totalChannels = allChannels.length;
@@ -324,14 +337,11 @@ function App() {
              if (totalChannels === 0) return;
 
              if (key === 'ArrowUp') {
-                 // Ciclo hacia arriba: si está en el primero (0), va al último (length - 1)
                  newIndex = (focusedIndex === 0) ? totalChannels - 1 : focusedIndex - 1;
              } else if (key === 'ArrowDown') {
-                 // Ciclo hacia abajo: si está en el último, va al primero
                  newIndex = (focusedIndex === totalChannels - 1) ? 0 : focusedIndex + 1;
              }
              
-             // Forzar el foco al nuevo índice y actualizar el estado
              focusChannelCard(newIndex);
              
         } else if (key === 'ArrowRight') {
@@ -345,14 +355,13 @@ function App() {
              focusChannelCard(0);
         }
 
-    }, [isMenuVisible, focusedIndex, allChannels, focusChannelCard, handlePlayChannel]);
+    }, [isMenuVisible, focusedIndex, allChannels, focusChannelCard, handlePlayChannel, openMenu]);
 
 
     // --- LISTENERS GLOBALES y LÓGICA DE FOCO INICIAL ---
     React.useEffect(() => {
         window.addEventListener('keydown', handleDpadNavigation);
         
-        // Foco inicial cuando la lista carga y el menú es visible
         if (videoCatalog && videoCatalog.length > 0 && isMenuVisible && focusedIndex !== -1) {
              focusChannelCard(focusedIndex);
         }
@@ -360,7 +369,6 @@ function App() {
         // Lógica para el botón "Atrás" físico del control de TV:
         window.consumeBackButton = () => {
              if (isMenuVisible) {
-                 // Si el menú está abierto, la tecla Atrás lo oculta
                  setIsMenuVisible(false);
                  return true; 
              }
@@ -399,9 +407,7 @@ function App() {
                                 video={video} 
                                 onPlay={handlePlayChannel} 
                                 index={index} 
-                                // El estilo de "activo" (borde azul) lo maneja el focusedIndex
                                 isActive={index === focusedIndex} 
-                                // El canal solo es enfocable si el menú está visible
                                 isFocusable={isMenuVisible}
                             />
                         ))}
@@ -439,17 +445,26 @@ function App() {
             {/* 3. Menú de Navegación (Superposición) */}
             {videoCatalog !== null && <ChannelsMenu />}
 
-            {/* 4. Mini Controles Fijos (Si el menú está oculto) */}
+            {/* 4. Mini Controles Fijos (BOTÓN ENFOCABLE) */}
              {!isMenuVisible && (
-                 <div className="absolute top-4 left-4 p-2 bg-gray-900/70 rounded-lg text-white z-10">
-                     <p className="text-sm font-light">Presiona **←** o **Enter** para abrir la lista.</p>
-                 </div>
+                 <button
+                     className="absolute top-4 left-4 p-2 bg-gray-900/70 rounded-lg text-white z-10 
+                                transition-all duration-200 
+                                hover:bg-gray-700/90 focus:bg-gray-700/90 focus:ring-2 focus:ring-blue-500"
+                     onClick={openMenu}
+                     tabIndex="0" 
+                     aria-label="Abrir lista de canales"
+                 >
+                     <p className="text-sm font-light">
+                         Presiona **←** o **Enter** para abrir la lista (o haz clic aquí)
+                     </p>
+                 </button>
              )}
         </div>
     );
 }
 // ----------------------------------------------------------------------
-// RENDERIZADO
+// RENDERIZADO DE LA APLICACIÓN
 // ----------------------------------------------------------------------
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);

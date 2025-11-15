@@ -1,4 +1,29 @@
 #EXTM3U
+#EXTM3U url-tvg="https://www.tdtchannels.com/epg/TV.xml.gz"
+#EXTINF:-1 tvg-id="La1.TV" tvg-logo="https://pbs.twimg.com/profile_images/1921959108862709760/fe5Tqhlh_200x200.jpg" group-title="Generalistas" tvg-name="La 1",La 1
+https://ztnr.rtve.es/ztnr/1688877.m3u8
+#EXTINF:-1 tvg-id="La1.TV" tvg-logo="https://pbs.twimg.com/profile_images/1921959108862709760/fe5Tqhlh_200x200.jpg" group-title="Generalistas" tvg-name="La 1",La 1
+https://rtvelivestream.rtve.es/rtvesec/la1/la1_main_dvr.m3u8
+#EXTINF:-1 tvg-id="La1.TV" tvg-logo="https://pbs.twimg.com/profile_images/1921959108862709760/fe5Tqhlh_200x200.jpg" group-title="Generalistas" tvg-name="La 1",La 1
+https://d2jws8nf49xuk0.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-3ikffw175xm6u/La1ES.m3u8
+#EXTINF:-1 tvg-id="La2.TV" tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_kqgHWySi5xprs1VFCNCX0IKNT8yXBLZC43JMoB8j0JUto=s200" group-title="Generalistas" tvg-name="La 2",La 2
+https://ztnr.rtve.es/ztnr/1688885.m3u8
+#EXTINF:-1 tvg-id="La2.TV" tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_kqgHWySi5xprs1VFCNCX0IKNT8yXBLZC43JMoB8j0JUto=s200" group-title="Generalistas" tvg-name="La 2",La 2
+https://rtvelivestream.rtve.es/rtvesec/la2/la2_main_dvr.m3u8
+#EXTINF:-1 tvg-id="La2.TV" tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_kqgHWySi5xprs1VFCNCX0IKNT8yXBLZC43JMoB8j0JUto=s200" group-title="Generalistas" tvg-name="La 2",La 2
+https://d4g9wh8d4wiaw.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-crbrakk0yedqb/La2ES.m3u8
+#EXTINF:-1 tvg-id="13.TV" tvg-logo="https://graph.facebook.com/TRECEtves/picture?width=200&height=200" group-title="Generalistas" tvg-name="TRECE",TRECE
+https://live-edge-ff-1.cdn.enetres.net/091DB7AFBD77442B9BA2F141DCC182F5021/liveld/index.m3u8
+#EXTINF:-1 tvg-id="ElToroTV.TV" tvg-logo="https://graph.facebook.com/eltorotv.es/picture?width=200&height=200" group-title="Generalistas" tvg-name="El Toro TV",El Toro TV
+https://streaming-1.eltorotv.com/lb0/eltorotv-streaming-web/index.m3u8
+#EXTINF:-1 tvg-id="ElToroTV.TV" tvg-logo="https://graph.facebook.com/eltorotv.es/picture?width=200&height=200" group-title="Generalistas" tvg-name="El Toro TV",El Toro TV
+https://edge-nodo-002.streaming.hitcloser.net/eltorotv-streaming-web/index.m3u8
+#EXTINF:-1 tvg-id="RNE.TV" tvg-logo="https://graph.facebook.com/radionacionalrne/picture?width=200&height=200" group-title="Generalistas" tvg-name="RNE para todos",RNE para todos
+https://ztnr.rtve.es/ztnr/6688753.m3u8
+#EXTINF:-1 tvg-id="RNE.TV" tvg-logo="https://graph.facebook.com/radionacionalrne/picture?width=200&height=200" group-title="Generalistas" tvg-name="RNE para todos",RNE para todos
+https://rtvelivestream.rtve.es/rtvesec/rne/rne_para_todos_main.m3u8
+#EXTINF:-1 tvg-id="24Horas.TV" tvg-logo="https://pbs.twimg.com/profile_images/1634293543987453954/mb1Rzmso_200x200.jpg" group-title="Informativos" tvg-name="24h",24h
+https://ztnr.rtve.es/ztnr/1694255.m3u8
 https://live.adultiptv.net/bigtits.m3u8
 #EXTM3U url-tvg="https://impeditor.com/epg/capanueve/capanueve"
 #EXTINF:-1 tvg-id="0935" tvg-name="América TV" group-title="General/Abierta" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",América TV

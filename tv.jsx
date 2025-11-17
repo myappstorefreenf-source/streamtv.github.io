@@ -631,7 +631,7 @@ function App() {
                     )}
 
                  <div className="text-sm text-gray-500 mt-4 flex-shrink-0">
-                     Canales visibles: **{filteredChannels.length}** ←
+                     Canales visibles: **{filteredChannels.length}**. Presiona **←** para cambiar la categoría.
                  </div>
                 </div>
             </div>
@@ -678,7 +678,7 @@ function App() {
                       aria-label="Abrir lista de canales"
                  >
                       <p className="text-sm font-light">
-                           ←
+                           Presiona **←** o **Enter** para abrir la lista (o haz clic aquí)
                       </p>
                  </button>
              )}

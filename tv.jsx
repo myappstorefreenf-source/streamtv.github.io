@@ -132,6 +132,7 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
         const handleEnded = () => onFinish();
         video.addEventListener('ended', handleEnded);
 
+        // ⭐ CORRECCIÓN DE AUDIO: Destruir la instancia HLS anterior antes de cargar una nueva
         if (video.__hlsInstance) {
              video.__hlsInstance.destroy();
              delete video.__hlsInstance;
@@ -173,6 +174,7 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
             video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
         }
         
+        // Función de limpieza de React (Se ejecuta al cambiar 'url' o al desmontar)
         return () => {
             video.removeEventListener('ended', handleEnded);
              if (video.__hlsInstance) {
@@ -225,7 +227,7 @@ function App() {
 
     const allChannels = videoCatalog || [];
     const cardRefs = React.useRef(new Map());
-    const categoryListRef = React.useRef(null); // ⭐ REFERENCIA PARA EL CONTENEDOR DE SCROLL DE CATEGORÍAS
+    const categoryListRef = React.useRef(null); // Referencia para el contenedor de scroll de categorías
 
     const groupedChannels = React.useMemo(() => {
         return groupChannelsByCategory(allChannels);
@@ -329,7 +331,7 @@ function App() {
     }, []);
     
     // ------------------------------------------------------------
-    // --- LÓGICA DE SCROLL DE CATEGORÍAS (Limitado) ---
+    // --- LÓGICA DE SCROLL DE CATEGORÍAS (Limitado/Centrado) ---
     // ------------------------------------------------------------
     const scrollCategoryList = React.useCallback((newCatIndex) => {
         const container = categoryListRef.current;
@@ -345,8 +347,7 @@ function App() {
         const itemTop = focusedElement.offsetTop;
         const currentScroll = container.scrollTop;
 
-        // Limite visible (ajusta este valor para cambiar cuántos elementos se ven antes de forzar el scroll)
-        // itemHeight * 2 es un buen valor para que siempre haya al menos dos elementos visibles por encima/debajo
+        // Limite visible (ajusta este valor si quieres ver más o menos elementos antes del scroll)
         const SCROLL_OFFSET = itemHeight * 2; 
 
         // 1. Si el elemento está fuera del límite inferior visible
@@ -409,7 +410,7 @@ function App() {
                  setFocusedCategoryIndex(newCatIndex);
                  requestAnimationFrame(() => {
                      document.getElementById(`cat-focus-${newCatIndex}`)?.focus();
-                     scrollCategoryList(newCatIndex); // ⭐ LLAMADA PARA AJUSTAR EL SCROLL
+                     scrollCategoryList(newCatIndex); 
                  });
 
             } else if (key === 'ArrowRight' || key === 'Enter' || key === ' ') {
@@ -512,7 +513,7 @@ function App() {
                 <div className="p-8 flex flex-col flex-grow h-full"> 
                     <h2 className="text-2xl font-bold mb-4 text-yellow-400 sticky top-0 bg-gray-800/95 z-40">Categorías</h2>
                     
-                    {/* max-h-[70vh] para limitar la altura visible y adjuntar la referencia categoryListRef */}
+                    {/* Contenedor con scroll limitado */}
                     <div 
                         ref={categoryListRef}
                         className="space-y-2 overflow-y-auto custom-scrollbar flex-grow max-h-[70vh]" 
@@ -630,7 +631,7 @@ function App() {
                     )}
 
                  <div className="text-sm text-gray-500 mt-4 flex-shrink-0">
-                     Canales visibles: **{filteredChannels.length}**. ←.
+                     Canales visibles: **{filteredChannels.length}** ←
                  </div>
                 </div>
             </div>

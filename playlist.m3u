@@ -14,10 +14,6 @@ https://unlimited1-saopaulo.dps.live/perfiltv/perfiltv.smil/playlist.m3u8
 #EXTVLCOPT:http-referrer=https://tn.com.ar/envivo/24hs
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
 https://live-01-01-tn.vodgc.net/TN24/index_TN24_1080.m3u8
-#EXTINF:-1 tvg-id="0905" tvg-name="Cronica" group-title="Noticias" tvg-logo="", TN
-#EXTVLCOPT:http-referrer=https://vmf.edge-apps.net/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
-https://live-01-01-tn.vodgc.net/TN24/index_TN24_1080.m3u8
 #EXTINF:-1 tvg-id="0923" tvg-name="Argentinisima Satelital" group-title="Argentina" tvg-logo="https://files.catbox.moe/7cghqq.png",Argentinisima Satelital
 https://stream1.sersat.com/hls/argentinisima.m3u8
 #EXTINF:-1 tvg-id="0907" tvg-name="Canal 9 Multivisión" group-title="Argentina" tvg-logo="https://files.catbox.moe/iqx1h4.png",Canal 9 Multivisión

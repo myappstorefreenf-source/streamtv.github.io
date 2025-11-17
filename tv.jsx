@@ -132,7 +132,7 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
         const handleEnded = () => onFinish();
         video.addEventListener('ended', handleEnded);
 
-        // ⭐ CORRECCIÓN DE AUDIO: Destruir la instancia HLS anterior antes de cargar una nueva
+        // ⭐ Destruir la instancia HLS anterior antes de cargar una nueva para evitar solapamiento de audio
         if (video.__hlsInstance) {
              video.__hlsInstance.destroy();
              delete video.__hlsInstance;
@@ -145,7 +145,10 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
             video.__hlsInstance = hls;
             
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                 video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
+                 // Intentar reproducir solo si el estado global lo permite
+                 if (isPlaying) {
+                     video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
+                 }
             });
 
             hls.on(Hls.Events.ERROR, function (event, data) {
@@ -171,7 +174,9 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
             // Reproducción nativa (Fallback)
             console.warn("Reproducción nativa. URL:", url);
             video.src = url;
-            video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
+            if (isPlaying) {
+                video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
+            }
         }
         
         // Función de limpieza de React (Se ejecuta al cambiar 'url' o al desmontar)
@@ -182,8 +187,9 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
                  delete video.__hlsInstance;
              }
         };
-    }, [url, onFinish, ref]); 
+    }, [url, onFinish, ref, isPlaying]); // isPlaying es dependencia para recargar si cambia
 
+    // useEffect para controlar la pausa/reproducción de la etiqueta <video>
     React.useEffect(() => {
         const video = ref.current;
         if (video) {
@@ -203,7 +209,7 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
                 width='100%'
                 height='100%'
                 playsInline
-                autoPlay
+                autoPlay // Lo dejamos aquí, pero el control final lo da isPlaying
                 controls={false}
             />
         </div>
@@ -224,10 +230,11 @@ function App() {
     const [focusedCategoryIndex, setFocusedCategoryIndex] = React.useState(-1);
     const [selectedCategory, setSelectedCategory] = React.useState(null);
     const [isCategoryMenuVisible, setIsCategoryMenuVisible] = React.useState(false);
+    const [isPlaying, setIsPlaying] = React.useState(false); // ⭐ ESTADO DE CONTROL DE REPRODUCCIÓN
 
     const allChannels = videoCatalog || [];
     const cardRefs = React.useRef(new Map());
-    const categoryListRef = React.useRef(null); // Referencia para el contenedor de scroll de categorías
+    const categoryListRef = React.useRef(null); 
 
     const groupedChannels = React.useMemo(() => {
         return groupChannelsByCategory(allChannels);
@@ -278,6 +285,7 @@ function App() {
     const openMenu = React.useCallback(() => {
         setIsCategoryMenuVisible(false);
         setIsMenuVisible(true);
+        setIsPlaying(false); // ⭐ Pausa la reproducción al abrir el menú
         if (filteredChannels.length > 0) {
              const currentChannel = allChannels[focusedIndex];
              const focusedFilteredIndex = filteredChannels.findIndex(c => c.url === currentChannel?.url);
@@ -288,6 +296,7 @@ function App() {
     const openCategoryMenu = React.useCallback(() => {
         if (!isMenuVisible) return;
         setIsCategoryMenuVisible(true);
+        setIsPlaying(false); // ⭐ Pausa la reproducción al abrir el menú
         requestAnimationFrame(() => {
             document.getElementById(`cat-focus-${focusedCategoryIndex}`)?.focus();
         });
@@ -302,11 +311,13 @@ function App() {
         
         setIsCategoryMenuVisible(false);
         setIsMenuVisible(false);
+        setIsPlaying(true); // ⭐ Inicia la reproducción del nuevo canal
     }, [allChannels]);
 
     
     const handleVideoEnd = React.useCallback(() => {
         setIsMenuVisible(true);
+        setIsPlaying(false); // ⭐ Pausa el audio cuando el stream termina
         const currentChannel = allChannels[focusedIndex];
         const focusedFilteredIndex = filteredChannels.findIndex(c => c.url === currentChannel?.url);
         setTimeout(() => focusChannelCard(focusedFilteredIndex !== -1 ? focusedFilteredIndex : 0), 10); 
@@ -326,6 +337,7 @@ function App() {
                 setFocusedIndex(initialIndex);
                 setSelectedCategory(null);
                 setFocusedCategoryIndex(-1);
+                setIsPlaying(true); // ⭐ Inicia la reproducción del canal por defecto al cargar.
             }
         });
     }, []);
@@ -337,7 +349,6 @@ function App() {
         const container = categoryListRef.current;
         if (!container) return;
         
-        // Obtener el ID del botón (ej: "cat-focus--1" o "cat-focus-0")
         const focusedElementId = `cat-focus-${newCatIndex}`;
         const focusedElement = document.getElementById(focusedElementId);
         if (!focusedElement) return;
@@ -347,17 +358,15 @@ function App() {
         const itemTop = focusedElement.offsetTop;
         const currentScroll = container.scrollTop;
 
-        // Limite visible (ajusta este valor si quieres ver más o menos elementos antes del scroll)
+        // Limite visible 
         const SCROLL_OFFSET = itemHeight * 2; 
 
         // 1. Si el elemento está fuera del límite inferior visible
         if (itemTop + itemHeight > currentScroll + containerHeight - SCROLL_OFFSET) {
-            // Ajusta el scroll hacia abajo
             container.scrollTop = itemTop + itemHeight - containerHeight + SCROLL_OFFSET;
         } 
         // 2. Si el elemento está fuera del límite superior visible
         else if (itemTop < currentScroll + SCROLL_OFFSET) {
-            // Ajusta el scroll hacia arriba
             container.scrollTop = itemTop - SCROLL_OFFSET;
         }
     }, []);
@@ -423,6 +432,7 @@ function App() {
             } else if (key === 'ArrowLeft') {
                  setIsCategoryMenuVisible(false);
                  setIsMenuVisible(false);
+                 setIsPlaying(true); // Reanuda la reproducción al salir del menú
             }
 
         } else {
@@ -444,11 +454,13 @@ function App() {
                      openCategoryMenu(); 
                  } else {
                      setIsMenuVisible(false);
+                     setIsPlaying(true); // Reanuda la reproducción al minimizar el menú si no hay categorías
                  }
                  return;
 
             } else if (key === 'ArrowRight') {
                  setIsMenuVisible(false); 
+                 setIsPlaying(true); // Reanuda la reproducción al salir del menú
                  return;
 
             } else if (key === 'ArrowUp' || key === 'ArrowDown') {
@@ -467,7 +479,7 @@ function App() {
             }
         }
 
-    }, [isMenuVisible, isCategoryMenuVisible, focusedIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList]);
+    }, [isMenuVisible, isCategoryMenuVisible, focusedIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList, setIsPlaying]);
 
 
     // --- LISTENERS GLOBALES y FOCO INICIAL ---
@@ -487,6 +499,7 @@ function App() {
              }
              if (isMenuVisible) {
                  setIsMenuVisible(false);
+                 setIsPlaying(true); // ⭐ Reanuda la reproducción al minimizar el menú
                  return true; 
              }
              return false; 
@@ -496,7 +509,7 @@ function App() {
             window.removeEventListener('keydown', handleDpadNavigation);
             window.consumeBackButton = null; 
         };
-    }, [handleDpadNavigation, videoCatalog, isMenuVisible, isCategoryMenuVisible, focusedIndex, focusChannelCard, allChannels, filteredChannels]);
+    }, [handleDpadNavigation, videoCatalog, isMenuVisible, isCategoryMenuVisible, focusedIndex, focusChannelCard, allChannels, filteredChannels, setIsPlaying]);
 
 
     // ----------------------------------------------------------------------
@@ -631,7 +644,7 @@ function App() {
                     )}
 
                  <div className="text-sm text-gray-500 mt-4 flex-shrink-0">
-                     Canales visibles: **{filteredChannels.length}**. Presiona **←** para cambiar la categoría.
+                     Canales visibles: **{filteredChannels.length}**←
                  </div>
                 </div>
             </div>
@@ -647,7 +660,7 @@ function App() {
                 <VideoPlayer 
                     ref={playerRef} 
                     url={currentChannelUrl} 
-                    isPlaying={true} 
+                    isPlaying={isPlaying} // ⭐ Controlamos la reproducción con estado
                     onFinish={handleVideoEnd} 
                 />
             )}
@@ -678,7 +691,7 @@ function App() {
                       aria-label="Abrir lista de canales"
                  >
                       <p className="text-sm font-light">
-                           Presiona **←** o **Enter** para abrir la lista (o haz clic aquí)
+                           ←
                       </p>
                  </button>
              )}

@@ -273,7 +273,6 @@ function App() {
 
 
     const openMenu = React.useCallback(() => {
-        // Al abrir el menú principal, se muestra primero la lista de canales
         setIsCategoryMenuVisible(false);
         setIsMenuVisible(true);
         if (filteredChannels.length > 0) {
@@ -285,7 +284,6 @@ function App() {
 
     const openCategoryMenu = React.useCallback(() => {
         if (!isMenuVisible) return;
-        // Al abrir el menú de categorías, el de canales se oculta
         setIsCategoryMenuVisible(true);
         requestAnimationFrame(() => {
             document.getElementById(`cat-focus-${focusedCategoryIndex}`)?.focus();
@@ -382,12 +380,12 @@ function App() {
                  const categoryName = newCatIndex === -1 ? null : categories[newCatIndex];
 
                  setSelectedCategory(categoryName);
-                 setIsCategoryMenuVisible(false); // Oculta Categoría y MUESTRA Canales
+                 setIsCategoryMenuVisible(false); 
                  requestAnimationFrame(() => focusChannelCard(0));
 
             } else if (key === 'ArrowLeft') {
                  setIsCategoryMenuVisible(false);
-                 setIsMenuVisible(false); // Cierra ambos menús
+                 setIsMenuVisible(false);
             }
 
         } else {
@@ -406,14 +404,14 @@ function App() {
                  if (totalCategories > 0) {
                      const currentSelectedCatIndex = selectedCategory === null ? -1 : categories.findIndex(c => c === selectedCategory);
                      setFocusedCategoryIndex(currentSelectedCatIndex);
-                     openCategoryMenu(); // Muestra Categoría y OCULTA Canales
+                     openCategoryMenu(); 
                  } else {
                      setIsMenuVisible(false);
                  }
                  return;
 
             } else if (key === 'ArrowRight') {
-                 setIsMenuVisible(false); // Ocultar Menú de Canales
+                 setIsMenuVisible(false); 
                  return;
 
             } else if (key === 'ArrowUp' || key === 'ArrowDown') {
@@ -465,20 +463,21 @@ function App() {
 
 
     // ----------------------------------------------------------------------
-    // --- Componente de Menú de CATEGORÍAS 
+    // --- Componente de Menú de CATEGORÍAS (Scroll interno corregido)
     // ----------------------------------------------------------------------
     const CategoryMenu = () => {
         if (!isMenuVisible || !isCategoryMenuVisible) return null; 
 
         return (
             <div
-                // min-h-screen mantiene el fondo cubierto al hacer scroll
                 className={`absolute top-0 left-0 min-h-screen bg-gray-800/95 text-white transition-transform duration-300 z-30
                             translate-x-0 w-1/4 max-w-xs flex flex-col`} 
             >
-                <div className="p-8 flex flex-col flex-grow">
+                {/* h-full: asegura que el contenido no exceda la altura de la pantalla */}
+                <div className="p-8 flex flex-col flex-grow h-full"> 
                     <h2 className="text-2xl font-bold mb-4 text-yellow-400 sticky top-0 bg-gray-800/95 z-40">Categorías</h2>
                     
+                    {/* overflow-y-auto: permite el scroll solo en la lista de botones */}
                     <div className="space-y-2 overflow-y-auto custom-scrollbar flex-grow">
 
                         {/* Botón "TODOS" */}
@@ -514,7 +513,7 @@ function App() {
     };
 
     // ----------------------------------------------------------------------
-    // --- Componente del Menú de Canales (CORREGIDO PARA OCULTARSE) ---
+    // --- Componente del Menú de Canales 
     // ----------------------------------------------------------------------
     const ChannelsMenu = () => {
         
@@ -528,7 +527,6 @@ function App() {
 
         const currentCategoryTitle = selectedCategory || "Todos los Canales";
         
-        // ⭐ NUEVA LÓGICA DE VISIBILIDAD DE CANALES: Solo visible si el menú principal está abierto Y el menú de categorías está cerrado.
         const isChannelsMenuVisible = isMenuVisible && !isCategoryMenuVisible;
         const isFocusableChannel = isChannelsMenuVisible;
         
@@ -539,13 +537,12 @@ function App() {
             <div 
                 className={`absolute top-0 left-0 h-full bg-gray-900/90 text-white transition-all duration-300 z-20 w-1/3 max-w-md flex flex-col`}
                 style={{
-                     // Ocultar completamente si no debe estar visible (trasladar -100%)
+                     // OCULTAR COMPLETAMENTE si Categories está visible
                      transform: isChannelsMenuVisible
                          ? 'translateX(0)' 
                          : 'translateX(-100%)',
                 }}
             >
-                {/* La opacidad del contenido debe depender de la visibilidad del componente */}
                 <div className={`p-8 h-full flex flex-col ${isChannelsMenuVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
                     
                     {/* Título Fijo */}
@@ -642,7 +639,7 @@ function App() {
                       aria-label="Abrir lista de canales"
                  >
                       <p className="text-sm font-light">
-                           ←
+                         ←
                       </p>
                  </button>
              )}

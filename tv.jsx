@@ -225,6 +225,7 @@ function App() {
 
     const allChannels = videoCatalog || [];
     const cardRefs = React.useRef(new Map());
+    const categoryListRef = React.useRef(null); // ⭐ REFERENCIA PARA EL CONTENEDOR DE SCROLL DE CATEGORÍAS
 
     const groupedChannels = React.useMemo(() => {
         return groupChannelsByCategory(allChannels);
@@ -328,6 +329,40 @@ function App() {
     }, []);
     
     // ------------------------------------------------------------
+    // --- LÓGICA DE SCROLL DE CATEGORÍAS (Limitado) ---
+    // ------------------------------------------------------------
+    const scrollCategoryList = React.useCallback((newCatIndex) => {
+        const container = categoryListRef.current;
+        if (!container) return;
+        
+        // Obtener el ID del botón (ej: "cat-focus--1" o "cat-focus-0")
+        const focusedElementId = `cat-focus-${newCatIndex}`;
+        const focusedElement = document.getElementById(focusedElementId);
+        if (!focusedElement) return;
+
+        const containerHeight = container.clientHeight;
+        const itemHeight = focusedElement.offsetHeight; 
+        const itemTop = focusedElement.offsetTop;
+        const currentScroll = container.scrollTop;
+
+        // Limite visible (ajusta este valor para cambiar cuántos elementos se ven antes de forzar el scroll)
+        // itemHeight * 2 es un buen valor para que siempre haya al menos dos elementos visibles por encima/debajo
+        const SCROLL_OFFSET = itemHeight * 2; 
+
+        // 1. Si el elemento está fuera del límite inferior visible
+        if (itemTop + itemHeight > currentScroll + containerHeight - SCROLL_OFFSET) {
+            // Ajusta el scroll hacia abajo
+            container.scrollTop = itemTop + itemHeight - containerHeight + SCROLL_OFFSET;
+        } 
+        // 2. Si el elemento está fuera del límite superior visible
+        else if (itemTop < currentScroll + SCROLL_OFFSET) {
+            // Ajusta el scroll hacia arriba
+            container.scrollTop = itemTop - SCROLL_OFFSET;
+        }
+    }, []);
+    
+    
+    // ------------------------------------------------------------
     // --- LÓGICA DE NAVEGACIÓN D-PAD ---
     // ------------------------------------------------------------
     const handleDpadNavigation = React.useCallback((event) => {
@@ -355,7 +390,7 @@ function App() {
         if (isCategoryMenuVisible) {
             // MENÚ DE CATEGORÍAS
             let newCatIndex = focusedCategoryIndex;
-            const totalOptions = totalCategories + 1;
+            const totalOptions = totalCategories + 1; // Incluyendo TODOS
 
             if (key === 'ArrowUp' || key === 'ArrowDown') {
                  if (totalOptions === 0) return;
@@ -374,6 +409,7 @@ function App() {
                  setFocusedCategoryIndex(newCatIndex);
                  requestAnimationFrame(() => {
                      document.getElementById(`cat-focus-${newCatIndex}`)?.focus();
+                     scrollCategoryList(newCatIndex); // ⭐ LLAMADA PARA AJUSTAR EL SCROLL
                  });
 
             } else if (key === 'ArrowRight' || key === 'Enter' || key === ' ') {
@@ -430,7 +466,7 @@ function App() {
             }
         }
 
-    }, [isMenuVisible, isCategoryMenuVisible, focusedIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory]);
+    }, [isMenuVisible, isCategoryMenuVisible, focusedIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList]);
 
 
     // --- LISTENERS GLOBALES y FOCO INICIAL ---
@@ -463,7 +499,7 @@ function App() {
 
 
     // ----------------------------------------------------------------------
-    // --- Componente de Menú de CATEGORÍAS (Scroll interno corregido)
+    // --- Componente de Menú de CATEGORÍAS 
     // ----------------------------------------------------------------------
     const CategoryMenu = () => {
         if (!isMenuVisible || !isCategoryMenuVisible) return null; 
@@ -473,12 +509,14 @@ function App() {
                 className={`absolute top-0 left-0 min-h-screen bg-gray-800/95 text-white transition-transform duration-300 z-30
                             translate-x-0 w-1/4 max-w-xs flex flex-col`} 
             >
-                {/* h-full: asegura que el contenido no exceda la altura de la pantalla */}
                 <div className="p-8 flex flex-col flex-grow h-full"> 
                     <h2 className="text-2xl font-bold mb-4 text-yellow-400 sticky top-0 bg-gray-800/95 z-40">Categorías</h2>
                     
-                    {/* overflow-y-auto: permite el scroll solo en la lista de botones */}
-                    <div className="space-y-2 overflow-y-auto custom-scrollbar flex-grow">
+                    {/* max-h-[70vh] para limitar la altura visible y adjuntar la referencia categoryListRef */}
+                    <div 
+                        ref={categoryListRef}
+                        className="space-y-2 overflow-y-auto custom-scrollbar flex-grow max-h-[70vh]" 
+                    >
 
                         {/* Botón "TODOS" */}
                         <button
@@ -537,7 +575,7 @@ function App() {
             <div 
                 className={`absolute top-0 left-0 h-full bg-gray-900/90 text-white transition-all duration-300 z-20 w-1/3 max-w-md flex flex-col`}
                 style={{
-                     // OCULTAR COMPLETAMENTE si Categories está visible
+                     // Ocultar completamente si no debe estar visible (trasladar -100%)
                      transform: isChannelsMenuVisible
                          ? 'translateX(0)' 
                          : 'translateX(-100%)',
@@ -592,7 +630,7 @@ function App() {
                     )}
 
                  <div className="text-sm text-gray-500 mt-4 flex-shrink-0">
-                     Canales visibles: **{filteredChannels.length}**. Presiona **←** para cambiar la categoría.
+                     Canales visibles: **{filteredChannels.length}**. ←.
                  </div>
                 </div>
             </div>
@@ -639,7 +677,7 @@ function App() {
                       aria-label="Abrir lista de canales"
                  >
                       <p className="text-sm font-light">
-                         ←
+                           ←
                       </p>
                  </button>
              )}

@@ -26,14 +26,14 @@ https://livetrx01.vodgc.net/live-01-07-ciudad.vodgc.net/tracks-v1a1/mono.m3u8
 https://stream-gtlc.telecentro.net.ar/hls/telemaxhls/main.m3u8
 #EXTINF:-1 tvg-id="5tv.ar@SD" tvg-logo="https://i.imgur.com/mSn7ACs.png" group-title="Argentina",5tv SD
 http://www.coninfo.net:1935/tvcinco/live1/playlist.m3u8
-#EXTINF:-1 tvg-id="247CanaldeNoticias.ar@SD" tvg-logo="https://i.imgur.com/4hDCB1M.png" group-title="Argentina",24/7 Canal de Noticias SDhttps://panel.host-live.com:19360/cn247tv/cn247tv.m3u8
+#EXTINF:-1 tvg-id="247CanaldeNoticias.ar@SD" tvg-logo="https://i.imgur.com/4hDCB1M.png" group-title="Argentina",24/7 Canal de Noticias SD
+https://panel.host-live.com:19360/cn247tv/cn247tv.m3u8
 #EXTINF:-1 tvg-id="AiredeSantaFe.ar@SD" tvg-logo="https://i.imgur.com/60vSWW0.png" group-title="Argentina",Aire de Santa Fe SD
 https://unlimited1-us.dps.live/airedesantafetv/airedesantafetv.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="ArgentinisimaSatelital.ar@SD" tvg-logo="https://i.imgur.com/xFgJawa.png" group-title="Argentina",Argentinisima Satelital SD
-https://stream1.sersat.com/hls/argentinisima.m3u8 
+https://stream1.sersat.com/hls/argentinisima.m3u8
 #EXTINF:-1 tvg-id="BayresTV.ar@SD" tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKrroOZ4RYMYlzGqMQjiIO2QbRNVndEM9PiC-CaRn0PO2AoB_YKyrt6Eigzh4M1gPZaVn5udDL5YzrzxAmyQCj_HTF8Pszo46dk9dABt9TpepY43_IEzT80atZEMaiMcdrqt3lmxAbZYaLwCgr6vDUgV1HlvmhIOJ99UlwAhG2FoHgtCm13CWEugV7Bvg/w1200-h630-p-k-no-nu/bayres-tv-removebg-preview.png" group-title="General",Bayres TV SD
 https://streaming01.mikrolive.tv/bayrestv/live/playlist.m3u8
-
 #EXTINF:-1 tvg-id="Canal2deUshuaia.ar@SD" tvg-logo="https://i.ibb.co/q5NPdK2/canal2-logo.png" group-title="Argentina",Canal 2 de Ushuaia SD
 https://nd106.republicaservers.com:4433/hls/c6611/index.m3u8
 #EXTINF:-1 tvg-id="Canal3LaPampa.ar@SD" tvg-logo="https://i.imgur.com/SsNFudZ.png" group-title="Argentina",Canal 3 La Pampa SD
@@ -51,7 +51,6 @@ https://stream.arcast.com.ar/canal5picotruncado/canal5picotruncado/playlist.m3u8
 #EXTINF:-1 tvg-id="Canal6Posadas.ar@SD" tvg-logo="https://i.imgur.com/OamBiS5.png" group-title="Interior",Canal 6 Posadas SD
 https://iptv.ixfo.com.ar:30443/live/c6digital/playlist.m3u8
 #EXTINF:-1 tvg-id="Canal7Jujuy.ar@SD" tvg-logo="https://i.imgur.com/K0jk8p4.png" group-title="Interior",Canal 7 Jujuy SD
-https://stream.arcast.live/canal7jujuy/ngrp:canal7jujuy_all/playlist.m3u8
 https://stream.arcast.live/canal7jujuy/ngrp:canal7jujuy_all/playlist.m3u8
 #EXTINF:-1 tvg-id="Canal7Neuquen.ar@SD" tvg-logo="https://i.ibb.co/BrvQsWm/C7neuquenlogo2023.png" group-title="Interior",Canal 7 Neuquen SD
 https://stream.arcast.com.ar/c7nq/ngrp:c7nq_all/playlist.m3u
@@ -132,9 +131,8 @@ https://live.adultiptv.net/rough.m3u8
 #EXTINF:-1 tvg-logo="http://vignette3.wikia.nocookie.net/logopedia/images/4/48/Logo_venus_out_color.jpg" group-title="Adultos", VENUS
 https://live.redtraffic.xyz/russian.m3u8?fluxuslust.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/DLEFDcv.png" group-title="Adultos", Jasmin TV
-https://live.adultiptv.net/pornstar.m3u8 
+https://live.adultiptv.net/pornstar.m3u8
 #EXTINF:-1 tvg-logo="https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg" group-title="Adultos", HOT
 https://live.adultiptv.net/threesome.m3u8
 #EXTINF:-1 tvg-logo="https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg" group-title="Adultos", Teen
 https://live.adultiptv.net/teen.m3u8
-

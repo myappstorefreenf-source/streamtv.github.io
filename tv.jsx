@@ -417,7 +417,7 @@ const LOCAL_M3U_DATA = [
     }
 ];
 
-const DEFAULT_START_CHANNEL_URL = 'https://livetrx01.vodgc.net/eltrecetv/index.m3u8'; 
+//const DEFAULT_START_CHANNEL_URL = 'https://livetrx01.vodgc.net/eltrecetv/index.m3u8'; 
 
 
 // ----------------------------------------------------------------------
@@ -1085,3 +1085,4 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+

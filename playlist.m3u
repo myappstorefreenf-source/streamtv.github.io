@@ -1,6 +1,6 @@
 #EXTINF:-1 tvg-id="0935" tvg-name="América TV" group-title="Argentina" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",América TV
 https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8
-#EXTINF:-1 tvg-id="0915" tvg-name="El Trece" group-title="Argentina" tvg-logo="https://es.wikipedia.org/wiki/Canal_13_%28Buenos_Aires%29#/media/Archivo:Isotipo_eltrece_2016.png",El Trece
+#EXTINF:-1 tvg-id="0915" tvg-name="El Trece" group-title="Argentina" tvg-logo="https://images.seeklogo.com/logo-png/2/1/canal-trece-argentina-logo-png_seeklogo-25582.png",El Trece
 https://livetrx01.vodgc.net/eltrecetv/index.m3u8
 #EXTINF:-1 tvg-id="0939" tvg-name="Net TV" group-title="Argentina" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/a5/Net_TV_logo.png" ,Net TV
 https://unlimited1-saopaulo.dps.live/nettv/nettv.smil/playlist.m3u8

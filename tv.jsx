@@ -1,7 +1,8 @@
+// Asegúrate de que React, ReactDOM, y Hls.js estén cargados en tu HTML.
+
 // ----------------------------------------------------------------------
 // 0. CONFIGURACIÓN Y DATOS LOCALES
 // ----------------------------------------------------------------------
-// Asegúrate de que React, ReactDOM, y Hls.js estén cargados en tu HTML.
 
 const LOCAL_M3U_DATA = [
     {
@@ -40,7 +41,6 @@ const LOCAL_M3U_DATA = [
         category: "Argentina",
         url: "https://unlimited1-saopaulo.dps.live/perfiltv/perfiltv.smil/playlist.m3u8"
     },
-    // ⭐ CANAL TN CON REFERRER Y USER-AGENT
     {
         title: "TN",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/TN_todo_noticias_logo.svg/2560px-TN_todo_noticias_logo.svg.png",
@@ -217,7 +217,6 @@ const LOCAL_M3U_DATA = [
         category: "Music",
         url: "https://tuvideoonline.com.ar:3332/live/xlevelmedialive.m3u8"
     },
-    // ⭐ CANALES XTREMA CON REFERRER 
     {
         title: "Xtrema Accion SD",
         logoUrl: "https://i.imgur.com/z5NwizH.png",
@@ -321,7 +320,7 @@ const LOCAL_M3U_DATA = [
     },
     {
         title: "Cosmos Tv SD",
-        logoUrl: "https://cdn4.fmcosmos.com/s4/2025/11/03/fmcosmos/images/15/92/159284_a18e887e336fef3bc6b188314a173ce10cbe5157966e839517e2b0428d7aed46/xs.webp",
+        logoUrl: "https://cdn4.fmcosmos.com/s4/2025/11/03/fmcosmos/images/15/92/159284_a18e887e336fef3bc6b188314a173ce10cbe51575966e839517e2b0428d7aed46/xs.webp",
         category: "Movies",
         url: "https://canaletaplus.com:3922/hybrid/play.m3u8"
     },
@@ -417,8 +416,6 @@ const LOCAL_M3U_DATA = [
     }
 ];
 
-const DEFAULT_START_CHANNEL_URL = 'https://livetrx01.vodgc.net/eltrecetv/index.m3u8'; 
-
 
 // ----------------------------------------------------------------------
 // 1. FUNCIONES DE UTILIDAD
@@ -443,7 +440,7 @@ const groupChannelsByCategory = (channels) => {
 // 2. COMPONENTE VIDEO CARD 
 // ----------------------------------------------------------------------
 const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive, isFocusable }, ref) => {
-    const handlePlay = () => onPlay(video); // Pasa el objeto completo
+    const handlePlay = () => onPlay(video);
     
     const tabIndexValue = isFocusable ? "0" : "-1"; 
 
@@ -468,7 +465,7 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
                 src={video.logoUrl || 'https://via.placeholder.com/64x64?text=NO+LOGO'}
                 alt={video.title}
                 className="w-10 h-10 object-cover rounded mr-3 flex-shrink-0"
-                onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/64x64?text=NO+LOGO'; }} // Fallback de logo
+                onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/64x64?text=NO+LOGO'; }}
             />
             <p className="text-white text-base font-medium truncate flex-grow">
                 {video.title}
@@ -483,7 +480,7 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
 
 
 // ----------------------------------------------------------------------
-// 3. COMPONENTE VIDEO PLAYER (Maneja HLS y Headers y la limpieza de audio)
+// 3. COMPONENTE VIDEO PLAYER (Maneja HLS y la limpieza agresiva de audio)
 // ----------------------------------------------------------------------
 const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => {
     
@@ -493,13 +490,16 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
     
     React.useEffect(() => {
         const video = ref.current;
-        if (!video || !url) return;
+        const currentUrl = url; // Usamos currentUrl para la limpieza y carga
+        
+        // No hacer nada si no hay URL para cargar
+        if (!video || !currentUrl) return;
         
         let hls;
         const handleEnded = () => onFinish();
         video.addEventListener('ended', handleEnded);
 
-        // ⭐ LIMPIEZA INICIAL ANTES DE CARGAR NUEVA URL (Corrige audio pegado)
+        // ⭐ LIMPIEZA AGRESIVA INICIAL (Detiene el audio del canal anterior)
         if (video.__hlsInstance) {
              video.__hlsInstance.destroy();
              delete video.__hlsInstance;
@@ -531,9 +531,9 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             }
             
             hls = new Hls(hlsConfig);
-            hls.loadSource(url); 
+            hls.loadSource(currentUrl); 
             hls.attachMedia(video);
-            video.__hlsInstance = hls; // Guarda la instancia en el elemento DOM para fácil acceso
+            video.__hlsInstance = hls;
             
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                  if (isPlaying) {
@@ -549,13 +549,13 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
 
         } else {
             // Reproducción nativa (Fallback)
-            video.src = url;
+            video.src = currentUrl;
             if (isPlaying) {
                 video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
             }
         }
         
-        // ⭐ FUNCIÓN DE LIMPIEZA FINAL (Corrige audio pegado al desmontar/cambiar)
+        // ⭐ FUNCIÓN DE LIMPIEZA FINAL 
         return () => {
             video.removeEventListener('ended', handleEnded);
             video.pause();
@@ -568,7 +568,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         };
     }, [url, onFinish, ref, isPlaying, referrer, userAgent]); 
 
-    // useEffect para controlar la pausa/reproducción de la etiqueta <video>
+    // useEffect para controlar la pausa/reproducción
     React.useEffect(() => {
         const video = ref.current;
         if (video) {
@@ -611,7 +611,7 @@ function App() {
     const [focusedCategoryIndex, setFocusedCategoryIndex] = React.useState(-1);
     const [selectedCategory, setSelectedCategory] = React.useState(null);
     const [isCategoryMenuVisible, setIsCategoryMenuVisible] = React.useState(false);
-    const [isPlaying, setIsPlaying] = React.useState(false);
+    const [isPlaying, setIsPlaying] = React.useState(false); // Inicia sin reproducción
 
     const allChannels = videoCatalog || [];
     const cardRefs = React.useRef(new Map());
@@ -712,7 +712,7 @@ function App() {
     }, [focusChannelCard, focusedFilteredIndex]);
 
 
-    // Carga de datos local e inicialización
+    // Carga de datos local e inicialización (SIN INICIO DE VIDEO)
     React.useEffect(() => {
         
         const data = LOCAL_M3U_DATA; 
@@ -720,18 +720,12 @@ function App() {
         setVideoCatalog(data);
         
         if (data.length > 0) {
-            const defaultChannel = data.find(c => c.url === DEFAULT_START_CHANNEL_URL);
-            
-            const initialChannel = defaultChannel || data[0]; 
-            setCurrentChannel(initialChannel); 
-            
-            const initialIndex = data.findIndex(c => c.url === initialChannel.url);
-            
-            setFocusedIndex(initialIndex);
+            // Inicializar el foco en el primer canal. 
+            setFocusedIndex(0);
             setFocusedFilteredIndex(0); 
             setSelectedCategory(null);
             setFocusedCategoryIndex(-1);
-            setIsPlaying(true);
+            // NO se llama a setIsPlaying(true)
         }
         
     }, []); 
@@ -765,6 +759,7 @@ function App() {
         const isDpadKey = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(key);
 
         if (!isMenuVisible) {
+            // Si el menú está oculto (viendo el video)
             if (key === 'ArrowLeft' || key === 'Enter' || key === ' ') {
                 event.preventDefault();
                 openMenu(); 
@@ -818,7 +813,7 @@ function App() {
              } else if (key === 'ArrowLeft') {
                   setIsCategoryMenuVisible(false);
                   setIsMenuVisible(false);
-                  setIsPlaying(true);
+                  if (currentChannel) setIsPlaying(true); // Solo reanuda si había un canal activo
              }
 
         } else {
@@ -840,13 +835,13 @@ function App() {
                      openCategoryMenu(); 
                  } else {
                      setIsMenuVisible(false);
-                     setIsPlaying(true);
+                     if (currentChannel) setIsPlaying(true);
                  }
                  return;
 
             } else if (key === 'ArrowRight') {
                  setIsMenuVisible(false); 
-                 setIsPlaying(true);
+                 if (currentChannel) setIsPlaying(true);
                  return;
 
             } else if (key === 'ArrowUp' || key === 'ArrowDown') {
@@ -864,7 +859,7 @@ function App() {
                  focusChannelCard(newFilteredIndex);
             }
         }
-    }, [isMenuVisible, isCategoryMenuVisible, focusedFilteredIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList]);
+    }, [isMenuVisible, isCategoryMenuVisible, focusedFilteredIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList, currentChannel]);
 
 
     // EFFECT PARA ESCUCHAR D-PAD
@@ -874,7 +869,7 @@ function App() {
     }, [handleDpadNavigation]);
 
     
-    // Componente CategoryMenu (Funcional)
+    // Componente CategoryMenu (Renderizado interno)
     const CategoryMenu = () => {
         if (categories.length === 0) return null;
 
@@ -936,6 +931,7 @@ function App() {
     };
 
 
+    // Componente ChannelsMenu (Renderizado interno)
     const ChannelsMenu = () => {
         
         const setCardRef = (index, element) => {
@@ -1019,7 +1015,7 @@ function App() {
     return (
         <div className="relative w-screen h-screen bg-black overflow-hidden">
             
-            {/* 1. Video Player */}
+            {/* 1. Video Player: Solo renderiza si hay un canal seleccionado */}
             {videoCatalog !== null && currentChannelUrl && (
                 <VideoPlayer 
                     ref={playerRef} 
@@ -1029,12 +1025,14 @@ function App() {
                 />
             )}
             
+             {/* 2. Pantalla de carga */}
              {videoCatalog === null && (
                  <div className="flex items-center justify-center w-full h-full bg-gray-900 text-white z-30">
                      <h1 className="text-xl">Cargando catálogo localmente... ⏳</h1>
                  </div>
              )}
             
+            {/* 3. Menús */}
             {videoCatalog !== null && (
                  <React.Fragment>
                       <CategoryMenu />
@@ -1042,6 +1040,14 @@ function App() {
                  </React.Fragment>
              )}
 
+             {/* 4. Overlay de video (aparece si el menú está oculto y no hay canal activo) */}
+             {videoCatalog !== null && !isMenuVisible && !currentChannelUrl && (
+                 <div className="absolute top-0 left-0 w-full h-full bg-gray-900/90 flex items-center justify-center text-white z-0">
+                     <p className="text-xl">Selecciona un canal en el menú (←)</p>
+                 </div>
+             )}
+
+             {/* 5. Botón para abrir menú */}
              {!isMenuVisible && (
                  <button
                       className="absolute top-4 left-4 p-2 bg-gray-900/70 rounded-lg text-white z-10 
@@ -1066,8 +1072,11 @@ function App() {
 // ----------------------------------------------------------------------
 const rootElement = document.getElementById('root');
 if (rootElement) {
+    // Si estás usando React 18+
     const root = ReactDOM.createRoot(rootElement);
     root.render(<App />);
 } else {
+    // Si estás usando una versión anterior de React
+    // ReactDOM.render(<App />, document.getElementById('root'));
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }

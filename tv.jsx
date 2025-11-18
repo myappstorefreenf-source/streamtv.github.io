@@ -11,39 +11,47 @@ const REMOTE_M3U_URL = 'https://raw.githubusercontent.com/myappstorefreenf-sourc
 const DEFAULT_START_CHANNEL_URL = 'https://live.airederadiotv.airederadiotv.sml/play/playlist.m3u8'; 
 
 // ----------------------------------------------------------------------
-// 0. PARSEADOR M3U Y CARGA REMOTA 
+// 0. PARSEADOR M3U Y CARGA REMOTA (OPTIMIZADO CON ID ÚNICO)
 // ----------------------------------------------------------------------
 const parseM3U = (m3uString) => {
     const lines = m3uString.trim().split('\n');
     const playlist = [];
     let currentItem = {};
+    let indexCounter = 0; // Contador para generar ID único
 
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i].trim();
 
         if (line.startsWith('#EXTINF')) {
-            const logoMatch = line.match(/tvg-logo="([^"]*)"/);
+            // Reinicia la información al encontrar un nuevo canal.
+            const logoMatch = line.match(/tvg-logo="([^"]*)"|tvg-logo=”([^"]*)”/); 
             const titleMatch = line.match(/,(.*)$/);
             const groupMatch = line.match(/group-title="([^"]*)"/); 
             
             currentItem = {
                 title: titleMatch ? titleMatch[1].trim() : 'Video sin título',
-                logoUrl: logoMatch ? logoMatch[1] : null,
+                logoUrl: (logoMatch ? (logoMatch[1] || logoMatch[2]) : null),
                 category: groupMatch ? groupMatch[1].trim() : 'Otros',
                 url: null,
+                id: null, // Listo para recibir el ID único
             };
         } else if (line.startsWith('http') || line.startsWith('https')) {
-            if (currentItem.title) { 
+            // Si encontramos una URL de stream y tenemos metadatos de un canal
+            if (currentItem.title && !currentItem.url) { 
                 currentItem.url = line;
+                // GENERAR ID ÚNICO: URL + contador. Esto resuelve el problema de canales con URL duplicado.
+                currentItem.id = `${line}-${indexCounter++}`; 
                 playlist.push(currentItem);
-                currentItem = {}; 
+                currentItem = {}; // Listo, pasa al siguiente
             }
-        }
+        } 
+        // Se ignoran líneas como #EXTVLCOPT
     }
     return playlist;
 };
 
 const fetchM3UContent = async (url) => {
+    // ... (sin cambios en la función de fetch)
     try {
         console.log(`Cargando lista desde: ${url}`);
         const response = await fetch(url);
@@ -62,6 +70,7 @@ const fetchM3UContent = async (url) => {
 };
 
 const groupChannelsByCategory = (channels) => {
+    // ... (sin cambios)
     if (!channels) return {};
 
     return channels.reduce((groups, channel) => {
@@ -132,7 +141,7 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
         const handleEnded = () => onFinish();
         video.addEventListener('ended', handleEnded);
 
-        // ⭐ Destruir la instancia HLS anterior antes de cargar una nueva para evitar solapamiento de audio
+        // Destruir la instancia HLS anterior antes de cargar una nueva
         if (video.__hlsInstance) {
              video.__hlsInstance.destroy();
              delete video.__hlsInstance;
@@ -145,7 +154,6 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
             video.__hlsInstance = hls;
             
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                 // Intentar reproducir solo si el estado global lo permite
                  if (isPlaying) {
                      video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
                  }
@@ -155,15 +163,12 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
                 if (data.fatal) {
                     switch(data.type) {
                         case Hls.ErrorTypes.NETWORK_ERROR:
-                            console.error("Error fatal de red. Intentando recuperar...", data);
                             hls.startLoad(); 
                             break;
                         case Hls.ErrorTypes.MEDIA_ERROR:
-                            console.error("Error fatal de media. Intentando recuperar...", data);
                             hls.recoverMediaError(); 
                             break;
                         default:
-                            console.error("Error fatal desconocido. Destruyendo HLS...", data);
                             hls.destroy();
                             break;
                     }
@@ -171,15 +176,12 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
             });
 
         } else {
-            // Reproducción nativa (Fallback)
-            console.warn("Reproducción nativa. URL:", url);
             video.src = url;
             if (isPlaying) {
                 video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
             }
         }
         
-        // Función de limpieza de React (Se ejecuta al cambiar 'url' o al desmontar)
         return () => {
             video.removeEventListener('ended', handleEnded);
              if (video.__hlsInstance) {
@@ -187,9 +189,8 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
                  delete video.__hlsInstance;
              }
         };
-    }, [url, onFinish, ref, isPlaying]); // isPlaying es dependencia para recargar si cambia
+    }, [url, onFinish, ref, isPlaying]);
 
-    // useEffect para controlar la pausa/reproducción de la etiqueta <video>
     React.useEffect(() => {
         const video = ref.current;
         if (video) {
@@ -209,7 +210,7 @@ const VideoPlayer = React.forwardRef(({ url, isPlaying, onFinish }, ref) => {
                 width='100%'
                 height='100%'
                 playsInline
-                autoPlay // Lo dejamos aquí, pero el control final lo da isPlaying
+                autoPlay 
                 controls={false}
             />
         </div>
@@ -230,7 +231,7 @@ function App() {
     const [focusedCategoryIndex, setFocusedCategoryIndex] = React.useState(-1);
     const [selectedCategory, setSelectedCategory] = React.useState(null);
     const [isCategoryMenuVisible, setIsCategoryMenuVisible] = React.useState(false);
-    const [isPlaying, setIsPlaying] = React.useState(false); // ⭐ ESTADO DE CONTROL DE REPRODUCCIÓN
+    const [isPlaying, setIsPlaying] = React.useState(false); 
 
     const allChannels = videoCatalog || [];
     const cardRefs = React.useRef(new Map());
@@ -263,7 +264,10 @@ function App() {
         }
 
         const channelToFocus = filteredChannels[finalIndex];
-        const globalIndex = allChannels.findIndex(c => c.url === channelToFocus.url);
+        
+        // --- CAMBIO CLAVE: BUSCAR EL ÍNDICE GLOBAL POR EL ID ÚNICO ---
+        const globalIndex = allChannels.findIndex(c => c.id === channelToFocus.id);
+        
         if (globalIndex === -1) return;
         
         setFocusedIndex(globalIndex); 
@@ -271,11 +275,12 @@ function App() {
         requestAnimationFrame(() => {
              const card = cardRefs.current.get(globalIndex); 
              if (card) {
-                card.focus();
-                card.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'nearest' 
-                });
+                 card.focus();
+                 // Usar 'center' para desplazamiento suave constante (no saltos)
+                 card.scrollIntoView({ 
+                     behavior: 'smooth', 
+                     block: 'center' 
+                 });
              } 
         });
         
@@ -285,10 +290,11 @@ function App() {
     const openMenu = React.useCallback(() => {
         setIsCategoryMenuVisible(false);
         setIsMenuVisible(true);
-        setIsPlaying(false); // ⭐ Pausa la reproducción al abrir el menú
+        setIsPlaying(false); 
         if (filteredChannels.length > 0) {
              const currentChannel = allChannels[focusedIndex];
-             const focusedFilteredIndex = filteredChannels.findIndex(c => c.url === currentChannel?.url);
+             // Buscar el índice del canal actual en la lista filtrada por ID
+             const focusedFilteredIndex = filteredChannels.findIndex(c => c.id === currentChannel?.id);
              requestAnimationFrame(() => focusChannelCard(focusedFilteredIndex !== -1 ? focusedFilteredIndex : 0));
         }
     }, [focusedIndex, focusChannelCard, filteredChannels.length, allChannels]);
@@ -296,7 +302,7 @@ function App() {
     const openCategoryMenu = React.useCallback(() => {
         if (!isMenuVisible) return;
         setIsCategoryMenuVisible(true);
-        setIsPlaying(false); // ⭐ Pausa la reproducción al abrir el menú
+        setIsPlaying(false); 
         requestAnimationFrame(() => {
             document.getElementById(`cat-focus-${focusedCategoryIndex}`)?.focus();
         });
@@ -306,20 +312,22 @@ function App() {
     const handlePlayChannel = React.useCallback((originalUrl) => {
         setCurrentChannelUrl(originalUrl); 
         
+        // Buscamos el índice global basado en la URL, ya que solo la URL es relevante para la reproducción
         const newIndex = allChannels.findIndex(c => c.url === originalUrl); 
         setFocusedIndex(newIndex);
         
         setIsCategoryMenuVisible(false);
         setIsMenuVisible(false);
-        setIsPlaying(true); // ⭐ Inicia la reproducción del nuevo canal
+        setIsPlaying(true); 
     }, [allChannels]);
 
     
     const handleVideoEnd = React.useCallback(() => {
         setIsMenuVisible(true);
-        setIsPlaying(false); // ⭐ Pausa el audio cuando el stream termina
+        setIsPlaying(false); 
         const currentChannel = allChannels[focusedIndex];
-        const focusedFilteredIndex = filteredChannels.findIndex(c => c.url === currentChannel?.url);
+        // Buscar el índice del canal actual en la lista filtrada por ID
+        const focusedFilteredIndex = filteredChannels.findIndex(c => c.id === currentChannel?.id);
         setTimeout(() => focusChannelCard(focusedFilteredIndex !== -1 ? focusedFilteredIndex : 0), 10); 
     }, [focusedIndex, focusChannelCard, allChannels, filteredChannels]);
 
@@ -329,22 +337,26 @@ function App() {
             setVideoCatalog(data);
             
             if (data.length > 0) {
+                // ... (lógica de foco inicial)
                 const defaultChannelIndex = data.findIndex(c => c.url === DEFAULT_START_CHANNEL_URL);
                 const initialIndex = defaultChannelIndex !== -1 ? defaultChannelIndex : 0;
-                const initialUrl = defaultChannelIndex !== -1 ? DEFAULT_START_CHANNEL_URL : data[0].url;
+                const initialUrl = data[initialIndex].url;
                 
                 setCurrentChannelUrl(initialUrl); 
                 setFocusedIndex(initialIndex);
-                setSelectedCategory(null);
-                setFocusedCategoryIndex(-1);
-                setIsPlaying(true); // ⭐ Inicia la reproducción del canal por defecto al cargar.
+                
+                const initialCategory = data[initialIndex].category || null;
+                setSelectedCategory(initialCategory);
+                const initialCatIndex = initialCategory === null ? -1 : categories.findIndex(c => c === initialCategory);
+                setFocusedCategoryIndex(initialCatIndex);
+                
+                setIsPlaying(true); 
             }
         });
     }, []);
     
-    // ------------------------------------------------------------
+    
     // --- LÓGICA DE SCROLL DE CATEGORÍAS (Limitado/Centrado) ---
-    // ------------------------------------------------------------
     const scrollCategoryList = React.useCallback((newCatIndex) => {
         const container = categoryListRef.current;
         if (!container) return;
@@ -358,23 +370,18 @@ function App() {
         const itemTop = focusedElement.offsetTop;
         const currentScroll = container.scrollTop;
 
-        // Limite visible 
         const SCROLL_OFFSET = itemHeight * 2; 
 
-        // 1. Si el elemento está fuera del límite inferior visible
         if (itemTop + itemHeight > currentScroll + containerHeight - SCROLL_OFFSET) {
             container.scrollTop = itemTop + itemHeight - containerHeight + SCROLL_OFFSET;
         } 
-        // 2. Si el elemento está fuera del límite superior visible
         else if (itemTop < currentScroll + SCROLL_OFFSET) {
             container.scrollTop = itemTop - SCROLL_OFFSET;
         }
     }, []);
     
     
-    // ------------------------------------------------------------
     // --- LÓGICA DE NAVEGACIÓN D-PAD ---
-    // ------------------------------------------------------------
     const handleDpadNavigation = React.useCallback((event) => {
         
         const key = event.key;
@@ -400,7 +407,7 @@ function App() {
         if (isCategoryMenuVisible) {
             // MENÚ DE CATEGORÍAS
             let newCatIndex = focusedCategoryIndex;
-            const totalOptions = totalCategories + 1; // Incluyendo TODOS
+            const totalOptions = totalCategories + 1; 
 
             if (key === 'ArrowUp' || key === 'ArrowDown') {
                  if (totalOptions === 0) return;
@@ -410,7 +417,7 @@ function App() {
 
                  if (key === 'ArrowUp') {
                      newIndexInList = (currentIndexInList === 0) ? totalOptions - 1 : currentIndexInList - 1;
-                 } else { // ArrowDown
+                 } else { 
                      newIndexInList = (currentIndexInList === totalOptions - 1) ? 0 : currentIndexInList + 1;
                  }
 
@@ -427,12 +434,17 @@ function App() {
 
                  setSelectedCategory(categoryName);
                  setIsCategoryMenuVisible(false); 
-                 requestAnimationFrame(() => focusChannelCard(0));
+                 
+                 const targetChannel = allChannels[focusedIndex];
+                 const targetIndexInFiltered = filteredChannels.findIndex(c => c.id === targetChannel?.id); // Buscar por ID
+                 requestAnimationFrame(() => focusChannelCard(targetIndexInFiltered !== -1 ? targetIndexInFiltered : 0));
 
             } else if (key === 'ArrowLeft') {
                  setIsCategoryMenuVisible(false);
-                 setIsMenuVisible(false);
-                 setIsPlaying(true); // Reanuda la reproducción al salir del menú
+                 
+                 const currentChannel = allChannels[focusedIndex];
+                 const focusedFilteredIndex = filteredChannels.findIndex(c => c.id === currentChannel?.id); // Buscar por ID
+                 focusChannelCard(focusedFilteredIndex !== -1 ? focusedFilteredIndex : 0);
             }
 
         } else {
@@ -454,19 +466,20 @@ function App() {
                      openCategoryMenu(); 
                  } else {
                      setIsMenuVisible(false);
-                     setIsPlaying(true); // Reanuda la reproducción al minimizar el menú si no hay categorías
+                     setIsPlaying(true); 
                  }
                  return;
 
             } else if (key === 'ArrowRight') {
                  setIsMenuVisible(false); 
-                 setIsPlaying(true); // Reanuda la reproducción al salir del menú
+                 setIsPlaying(true); 
                  return;
 
             } else if (key === 'ArrowUp' || key === 'ArrowDown') {
                  if (totalFilteredChannels === 0) return;
 
-                 let newFilteredIndex = filteredChannels.findIndex(c => c.url === allChannels[focusedIndex]?.url);
+                 // Encontrar el índice del canal enfocado actualmente, PERO dentro de la lista FILTRADA
+                 let newFilteredIndex = filteredChannels.findIndex(c => c.id === allChannels[focusedIndex]?.id); // Buscar por ID
                  if (newFilteredIndex === -1) newFilteredIndex = 0;
 
                  if (key === 'ArrowUp') {
@@ -488,7 +501,7 @@ function App() {
         
         if (videoCatalog && videoCatalog.length > 0 && isMenuVisible && !isCategoryMenuVisible) {
             const currentChannel = allChannels[focusedIndex];
-            const focusedFilteredIndex = filteredChannels.findIndex(c => c.url === currentChannel?.url);
+            const focusedFilteredIndex = filteredChannels.findIndex(c => c.id === currentChannel?.id); // Buscar por ID
             requestAnimationFrame(() => focusChannelCard(focusedFilteredIndex !== -1 ? focusedFilteredIndex : 0));
         }
         
@@ -499,7 +512,7 @@ function App() {
              }
              if (isMenuVisible) {
                  setIsMenuVisible(false);
-                 setIsPlaying(true); // ⭐ Reanuda la reproducción al minimizar el menú
+                 setIsPlaying(true); 
                  return true; 
              }
              return false; 
@@ -521,12 +534,11 @@ function App() {
         return (
             <div
                 className={`absolute top-0 left-0 min-h-screen bg-gray-800/95 text-white transition-transform duration-300 z-30
-                            translate-x-0 w-1/4 max-w-xs flex flex-col`} 
+                             translate-x-0 w-1/4 max-w-xs flex flex-col`} 
             >
                 <div className="p-8 flex flex-col flex-grow h-full"> 
                     <h2 className="text-2xl font-bold mb-4 text-yellow-400 sticky top-0 bg-gray-800/95 z-40">Categorías</h2>
                     
-                    {/* Contenedor con scroll limitado */}
                     <div 
                         ref={categoryListRef}
                         className="space-y-2 overflow-y-auto custom-scrollbar flex-grow max-h-[70vh]" 
@@ -535,8 +547,8 @@ function App() {
                         {/* Botón "TODOS" */}
                         <button
                             className={`text-left p-3 rounded transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none w-full flex-shrink-0
-                                ${selectedCategory === null ? 'bg-blue-600 ring-2 ring-blue-400' : 'hover:bg-gray-700'}
-                                ${focusedCategoryIndex === -1 ? 'bg-gray-600 border-l-4 border-yellow-500' : ''}`}
+                                 ${selectedCategory === null ? 'bg-blue-600 ring-2 ring-blue-400' : 'hover:bg-gray-700'}
+                                 ${focusedCategoryIndex === -1 ? 'bg-gray-600 border-l-4 border-yellow-500' : ''}`}
                             onClick={() => { setSelectedCategory(null); setIsCategoryMenuVisible(false); focusChannelCard(0); }}
                             tabIndex={isCategoryMenuVisible ? "0" : "-1"}
                             id="cat-focus--1"
@@ -550,8 +562,8 @@ function App() {
                                 key={category}
                                 id={`cat-focus-${index}`}
                                 className={`text-left p-3 rounded transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none w-full flex-shrink-0
-                                    ${index === focusedCategoryIndex ? 'bg-gray-600 border-l-4 border-yellow-500' : 'hover:bg-gray-700'}
-                                    ${category === selectedCategory ? 'bg-blue-600 ring-2 ring-blue-400' : ''}`}
+                                     ${index === focusedCategoryIndex ? 'bg-gray-600 border-l-4 border-yellow-500' : 'hover:bg-gray-700'}
+                                     ${category === selectedCategory ? 'bg-blue-600 ring-2 ring-blue-400' : ''}`}
                                 onClick={() => { setSelectedCategory(category); setIsCategoryMenuVisible(false); focusChannelCard(0); }}
                                 tabIndex={isCategoryMenuVisible ? "0" : "-1"}
                             >
@@ -589,7 +601,6 @@ function App() {
             <div 
                 className={`absolute top-0 left-0 h-full bg-gray-900/90 text-white transition-all duration-300 z-20 w-1/3 max-w-md flex flex-col`}
                 style={{
-                     // Ocultar completamente si no debe estar visible (trasladar -100%)
                      transform: isChannelsMenuVisible
                          ? 'translateX(0)' 
                          : 'translateX(-100%)',
@@ -597,7 +608,6 @@ function App() {
             >
                 <div className={`p-8 h-full flex flex-col ${isChannelsMenuVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
                     
-                    {/* Título Fijo */}
                     <h1 className="text-4xl font-bold mb-6 text-blue-400 flex-shrink-0">
                         {currentCategoryTitle}
                     </h1>
@@ -607,7 +617,6 @@ function App() {
                             No hay canales en esta categoría.
                         </div>
                     ) : (
-                        // La lista de canales
                         <div 
                             id="channels-list-container"
                             className="space-y-4 overflow-y-auto flex-grow custom-scrollbar" 
@@ -615,37 +624,37 @@ function App() {
                         > 
                             {filteredCategories.map((category) => (
                                 <div key={category} className="category-group">
-                                    {/* Muestra el título de la categoría solo si estamos en la vista "TODOS" */}
                                     {selectedCategory === null && (
                                         <h2 className={`text-xl font-semibold mb-2 pt-1 pb-1 sticky top-0 bg-gray-900/90 z-30 transition-colors`}>
                                             {category}
                                         </h2>
                                     )}
                                     <div className="space-y-1">
-                                         {groupedFilteredChannels[category].map((video) => {
-                                             const globalIndex = allChannels.findIndex(c => c.url === video.url);
+                                            {groupedFilteredChannels[category].map((video) => {
+                                                // BUSCAR ÍNDICE GLOBAL POR ID ÚNICO
+                                                const globalIndex = allChannels.findIndex(c => c.id === video.id); 
 
-                                             return (
-                                                 <VideoCard 
-                                                     ref={(el) => setCardRef(globalIndex, el)}
-                                                     key={video.url}
-                                                     video={video} 
-                                                     onPlay={handlePlayChannel} 
-                                                     index={globalIndex} 
-                                                     isActive={globalIndex === focusedIndex} 
-                                                     isFocusable={isFocusableChannel}
-                                                 />
-                                             );
-                                         })}
+                                                return (
+                                                    <VideoCard 
+                                                         ref={(el) => setCardRef(globalIndex, el)}
+                                                         key={video.id} // USAR ID ÚNICO COMO KEY
+                                                         video={video} 
+                                                         onPlay={handlePlayChannel} 
+                                                         index={globalIndex} 
+                                                         isActive={globalIndex === focusedIndex} 
+                                                         isFocusable={isFocusableChannel}
+                                                     />
+                                                );
+                                            })}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
 
-                 <div className="text-sm text-gray-500 mt-4 flex-shrink-0">
-                     Canales visibles: **{filteredChannels.length}**←
-                 </div>
+                   <div className="text-sm text-gray-500 mt-4 flex-shrink-0">
+                        Canales visibles: **{filteredChannels.length}**←
+                    </div>
                 </div>
             </div>
         );
@@ -660,7 +669,7 @@ function App() {
                 <VideoPlayer 
                     ref={playerRef} 
                     url={currentChannelUrl} 
-                    isPlaying={isPlaying} // ⭐ Controlamos la reproducción con estado
+                    isPlaying={isPlaying} 
                     onFinish={handleVideoEnd} 
                 />
             )}
@@ -684,14 +693,14 @@ function App() {
              {!isMenuVisible && (
                  <button
                       className="absolute top-4 left-4 p-2 bg-gray-900/70 rounded-lg text-white z-10 
-                                 transition-all duration-200 
-                                 hover:bg-gray-700/90 focus:bg-gray-700/90 focus:ring-2 focus:ring-blue-500"
+                                     transition-all duration-200 
+                                     hover:bg-gray-700/90 focus:bg-gray-700/90 focus:ring-2 focus:ring-blue-500"
                       onClick={openMenu}
                       tabIndex="0" 
                       aria-label="Abrir lista de canales"
                  >
                       <p className="text-sm font-light">
-                           ←
+                             ←
                       </p>
                  </button>
              )}

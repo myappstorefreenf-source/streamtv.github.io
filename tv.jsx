@@ -8,7 +8,7 @@
 // 0. CONFIGURACIÓN
 // ----------------------------------------------------------------------
 const REMOTE_M3U_URL = 'https://raw.githubusercontent.com/myappstorefreenf-source/streamtv.github.io/main/playlist.m3u'; 
-const DEFAULT_START_CHANNEL_URL = 'https://live.airederadiotv.airederadiotv.sml/play/playlist.m3u8'; 
+//const DEFAULT_START_CHANNEL_URL = 'https://live.airederadiotv.airederadiotv.sml/play/playlist.m3u8'; 
 
 // ----------------------------------------------------------------------
 // 0. PARSEADOR M3U Y CARGA REMOTA 

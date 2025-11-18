@@ -417,7 +417,7 @@ const LOCAL_M3U_DATA = [
     }
 ];
 
-//const DEFAULT_START_CHANNEL_URL = 'https://livetrx01.vodgc.net/eltrecetv/index.m3u8'; 
+const DEFAULT_START_CHANNEL_URL = 'https://livetrx01.vodgc.net/eltrecetv/index.m3u8'; 
 
 
 // ----------------------------------------------------------------------
@@ -483,11 +483,10 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
 
 
 // ----------------------------------------------------------------------
-// 3. COMPONENTE VIDEO PLAYER (Maneja HLS y Headers)
+// 3. COMPONENTE VIDEO PLAYER (Maneja HLS y Headers y la limpieza de audio)
 // ----------------------------------------------------------------------
 const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => {
     
-    // Extraer propiedades (incluyendo headers)
     const url = channel ? channel.url : null;
     const referrer = channel ? channel.referrer : null;
     const userAgent = channel ? channel.userAgent : null;
@@ -500,28 +499,28 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         const handleEnded = () => onFinish();
         video.addEventListener('ended', handleEnded);
 
-        // Destruir la instancia HLS anterior antes de cargar una nueva
+        // ⭐ LIMPIEZA INICIAL ANTES DE CARGAR NUEVA URL (Corrige audio pegado)
         if (video.__hlsInstance) {
              video.__hlsInstance.destroy();
              delete video.__hlsInstance;
+             video.pause();
+             video.removeAttribute('src'); 
+             video.load(); 
         }
         
         if (window.Hls && Hls.isSupported()) { 
             
-            // ⭐ Configuración Hls.js para inyectar headers
             const hlsConfig = {};
             
             if (referrer) {
                 hlsConfig.xhrSetup = function (xhr, url) {
                     try {
-                        // Intentar establecer el Referer 
                         xhr.setRequestHeader('Referer', referrer); 
                     } catch (e) {
                         console.warn("No se pudo establecer el Referer.", e);
                     }
                     
                     if (userAgent) {
-                         // Intentar establecer User-Agent 
                          try {
                               xhr.setRequestHeader('User-Agent', userAgent);
                          } catch (e) {
@@ -530,12 +529,11 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                     }
                 };
             }
-            // FIN LÓGICA DE HEADERS
             
             hls = new Hls(hlsConfig);
             hls.loadSource(url); 
             hls.attachMedia(video);
-            video.__hlsInstance = hls;
+            video.__hlsInstance = hls; // Guarda la instancia en el elemento DOM para fácil acceso
             
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                  if (isPlaying) {
@@ -551,20 +549,22 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
 
         } else {
             // Reproducción nativa (Fallback)
-            console.warn("Reproducción nativa. URL:", url);
             video.src = url;
             if (isPlaying) {
                 video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
             }
         }
         
-        // Función de limpieza de React
+        // ⭐ FUNCIÓN DE LIMPIEZA FINAL (Corrige audio pegado al desmontar/cambiar)
         return () => {
             video.removeEventListener('ended', handleEnded);
+            video.pause();
              if (video.__hlsInstance) {
                  video.__hlsInstance.destroy();
                  delete video.__hlsInstance;
              }
+             video.removeAttribute('src');
+             video.load();
         };
     }, [url, onFinish, ref, isPlaying, referrer, userAgent]); 
 
@@ -681,7 +681,6 @@ function App() {
         setIsCategoryMenuVisible(true);
         setIsPlaying(false);
         requestAnimationFrame(() => {
-            // Focusea la categoría actualmente seleccionada o 'Todos'
             const targetId = focusedCategoryIndex === -1 ? 'cat-focus--1' : `cat-focus-${focusedCategoryIndex}`;
             document.getElementById(targetId)?.focus();
         });
@@ -759,24 +758,22 @@ function App() {
     }, []);
 
     
-    // ⭐ LÓGICA DE NAVEGACIÓN D-PAD (Reinsertada)
+    // ⭐ LÓGICA DE NAVEGACIÓN D-PAD
     const handleDpadNavigation = React.useCallback((event) => {
         
         const key = event.key;
-        // Solo maneja teclas D-Pad, Enter y Espacio
         const isDpadKey = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(key);
 
         if (!isMenuVisible) {
-            // Si el menú está oculto (viendo el video)
             if (key === 'ArrowLeft' || key === 'Enter' || key === ' ') {
                 event.preventDefault();
-                openMenu(); // Abrir el menú de canales
+                openMenu(); 
             }
             return;
         }
 
         if (isDpadKey) {
-            event.preventDefault(); // Previene el scroll del navegador
+            event.preventDefault();
         } else {
             return;
         }
@@ -785,14 +782,13 @@ function App() {
         const totalFilteredChannels = filteredChannels.length;
 
         if (isCategoryMenuVisible) {
-            // ------------------ MENÚ DE CATEGORÍAS ------------------
+            // MENÚ DE CATEGORÍAS 
              let newCatIndex = focusedCategoryIndex;
-             const totalOptions = totalCategories + 1; // Incluye "Todos los Canales"
+             const totalOptions = totalCategories + 1; 
 
              if (key === 'ArrowUp' || key === 'ArrowDown') {
                   if (totalOptions === 0) return;
 
-                  // Mapea -1 ('Todos') a 0, y las categorías a 1, 2, 3...
                   const currentIndexInList = focusedCategoryIndex === -1 ? 0 : focusedCategoryIndex + 1; 
                   let newIndexInList;
 
@@ -802,7 +798,6 @@ function App() {
                       newIndexInList = (currentIndexInList === totalOptions - 1) ? 0 : currentIndexInList + 1;
                   }
 
-                  // Mapea de vuelta: 0 a -1 ('Todos'), 1 a 0, 2 a 1...
                   newCatIndex = newIndexInList === 0 ? -1 : newIndexInList - 1;
 
                   setFocusedCategoryIndex(newCatIndex);
@@ -813,55 +808,48 @@ function App() {
                   });
 
              } else if (key === 'ArrowRight' || key === 'Enter' || key === ' ') {
-                  // Seleccionar categoría y cambiar a menú de canales
                   const categoryName = newCatIndex === -1 ? null : categories[newCatIndex];
 
                   setSelectedCategory(categoryName);
                   setIsCategoryMenuVisible(false); 
                   setFocusedFilteredIndex(-1); 
-                  requestAnimationFrame(() => focusChannelCard(0)); // Foco en el primer canal de la nueva lista
+                  requestAnimationFrame(() => focusChannelCard(0));
 
              } else if (key === 'ArrowLeft') {
-                  // Cerrar menú y volver a reproducir
                   setIsCategoryMenuVisible(false);
                   setIsMenuVisible(false);
                   setIsPlaying(true);
              }
 
         } else {
-            // ------------------ MENÚ PRINCIPAL DE CANALES ------------------
+            // MENÚ PRINCIPAL DE CANALES
             
             if (key === 'Enter' || key === ' ') {
                  const channelToPlay = filteredChannels[focusedFilteredIndex]; 
                  if (channelToPlay) {
-                     handlePlayChannel(channelToPlay); // Inicia reproducción
+                     handlePlayChannel(channelToPlay); 
                  } else {
                      focusChannelCard(0);
                  }
                  return;
 
             } else if (key === 'ArrowLeft') {
-                 // Abrir menú de categorías
                  if (totalCategories > 0) {
-                     // Asegura que el foco en el menú de categorías esté en la categoría seleccionada
                      const currentSelectedCatIndex = selectedCategory === null ? -1 : categories.findIndex(c => c === selectedCategory);
                      setFocusedCategoryIndex(currentSelectedCatIndex);
                      openCategoryMenu(); 
                  } else {
-                     // Si no hay categorías, oculta el menú
                      setIsMenuVisible(false);
                      setIsPlaying(true);
                  }
                  return;
 
             } else if (key === 'ArrowRight') {
-                 // Ocultar menú y volver a reproducir
                  setIsMenuVisible(false); 
                  setIsPlaying(true);
                  return;
 
             } else if (key === 'ArrowUp' || key === 'ArrowDown') {
-                 // Navegación de canales
                  if (totalFilteredChannels === 0) return;
 
                  let newFilteredIndex = focusedFilteredIndex;
@@ -879,12 +867,11 @@ function App() {
     }, [isMenuVisible, isCategoryMenuVisible, focusedFilteredIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList]);
 
 
-    // ⭐ EFFECT PARA ESCUCHAR D-PAD (Reinsertado)
+    // EFFECT PARA ESCUCHAR D-PAD
     React.useEffect(() => {
         window.addEventListener('keydown', handleDpadNavigation);
         return () => window.removeEventListener('keydown', handleDpadNavigation);
     }, [handleDpadNavigation]);
-
 
     
     // Componente CategoryMenu (Funcional)
@@ -1032,7 +1019,7 @@ function App() {
     return (
         <div className="relative w-screen h-screen bg-black overflow-hidden">
             
-            {/* 1. Video Player: Ahora recibe el objeto 'currentChannel' */}
+            {/* 1. Video Player */}
             {videoCatalog !== null && currentChannelUrl && (
                 <VideoPlayer 
                     ref={playerRef} 
@@ -1079,10 +1066,8 @@ function App() {
 // ----------------------------------------------------------------------
 const rootElement = document.getElementById('root');
 if (rootElement) {
-    // Asegúrate de usar ReactDOM.createRoot si estás en React 18+
     const root = ReactDOM.createRoot(rootElement);
     root.render(<App />);
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
-

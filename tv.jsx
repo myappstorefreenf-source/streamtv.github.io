@@ -49,6 +49,14 @@ const LOCAL_M3U_DATA = [
         referrer: "https://tn.com.ar/envivo/24hs", 
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },
+     {
+        title: "Cronica",
+        logoUrl: "https://argentina.mom-gmr.org/uploads/_processed_/8/6/csm_16062-1639_import_3467384d27.png",
+        category: "Noticias",
+        url: "https://g4.vxral-slo.transport.edge-access.net/a14/ngrp:cronicatv_video1-100044_all/cronicatv_video1-100044_720p.m3u8",
+        referrer: "https://vmf.edge-apps.net/", 
+        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
+    },
     {
         title: "Argentinisima Satelital",
         logoUrl: "https://files.catbox.moe/7cghqq.png",
@@ -1109,3 +1117,4 @@ if (rootElement) {
     // ReactDOM.render(<App />, document.getElementById('root'));
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+

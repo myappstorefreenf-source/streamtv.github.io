@@ -488,9 +488,27 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
     const referrer = channel ? channel.referrer : null;
     const userAgent = channel ? channel.userAgent : null;
     
+    // Función para manejar la configuración del XHR (Referer/User-Agent)
+    const setupXhr = React.useCallback((xhr, url) => {
+        if (referrer) {
+            try {
+                xhr.setRequestHeader('Referer', referrer); 
+            } catch (e) {
+                console.warn("No se pudo establecer el Referer.", e);
+            }
+        }
+        if (userAgent) {
+            try {
+                xhr.setRequestHeader('User-Agent', userAgent);
+            } catch (e) {
+                // console.warn("No se pudo establecer User-Agent.", e);
+            }
+        }
+    }, [referrer, userAgent]);
+
     React.useEffect(() => {
         const video = ref.current;
-        const currentUrl = url; // Usamos currentUrl para la limpieza y carga
+        const currentUrl = url;
         
         // No hacer nada si no hay URL para cargar
         if (!video || !currentUrl) return;
@@ -503,32 +521,26 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         if (video.__hlsInstance) {
              video.__hlsInstance.destroy();
              delete video.__hlsInstance;
-             video.pause();
-             video.removeAttribute('src'); 
-             video.load(); 
         }
+        video.pause();
+        
+        // ⭐ PASO CLAVE 1: MUTE INMEDIATO PARA EVITAR EL ECO
+        video.muted = true; 
+        
+        // Limpieza de fuente nativa
+        video.removeAttribute('src'); 
+        video.load(); 
+        
         
         if (window.Hls && Hls.isSupported()) { 
             
-            const hlsConfig = {};
-            
-            if (referrer) {
-                hlsConfig.xhrSetup = function (xhr, url) {
-                    try {
-                        xhr.setRequestHeader('Referer', referrer); 
-                    } catch (e) {
-                        console.warn("No se pudo establecer el Referer.", e);
-                    }
-                    
-                    if (userAgent) {
-                         try {
-                              xhr.setRequestHeader('User-Agent', userAgent);
-                         } catch (e) {
-                              // console.warn("No se pudo establecer User-Agent.", e);
-                         }
-                    }
-                };
-            }
+            const hlsConfig = {
+                // Configuración de HLS para búfer y headers
+                maxBufferLength: 30,     
+                minBufferLength: 3,      
+                autoSyncBuffer: 0.5,
+                xhrSetup: setupXhr 
+            };
             
             hls = new Hls(hlsConfig);
             hls.loadSource(currentUrl); 
@@ -538,6 +550,16 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                  if (isPlaying) {
                      video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
+                     
+                     // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
+                     // Damos 500ms al sistema operativo para que el reproductor nativo
+                     // se silencie o se resuelva el conflicto de decodificación.
+                     setTimeout(() => {
+                         if (video && video.muted) {
+                             video.muted = false; // Reactivar el audio
+                             console.log("Audio Reactivado después del Mute Agresivo.");
+                         }
+                     }, 500); 
                  }
             });
 
@@ -551,14 +573,21 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             // Reproducción nativa (Fallback)
             video.src = currentUrl;
             if (isPlaying) {
-                video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
+                 video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
+                 // Aplicar el desmute también al fallback nativo
+                 setTimeout(() => {
+                     if (video && video.muted) video.muted = false; 
+                 }, 500);
             }
         }
         
         // ⭐ FUNCIÓN DE LIMPIEZA FINAL 
         return () => {
-            video.removeEventListener('ended', handleEnded);
-            video.pause();
+             video.removeEventListener('ended', handleEnded);
+             video.pause();
+             // Asegurarse de silenciar el elemento saliente
+             video.muted = true; 
+             
              if (video.__hlsInstance) {
                  video.__hlsInstance.destroy();
                  delete video.__hlsInstance;
@@ -566,8 +595,8 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
              video.removeAttribute('src');
              video.load();
         };
-    }, [url, onFinish, ref, isPlaying, referrer, userAgent]); 
-
+    }, [url, onFinish, ref, isPlaying, setupXhr]); // Dependencia actualizada a setupXhr
+    
     // useEffect para controlar la pausa/reproducción
     React.useEffect(() => {
         const video = ref.current;

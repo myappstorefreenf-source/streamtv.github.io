@@ -599,7 +599,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                  video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
                  // Aplicar el desmute también al fallback nativo
                  setTimeout(() => {
-                     if (video && video.muted) video.muted = false; 
+                     if (video && video.muted) video.muted = true; 
                  }, 000);
             }
         }

@@ -577,12 +577,12 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                      // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
                      // Damos 500ms al sistema operativo para que el reproductor nativo
                      // se silencie o se resuelva el conflicto de decodificación.
-              /*       setTimeout(() => {
+                     setTimeout(() => {
                          if (video && video.muted) {
                              video.muted = false; // Reactivar el audio
                              console.log("Audio Reactivado después del Mute Agresivo.");
                          }
-                     }, 6000); */
+                     }, 6000); 
                  }
             });
 
@@ -598,9 +598,9 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             if (isPlaying) {
                  video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
                  // Aplicar el desmute también al fallback nativo
-                 setTimeout(() => {
+             /*    setTimeout(() => {
                      if (video && video.muted) video.muted = false; 
-                 }, 2500);
+                 }, 2500);*/
             }
         }
         

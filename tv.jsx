@@ -548,8 +548,8 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             const hlsConfig = {
                 // Configuración de Búfer
                 maxBufferLength: 40,     
-                minBufferLength: 3,      
-                autoSyncBuffer: 0.3,
+                minBufferLength: 8,      
+                autoSyncBuffer: 0.5,
 
                 // Configuración de Procesamiento y Sincronización
                 enableWorker: true, 
@@ -1313,6 +1313,7 @@ if (rootElement) {
     // ReactDOM.render(<App />, document.getElementById('root'));
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

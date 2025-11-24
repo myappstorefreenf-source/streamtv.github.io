@@ -491,11 +491,11 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
 // 3. COMPONENTE VIDEO PLAYER (Maneja HLS y la limpieza agresiva de audio)
 // ----------------------------------------------------------------------
 const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => {
-    
+
     const url = channel ? channel.url : null;
     const referrer = channel ? channel.referrer : null;
     const userAgent = channel ? channel.userAgent : null;
-    
+
     // Función para manejar la configuración del XHR (Referer/User-Agent)
     const setupXhr = React.useCallback((xhr, url) => {
         if (referrer) {
@@ -517,31 +517,38 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
     React.useEffect(() => {
         const video = ref.current;
         const currentUrl = url;
-        
+
         // No hacer nada si no hay URL para cargar
         if (!video || !currentUrl) return;
-        
+
         let hls;
         const handleEnded = () => onFinish();
         video.addEventListener('ended', handleEnded);
 
-        // ⭐ LIMPIEZA AGRESIVA INICIAL (Detiene el audio del canal anterior)
+        // ==========================================================
+        // ⭐ LIMPIEZA AGRESIVA UNIFICADA (Elimina cualquier estado anterior)
+        // Esta es la ÚNICA sección de limpieza antes de la inicialización.
+        // ==========================================================
         if (video.__hlsInstance) {
+             video.__hlsInstance.stopLoad(); 
+             video.__hlsInstance.detachMedia();
              video.__hlsInstance.destroy();
              delete video.__hlsInstance;
         }
+        
+        // Controlar el elemento <video>
         video.pause();
-        
-        // ⭐ PASO CLAVE 1: MUTE INMEDIATO PARA EVITAR EL ECO
-        video.muted = true; 
-        
-        // Limpieza de fuente nativa
+        video.muted = true; // Mantenemos el silencio
+        video.currentTime = 0; // Reinicio de tiempo
         video.removeAttribute('src'); 
-        video.load(); 
+        // ❌ CORRECCIÓN CLAVE: Eliminamos video.load() para que HLS lo maneje.
+        // video.load(); 
         
-        
+        // ==========================================================
+
+
         if (window.Hls && Hls.isSupported()) { 
-            
+
             const hlsConfig = {
                 // Configuración de HLS para búfer y headers
                 maxBufferLength: 30,     
@@ -549,40 +556,28 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 autoSyncBuffer: 0.5,
                 xhrSetup: setupXhr 
             };
-            if (video) {
-    video.pause(); // Asegura la pausa antes de la destrucción
-    video.muted = true; // Doble chequeo de silencio
+            
+            // ❌ CORRECCIÓN CLAVE: Eliminado el bloque de limpieza redundante aquí.
 
-    if (video.__hlsInstance) {
-        video.__hlsInstance.stopLoad(); // Detiene la descarga de segmentos
-        video.__hlsInstance.detachMedia(); // Desconecta HLS del elemento <video>
-        video.__hlsInstance.destroy(); // Destruye todo
-        delete video.__hlsInstance;
-    }
-    
-    // ⭐ REFUERZO: Reiniciar el tiempo y fuente del video
-    video.currentTime = 0; // Reiniciar el puntero de reproducción
-    video.removeAttribute('src'); 
-    video.load(); 
-}
             hls = new Hls(hlsConfig);
+            // ⭐ ORDEN CLAVE: Cargar fuente y adjuntar primero.
             hls.loadSource(currentUrl); 
             hls.attachMedia(video);
             video.__hlsInstance = hls;
-            
+
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                  if (isPlaying) {
+                     // El ÚNICO lugar donde se llama a play() para HLS.
                      video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
-                     
+
                      // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
-                     // Damos 500ms al sistema operativo para que el reproductor nativo
-                     // se silencie o se resuelva el conflicto de decodificación.
-                     setTimeout(() => {
+                     // Asegúrate de que esta sección esté COMENTADA si quieres mute permanente.
+                     /* setTimeout(() => {
                          if (video && video.muted) {
                              video.muted = false; // Reactivar el audio
                              console.log("Audio Reactivado después del Mute Agresivo.");
                          }
-                     }, 2.6); 
+                     }, 2600); */ 
                  }
             });
 
@@ -595,22 +590,20 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         } else {
             // Reproducción nativa (Fallback)
             video.src = currentUrl;
+            // ⭐ AQUI SÍ ES NECESARIO LLAMAR a load() para el fallback nativo.
+            video.load(); 
             if (isPlaying) {
                  video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
-                 // Aplicar el desmute también al fallback nativo
-             /*    setTimeout(() => {
-                     if (video && video.muted) video.muted = false; 
-                 }, 5.0);
             }
-        }*/
-        
-        // ⭐ FUNCIÓN DE LIMPIEZA FINAL 
+            // ❌ CORRECCIÓN: Eliminado el setTimeout de desmute del fallback
+        }
+
+        // ⭐ FUNCIÓN DE LIMPIEZA FINAL (Es importante mantenerla completa)
         return () => {
              video.removeEventListener('ended', handleEnded);
              video.pause();
-             // Asegurarse de silenciar el elemento saliente
              video.muted = true; 
-             
+
              if (video.__hlsInstance) {
                  video.__hlsInstance.destroy();
                  delete video.__hlsInstance;
@@ -618,8 +611,8 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
              video.removeAttribute('src');
              video.load();
         };
-    }, [url, onFinish, ref, isPlaying, setupXhr]); // Dependencia actualizada a setupXhr
-    
+    }, [url, onFinish, ref, isPlaying, setupXhr]); 
+
     // useEffect para controlar la pausa/reproducción
     React.useEffect(() => {
         const video = ref.current;
@@ -631,7 +624,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             }
         }
     }, [isPlaying, ref]);
-    
+
     return (
         <div className="absolute top-0 left-0 w-full h-full bg-black">
             <video
@@ -640,13 +633,14 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 width='100%'
                 height='100%'
                 playsInline
-              //  autoPlay
-                muted
+              // ❌ CORRECCIÓN CLAVE: autoPlay debe estar ausente
+                muted // ✅ Mantener para iniciar en silencio
                 controls={false}
             />
         </div>
     );
 });
+
 
 
 // ----------------------------------------------------------------------

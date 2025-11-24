@@ -546,7 +546,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 // Configuración de HLS para búfer y headers
                 maxBufferLength: 30,     
                 minBufferLength: 2,      
-                autoSyncBuffer: 0.2,
+                autoSyncBuffer: 0.5,
                 xhrSetup: setupXhr 
             };
             if (video) {
@@ -582,7 +582,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                              video.muted = false; // Reactivar el audio
                              console.log("Audio Reactivado después del Mute Agresivo.");
                          }
-                     }, 6000); 
+                     }, 3000); 
                  }
             });
 

@@ -518,7 +518,6 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         const video = ref.current;
         const currentUrl = url;
 
-        // No hacer nada si no hay URL para cargar
         if (!video || !currentUrl) return;
 
         let hls;
@@ -526,8 +525,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         video.addEventListener('ended', handleEnded);
 
         // ==========================================================
-        // ⭐ LIMPIEZA AGRESIVA UNIFICADA (Elimina cualquier estado anterior)
-        // Esta es la ÚNICA sección de limpieza antes de la inicialización.
+        // ⭐ LIMPIEZA AGRESIVA UNIFICADA
         // ==========================================================
         if (video.__hlsInstance) {
              video.__hlsInstance.stopLoad(); 
@@ -536,61 +534,50 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
              delete video.__hlsInstance;
         }
         
-        // Controlar el elemento <video>
         video.pause();
-        video.muted = true; // Mantenemos el silencio
-        video.currentTime = 0; // Reinicio de tiempo
+        video.muted = true; // SILENCIO GARANTIZADO
+        video.currentTime = 0; 
         video.removeAttribute('src'); 
-        // ❌ CORRECCIÓN CLAVE: Eliminamos video.load() para que HLS lo maneje.
-        // video.load(); 
         
         // ==========================================================
 
 
         if (window.Hls && Hls.isSupported()) { 
 
+            // ⭐ CORRECCIÓN DE SINTAXIS: Todas las propiedades dentro de un solo objeto hlsConfig
             const hlsConfig = {
-                // Configuración de HLS para búfer y headers
+                // Configuración de Búfer
                 maxBufferLength: 40,     
                 minBufferLength: 3,      
                 autoSyncBuffer: 0.3,
+
+                // Configuración de Procesamiento y Sincronización
+                enableWorker: true, 
+                maxAudioFramesDrift: 3, 
+                
+                // Configuración de Red
                 xhrSetup: setupXhr 
             };
-                  // Parámetros de Procesamiento y Sincronización (controlan cómo se procesan los datos)
-                enableWorker: true, // <-- El Web Worker se configura aquí.
-                maxAudioFramesDrift: 3, 
-                xhrSetup: setupXhr,
-            };
-
-            // ❌ CORRECCIÓN CLAVE: Eliminado el bloque de limpieza redundante aquí.
 
             hls = new Hls(hlsConfig);
-            // ⭐ ORDEN CLAVE: Cargar fuente y adjuntar primero.
             hls.loadSource(currentUrl); 
             hls.attachMedia(video);
             video.__hlsInstance = hls;
 
            
-hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
-    // ⭐ CAMBIO CLAVE: Forzar el nivel 0 (la calidad más baja)
-    if (hls.currentLevel !== 0) {
-        hls.currentLevel = 0; 
-    }
+            // ⭐ CORRECCIÓN DE LÓGICA: Unificación de MANIFEST_PARSED
+            hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
+                // 1. Forzar el nivel 0 (calidad más baja para TV Boxes)
+                if (hls.currentLevel !== 0) {
+                    hls.currentLevel = 0; 
+                }
 
- function() {
-                 if (isPlaying) {
-                     // El ÚNICO lugar donde se llama a play() para HLS.
-                     video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
+                if (isPlaying) {
+                    // 2. Iniciar la reproducción
+                    video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
 
-                     // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
-                     // Asegúrate de que esta sección esté COMENTADA si quieres mute permanente.
-                     /* setTimeout(() => {
-                         if (video && video.muted) {
-                             video.muted = false; // Reactivar el audio
-                             console.log("Audio Reactivado después del Mute Agresivo.");
-                         }
-                     }, 2600); */ 
-                 }
+                    // ❌ NO HAY CÓDIGO DE DES-MUTEO AQUÍ
+                }
             });
 
             hls.on(Hls.Events.ERROR, function (event, data) {
@@ -602,20 +589,19 @@ hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
         } else {
             // Reproducción nativa (Fallback)
             video.src = currentUrl;
-            // ⭐ AQUI SÍ ES NECESARIO LLAMAR a load() para el fallback nativo.
             video.load(); 
             if (isPlaying) {
                  video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
             }
-            // ❌ CORRECCIÓN: Eliminado el setTimeout de desmute del fallback
+            // ❌ NO HAY CÓDIGO DE DES-MUTEO AQUÍ
         }
 
-        // ⭐ FUNCIÓN DE LIMPIEZA FINAL (Es importante mantenerla completa)
+        // ⭐ FUNCIÓN DE LIMPIEZA FINAL 
         return () => {
              video.removeEventListener('ended', handleEnded);
              video.pause();
-             video.muted = true; 
-
+             video.muted = true; // SILENCIO GARANTIZADO
+             
              if (video.__hlsInstance) {
                  video.__hlsInstance.destroy();
                  delete video.__hlsInstance;
@@ -629,6 +615,7 @@ hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
     React.useEffect(() => {
         const video = ref.current;
         if (video) {
+            // Este useEffect solo controla play/pause, no toca el mute.
             if (isPlaying) {
                 video.play().catch(e => console.error("Error al reanudar:", e));
             } else {
@@ -645,13 +632,13 @@ hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
                 width='100%'
                 height='100%'
                 playsInline
-              // ❌ CORRECCIÓN CLAVE: autoPlay debe estar ausente
-                muted // ✅ Mantener para iniciar en silencio
+                muted // SILENCIO GARANTIZADO en el JSX
                 controls={false}
             />
         </div>
     );
 });
+
 
 
 

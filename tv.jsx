@@ -582,7 +582,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                              video.muted = false; // Reactivar el audio
                              console.log("Audio Reactivado después del Mute Agresivo.");
                          }
-                     }, 100); 
+                     }, 0); 
                  }
             });
 
@@ -600,7 +600,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                  // Aplicar el desmute también al fallback nativo
                  setTimeout(() => {
                      if (video && video.muted) video.muted = false; 
-                 }, 1600);
+                 }, 160);
             }
         }
         

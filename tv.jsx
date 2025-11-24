@@ -641,13 +641,17 @@ function App() {
     const [currentChannel, setCurrentChannel] = React.useState(null); 
     const currentChannelUrl = currentChannel ? currentChannel.url : null;
     
+    // Estados de visibilidad del menú
     const [isMenuVisible, setIsMenuVisible] = React.useState(true); 
+    const [isCategoryMenuVisible, setIsCategoryMenuVisible] = React.useState(false);
+    // 🆕 Nuevo estado para el menú principal (TV/Pelis/Salir)
+    const [isMainMenuVisible, setIsMainMenuVisible] = React.useState(false); 
+
     const playerRef = React.useRef(null);
     const [focusedIndex, setFocusedIndex] = React.useState(-1); 
     const [focusedFilteredIndex, setFocusedFilteredIndex] = React.useState(-1);
     const [focusedCategoryIndex, setFocusedCategoryIndex] = React.useState(-1);
     const [selectedCategory, setSelectedCategory] = React.useState(null);
-    const [isCategoryMenuVisible, setIsCategoryMenuVisible] = React.useState(false);
     const [isPlaying, setIsPlaying] = React.useState(false); // Inicia sin reproducción
 
     const allChannels = videoCatalog || [];
@@ -702,9 +706,32 @@ function App() {
     }, [filteredChannels, allChannels]);
 
 
-    const openMenu = React.useCallback(() => {
-        setIsCategoryMenuVisible(false);
+    // 🆕 Función para abrir el Menú Principal (TV/Pelis/Salir)
+    const openMainMenu = React.useCallback(() => {
         setIsMenuVisible(true);
+        setIsCategoryMenuVisible(false);
+        setIsMainMenuVisible(true);
+        setIsPlaying(false);
+        
+        // Enfocar el primer elemento del Main Menu
+        requestAnimationFrame(() => {
+            document.getElementById('main-menu-tv-select')?.focus();
+        });
+    }, []);
+
+    // 🆕 Función para cerrar todos los menús y volver al video
+    const closeAllMenus = React.useCallback(() => {
+        setIsCategoryMenuVisible(false);
+        setIsMainMenuVisible(false);
+        setIsMenuVisible(false);
+        if (currentChannel) setIsPlaying(true);
+    }, [currentChannel]);
+
+    // Función para abrir el menú de canales (el que tiene la lista de canales)
+    const openChannelMenu = React.useCallback(() => {
+        setIsMainMenuVisible(false); // Cierra el menú principal
+        setIsCategoryMenuVisible(false); // Cierra el menú de categorías
+        setIsMenuVisible(true); // Abre el menú base (ChannelsMenu)
         setIsPlaying(false); 
         
         if (filteredChannels.length > 0) {
@@ -712,9 +739,11 @@ function App() {
             requestAnimationFrame(() => focusChannelCard(initialFocusIndex));
         }
     }, [focusChannelCard, focusedFilteredIndex, filteredChannels.length]);
-
+    
+    // Función para abrir el menú de categorías (Lista de géneros)
     const openCategoryMenu = React.useCallback(() => {
         if (!isMenuVisible) return;
+        setIsMainMenuVisible(false); // Cierra el menú principal
         setIsCategoryMenuVisible(true);
         setIsPlaying(false);
         requestAnimationFrame(() => {
@@ -734,6 +763,7 @@ function App() {
         setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
         
         setIsCategoryMenuVisible(false);
+        setIsMainMenuVisible(false);
         setIsMenuVisible(false);
         setIsPlaying(true);
     }, [allChannels, filteredChannels]);
@@ -762,7 +792,9 @@ function App() {
             setFocusedFilteredIndex(0); 
             setSelectedCategory(null);
             setFocusedCategoryIndex(-1);
-            // NO se llama a setIsPlaying(true)
+            // Mostrar el menú principal (TV/Pelis) al inicio
+            setIsMainMenuVisible(true); 
+            setIsMenuVisible(true);
         }
         
     }, []); 
@@ -787,7 +819,49 @@ function App() {
             }
         }
     }, []);
+    // =========================================================
+    // ⭐ FUNCIÓN CRUCIAL PARA LA INTEGRACIÓN NATIVA (AndroidBridge)
+    // =========================================================
+    React.useEffect(() => {
+        
+        const stopVideoAndConsumeBackButton = () => {
+            const video = playerRef.current;
+            
+            // Si no hay reproductor de video montado, no hacemos nada y devolvemos 'false'
+            if (!video) {
+                return "false";
+            }
+            
+            // 1. Detención agresiva del reproductor (Misma lógica del VideoPlayer cleanup)
+            video.pause();
+            video.muted = true; // Silenciar inmediatamente
+            
+            if (video.__hlsInstance) {
+                 video.__hlsInstance.destroy();
+                 delete video.__hlsInstance;
+            }
+            video.removeAttribute('src'); 
+            video.load(); 
 
+            // 2. Notificar a React que detuvimos la reproducción y abrimos el menú
+            // Usamos un timeout por seguridad, aunque un 'setter' directo suele ser suficiente.
+            setTimeout(() => {
+                 // Abrir el menú principal después de detener la reproducción
+                 openMainMenu(); 
+            }, 50); 
+            
+            // 3. Devolver 'true' para que Kotlin sepa que el JS consumió la acción.
+            return "true";
+        };
+        
+        // Exponemos la función al ámbito global
+        window.stopVideoAndConsumeBackButton = stopVideoAndConsumeBackButton;
+        
+        // Limpiamos la función al desmontar el componente (aunque en Android TV la App rara vez desmonta)
+        return () => {
+            delete window.stopVideoAndConsumeBackButton;
+        };
+    }, [playerRef, openMainMenu]); // Dependencias: playerRef y openMainMenu
     
     // ⭐ LÓGICA DE NAVEGACIÓN D-PAD
     const handleDpadNavigation = React.useCallback((event) => {
@@ -799,7 +873,8 @@ function App() {
             // Si el menú está oculto (viendo el video)
             if (key === 'ArrowLeft' || key === 'Enter' || key === ' ') {
                 event.preventDefault();
-                openMenu(); 
+                // Ahora abre el MainMenu en lugar del ChannelMenu directamente
+                openMainMenu(); 
             }
             return;
         }
@@ -813,48 +888,93 @@ function App() {
         const totalCategories = categories.length;
         const totalFilteredChannels = filteredChannels.length;
 
-        if (isCategoryMenuVisible) {
-            // MENÚ DE CATEGORÍAS 
+        if (isMainMenuVisible) {
+            // 🆕 MENÚ PRINCIPAL (TV / PELIS / SALIR)
+            const focusedElement = document.activeElement;
+            const focusedId = focusedElement ? focusedElement.id : '';
+            
+            const mainOptions = ['main-menu-tv-select', 'main-menu-pelis-select', 'main-menu-exit'];
+            let newIndex = mainOptions.findIndex(id => id === focusedId);
+            if (newIndex === -1) newIndex = 0; // Enfocar TV por defecto
+            
+            if (key === 'ArrowUp') {
+                newIndex = (newIndex === 0) ? mainOptions.length - 1 : newIndex - 1;
+            } else if (key === 'ArrowDown') {
+                newIndex = (newIndex === mainOptions.length - 1) ? 0 : newIndex + 1;
+            } else if (key === 'ArrowLeft') {
+                // Si el usuario presiona izquierda, cerramos todos los menús
+                closeAllMenus();
+                return;
+            } else if (key === 'ArrowRight' || key === 'Enter' || key === ' ') {
+                // Lógica de Selección
+                if (focusedId === 'main-menu-tv-select') {
+                    // Seleccionó TV -> Abrir submenú de categorías
+                    openCategoryMenu(); 
+                } else if (focusedId === 'main-menu-pelis-select') {
+                    // Seleccionó Pelis -> Redirigir a pelis.html
+                    window.location.href = 'index.html'; 
+                    // No es necesario cerrar menus/poner isPlaying=true porque la página se recarga.
+                } else if (focusedId === 'main-menu-exit') {
+                    // Seleccionó Salir -> Función nativa
+                    const volverALaTV = () => {
+                        if (window.AndroidBridge && typeof window.AndroidBridge.exitApp === 'function') {
+                            window.AndroidBridge.exitApp();
+                        } else {
+                            console.log("Saliendo de la aplicación y volviendo a la TV (Simulación)");
+                            closeAllMenus();
+                        }
+                    };
+                    volverALaTV();
+                }
+                return;
+            }
+            
+            requestAnimationFrame(() => {
+                document.getElementById(mainOptions[newIndex])?.focus();
+            });
+            return;
+
+        } else if (isCategoryMenuVisible) {
+            // MENÚ DE CATEGORÍAS (Izquierda del CanalMenu)
              let newCatIndex = focusedCategoryIndex;
              const totalOptions = totalCategories + 1; 
 
              if (key === 'ArrowUp' || key === 'ArrowDown') {
-                  if (totalOptions === 0) return;
+                 if (totalOptions === 0) return;
 
-                  const currentIndexInList = focusedCategoryIndex === -1 ? 0 : focusedCategoryIndex + 1; 
-                  let newIndexInList;
+                 const currentIndexInList = focusedCategoryIndex === -1 ? 0 : focusedCategoryIndex + 1; 
+                 let newIndexInList;
 
-                  if (key === 'ArrowUp') {
-                      newIndexInList = (currentIndexInList === 0) ? totalOptions - 1 : currentIndexInList - 1;
-                  } else { 
-                      newIndexInList = (currentIndexInList === totalOptions - 1) ? 0 : currentIndexInList + 1;
-                  }
+                 if (key === 'ArrowUp') {
+                     newIndexInList = (currentIndexInList === 0) ? totalOptions - 1 : currentIndexInList - 1;
+                 } else { 
+                     newIndexInList = (currentIndexInList === totalOptions - 1) ? 0 : currentIndexInList + 1;
+                 }
 
-                  newCatIndex = newIndexInList === 0 ? -1 : newIndexInList - 1;
+                 newCatIndex = newIndexInList === 0 ? -1 : newIndexInList - 1;
 
-                  setFocusedCategoryIndex(newCatIndex);
-                  requestAnimationFrame(() => {
-                      const targetId = newCatIndex === -1 ? 'cat-focus--1' : `cat-focus-${newCatIndex}`;
-                      document.getElementById(targetId)?.focus();
-                      scrollCategoryList(newCatIndex); 
-                  });
+                 setFocusedCategoryIndex(newCatIndex);
+                 requestAnimationFrame(() => {
+                     const targetId = newCatIndex === -1 ? 'cat-focus--1' : `cat-focus-${newCatIndex}`;
+                     document.getElementById(targetId)?.focus();
+                     scrollCategoryList(newCatIndex); 
+                 });
 
              } else if (key === 'ArrowRight' || key === 'Enter' || key === ' ') {
-                  const categoryName = newCatIndex === -1 ? null : categories[newCatIndex];
+                 const categoryName = newCatIndex === -1 ? null : categories[newCatIndex];
 
-                  setSelectedCategory(categoryName);
-                  setIsCategoryMenuVisible(false); 
-                  setFocusedFilteredIndex(-1); 
-                  requestAnimationFrame(() => focusChannelCard(0));
+                 setSelectedCategory(categoryName);
+                 setIsCategoryMenuVisible(false); // Cierra CategoryMenu
+                 setFocusedFilteredIndex(-1); 
+                 requestAnimationFrame(() => focusChannelCard(0)); // Abre ChannelMenu
 
              } else if (key === 'ArrowLeft') {
-                  setIsCategoryMenuVisible(false);
-                  setIsMenuVisible(false);
-                  if (currentChannel) setIsPlaying(true); // Solo reanuda si había un canal activo
+                 // Izquierda en el CategoryMenu vuelve al MainMenu
+                 openMainMenu(); 
              }
 
         } else {
-            // MENÚ PRINCIPAL DE CANALES
+            // MENÚ PRINCIPAL DE CANALES (ChannelsMenu)
             
             if (key === 'Enter' || key === ' ') {
                  const channelToPlay = filteredChannels[focusedFilteredIndex]; 
@@ -866,19 +986,19 @@ function App() {
                  return;
 
             } else if (key === 'ArrowLeft') {
+                 // Izquierda en ChannelMenu abre el CategoryMenu
                  if (totalCategories > 0) {
                      const currentSelectedCatIndex = selectedCategory === null ? -1 : categories.findIndex(c => c === selectedCategory);
                      setFocusedCategoryIndex(currentSelectedCatIndex);
                      openCategoryMenu(); 
                  } else {
-                     setIsMenuVisible(false);
-                     if (currentChannel) setIsPlaying(true);
+                     // Si no hay categorías, volvemos al Main Menu (aunque es raro)
+                     openMainMenu();
                  }
                  return;
 
             } else if (key === 'ArrowRight') {
-                 setIsMenuVisible(false); 
-                 if (currentChannel) setIsPlaying(true);
+                 closeAllMenus();
                  return;
 
             } else if (key === 'ArrowUp' || key === 'ArrowDown') {
@@ -896,7 +1016,7 @@ function App() {
                  focusChannelCard(newFilteredIndex);
             }
         }
-    }, [isMenuVisible, isCategoryMenuVisible, focusedFilteredIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList, currentChannel]);
+    }, [isMenuVisible, isCategoryMenuVisible, isMainMenuVisible, focusedFilteredIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMainMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList, currentChannel, closeAllMenus]);
 
 
     // EFFECT PARA ESCUCHAR D-PAD
@@ -905,12 +1025,77 @@ function App() {
         return () => window.removeEventListener('keydown', handleDpadNavigation);
     }, [handleDpadNavigation]);
 
+
+    // ----------------------------------------------------------------------
+    // NUEVO COMPONENTE: MainMenu (TV/Pelis/Salir)
+    // ----------------------------------------------------------------------
+    const MainMenu = () => {
+        const isVisible = isMenuVisible && isMainMenuVisible;
+        
+        return (
+            <div 
+                className={`absolute top-0 left-0 h-full bg-gray-900/95 text-white transition-all duration-300 z-40 w-56 p-4 flex flex-col justify-start space-y-4`}
+                style={{
+                    transform: isVisible
+                        ? 'translateX(0)' 
+                        : 'translateX(-100%)',
+                }}
+            >
+                <h2 className="text-2xl font-bold mb-4 border-b border-gray-700 pb-2">
+                    Menú
+                </h2>
+                
+                {/* 1. Opción TV (Abre el CategoryMenu) */}
+                <button
+                    id="main-menu-tv-select"
+                    className={`w-full text-left p-3 rounded-md transition-colors duration-200 bg-gray-700 hover:bg-gray-600 focus:ring-2 focus:ring-blue-500 focus:outline-none`}
+                    onClick={openCategoryMenu}
+                    tabIndex={isVisible ? "0" : "-1"}
+                >
+                    <span role="img" aria-label="TV">📺</span> Canales de TV
+                </button>
+
+                {/* 2. Opción Películas (Redirecciona a pelis.html) */}
+                <button
+                    id="main-menu-pelis-select"
+                    className={`w-full text-left p-3 rounded-md transition-colors duration-200 bg-blue-700 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none`}
+                    onClick={goToPelis}
+                    tabIndex={isVisible ? "0" : "-1"}
+                >
+                    <span role="img" aria-label="Películas">🎬</span> Películas
+                </button>
+                
+                {/* 3. Opción Salir (Llama a la función nativa) */}
+                <button
+                    id="main-menu-exit"
+                    className={`w-full text-left p-3 rounded-md transition-colors duration-200 bg-red-700 hover:bg-red-600 focus:ring-2 focus:ring-blue-500 focus:outline-none`}
+                    onClick={() => {
+                        if (window.AndroidBridge && typeof window.AndroidBridge.exitApp === 'function') {
+                            window.AndroidBridge.exitApp();
+                        } else {
+                            console.log("Saliendo de la aplicación y volviendo a la TV (Simulación)");
+                            closeAllMenus();
+                        }
+                    }}
+                    tabIndex={isVisible ? "0" : "-1"}
+                >
+                    <span role="img" aria-label="Salir">❌</span> Salir de la App
+                </button>
+            </div>
+        );
+    };
     
+    // 🆕 Función auxiliar para goToPelis, usada en MainMenu y en el D-PAD
+    const goToPelis = () => {
+        window.location.href = 'pelis.html'; 
+    };
+
+
     // Componente CategoryMenu (Renderizado interno)
     const CategoryMenu = () => {
         if (categories.length === 0) return null;
 
-        const isCategoryListVisible = isMenuVisible && isCategoryMenuVisible;
+        const isCategoryListVisible = isMenuVisible && isCategoryMenuVisible && !isMainMenuVisible;
         const isFocusableCategory = isCategoryListVisible;
         
         const handleCategorySelect = (categoryName, index) => {
@@ -925,11 +1110,11 @@ function App() {
             <div 
                 ref={categoryListRef}
                 className={`absolute top-0 left-0 h-full bg-gray-900/95 text-white transition-all duration-300 z-30 w-56 p-4 overflow-y-auto custom-scrollbar`}
-                 style={{
+                style={{
                      transform: isCategoryListVisible
-                         ? 'translateX(0)' 
+                         ? 'translateX(56px)' // Mover a la derecha del MainMenu
                          : 'translateX(-100%)',
-                 }}
+                }}
             >
                 <h2 className="text-2xl font-bold mb-4 border-b border-gray-700 pb-2">
                     Categorías
@@ -940,8 +1125,8 @@ function App() {
                     <button
                         id={`cat-focus--1`} 
                         className={`w-full text-left p-2 rounded-md transition-colors duration-200 
-                                    ${selectedCategory === null ? 'bg-blue-600' : 'hover:bg-gray-700'}
-                                    ${focusedCategoryIndex === -1 && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
+                                     ${selectedCategory === null ? 'bg-blue-600' : 'hover:bg-gray-700'}
+                                     ${focusedCategoryIndex === -1 && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
                         onClick={() => handleCategorySelect(null, -1)}
                         tabIndex={isFocusableCategory ? "0" : "-1"}
                     >
@@ -954,8 +1139,8 @@ function App() {
                             id={`cat-focus-${index}`}
                             key={category}
                             className={`w-full text-left p-2 rounded-md transition-colors duration-200 
-                                        ${selectedCategory === category ? 'bg-blue-600' : 'hover:bg-gray-700'}
-                                        ${focusedCategoryIndex === index && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
+                                         ${selectedCategory === category ? 'bg-blue-600' : 'hover:bg-gray-700'}
+                                         ${focusedCategoryIndex === index && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
                             onClick={() => handleCategorySelect(category, index)}
                             tabIndex={isFocusableCategory ? "0" : "-1"}
                         >
@@ -981,7 +1166,8 @@ function App() {
 
         const currentCategoryTitle = selectedCategory || "Todos los Canales";
         
-        const isChannelsMenuVisible = isMenuVisible && !isCategoryMenuVisible;
+        // La visibilidad depende de que el menú base esté abierto y los submenús estén cerrados
+        const isChannelsMenuVisible = isMenuVisible && !isCategoryMenuVisible && !isMainMenuVisible;
         const isFocusableChannel = isChannelsMenuVisible;
         
         const groupedFilteredChannels = groupChannelsByCategory(filteredChannels);
@@ -992,7 +1178,7 @@ function App() {
                 className={`absolute top-0 left-0 h-full bg-gray-900/90 text-white transition-all duration-300 z-20 w-1/3 max-w-md flex flex-col`}
                 style={{
                      transform: isChannelsMenuVisible
-                         ? 'translateX(0)' 
+                         ? 'translateX(0)' // Mantenemos el ChannelsMenu en posición 0
                          : 'translateX(-100%)',
                 }}
             >
@@ -1020,21 +1206,21 @@ function App() {
                                         </h2>
                                     )}
                                     <div className="space-y-1">
-                                            {groupedFilteredChannels[category].map((video) => {
-                                                 const globalIndex = allChannels.findIndex(c => c.url === video.url);
+                                             {groupedFilteredChannels[category].map((video) => {
+                                                     const globalIndex = allChannels.findIndex(c => c.url === video.url);
 
-                                                 return (
-                                                     <VideoCard 
-                                                         ref={(el) => setCardRef(globalIndex, el)}
-                                                         key={video.url}
-                                                         video={video} 
-                                                         onPlay={handlePlayChannel} 
-                                                         index={globalIndex} 
-                                                         isActive={globalIndex === focusedIndex} 
-                                                         isFocusable={isFocusableChannel}
-                                                     />
-                                                 );
-                                            })}
+                                                     return (
+                                                         <VideoCard 
+                                                             ref={(el) => setCardRef(globalIndex, el)}
+                                                             key={video.url}
+                                                             video={video} 
+                                                             onPlay={handlePlayChannel} 
+                                                             index={globalIndex} 
+                                                             isActive={globalIndex === focusedIndex} 
+                                                             isFocusable={isFocusableChannel}
+                                                         />
+                                                     );
+                                             })}
                                     </div>
                                 </div>
                             ))}
@@ -1072,8 +1258,9 @@ function App() {
             {/* 3. Menús */}
             {videoCatalog !== null && (
                  <React.Fragment>
-                      <CategoryMenu />
-                      <ChannelsMenu />
+                     <MainMenu /> {/* 🆕 Nuevo MainMenu (z-40) */}
+                     <CategoryMenu /> {/* CategoryMenu (z-30) */}
+                     <ChannelsMenu /> {/* ChannelsMenu (z-20) */}
                  </React.Fragment>
              )}
 
@@ -1084,13 +1271,13 @@ function App() {
                  </div>
              )}
 
-             {/* 5. Botón para abrir menú */}
+             {/* 5. Botón para abrir menú (Ahora abre el MainMenu) */}
              {!isMenuVisible && (
                  <button
                       className="absolute top-4 left-4 p-2 bg-gray-900/70 rounded-lg text-white z-10 
-                                      transition-all duration-200 
-                                      hover:bg-gray-700/90 focus:bg-gray-700/90 focus:ring-2 focus:ring-blue-500"
-                      onClick={openMenu}
+                                         transition-all duration-200 
+                                         hover:bg-gray-700/90 focus:bg-gray-700/90 focus:ring-2 focus:ring-blue-500"
+                      onClick={openMainMenu} // 🆕 Ahora llama a openMainMenu
                       tabIndex="0" 
                       aria-label="Abrir lista de canales"
                  >
@@ -1117,4 +1304,3 @@ if (rootElement) {
     // ReactDOM.render(<App />, document.getElementById('root'));
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
-

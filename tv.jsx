@@ -546,7 +546,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 // Configuración de HLS para búfer y headers
                 maxBufferLength: 30,     
                 minBufferLength: 5,      
-                autoSyncBuffer: 3,
+                autoSyncBuffer: 0.5,
                 xhrSetup: setupXhr 
             };
             if (video) {
@@ -593,7 +593,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             });
 
         } else {
-            // Reproducción nativa (Fallback)
+           /* // Reproducción nativa (Fallback)
             video.src = currentUrl;
             if (isPlaying) {
                  video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
@@ -602,7 +602,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                      if (video && video.muted) video.muted = false; 
                  }, 2500);*/
             }
-        }
+        }*/
         
         // ⭐ FUNCIÓN DE LIMPIEZA FINAL 
         return () => {

@@ -553,12 +553,12 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 // Configuración de HLS para búfer y headers
                 maxBufferLength: 40,     
                 minBufferLength: 3,      
-                autoSyncBuffer: 1.3,
+                autoSyncBuffer: 0.3,
                 xhrSetup: setupXhr 
             };
                   // Parámetros de Procesamiento y Sincronización (controlan cómo se procesan los datos)
                 enableWorker: true, // <-- El Web Worker se configura aquí.
-                maxAudioFramesDrift: 5, 
+                maxAudioFramesDrift: 3, 
                 xhrSetup: setupXhr,
             };
 

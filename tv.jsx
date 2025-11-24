@@ -545,8 +545,8 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             const hlsConfig = {
                 // Configuración de HLS para búfer y headers
                 maxBufferLength: 30,     
-                minBufferLength: 20,      
-                autoSyncBuffer: 0.5,
+                minBufferLength: 6,      
+                autoSyncBuffer: 1,
                 xhrSetup: setupXhr 
             };
             if (video) {

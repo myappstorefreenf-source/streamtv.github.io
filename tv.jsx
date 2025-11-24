@@ -549,7 +549,22 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 autoSyncBuffer: 0.5,
                 xhrSetup: setupXhr 
             };
-            
+            if (video) {
+    video.pause(); // Asegura la pausa antes de la destrucción
+    video.muted = true; // Doble chequeo de silencio
+
+    if (video.__hlsInstance) {
+        video.__hlsInstance.stopLoad(); // Detiene la descarga de segmentos
+        video.__hlsInstance.detachMedia(); // Desconecta HLS del elemento <video>
+        video.__hlsInstance.destroy(); // Destruye todo
+        delete video.__hlsInstance;
+    }
+    
+    // ⭐ REFUERZO: Reiniciar el tiempo y fuente del video
+    video.currentTime = 0; // Reiniciar el puntero de reproducción
+    video.removeAttribute('src'); 
+    video.load(); 
+}
             hls = new Hls(hlsConfig);
             hls.loadSource(currentUrl); 
             hls.attachMedia(video);
@@ -1304,5 +1319,3 @@ if (rootElement) {
     // ReactDOM.render(<App />, document.getElementById('root'));
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
-
-

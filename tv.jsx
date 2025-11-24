@@ -582,7 +582,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                              video.muted = false; // Reactivar el audio
                              console.log("Audio Reactivado después del Mute Agresivo.");
                          }
-                     }, 8000); 
+                     }, 7000); 
                  }
             });
 
@@ -1319,4 +1319,5 @@ if (rootElement) {
     // ReactDOM.render(<App />, document.getElementById('root'));
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 

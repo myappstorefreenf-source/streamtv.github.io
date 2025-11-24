@@ -600,7 +600,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                  // Aplicar el desmute también al fallback nativo
                  setTimeout(() => {
                      if (video && video.muted) video.muted = true; 
-                 }, 000);
+                 }, 5000);
             }
         }
         

@@ -641,6 +641,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 height='100%'
                 playsInline
                 autoPlay
+               muted
                 controls={false}
             />
         </div>

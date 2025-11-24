@@ -570,7 +570,14 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             hls.attachMedia(video);
             video.__hlsInstance = hls;
 
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+           
+hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
+    // ⭐ CAMBIO CLAVE: Forzar el nivel 0 (la calidad más baja)
+    if (hls.currentLevel !== 0) {
+        hls.currentLevel = 0; 
+    }
+
+ function() {
                  if (isPlaying) {
                      // El ÚNICO lugar donde se llama a play() para HLS.
                      video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));

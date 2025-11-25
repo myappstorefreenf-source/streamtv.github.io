@@ -493,72 +493,108 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
 // ----------------------------------------------------------------------
 // 3. COMPONENTE VIDEO PLAYER (Maneja HLS y llama al reproductor nativo)
 // ----------------------------------------------------------------------
-const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => {
+// ----------------------------------------------------------------------
+// 2. COMPONENTE VIDEO PLAYER (Con lógica de depuración de Bridge)
+// ----------------------------------------------------------------------
+const VideoPlayer = React.forwardRef(({ channel, onFinish }, ref) => {
     
     const url = channel ? channel.url : null;
     const referrer = channel ? channel.referrer : null;
     const userAgent = channel ? channel.userAgent : null;
-    
+    const [isBridgeReady, setIsBridgeReady] = useState(false);
+    const [fallbackError, setFallbackError] = useState(null);
+
     // Función para manejar la configuración del XHR (Referer/User-Agent)
-    const setupXhr = React.useCallback((xhr, url) => {
-        // [Esta función se mantiene para HLS.js, aunque ya no necesitamos que se ejecute en el WebView]
-        if (referrer) {
-            try {
-                xhr.setRequestHeader('Referer', referrer); 
-            } catch (e) {
-                console.warn("No se pudo establecer el Referer.", e);
-            }
-        }
-        // ... (resto de la función setupXhr)
+    const setupXhr = useCallback((xhr, url) => {
+        // Lógica para HLS.js
     }, [referrer, userAgent]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const video = ref.current;
         const currentUrl = url;
         
         if (!video || !currentUrl) return;
         
-        // ⭐⭐ NUEVO PASO CRÍTICO: LLAMAR AL REPRODUCTOR NATIVO MEDIANTE EL BRIDGE ⭐⭐
-        // En lugar de intentar reproducir en el DOM, le ordenamos a Android que tome el control.
-        if (window.AndroidBridge && typeof window.AndroidBridge.launchPlayer === 'function') {
-            console.log(`[JS Bridge] Ordenando a Android iniciar ExoPlayer con URL: ${currentUrl}`);
-            
-            // 1. LLAMADA DIRECTA A KOTLIN
-            window.AndroidBridge.launchPlayer(currentUrl);
-            
-            // 2. Ejecutar limpieza local inmediata del video HTML
-            if (video.__hlsInstance) {
-                 video.__hlsInstance.destroy();
-                 delete video.__hlsInstance;
-            }
-            video.pause();
-            video.muted = true; 
-            video.removeAttribute('src'); 
-            video.load(); 
+        setFallbackError(null);
 
-        } else if (Hls.isSupported()) {
-            // FALLBACK - Si la app NO es nativa (ej. corriendo en Chrome normal)
-            // Se mantiene la lógica anterior de HLS.js, pero sin el mute/unmute con retraso.
-            
-            let hls;
-            // ... (Lógica de inicialización y reproducción de HLS.js sin el setTimeout de 6s)
-            
+        // ⭐⭐ NUEVO PASO CRÍTICO: LLAMAR AL REPRODUCTOR NATIVO MEDIANTE EL BRIDGE ⭐⭐
+        if (window.AndroidBridge && typeof window.AndroidBridge.launchPlayer === 'function') {
+            setIsBridgeReady(true);
+            try {
+                console.log(`[JS Bridge] Ordenando a Android iniciar ExoPlayer con URL: ${currentUrl}`);
+                
+                // 1. LLAMADA DIRECTA A KOTLIN
+                window.AndroidBridge.launchPlayer(currentUrl);
+                
+                // 2. Ejecutar limpieza local inmediata del video HTML
+                if (video.__hlsInstance) {
+                    video.__hlsInstance.destroy();
+                    delete video.__hlsInstance;
+                }
+                video.pause();
+                video.muted = true; 
+                video.removeAttribute('src'); 
+                video.load(); 
+                
+            } catch (e) {
+                // ERROR 1: La llamada a Kotlin falló (ej. error de permisos o excepción en JS). Muestra alerta.
+                setFallbackError(`ERROR CRÍTICO DEL BRIDGE: La llamada a Kotlin falló. Mensaje: ${e.message}`);
+                alert(`ERROR BRIDGE (Ejecución): Fallo al llamar a Kotlin. Mensaje: ${e.message}`); 
+            }
         } else {
-             // Fallback nativo de HTML5 sin HLS.js
-             // ... (Lógica de Fallback)
+            // ERROR 2: Objeto AndroidBridge NO detectado. Muestra alerta.
+            setIsBridgeReady(false);
+            setFallbackError("AndroidBridge NO detectado. Se intentará usar el reproductor HLS del WebView (causará eco si no se detiene).");
+            alert("ERROR BRIDGE (Objeto): Objeto AndroidBridge NO detectado. Revise MainActivity.kt");
+
+            // --- Lógica de Fallback HLS.js ---
+            if (Hls && Hls.isSupported()) {
+                let hls = video.__hlsInstance || new Hls({
+                    // ... (Configuración de HLS.js, si es necesario)
+                });
+                hls.loadSource(currentUrl);
+                hls.attachMedia(video);
+                video.__hlsInstance = hls;
+
+                hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+                    video.muted = true; 
+                    video.play();
+                });
+            } else {
+                 video.src = currentUrl;
+                 video.play();
+            }
+            // --- Fin Lógica de Fallback ---
         }
         
-        // [El resto de la lógica de limpieza y retorno de useEffect se mantiene]
+        // Retorno de limpieza (solo para la reproducción HLS.js si se llegó al fallback)
         return () => {
-             // ...
+             if (video.__hlsInstance) {
+                 video.__hlsInstance.destroy();
+                 delete video.__hlsInstance;
+             }
         };
         
-    }, [url, onFinish, ref, isPlaying, setupXhr]); // Dependencia actualizada
+    }, [url, onFinish, ref, setupXhr]); 
 
-    // [El resto del componente se mantiene igual]
+    if (fallbackError) {
+        return (
+            <div className="absolute top-0 left-0 w-full h-full bg-red-900/90 flex flex-col items-center justify-center p-8 text-center">
+                <AlertTriangle className="w-12 h-12 mb-4 text-red-300" />
+                <p className="font-bold text-xl text-red-100">Error de Conexión Nativa (BRIDGE)</p>
+                <p className="text-sm text-red-200 mt-2">{fallbackError}</p>
+                <p className="text-sm text-red-300 mt-4">
+                    La aplicación está intentando usar el WebView.
+                </p>
+            </div>
+        );
+    }
     
     return (
         <div className="absolute top-0 left-0 w-full h-full bg-black">
+            <p className="absolute top-0 left-0 bg-black bg-opacity-70 p-2 text-sm z-10 rounded-br-lg font-mono">
+                {channel ? `Reproduciendo: ${channel.name}` : "Cargando..."}
+            </p>
             <video
                 ref={ref}
                 className='react-player'
@@ -568,9 +604,17 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 autoPlay
                 controls={false}
             />
+             {isBridgeReady ? (
+                <div className="absolute inset-0 flex justify-center items-center bg-gray-900/90">
+                    <p className="text-xl font-bold text-green-400">
+                       Transferencia a ExoPlayer Nativo...
+                    </p>
+                </div>
+             ) : null}
         </div>
     );
 });
+
 
 // ----------------------------------------------------------------------
 // 4. COMPONENTE PRINCIPAL APP 
@@ -1243,4 +1287,5 @@ if (rootElement) {
     // ReactDOM.render(<App />, document.getElementById('root'));
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 

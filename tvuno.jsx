@@ -494,9 +494,6 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
 // ----------------------------------------------------------------------
 // 3. COMPONENTE VIDEO PLAYER (Maneja HLS y la limpieza agresiva de audio)
 // ----------------------------------------------------------------------
-// ----------------------------------------------------------------------
-// 3. COMPONENTE VIDEO PLAYER (Maneja HLS y llama al reproductor nativo)
-// ----------------------------------------------------------------------
 const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => {
     
     const url = channel ? channel.url : null;
@@ -505,7 +502,6 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
     
     // Función para manejar la configuración del XHR (Referer/User-Agent)
     const setupXhr = React.useCallback((xhr, url) => {
-        // [Esta función se mantiene para HLS.js, aunque ya no necesitamos que se ejecute en el WebView]
         if (referrer) {
             try {
                 xhr.setRequestHeader('Referer', referrer); 
@@ -513,53 +509,132 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 console.warn("No se pudo establecer el Referer.", e);
             }
         }
-        // ... (resto de la función setupXhr)
+        if (userAgent) {
+            try {
+                xhr.setRequestHeader('User-Agent', userAgent);
+            } catch (e) {
+                // console.warn("No se pudo establecer User-Agent.", e);
+            }
+        }
     }, [referrer, userAgent]);
 
     React.useEffect(() => {
         const video = ref.current;
         const currentUrl = url;
         
+        // No hacer nada si no hay URL para cargar
         if (!video || !currentUrl) return;
         
-        // ⭐⭐ NUEVO PASO CRÍTICO: LLAMAR AL REPRODUCTOR NATIVO MEDIANTE EL BRIDGE ⭐⭐
-        // En lugar de intentar reproducir en el DOM, le ordenamos a Android que tome el control.
-        if (window.AndroidBridge && typeof window.AndroidBridge.launchPlayer === 'function') {
-            console.log(`[JS Bridge] Ordenando a Android iniciar ExoPlayer con URL: ${currentUrl}`);
-            
-            // 1. LLAMADA DIRECTA A KOTLIN
-            window.AndroidBridge.launchPlayer(currentUrl);
-            
-            // 2. Ejecutar limpieza local inmediata del video HTML
-            if (video.__hlsInstance) {
-                 video.__hlsInstance.destroy();
-                 delete video.__hlsInstance;
-            }
-            video.pause();
-            video.muted = true; 
-            video.removeAttribute('src'); 
-            video.load(); 
+        let hls;
+        const handleEnded = () => onFinish();
+        video.addEventListener('ended', handleEnded);
 
-        } else if (Hls.isSupported()) {
-            // FALLBACK - Si la app NO es nativa (ej. corriendo en Chrome normal)
-            // Se mantiene la lógica anterior de HLS.js, pero sin el mute/unmute con retraso.
+        // ⭐ LIMPIEZA AGRESIVA INICIAL (Detiene el audio del canal anterior)
+        if (video.__hlsInstance) {
+             video.__hlsInstance.destroy();
+             delete video.__hlsInstance;
+        }
+        video.pause();
+        
+        // ⭐ PASO CLAVE 1: MUTE INMEDIATO PARA EVITAR EL ECO
+        video.muted = true; 
+        
+        // Limpieza de fuente nativa
+        video.removeAttribute('src'); 
+        video.load(); 
+        
+        
+        if (window.Hls && Hls.isSupported()) { 
             
-            let hls;
-            // ... (Lógica de inicialización y reproducción de HLS.js sin el setTimeout de 6s)
+            const hlsConfig = {
+                // Configuración de HLS para búfer y headers
+                maxBufferLength: 30,     
+                minBufferLength: 3,      
+                autoSyncBuffer: 0.5,
+                xhrSetup: setupXhr 
+            };
+            if (video) {
+    video.pause(); // Asegura la pausa antes de la destrucción
+    video.muted = true; // Doble chequeo de silencio
+
+    if (video.__hlsInstance) {
+        video.__hlsInstance.stopLoad(); // Detiene la descarga de segmentos
+        video.__hlsInstance.detachMedia(); // Desconecta HLS del elemento <video>
+        video.__hlsInstance.destroy(); // Destruye todo
+        delete video.__hlsInstance;
+    }
+    
+    // ⭐ REFUERZO: Reiniciar el tiempo y fuente del video
+    video.currentTime = 0; // Reiniciar el puntero de reproducción
+    video.removeAttribute('src'); 
+    video.load(); 
+}
+            hls = new Hls(hlsConfig);
+            hls.loadSource(currentUrl); 
+            hls.attachMedia(video);
+            video.__hlsInstance = hls;
             
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                 if (isPlaying) {
+                     video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
+                     
+                     // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
+                     // Damos 500ms al sistema operativo para que el reproductor nativo
+                     // se silencie o se resuelva el conflicto de decodificación.
+                     setTimeout(() => {
+                         if (video && video.muted) {
+                             video.muted = false; // Reactivar el audio
+                             console.log("Audio Reactivado después del Mute Agresivo.");
+                         }
+                     }, 6000); 
+                 }
+            });
+
+            hls.on(Hls.Events.ERROR, function (event, data) {
+                 if (data.fatal) {
+                     console.error("Error fatal de HLS:", data);
+                 }
+            });
+
         } else {
-             // Fallback nativo de HTML5 sin HLS.js
-             // ... (Lógica de Fallback)
+            // Reproducción nativa (Fallback)
+            video.src = currentUrl;
+            if (isPlaying) {
+                 video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
+                 // Aplicar el desmute también al fallback nativo
+                 setTimeout(() => {
+                     if (video && video.muted) video.muted = false; 
+                 }, 500);
+            }
         }
         
-        // [El resto de la lógica de limpieza y retorno de useEffect se mantiene]
+        // ⭐ FUNCIÓN DE LIMPIEZA FINAL 
         return () => {
-             // ...
+             video.removeEventListener('ended', handleEnded);
+             video.pause();
+             // Asegurarse de silenciar el elemento saliente
+             video.muted = true; 
+             
+             if (video.__hlsInstance) {
+                 video.__hlsInstance.destroy();
+                 delete video.__hlsInstance;
+             }
+             video.removeAttribute('src');
+             video.load();
         };
-        
-    }, [url, onFinish, ref, isPlaying, setupXhr]); // Dependencia actualizada
-
-    // [El resto del componente se mantiene igual]
+    }, [url, onFinish, ref, isPlaying, setupXhr]); // Dependencia actualizada a setupXhr
+    
+    // useEffect para controlar la pausa/reproducción
+    React.useEffect(() => {
+        const video = ref.current;
+        if (video) {
+            if (isPlaying) {
+                video.play().catch(e => console.error("Error al reanudar:", e));
+            } else {
+                video.pause();
+            }
+        }
+    }, [isPlaying, ref]);
     
     return (
         <div className="absolute top-0 left-0 w-full h-full bg-black">
@@ -575,6 +650,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         </div>
     );
 });
+
 // ----------------------------------------------------------------------
 // 4. COMPONENTE PRINCIPAL APP 
 // ----------------------------------------------------------------------
@@ -1121,4 +1197,5 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 

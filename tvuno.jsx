@@ -549,7 +549,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             const hlsConfig = {
                 // Configuración de HLS para búfer y headers
                 maxBufferLength: 30,     
-                minBufferLength: 3,      
+                minBufferLength: 15,      
                 autoSyncBuffer: 0.5,
                 xhrSetup: setupXhr 
             };
@@ -586,7 +586,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                              video.muted = false; // Reactivar el audio
                              console.log("Audio Reactivado después del Mute Agresivo.");
                          }
-                     }, 6000); 
+                     }, 2000); 
                  }
             });
 
@@ -604,7 +604,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                  // Aplicar el desmute también al fallback nativo
                  setTimeout(() => {
                      if (video && video.muted) video.muted = false; 
-                 }, 500);
+                 }, 5000);
             }
         }
         
@@ -1197,5 +1197,6 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 

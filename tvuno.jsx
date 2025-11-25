@@ -493,6 +493,7 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
 
 // ----------------------------------------------------------------------
 // 3. COMPONENTE VIDEO PLAYER (Maneja HLS y la limpieza agresiva de audio)
+//    MODIFICADO para integrar la llamada nativa a AndroidBridge.launchPlayer()
 // ----------------------------------------------------------------------
 const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => {
     
@@ -522,6 +523,10 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         const video = ref.current;
         const currentUrl = url;
         
+        // Comprueba si el AndroidBridge y el método launchPlayer están disponibles
+        const isNativeBridgeAvailable = typeof window.AndroidBridge !== 'undefined' && 
+                                        typeof window.AndroidBridge.launchPlayer === 'function';
+
         // No hacer nada si no hay URL para cargar
         if (!video || !currentUrl) return;
         
@@ -531,44 +536,69 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
 
         // ⭐ LIMPIEZA AGRESIVA INICIAL (Detiene el audio del canal anterior)
         if (video.__hlsInstance) {
-             video.__hlsInstance.destroy();
-             delete video.__hlsInstance;
+            video.__hlsInstance.destroy();
+            delete video.__hlsInstance;
         }
         video.pause();
         
-        // ⭐ PASO CLAVE 1: MUTE INMEDIATO PARA EVITAR EL ECO
+        // ⭐ PASO CLAVE 1: MUTE INMEDIATO Y LIMPIEZA DE FUENTE
         video.muted = true; 
-        
-        // Limpieza de fuente nativa
         video.removeAttribute('src'); 
         video.load(); 
         
-        
+        // ----------------------------------------------------------------------
+        // ⭐ LÓGICA NATIVA: Si el Bridge está disponible, lanza el ExoPlayer
+        // ----------------------------------------------------------------------
+        if (isNativeBridgeAvailable) {
+            console.log("AndroidBridge detectado. Lanzando reproductor nativo:", currentUrl);
+
+            // 1. Limpieza final del web player para evitar cualquier eco.
+            if (video.__hlsInstance) {
+                video.__hlsInstance.destroy();
+                delete video.__hlsInstance;
+            }
+            video.pause();
+            video.currentTime = 0;
+
+            // 2. Llamada al método nativo. Esto forzará a la MainActivity a ir a onPause.
+            window.AndroidBridge.launchPlayer(currentUrl);
+
+            // Devolver una función de limpieza simple, ya que la Activity se está cerrando/pausando.
+            return () => {
+                video.removeEventListener('ended', handleEnded);
+                // No es necesario realizar una limpieza agresiva aquí, ya que onPause se encargará de ello.
+            };
+        }
+
+        // ----------------------------------------------------------------------
+        // ⭐ LÓGICA WEB: SOLO si el Bridge NO está disponible (o si falla)
+        // ----------------------------------------------------------------------
         if (window.Hls && Hls.isSupported()) { 
             
             const hlsConfig = {
                 // Configuración de HLS para búfer y headers
-                maxBufferLength: 30,     
+                maxBufferLength: 30,      
                 minBufferLength: 15,      
                 autoSyncBuffer: 0.5,
                 xhrSetup: setupXhr 
             };
             if (video) {
-    video.pause(); // Asegura la pausa antes de la destrucción
-    video.muted = true; // Doble chequeo de silencio
+                video.pause(); // Asegura la pausa antes de la destrucción
+                video.muted = true; // Doble chequeo de silencio
 
-    if (video.__hlsInstance) {
-        video.__hlsInstance.stopLoad(); // Detiene la descarga de segmentos
-        video.__hlsInstance.detachMedia(); // Desconecta HLS del elemento <video>
-        video.__hlsInstance.destroy(); // Destruye todo
-        delete video.__hlsInstance;
-    }
-    
-    // ⭐ REFUERZO: Reiniciar el tiempo y fuente del video
-    video.currentTime = 0; // Reiniciar el puntero de reproducción
-    video.removeAttribute('src'); 
-    video.load(); 
-}
+                if (video.__hlsInstance) {
+                    video.__hlsInstance.stopLoad(); // Detiene la descarga de segmentos
+                    video.__hlsInstance.detachMedia(); // Desconecta HLS del elemento <video>
+                    video.__hlsInstance.destroy(); // Destruye todo
+                    delete video.__hlsInstance;
+                }
+                
+                // ⭐ REFUERZO: Reiniciar el tiempo y fuente del video
+                video.currentTime = 0; // Reiniciar el puntero de reproducción
+                video.removeAttribute('src'); 
+                video.load(); 
+            }
+            
             hls = new Hls(hlsConfig);
             hls.loadSource(currentUrl); 
             hls.attachMedia(video);
@@ -579,36 +609,37 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                      video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
                      
                      // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
-                     // Damos 500ms al sistema operativo para que el reproductor nativo
-                     // se silencie o se resuelva el conflicto de decodificación.
+                     // Damos 500ms (reducido a 500ms en el código web para ser más rápido)
                      setTimeout(() => {
                          if (video && video.muted) {
                              video.muted = false; // Reactivar el audio
-                             console.log("Audio Reactivado después del Mute Agresivo.");
+                             console.log("Audio Reactivado después del Mute Agresivo (Web Player).");
                          }
-                     }, 5000); 
+                     }, 500); // 500ms para el desmute web
                  }
             });
 
             hls.on(Hls.Events.ERROR, function (event, data) {
                  if (data.fatal) {
                      console.error("Error fatal de HLS:", data);
+                     // Opcionalmente, aquí podrías considerar llamar al reproductor nativo
+                     // si falla la reproducción web, pero priorizamos la llamada inicial.
                  }
             });
 
         } else {
-            // Reproducción nativa (Fallback)
+            // Reproducción nativa del navegador (Fallback)
             video.src = currentUrl;
             if (isPlaying) {
                  video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
                  // Aplicar el desmute también al fallback nativo
                  setTimeout(() => {
                      if (video && video.muted) video.muted = false; 
-                 }, 5000);
+                 }, 500);
             }
         }
         
-        // ⭐ FUNCIÓN DE LIMPIEZA FINAL 
+        // ⭐ FUNCIÓN DE LIMPIEZA FINAL (para el modo web)
         return () => {
              video.removeEventListener('ended', handleEnded);
              video.pause();
@@ -626,8 +657,12 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
     
     // useEffect para controlar la pausa/reproducción
     React.useEffect(() => {
+        // Solo aplica la pausa/play si no estamos delegando al reproductor nativo
+        const isNativeBridgeAvailable = typeof window.AndroidBridge !== 'undefined' && 
+                                        typeof window.AndroidBridge.launchPlayer === 'function';
+        
         const video = ref.current;
-        if (video) {
+        if (video && !isNativeBridgeAvailable) {
             if (isPlaying) {
                 video.play().catch(e => console.error("Error al reanudar:", e));
             } else {
@@ -650,7 +685,6 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         </div>
     );
 });
-
 // ----------------------------------------------------------------------
 // 4. COMPONENTE PRINCIPAL APP 
 // ----------------------------------------------------------------------
@@ -1197,6 +1231,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

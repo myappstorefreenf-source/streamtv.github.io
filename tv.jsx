@@ -490,111 +490,135 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
 // ----------------------------------------------------------------------
 // 3. COMPONENTE VIDEO PLAYER (Maneja HLS y la limpieza agresiva de audio)
 // ----------------------------------------------------------------------
-// ----------------------------------------------------------------------
-// 3. COMPONENTE VIDEO PLAYER (Maneja HLS y llama al reproductor nativo)
-// ----------------------------------------------------------------------
-// ----------------------------------------------------------------------
-// 2. COMPONENTE VIDEO PLAYER (Con lógica de depuración de Bridge)
-// ----------------------------------------------------------------------
-const VideoPlayer = React.forwardRef(({ channel, onFinish }, ref) => {
+const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => {
     
     const url = channel ? channel.url : null;
     const referrer = channel ? channel.referrer : null;
     const userAgent = channel ? channel.userAgent : null;
-    const [isBridgeReady, setIsBridgeReady] = useState(false);
-    const [fallbackError, setFallbackError] = useState(null);
-
+    
     // Función para manejar la configuración del XHR (Referer/User-Agent)
-    const setupXhr = useCallback((xhr, url) => {
-        // Lógica para HLS.js
+    const setupXhr = React.useCallback((xhr, url) => {
+        if (referrer) {
+            try {
+                xhr.setRequestHeader('Referer', referrer); 
+            } catch (e) {
+                console.warn("No se pudo establecer el Referer.", e);
+            }
+        }
+        if (userAgent) {
+            try {
+                xhr.setRequestHeader('User-Agent', userAgent);
+            } catch (e) {
+                // console.warn("No se pudo establecer User-Agent.", e);
+            }
+        }
     }, [referrer, userAgent]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         const video = ref.current;
         const currentUrl = url;
         
+        // No hacer nada si no hay URL para cargar
         if (!video || !currentUrl) return;
         
-        setFallbackError(null);
+        let hls;
+        const handleEnded = () => onFinish();
+        video.addEventListener('ended', handleEnded);
 
-        // ⭐⭐ NUEVO PASO CRÍTICO: LLAMAR AL REPRODUCTOR NATIVO MEDIANTE EL BRIDGE ⭐⭐
-        if (window.AndroidBridge && typeof window.AndroidBridge.launchPlayer === 'function') {
-            setIsBridgeReady(true);
-            try {
-                console.log(`[JS Bridge] Ordenando a Android iniciar ExoPlayer con URL: ${currentUrl}`);
-                
-                // 1. LLAMADA DIRECTA A KOTLIN
-                window.AndroidBridge.launchPlayer(currentUrl);
-                
-                // 2. Ejecutar limpieza local inmediata del video HTML
-                if (video.__hlsInstance) {
-                    video.__hlsInstance.destroy();
-                    delete video.__hlsInstance;
-                }
-                video.pause();
-                video.muted = true; 
-                video.removeAttribute('src'); 
-                video.load(); 
-                
-            } catch (e) {
-                // ERROR 1: La llamada a Kotlin falló (ej. error de permisos o excepción en JS). Muestra alerta.
-                setFallbackError(`ERROR CRÍTICO DEL BRIDGE: La llamada a Kotlin falló. Mensaje: ${e.message}`);
-                alert(`ERROR BRIDGE (Ejecución): Fallo al llamar a Kotlin. Mensaje: ${e.message}`); 
-            }
+        // ⭐ LIMPIEZA AGRESIVA INICIAL (Detiene el audio del canal anterior)
+        if (video.__hlsInstance) {
+             video.__hlsInstance.destroy();
+             delete video.__hlsInstance;
+        }
+        video.pause();
+        
+        // ⭐ PASO CLAVE 1: MUTE INMEDIATO PARA EVITAR EL ECO
+        video.muted = true; 
+        
+        // Limpieza de fuente nativa
+        video.removeAttribute('src'); 
+        video.load(); 
+        
+        
+        if (window.Hls && Hls.isSupported()) { 
+            
+            const hlsConfig = {
+                // Configuración de HLS para búfer y headers
+                maxBufferLength: 30,     
+                minBufferLength: 3,      
+                autoSyncBuffer: 0.5,
+                xhrSetup: setupXhr 
+            };
+            
+            hls = new Hls(hlsConfig);
+            hls.loadSource(currentUrl); 
+            hls.attachMedia(video);
+            video.__hlsInstance = hls;
+            
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                 if (isPlaying) {
+                     video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
+                     
+                     // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
+                     // Damos 500ms al sistema operativo para que el reproductor nativo
+                     // se silencie o se resuelva el conflicto de decodificación.
+                     setTimeout(() => {
+                         if (video && video.muted) {
+                             video.muted = false; // Reactivar el audio
+                             console.log("Audio Reactivado después del Mute Agresivo.");
+                         }
+                     }, 500); 
+                 }
+            });
+
+            hls.on(Hls.Events.ERROR, function (event, data) {
+                 if (data.fatal) {
+                     console.error("Error fatal de HLS:", data);
+                 }
+            });
+
         } else {
-            // ERROR 2: Objeto AndroidBridge NO detectado. Muestra alerta.
-            setIsBridgeReady(false);
-            setFallbackError("AndroidBridge NO detectado. Se intentará usar el reproductor HLS del WebView (causará eco si no se detiene).");
-            alert("ERROR BRIDGE (Objeto): Objeto AndroidBridge NO detectado. Revise MainActivity.kt");
-
-            // --- Lógica de Fallback HLS.js ---
-            if (Hls && Hls.isSupported()) {
-                let hls = video.__hlsInstance || new Hls({
-                    // ... (Configuración de HLS.js, si es necesario)
-                });
-                hls.loadSource(currentUrl);
-                hls.attachMedia(video);
-                video.__hlsInstance = hls;
-
-                hls.on(Hls.Events.MEDIA_ATTACHED, function () {
-                    video.muted = true; 
-                    video.play();
-                });
-            } else {
-                 video.src = currentUrl;
-                 video.play();
+            // Reproducción nativa (Fallback)
+            video.src = currentUrl;
+            if (isPlaying) {
+                 video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
+                 // Aplicar el desmute también al fallback nativo
+                 setTimeout(() => {
+                     if (video && video.muted) video.muted = false; 
+                 }, 500);
             }
-            // --- Fin Lógica de Fallback ---
         }
         
-        // Retorno de limpieza (solo para la reproducción HLS.js si se llegó al fallback)
+        // ⭐ FUNCIÓN DE LIMPIEZA FINAL 
         return () => {
+             video.removeEventListener('ended', handleEnded);
+             video.pause();
+             // Asegurarse de silenciar el elemento saliente
+             video.muted = true; 
+             
              if (video.__hlsInstance) {
                  video.__hlsInstance.destroy();
                  delete video.__hlsInstance;
              }
+             video.removeAttribute('src');
+             video.load();
         };
-        
-    }, [url, onFinish, ref, setupXhr]); 
-
-    if (fallbackError) {
-        return (
-            <div className="absolute top-0 left-0 w-full h-full bg-red-900/90 flex flex-col items-center justify-center p-8 text-center">
-                <AlertTriangle className="w-12 h-12 mb-4 text-red-300" />
-                <p className="font-bold text-xl text-red-100">Error de Conexión Nativa (BRIDGE)</p>
-                <p className="text-sm text-red-200 mt-2">{fallbackError}</p>
-                <p className="text-sm text-red-300 mt-4">
-                    La aplicación está intentando usar el WebView.
-                </p>
-            </div>
-        );
-    }
+    }, [url, onFinish, ref, isPlaying, setupXhr]); // Dependencia actualizada a setupXhr
+    
+    // useEffect para controlar la pausa/reproducción
+    React.useEffect(() => {
+        const video = ref.current;
+        if (video) {
+            if (isPlaying) {
+                video.play().catch(e => console.error("Error al reanudar:", e));
+            } else {
+                video.pause();
+            }
+        }
+    }, [isPlaying, ref]);
     
     return (
         <div className="absolute top-0 left-0 w-full h-full bg-black">
-            <p className="absolute top-0 left-0 bg-black bg-opacity-70 p-2 text-sm z-10 rounded-br-lg font-mono">
-                {channel ? `Reproduciendo: ${channel.name}` : "Cargando..."}
-            </p>
             <video
                 ref={ref}
                 className='react-player'
@@ -604,13 +628,6 @@ const VideoPlayer = React.forwardRef(({ channel, onFinish }, ref) => {
                 autoPlay
                 controls={false}
             />
-             {isBridgeReady ? (
-                <div className="absolute inset-0 flex justify-center items-center bg-gray-900/90">
-                    <p className="text-xl font-bold text-green-400">
-                       Transferencia a ExoPlayer Nativo...
-                    </p>
-                </div>
-             ) : null}
         </div>
     );
 });
@@ -624,17 +641,13 @@ function App() {
     const [currentChannel, setCurrentChannel] = React.useState(null); 
     const currentChannelUrl = currentChannel ? currentChannel.url : null;
     
-    // Estados de visibilidad del menú
     const [isMenuVisible, setIsMenuVisible] = React.useState(true); 
-    const [isCategoryMenuVisible, setIsCategoryMenuVisible] = React.useState(false);
-    // 🆕 Nuevo estado para el menú principal (TV/Pelis/Salir)
-    const [isMainMenuVisible, setIsMainMenuVisible] = React.useState(false); 
-
     const playerRef = React.useRef(null);
     const [focusedIndex, setFocusedIndex] = React.useState(-1); 
     const [focusedFilteredIndex, setFocusedFilteredIndex] = React.useState(-1);
     const [focusedCategoryIndex, setFocusedCategoryIndex] = React.useState(-1);
     const [selectedCategory, setSelectedCategory] = React.useState(null);
+    const [isCategoryMenuVisible, setIsCategoryMenuVisible] = React.useState(false);
     const [isPlaying, setIsPlaying] = React.useState(false); // Inicia sin reproducción
 
     const allChannels = videoCatalog || [];
@@ -689,32 +702,9 @@ function App() {
     }, [filteredChannels, allChannels]);
 
 
-    // 🆕 Función para abrir el Menú Principal (TV/Pelis/Salir)
-    const openMainMenu = React.useCallback(() => {
+    const openMenu = React.useCallback(() => {
+        setIsCategoryMenuVisible(false);
         setIsMenuVisible(true);
-        setIsCategoryMenuVisible(false);
-        setIsMainMenuVisible(true);
-        setIsPlaying(false);
-        
-        // Enfocar el primer elemento del Main Menu
-        requestAnimationFrame(() => {
-            document.getElementById('main-menu-tv-select')?.focus();
-        });
-    }, []);
-
-    // 🆕 Función para cerrar todos los menús y volver al video
-    const closeAllMenus = React.useCallback(() => {
-        setIsCategoryMenuVisible(false);
-        setIsMainMenuVisible(false);
-        setIsMenuVisible(false);
-        if (currentChannel) setIsPlaying(true);
-    }, [currentChannel]);
-
-    // Función para abrir el menú de canales (el que tiene la lista de canales)
-    const openChannelMenu = React.useCallback(() => {
-        setIsMainMenuVisible(false); // Cierra el menú principal
-        setIsCategoryMenuVisible(false); // Cierra el menú de categorías
-        setIsMenuVisible(true); // Abre el menú base (ChannelsMenu)
         setIsPlaying(false); 
         
         if (filteredChannels.length > 0) {
@@ -722,11 +712,9 @@ function App() {
             requestAnimationFrame(() => focusChannelCard(initialFocusIndex));
         }
     }, [focusChannelCard, focusedFilteredIndex, filteredChannels.length]);
-    
-    // Función para abrir el menú de categorías (Lista de géneros)
+
     const openCategoryMenu = React.useCallback(() => {
         if (!isMenuVisible) return;
-        setIsMainMenuVisible(false); // Cierra el menú principal
         setIsCategoryMenuVisible(true);
         setIsPlaying(false);
         requestAnimationFrame(() => {
@@ -746,7 +734,6 @@ function App() {
         setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
         
         setIsCategoryMenuVisible(false);
-        setIsMainMenuVisible(false);
         setIsMenuVisible(false);
         setIsPlaying(true);
     }, [allChannels, filteredChannels]);
@@ -775,9 +762,7 @@ function App() {
             setFocusedFilteredIndex(0); 
             setSelectedCategory(null);
             setFocusedCategoryIndex(-1);
-            // Mostrar el menú principal (TV/Pelis) al inicio
-            setIsMainMenuVisible(true); 
-            setIsMenuVisible(true);
+            // NO se llama a setIsPlaying(true)
         }
         
     }, []); 
@@ -802,49 +787,7 @@ function App() {
             }
         }
     }, []);
-    // =========================================================
-    // ⭐ FUNCIÓN CRUCIAL PARA LA INTEGRACIÓN NATIVA (AndroidBridge)
-    // =========================================================
-    React.useEffect(() => {
-        
-        const stopVideoAndConsumeBackButton = () => {
-            const video = playerRef.current;
-            
-            // Si no hay reproductor de video montado, no hacemos nada y devolvemos 'false'
-            if (!video) {
-                return "false";
-            }
-            
-            // 1. Detención agresiva del reproductor (Misma lógica del VideoPlayer cleanup)
-            video.pause();
-            video.muted = true; // Silenciar inmediatamente
-            
-            if (video.__hlsInstance) {
-                 video.__hlsInstance.destroy();
-                 delete video.__hlsInstance;
-            }
-            video.removeAttribute('src'); 
-            video.load(); 
 
-            // 2. Notificar a React que detuvimos la reproducción y abrimos el menú
-            // Usamos un timeout por seguridad, aunque un 'setter' directo suele ser suficiente.
-            setTimeout(() => {
-                 // Abrir el menú principal después de detener la reproducción
-                 openMainMenu(); 
-            }, 50); 
-            
-            // 3. Devolver 'true' para que Kotlin sepa que el JS consumió la acción.
-            return "true";
-        };
-        
-        // Exponemos la función al ámbito global
-        window.stopVideoAndConsumeBackButton = stopVideoAndConsumeBackButton;
-        
-        // Limpiamos la función al desmontar el componente (aunque en Android TV la App rara vez desmonta)
-        return () => {
-            delete window.stopVideoAndConsumeBackButton;
-        };
-    }, [playerRef, openMainMenu]); // Dependencias: playerRef y openMainMenu
     
     // ⭐ LÓGICA DE NAVEGACIÓN D-PAD
     const handleDpadNavigation = React.useCallback((event) => {
@@ -856,8 +799,7 @@ function App() {
             // Si el menú está oculto (viendo el video)
             if (key === 'ArrowLeft' || key === 'Enter' || key === ' ') {
                 event.preventDefault();
-                // Ahora abre el MainMenu en lugar del ChannelMenu directamente
-                openMainMenu(); 
+                openMenu(); 
             }
             return;
         }
@@ -871,93 +813,48 @@ function App() {
         const totalCategories = categories.length;
         const totalFilteredChannels = filteredChannels.length;
 
-        if (isMainMenuVisible) {
-            // 🆕 MENÚ PRINCIPAL (TV / PELIS / SALIR)
-            const focusedElement = document.activeElement;
-            const focusedId = focusedElement ? focusedElement.id : '';
-            
-            const mainOptions = ['main-menu-tv-select', 'main-menu-pelis-select', 'main-menu-exit'];
-            let newIndex = mainOptions.findIndex(id => id === focusedId);
-            if (newIndex === -1) newIndex = 0; // Enfocar TV por defecto
-            
-            if (key === 'ArrowUp') {
-                newIndex = (newIndex === 0) ? mainOptions.length - 1 : newIndex - 1;
-            } else if (key === 'ArrowDown') {
-                newIndex = (newIndex === mainOptions.length - 1) ? 0 : newIndex + 1;
-            } else if (key === 'ArrowLeft') {
-                // Si el usuario presiona izquierda, cerramos todos los menús
-                closeAllMenus();
-                return;
-            } else if (key === 'ArrowRight' || key === 'Enter' || key === ' ') {
-                // Lógica de Selección
-                if (focusedId === 'main-menu-tv-select') {
-                    // Seleccionó TV -> Abrir submenú de categorías
-                    openCategoryMenu(); 
-                } else if (focusedId === 'main-menu-pelis-select') {
-                    // Seleccionó Pelis -> Redirigir a pelis.html
-                    window.location.href = 'index.html'; 
-                    // No es necesario cerrar menus/poner isPlaying=true porque la página se recarga.
-                } else if (focusedId === 'main-menu-exit') {
-                    // Seleccionó Salir -> Función nativa
-                    const volverALaTV = () => {
-                        if (window.AndroidBridge && typeof window.AndroidBridge.exitApp === 'function') {
-                            window.AndroidBridge.exitApp();
-                        } else {
-                            console.log("Saliendo de la aplicación y volviendo a la TV (Simulación)");
-                            closeAllMenus();
-                        }
-                    };
-                    volverALaTV();
-                }
-                return;
-            }
-            
-            requestAnimationFrame(() => {
-                document.getElementById(mainOptions[newIndex])?.focus();
-            });
-            return;
-
-        } else if (isCategoryMenuVisible) {
-            // MENÚ DE CATEGORÍAS (Izquierda del CanalMenu)
+        if (isCategoryMenuVisible) {
+            // MENÚ DE CATEGORÍAS 
              let newCatIndex = focusedCategoryIndex;
              const totalOptions = totalCategories + 1; 
 
              if (key === 'ArrowUp' || key === 'ArrowDown') {
-                 if (totalOptions === 0) return;
+                  if (totalOptions === 0) return;
 
-                 const currentIndexInList = focusedCategoryIndex === -1 ? 0 : focusedCategoryIndex + 1; 
-                 let newIndexInList;
+                  const currentIndexInList = focusedCategoryIndex === -1 ? 0 : focusedCategoryIndex + 1; 
+                  let newIndexInList;
 
-                 if (key === 'ArrowUp') {
-                     newIndexInList = (currentIndexInList === 0) ? totalOptions - 1 : currentIndexInList - 1;
-                 } else { 
-                     newIndexInList = (currentIndexInList === totalOptions - 1) ? 0 : currentIndexInList + 1;
-                 }
+                  if (key === 'ArrowUp') {
+                      newIndexInList = (currentIndexInList === 0) ? totalOptions - 1 : currentIndexInList - 1;
+                  } else { 
+                      newIndexInList = (currentIndexInList === totalOptions - 1) ? 0 : currentIndexInList + 1;
+                  }
 
-                 newCatIndex = newIndexInList === 0 ? -1 : newIndexInList - 1;
+                  newCatIndex = newIndexInList === 0 ? -1 : newIndexInList - 1;
 
-                 setFocusedCategoryIndex(newCatIndex);
-                 requestAnimationFrame(() => {
-                     const targetId = newCatIndex === -1 ? 'cat-focus--1' : `cat-focus-${newCatIndex}`;
-                     document.getElementById(targetId)?.focus();
-                     scrollCategoryList(newCatIndex); 
-                 });
+                  setFocusedCategoryIndex(newCatIndex);
+                  requestAnimationFrame(() => {
+                      const targetId = newCatIndex === -1 ? 'cat-focus--1' : `cat-focus-${newCatIndex}`;
+                      document.getElementById(targetId)?.focus();
+                      scrollCategoryList(newCatIndex); 
+                  });
 
              } else if (key === 'ArrowRight' || key === 'Enter' || key === ' ') {
-                 const categoryName = newCatIndex === -1 ? null : categories[newCatIndex];
+                  const categoryName = newCatIndex === -1 ? null : categories[newCatIndex];
 
-                 setSelectedCategory(categoryName);
-                 setIsCategoryMenuVisible(false); // Cierra CategoryMenu
-                 setFocusedFilteredIndex(-1); 
-                 requestAnimationFrame(() => focusChannelCard(0)); // Abre ChannelMenu
+                  setSelectedCategory(categoryName);
+                  setIsCategoryMenuVisible(false); 
+                  setFocusedFilteredIndex(-1); 
+                  requestAnimationFrame(() => focusChannelCard(0));
 
              } else if (key === 'ArrowLeft') {
-                 // Izquierda en el CategoryMenu vuelve al MainMenu
-                 openMainMenu(); 
+                  setIsCategoryMenuVisible(false);
+                  setIsMenuVisible(false);
+                  if (currentChannel) setIsPlaying(true); // Solo reanuda si había un canal activo
              }
 
         } else {
-            // MENÚ PRINCIPAL DE CANALES (ChannelsMenu)
+            // MENÚ PRINCIPAL DE CANALES
             
             if (key === 'Enter' || key === ' ') {
                  const channelToPlay = filteredChannels[focusedFilteredIndex]; 
@@ -969,19 +866,19 @@ function App() {
                  return;
 
             } else if (key === 'ArrowLeft') {
-                 // Izquierda en ChannelMenu abre el CategoryMenu
                  if (totalCategories > 0) {
                      const currentSelectedCatIndex = selectedCategory === null ? -1 : categories.findIndex(c => c === selectedCategory);
                      setFocusedCategoryIndex(currentSelectedCatIndex);
                      openCategoryMenu(); 
                  } else {
-                     // Si no hay categorías, volvemos al Main Menu (aunque es raro)
-                     openMainMenu();
+                     setIsMenuVisible(false);
+                     if (currentChannel) setIsPlaying(true);
                  }
                  return;
 
             } else if (key === 'ArrowRight') {
-                 closeAllMenus();
+                 setIsMenuVisible(false); 
+                 if (currentChannel) setIsPlaying(true);
                  return;
 
             } else if (key === 'ArrowUp' || key === 'ArrowDown') {
@@ -999,7 +896,7 @@ function App() {
                  focusChannelCard(newFilteredIndex);
             }
         }
-    }, [isMenuVisible, isCategoryMenuVisible, isMainMenuVisible, focusedFilteredIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMainMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList, currentChannel, closeAllMenus]);
+    }, [isMenuVisible, isCategoryMenuVisible, focusedFilteredIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList, currentChannel]);
 
 
     // EFFECT PARA ESCUCHAR D-PAD
@@ -1008,77 +905,12 @@ function App() {
         return () => window.removeEventListener('keydown', handleDpadNavigation);
     }, [handleDpadNavigation]);
 
-
-    // ----------------------------------------------------------------------
-    // NUEVO COMPONENTE: MainMenu (TV/Pelis/Salir)
-    // ----------------------------------------------------------------------
-    const MainMenu = () => {
-        const isVisible = isMenuVisible && isMainMenuVisible;
-        
-        return (
-            <div 
-                className={`absolute top-0 left-0 h-full bg-gray-900/95 text-white transition-all duration-300 z-40 w-56 p-4 flex flex-col justify-start space-y-4`}
-                style={{
-                    transform: isVisible
-                        ? 'translateX(0)' 
-                        : 'translateX(-100%)',
-                }}
-            >
-                <h2 className="text-2xl font-bold mb-4 border-b border-gray-700 pb-2">
-                    Menú
-                </h2>
-                
-                {/* 1. Opción TV (Abre el CategoryMenu) */}
-                <button
-                    id="main-menu-tv-select"
-                    className={`w-full text-left p-3 rounded-md transition-colors duration-200 bg-gray-700 hover:bg-gray-600 focus:ring-2 focus:ring-blue-500 focus:outline-none`}
-                    onClick={openCategoryMenu}
-                    tabIndex={isVisible ? "0" : "-1"}
-                >
-                    <span role="img" aria-label="TV">📺</span> Canales de TV
-                </button>
-
-                {/* 2. Opción Películas (Redirecciona a pelis.html) */}
-                <button
-                    id="main-menu-pelis-select"
-                    className={`w-full text-left p-3 rounded-md transition-colors duration-200 bg-blue-700 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none`}
-                    onClick={goToPelis}
-                    tabIndex={isVisible ? "0" : "-1"}
-                >
-                    <span role="img" aria-label="Películas">🎬</span> Películas
-                </button>
-                
-                {/* 3. Opción Salir (Llama a la función nativa) */}
-                <button
-                    id="main-menu-exit"
-                    className={`w-full text-left p-3 rounded-md transition-colors duration-200 bg-red-700 hover:bg-red-600 focus:ring-2 focus:ring-blue-500 focus:outline-none`}
-                    onClick={() => {
-                        if (window.AndroidBridge && typeof window.AndroidBridge.exitApp === 'function') {
-                            window.AndroidBridge.exitApp();
-                        } else {
-                            console.log("Saliendo de la aplicación y volviendo a la TV (Simulación)");
-                            closeAllMenus();
-                        }
-                    }}
-                    tabIndex={isVisible ? "0" : "-1"}
-                >
-                    <span role="img" aria-label="Salir">❌</span> Salir de la App
-                </button>
-            </div>
-        );
-    };
     
-    // 🆕 Función auxiliar para goToPelis, usada en MainMenu y en el D-PAD
-    const goToPelis = () => {
-        window.location.href = 'pelis.html'; 
-    };
-
-
     // Componente CategoryMenu (Renderizado interno)
     const CategoryMenu = () => {
         if (categories.length === 0) return null;
 
-        const isCategoryListVisible = isMenuVisible && isCategoryMenuVisible && !isMainMenuVisible;
+        const isCategoryListVisible = isMenuVisible && isCategoryMenuVisible;
         const isFocusableCategory = isCategoryListVisible;
         
         const handleCategorySelect = (categoryName, index) => {
@@ -1093,11 +925,11 @@ function App() {
             <div 
                 ref={categoryListRef}
                 className={`absolute top-0 left-0 h-full bg-gray-900/95 text-white transition-all duration-300 z-30 w-56 p-4 overflow-y-auto custom-scrollbar`}
-                style={{
+                 style={{
                      transform: isCategoryListVisible
-                         ? 'translateX(56px)' // Mover a la derecha del MainMenu
+                         ? 'translateX(0)' 
                          : 'translateX(-100%)',
-                }}
+                 }}
             >
                 <h2 className="text-2xl font-bold mb-4 border-b border-gray-700 pb-2">
                     Categorías
@@ -1108,8 +940,8 @@ function App() {
                     <button
                         id={`cat-focus--1`} 
                         className={`w-full text-left p-2 rounded-md transition-colors duration-200 
-                                     ${selectedCategory === null ? 'bg-blue-600' : 'hover:bg-gray-700'}
-                                     ${focusedCategoryIndex === -1 && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
+                                    ${selectedCategory === null ? 'bg-blue-600' : 'hover:bg-gray-700'}
+                                    ${focusedCategoryIndex === -1 && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
                         onClick={() => handleCategorySelect(null, -1)}
                         tabIndex={isFocusableCategory ? "0" : "-1"}
                     >
@@ -1122,8 +954,8 @@ function App() {
                             id={`cat-focus-${index}`}
                             key={category}
                             className={`w-full text-left p-2 rounded-md transition-colors duration-200 
-                                         ${selectedCategory === category ? 'bg-blue-600' : 'hover:bg-gray-700'}
-                                         ${focusedCategoryIndex === index && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
+                                        ${selectedCategory === category ? 'bg-blue-600' : 'hover:bg-gray-700'}
+                                        ${focusedCategoryIndex === index && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
                             onClick={() => handleCategorySelect(category, index)}
                             tabIndex={isFocusableCategory ? "0" : "-1"}
                         >
@@ -1149,8 +981,7 @@ function App() {
 
         const currentCategoryTitle = selectedCategory || "Todos los Canales";
         
-        // La visibilidad depende de que el menú base esté abierto y los submenús estén cerrados
-        const isChannelsMenuVisible = isMenuVisible && !isCategoryMenuVisible && !isMainMenuVisible;
+        const isChannelsMenuVisible = isMenuVisible && !isCategoryMenuVisible;
         const isFocusableChannel = isChannelsMenuVisible;
         
         const groupedFilteredChannels = groupChannelsByCategory(filteredChannels);
@@ -1161,7 +992,7 @@ function App() {
                 className={`absolute top-0 left-0 h-full bg-gray-900/90 text-white transition-all duration-300 z-20 w-1/3 max-w-md flex flex-col`}
                 style={{
                      transform: isChannelsMenuVisible
-                         ? 'translateX(0)' // Mantenemos el ChannelsMenu en posición 0
+                         ? 'translateX(0)' 
                          : 'translateX(-100%)',
                 }}
             >
@@ -1189,21 +1020,21 @@ function App() {
                                         </h2>
                                     )}
                                     <div className="space-y-1">
-                                             {groupedFilteredChannels[category].map((video) => {
-                                                     const globalIndex = allChannels.findIndex(c => c.url === video.url);
+                                            {groupedFilteredChannels[category].map((video) => {
+                                                 const globalIndex = allChannels.findIndex(c => c.url === video.url);
 
-                                                     return (
-                                                         <VideoCard 
-                                                             ref={(el) => setCardRef(globalIndex, el)}
-                                                             key={video.url}
-                                                             video={video} 
-                                                             onPlay={handlePlayChannel} 
-                                                             index={globalIndex} 
-                                                             isActive={globalIndex === focusedIndex} 
-                                                             isFocusable={isFocusableChannel}
-                                                         />
-                                                     );
-                                             })}
+                                                 return (
+                                                     <VideoCard 
+                                                         ref={(el) => setCardRef(globalIndex, el)}
+                                                         key={video.url}
+                                                         video={video} 
+                                                         onPlay={handlePlayChannel} 
+                                                         index={globalIndex} 
+                                                         isActive={globalIndex === focusedIndex} 
+                                                         isFocusable={isFocusableChannel}
+                                                     />
+                                                 );
+                                            })}
                                     </div>
                                 </div>
                             ))}
@@ -1241,9 +1072,8 @@ function App() {
             {/* 3. Menús */}
             {videoCatalog !== null && (
                  <React.Fragment>
-                     <MainMenu /> {/* 🆕 Nuevo MainMenu (z-40) */}
-                     <CategoryMenu /> {/* CategoryMenu (z-30) */}
-                     <ChannelsMenu /> {/* ChannelsMenu (z-20) */}
+                      <CategoryMenu />
+                      <ChannelsMenu />
                  </React.Fragment>
              )}
 
@@ -1254,13 +1084,13 @@ function App() {
                  </div>
              )}
 
-             {/* 5. Botón para abrir menú (Ahora abre el MainMenu) */}
+             {/* 5. Botón para abrir menú */}
              {!isMenuVisible && (
                  <button
                       className="absolute top-4 left-4 p-2 bg-gray-900/70 rounded-lg text-white z-10 
-                                         transition-all duration-200 
-                                         hover:bg-gray-700/90 focus:bg-gray-700/90 focus:ring-2 focus:ring-blue-500"
-                      onClick={openMainMenu} // 🆕 Ahora llama a openMainMenu
+                                      transition-all duration-200 
+                                      hover:bg-gray-700/90 focus:bg-gray-700/90 focus:ring-2 focus:ring-blue-500"
+                      onClick={openMenu}
                       tabIndex="0" 
                       aria-label="Abrir lista de canales"
                  >
@@ -1287,5 +1117,4 @@ if (rootElement) {
     // ReactDOM.render(<App />, document.getElementById('root'));
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
-
 

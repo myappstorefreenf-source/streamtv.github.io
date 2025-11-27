@@ -1223,15 +1223,18 @@ function App() {
 // ----------------------------------------------------------------------
 // 5. RENDERIZADO DE LA APLICACIÓN
 // ----------------------------------------------------------------------
-const rootElement = document.getElementById('root');
-if (rootElement) {
+//const rootElement = document.getElementById('root');
+//if (rootElement) {
     // Si estás usando React 18+
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(<App />);
-} else {
-    console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
-}
+ //   const root = ReactDOM.createRoot(rootElement);
+//    root.render(<App />);
+//} else {
+//    console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
+//}
 
+const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(rootElement);
+root.render(<App />);
 
 
 

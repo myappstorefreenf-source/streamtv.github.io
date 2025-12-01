@@ -315,7 +315,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                     }, 200); // 400ms de retardo antes de que el avance rápido se active
                     
                     // 3. Reiniciamos la velocidad al valor inicial de 10s
-                    seekSpeedRef.current = 10;
+                    seekSpeedRef.current = 20;
                 }
                 break;
                 

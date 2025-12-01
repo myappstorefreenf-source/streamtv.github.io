@@ -1,4 +1,4 @@
-de//import React from 'react';
+//import React from 'react';
 //import ReactDOM from 'react-dom/client'; 
 // Este import de React y ReactDOM es solo para que el código sea ejecutable en un entorno React.
 // En tu archivo JSX original, asume que React y window.YT están disponibles.
@@ -312,7 +312,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
                     lastKeyRef.current = e.key;
                     seekIntervalRef.current = setInterval(() => {
                         handleContinuousSeek(direction);
-                    }, 200); // 400ms de retardo antes de que el avance rápido se active
+                    }, 400); // 400ms de retardo antes de que el avance rápido se active
                     
                     // 3. Reiniciamos la velocidad al valor inicial de 10s
                     seekSpeedRef.current = 10;

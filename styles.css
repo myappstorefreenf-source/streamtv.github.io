@@ -15,7 +15,14 @@
 }
 /* Estilos para asegurar que el reproductor ocupe el área máxima sin scroll */
 #youtube-player-container {
+   position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw; /* 100% del ancho del viewport */
+    height: 100vh; /* 100% del alto del viewport */
     display: flex;
+    display: flex;
+    
 }
 .youtube-iframe {
     width: 100%; 
@@ -51,3 +58,4 @@
 .ocultar-scrollbar::-webkit-scrollbar {
     display: none;
 }
+

@@ -130,7 +130,7 @@ function ReproductorEnFoco({ videoUrl, onBack }) {
         if (!player || typeof player.getCurrentTime !== 'function') return;
 
         // Limita la velocidad máxima para evitar saltos inmanejables (e.g., max 60s/intervalo)
-        seekSpeedRef.current = Math.min(seekSpeedRef.current + 10, 90); 
+        seekSpeedRef.current = Math.min(seekSpeedRef.current + 60, 600); 
         
         const seekTime = direction === 'right' ? seekSpeedRef.current : -seekSpeedRef.current;
         
@@ -1062,4 +1062,5 @@ function App() {
 
 // NOTA: Las últimas 3 líneas comentadas asumen que estás usando React 18+. 
 // Descoméntalas e inserta este código en un archivo JS/TSX si quieres ejecutarlo.
+
 

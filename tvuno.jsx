@@ -879,6 +879,7 @@ function App() {
             if (key === 'ArrowLeft' || key === 'Enter' || key === ' ') {
                 event.preventDefault();
                 openMenu(); 
+                 setIsCategoryMenuVisible(false);
             }
             return;
         }
@@ -1243,6 +1244,7 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 
 

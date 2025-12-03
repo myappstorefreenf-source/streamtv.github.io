@@ -764,7 +764,7 @@ function App() {
 
 
     const openMenu = React.useCallback(() => {
-        setIsCategoryMenuVisible(true); // Al abrir el menú principal, mostramos las categorías
+        setIsCategoryMenuVisible(false); // Al abrir el menú principal, mostramos las categorías
         setIsMenuVisible(true);
         setIsPlaying(false); 
         
@@ -1244,6 +1244,7 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 
 

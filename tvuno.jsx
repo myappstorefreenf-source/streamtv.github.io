@@ -1636,86 +1636,123 @@ function App() {
     };
 
 
-    // Componente ChannelsMenu (Renderizado interno)
-    const ChannelsMenu = () => {
-        
-        const setCardRef = (index, element) => {
-            if (element) {
-                cardRefs.current.set(index, element);
-            } else {
-                cardRefs.current.delete(index);
-            }
-        };
+  // ----------------------------------------------------------------------
+// Componente ChannelsMenu (Renderizado interno - MODIFICADO)
+// ----------------------------------------------------------------------
+const ChannelsMenu = () => {
+    
+    const setCardRef = (index, element) => {
+        if (element) {
+            cardRefs.current.set(index, element);
+        } else {
+            cardRefs.current.delete(index);
+        }
+    };
 
-        const currentCategoryTitle = selectedCategory || "Todos los Canales";
-        
-        const isChannelsMenuVisible = isMenuVisible && !isCategoryMenuVisible;
-        const isFocusableChannel = isChannelsMenuVisible;
-        
-        const groupedFilteredChannels = groupChannelsByCategory(filteredChannels);
-        const filteredCategories = Object.keys(groupedFilteredChannels);
-        
-        return (
-            <div 
-                className={`absolute top-0 left-0 h-full bg-gray-900/90 text-white transition-all duration-300 z-20 w-1/3 max-w-md flex flex-col`}
-                 style={{
-                      transform: isChannelsMenuVisible
-                           ? 'translateX(0)' 
-                           : 'translateX(-100%)',
-                 }}
-            >
-                <div className={`p-8 h-full flex flex-col ${isChannelsMenuVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
-                    
-                    <h1 className="text-4xl font-bold mb-6 text-blue-400 flex-shrink-0">
-                        {currentCategoryTitle}
-                    </h1>
-                    
-                    {filteredChannels.length === 0 ? (
-                        <div className="p-4 text-sm text-yellow-500 flex-grow">
-                            No hay canales en esta categoría.
-                        </div>
-                    ) : (
-                        <div 
-                            id="channels-list-container"
-                            className="space-y-4 overflow-y-auto flex-grow custom-scrollbar" 
-                            tabIndex="-1"
-                        > 
-                            {filteredCategories.map((category) => (
-                                <div key={category} className="category-group">
-                                    {selectedCategory === null && (
-                                        <h2 className={`text-xl font-semibold mb-2 pt-1 pb-1 sticky top-0 bg-gray-900/90 z-30 transition-colors`}>
-                                            {category}
-                                        </h2>
-                                    )}
-                                    <div className="space-y-1">
-                                             {groupedFilteredChannels[category].map((video) => {
-                                                  const globalIndex = allChannels.findIndex(c => c.url === video.url);
+    const currentCategoryTitle = selectedCategory || "Todos los Canales";
+    
+    const isChannelsMenuVisible = isMenuVisible && !isCategoryMenuVisible;
+    const isFocusableChannel = isChannelsMenuVisible;
+    
+    const groupedFilteredChannels = React.useMemo(() => groupChannelsByCategory(filteredChannels), [filteredChannels]);
+    const filteredCategories = Object.keys(groupedFilteredChannels);
+    
+    // --- Lógica de Renderizado de Canales ---
+    const renderChannels = () => {
+        if (filteredChannels.length === 0) {
+            return (
+                <div className="p-4 text-sm text-yellow-500 flex-grow">
+                    No hay canales en esta categoría.
+                </div>
+            );
+        }
 
-                                                  return (
-                                                      <VideoCard 
-                                                          ref={(el) => setCardRef(globalIndex, el)}
-                                                          key={video.url}
-                                                          video={video} 
-                                                          onPlay={handlePlayChannel} 
-                                                          index={globalIndex} 
-                                                          isActive={globalIndex === focusedIndex} 
-                                                          isFocusable={isFocusableChannel}
-                                                      />
-                                                  );
-                                              })}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-
-                   <div className="text-sm text-gray-500 mt-4 flex-shrink-0">
-                        Canales visibles: **{filteredChannels.length}**←
+        // Caso 1: Se seleccionó una categoría específica (No nula).
+        // Aunque filteredChannels ya contiene solo canales de esa categoría, 
+        // mantenemos la estructura agrupada si quieres ver el título, 
+        // pero solo habrá 1 categoría en filteredCategories.
+        if (selectedCategory !== null) {
+            // Recorremos las categorías filtradas (solo será una)
+            return filteredCategories.map((category) => (
+                <div key={category} className="category-group">
+                    {/* Opcional: Mostrar el título de la categoría si se desea */}
+                    {/* <h2 className={`text-xl font-semibold mb-2 pt-1 pb-1 sticky top-0 bg-gray-900/90 z-30 transition-colors`}>
+                        {category}
+                    </h2> */}
+                    <div className="space-y-1">
+                        {groupedFilteredChannels[category].map((video) => {
+                            const globalIndex = allChannels.findIndex(c => c.url === video.url);
+                            return (
+                                <VideoCard 
+                                    ref={(el) => setCardRef(globalIndex, el)}
+                                    key={video.url}
+                                    video={video} 
+                                    onPlay={handlePlayChannel} 
+                                    index={globalIndex} 
+                                    isActive={globalIndex === focusedIndex} 
+                                    isFocusable={isFocusableChannel}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
+            ));
+        }
+
+        // Caso 2: Se seleccionó "Todos los Canales" (selectedCategory === null).
+        // Renderizamos la lista plana sin agrupar por categorías.
+        return (
+            <div className="space-y-1">
+                {filteredChannels.map((video) => {
+                    const globalIndex = allChannels.findIndex(c => c.url === video.url);
+                    return (
+                        <VideoCard 
+                            ref={(el) => setCardRef(globalIndex, el)}
+                            key={video.url}
+                            video={video} 
+                            onPlay={handlePlayChannel} 
+                            index={globalIndex} 
+                            isActive={globalIndex === focusedIndex} 
+                            isFocusable={isFocusableChannel}
+                        />
+                    );
+                })}
             </div>
         );
     };
+
+
+    return (
+        <div 
+            className={`absolute top-0 left-0 h-full bg-gray-900/90 text-white transition-all duration-300 z-20 w-1/3 max-w-md flex flex-col`}
+             style={{
+                 transform: isChannelsMenuVisible
+                         ? 'translateX(0)' 
+                         : 'translateX(-100%)',
+             }}
+        >
+            <div className={`p-8 h-full flex flex-col ${isChannelsMenuVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
+                
+                <h1 className="text-4xl font-bold mb-6 text-blue-400 flex-shrink-0">
+                    {currentCategoryTitle}
+                </h1>
+                
+                <div 
+                    id="channels-list-container"
+                    className="space-y-4 overflow-y-auto flex-grow custom-scrollbar" 
+                    tabIndex="-1"
+                > 
+                    {/* Renderizamos la lista usando la nueva lógica */}
+                    {renderChannels()}
+                </div>
+
+               <div className="text-sm text-gray-500 mt-4 flex-shrink-0">
+                    Canales visibles: **{filteredChannels.length}**←
+                </div>
+            </div>
+        </div>
+    );
+};
 
 
     // RENDERIZADO PRINCIPAL (Solo la página de TV)
@@ -1789,6 +1826,7 @@ function App() {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 
 

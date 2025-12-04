@@ -1413,27 +1413,61 @@ function App() {
     }, []);
 
 
-    // ⭐ LÓGICA DE NAVEGACIÓN D-PAD
-    const handleDpadNavigation = React.useCallback((event) => {
-        
-        const key = event.key;
-        const isDpadKey = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(key);
+   // ⭐ LÓGICA DE NAVEGACIÓN D-PAD
+const handleDpadNavigation = React.useCallback((event) => {
+    
+    const key = event.key;
+    const isDpadKey = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(key);
 
-        if (!isMenuVisible) {
-            // Manejo al ver el video
-            if (key === 'ArrowLeft' || key === 'Enter' || key === ' ') {
-                event.preventDefault();
-                openMenu(); 
-                 setIsCategoryMenuVisible(false);
+    if (!isMenuVisible) {
+        // --- Manejo al ver el video ---
+        if (key === 'ArrowLeft' || key === 'Enter' || key === ' ') {
+            event.preventDefault();
+            openMenu(); 
+            setIsCategoryMenuVisible(false); // Abrir menú de canales
+            return; // Salimos después de abrir el menú
+        } 
+        
+        // ⭐ NUEVA LÓGICA DE CAMBIO DE CANAL RÁPIDO (Flecha Arriba/Abajo)
+        if (isPlaying && (key === 'ArrowUp' || key === 'ArrowDown')) {
+            event.preventDefault();
+            
+            const totalChannels = filteredChannels.length;
+            if (totalChannels === 0) return;
+
+            // Encontramos el índice actual del canal en la lista FILTRADA
+            const currentFilteredIndex = focusedFilteredIndex;
+            let newFilteredIndex = currentFilteredIndex;
+
+            if (key === 'ArrowUp') {
+                // Sube de canal (retrocede en el índice, con wrap-around)
+                newFilteredIndex = (currentFilteredIndex === 0) ? totalChannels - 1 : currentFilteredIndex - 1;
+            } else if (key === 'ArrowDown') {
+                // Baja de canal (avanza en el índice, con wrap-around)
+                newFilteredIndex = (currentFilteredIndex === totalChannels - 1) ? 0 : currentFilteredIndex + 1;
+            }
+
+            // Obtenemos el nuevo canal para reproducir
+            const nextChannelToPlay = filteredChannels[newFilteredIndex];
+            
+            if (nextChannelToPlay) {
+                // Esto actualiza currentChannel y focusedFilteredIndex/focusedIndex
+                handlePlayChannel(nextChannelToPlay); 
             }
             return;
         }
-
-        if (isDpadKey) {
-            event.preventDefault();
-        } else {
-            return;
-        }
+        
+        // Si no es ninguna de las teclas de navegación en modo video, salimos
+        return; 
+    }
+    
+    // --- Continúa la lógica del menú aquí ---
+    if (isDpadKey) {
+        event.preventDefault();
+    } else {
+        return;
+    }
+    // ... (El resto de la función se mantiene igual)
 
         const totalCategories = categories.length;
         const totalFilteredChannels = filteredChannels.length;
@@ -1826,6 +1860,7 @@ const ChannelsMenu = () => {
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 root.render(<App />);
+
 
 
 

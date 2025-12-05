@@ -1218,22 +1218,26 @@ function App() {
 
     const categories = React.useMemo(() => Object.keys(groupedChannels), [groupedChannels]);
     
-    const filteredChannels = React.useMemo(() => {
-        // ⭐ Lógica de filtrado de Adultos (si está bloqueado, no muestra los canales)
-        let channels = allChannels;
-        
-        if (selectedCategory !== null) {
-            channels = channels.filter(channel => channel.category === selectedCategory);
-        }
-        
-        if (!isAdultosUnlocked && selectedCategory === ADULTOS_CATEGORY_NAME) {
-            // Si la categoría Adultos está seleccionada pero bloqueada, no mostramos nada.
-            return [];
-        }
-        
-        return channels;
-    }, [allChannels, selectedCategory, isAdultosUnlocked, ADULTOS_CATEGORY_NAME]);
+const filteredChannels = React.useMemo(() => {
+    // Empezamos con todos los canales
+    let channels = allChannels;
+    
+    // ⭐ 1. Excluir canales 'Adultos' si está bloqueado, independientemente de la categoría seleccionada
+    if (!isAdultosUnlocked) {
+        channels = channels.filter(channel => channel.category !== ADULTOS_CATEGORY_NAME);
+    }
 
+    // ⭐ 2. Aplicar el filtro de categoría (si aplica)
+    if (selectedCategory !== null) {
+        channels = channels.filter(channel => channel.category === selectedCategory);
+    }
+    
+    // ⭐ 3. Si se seleccionó la categoría 'Adultos' estando bloqueada, la lista será vacía.
+    //    (Este caso ya se cubre implícitamente por el punto 1 y 2, pero lo mantenemos
+    //     como nota mental si la lógica fuera más compleja).
+    
+    return channels;
+}, [allChannels, selectedCategory, isAdultosUnlocked, ADULTOS_CATEGORY_NAME]);
 
     const focusChannelCard = React.useCallback((indexToFocus) => {
         const totalChannels = filteredChannels.length;
@@ -1952,3 +1956,4 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+

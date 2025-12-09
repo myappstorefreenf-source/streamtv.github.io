@@ -1809,7 +1809,20 @@ React.useEffect(() => {
                  }}
             >
                 <div className={`p-8 h-full flex flex-col ${isChannelsMenuVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
-                    
+                    {/* ⭐ AÑADIDO: BOTÓN PARA ABRIR EL MENÚ DE CATEGORÍAS */}
+            <button
+                className="absolute top-2 right-2 p-2 bg-gray-700/70 rounded-full text-white z-40 
+                           transition-colors duration-200 
+                           hover:bg-gray-600/90 focus:bg-gray-600/90 focus:ring-2 focus:ring-blue-500 text-lg"
+                onClick={openCategoryMenu}
+                tabIndex={isChannelsMenuVisible ? "0" : "-1"}
+                aria-label="Abrir menú de categorías"
+            >
+                 <span role="img" aria-label="Flecha izquierda">
+                    &#x25C0; {/* Símbolo de triángulo/flecha izquierda */}
+                 </span>
+            </button>
+            {/* FIN BOTÓN */}
                     <h1 className="text-4xl font-bold mb-6 text-blue-400 flex-shrink-0">
                         {currentCategoryTitle}
                     </h1>
@@ -1956,4 +1969,5 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 

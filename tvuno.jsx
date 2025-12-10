@@ -38,7 +38,7 @@ const LOCAL_M3U_DATA = [
         title: "Telefe",
         logoUrl: "https://vimetrix.lat/femonpanel/superadmin/paneltv/banners/68fd7fd8a908d5.88183605.png",
         category: "Argentina",
-       url:"https://chromecast.cvattv.com.ar/live/c6eds/TelefeHD/SA_Live_dash_enc_C/TelefeHD.mpd",
+       url:"https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8",
         referrer: "https://portal.app.flow.com.py/", 
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" 
     },
@@ -1969,5 +1969,6 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 

@@ -36,14 +36,6 @@ const LOCAL_M3U_DATA = [
          referrer: "https://telefeappmitelefe1.akamaized.ne",
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
     },
-     {
-        title: "Telefe",
-        logoUrl: "https://vimetrix.lat/femonpanel/superadmin/paneltv/banners/68fd7fd8a908d5.88183605.png",
-        category: "Argentina",
-       url:"https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8",
-        referrer: "https://portal.app.flow.com.py/", 
-        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" 
-    },
     {
         title: "Canal 26",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Canal_26_logo_%282022%29.svg/2048px-Canal_26_logo_%282022%29.svg.png",
@@ -1971,6 +1963,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

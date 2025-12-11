@@ -28,14 +28,37 @@ const LOCAL_M3U_DATA = [
         category: "Argentina",
         url: "https://unlimited1-saopaulo.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
+     {
+    "title": "Telefe",
+   logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
+        category: "Argentina",
+    url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8",
+    headers: { 
+        "Referer": "https://telefe.com/", // <--- ¡Importante, el dominio raíz!
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "Host": "telefe.com", // <--- Ayuda a la API de Telefe
+        "Origin": "https://telefe.com" // <--- CRUCIAL para validaciones CORS en CDNs
+    }
+},
     {
+    "title": "Telefe",
+    // ... otros datos
+    "url": "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8",
+    "headers": { 
+        "Referer": "https://telefe.com/",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "Origin": "https://telefe.com"
+        // HOST ha sido eliminado temporalmente
+    }
+},
+  /*  {
         title: "Telefe",
         logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
         category: "Argentina",
         url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8",
          referrer: "https://telefe.com",
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-    },
+    },*/
     {
         title: "Canal 26",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Canal_26_logo_%282022%29.svg/2048px-Canal_26_logo_%282022%29.svg.png",
@@ -1044,26 +1067,45 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
 const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => {
     
     const url = channel ? channel.url : null;
+    
+    // 1. Extracción de todas las posibles fuentes de encabezados
     const referrer = channel ? channel.referrer : null;
     const userAgent = channel ? channel.userAgent : null;
+    const headers = channel ? channel.headers : null; // CLAVE para Telefe/canales complejos
     
-    const setupXhr = React.useCallback((xhr, url) => {
-        if (referrer) {
-            try {
-                xhr.setRequestHeader('Referer', referrer); 
-            } catch (e) {
-                console.warn("No se pudo establecer el Referer.", e);
-            }
-        }
-        if (userAgent) {
-            try {
-                xhr.setRequestHeader('User-Agent', userAgent);
-            } catch (e) {
-                // console.warn("No se pudo establecer User-Agent.", e);
-            }
-        }
-    }, [referrer, userAgent]);
+    // 2. Memoización y combinación de todos los encabezados en un objeto final
+    const finalHeaders = React.useMemo(() => {
+        const combined = headers ? { ...headers } : {}; // Empieza con el objeto 'headers'
 
+        // Soporte de retrocompatibilidad (agrega referrer/userAgent si no están en 'headers')
+        if (referrer && !combined.Referer) {
+            combined.Referer = referrer;
+        }
+        if (userAgent && !combined['User-Agent']) {
+            combined['User-Agent'] = userAgent;
+        }
+
+        return Object.keys(combined).length > 0 ? combined : null;
+    }, [headers, referrer, userAgent]);
+
+
+    // 3. Función de configuración de XHR (Aplica todos los encabezados combinados)
+    const setupXhr = React.useCallback((xhr, url) => {
+        if (finalHeaders) {
+            // Itera sobre todos los encabezados (Referer, User-Agent, Host, etc.)
+            Object.entries(finalHeaders).forEach(([key, value]) => {
+                 try {
+                     xhr.setRequestHeader(key, value); 
+                 } catch (e) {
+                     // Este error es común si intentas establecer encabezados que el navegador restringe
+                     console.warn(`No se pudo establecer el encabezado '${key}'.`, e);
+                 }
+            });
+        }
+    }, [finalHeaders]); // Dependencia clave: se regenera si cambian los encabezados
+
+
+    // useEffect principal que maneja la carga y la destrucción de HLS
     React.useEffect(() => {
         const video = ref.current;
         const currentUrl = url;
@@ -1091,10 +1133,10 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         if (window.Hls && Hls.isSupported()) { 
             
             const hlsConfig = {
-                maxBufferLength: 30,     
-                minBufferLength: 3,      
+                maxBufferLength: 30,    
+                minBufferLength: 3,     
                 autoSyncBuffer: 0.5,
-                xhrSetup: setupXhr 
+                xhrSetup: setupXhr // Usa la función modificada para enviar headers
             };
             
             hls = new Hls(hlsConfig);
@@ -1104,21 +1146,21 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                  if (isPlaying) {
-                     video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
-                     
-                     // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
-                     setTimeout(() => {
-                         if (video && video.muted) {
-                             video.muted = false; // Reactivar el audio
-                             console.log("Audio Reactivado después del Mute Agresivo.");
-                         }
-                     }, 500); 
+                      video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
+                      
+                      // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
+                      setTimeout(() => {
+                          if (video && video.muted) {
+                              video.muted = false; // Reactivar el audio
+                              console.log("Audio Reactivado después del Mute Agresivo.");
+                          }
+                      }, 500); 
                  }
             });
 
             hls.on(Hls.Events.ERROR, function (event, data) {
                  if (data.fatal) {
-                     console.error("Error fatal de HLS:", data);
+                      console.error("Error fatal de HLS:", data);
                  }
             });
 
@@ -1146,7 +1188,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
              video.removeAttribute('src');
              video.load();
         };
-    }, [url, onFinish, ref, isPlaying, setupXhr]); 
+    }, [url, onFinish, ref, isPlaying, setupXhr, finalHeaders]); 
     
     // useEffect para controlar la pausa/reproducción
     React.useEffect(() => {
@@ -1174,8 +1216,6 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         </div>
     );
 });
-
-
 // ----------------------------------------------------------------------
 // 4. COMPONENTE PRINCIPAL APP (MODIFICADO PARA SEGURIDAD)
 // ----------------------------------------------------------------------
@@ -1963,6 +2003,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

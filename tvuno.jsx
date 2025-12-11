@@ -40,16 +40,7 @@ const LOCAL_M3U_DATA = [
         "Origin": "https://telefe.com" // <--- CRUCIAL para validaciones CORS en CDNs
     }
 },
-    {
-    "title": "Telefe",
-    // ... otros datos
-    "url": "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8",
-    "headers": { 
-        "Referer": "https://telefe.com/",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
-        "Origin": "https://telefe.com"
-        // HOST ha sido eliminado temporalmente
-    }
+  
 },
   /*  {
         title: "Telefe",
@@ -2003,6 +1994,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

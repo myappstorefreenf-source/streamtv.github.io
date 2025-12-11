@@ -28,28 +28,16 @@ const LOCAL_M3U_DATA = [
         category: "Argentina",
         url: "https://unlimited1-saopaulo.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
-     {
-    "title": "Telefe",
-   logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
-        category: "Argentina",
-    url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8",
-    headers: { 
-        "Referer": "https://telefe.com/", // <--- ¡Importante, el dominio raíz!
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
-        "Host": "telefe.com", // <--- Ayuda a la API de Telefe
-        "Origin": "https://telefe.com" // <--- CRUCIAL para validaciones CORS en CDNs
-    }
+     
 },
-  
-},
-  /*  {
+    {
         title: "Telefe",
         logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
         category: "Argentina",
         url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8",
-         referrer: "https://telefe.com",
+         referrer: "https://telefeappmitelefe1.akamaized.net/",
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-    },*/
+    },
     {
         title: "Canal 26",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Canal_26_logo_%282022%29.svg/2048px-Canal_26_logo_%282022%29.svg.png",
@@ -1994,6 +1982,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

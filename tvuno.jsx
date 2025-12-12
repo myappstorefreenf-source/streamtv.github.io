@@ -28,9 +28,13 @@ const LOCAL_M3U_DATA = [
         category: "Argentina",
         url: "https://unlimited1-saopaulo.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
-     
-
-  
+      {
+       title: "Telefe",
+       logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
+      category: "Argentina",
+       url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8",
+       
+    },  
     {
         title: "Canal 26",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Canal_26_logo_%282022%29.svg/2048px-Canal_26_logo_%282022%29.svg.png",
@@ -1975,6 +1979,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

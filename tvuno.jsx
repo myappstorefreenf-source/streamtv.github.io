@@ -28,14 +28,13 @@ const LOCAL_M3U_DATA = [
         category: "Argentina",
         url: "https://unlimited1-saopaulo.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
-      {
-       title: "Telefe",
-       logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
-       category: "Argentina",
-       url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8",
-       referrer: "https://telefe.com",
-       userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
-    },  
+     {
+    title: "Telefe",
+    logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
+    category: "Argentina",
+    url: "TELEFE_TOKENIZED_PROXY", // ⭐ USAMOS UN IDENTIFICADOR CLARO
+    needsWorker: true,              // ⭐ (Opcional) Bandera para más claridad
+},
     {
         title: "Canal 26",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Canal_26_logo_%282022%29.svg/2048px-Canal_26_logo_%282022%29.svg.png",
@@ -1193,6 +1192,27 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         </div>
     );
 });
+// 1. CONSTANTE DE LA URL DE TU WORKER (La variable local)
+const WORKER_URL = "https://proxyhls.myappstore-free-nf.workers.dev/"; 
+
+// 2. FUNCIÓN PARA OBTENER LA URL FRESCA CON TOKEN
+async function fetchTokenizedChannelUrl() {
+    try {
+        const response = await fetch(WORKER_URL);
+        
+        if (!response.ok) {
+            throw new Error(`Worker falló con estado: ${response.status}`);
+        }
+        
+        const finalUrl = await response.text();
+        
+        return finalUrl;
+        
+    } catch (error) {
+        console.error("Error al obtener la URL del Worker:", error);
+        return null; 
+    }
+}
 // ----------------------------------------------------------------------
 // 4. COMPONENTE PRINCIPAL APP (MODIFICADO PARA SEGURIDAD)
 // ----------------------------------------------------------------------
@@ -1308,20 +1328,44 @@ const filteredChannels = React.useMemo(() => {
     }, [isMenuVisible, focusedCategoryIndex]);
 
 
-    const handlePlayChannel = React.useCallback((channelObject) => {
-        setCurrentChannel(channelObject); 
+  const handlePlayChannel = React.useCallback(async (channelObject) => { 
+    
+    // 1. Inicializa la URL que se va a usar en el reproductor
+    let urlToPlay = channelObject.url;
+    
+    // 2. Lógica para verificar y obtener el token (solo para Telefe o canales marcados)
+    if (channelObject.needsWorker || channelObject.url === "TOKENIZED_TELEFE") {
         
-        const newGlobalIndex = allChannels.findIndex(c => c.url === channelObject.url); 
-        setFocusedIndex(newGlobalIndex);
+        console.log("Detectado canal tokenizado. Llamando al Worker...");
+        const tokenizedUrl = await fetchTokenizedChannelUrl(); 
         
-        const newFilteredIndex = filteredChannels.findIndex(c => c.url === channelObject.url);
-        setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
-        
-        setIsCategoryMenuVisible(false);
-        setIsMenuVisible(false);
-        setIsPlaying(true);
-    }, [allChannels, filteredChannels]);
+        if (tokenizedUrl) {
+            urlToPlay = tokenizedUrl; 
+        } else {
+            console.error("No se pudo obtener la URL tokenizada. Usando URL de fallback.");
+        }
+    } 
 
+    // 3. Crear el objeto de canal final con la URL actualizada o la URL original
+    const finalChannelObject = {
+        ...channelObject,
+        url: urlToPlay 
+    };
+
+    setCurrentChannel(finalChannelObject); 
+    
+    // 4. Lógica de enfoque e interfaz (el resto de tu lógica original)
+    const newGlobalIndex = allChannels.findIndex(c => c.url === channelObject.url); 
+    setFocusedIndex(newGlobalIndex);
+    
+    const newFilteredIndex = filteredChannels.findIndex(c => c.url === channelObject.url);
+    setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
+    
+    setIsCategoryMenuVisible(false);
+    setIsMenuVisible(false);
+    setIsPlaying(true);
+    
+}, [allChannels, filteredChannels]);
     
     const handleVideoEnd = React.useCallback(() => {
         setIsMenuVisible(true);
@@ -1980,6 +2024,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

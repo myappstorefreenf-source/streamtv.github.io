@@ -1236,7 +1236,7 @@ function App() {
 
     // ⭐ NUEVO ESTADO DE SEGURIDAD
     const ADULTOS_CATEGORY_NAME = "Adultos"; // Nombre de la categoría a proteger
-    const ADULTOS_PASSWORD = "0000"; // Contraseña de ejemplo (¡Cámbiala!)
+    const ADULTOS_PASSWORD = ""; // Contraseña de ejemplo (¡Cámbiala!)
     
     const [isAdultosUnlocked, setIsAdultosUnlocked] = React.useState(false); 
     const [isPasswordModalVisible, setIsPasswordModalVisible] = React.useState(false);
@@ -2024,6 +2024,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

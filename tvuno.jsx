@@ -1187,7 +1187,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 height='100%'
                 playsInline
                 autoPlay
-                controls={true}
+                controls={false}
             />
         </div>
     );
@@ -1689,8 +1689,8 @@ React.useEffect(() => {
              if (categoryName === ADULTOS_CATEGORY_NAME && !isAdultosUnlocked) {
                 setPasswordInput('');
                  setIsCategoryMenuVisible(false); 
-                // setIsMenuVisible(false); 
-                 //setIsPlaying(false);
+                 setIsMenuVisible(false); 
+                 setIsPlaying(false);
                  setPasswordInput('');
                  setIsPasswordModalVisible(true); 
                  setFocusedCategoryIndex(index); 
@@ -1900,7 +1900,7 @@ React.useEffect(() => {
 
  // ⭐ COMPONENTE MODAL DE CONTRASEÑA (NUEVO Y ACTUALIZADO)
 const PasswordModal = ({ isVisible, onClose, onUnlock, onInputChange, inputValue }) => {
-    //if (!isVisible) return null;
+    if (!isVisible) return null;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -1908,19 +1908,8 @@ const PasswordModal = ({ isVisible, onClose, onUnlock, onInputChange, inputValue
     };
 
     return (
-       <div 
-            className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-50 transition-all duration-300"
-            // ⭐ NUEVOS ESTILOS PARA AISLAMIENTO
-            style={{
-                backgroundColor: isVisible ? 'rgba(17, 24, 39, 0.95)' : 'transparent', // Fondo gris oscuro/transparente
-                opacity: isVisible ? 1 : 0, // Opacidad 1 cuando visible, 0 cuando oculto
-                // CLAVE: Evita que el usuario haga clic en cosas detrás cuando está invisible
-                pointerEvents: isVisible ? 'auto' : 'none', 
-            }}
-        >
-            <div className="bg-gray-800 p-8 rounded-xl shadow-2xl w-96 text-white" 
-                 style={{ transform: isVisible ? 'scale(1)' : 'scale(0.9)', transition: 'transform 300ms' }} // Animación de escala sutil
-            >
+        <div className="absolute top-0 left-0 w-full h-full bg-gray-900/95 flex items-center justify-center z-50">
+            <div className="bg-gray-800 p-8 rounded-xl shadow-2xl w-96 text-white">
                 <h3 className="text-2xl font-bold mb-4">Acceso a {ADULTOS_CATEGORY_NAME}</h3>
                 <p className="text-sm text-gray-400 mb-6">Ingresa la contraseña para ver esta categoría.</p>
                 
@@ -2035,19 +2024,4 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

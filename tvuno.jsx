@@ -1689,8 +1689,8 @@ React.useEffect(() => {
              if (categoryName === ADULTOS_CATEGORY_NAME && !isAdultosUnlocked) {
                 setPasswordInput('');
                  setIsCategoryMenuVisible(false); 
-                 setIsMenuVisible(false); 
-                 setIsPlaying(false);
+                // setIsMenuVisible(false); 
+                 //setIsPlaying(false);
                  setPasswordInput('');
                  setIsPasswordModalVisible(true); 
                  setFocusedCategoryIndex(index); 
@@ -2024,6 +2024,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

@@ -1187,7 +1187,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 height='100%'
                 playsInline
                 autoPlay
-                controls={false}
+                controls={true}
             />
         </div>
     );
@@ -2024,6 +2024,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

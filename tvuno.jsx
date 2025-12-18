@@ -17,6 +17,13 @@ const LOCAL_M3U_DATA = [
         url: "https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8"
     },
     {
+        title: "El nueve",
+        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Canal_9_2015.png",
+        category: "Argentina",
+        url: "https://player.twitch.tv/?channel=elnueveenvivo&parent=www.elnueve.com.ar",
+        workerId: 'elnueve',
+    },
+    {
         title: "El Trece",
         logoUrl: "https://images.seeklogo.com/logo-png/2/1/canal-trece-argentina-logo-png_seeklogo-25582.png",
         category: "Argentina",
@@ -32,8 +39,7 @@ const LOCAL_M3U_DATA = [
     title: "Telefe",
     logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
     category: "Argentina",
-    url: "TELEFE_TOKENIZED_PROXY", // ⭐ USAMOS UN IDENTIFICADOR CLARO
-    needsWorker: true,              // ⭐ (Opcional) Bandera para más claridad
+    workerId: 'telefe', //identifica el worker para ser llamado y generar el token
 },
     {
         title: "Canal 26",
@@ -1192,26 +1198,43 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         </div>
     );
 });
-// 1. CONSTANTE DE LA URL DE TU WORKER (La variable local)
-const WORKER_URL = "https://proxyhls.myappstore-free-nf.workers.dev/"; 
+// App.js (o archivo que contiene las funciones de API)
 
-// 2. FUNCIÓN PARA OBTENER LA URL FRESCA CON TOKEN
-async function fetchTokenizedChannelUrl() {
-    try {
-        const response = await fetch(WORKER_URL);
-        
-        if (!response.ok) {
-            throw new Error(`Worker falló con estado: ${response.status}`);
-        }
-        
-        const finalUrl = await response.text();
-        
-        return finalUrl;
-        
-    } catch (error) {
-        console.error("Error al obtener la URL del Worker:", error);
-        return null; 
-    }
+// 1. CONSTANTE DE LA URL BASE DE TU WORKER (La variable local)
+// Usamos la URL base que no tiene el servicio añadido
+const WORKER_BASE_URL = "https://proxyhls.myappstore-free-nf.workers.dev/"; 
+
+/**
+ * Función para obtener la URL HLS fresca con token.
+ * ESTA FUNCIÓN SE EJECUTA EN EL HILO PRINCIPAL (mínimo cambio).
+ * @param {string} serviceName - Identificador del canal (ej: 'telefe', 'eltrece').
+ * @returns {Promise<string|null>} URL de la transmisión con token, o null en caso de error.
+ */
+async function fetchTokenizedChannelUrl(serviceName) {
+    if (!serviceName) {
+        console.error("El nombre del servicio es requerido para el Worker.");
+        return null;
+    }
+    
+    // Construye la URL completa: BASE_URL + serviceName
+    const serviceUrl = WORKER_BASE_URL + serviceName;
+    
+    try {
+        // Tu lógica original, ahora usando la URL dinámica
+        const response = await fetch(serviceUrl); 
+        
+        if (!response.ok) {
+            throw new Error(`Worker falló con estado: ${response.status}. URL: ${serviceUrl}`);
+        }
+        
+        const finalUrl = (await response.text()).trim(); 
+        
+        return finalUrl;
+        
+    } catch (error) {
+        console.error(`Error al obtener la URL para ${serviceName}:`, error);
+        return null; 
+    }
 }
 // ----------------------------------------------------------------------
 // 4. COMPONENTE PRINCIPAL APP (MODIFICADO PARA SEGURIDAD)
@@ -1328,44 +1351,54 @@ const filteredChannels = React.useMemo(() => {
     }, [isMenuVisible, focusedCategoryIndex]);
 
 
-  const handlePlayChannel = React.useCallback(async (channelObject) => { 
+ const handlePlayChannel = React.useCallback(async (channelObject) => { 
+    
+    // 1. Inicializa la URL que se va a usar en el reproductor
+    let urlToPlay = channelObject.url;
     
-    // 1. Inicializa la URL que se va a usar en el reproductor
-    let urlToPlay = channelObject.url;
-    
-    // 2. Lógica para verificar y obtener el token (solo para Telefe o canales marcados)
-    if (channelObject.needsWorker || channelObject.url === "TOKENIZED_TELEFE") {
-        
-        console.log("Detectado canal tokenizado. Llamando al Worker...");
-        const tokenizedUrl = await fetchTokenizedChannelUrl(); 
-        
-        if (tokenizedUrl) {
-            urlToPlay = tokenizedUrl; 
-        } else {
-            console.error("No se pudo obtener la URL tokenizada. Usando URL de fallback.");
-        }
-    } 
+    // ⭐ NUEVO IDENTIFICADOR: Usa la propiedad workerId
+    const serviceId = channelObject.workerId; // Será 'telefe' para ese canal
 
-    // 3. Crear el objeto de canal final con la URL actualizada o la URL original
-    const finalChannelObject = {
-        ...channelObject,
-        url: urlToPlay 
-    };
+    // 2. Lógica para verificar y obtener el token
+    if (serviceId) { // Verifica si existe un workerId
+        
+        console.log(`Detectado canal tokenizado. Llamando al Worker para ${serviceId}...`);
+        
+        // Llama a la función, pasándole el identificador
+        const tokenizedUrl = await fetchTokenizedChannelUrl(serviceId); 
+        
+        if (tokenizedUrl) {
+            urlToPlay = tokenizedUrl; 
+        } else {
+            console.error("No se pudo obtener la URL tokenizada. Usando URL de fallback.");
+        }
+    } 
 
-    setCurrentChannel(finalChannelObject); 
-    
-    // 4. Lógica de enfoque e interfaz (el resto de tu lógica original)
-    const newGlobalIndex = allChannels.findIndex(c => c.url === channelObject.url); 
-    setFocusedIndex(newGlobalIndex);
-    
-    const newFilteredIndex = filteredChannels.findIndex(c => c.url === channelObject.url);
-    setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
-    
-    setIsCategoryMenuVisible(false);
-    setIsMenuVisible(false);
-    setIsPlaying(true);
-    
-}, [allChannels, filteredChannels]);
+    // 3. Crear el objeto de canal final con la URL actualizada o la URL original
+    const finalChannelObject = {
+        ...channelObject,
+        url: urlToPlay,
+        // ⭐ CLAVE: Limpiar headers y referrer para evitar conflictos con el token de Akamai
+        headers: serviceId ? null : channelObject.headers,
+        referrer: serviceId ? null : channelObject.referrer
+    };
+
+    setCurrentChannel(finalChannelObject); 
+    
+    // 4. Lógica de enfoque e interfaz (el resto de tu lógica original)
+    const newGlobalIndex = allChannels.findIndex(c => c.url === channelObject.url); 
+    setFocusedIndex(newGlobalIndex);
+    
+    const newFilteredIndex = filteredChannels.findIndex(c => c.url === channelObject.url);
+    setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
+    
+    setIsCategoryMenuVisible(false);
+    setIsMenuVisible(false);
+    setIsPlaying(true);
+    
+}, [allChannels, filteredChannels]); // Asegúrate de incluir todas las dependencias
+ 
+
     
     const handleVideoEnd = React.useCallback(() => {
         setIsMenuVisible(true);
@@ -2024,4 +2057,3 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
-

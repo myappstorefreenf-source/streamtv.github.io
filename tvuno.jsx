@@ -492,10 +492,12 @@ const LOCAL_M3U_DATA = [
         url: "https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8"
     },
     {
-        title: "El Trece",
+        title: "El Trece 2",
         logoUrl: "https://images.seeklogo.com/logo-png/2/1/canal-trece-argentina-logo-png_seeklogo-25582.png",
         category: "Argentina",
-        url: "https://livetrx01.vodgc.net/eltrecetv/index.m3u8"
+        url: "https://live-01-02-eltrece.vodgc.net/eltrecetv_noti/tracks-v3a1/mono.m3u8",
+        referrer:"https://www.eltrecetv.com.ar/",
+        origin: "https://www.eltrecetv.com.ar",
     },
     {
         title: "TN",
@@ -2058,4 +2060,5 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 

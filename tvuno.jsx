@@ -66,7 +66,7 @@ const LOCAL_M3U_DATA = [
         title: "Cronica",
         logoUrl: "https://argentina.mom-gmr.org/uploads/_processed_/8/6/csm_16062-1639_import_3467384d27.png",
         category: "Noticias",
-        url: "https://g4.vxral-slo.transport.edge-access.net/a14/ngrp:cronicatv_video1-100044_all/cronicatv_video1-100044_720p.m3u8",
+        url: "https://lemu.telecom.com.ar/eb5d51d53b38f1ae891163cf5fe76856/",
         referrer: "https://vmf.edge-apps.net/", 
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },
@@ -2060,5 +2060,6 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 

@@ -41,6 +41,7 @@ const LOCAL_M3U_DATA = [
     category: "Argentina",
     workerId: 'telefe', //identifica el worker para ser llamado y generar el token
     // url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8"
+         url: "https://proxyhls.myappstore-free-nf.workers.dev/telefe",
 },
     {
         title: "Canal 26",
@@ -2060,6 +2061,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

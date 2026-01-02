@@ -40,7 +40,7 @@ const LOCAL_M3U_DATA = [
     logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
     category: "Argentina",
     workerId: 'telefe', //identifica el worker para ser llamado y generar el token
-     url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8"
+    // url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8"
 },
     {
         title: "Canal 26",
@@ -2060,6 +2060,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

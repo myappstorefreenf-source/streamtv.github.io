@@ -20,7 +20,7 @@ const LOCAL_M3U_DATA = [
         title: "El nueve",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Canal_9_2015.png",
         category: "Argentina",
-        url: "https://player.twitch.tv/?channel=elnueveenvivo&parent=www.elnueve.com.ar",
+        url: "https://proxyhls.myappstore-free-nf.workers.dev/elnueve",
         workerId: 'elnueve',
     },
     {
@@ -2061,6 +2061,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

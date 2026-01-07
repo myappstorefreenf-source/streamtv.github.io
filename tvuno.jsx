@@ -1192,6 +1192,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         <div className="absolute top-0 left-0 w-full h-full bg-black">
             <video
                 ref={ref}
+                poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Trail%20loading.gif"
                 className='react-player'
                 width='100%'
                 height='100%'
@@ -2061,6 +2062,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

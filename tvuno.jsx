@@ -1198,6 +1198,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
     );
 });
 
+
 // App.js (o archivo que contiene las funciones de API)
 
 // 1. CONSTANTE DE LA URL BASE DE TU WORKER (La variable local)
@@ -2057,6 +2058,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

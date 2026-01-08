@@ -1050,152 +1050,146 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
 // ----------------------------------------------------------------------
 // 3. COMPONENTE VIDEO PLAYER (Maneja HLS y la limpieza agresiva de audio)
 // ----------------------------------------------------------------------
+
+
 const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => {
-    
+
     const url = channel ? channel.url : null;
-    
-    // 1. Extracción de todas las posibles fuentes de encabezados
     const referrer = channel ? channel.referrer : null;
     const userAgent = channel ? channel.userAgent : null;
-    const headers = channel ? channel.headers : null; // CLAVE para Telefe/canales complejos
-    
-    // 2. Memoización y combinación de todos los encabezados en un objeto final
+    const headers = channel ? channel.headers : null;
+
+    const [isLoading, setIsLoading] = React.useState(true);
+
     const finalHeaders = React.useMemo(() => {
-        const combined = headers ? { ...headers } : {}; // Empieza con el objeto 'headers'
-
-        // Soporte de retrocompatibilidad (agrega referrer/userAgent si no están en 'headers')
-        if (referrer && !combined.Referer) {
-            combined.Referer = referrer;
-        }
-        if (userAgent && !combined['User-Agent']) {
-            combined['User-Agent'] = userAgent;
-        }
-
+        const combined = headers ? { ...headers } : {};
+        if (referrer && !combined.Referer) combined.Referer = referrer;
+        if (userAgent && !combined['User-Agent']) combined['User-Agent'] = userAgent;
         return Object.keys(combined).length > 0 ? combined : null;
     }, [headers, referrer, userAgent]);
 
-
-    // 3. Función de configuración de XHR (Aplica todos los encabezados combinados)
-    const setupXhr = React.useCallback((xhr, url) => {
+    const setupXhr = React.useCallback((xhr) => {
         if (finalHeaders) {
-            // Itera sobre todos los encabezados (Referer, User-Agent, Host, etc.)
             Object.entries(finalHeaders).forEach(([key, value]) => {
-                 try {
-                     xhr.setRequestHeader(key, value); 
-                 } catch (e) {
-                     // Este error es común si intentas establecer encabezados que el navegador restringe
-                     console.warn(`No se pudo establecer el encabezado '${key}'.`, e);
-                 }
+                try {
+                    xhr.setRequestHeader(key, value);
+                } catch (e) {
+                    console.warn(`No se pudo establecer el header ${key}`);
+                }
             });
         }
-    }, [finalHeaders]); // Dependencia clave: se regenera si cambian los encabezados
+    }, [finalHeaders]);
 
-
-    // useEffect principal que maneja la carga y la destrucción de HLS
     React.useEffect(() => {
         const video = ref.current;
-        const currentUrl = url;
-        
-        if (!video || !currentUrl) return;
-        
-        let hls;
-        const handleEnded = () => onFinish();
-        video.addEventListener('ended', handleEnded);
+        if (!video || !url) return;
 
-        // ⭐ LIMPIEZA AGRESIVA INICIAL (Detiene el audio del canal anterior)
+        let hls;
+        setIsLoading(true);
+
+        const handleEnded = () => onFinish();
+        const handleCanPlay = () => setIsLoading(false);
+        const handleWaiting = () => setIsLoading(true);
+
+        video.addEventListener('ended', handleEnded);
+        video.addEventListener('canplay', handleCanPlay);
+        video.addEventListener('waiting', handleWaiting);
+
+        // Limpieza agresiva
         if (video.__hlsInstance) {
-             video.__hlsInstance.destroy();
-             delete video.__hlsInstance;
+            video.__hlsInstance.destroy();
+            delete video.__hlsInstance;
         }
+
         video.pause();
-        
-        // ⭐ PASO CLAVE 1: MUTE INMEDIATO PARA EVITAR EL ECO
-        video.muted = true; 
-        
-        video.removeAttribute('src'); 
-        video.load(); 
-        
-        
-        if (window.Hls && Hls.isSupported()) { 
-            
-            const hlsConfig = {
-                maxBufferLength: 30,    
-                minBufferLength: 3,     
+        video.muted = true;
+        video.removeAttribute('src');
+        video.load();
+
+        if (window.Hls && Hls.isSupported()) {
+            hls = new Hls({
+                maxBufferLength: 30,
+                minBufferLength: 3,
                 autoSyncBuffer: 0.5,
-                xhrSetup: setupXhr // Usa la función modificada para enviar headers
-            };
-            
-            hls = new Hls(hlsConfig);
-            hls.loadSource(currentUrl); 
-            hls.attachMedia(video);
-            video.__hlsInstance = hls;
-            
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                 if (isPlaying) {
-                      video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
-                      
-                      // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
-                      setTimeout(() => {
-                          if (video && video.muted) {
-                              video.muted = false; // Reactivar el audio
-                              console.log("Audio Reactivado después del Mute Agresivo.");
-                          }
-                      }, 500); 
-                 }
+                xhrSetup: setupXhr
             });
 
-            hls.on(Hls.Events.ERROR, function (event, data) {
-                 if (data.fatal) {
-                      console.error("Error fatal de HLS:", data);
-                 }
+            hls.loadSource(url);
+            hls.attachMedia(video);
+            video.__hlsInstance = hls;
+
+            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                if (isPlaying) {
+                    video.play().catch(() => {});
+                    setTimeout(() => {
+                        video.muted = false;
+                        setIsLoading(false);
+                    }, 500);
+                }
+            });
+
+            hls.on(Hls.Events.ERROR, (e, data) => {
+                if (data.fatal) console.error("HLS fatal", data);
             });
 
         } else {
-            // Reproducción nativa (Fallback)
-            video.src = currentUrl;
+            video.src = url;
             if (isPlaying) {
-                 video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
-                 setTimeout(() => {
-                      if (video && video.muted) video.muted = false; 
-                 }, 500);
+                video.play().catch(() => {});
+                setTimeout(() => {
+                    video.muted = false;
+                    setIsLoading(false);
+                }, 500);
             }
         }
-        
-        // ⭐ FUNCIÓN DE LIMPIEZA FINAL 
+
         return () => {
-             video.removeEventListener('ended', handleEnded);
-             video.pause();
-             video.muted = true; 
-             
-             if (video.__hlsInstance) {
-                 video.__hlsInstance.destroy();
-                 delete video.__hlsInstance;
-             }
-             video.removeAttribute('src');
-             video.load();
+            video.removeEventListener('ended', handleEnded);
+            video.removeEventListener('canplay', handleCanPlay);
+            video.removeEventListener('waiting', handleWaiting);
+            video.pause();
+            video.muted = true;
+            if (video.__hlsInstance) {
+                video.__hlsInstance.destroy();
+                delete video.__hlsInstance;
+            }
+            video.removeAttribute('src');
+            video.load();
         };
-    }, [url, onFinish, ref, isPlaying, setupXhr, finalHeaders]); 
-    
-    // useEffect para controlar la pausa/reproducción
+
+    }, [url, isPlaying, onFinish, setupXhr, ref]);
+
     React.useEffect(() => {
         const video = ref.current;
-        if (video) {
-            if (isPlaying) {
-                video.play().catch(e => console.error("Error al reanudar:", e));
-            } else {
-                video.pause();
-            }
-        }
+        if (!video) return;
+        isPlaying ? video.play().catch(() => {}) : video.pause();
     }, [isPlaying, ref]);
-    
+
     return (
+        
         <div className="absolute top-0 left-0 w-full h-full bg-black">
+
+            {/* 🔄 SPINNER */}
+          {isLoading && (
+    <div className="absolute inset-0 flex items-center justify-center bg-black z-10">
+       <div className="spinner">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+    </div>
+            )}
+
             <video
                 ref={ref}
-                poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Trail%20loading.gif"
-                className='react-player'
-                width='100%'
-                height='100%'
+                className="react-player"
+                width="100%"
+                height="100%"
                 playsInline
                 autoPlay
                 controls={false}
@@ -1203,6 +1197,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         </div>
     );
 });
+
 // App.js (o archivo que contiene las funciones de API)
 
 // 1. CONSTANTE DE LA URL BASE DE TU WORKER (La variable local)
@@ -2062,6 +2057,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

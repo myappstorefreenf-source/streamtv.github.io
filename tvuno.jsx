@@ -1192,7 +1192,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         <div className="absolute top-0 left-0 w-full h-full bg-black">
             <video
                 ref={ref}
-                poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/spinner.gif"
+                poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/spinnertx.gif"
                 className='react-player'
                 width='100%'
                 height='100%'

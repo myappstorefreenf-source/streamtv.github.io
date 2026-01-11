@@ -1196,7 +1196,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 El 'z-0' lo pone detrás del video cuando este tenga imagen */}
             <img 
                 src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
-                className="absolute w-16 h-16 object-contain z-10 pointer-events-none" 
+                className="absolute w-20 h-20 object-contain z-10 pointer-events-none" 
                 alt="Cargando..."
                 id="video-spinner"
             />

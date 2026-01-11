@@ -1190,9 +1190,22 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
     
     return (
         <div className="absolute top-0 left-0 w-full h-full bg-black">
+<div style={{ position: 'relative', width: '100%', height: '100%' }}>
+    {/* El Spinner centrado detrás del video */}
+    <img 
+        src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
+        style={{ 
+            position: 'absolute', 
+            top: '50%', 
+            left: '50%', 
+            transform: 'translate(-50%, -50%)',
+            width: '50px' // AQUÍ CONTROLAS EL TAMAÑO
+        }} 
+    />
+
             <video
                 ref={ref}
-                poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif"                className='react-player'
+                //poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif"                className='react-player'
                 width='100%'
                 height='100%'
                 playsInline

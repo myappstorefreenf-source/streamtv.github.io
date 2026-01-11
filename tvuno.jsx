@@ -1188,13 +1188,22 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         }
     }, [isPlaying, ref]);
     
-    return (
-        <div className="absolute top-0 left-0 w-full h-full bg-black">
-
-
+   return (
+       <div className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center">
+        
+        {/* Spinner personalizado - Aquí controlas el tamaño con w-12 h-12 o el que gustes */}
+       {/* SPINNER: Se posiciona en el centro. 
+                El 'z-0' lo pone detrás del video cuando este tenga imagen */}
+            <img 
+                src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
+                className="absolute w-16 h-16 object-contain z-10 pointer-events-none" 
+                alt="Cargando..."
+                id="video-spinner"
+            />
+        
             <video
                 ref={ref}
-                //poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif"                
+               // poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif"                
 
 className='
                react-player'
@@ -1203,6 +1212,21 @@ className='
                 playsInline
                 autoPlay
                 controls={false}
+                // Esta línea oculta el spinner apenas el video muestra el primer cuadro
+                onLoadedData={() => {
+                    const spinner = document.getElementById('video-spinner');
+                    if(spinner) spinner.style.display = 'none';
+                }}
+                // Esta línea vuelve a mostrar el spinner si el video se queda buffereando
+                onWaiting={() => {
+                    const spinner = document.getElementById('video-spinner');
+                    if(spinner) spinner.style.display = 'block';
+                }}
+                // Esta línea lo oculta cuando vuelve a reproducir
+                onPlaying={() => {
+                    const spinner = document.getElementById('video-spinner');
+                    if(spinner) spinner.style.display = 'none';
+                }}
             />
         </div>
     );
@@ -2066,6 +2090,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

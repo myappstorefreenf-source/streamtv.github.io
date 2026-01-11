@@ -1205,7 +1205,10 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
 
             <video
                 ref={ref}
-                //poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif"                className='react-player'
+                //poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif"                
+
+className='
+               react-player'
                 width='100%'
                 height='100%'
                 playsInline

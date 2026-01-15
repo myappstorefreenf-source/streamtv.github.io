@@ -650,6 +650,7 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
 const CATALOGO = {
      vivo: [
         { titulo: "telefe", url: "https://www.youtube.com/embed/XhAYcYpPzTc?si=6CCfxFXc0pf9m5gk" },
+        { titulo: "El trece", url: "https://youtu.be/-ij3cSQzT-w" }, 
         { titulo: "canal 26", url: "https://youtu.be/jEhaYtAd7RI" },
         { titulo: "c5n", url: "https://youtu.be/SF06Qy1Ct6Y" },
         { titulo: "tn", url: "https://youtu.be/cb12KmMMDJA" },
@@ -1096,4 +1097,5 @@ function App() {
 
 // NOTA: Las últimas 3 líneas comentadas asumen que estás usando React 18+. 
 // Descoméntalas e inserta este código en un archivo JS/TSX si quieres ejecutarlo.
+
 

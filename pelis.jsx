@@ -648,9 +648,44 @@ function MasVideosGrid({ categoria, videos, onPlay, onClose }) {
 // ----------------------------------------------------------------------
 
 const CATALOGO = {
+     vivo: [
+        { titulo: "telefe", url: "https://www.youtube.com/embed/XhAYcYpPzTc?si=6CCfxFXc0pf9m5gk" },
+        { titulo: "canal 26", url: "https://youtu.be/jEhaYtAd7RI" },
+        { titulo: "c5n", url: "https://youtu.be/SF06Qy1Ct6Y" },
+        { titulo: "tn", url: "https://youtu.be/cb12KmMMDJA" },
+        { titulo: "a24", url: "https://youtu.be/ArKbAx1K-2U" },
+        { titulo: "cronica tv", url: "https://youtu.be/avly0uwZzOE" },
+        { titulo: "America", url: "https://youtu.be/zZVJpnQoSuI" },
+        { titulo: "LN+", url: "https://youtu.be/unR6PQyi8TM" },
+        { titulo: "Canal de la ciudad", url: "https://youtu.be/AMiVAF_tuJ4" },
+        { titulo: "Telefe Rosario", url: "https://youtu.be/5IA73Q6LM4g" },
+        { titulo: "El siete tv", url: "https://youtu.be/Vh8xmLBJtR8"},
+        { titulo: "Bio bio", url: "https://youtu.be/X_L7-g34Oe4" },
+        {  titulo: "El doce", url: "https://youtu.be/nndzeKDSjuc" },
+        { titulo: "Canal E ", url: "https://youtu.be/tytTT629brE " },
+        { titulo: "Mega ", url: "https://youtu.be/qydV93kTLNI " },
+        { titulo: "Multimedios", url: "https://youtu.be/5r4wPMQdhnU" },
+        { titulo: "Telesur", url: "https://youtu.be/2-TJWjqWsSU" },
+        { titulo: "La iguana tv", url: "https://youtu.be/nT3lCTLTmgU" },
+        { titulo: "Milenio", url: "https://youtu.be/VQjwWILv7rM" },
+        { titulo: "Caracol", url: "https://youtu.be/ZA6YS0CYoTA" },
+        { titulo: "City tv", url: "https://youtu.be/fqPcHhxXhog" },
+         { titulo: "Caso cerrado 24/7", url: "https://youtu.be/CG7UYN5OrQA " },
+        { titulo: "El once tv", url: "https://youtu.be/R50CmfdYKto" },
+        { titulo: "Argentina 12 ", url: "https://youtu.be/ECFbTfcv_yE" },
+        { titulo: "Canal 8", url: "https://youtu.be/GYPMNGLF_EE" },
+        { titulo: "CNN en español", url: "https://youtu.be/Qr61waJ6AZg" },
+        { titulo: "DW en español ", url: "https://youtu.be/jRnqxURJ120" },
+        { titulo: "Quiero musica", url: "https://youtu.be/vGNglKWqwcQ" },
+        { titulo: "Canal Rural ", url: "https://youtu.be/Aq2zWchTUc0" },
+        { titulo: "Radio 10", url: "https://youtu.be/dkEANC9Q3AY" },
+        { titulo: "Radio Mitre ", url: "https://youtu.be/ybXIVVg6epw" },
+        { titulo: "Radio Urbana Play ", url: "https://youtu.be/2_N11Mp7lN0" },
+        { titulo: "Radio La Pop ", url: "https://youtu.be/7IGgrPGetoI" },
+           
+
+    ],
     terror: [
-        { titulo: "Cazador de demonios", url: "https://youtu.be/UHvttPWH--Q?si=6yON_SdMIwywMJSC" },
-        { titulo: "El come huesos", url: "https://archive.org/download/tintin-espanol/Cap%20%201%20%20TINTIN%20EN%20AMERICA.mp4-" },
         { titulo: "Peligro en el Amazonas", url: "https://youtu.be/JDOoSVKh5gc?si=On_VQV5CuB_dFo1I" },
         { titulo: "Invasion Oculta", url: "https://youtu.be/jxrT8Bb5ilA?si=X6KIR-R3q0E4WFBj" },
         { titulo: "impacto Final", url: "https://youtu.be/42uqz1rMJVE?si=VKb63Pld6X3eshC6" },
@@ -664,7 +699,6 @@ const CATALOGO = {
         
     ],
     accion: [
-        { titulo: "Nephilim", url: "https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9ePPpS" },
         { titulo: "Simbad la aventura del minotauro", url: "https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N" },
         { titulo: "Alien Convergence", url: "https://youtu.be/w6DKhpKjMTE?si=j-7kNNoz93l0UZk9" },
         { titulo: "Yeti el hombre de la nieve", url: "https://youtu.be/_OWD2gaWdOM?si=M-7yKl2zS51hCOvf" },
@@ -989,7 +1023,7 @@ function App() {
         />;
     }
 
-    const heroVideoUrl ="https://youtu.be/bd7PTHImmaI?si=95uXGaIK9s9ePPpS";
+    const heroVideoUrl ="https://youtu.be/_k3CPvhzEVA?si=HUYPMxQi2Az3sK9N";
     let categoryIndex = 1; 
 
     return (
@@ -1062,5 +1096,4 @@ function App() {
 
 // NOTA: Las últimas 3 líneas comentadas asumen que estás usando React 18+. 
 // Descoméntalas e inserta este código en un archivo JS/TSX si quieres ejecutarlo.
-
 

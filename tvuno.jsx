@@ -1497,6 +1497,7 @@ const filteredChannels = React.useMemo(() => {
 
 
     // ⭐ NUEVA LÓGICA DE VALIDACIÓN DE CONTRASEÑA
+    const [error, setError] = React.useState('');
     const handleUnlockAdultos = React.useCallback((password) => {
         if (password === ADULTOS_PASSWORD) {
             setIsAdultosUnlocked(true);
@@ -1513,10 +1514,13 @@ const filteredChannels = React.useMemo(() => {
             // Damos foco al primer canal de la lista filtrada de Adultos
             requestAnimationFrame(() => focusChannelCard(0));
 
-        } else {
-            alert("Contraseña incorrecta. Inténtalo de nuevo."); 
-            setPasswordInput('');
-            // El modal se mantiene visible
+        }
+         else {
+          
+    setError("Contraseña incorrecta. Inténtalo de nuevo.");
+    setPasswordInput('');
+    // El error se limpia después de unos segundos si quieres
+    setTimeout(() => setError(''), 3000);
         }
     }, [ADULTOS_PASSWORD, ADULTOS_CATEGORY_NAME, focusChannelCard]);
 
@@ -1979,7 +1983,12 @@ const PasswordModal = ({ isVisible, onClose, onUnlock, onInputChange, inputValue
             <div className="bg-gray-800 p-8 rounded-xl shadow-2xl w-96 text-white">
                 <h3 className="text-2xl font-bold mb-4">Acceso a {ADULTOS_CATEGORY_NAME}</h3>
                 <p className="text-sm text-gray-400 mb-6">Ingresa la contraseña para ver esta categoría.</p>
-                
+                {/* 🔴 SECCIÓN DE ERROR INTEGRADA */}
+                {error && (
+                    <div className="mb-4 p-3 bg-red-500/20 border border-red-500 rounded-lg animate-pulse text-center">
+                        <p className="text-red-500 text-sm font-bold">⚠️ {error}</p>
+                    </div>
+                )}
                 <form onSubmit={handleSubmit}>
                     <input
                         type="password"
@@ -2091,6 +2100,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

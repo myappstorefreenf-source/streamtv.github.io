@@ -1277,7 +1277,7 @@ function App() {
     const [videoCatalog, setVideoCatalog] = React.useState(null); 
     const [currentChannel, setCurrentChannel] = React.useState(null); 
     const currentChannelUrl = currentChannel ? currentChannel.url : null;
-    
+   const [isAppReady, setIsAppReady] = React.useState(false); //retraso en la carga para dar tiempo al renderizado global
     const [isMenuVisible, setIsMenuVisible] = React.useState(true); 
     const playerRef = React.useRef(null);
     const [focusedIndex, setFocusedIndex] = React.useState(-1); 
@@ -1444,22 +1444,26 @@ const filteredChannels = React.useMemo(() => {
     }, [focusChannelCard, focusedFilteredIndex]);
 
 
-    // Carga de datos local e inicialización (SIN INICIO DE VIDEO)
-    React.useEffect(() => {
-        
-        const data = LOCAL_M3U_DATA; 
-        
-        setVideoCatalog(data);
-        
-        if (data.length > 0) {
-            setFocusedIndex(0);
-            setFocusedFilteredIndex(0); 
-            setSelectedCategory(null);
-            setFocusedCategoryIndex(-1); // Foco en "Todos los Canales"
-        }
-        
-    }, []); 
+   // Carga de datos local e inicialización (CON RETRASO ARTIFICIAL)
+React.useEffect(() => {
+    // 1. Cargamos los datos inmediatamente
+    const data = LOCAL_M3U_DATA; 
+    setVideoCatalog(data);
     
+    if (data.length > 0) {
+        setFocusedIndex(0);
+        setFocusedFilteredIndex(0); 
+        setSelectedCategory(null);
+        setFocusedCategoryIndex(-1);
+    }
+
+    // 2. ⭐ FORZAMOS EL TIEMPO DE ESPERA (3000ms = 3 segundos)
+    const timer = setTimeout(() => {
+        setIsAppReady(true);
+    }, 3000);
+
+    return () => clearTimeout(timer); // Limpieza de memoria
+}, []);
     
     // Lógica de scroll para el menú de categorías
     const scrollCategoryList = React.useCallback((newCatIndex) => {
@@ -2039,18 +2043,24 @@ const PasswordModal = ({ isVisible, onClose, onUnlock, onInputChange, inputValue
                 />
             )}
             
-             {/* 2. Pantalla de carga */}
-            {videoCatalog === null && (
-                <div className="flex items-center justify-center w-full h-full bg-gray-900 text-white z-30">
-                    <h1 className="text-xl">Cargando...  <img 
-                src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
-                className="absolute w-20 h-20 object-contain z-10 pointer-events-none" 
-                alt="Cargando..."
-                id="video-spinner"
-            /> </h1>
-                </div>
-            )}
+           {/* 2. Pantalla de carga */}
+{!isAppReady && (
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 text-white z-[100]">
+        <div className="flex flex-col items-center">
+            {/* Texto de carga */}
+            <h1 className="text-2xl font-bold mb-8 animate-pulse">Cargando Sistema...</h1>
             
+            {/* Contenedor del Spinner */}
+            <div className="relative w-24 h-24 flex items-center justify-center">
+                <img 
+                    src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
+                    className="w-full h-full object-contain pointer-events-none" 
+                    alt="Cargando..."
+                />
+            </div>
+        </div>
+    </div>
+)}
             {/* 3. Menús */}
             {videoCatalog !== null && (
                 <React.Fragment>
@@ -2105,7 +2115,6 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
-
 
 
 

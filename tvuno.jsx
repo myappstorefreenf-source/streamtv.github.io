@@ -18,10 +18,10 @@ const LOCAL_M3U_DATA = [
     },
     {
         title: "El nueve",
-        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Canal_9_2015.png",
+        logoUrl: "https://argentina.mom-gmr.org/uploads/_processed_/8/6/csm_16062-1639_import_3467384d27.png",//ttps://upload.wikimedia.org/wikipedia/commons/3/3a/Canal_9_2015.png",
         category: "Argentina",
         url: "https://proxyhls.myappstore-free-nf.workers.dev/elnueve",
-        workerId: 'elnueve',
+        workerId: 'cronica',
     },
     {
         title: "El Trece",
@@ -2115,6 +2115,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

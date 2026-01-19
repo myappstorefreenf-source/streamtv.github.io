@@ -2039,10 +2039,15 @@ const PasswordModal = ({ isVisible, onClose, onUnlock, onInputChange, inputValue
                 />
             )}
             
-            {/* 2. Pantalla de carga */}
+             {/* 2. Pantalla de carga */}
             {videoCatalog === null && (
                 <div className="flex items-center justify-center w-full h-full bg-gray-900 text-white z-30">
-                    <h1 className="text-xl">Cargando Espere.. ⏳</h1>
+                    <h1 className="text-xl">Cargando...  <img 
+                src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
+                className="absolute w-20 h-20 object-contain z-10 pointer-events-none" 
+                alt="Cargando..."
+                id="video-spinner"
+            /> </h1>
                 </div>
             )}
             
@@ -2100,6 +2105,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

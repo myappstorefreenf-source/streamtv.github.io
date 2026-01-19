@@ -1460,7 +1460,7 @@ React.useEffect(() => {
     // 2. ⭐ FORZAMOS EL TIEMPO DE ESPERA (3000ms = 3 segundos)
     const timer = setTimeout(() => {
         setIsAppReady(true);
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timer); // Limpieza de memoria
 }, []);
@@ -2048,7 +2048,7 @@ const PasswordModal = ({ isVisible, onClose, onUnlock, onInputChange, inputValue
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 text-white z-[100]">
         <div className="flex flex-col items-center">
             {/* Texto de carga */}
-            <h1 className="text-2xl font-bold mb-8 animate-pulse">Cargando Sistema...</h1>
+            <h1 className="text-2xl font-bold mb-8 animate-pulse">Cargando...</h1>
             
             {/* Contenedor del Spinner */}
             <div className="relative w-24 h-24 flex items-center justify-center">
@@ -2115,6 +2115,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

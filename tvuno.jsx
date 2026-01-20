@@ -14,7 +14,7 @@ const LOCAL_M3U_DATA = [
         title: "Prueba TV",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
         category: "Argentina",
-        url: "https://cdn1.devilsfilm.org/DoILikeGuysOrGirls-RiverLynnSavanahStormVanWylde_s03_VanWylde_RiverLynn_540p.mp4"
+        url: "https://cdn1.devilsfilm.org/DoILikeGuysOrGirls-RiverLynnSavanahStormVanWylde_s03_VanWylde_RiverLynn_540p.mp4",
          referrer: "https://cdn1.devilsfilm.org/", 
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },
@@ -2124,6 +2124,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

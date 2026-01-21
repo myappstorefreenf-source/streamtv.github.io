@@ -950,6 +950,7 @@ const LOCAL_M3U_DATA = [
         category: "General",
         url: "https://unlimited1-us.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
+//::::::::::::::::::COMIENZO CATADULTOS:::::::::::::::::::::::://
     {
         title: "BRAZZERS",
         logoUrl: "http://www.tps.uk.com/img/products/120/Brazzers-TV-Viaccess-12-month.jpg",
@@ -991,7 +992,43 @@ const LOCAL_M3U_DATA = [
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
         url: "https://live.adultiptv.net/teen.m3u8"
-    }
+    },
+     {
+        title: "Russian",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "https://cdn.redtraffic.net/russian.m3u8"
+    },
+     {
+        title: "Lesbian",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "https://cdn.redtraffic.net/lesbian.m3u8"
+    },
+     {
+        title: "Rough",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "https://cdn.redtraffic.net/rough.m3u8"
+    },
+     {
+        title: "Latina",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "https://cdn.redtraffic.net/latina.m3u8"
+    },
+     {
+        title: "Anal",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "https://cdn.redtraffic.net/Anal.m3u8"
+    },
+     {
+        title: "Adult Iptv",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "https://cdn.redtraffic.net/master.m3u8"
+    },
 ];
 
 // ----------------------------------------------------------------------
@@ -2124,6 +2161,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

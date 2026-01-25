@@ -495,12 +495,7 @@ const LOCAL_M3U_DATA = [
         category: "Series",
         url: "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/60b4c06717da110007ee1af6/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&serverSideAds=false&studio_id=viacom&tags=ROKU_CONTENT_TAGS"
     },
-    {
-        title: "América TV",
-        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
-        category: "Argentina",
-        url: "https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8"
-    },
+   
     {
         title: "El Trece 2",
         logoUrl: "https://images.seeklogo.com/logo-png/2/1/canal-trece-argentina-logo-png_seeklogo-25582.png",
@@ -509,14 +504,7 @@ const LOCAL_M3U_DATA = [
         referrer:"https://www.eltrecetv.com.ar/",
         origin: "https://www.eltrecetv.com.ar",
     },
-    {
-        title: "TN",
-        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/TN_todo_noticias_logo.svg/2560px-TN_todo_noticias_logo.svg.png",
-        category: "Noticias",
-        url: "http://streamingtv.vip:80/series/DanielMendoza/Agrolab2019/319637.mp4",
-        referrer: "https://tn.com.ar/envivo/24hs", 
-        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
-    },
+   
     {
         title: "TV",
         logoUrl: "https://images.pluto.tv/channels/6086d3f420fc8500075f8dbf/colorLogoPNG.png",

@@ -1223,48 +1223,57 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
     }, [isPlaying, ref]);
     
    return (
-       <div className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center">
-        
-        {/* Spinner personalizado - Aquí controlas el tamaño con w-12 h-12 o el que gustes */}
-       {/* SPINNER: Se posiciona en el centro. 
-                El 'z-0' lo pone detrás del video cuando este tenga imagen */}
-            <img 
-                src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
-                className="absolute w-20 h-20 object-contain z-10 pointer-events-none" 
-                alt="Cargando..."
-                id="video-spinner"
-            />
-        
-            <video
-                ref={ref}
-               // poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx(1).gif"                
+    <div className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center">
 
-className='
-               react-player'
-                  poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx1.gif"
-                width='100%'
-                height='100%'
-                playsInline
-                autoPlay
-                controls={false}
-                // Esta línea oculta el spinner apenas el video muestra el primer cuadro
-                onLoadedData={() => {
-                    const spinner = document.getElementById('video-spinner');
-                    if(spinner) spinner.style.display = 'none';
-                }}
-                // Esta línea vuelve a mostrar el spinner si el video se queda buffereando
-                onWaiting={() => {
-                    const spinner = document.getElementById('video-spinner');
-                    if(spinner) spinner.style.display = 'block';
-                }}
-                // Esta línea lo oculta cuando vuelve a reproducir
-                onPlaying={() => {
-                    const spinner = document.getElementById('video-spinner');
-                    if(spinner) spinner.style.display = 'none';
-                }}
-            />
+        {/* CONTENEDOR GLOBAL DE CARGA */}
+        <div 
+            id="video-loader-container" 
+            className="absolute inset-0 z-10 pointer-events-none"
+        >
+            {/* 1. Nombre del Canal (Superior Derecha) */}
+            {channel?.name && (
+                <div className="absolute top-4 right-6 bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
+                    <span className="text-white text-sm md:text-lg font-bold tracking-wide uppercase animate-pulse">
+                        {channel.name}
+                    </span>
+                </div>
+            )}
+
+            {/* 2. Spinner (Centro exacto) */}
+            <div className="flex h-full w-full items-center justify-center">
+                <img 
+                    src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
+                    className="w-20 h-20 object-contain" 
+                    alt="Cargando..."
+                />
+            </div>
         </div>
-    );
+
+        <video
+            ref={ref}
+            className='react-player'
+            poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx1.gif"
+            width='100%'
+            height='100%'
+            playsInline
+            autoPlay
+            controls={false}
+            onLoadedData={() => {
+                const loader = document.getElementById('video-loader-container');
+                if(loader) loader.style.display = 'none';
+            }}
+            onWaiting={() => {
+                const loader = document.getElementById('video-loader-container');
+                if(loader) loader.style.display = 'block';
+            }}
+            onPlaying={() => {
+                const loader = document.getElementById('video-loader-container');
+                if(loader) loader.style.display = 'none';
+            }}
+        />
+    </div>
+);
+
 });
 // App.js (o archivo que contiene las funciones de API)
 

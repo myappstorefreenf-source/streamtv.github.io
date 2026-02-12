@@ -753,7 +753,7 @@ const CATALOGO = {
     thriller: [
         { titulo: "Jeepers Creepers", url: "https://youtu.be/hmKnm2jH_2Y?si=2qWanAyVpHhKUAWo" },
         { titulo: "La Profesora Psicopata", url: "https://youtu.be/fbdupvcfO6Q?si=fIRyTIZP0PFZbwUA" },
-        { titulo: "The ninth gate", url: "https://youtu.be/QskN9E6mCFk?si=iiRzaIMOX5yTxQQM" },
+        { titulo: "The ninth gate", url: "https://youtu.be/HMoxAOvwwT4?si=aNdg94ASA-O-SB-LM" },
         { titulo: "Pasajeros", url: "https://youtu.be/sg4HgAHmRac?si=3eH3jOjcPmqf3agq" },
         { titulo: "Cazadores del mas alla", url: "https://youtu.be/eww-r8o-JOc?si=xARiJSGOx4KM0DVk" },
         { titulo: "Identidad alterada", url: "https://youtu.be/Huoda3CKCBY?si=0Sl_sRT2ekJ2a6yC" },
@@ -1098,6 +1098,7 @@ function App() {
 
 // NOTA: Las últimas 3 líneas comentadas asumen que estás usando React 18+. 
 // Descoméntalas e inserta este código en un archivo JS/TSX si quieres ejecutarlo.
+
 
 
 

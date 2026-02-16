@@ -67,7 +67,7 @@ const LOCAL_M3U_DATA = [
     referrer: "https://player.sensa.com.ar/",
     userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
     drm: {
-        clearkey: {
+        clearKeys: {
             "dead023f7a81634339ae639990c1517a": "ba970222b4466c61d0deccc67ab34452"
         }
     }

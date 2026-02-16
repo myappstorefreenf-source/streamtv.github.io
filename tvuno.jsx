@@ -1,4 +1,4 @@
-// Asegúrate de que React, ReactDOM y Hls.js estén cargados en el scope global.
+de// Asegúrate de que React, ReactDOM y Hls.js estén cargados en el scope global.
 // Por ejemplo:
 // <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
 // <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -14,8 +14,8 @@ const LOCAL_M3U_DATA = [
         title: "Prueba TV",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
         category: "Argentina",
-        url: "https://mplus.pontiscloud.com/live/eds/A24/live_dash_cld/A24.mpd?|referer=https://webclient.antinaplayplus.com.ar/",
-         referrer: "https://mplus.pontiscloud.com/", 
+        url: "https://mplus.pontiscloud.com/live/eds/A24/live_dash_cld/A24.mpd?",
+         referrer: "https://webclient.antinaplayplus.com.ar/", 
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },
     

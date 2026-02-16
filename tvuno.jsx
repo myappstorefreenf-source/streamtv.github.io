@@ -1146,26 +1146,54 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             }
         };
 
-        // --- MODO DASH + DRM (Para Telefe) ---
+             // --- MODO DASH + DRM (Para Telefe / HBO) ---
         if (url.includes('.mpd') || drm) {
             shakaPlayer = new shaka.Player(video);
             video.__shakaInstance = shakaPlayer;
 
-            if (drm && drm.clearkey) {
-                shakaPlayer.configure({ drm: { clearKeys: drm.clearkey } });
-            }
+            // CONFIGURACIÓN AGRESIVA
+            shakaPlayer.configure({
+                drm: {
+                    clearKeys: drm.clearkey || {},
+                    // Forzamos a Shaka a intentar reproducir incluso si cree que el monitor no es HDCP
+                    robustness: '' 
+                },
+                streaming: {
+                    // Ayuda a saltar huecos en transmisiones en vivo
+                    jumpLargeGaps: true,
+                    // Evita que el reproductor se quede cargando infinito si el buffer es pequeño
+                    rebufferingGoal: 2 
+                },
+                manifest: {
+                    dash: {
+                        // Importante para algunos streams de Sensa
+                        ignoreMinBufferTime: true 
+                    }
+                }
+            });
 
-            // Inyectar Referer y otros headers en Shaka
+            // Inyectar Headers (Networking Engine)
             shakaPlayer.getNetworkingEngine().registerRequestFilter((type, request) => {
                 if (finalHeaders) {
                     Object.entries(finalHeaders).forEach(([key, value]) => {
                         request.headers[key] = value;
                     });
                 }
+                
+                // OPCIONAL: Forzar el método de envío si hay problemas de CORS
+                // request.allowCrossSiteCredentials = true;
             });
 
-            shakaPlayer.load(url).then(handleReady).catch(e => console.error("Shaka Error:", e));
-        } 
+            shakaPlayer.load(url)
+                .then(handleReady)
+                .catch(e => {
+                    // ESTO ES VITAL: Si falla, mira el código de error en la consola F12
+                    console.error("Error Crítico Shaka:", e.code, e.message);
+                    if (e.code === 6001) console.error("Fallo de DRM: Las llaves no coinciden o expiraron.");
+                    if (e.code === 1001) console.error("Fallo de Red: El servidor bloqueó la petición (posible Referer).");
+                });
+        }
+
         // --- MODO HLS (Tu lógica original) ---
         else if (window.Hls && Hls.isSupported()) {
             hls = new Hls({ xhrSetup: setupXhr, maxBufferLength: 30 });

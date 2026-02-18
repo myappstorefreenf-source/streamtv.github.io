@@ -23,7 +23,7 @@ const LOCAL_M3U_DATA = [
   category:"Argentina",
   url: "http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/133496.mp4",
  referrer: "http://tv.zapping.life:/",
-  userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" "
+  userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
 },
     
     {

@@ -1,34 +1,49 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <title>MovieTube - Hybrid Player</title>
-    <meta name="referrer" content="no-referrer-when-downgrade">
-
+<html>
+  <head>
+    <title>MovieTube</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-
     <style>
-      .player-wrapper { position: relative; height: 100vh; width: 100%; background: black; overflow: hidden; }
-      .react-player { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; object-fit: contain; }
-    </style>
-
+    /* Estilos corregidos */
+    .player-wrapper {
+        position: relative;
+        /* Hacemos que ocupe toda la altura de la ventana */
+        height: 100vh; 
+        width: 100%;
+        background-color: black; /* Aseguramos que el fondo sea negro si no hay video */
+        overflow: hidden; /* Prevenimos barras de scroll innecesarias */
+    }
+    .react-player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* ¡CRÍTICO! Forzar 100% de tamaño */
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain; /* Asegura que el stream se ajuste bien */
+    }
+</style>
+   
+  </head>
+  <body class="bg-gray-900 text-white min-h-screen">
+    <div id="root"></div> esto es una prueba
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/shaka-player.compiled.js"></script>
-
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-</head>
+    
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/shaka-player.compiled.js"></script> 
 
-<body class="bg-gray-900 text-white min-h-screen">
-    <div id="root"></div>
-
-    <script type="text/babel">
-        // IMPORTANTE: Instalar polyfills de Shaka antes de iniciar React
-        if (window.shaka) {
-            shaka.polyfill.installAll();
-        }
-    </script>
     <script type="text/babel" src="tvuno.jsx"></script>
-</body>
+  </body>
 </html>
+
+
+

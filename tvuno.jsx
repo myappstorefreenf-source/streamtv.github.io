@@ -64,13 +64,13 @@ const LOCAL_M3U_DATA = [
     category: "HBO Pack",
     // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
     url: "https://cdn.sensa.com.ar/live/eds/HBO/live_dash_cld/HBO.mpd?webtoken=1.0",
-    referrer: "https://player.sensa.com.ar/",
-    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-    drm: {
-        clearKeys: {
-            "dead023f7a81634339ae639990c1517a": "ba970222b4466c61d0deccc67ab34452"
-        }
-    }
+  //  referrer: "https://player.sensa.com.ar/",
+  //  userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+  //  drm: {
+     //   clearKeys: {
+     //       "dead023f7a81634339ae639990c1517a": "ba970222b4466c61d0deccc67ab34452"
+  //      }
+  //  }
 },
     {
         title: "Canal 26",
@@ -2128,3 +2128,4 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+

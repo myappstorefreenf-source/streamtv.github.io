@@ -1,4 +1,4 @@
-de// Asegúrate de que React, ReactDOM y Hls.js estén cargados en el scope global.
+// Asegúrate de que React, ReactDOM y Hls.js estén cargados en el scope global.
 // Por ejemplo:
 // <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
 // <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -14,9 +14,9 @@ const LOCAL_M3U_DATA = [
         title: "Prueba TV",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
         category: "Argentina",
-        url: "http://tv.zapping.life:8080/1marvin/hNfsQOOt1g/9668",
-        // referrer: "https://webclient.antinaplayplus.com.ar/", 
-       // userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
+        url: "http://tv.zapping.life:8080/1marvin/hNfsQOOt1g/163955",
+       //  referrer: "https://mplus.pontiscloud.com/", 
+      //  userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },
     
     {
@@ -44,20 +44,20 @@ const LOCAL_M3U_DATA = [
         category: "Argentina",
         url: "https://unlimited1-saopaulo.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
-   // {
-      //  title: "Telefe Satelital",
-    //    logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
-      //  category: "Argentina",
+    {
+        title: "Telefe Satelital",
+        logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
+        category: "Argentina",
         // URL DASH (.mpd) que extrajimos
-     //   url: "https://cdn.sensa.com.ar/live/eds/Telefe/live_dash_cld/Telefe.mpd?|",
-      //  referrer: "https://player.sensa.com.ar/&webtoken=1.0",
+        url: "https://cdn.sensa.com.ar/live/eds/Telefe/live_dash_cld/Telefe.mpd?|",
+        referrer: "https://player.sensa.com.ar/&webtoken=1.0",
         // Objeto DRM para que Shaka Player lo reconozca
-     //   drm: {
-        //    clearkey: {
-         //       "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
-          //  }
-      //  }
-  //  },
+        drm: {
+            clearkey: {
+                "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
+            }
+        }
+    },
 {
     title: "HBO HD",
     logoUrl: "https://github.com/masterentertainment/listas/blob/main/logos/HBOLA.png?raw=true",
@@ -2128,5 +2128,3 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
-
-

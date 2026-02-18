@@ -14,7 +14,7 @@ const LOCAL_M3U_DATA = [
         title: "Prueba TV",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
         category: "Argentina",
-        url: "http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/133496.mp4d",
+        url: "http://tv.zapping.life:8080/1marvin/hNfsQOOt1g/175397",
          referrer: "http://tv.zapping.life:8080/", 
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },

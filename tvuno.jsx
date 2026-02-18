@@ -1215,6 +1215,8 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 playsInline
                 autoPlay
                 controls={false}
+                   crossOrigin="anonymous" // <--- AÑADE ESTO PARA EL WEBVIEW
+                preload="auto"          // <--- AÑADE ESTO
                 onLoadedData={() => {
                     const spinner = document.getElementById('video-spinner');
                     if(spinner) spinner.style.display = 'none';

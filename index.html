@@ -2,45 +2,26 @@
 <html>
   <head>
     <title>MovieTube</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    /* Estilos corregidos */
-    .player-wrapper {
-        position: relative;
-        /* Hacemos que ocupe toda la altura de la ventana */
-        height: 100vh; 
-        width: 100%;
-        background-color: black; /* Aseguramos que el fondo sea negro si no hay video */
-        overflow: hidden; /* Prevenimos barras de scroll innecesarias */
-    }
-    .react-player {
-        position: absolute;
-        top: 0;
-        left: 0;
-        /* ¡CRÍTICO! Forzar 100% de tamaño */
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: contain; /* Asegura que el stream se ajuste bien */
-    }
-</style>
-   
+
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body class="bg-gray-900 text-white min-h-screen">
-    <div id="root"></div> esto es una prueba
+    <div id="root"></div>
 
-    
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-      <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
-      
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/shaka-player.compiled.js"></script> 
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
 
     <script type="text/babel" src="tvuno.jsx"></script>
   </body>
+
 </html>
-
-
-

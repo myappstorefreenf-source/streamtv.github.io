@@ -14,10 +14,17 @@ const LOCAL_M3U_DATA = [
         title: "Prueba TV",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
         category: "Argentina",
-        url: "http://tv.zapping.life:8080/1marvin/hNfsQOOt1g/163955",
-       //  referrer: "https://mplus.pontiscloud.com/", 
-      //  userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
+        url: "http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/133496.mp4d",
+         referrer: "http://tv.zapping.life:8080/", 
+        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },
+    {
+  title: "Nombre de la Película",
+  category:"Argentina",
+  url: "http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/133496.mp4",
+ referrer: "http://tv.zapping.life:8080/",
+  userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+},
     
     {
         title: "América TV",
@@ -50,13 +57,13 @@ const LOCAL_M3U_DATA = [
         category: "Argentina",
         // URL DASH (.mpd) que extrajimos
         url: "https://cdn.sensa.com.ar/live/eds/Telefe/live_dash_cld/Telefe.mpd?|",
-        referrer: "https://player.sensa.com.ar/&webtoken=1.0",
+       // referrer: "https://player.sensa.com.ar/&webtoken=1.0",
         // Objeto DRM para que Shaka Player lo reconozca
-        drm: {
-            clearkey: {
-                "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
-            }
-        }
+     //   drm: {
+        //    clearkey: {
+         //       "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
+          //  }
+       // }
     },
 {
     title: "HBO HD",
@@ -64,13 +71,13 @@ const LOCAL_M3U_DATA = [
     category: "HBO Pack",
     // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
     url: "https://cdn.sensa.com.ar/live/eds/HBO/live_dash_cld/HBO.mpd?webtoken=1.0",
-  //  referrer: "https://player.sensa.com.ar/",
-  //  userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-  //  drm: {
-     //   clearKeys: {
-     //       "dead023f7a81634339ae639990c1517a": "ba970222b4466c61d0deccc67ab34452"
-  //      }
-  //  }
+    referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    drm: {
+        clearKeys: {
+            "dead023f7a81634339ae639990c1517a": "ba970222b4466c61d0deccc67ab34452"
+        }
+    }
 },
     {
         title: "Canal 26",
@@ -1063,7 +1070,6 @@ const groupChannelsByCategory = (channels) => {
 // ----------------------------------------------------------------------
 const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive, isFocusable }, ref) => {
     const handlePlay = () => onPlay(video);
-    
     const tabIndexValue = isFocusable ? "0" : "-1"; 
 
     return (
@@ -1130,7 +1136,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         let hls;
         let shakaPlayer;
 
-        // Limpieza agresiva (Tu lógica original)
+        // Limpieza agresiva original
         if (video.__hlsInstance) { video.__hlsInstance.destroy(); delete video.__hlsInstance; }
         if (video.__shakaInstance) { video.__shakaInstance.destroy(); delete video.__shakaInstance; }
         
@@ -1146,64 +1152,44 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             }
         };
 
-             // --- MODO DASH + DRM (Para Telefe / HBO) ---
+        // --- MODO DASH + DRM ---
         if (url.includes('.mpd') || drm) {
             shakaPlayer = new shaka.Player(video);
             video.__shakaInstance = shakaPlayer;
 
-            // CONFIGURACIÓN AGRESIVA
             shakaPlayer.configure({
-                drm: {
-                    clearKeys: drm.clearkey || {},
-                    // Forzamos a Shaka a intentar reproducir incluso si cree que el monitor no es HDCP
-                    robustness: '' 
-                },
-                streaming: {
-                    // Ayuda a saltar huecos en transmisiones en vivo
-                    jumpLargeGaps: true,
-                    // Evita que el reproductor se quede cargando infinito si el buffer es pequeño
-                    rebufferingGoal: 2 
-                },
-                manifest: {
-                    dash: {
-                        // Importante para algunos streams de Sensa
-                        ignoreMinBufferTime: true 
-                    }
-                }
+                drm: { clearKeys: drm?.clearkey || {}, robustness: '' },
+                streaming: { jumpLargeGaps: true, rebufferingGoal: 2 },
+                manifest: { dash: { ignoreMinBufferTime: true } }
             });
 
-            // Inyectar Headers (Networking Engine)
             shakaPlayer.getNetworkingEngine().registerRequestFilter((type, request) => {
                 if (finalHeaders) {
                     Object.entries(finalHeaders).forEach(([key, value]) => {
                         request.headers[key] = value;
                     });
                 }
-                
-                // OPCIONAL: Forzar el método de envío si hay problemas de CORS
-                // request.allowCrossSiteCredentials = true;
             });
 
-            shakaPlayer.load(url)
-                .then(handleReady)
-                .catch(e => {
-                    // ESTO ES VITAL: Si falla, mira el código de error en la consola F12
-                    console.error("Error Crítico Shaka:", e.code, e.message);
-                    if (e.code === 6001) console.error("Fallo de DRM: Las llaves no coinciden o expiraron.");
-                    if (e.code === 1001) console.error("Fallo de Red: El servidor bloqueó la petición (posible Referer).");
-                });
+            shakaPlayer.load(url).then(handleReady).catch(e => console.error("Shaka Error:", e));
         }
 
-        // --- MODO HLS (Tu lógica original) ---
-        else if (window.Hls && Hls.isSupported()) {
+        // --- MODO HLS ---
+        else if (window.Hls && Hls.isSupported() && (url.includes('.m3u8') || url.includes('8080'))) {
+            // He añadido "url.includes('8080')" porque tus links de Zapping usan ese puerto y suelen ser HLS
             hls = new Hls({ xhrSetup: setupXhr, maxBufferLength: 30 });
             hls.loadSource(url);
             hls.attachMedia(video);
             video.__hlsInstance = hls;
             hls.on(Hls.Events.MANIFEST_PARSED, handleReady);
-        } else {
+        } 
+        
+        // --- MODO NATIVO (MP4, MKV y otros) ---
+        else {
             video.src = url;
-            video.addEventListener('loadedmetadata', handleReady);
+            // IMPORTANTE: Esto ayuda a que el navegador intente reproducir formatos como MKV si el codec está presente
+            video.type = url.includes('.mkv') ? 'video/x-matroska' : 'video/mp4';
+            video.addEventListener('loadedmetadata', handleReady, { once: true });
         }
 
         return () => {
@@ -2128,4 +2114,3 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
-

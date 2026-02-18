@@ -44,20 +44,20 @@ const LOCAL_M3U_DATA = [
         category: "Argentina",
         url: "https://unlimited1-saopaulo.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
-    {
-        title: "Telefe Satelital",
-        logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
-        category: "Argentina",
+   // {
+      //  title: "Telefe Satelital",
+    //    logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
+      //  category: "Argentina",
         // URL DASH (.mpd) que extrajimos
-        url: "https://cdn.sensa.com.ar/live/eds/Telefe/live_dash_cld/Telefe.mpd?|",
-        referrer: "https://player.sensa.com.ar/&webtoken=1.0",
+     //   url: "https://cdn.sensa.com.ar/live/eds/Telefe/live_dash_cld/Telefe.mpd?|",
+      //  referrer: "https://player.sensa.com.ar/&webtoken=1.0",
         // Objeto DRM para que Shaka Player lo reconozca
-        drm: {
-            clearkey: {
-                "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
-            }
-        }
-    },
+     //   drm: {
+        //    clearkey: {
+         //       "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
+          //  }
+      //  }
+  //  },
 {
     title: "HBO HD",
     logoUrl: "https://github.com/masterentertainment/listas/blob/main/logos/HBOLA.png?raw=true",
@@ -2128,4 +2128,5 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 

@@ -1,49 +1,77 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MovieTube</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-    /* Estilos corregidos */
-    .player-wrapper {
-        position: relative;
-        /* Hacemos que ocupe toda la altura de la ventana */
-        height: 100vh; 
-        width: 100%;
-        background-color: black; /* Aseguramos que el fondo sea negro si no hay video */
-        overflow: hidden; /* Prevenimos barras de scroll innecesarias */
-    }
-    .react-player {
-        position: absolute;
-        top: 0;
-        left: 0;
-        /* ¡CRÍTICO! Forzar 100% de tamaño */
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: contain; /* Asegura que el stream se ajuste bien */
-    }
-</style>
-   
-  </head>
-  <body class="bg-gray-900 text-white min-h-screen">
-    <div id="root"></div> esto es una prueba
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    
+        /* 1. Bloqueamos el scroll en la raíz para evitar el desplazamiento vertical */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Evita scrollbars */
+            position: fixed; /* Evita el rebote (bounce) en WebViews */
+            background-color: #000;
+        }
+
+        /* 2. Contenedor que ocupa toda la pantalla física */
+        .player-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            overflow: hidden;
+            /* Deshabilita gestos táctiles del navegador sobre el video */
+            touch-action: none; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 3. Aseguramos que el video llene el contenedor */
+        .react-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+        }
+
+        /* Ocultar scrollbar si apareciera por error */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/shaka-player.compiled.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/shaka-player.compiled.js"></script> 
 
     <script type="text/babel" src="tvuno.jsx"></script>
-  </body>
+
+    <script>
+        // Truco extra para WebViews de Android: 
+        // Forzar el scroll a la posición 0 si el sistema intenta moverlo.
+        window.addEventListener('scroll', () => {
+            if (window.scrollY !== 0) {
+                window.scrollTo(0, 0);
+            }
+        });
+    </script>
+</body>
 </html>
-
-
-

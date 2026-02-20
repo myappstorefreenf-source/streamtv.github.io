@@ -1,10 +1,11 @@
 const { useState, useEffect, useRef, useCallback } = React;
 
 // --- COMPONENTE CARÁTULA ---
-const VideoCard = ({ video, esSeleccionado, id, esEpisodio }) => (
+const VideoCard = ({ video, esSeleccionado, id, esEpisodio, onClick }) => (
     <div 
         id={id}
-        className={`flex-shrink-0 transition-all duration-300 ${
+        onClick={onClick}
+        className={`flex-shrink-0 transition-all duration-300 cursor-pointer ${
             esEpisodio ? 'w-24 h-24' : 'w-44'
         } ${esSeleccionado ? 'scale-110 ring-4 ring-red-600 z-10' : 'opacity-50'}`}
     >
@@ -39,13 +40,8 @@ function App() {
     const [enPantallaCompleta, setEnPantallaCompleta] = useState(false);
 
     useEffect(() => {
-        // Leemos directamente de la variable global que creamos en lista.js
         const data = window.m3uData;
-        if (!data) {
-            console.error("No se encontró la variable m3uData en lista.js");
-            return;
-        }
-
+        if (!data) return;
         const lines = data.split('\n');
         const d = {};
         for (let i = 0; i < lines.length; i++) {
@@ -76,7 +72,25 @@ function App() {
         }
     };
 
-    // NAVEGACIÓN GLOBAL
+    // FUNCIÓN PARA MANEJAR LA SELECCIÓN (Click o Enter)
+    const manejarSeleccion = (tipo, item, fIdx, cIdx, extra = {}) => {
+        if (tipo === 'abrir_detalle') {
+            setFilaActiva(fIdx);
+            setColumnaActiva(cIdx);
+            setVistaActual({ tipo: 'detalle', data: { info: item, items: catalogo[item.categoria] } });
+            setRangoCapitulos(0); 
+            setIndiceAux(0);
+        } else if (tipo === 'seleccionar_capitulo') {
+            setIndiceAux(extra.idx);
+            setFocoEnVideo(true); // Al tocar un capítulo, activamos el visor
+        } else if (tipo === 'fullscreen') {
+            setEnPantallaCompleta(true);
+            const elem = document.getElementById('visor-serie');
+            if (elem.requestFullscreen) elem.requestFullscreen();
+        }
+    };
+
+    // NAVEGACIÓN GLOBAL (TECLADO)
     useEffect(() => {
         const handleKeys = (e) => {
             const isEnter = e.key === 'Enter' || e.keyCode === 13;
@@ -107,11 +121,7 @@ function App() {
 
                 if (focoEnVideo) {
                     if (e.key === 'ArrowDown') setFocoEnVideo(false);
-                    if (isEnter) {
-                        setEnPantallaCompleta(true);
-                        const elem = document.getElementById('visor-serie');
-                        if (elem.requestFullscreen) elem.requestFullscreen();
-                    }
+                    if (isEnter) manejarSeleccion('fullscreen');
                 } else if (focoEnSelector && esSerie) {
                     if (e.key === 'ArrowUp') setFocoEnVideo(true);
                     if (e.key === 'ArrowDown') { setFocoEnSelector(false); setIndiceAux(0); }
@@ -144,8 +154,7 @@ function App() {
                 
                 if (isEnter) {
                     const item = filaItems[columnaActiva];
-                    setVistaActual({ tipo: 'detalle', data: { info: item, items: filaItems } });
-                    setRangoCapitulos(0); setIndiceAux(0);
+                    manejarSeleccion('abrir_detalle', item, filaActiva, columnaActiva);
                 }
             }
         };
@@ -153,18 +162,16 @@ function App() {
         return () => window.removeEventListener('keydown', handleKeys);
     }, [filaActiva, columnaActiva, categorias, catalogo, vistaActual, indiceAux, rangoCapitulos, focoEnSelector, focoEnVideo, enPantallaCompleta]);
 
-    // SCROLL PRO RESTAURADO
+    // SCROLL PRO
     useEffect(() => {
         if (enPantallaCompleta) return;
         let id = "";
         if (vistaActual.tipo === 'home') {
             id = `item-${filaActiva}-${columnaActiva}`;
-            // Forzar scroll de la fila primero
             document.getElementById(`row-${filaActiva}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else if (vistaActual.tipo === 'detalle') {
             id = focoEnVideo ? "visor-serie" : (focoEnSelector ? `sel-${rangoCapitulos}` : `cap-${indiceAux}`);
         }
-        
         if (id) {
             setTimeout(() => {
                 document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
@@ -182,7 +189,13 @@ function App() {
                             <h2 className={`text-2xl font-black mb-6 uppercase ${filaActiva === fIdx ? 'text-white' : 'text-zinc-800'}`}>{cat}</h2>
                             <div className="flex gap-6 overflow-x-hidden p-4 items-center">
                                 {catalogo[cat].slice(0, 10).map((v, cIdx) => (
-                                    <VideoCard key={cIdx} id={`item-${fIdx}-${cIdx}`} video={v} esSeleccionado={filaActiva === fIdx && columnaActiva === cIdx} />
+                                    <VideoCard 
+                                        key={cIdx} 
+                                        id={`item-${fIdx}-${cIdx}`} 
+                                        video={v} 
+                                        esSeleccionado={filaActiva === fIdx && columnaActiva === cIdx} 
+                                        onClick={() => manejarSeleccion('abrir_detalle', v, fIdx, cIdx)}
+                                    />
                                 ))}
                             </div>
                         </div>
@@ -202,15 +215,16 @@ function App() {
                                 </p>
                                 <p className="text-zinc-400 text-lg leading-relaxed">
                                     {vistaActual.data.info.categoria.toUpperCase().includes("SERIES") 
-                                        ? "Disfruta de todos los capítulos de esta temporada. Selecciona un episodio abajo para comenzar la reproducción en el visor."
-                                        : "Esta película está disponible en alta definición. Puedes ver un adelanto en el visor lateral o pulsar OK en el visor para disfrutarla en pantalla completa."}
+                                        ? "Selecciona un episodio abajo para visualizarlo."
+                                        : "Pulsa sobre el visor de video para disfrutar la película en pantalla completa."}
                                 </p>
                             </div>
                         </div>
                         
                         <div 
                             id="visor-serie" 
-                            className={`relative transition-all duration-300 ${
+                            onClick={() => manejarSeleccion('fullscreen')}
+                            className={`relative cursor-pointer transition-all duration-300 ${
                                 enPantallaCompleta 
                                 ? 'fixed inset-0 z-[200] bg-black w-screen h-screen' 
                                 : `w-[500px] aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border-4 ${
@@ -228,9 +242,9 @@ function App() {
                                 autoPlay muted={!enPantallaCompleta} loop={!enPantallaCompleta}
                                 className="w-full h-full object-contain"
                             />
-                            {focoEnVideo && !enPantallaCompleta && (
+                            {!enPantallaCompleta && (
                                 <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                                    <div className="bg-red-600 text-white px-5 py-2 rounded-full font-black text-[10px] animate-pulse">OK PANTALLA COMPLETA</div>
+                                    <div className="bg-red-600 text-white px-5 py-2 rounded-full font-black text-[10px]">TOCA PARA PANTALLA COMPLETA</div>
                                 </div>
                             )}
                         </div>
@@ -238,20 +252,25 @@ function App() {
 
                     {vistaActual.data.info.categoria.toUpperCase().includes("SERIES") && (
                         <>
-                            <div className="flex gap-3 mb-10">
+                            <div className="flex gap-3 mb-10 overflow-x-auto pb-2">
                                 {Array.from({ length: Math.ceil(vistaActual.data.items.length / 10) }).map((_, i) => (
-                                    <div key={i} id={`sel-${i}`} className={`px-5 py-1.5 rounded-full font-black text-sm transition-all ${rangoCapitulos === i && focoEnSelector ? 'bg-red-600 scale-110' : rangoCapitulos === i ? 'bg-zinc-700' : 'bg-zinc-900 opacity-40'}`}>
+                                    <div 
+                                        key={i} id={`sel-${i}`} 
+                                        onClick={() => setRangoCapitulos(i)}
+                                        className={`px-5 py-1.5 rounded-full font-black text-sm cursor-pointer whitespace-nowrap transition-all ${rangoCapitulos === i ? 'bg-red-600 scale-110' : 'bg-zinc-900 opacity-40'}`}
+                                    >
                                         {i * 10 + 1}-{Math.min((i + 1) * 10, vistaActual.data.items.length)}
                                     </div>
                                 ))}
                             </div>
-                            <div className="flex gap-6 p-4">
+                            <div className="flex gap-6 p-4 overflow-x-auto pb-6">
                                 {vistaActual.data.items.slice(rangoCapitulos * 10, (rangoCapitulos + 1) * 10).map((v, i) => (
                                     <VideoCard 
                                         key={i} id={`cap-${i}`} 
                                         video={{...v, num: (rangoCapitulos * 10) + i + 1}} 
                                         esSeleccionado={!focoEnSelector && !focoEnVideo && indiceAux === i} 
                                         esEpisodio={true} 
+                                        onClick={() => manejarSeleccion('seleccionar_capitulo', v, 0, 0, {idx: i})}
                                     />
                                 ))}
                             </div>

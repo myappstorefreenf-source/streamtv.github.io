@@ -1497,7 +1497,7 @@ React.useEffect(() => {
         setIsPlaying(false); 
         
         if (page === 'movies') {
-            window.location.href = 'pelis.html'; 
+            window.location.href = 'videos.html'; 
         }
     }, []);
 
@@ -2117,6 +2117,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

@@ -21,7 +21,7 @@ const LOCAL_M3U_DATA = [
     {
   title: "Nombre de la Película",
   category:"Argentina",
-  url: "http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/133496.mp4",
+  url: "https://proxyhls.myappstore-free-nf.workers.dev/?url=http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/132642.mp4",
  referrer: "http://206.123.140.62:8080/",
   userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
  // workerId: 'pelicula',      
@@ -2117,6 +2117,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

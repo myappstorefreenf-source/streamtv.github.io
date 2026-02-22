@@ -1,7 +1,7 @@
 // lista.js
 window.m3uData = `
 #EXTINF:-1 tvg-id="" tvg-name="Parking (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/oNxANEMPx3sbj6BY9VtZxrXCMDF.jpg" group-title="VOD-ESTRENOS 2025",Parking (2025)
-http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/156180.mkv
+http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
 #EXTINF:-1 tvg-id="" tvg-name="El gran viaje de tu vida (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ipBkoLGRY1PS7Ud4fcEB8MuE3sE.jpg" group-title="VOD-ESTRENOS 2025",El gran viaje de tu vida (2025)
 http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/156181.mkv
 #EXTINF:-1 tvg-id="" tvg-name="V/H/S/Halloween (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/bvMKSZtN8KAdtlKoYbEi1Zhyaou.jpg" group-title="VOD-ESTRENOS 2025",V/H/S/Halloween (2025)
@@ -1626,3 +1626,4 @@ http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/179213.mkv
 #EXTINF:-1 tvg-id="" tvg-name="Amar, Perder (2026) S01 E07" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nj2woKV1zSIpOVJoddtGabd38Zw.jpg" group-title="SERIES-ESTRENOS 2026",Amar, Perder (2026) S01 E07
 http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/179214.mkv
 #EXTINF:-1 tvg-id="" tvg-name="Amar, Perder (2026) S01 E08" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nj2woKV1zSIpOVJoddtGabd38Zw.jpg" group-title="SERIES-ESTRENOS 2026",Amar, Perder (2026) S01 E08`
+

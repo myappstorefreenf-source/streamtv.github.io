@@ -5,7 +5,7 @@ http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp
 #EXTINF:-1 tvg-id="" tvg-name="El gran viaje de tu vida (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ipBkoLGRY1PS7Ud4fcEB8MuE3sE.jpg" group-title="VOD-ESTRENOS 2025",El gran viaje de tu vida (2025)
 https://archive.org/details/peliculas-para-archivar/Camp+Cucamonga+(1990)+%5BTriple+Audio%5D.mkv
 #EXTINF:-1 tvg-id="" tvg-name="V/H/S/Halloween (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/bvMKSZtN8KAdtlKoYbEi1Zhyaou.jpg" group-title="VOD-ESTRENOS 2025",V/H/S/Halloween (2025)
-http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/156182.mkv
+https://s3t3d2y1.afcdn.net/library/952586/07608c3abc4f0051646b3229946943474358983b.mp4
 #EXTINF:-1 tvg-id="" tvg-name="Los 4 Fantásticos (2005)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/l3Yk65bVdgiMOMeK6O8aZxEBt5J.jpg" group-title="VOD-ESTRENOS 2025",Los 4 Fantásticos (2005)
 http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/156183.mkv
 #EXTINF:-1 tvg-id="" tvg-name="El gran premio a toda velocidad (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/uOEgCIpKtZZ7Iz6kXe3LvTPldje.jpg" group-title="VOD-ESTRENOS 2025",El gran premio a toda velocidad (2025)
@@ -1626,5 +1626,6 @@ http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/179213.mkv
 #EXTINF:-1 tvg-id="" tvg-name="Amar, Perder (2026) S01 E07" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nj2woKV1zSIpOVJoddtGabd38Zw.jpg" group-title="SERIES-ESTRENOS 2026",Amar, Perder (2026) S01 E07
 http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/179214.mkv
 #EXTINF:-1 tvg-id="" tvg-name="Amar, Perder (2026) S01 E08" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nj2woKV1zSIpOVJoddtGabd38Zw.jpg" group-title="SERIES-ESTRENOS 2026",Amar, Perder (2026) S01 E08`
+
 
 

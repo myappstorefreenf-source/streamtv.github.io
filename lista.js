@@ -1,13 +1,55 @@
 // lista.js
 window.m3uData = `
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BMTYwMzMwMzgxNl5BMl5BanBnXkFtZTgwMTA0MTUzMDI@._V1_.jpg" group-title="SPANISH",Nocturnal Animals (2016)*
+https://archive.org/download/NocturnalAnimals20161080p60FPS/Nocturnal%20Animals%20(2016)%201080p%2060%20FPS.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BNmFkZjAyM2UtZjA0My00ZDU3LWE2MmMtNzU5Y2Y4NzgxMzFmXkEyXkFqcGc@._V1_.jpg" group-title="SPANISH",Angry Birds (2016)
+https://ia801204.us.archive.org/2/items/AngryBirds1080LatinoPelistvhd.com.mkv/Angry%20Birds1080%20Latino-%20pelistvhd.com.mkv.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BMDFmNGUwYTMtNDMyMC00YWM2LWEwOTktNTM1YWI0NDRiMDY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" group-title="SPANISH",Sand Castle (2017)
+https://ia600603.us.archive.org/35/items/08052017CAQM8844JR8HF/08052017CAQM.mkv
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BMTBiNWFhNjItZTBhZS00Nzk5LTk3ZjItMDczMDNkYjFhYzYzXkEyXkFqcGc@._V1_.jpg" group-title="SPANISH",Sahara (2017)
+https://ia801603.us.archive.org/20/items/3453453453454456456456465/17052017_fseer.mp4
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/en/4/43/American_gigolo_post.jpg" group-title="ITALIAN",American Gigolo (1980)
+https://archive.org/download/AmericanGigolo19801080pHevcSciencefunEncoding/American%20Gigol%C3%B2%20(1980)%201080p%20Hevc[Sciencefun%20Encoding].mp4
+#EXTINF:-1 tvg-logo="http://3.bp.blogspot.com/-JhU3CAJ5QAE/Te2buWp6oUI/AAAAAAAAdgQ/YXRBkBgj3fM/s1600/joanofarc%2Bposter.jpg" group-title="ITALIAN",The Messenger - The Story of Joan of Arc (1999)
+https://archive.org/download/GiovannaD.Arcocast.away/Giovanna%20d.Arco%20%281999%29%201080p%20Hevc%20%5bSciencefun%20Encoding%5d%20%28audio%20ok%29.mp4
+#EXTINF:-1 tvg-logo="http://cartelesmix.es/images/CartelesP/padresdeella00003.jpg" group-title="ITALIAN",Meet the Parents (2000)
+https://archive.org/download/TiPresentoIMiei20001080pHevcItaEngSciencefunEncoding/Ti%20Presento%20I%20Miei%20%282000%29%201080p%20Hevc%20Ita%20Eng%20%28Sciencefun%20Encoding%29.mp4
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/en/3/3b/Movie_poster_i_robot.jpg" group-title="ITALIAN",I Robot (2004)
+https://archive.org/download/IoRobot20041080pHevcItaEngSciencefunEncoding/Io%20Robot%20(2004)%201080p%20Hevc%20Ita-eng%20[Sciencefun%20Encoding].mp4
+#EXTINF:-1 tvg-logo="https://s-media-cache-ak0.pinimg.com/originals/42/f5/08/42f508ba627b68f20c6df87adabc51df.jpg" group-title="ITALIAN",Penguins of Madagascar (2014)
+https://archive.org/download/MenOfHonor20001080pX264ItaEnSciencefunMux/I%20Pinguini%20Di%20Madagascar%201080p%20HEVC.mp4
+#EXTINF:-1 tvg-logo="https://4.bp.blogspot.com/-YaCxu1RWA5I/WQCq6mASo0I/AAAAAAAAYdc/TI9FfL_x1uUBijtS37W_ntkieg8B5igTgCLcB/s1600/Sandy%2BWexler.jpg" group-title="SPANISH",Sandy Wexler (2017)
+https://ia800605.us.archive.org/27/items/04052017AQMCMA04052017AQC/04052017AQMCMA.mkv
+#EXTINF:-1 tvg-logo="https://images-na.ssl-images-amazon.com/images/I/A1sHSnRBjxL._SL1500_.jpg" group-title="SPANISH",Pet (2016) 
+https://ia800606.us.archive.org/26/items/12052017ffsdf345345345/12052017ffsdf.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/I/91x6HWSxHZL._AC_UF894,1000_QL80_.jpg" group-title="SPANISH",Rules Don't Apply (2016)
+https://archive.org/download/RulesDontApply20161080pFULLHD/Rules%20Dont%20Apply%20(2016)%201080p%20FULL%20HD.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BMTQzNTcwODEyM15BMl5BanBnXkFtZTcwMjM1MDI0OQ@@._V1_.jpg" group-title="SPANISH",The Purge (2013)
+https://archive.org/download/The.Purge.1080p.latino/The.Purge.1080p.latino.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BNDc2NjU0MTcwNV5BMl5BanBnXkFtZTcwMjg4MDg2OQ@@._V1_FMjpg_UX1000_.jpg" group-title="SPANISH",Elysium (2013)
+https://dl.dropbox.com/s/rfxlxf1qq8nv6vs/Elysium%20%282013%29.mkv
+#EXTINF:-1 tvg-logo="http://horror.wpengine.netdna-cdn.com/wp-content/uploads/2016/05/childs-play-2-poster.jpg" group-title="SPANISH",Child's Play 2 (1990)
+https://ia801609.us.archive.org/33/items/08052017Ch2320170508/08052017_ch23.mkv
+#EXTINF:-1 tvg-logo="https://i.jeded.com/i/back-to-the-future-part-ll.12429.jpg" group-title="SPANISH",Back to the Future Part II (1989)
+https://ia801303.us.archive.org/13/items/84CK.70-3/84CK.70.FU7U93.3-ES-720.mp4?disco
+#EXTINF:-1 tvg-logo="http://static.rogerebert.com/uploads/movie/movie_poster/childs-play-1988/large_6r9MOdGpOpSTH4jCQemyhPOHbZn.jpg" group-title="SPANISH",Child's Play (1988)
+https://ia800604.us.archive.org/29/items/080520712070508aCh/08052071.mkv
+#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/kK9a9VBIjmh7L2uJvR01RUfS4eT.jpg" group-title="SPANISH",Porky's Revenge (1985)
+https://ia801505.us.archive.org/6/items/6062017Aqc88742897489237/6062017_aqc.avi
 #EXTINF:-1 tvg-logo="http://s1.evcdn.com/images/movieposter249by373/movies/162960/162960_aa.jpg" group-title="SPANISH",Rules Don't Apply (2016)*
 https://archive.org/download/RulesDontApply20161080p60FPS/Rules%20Dont%20Apply%20(2016)%201080p%2060%20FPS.mp4
 #EXTINF:-1 tvg-id="" tvg-name="Parking (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/oNxANEMPx3sbj6BY9VtZxrXCMDF.jpg" group-title="VOD-ESTRENOS 2025",Parking (2025)
 http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
 #EXTINF:-1 tvg-id="" tvg-name="El gran viaje de tu vida (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ipBkoLGRY1PS7Ud4fcEB8MuE3sE.jpg" group-title="VOD-ESTRENOS 2025",El gran viaje de tu vida (2025)
 https://archive.org/details/peliculas-para-archivar/Camp+Cucamonga+(1990)+%5BTriple+Audio%5D.mkv
+#EXTINF:-1 tvg-logo="http://s1.evcdn.com/images/movieposter249by373/movies/162960/162960_aa.jpg" group-title="SPANISH",Rules Don't Apply (2016)*
+https://archive.org/download/RulesDontApply20161080p60FPS/Rules%20Dont%20Apply%20(2016)%201080p%2060%20FPS.mp4
+#EXTINF:-1 tvg-id="" tvg-name="Parking (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/oNxANEMPx3sbj6BY9VtZxrXCMDF.jpg" group-title="VOD-ESTRENOS 2025",Parking (2025)
+http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
+#EXTINF:-1 tvg-id="" tvg-name="El gran viaje de tu vida (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ipBkoLGRY1PS7Ud4fcEB8MuE3sE.jpg" group-title="VOD-ESTRENOS 2025",El gran viaje de tu vida (2025)
+http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
 #EXTINF:-1 tvg-id="" tvg-name="V/H/S/Halloween (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/bvMKSZtN8KAdtlKoYbEi1Zhyaou.jpg" group-title="VOD-ESTRENOS 2025",V/H/S/Halloween (2025)
-https://s3t3d2y1.afcdn.net/library/952586/07608c3abc4f0051646b3229946943474358983b.mp4
+http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
 #EXTINF:-1 tvg-id="" tvg-name="Los 4 Fantásticos (2005)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/l3Yk65bVdgiMOMeK6O8aZxEBt5J.jpg" group-title="VOD-ESTRENOS 2025",Los 4 Fantásticos (2005)
 http://tv.zapping.life:8080/movie/1marvin/hNfsQOOt1g/156183.mkv
 #EXTINF:-1 tvg-id="" tvg-name="El gran premio a toda velocidad (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/uOEgCIpKtZZ7Iz6kXe3LvTPldje.jpg" group-title="VOD-ESTRENOS 2025",El gran premio a toda velocidad (2025)
@@ -1628,6 +1670,7 @@ http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/179213.mkv
 #EXTINF:-1 tvg-id="" tvg-name="Amar, Perder (2026) S01 E07" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nj2woKV1zSIpOVJoddtGabd38Zw.jpg" group-title="SERIES-ESTRENOS 2026",Amar, Perder (2026) S01 E07
 http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/179214.mkv
 #EXTINF:-1 tvg-id="" tvg-name="Amar, Perder (2026) S01 E08" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nj2woKV1zSIpOVJoddtGabd38Zw.jpg" group-title="SERIES-ESTRENOS 2026",Amar, Perder (2026) S01 E08`
+
 
 
 

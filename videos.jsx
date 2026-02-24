@@ -1,6 +1,6 @@
 const { useState, useEffect, useRef, useMemo } = React;
 
-// --- TECLADO VIRTUAL (Protegido contra traducción) ---
+// --- TECLADO VIRTUAL ---
 const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
     const rows = [['A','B','C','D','E','F'],['G','H','I','J','K','L'],['M','N','O','P','Q','R'],['S','T','U','V','W','X'],['Y','Z','1','2','3','4'],['5','6','7','8','9','0']];
     const [f, setF] = useState(0);
@@ -107,7 +107,7 @@ function App() {
         setEnPantallaCompleta(false);
         setVistaActual({ tipo: 'home', data: null });
         setFocoZona('grid');
-        // Esto fuerza al navegador a re-enfocar la carátula principal
+        setIndiceAux(0);
         setTimeout(() => setColumnaActiva(c => c), 50);
     };
 
@@ -172,7 +172,6 @@ function App() {
                             setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } }); 
                             setIndiceAux(0); 
                         } else { 
-                            // CAMBIO: Ahora solo abre el detalle, NO la pantalla completa directa
                             setVistaActual({ tipo: 'detalle', data: { info: items[columnaActiva], items } }); 
                             setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0); 
                         }
@@ -180,8 +179,13 @@ function App() {
                 } else if (isEnter) setMostrarTeclado(true);
             } else if (vistaActual.tipo === 'grilla') {
                 const total = vistaActual.data.items.length;
+                const columnas = 6; // Coincide con el grid-cols-6 del diseño
                 if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, total - 1));
                 if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
+                // ARREGLO AQUÍ: Navegación vertical en la grilla
+                if (e.key === 'ArrowDown') setIndiceAux(p => Math.min(p + columnas, total - 1));
+                if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - columnas, 0));
+                
                 if (isEnter) { 
                     setVistaActual({ tipo: 'detalle', data: { info: vistaActual.data.items[indiceAux], items: vistaActual.data.items }, fromGrid: vistaActual.data }); 
                     setFocoZona('visor'); 
@@ -249,6 +253,7 @@ function App() {
                         <button onClick={handleCerrarVista} className="bg-zinc-800 p-2 rounded-full text-zinc-400">←</button>
                         <h2 className="text-3xl font-black text-red-600 uppercase italic tracking-tighter leading-none">{vistaActual.data.titulo}</h2>
                     </div>
+                    {/* El grid es de 6 columnas */}
                     <div className="grid grid-cols-6 gap-8 pb-32">
                         {vistaActual.data.items.map((v, i) => <VideoCard key={i} id={`grid-item-${i}`} video={v} esSeleccionado={indiceAux === i} />)}
                     </div>
@@ -269,7 +274,7 @@ function App() {
                         </div>
                         <div id="visor-container" className={`${enPantallaCompleta ? 'fixed inset-0 z-[500] bg-black' : 'relative w-[480px] aspect-video bg-black rounded-3xl overflow-hidden border-4 ' + (focoZona === 'visor' ? 'border-red-600 scale-105 shadow-2xl shadow-red-600/30' : 'border-zinc-800')}`}>
                             <video ref={videoRef} src={videoActualUrl} key={videoActualUrl} className="w-full h-full object-contain" autoPlay disableRemotePlayback controls={enPantallaCompleta} />
-                            {!enPantallaCompleta && <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-1 rounded-full text-[8px] font-black text-white/50 uppercase">Presiona OK para pantalla completa</div>}
+                            {!enPantallaCompleta && <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-1 rounded-full text-[8px] font-black text-white/50 uppercase tracking-widest">OK PARA PANTALLA COMPLETA</div>}
                         </div>
                     </div>
                     {vistaActual.data.info.categoria.toUpperCase().includes("SERIES") && (

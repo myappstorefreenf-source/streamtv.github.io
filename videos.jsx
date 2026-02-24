@@ -1,6 +1,6 @@
 const { useState, useEffect, useRef, useMemo } = React;
 
-// --- TECLADO VIRTUAL ---
+// --- TECLADO VIRTUAL (Protegido contra traducción) ---
 const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
     const rows = [['A','B','C','D','E','F'],['G','H','I','J','K','L'],['M','N','O','P','Q','R'],['S','T','U','V','W','X'],['Y','Z','1','2','3','4'],['5','6','7','8','9','0']];
     const [f, setF] = useState(0);
@@ -40,7 +40,6 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
     );
 };
 
-// --- VIDEO CARD ---
 const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total }) => (
     <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esEpisodio ? 'w-28 h-28' : 'w-40'} ${esSeleccionado ? 'scale-110 ring-4 ring-red-600 z-10 opacity-100' : 'opacity-40'}`}>
         <div className={`rounded-xl overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-red-700 aspect-[2/3]' : esEpisodio ? 'h-full bg-zinc-800 shadow-inner rounded-2xl' : 'bg-zinc-900 aspect-[2/3] shadow-lg'}`}>
@@ -105,9 +104,11 @@ function App() {
     const categoriasKeys = Object.keys(catalogoFiltrado);
 
     const handleCerrarVista = () => {
+        setEnPantallaCompleta(false);
         setVistaActual({ tipo: 'home', data: null });
-        setBusqueda(""); 
-        setMostrarTeclado(false);
+        setFocoZona('grid');
+        // Esto fuerza al navegador a re-enfocar la carátula principal
+        setTimeout(() => setColumnaActiva(c => c), 50);
     };
 
     useEffect(() => {
@@ -122,13 +123,8 @@ function App() {
             const el = document.getElementById(id);
             if (el) {
                 el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-                const container = el.closest('.flex.overflow-x-auto');
-                if (container) {
-                    const extra = (container.offsetWidth / 2) - (el.offsetWidth / 2);
-                    container.scrollTo({ left: el.offsetLeft - extra, behavior: 'smooth' });
-                }
             }
-        }, 60); 
+        }, 100); 
         return () => clearTimeout(timer);
     }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, enPantallaCompleta, indiceAux, rangoCapitulos]);
 
@@ -153,9 +149,8 @@ function App() {
             if (enPantallaCompleta && videoRef.current) {
                 if (isEnter) { 
                     e.preventDefault(); 
-                    // Corrección: Forzar play/pause explícitamente
-                    if (videoRef.current.paused) { videoRef.current.play().catch(()=>{}); } 
-                    else { videoRef.current.pause(); }
+                    if (videoRef.current.paused) videoRef.current.play().catch(()=>{}); 
+                    else videoRef.current.pause();
                 }
                 if (e.key === 'ArrowRight') { e.preventDefault(); videoRef.current.currentTime += 10; }
                 if (e.key === 'ArrowLeft') { e.preventDefault(); videoRef.current.currentTime -= 10; }
@@ -177,6 +172,7 @@ function App() {
                             setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } }); 
                             setIndiceAux(0); 
                         } else { 
+                            // CAMBIO: Ahora solo abre el detalle, NO la pantalla completa directa
                             setVistaActual({ tipo: 'detalle', data: { info: items[columnaActiva], items } }); 
                             setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0); 
                         }
@@ -186,8 +182,6 @@ function App() {
                 const total = vistaActual.data.items.length;
                 if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, total - 1));
                 if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
-                if (e.key === 'ArrowDown') setIndiceAux(p => Math.min(p + 6, total - 1));
-                if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - 6, 0));
                 if (isEnter) { 
                     setVistaActual({ tipo: 'detalle', data: { info: vistaActual.data.items[indiceAux], items: vistaActual.data.items }, fromGrid: vistaActual.data }); 
                     setFocoZona('visor'); 
@@ -203,9 +197,9 @@ function App() {
                     if (e.key === 'ArrowRight') setRangoCapitulos(p => Math.min(p + 1, Math.ceil(vistaActual.data.items.length / 10) - 1));
                     if (e.key === 'ArrowLeft') setRangoCapitulos(p => Math.max(p - 1, 0));
                 } else if (focoZona === 'grid') {
-                    const maxIdx = Math.min(10, vistaActual.data.items.length - (rangoCapitulos * 10)) - 1;
+                    const maxInPage = Math.min(10, vistaActual.data.items.length - (rangoCapitulos * 10)) - 1;
                     if (e.key === 'ArrowUp') setFocoZona(esSerie ? 'selector' : 'visor');
-                    if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, maxIdx));
+                    if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, maxInPage));
                     if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
                     if (isEnter) setEnPantallaCompleta(true);
                 }
@@ -218,7 +212,7 @@ function App() {
     const videoActualUrl = vistaActual.tipo === 'detalle' ? (vistaActual.data.info.categoria.toUpperCase().includes("SERIES") ? vistaActual.data.items[(rangoCapitulos * 10) + indiceAux]?.url : vistaActual.data.info.url) : "";
 
     return (
-        <div className="fixed inset-0 bg-black text-white font-sans overflow-hidden select-none">
+        <div translate="no" className="fixed inset-0 bg-black text-white font-sans overflow-hidden select-none">
             {vistaActual.tipo === 'home' && (
                 <div className="h-full overflow-y-auto p-12 no-scrollbar">
                     <div className="flex justify-between items-start mb-16">
@@ -227,7 +221,7 @@ function App() {
                             <span className="text-[10px] text-zinc-700 font-bold tracking-[0.3em] ml-1 uppercase">Premium Interface</span>
                         </div>
                         <div className="relative flex flex-col items-end">
-                            <div id="fake-search" className={`w-72 px-5 py-3 rounded-xl border-2 transition-all flex justify-between items-center ${filaActiva === -1 ? 'border-red-600 bg-zinc-800 scale-105 shadow-2xl' : 'border-white/10 bg-zinc-900'}`}>
+                            <div id="fake-search" className={`w-72 px-5 py-3 rounded-xl border-2 transition-all flex justify-between items-center ${filaActiva === -1 ? 'border-red-600 bg-zinc-800 scale-105' : 'border-white/10 bg-zinc-900'}`}>
                                 <span className={`truncate text-sm ${busqueda ? 'text-white font-bold' : 'text-zinc-700'}`}>{busqueda || "Buscar contenido..."}</span>
                                 <div className="bg-red-600 text-[10px] px-2 py-0.5 rounded font-black shadow-lg">OK</div>
                             </div>
@@ -237,9 +231,12 @@ function App() {
                     {categoriasKeys.map((cat, fIdx) => (
                         <div key={cat} className="mb-14">
                             <h2 className={`text-lg font-bold mb-4 uppercase tracking-widest ${filaActiva === fIdx ? 'text-red-600' : 'text-zinc-800'}`}>{cat}</h2>
-                            <div className="flex gap-6 overflow-x-auto no-scrollbar py-4 scroll-smooth">
-                                {catalogoFiltrado[cat].slice(0, 10).map((v, cIdx) => <VideoCard key={cIdx} id={`item-${fIdx}-${cIdx}`} video={v} esSeleccionado={filaActiva === fIdx && columnaActiva === cIdx} />)}
-                                {catalogoFiltrado[cat].length > 10 && <VideoCard id={`item-${fIdx}-10`} esVerMas={true} total={catalogoFiltrado[cat].length} esSeleccionado={filaActiva === fIdx && columnaActiva === 10} />}
+                            <div className="flex gap-6 overflow-x-auto no-scrollbar py-4">
+                                {catalogoFiltrado[cat].slice(0, 11).map((v, cIdx) => (
+                                    cIdx < 10 ? 
+                                    <VideoCard key={cIdx} id={`item-${fIdx}-${cIdx}`} video={v} esSeleccionado={filaActiva === fIdx && columnaActiva === cIdx} /> :
+                                    <VideoCard id={`item-${fIdx}-10`} esVerMas={true} total={catalogoFiltrado[cat].length} esSeleccionado={filaActiva === fIdx && columnaActiva === 10} />
+                                ))}
                             </div>
                         </div>
                     ))}
@@ -272,7 +269,7 @@ function App() {
                         </div>
                         <div id="visor-container" className={`${enPantallaCompleta ? 'fixed inset-0 z-[500] bg-black' : 'relative w-[480px] aspect-video bg-black rounded-3xl overflow-hidden border-4 ' + (focoZona === 'visor' ? 'border-red-600 scale-105 shadow-2xl shadow-red-600/30' : 'border-zinc-800')}`}>
                             <video ref={videoRef} src={videoActualUrl} key={videoActualUrl} className="w-full h-full object-contain" autoPlay disableRemotePlayback controls={enPantallaCompleta} />
-                            {!enPantallaCompleta && <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-1 rounded-full text-[8px] font-black text-white/50">PRESIONA OK PARA FULLSCREEN</div>}
+                            {!enPantallaCompleta && <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-1 rounded-full text-[8px] font-black text-white/50 uppercase">Presiona OK para pantalla completa</div>}
                         </div>
                     </div>
                     {vistaActual.data.info.categoria.toUpperCase().includes("SERIES") && (

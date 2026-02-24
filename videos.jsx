@@ -104,23 +104,31 @@ function App() {
 
     const categoriasKeys = Object.keys(catalogoFiltrado);
 
+    // Simplificado para no resetear la posición del Home
     const handleCerrarVista = () => {
         setVistaActual({ tipo: 'home', data: null });
         setBusqueda(""); 
-        setFilaActiva(0);
-        setColumnaActiva(0);
         setMostrarTeclado(false);
     };
 
     useEffect(() => {
         if (enPantallaCompleta || mostrarTeclado) return;
-        let id = "";
-        if (vistaActual.tipo === 'home') id = filaActiva === -1 ? "fake-search" : `item-${filaActiva}-${columnaActiva}`;
-        else if (vistaActual.tipo === 'grilla') id = `grid-item-${indiceAux}`;
-        else if (vistaActual.tipo === 'detalle') {
-            id = focoZona === 'visor' ? 'visor-container' : focoZona === 'selector' ? `range-${rangoCapitulos}` : `cap-${indiceAux}`;
-        }
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        
+        const timer = setTimeout(() => {
+            let id = "";
+            if (vistaActual.tipo === 'home') id = filaActiva === -1 ? "fake-search" : `item-${filaActiva}-${columnaActiva}`;
+            else if (vistaActual.tipo === 'grilla') id = `grid-item-${indiceAux}`;
+            else if (vistaActual.tipo === 'detalle') {
+                id = focoZona === 'visor' ? 'visor-container' : focoZona === 'selector' ? `range-${rangoCapitulos}` : `cap-${indiceAux}`;
+            }
+            
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+            }
+        }, 60); 
+
+        return () => clearTimeout(timer);
     }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, enPantallaCompleta, indiceAux, rangoCapitulos]);
 
     useEffect(() => {
@@ -132,26 +140,29 @@ function App() {
                 e.preventDefault();
                 if (mostrarTeclado) { setMostrarTeclado(false); return; }
                 if (enPantallaCompleta) { setEnPantallaCompleta(false); return; }
-                if (vistaActual.tipo !== 'home') { handleCerrarVista(); return; }
+                
+                // --- LÓGICA DE RETROCESO MEJORADA ---
+                if (vistaActual.tipo === 'detalle') {
+                    // Si veníamos de la grilla "Ver Más", volvemos a la grilla
+                    if (vistaActual.fromGrid) {
+                        setVistaActual({ tipo: 'grilla', data: vistaActual.fromGrid });
+                    } else {
+                        handleCerrarVista();
+                    }
+                    return;
+                }
+                if (vistaActual.tipo === 'grilla') {
+                    handleCerrarVista(); // Al cerrar, filaActiva y columnaActiva se mantienen
+                    return;
+                }
                 if (busqueda) { setBusqueda(""); return; } 
             }
 
-            // --- NUEVA LÓGICA DE CONTROL DE VIDEO ---
             if (enPantallaCompleta && videoRef.current) {
-                if (isEnter) {
-                    e.preventDefault();
-                    if (videoRef.current.paused) videoRef.current.play();
-                    else videoRef.current.pause();
-                }
-                if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    videoRef.current.currentTime += 10; // Adelanta 10 seg
-                }
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    videoRef.current.currentTime -= 10; // Atrasa 10 seg
-                }
-                return; // Detiene la ejecución del resto de las teclas mientras está en fullscreen
+                if (isEnter) { e.preventDefault(); videoRef.current.paused ? videoRef.current.play() : videoRef.current.pause(); }
+                if (e.key === 'ArrowRight') { e.preventDefault(); videoRef.current.currentTime += 10; }
+                if (e.key === 'ArrowLeft') { e.preventDefault(); videoRef.current.currentTime -= 10; }
+                return;
             }
 
             if (mostrarTeclado) return;
@@ -165,8 +176,14 @@ function App() {
                     if (e.key === 'ArrowRight') setColumnaActiva(p => Math.min(p + 1, maxCol));
                     if (e.key === 'ArrowLeft') setColumnaActiva(p => Math.max(p - 1, 0));
                     if (isEnter) {
-                        if (columnaActiva === 10) { setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } }); setIndiceAux(0); }
-                        else { setVistaActual({ tipo: 'detalle', data: { info: items[columnaActiva], items } }); setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0); }
+                        if (columnaActiva === 10) { 
+                            setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } }); 
+                            setIndiceAux(0); 
+                        }
+                        else { 
+                            setVistaActual({ tipo: 'detalle', data: { info: items[columnaActiva], items } }); 
+                            setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0); 
+                        }
                     }
                 } else if (isEnter) setMostrarTeclado(true);
 
@@ -176,7 +193,15 @@ function App() {
                 if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
                 if (e.key === 'ArrowDown') setIndiceAux(p => Math.min(p + 6, total - 1));
                 if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - 6, 0));
-                if (isEnter) { setVistaActual({ tipo: 'detalle', data: { info: vistaActual.data.items[indiceAux], items: vistaActual.data.items } }); setFocoZona('visor'); }
+                if (isEnter) { 
+                    // Guardamos la información de la grilla para poder volver
+                    setVistaActual({ 
+                        tipo: 'detalle', 
+                        data: { info: vistaActual.data.items[indiceAux], items: vistaActual.data.items },
+                        fromGrid: vistaActual.data 
+                    }); 
+                    setFocoZona('visor'); 
+                }
 
             } else if (vistaActual.tipo === 'detalle') {
                 const esSerie = vistaActual.data.info.categoria.toUpperCase().includes("SERIES");

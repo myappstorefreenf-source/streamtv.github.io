@@ -25,7 +25,7 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
     }, [f, c, isBottom, bCol]);
 
     return (
-        <div className="bg-zinc-900 p-4 rounded-2xl border border-white/10 shadow-2xl w-[320px] select-none">
+        <div translate="no" className="bg-zinc-900 p-4 rounded-2xl border border-white/10 shadow-2xl w-[320px] select-none">
             <div className="grid grid-cols-6 gap-1 mb-2">
                 {rows.map((row, rIdx) => row.map((letra, cIdx) => (
                     <div key={`${rIdx}-${cIdx}`} className={`h-10 flex items-center justify-center rounded-lg font-bold text-sm ${!isBottom && f === rIdx && c === cIdx ? 'bg-red-600 text-white scale-105 shadow-md' : 'bg-zinc-800 text-zinc-500'}`}>{letra}</div>
@@ -43,7 +43,7 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
 // --- VIDEO CARD ---
 const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total }) => (
     <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esEpisodio ? 'w-28 h-28' : 'w-40'} ${esSeleccionado ? 'scale-110 ring-4 ring-red-600 z-10 opacity-100' : 'opacity-40'}`}>
-        <div className={`rounded-xl overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-red-700 aspect-[2/3]' : esEpisodio ? 'h-full bg-zinc-800 shadow-inner' : 'bg-zinc-900 aspect-[2/3] shadow-lg'}`}>
+        <div className={`rounded-xl overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-red-700 aspect-[2/3]' : esEpisodio ? 'h-full bg-zinc-800 shadow-inner rounded-2xl' : 'bg-zinc-900 aspect-[2/3] shadow-lg'}`}>
             {esVerMas ? (
                 <div className="text-center p-4"><span className="block text-4xl mb-1">＋</span><span className="block text-[10px] font-black uppercase italic">Ver {total}</span></div>
             ) : esEpisodio ? (
@@ -104,7 +104,6 @@ function App() {
 
     const categoriasKeys = Object.keys(catalogoFiltrado);
 
-    // Simplificado para no resetear la posición del Home
     const handleCerrarVista = () => {
         setVistaActual({ tipo: 'home', data: null });
         setBusqueda(""); 
@@ -113,7 +112,6 @@ function App() {
 
     useEffect(() => {
         if (enPantallaCompleta || mostrarTeclado) return;
-        
         const timer = setTimeout(() => {
             let id = "";
             if (vistaActual.tipo === 'home') id = filaActiva === -1 ? "fake-search" : `item-${filaActiva}-${columnaActiva}`;
@@ -121,45 +119,44 @@ function App() {
             else if (vistaActual.tipo === 'detalle') {
                 id = focoZona === 'visor' ? 'visor-container' : focoZona === 'selector' ? `range-${rangoCapitulos}` : `cap-${indiceAux}`;
             }
-            
             const el = document.getElementById(id);
             if (el) {
                 el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                const container = el.closest('.flex.overflow-x-auto');
+                if (container) {
+                    const extra = (container.offsetWidth / 2) - (el.offsetWidth / 2);
+                    container.scrollTo({ left: el.offsetLeft - extra, behavior: 'smooth' });
+                }
             }
         }, 60); 
-
         return () => clearTimeout(timer);
     }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, enPantallaCompleta, indiceAux, rangoCapitulos]);
 
     useEffect(() => {
         const handleKeys = (e) => {
             const isEnter = e.key === 'Enter' || e.keyCode === 13;
-            const isBack = e.key === 'Escape' || e.key === 'Backspace' || e.keyCode === 8 || e.keyCode === 461;
+            const isBack = e.key === 'Escape' || e.key === 'Backspace' || e.keyCode === 8 || e.keyCode === 461 || e.keyCode === 27;
 
             if (isBack) {
                 e.preventDefault();
                 if (mostrarTeclado) { setMostrarTeclado(false); return; }
                 if (enPantallaCompleta) { setEnPantallaCompleta(false); return; }
-                
-                // --- LÓGICA DE RETROCESO MEJORADA ---
                 if (vistaActual.tipo === 'detalle') {
-                    // Si veníamos de la grilla "Ver Más", volvemos a la grilla
-                    if (vistaActual.fromGrid) {
-                        setVistaActual({ tipo: 'grilla', data: vistaActual.fromGrid });
-                    } else {
-                        handleCerrarVista();
-                    }
+                    if (vistaActual.fromGrid) setVistaActual({ tipo: 'grilla', data: vistaActual.fromGrid });
+                    else handleCerrarVista();
                     return;
                 }
-                if (vistaActual.tipo === 'grilla') {
-                    handleCerrarVista(); // Al cerrar, filaActiva y columnaActiva se mantienen
-                    return;
-                }
+                if (vistaActual.tipo === 'grilla') { handleCerrarVista(); return; }
                 if (busqueda) { setBusqueda(""); return; } 
             }
 
             if (enPantallaCompleta && videoRef.current) {
-                if (isEnter) { e.preventDefault(); videoRef.current.paused ? videoRef.current.play() : videoRef.current.pause(); }
+                if (isEnter) { 
+                    e.preventDefault(); 
+                    // Corrección: Forzar play/pause explícitamente
+                    if (videoRef.current.paused) { videoRef.current.play().catch(()=>{}); } 
+                    else { videoRef.current.pause(); }
+                }
                 if (e.key === 'ArrowRight') { e.preventDefault(); videoRef.current.currentTime += 10; }
                 if (e.key === 'ArrowLeft') { e.preventDefault(); videoRef.current.currentTime -= 10; }
                 return;
@@ -179,14 +176,12 @@ function App() {
                         if (columnaActiva === 10) { 
                             setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } }); 
                             setIndiceAux(0); 
-                        }
-                        else { 
+                        } else { 
                             setVistaActual({ tipo: 'detalle', data: { info: items[columnaActiva], items } }); 
                             setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0); 
                         }
                     }
                 } else if (isEnter) setMostrarTeclado(true);
-
             } else if (vistaActual.tipo === 'grilla') {
                 const total = vistaActual.data.items.length;
                 if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, total - 1));
@@ -194,15 +189,9 @@ function App() {
                 if (e.key === 'ArrowDown') setIndiceAux(p => Math.min(p + 6, total - 1));
                 if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - 6, 0));
                 if (isEnter) { 
-                    // Guardamos la información de la grilla para poder volver
-                    setVistaActual({ 
-                        tipo: 'detalle', 
-                        data: { info: vistaActual.data.items[indiceAux], items: vistaActual.data.items },
-                        fromGrid: vistaActual.data 
-                    }); 
+                    setVistaActual({ tipo: 'detalle', data: { info: vistaActual.data.items[indiceAux], items: vistaActual.data.items }, fromGrid: vistaActual.data }); 
                     setFocoZona('visor'); 
                 }
-
             } else if (vistaActual.tipo === 'detalle') {
                 const esSerie = vistaActual.data.info.categoria.toUpperCase().includes("SERIES");
                 if (focoZona === 'visor') {
@@ -248,7 +237,7 @@ function App() {
                     {categoriasKeys.map((cat, fIdx) => (
                         <div key={cat} className="mb-14">
                             <h2 className={`text-lg font-bold mb-4 uppercase tracking-widest ${filaActiva === fIdx ? 'text-red-600' : 'text-zinc-800'}`}>{cat}</h2>
-                            <div className="flex gap-6 overflow-x-auto no-scrollbar py-4">
+                            <div className="flex gap-6 overflow-x-auto no-scrollbar py-4 scroll-smooth">
                                 {catalogoFiltrado[cat].slice(0, 10).map((v, cIdx) => <VideoCard key={cIdx} id={`item-${fIdx}-${cIdx}`} video={v} esSeleccionado={filaActiva === fIdx && columnaActiva === cIdx} />)}
                                 {catalogoFiltrado[cat].length > 10 && <VideoCard id={`item-${fIdx}-10`} esVerMas={true} total={catalogoFiltrado[cat].length} esSeleccionado={filaActiva === fIdx && columnaActiva === 10} />}
                             </div>
@@ -304,7 +293,7 @@ function App() {
                     )}
                 </div>
             )}
-            <style>{`.no-scrollbar::-webkit-scrollbar { display: none; }`}</style>
+            <style>{`.no-scrollbar::-webkit-scrollbar { display: none; } .scroll-smooth { scroll-behavior: smooth; }`}</style>
         </div>
     );
 }

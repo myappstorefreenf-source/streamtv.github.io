@@ -42,8 +42,6 @@ https://archive.org/download/RulesDontApply20161080p60FPS/Rules%20Dont%20Apply%2
 http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
 #EXTINF:-1 tvg-id="" tvg-name="El gran viaje de tu vida (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ipBkoLGRY1PS7Ud4fcEB8MuE3sE.jpg" group-title="VOD-ESTRENOS 2025",El gran viaje de tu vida (2025)
 https://archive.org/details/peliculas-para-archivar/Camp+Cucamonga+(1990)+%5BTriple+Audio%5D.mkv
-#EXTINF:-1 tvg-logo="http://s1.evcdn.com/images/movieposter249by373/movies/162960/162960_aa.jpg" group-title="SPANISH",Rules Don't Apply (2016)*
-https://archive.org/download/RulesDontApply20161080p60FPS/Rules%20Dont%20Apply%20(2016)%201080p%2060%20FPS.mp4
 #EXTINF:-1 tvg-id="" tvg-name="Parking (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/oNxANEMPx3sbj6BY9VtZxrXCMDF.jpg" group-title="VOD-ESTRENOS 2025",Parking (2025)
 http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
 #EXTINF:-1 tvg-id="" tvg-name="El gran viaje de tu vida (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/ipBkoLGRY1PS7Ud4fcEB8MuE3sE.jpg" group-title="VOD-ESTRENOS 2025",El gran viaje de tu vida (2025)
@@ -1670,6 +1668,7 @@ http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/179213.mkv
 #EXTINF:-1 tvg-id="" tvg-name="Amar, Perder (2026) S01 E07" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nj2woKV1zSIpOVJoddtGabd38Zw.jpg" group-title="SERIES-ESTRENOS 2026",Amar, Perder (2026) S01 E07
 http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/179214.mkv
 #EXTINF:-1 tvg-id="" tvg-name="Amar, Perder (2026) S01 E08" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nj2woKV1zSIpOVJoddtGabd38Zw.jpg" group-title="SERIES-ESTRENOS 2026",Amar, Perder (2026) S01 E08`
+
 
 
 

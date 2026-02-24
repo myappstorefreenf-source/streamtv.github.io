@@ -22,21 +22,21 @@ https://archive.org/download/MenOfHonor20001080pX264ItaEnSciencefunMux/I%20Pingu
 https://ia800605.us.archive.org/27/items/04052017AQMCMA04052017AQC/04052017AQMCMA.mkv
 #EXTINF:-1 tvg-logo="https://images-na.ssl-images-amazon.com/images/I/A1sHSnRBjxL._SL1500_.jpg" group-title="SPANISH",Pet (2016) 
 https://ia800606.us.archive.org/26/items/12052017ffsdf345345345/12052017ffsdf.mp4
-#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/I/91x6HWSxHZL._AC_UF894,1000_QL80_.jpg" group-title="SPANISH",Rules Don't Apply (2016)
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BNjk4NTI0Mjg5NF5BMl5BanBnXkFtZTgwNDM5NTM0OTE@._V1_.jpg" group-title="SPANISH",Rules Don't Apply (2016)
 https://archive.org/download/RulesDontApply20161080pFULLHD/Rules%20Dont%20Apply%20(2016)%201080p%20FULL%20HD.mp4
 #EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BMTQzNTcwODEyM15BMl5BanBnXkFtZTcwMjM1MDI0OQ@@._V1_.jpg" group-title="SPANISH",The Purge (2013)
 https://archive.org/download/The.Purge.1080p.latino/The.Purge.1080p.latino.mp4
 #EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BNDc2NjU0MTcwNV5BMl5BanBnXkFtZTcwMjg4MDg2OQ@@._V1_FMjpg_UX1000_.jpg" group-title="SPANISH",Elysium (2013)
 https://dl.dropbox.com/s/rfxlxf1qq8nv6vs/Elysium%20%282013%29.mkv
-#EXTINF:-1 tvg-logo="http://horror.wpengine.netdna-cdn.com/wp-content/uploads/2016/05/childs-play-2-poster.jpg" group-title="SPANISH",Child's Play 2 (1990)
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BNmQ5ZWRhZmMtOWI0OC00OWMzLWIwNzgtMzYzNjNhZDEwNTE1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" group-title="SPANISH",Child's Play 2 (1990)
 https://ia801609.us.archive.org/33/items/08052017Ch2320170508/08052017_ch23.mkv
-#EXTINF:-1 tvg-logo="https://i.jeded.com/i/back-to-the-future-part-ll.12429.jpg" group-title="SPANISH",Back to the Future Part II (1989)
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BZjc3MmU5NmQtZWIwNC00NDc0LTg2MmEtOWZmZTQwN2VhNWVlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" group-title="SPANISH",Back to the Future Part II (1989)
 https://ia801303.us.archive.org/13/items/84CK.70-3/84CK.70.FU7U93.3-ES-720.mp4?disco
 #EXTINF:-1 tvg-logo="http://static.rogerebert.com/uploads/movie/movie_poster/childs-play-1988/large_6r9MOdGpOpSTH4jCQemyhPOHbZn.jpg" group-title="SPANISH",Child's Play (1988)
 https://ia800604.us.archive.org/29/items/080520712070508aCh/08052071.mkv
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/kK9a9VBIjmh7L2uJvR01RUfS4eT.jpg" group-title="SPANISH",Porky's Revenge (1985)
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BODUzZmJjZTYtMzRkZi00Y2FkLWIwMWUtNGUzMGMwMWFmNmQxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" group-title="SPANISH",Porky's Revenge (1985)
 https://ia801505.us.archive.org/6/items/6062017Aqc88742897489237/6062017_aqc.avi
-#EXTINF:-1 tvg-logo="http://s1.evcdn.com/images/movieposter249by373/movies/162960/162960_aa.jpg" group-title="SPANISH",Rules Don't Apply (2016)*
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BNjk4NTI0Mjg5NF5BMl5BanBnXkFtZTgwNDM5NTM0OTE@._V1_.jpg" group-title="SPANISH",Rules Don't Apply (2016)*
 https://archive.org/download/RulesDontApply20161080p60FPS/Rules%20Dont%20Apply%20(2016)%201080p%2060%20FPS.mp4
 #EXTINF:-1 tvg-id="" tvg-name="Parking (2025)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/oNxANEMPx3sbj6BY9VtZxrXCMDF.jpg" group-title="VOD-ESTRENOS 2025",Parking (2025)
 http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
@@ -1670,6 +1670,7 @@ http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/179213.mkv
 #EXTINF:-1 tvg-id="" tvg-name="Amar, Perder (2026) S01 E07" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nj2woKV1zSIpOVJoddtGabd38Zw.jpg" group-title="SERIES-ESTRENOS 2026",Amar, Perder (2026) S01 E07
 http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/179214.mkv
 #EXTINF:-1 tvg-id="" tvg-name="Amar, Perder (2026) S01 E08" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nj2woKV1zSIpOVJoddtGabd38Zw.jpg" group-title="SERIES-ESTRENOS 2026",Amar, Perder (2026) S01 E08`
+
 
 
 

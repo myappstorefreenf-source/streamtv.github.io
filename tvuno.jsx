@@ -14,19 +14,11 @@ const LOCAL_M3U_DATA = [
         title: "Prueba TV",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
         category: "Argentina",
-        url: "http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/47739.mp4",
-         referrer: "http://tv.zapping.life:8080/", 
+        url: "http://live.btv.mx:2424/stream/278774/smAVz_uhytj5REM-4pYNZbkrcB2",
+        
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },
-    {
-  title: "Nombre de la Película",
-  category:"Argentina",
-  url: "http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/47739.mp4",
- referrer: "http://206.123.140.62:8080/",
-  userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
- // workerId: 'pelicula',      
-},
-    
+       
     {
         title: "América TV",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
@@ -2117,6 +2109,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

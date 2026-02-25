@@ -57,7 +57,7 @@ const LOCAL_M3U_DATA = [
         logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
         category: "Argentina",
         // URL DASH (.mpd) que extrajimos
-        url: "https://cdn.sensa.com.ar/live/eds/Telefe/live_dash_cld/Telefe.mpd?|",
+        url: "http://104.238.205.28:9090/278773_.m3u8",
        // referrer: "https://player.sensa.com.ar/&webtoken=1.0",
         // Objeto DRM para que Shaka Player lo reconozca
      //   drm: {
@@ -2117,6 +2117,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

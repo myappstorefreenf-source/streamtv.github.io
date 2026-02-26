@@ -1124,74 +1124,60 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         }
     }, [finalHeaders]);
 
-    React.useEffect(() => {
-        const video = ref.current;
-        if (!video || !url) return;
+   // --- DENTRO DE VIDEO PLAYER ---
 
-        let hls;
-        let shakaPlayer;
+React.useEffect(() => {
+    const video = ref.current;
+    if (!video || !url) return;
 
-        // Limpieza agresiva original
+    let hls;
+    let shakaPlayer;
+
+    // 1. LIMPIEZA ATÓMICA
+    const cleanup = () => {
         if (video.__hlsInstance) { video.__hlsInstance.destroy(); delete video.__hlsInstance; }
         if (video.__shakaInstance) { video.__shakaInstance.destroy(); delete video.__shakaInstance; }
-        
         video.pause();
-        video.muted = true;
-        video.removeAttribute('src');
+        video.src = "";
         video.load();
+    };
+    cleanup();
 
-        const handleReady = () => {
-            if (isPlaying) {
-                video.play().catch(e => console.error("Error Autoplay:", e));
-                setTimeout(() => { if (video) video.muted = false; }, 500);
-            }
-        };
-
-        // --- MODO DASH + DRM ---
-        if (url.includes('.mpd') || drm) {
-            shakaPlayer = new shaka.Player(video);
-            video.__shakaInstance = shakaPlayer;
-
-            shakaPlayer.configure({
-                drm: { clearKeys: drm?.clearkey || {}, robustness: '' },
-                streaming: { jumpLargeGaps: true, rebufferingGoal: 2 },
-                manifest: { dash: { ignoreMinBufferTime: true } }
-            });
-
-            shakaPlayer.getNetworkingEngine().registerRequestFilter((type, request) => {
-                if (finalHeaders) {
-                    Object.entries(finalHeaders).forEach(([key, value]) => {
-                        request.headers[key] = value;
-                    });
-                }
-            });
-
-            shakaPlayer.load(url).then(handleReady).catch(e => console.error("Shaka Error:", e));
+    // 2. FUNCIÓN READY SIN TIMEOUTS (Evita el desfasaje de audio)
+    const handleReady = () => {
+        if (isPlaying) {
+            video.muted = false; // Desmutea AL INSTANTE
+            video.play().catch(e => console.error("Error Play:", e));
         }
+    };
 
-        // --- MODO HLS ---
-        else if (window.Hls && Hls.isSupported() && (url.includes('.m3u8') || url.includes('8080'))) {
-            // He añadido "url.includes('8080')" porque tus links de Zapping usan ese puerto y suelen ser HLS
-            hls = new Hls({ xhrSetup: setupXhr, maxBufferLength: 30 });
-            hls.loadSource(url);
-            hls.attachMedia(video);
-            video.__hlsInstance = hls;
-            hls.on(Hls.Events.MANIFEST_PARSED, handleReady);
-        } 
-        
-        // --- MODO NATIVO (MP4, MKV y otros) ---
-        else {
-            video.src = url;
-            // IMPORTANTE: Esto ayuda a que el navegador intente reproducir formatos como MKV si el codec está presente
-            video.type = url.includes('.mkv') ? 'video/x-matroska' : 'video/mp4';
-            video.addEventListener('loadedmetadata', handleReady, { once: true });
-        }
+    // --- MODO DASH + DRM ---
+    if (url.includes('.mpd') || drm) {
+        shakaPlayer = new shaka.Player(video);
+        video.__shakaInstance = shakaPlayer;
+        shakaPlayer.configure({
+            drm: { clearKeys: drm?.clearkey || {} },
+            streaming: { jumpLargeGaps: true }
+        });
+        shakaPlayer.load(url).then(handleReady).catch(e => console.error(e));
+    }
+    // --- MODO HLS ---
+    else if (window.Hls && Hls.isSupported() && (url.includes('.m3u8') || url.includes('8080'))) {
+        hls = new Hls({ xhrSetup: setupXhr, maxBufferLength: 30 });
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        video.__hlsInstance = hls;
+        hls.on(Hls.Events.MANIFEST_PARSED, handleReady);
+    } 
+    // --- MODO NATIVO ---
+    else {
+        video.src = url;
+        video.addEventListener('loadedmetadata', handleReady, { once: true });
+    }
 
-        return () => {
-            if (video.__hlsInstance) video.__hlsInstance.destroy();
-            if (video.__shakaInstance) video.__shakaInstance.destroy();
-        };
-    }, [url, drm, isPlaying, setupXhr, finalHeaders, ref]);
+    return cleanup; 
+    // Reducimos dependencias para que no parpadee el componente
+}, [url, drm]);
 
     return (
         <div className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center">
@@ -1208,9 +1194,10 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 width='100%'
                 height='100%'
                 playsInline
-               // autoPlay //prueba de eco
+               muted={true}      // <--- Agregá esto
+               autoPlay={false}  // <--- Forzá que no arranque solo
                 controls={false}
-                   crossOrigin="anonymous" // <--- AÑADE ESTO PARA EL WEBVIEW
+               crossOrigin="anonymous" // <--- AÑADE ESTO PARA EL WEBVIEW
                 preload="auto"          // <--- AÑADE ESTO
                 onLoadedData={() => {
                     const spinner = document.getElementById('video-spinner');
@@ -2111,6 +2098,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

@@ -1208,7 +1208,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
                 width='100%'
                 height='100%'
                 playsInline
-                autoPlay
+               // autoPlay //prueba de eco
                 controls={false}
                    crossOrigin="anonymous" // <--- AÑADE ESTO PARA EL WEBVIEW
                 preload="auto"          // <--- AÑADE ESTO
@@ -2111,6 +2111,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

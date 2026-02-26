@@ -1198,7 +1198,7 @@ React.useEffect(() => {
                autoPlay={false}  // <--- Forzá que no arranque solo
                 controls={false}
                crossOrigin="anonymous" // <--- AÑADE ESTO PARA EL WEBVIEW
-                preload="auto"          // <--- AÑADE ESTO
+                preload="none"          // <--- AÑADE ESTO
                 onLoadedData={() => {
                     const spinner = document.getElementById('video-spinner');
                     if(spinner) spinner.style.display = 'none';
@@ -2098,6 +2098,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

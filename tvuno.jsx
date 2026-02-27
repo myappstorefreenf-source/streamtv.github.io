@@ -1,3 +1,4 @@
+
 // Asegúrate de que React, ReactDOM y Hls.js estén cargados en el scope global.
 // Por ejemplo:
 // <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -70,7 +71,7 @@ const LOCAL_M3U_DATA = [
         //    clearkey: {
          //       "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
           //  }
-       // }
+       },
    
      {
         title: "Telefe AR",
@@ -1380,30 +1381,30 @@ const WORKER_BASE_URL = "https://proxyhls.myappstore-free-nf.workers.dev/";
  * @returns {Promise<string|null>} URL de la transmisión con token, o null en caso de error.
  */
 async function fetchTokenizedChannelUrl(serviceName) {
-    if (!serviceName) {
-        console.error("El nombre del servicio es requerido para el Worker.");
-        return null;
-    }
+    if (!serviceName) {
+        console.error("El nombre del servicio es requerido para el Worker.");
+        return null;
+    }
     
     // Construye la URL completa: BASE_URL + serviceName
     const serviceUrl = WORKER_BASE_URL + serviceName;
     
-    try {
-        // Tu lógica original, ahora usando la URL dinámica
-        const response = await fetch(serviceUrl); 
-        
-        if (!response.ok) {
-            throw new Error(`Worker falló con estado: ${response.status}. URL: ${serviceUrl}`);
-        }
-        
-        const finalUrl = (await response.text()).trim(); 
-        
-        return finalUrl;
-        
-    } catch (error) {
-        console.error(`Error al obtener la URL para ${serviceName}:`, error);
-        return null; 
-    }
+    try {
+        // Tu lógica original, ahora usando la URL dinámica
+        const response = await fetch(serviceUrl); 
+        
+        if (!response.ok) {
+            throw new Error(`Worker falló con estado: ${response.status}. URL: ${serviceUrl}`);
+        }
+        
+        const finalUrl = (await response.text()).trim(); 
+        
+        return finalUrl;
+        
+    } catch (error) {
+        console.error(`Error al obtener la URL para ${serviceName}:`, error);
+        return null; 
+    }
 }
 // ----------------------------------------------------------------------
 // 4. COMPONENTE PRINCIPAL APP (MODIFICADO PARA SEGURIDAD)
@@ -1521,50 +1522,50 @@ const filteredChannels = React.useMemo(() => {
 
 
  const handlePlayChannel = React.useCallback(async (channelObject) => { 
-    
-    // 1. Inicializa la URL que se va a usar en el reproductor
-    let urlToPlay = channelObject.url;
+    
+    // 1. Inicializa la URL que se va a usar en el reproductor
+    let urlToPlay = channelObject.url;
     
     // ⭐ NUEVO IDENTIFICADOR: Usa la propiedad workerId
     const serviceId = channelObject.workerId; // Será 'telefe' para ese canal
 
     // 2. Lógica para verificar y obtener el token
-    if (serviceId) { // Verifica si existe un workerId
-        
-        console.log(`Detectado canal tokenizado. Llamando al Worker para ${serviceId}...`);
-        
-        // Llama a la función, pasándole el identificador
-        const tokenizedUrl = await fetchTokenizedChannelUrl(serviceId); 
-        
-        if (tokenizedUrl) {
-            urlToPlay = tokenizedUrl; 
-        } else {
-            console.error("No se pudo obtener la URL tokenizada. Usando URL de fallback.");
-        }
-    } 
+    if (serviceId) { // Verifica si existe un workerId
+        
+        console.log(`Detectado canal tokenizado. Llamando al Worker para ${serviceId}...`);
+        
+        // Llama a la función, pasándole el identificador
+        const tokenizedUrl = await fetchTokenizedChannelUrl(serviceId); 
+        
+        if (tokenizedUrl) {
+            urlToPlay = tokenizedUrl; 
+        } else {
+            console.error("No se pudo obtener la URL tokenizada. Usando URL de fallback.");
+        }
+    } 
 
-    // 3. Crear el objeto de canal final con la URL actualizada o la URL original
-    const finalChannelObject = {
-        ...channelObject,
-        url: urlToPlay,
+    // 3. Crear el objeto de canal final con la URL actualizada o la URL original
+    const finalChannelObject = {
+        ...channelObject,
+        url: urlToPlay,
         // ⭐ CLAVE: Limpiar headers y referrer para evitar conflictos con el token de Akamai
         headers: serviceId ? null : channelObject.headers,
         referrer: serviceId ? null : channelObject.referrer
-    };
+    };
 
-    setCurrentChannel(finalChannelObject); 
-    
-    // 4. Lógica de enfoque e interfaz (el resto de tu lógica original)
-    const newGlobalIndex = allChannels.findIndex(c => c.url === channelObject.url); 
-    setFocusedIndex(newGlobalIndex);
-    
-    const newFilteredIndex = filteredChannels.findIndex(c => c.url === channelObject.url);
-    setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
-    
-    setIsCategoryMenuVisible(false);
-    setIsMenuVisible(false);
-    setIsPlaying(true);
-    
+    setCurrentChannel(finalChannelObject); 
+    
+    // 4. Lógica de enfoque e interfaz (el resto de tu lógica original)
+    const newGlobalIndex = allChannels.findIndex(c => c.url === channelObject.url); 
+    setFocusedIndex(newGlobalIndex);
+    
+    const newFilteredIndex = filteredChannels.findIndex(c => c.url === channelObject.url);
+    setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
+    
+    setIsCategoryMenuVisible(false);
+    setIsMenuVisible(false);
+    setIsPlaying(true);
+    
 }, [allChannels, filteredChannels]); // Asegúrate de incluir todas las dependencias
  
 

@@ -85,7 +85,7 @@ const LOCAL_M3U_DATA = [
          //       "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
           //  }
        // }
-    },
+   
        },//::::::::::::::::::::::::::::::::::::::::::::::::::
     //::::::::::::::::::::::::::::CANALES DE DEPORTE
 {  //::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -2250,6 +2250,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

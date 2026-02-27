@@ -1,3 +1,4 @@
+
 // Asegúrate de que React, ReactDOM y Hls.js estén cargados en el scope global.
 // Por ejemplo:
 // <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -11,13 +12,36 @@
 
 const LOCAL_M3U_DATA = [
     {
+        title: "El Trece  Opc3",
+        logoUrl: "https://images.seeklogo.com/logo-png/2/1/canal-trece-argentina-logo-png_seeklogo-25582.png",
+        category: "Argentina",
+        url: "http://104.194.8.54:9090/278760_.m3u8",
+       // referrer:"https://www.eltrecetv.com.ar/",
+      //  origin: "https://www.eltrecetv.com.ar",
+    },
+     {
+        title: "canal NUeve",
+        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Canal_9_Argentina.png",
+        category: "Argentina",
+       url: "http://104.238.205.28:9090/278759_.m3u8",
+       //  referrer: "http://tv.zapping.life:8080/", 
+        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
+    },
+         {
+        title: "América TV opc 2",
+        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
+        category: "Argentina",
+        url: "hhttp://104.238.205.28:9090/278751_.m3u8",
+         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
+    },
+    {
         title: "América TV",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
         category: "Argentina",
         url: "https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8"
     },
     {
-        title: "El nueve",
+        title: "Cronica Tv",
         logoUrl: "https://argentina.mom-gmr.org/uploads/_processed_/8/6/csm_16062-1639_import_3467384d27.png",//ttps://upload.wikimedia.org/wikipedia/commons/3/3a/Canal_9_2015.png",
         category: "Argentina",
         url: "https://proxyhls.myappstore-free-nf.workers.dev/elnueve",
@@ -35,13 +59,160 @@ const LOCAL_M3U_DATA = [
         category: "Argentina",
         url: "https://unlimited1-saopaulo.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
+    {
+        title: "Telefe internacional",
+        logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
+        category: "Argentina",
+        // URL DASH (.mpd) que extrajimos
+        url: "http://104.238.205.28:9090/278773_.m3u8",
+       // referrer: "https://player.sensa.com.ar/&webtoken=1.0",
+        // Objeto DRM para que Shaka Player lo reconozca
+     //   drm: {
+        //    clearkey: {
+         //       "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
+          //  }
+       // }
+    },
      {
-    title: "Telefe",
-    logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
-    category: "Argentina",
-    workerId: 'telefe', //identifica el worker para ser llamado y generar el token
-    // url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8"
-         url: "https://proxyhls.myappstore-free-nf.workers.dev/telefe",
+        title: "Telefe AR",
+        logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
+        category: "Argentina",
+        // URL DASH (.mpd) que extrajimos
+        url: "http://104.238.205.28:9090/278774_.m3u8",
+       // referrer: "https://player.sensa.com.ar/&webtoken=1.0",
+        // Objeto DRM para que Shaka Player lo reconozca
+     //   drm: {
+        //    clearkey: {
+         //       "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
+          //  }
+       // }
+    
+       },//::::::::::::::::::::::::::::::::::::::::::::::::::
+    //::::::::::::::::::::::::::::CANALES DE DEPORTE
+{  //::::::::::::::::::::::::::::::::::::::::::::::::::
+    title: "ESPN PREMIUM",
+    logoUrl: "https://images.seeklogo.com/logo-png/36/1/espn-logo-png_seeklogo-368956.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.58:9090/283887_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN",
+    logoUrl: "https://images.seeklogo.com/logo-png/36/1/espn-logo-png_seeklogo-368956.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.222.251:9090/278765_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN +",
+    logoUrl: "https://images.seeklogo.com/logo-png/36/1/espn-logo-png_seeklogo-368956.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/278763_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN 4",
+    logoUrl: "https://cdn.mitvstatic.com/channels/ar_espn_m.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.194.8.54:9090/278764_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN 2",
+    logoUrl: "https://cdn.mitvstatic.com/channels/ar_espn_m.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.194.8.54:9090/278762_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "FOX SPORT 1",
+    logoUrl: "https://es.smartsheet.com/sites/default/files/2024-09/fs_logo_4-16-2024.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://79.143.17.114:9090/278768_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "FOX SPORT 2",
+    logoUrl: "https://es.smartsheet.com/sites/default/files/2024-09/fs_logo_4-16-2024.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/278767_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "FOX SPORT 3",
+    logoUrl: "https://es.smartsheet.com/sites/default/files/2024-09/fs_logo_4-16-2024.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/278766_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "TyC SPORT INTERNACIONAL ",
+    logoUrl: "https://www.totalmedios.com/img/noticias/2009/02/Noticia4428__838x390.jpg",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.222.251:9090/278779_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "TyC SPORT AR",
+    logoUrl: "https://www.totalmedios.com/img/noticias/2009/02/Noticia4428__838x390.jpg",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://45.90.106.115:9090/278778_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "TNT SPORT AR",
+    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7e/TNT_Sports_Logo.svg",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://45.90.106.115:9090/278778_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+
+{
+    title: "HBO HD",
+    logoUrl: "https://github.com/masterentertainment/listas/blob/main/logos/HBOLA.png?raw=true",
+    category: "HBO Pack",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/299284_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+  //  drm: {
+   //     clearKeys: {
+    //        "dead023f7a81634339ae639990c1517a": "ba970222b4466c61d0deccc67ab34452"
+    //    }
+ //   }
 },
     {
         title: "Canal 26",
@@ -486,12 +657,7 @@ const LOCAL_M3U_DATA = [
         category: "Series",
         url: "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/60b4c06717da110007ee1af6/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&serverSideAds=false&studio_id=viacom&tags=ROKU_CONTENT_TAGS"
     },
-    {
-        title: "América TV",
-        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
-        category: "Argentina",
-        url: "https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8"
-    },
+   
     {
         title: "El Trece 2",
         logoUrl: "https://images.seeklogo.com/logo-png/2/1/canal-trece-argentina-logo-png_seeklogo-25582.png",
@@ -500,14 +666,7 @@ const LOCAL_M3U_DATA = [
         referrer:"https://www.eltrecetv.com.ar/",
         origin: "https://www.eltrecetv.com.ar",
     },
-    {
-        title: "TN",
-        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/TN_todo_noticias_logo.svg/2560px-TN_todo_noticias_logo.svg.png",
-        category: "Noticias",
-        url: "http://streamingtv.vip:80/series/DanielMendoza/Agrolab2019/319637.mp4",
-        referrer: "https://tn.com.ar/envivo/24hs", 
-        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
-    },
+   
     {
         title: "TV",
         logoUrl: "https://images.pluto.tv/channels/6086d3f420fc8500075f8dbf/colorLogoPNG.png",
@@ -941,49 +1100,87 @@ const LOCAL_M3U_DATA = [
         category: "General",
         url: "https://unlimited1-us.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
+//::::::::::::::::::COMIENZO CATADULTOS:::::::::::::::::::::::://
     {
         title: "BRAZZERS",
         logoUrl: "http://www.tps.uk.com/img/products/120/Brazzers-TV-Viaccess-12-month.jpg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/blonde.m3u8"
+        url: "http://45.90.106.85:9090/165203_.m3u8"
     },
     {
-        title: "Sextreme",
+        title: "Porno vip Euro",
         logoUrl: "https://es.wikipedia.org/wiki/Sextreme#/media/Archivo:Sextreme_logo.png",
         category: "Adultos",
-        url: "https://live.adultiptv.net/anal.m3u8"
+        url: "http://45.90.106.85:9090/168520_.m3u8"
     },
     {
-        title: "PenthouseX",
+        title: "Porno vip euro 2",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Penthouse_text_logo.svg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/rough.m3u8"
+        url: "http://45.90.106.85:9090/168521_.m3u8"
     },
     {
         title: "VENUS",
         logoUrl: "http://vignette3.wikia.nocookie.net/logopedia/images/4/48/Logo_venus_out_color.jpg",
         category: "Adultos",
-        url: "https://live.redtraffic.xyz/russian.m3u8?fluxuslust.m3u8"
+        url: "http://104.238.222.251:9090/165201_.m3u8"
     },
     {
-        title: "Jasmin TV",
+        title: "Private",
         logoUrl: "https://i.imgur.com/DLEFDcv.png",
         category: "Adultos",
-        url: "https://live.adultiptv.net/pornstar.m3u8"
+        url: "http://45.90.106.85:9090/279171_.m3u8"
     },
     {
         title: "HOT",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/threesome.m3u8"
+        url: "http://45.90.106.85:9090/279271_.m3u8"
     },
     {
         title: "Teen",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/teen.m3u8"
-    }
+        url: "http://45.90.106.85:9090/279195_.m3u8"
+    },
+     {
+        title: "Slim 4k",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://45.90.106.85:9090/279179_.m3u8"
+    },
+     {
+        title: "Milf",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://108.181.135.111:9090/279157_.m3u8"
+    },
+     {
+        title: "Real sensual",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://79.143.17.114:9090/279176_.m3u8"
+    },
+     {
+        title: "Mofos",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://45.90.106.85:9090/279151_.m3u8"
+    },
+     {
+        title: "Mom Teach Sex",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://104.194.8.54:9090/279152_.m3u8"
+    },
+     {
+        title: "Adult Iptv",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://108.181.135.111:9090/279154_.m3u8"
+    },
 ];
+
 
 // ----------------------------------------------------------------------
 // 1. FUNCIONES DE UTILIDAD
@@ -1245,30 +1442,30 @@ const WORKER_BASE_URL = "https://proxyhls.myappstore-free-nf.workers.dev/";
  * @returns {Promise<string|null>} URL de la transmisión con token, o null en caso de error.
  */
 async function fetchTokenizedChannelUrl(serviceName) {
-    if (!serviceName) {
-        console.error("El nombre del servicio es requerido para el Worker.");
-        return null;
-    }
+    if (!serviceName) {
+        console.error("El nombre del servicio es requerido para el Worker.");
+        return null;
+    }
     
     // Construye la URL completa: BASE_URL + serviceName
     const serviceUrl = WORKER_BASE_URL + serviceName;
     
-    try {
-        // Tu lógica original, ahora usando la URL dinámica
-        const response = await fetch(serviceUrl); 
-        
-        if (!response.ok) {
-            throw new Error(`Worker falló con estado: ${response.status}. URL: ${serviceUrl}`);
-        }
-        
-        const finalUrl = (await response.text()).trim(); 
-        
-        return finalUrl;
-        
-    } catch (error) {
-        console.error(`Error al obtener la URL para ${serviceName}:`, error);
-        return null; 
-    }
+    try {
+        // Tu lógica original, ahora usando la URL dinámica
+        const response = await fetch(serviceUrl); 
+        
+        if (!response.ok) {
+            throw new Error(`Worker falló con estado: ${response.status}. URL: ${serviceUrl}`);
+        }
+        
+        const finalUrl = (await response.text()).trim(); 
+        
+        return finalUrl;
+        
+    } catch (error) {
+        console.error(`Error al obtener la URL para ${serviceName}:`, error);
+        return null; 
+    }
 }
 // ----------------------------------------------------------------------
 // 4. COMPONENTE PRINCIPAL APP (MODIFICADO PARA SEGURIDAD)
@@ -1277,7 +1474,7 @@ function App() {
     const [videoCatalog, setVideoCatalog] = React.useState(null); 
     const [currentChannel, setCurrentChannel] = React.useState(null); 
     const currentChannelUrl = currentChannel ? currentChannel.url : null;
-   const [isAppReady, setIsAppReady] = React.useState(false); //retraso en la carga para dar tiempo al renderizado global
+    
     const [isMenuVisible, setIsMenuVisible] = React.useState(true); 
     const playerRef = React.useRef(null);
     const [focusedIndex, setFocusedIndex] = React.useState(-1); 
@@ -1386,50 +1583,50 @@ const filteredChannels = React.useMemo(() => {
 
 
  const handlePlayChannel = React.useCallback(async (channelObject) => { 
-    
-    // 1. Inicializa la URL que se va a usar en el reproductor
-    let urlToPlay = channelObject.url;
+    
+    // 1. Inicializa la URL que se va a usar en el reproductor
+    let urlToPlay = channelObject.url;
     
     // ⭐ NUEVO IDENTIFICADOR: Usa la propiedad workerId
     const serviceId = channelObject.workerId; // Será 'telefe' para ese canal
 
     // 2. Lógica para verificar y obtener el token
-    if (serviceId) { // Verifica si existe un workerId
-        
-        console.log(`Detectado canal tokenizado. Llamando al Worker para ${serviceId}...`);
-        
-        // Llama a la función, pasándole el identificador
-        const tokenizedUrl = await fetchTokenizedChannelUrl(serviceId); 
-        
-        if (tokenizedUrl) {
-            urlToPlay = tokenizedUrl; 
-        } else {
-            console.error("No se pudo obtener la URL tokenizada. Usando URL de fallback.");
-        }
-    } 
+    if (serviceId) { // Verifica si existe un workerId
+        
+        console.log(`Detectado canal tokenizado. Llamando al Worker para ${serviceId}...`);
+        
+        // Llama a la función, pasándole el identificador
+        const tokenizedUrl = await fetchTokenizedChannelUrl(serviceId); 
+        
+        if (tokenizedUrl) {
+            urlToPlay = tokenizedUrl; 
+        } else {
+            console.error("No se pudo obtener la URL tokenizada. Usando URL de fallback.");
+        }
+    } 
 
-    // 3. Crear el objeto de canal final con la URL actualizada o la URL original
-    const finalChannelObject = {
-        ...channelObject,
-        url: urlToPlay,
+    // 3. Crear el objeto de canal final con la URL actualizada o la URL original
+    const finalChannelObject = {
+        ...channelObject,
+        url: urlToPlay,
         // ⭐ CLAVE: Limpiar headers y referrer para evitar conflictos con el token de Akamai
         headers: serviceId ? null : channelObject.headers,
         referrer: serviceId ? null : channelObject.referrer
-    };
+    };
 
-    setCurrentChannel(finalChannelObject); 
-    
-    // 4. Lógica de enfoque e interfaz (el resto de tu lógica original)
-    const newGlobalIndex = allChannels.findIndex(c => c.url === channelObject.url); 
-    setFocusedIndex(newGlobalIndex);
-    
-    const newFilteredIndex = filteredChannels.findIndex(c => c.url === channelObject.url);
-    setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
-    
-    setIsCategoryMenuVisible(false);
-    setIsMenuVisible(false);
-    setIsPlaying(true);
-    
+    setCurrentChannel(finalChannelObject); 
+    
+    // 4. Lógica de enfoque e interfaz (el resto de tu lógica original)
+    const newGlobalIndex = allChannels.findIndex(c => c.url === channelObject.url); 
+    setFocusedIndex(newGlobalIndex);
+    
+    const newFilteredIndex = filteredChannels.findIndex(c => c.url === channelObject.url);
+    setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
+    
+    setIsCategoryMenuVisible(false);
+    setIsMenuVisible(false);
+    setIsPlaying(true);
+    
 }, [allChannels, filteredChannels]); // Asegúrate de incluir todas las dependencias
  
 
@@ -1444,26 +1641,22 @@ const filteredChannels = React.useMemo(() => {
     }, [focusChannelCard, focusedFilteredIndex]);
 
 
-   // Carga de datos local e inicialización (CON RETRASO ARTIFICIAL)
-React.useEffect(() => {
-    // 1. Cargamos los datos inmediatamente
-    const data = LOCAL_M3U_DATA; 
-    setVideoCatalog(data);
+    // Carga de datos local e inicialización (SIN INICIO DE VIDEO)
+    React.useEffect(() => {
+        
+        const data = LOCAL_M3U_DATA; 
+        
+        setVideoCatalog(data);
+        
+        if (data.length > 0) {
+            setFocusedIndex(0);
+            setFocusedFilteredIndex(0); 
+            setSelectedCategory(null);
+            setFocusedCategoryIndex(-1); // Foco en "Todos los Canales"
+        }
+        
+    }, []); 
     
-    if (data.length > 0) {
-        setFocusedIndex(0);
-        setFocusedFilteredIndex(0); 
-        setSelectedCategory(null);
-        setFocusedCategoryIndex(-1);
-    }
-
-    // 2. ⭐ FORZAMOS EL TIEMPO DE ESPERA (3000ms = 3 segundos)
-    const timer = setTimeout(() => {
-        setIsAppReady(true);
-    }, 5000);
-
-    return () => clearTimeout(timer); // Limpieza de memoria
-}, []);
     
     // Lógica de scroll para el menú de categorías
     const scrollCategoryList = React.useCallback((newCatIndex) => {
@@ -1501,7 +1694,6 @@ React.useEffect(() => {
 
 
     // ⭐ NUEVA LÓGICA DE VALIDACIÓN DE CONTRASEÑA
-    const [error, setError] = React.useState('');
     const handleUnlockAdultos = React.useCallback((password) => {
         if (password === ADULTOS_PASSWORD) {
             setIsAdultosUnlocked(true);
@@ -1518,13 +1710,10 @@ React.useEffect(() => {
             // Damos foco al primer canal de la lista filtrada de Adultos
             requestAnimationFrame(() => focusChannelCard(0));
 
-        }
-         else {
-          
-    setError("Contraseña incorrecta. Inténtalo de nuevo.");
-    setPasswordInput('');
-    // El error se limpia después de unos segundos si quieres
-    setTimeout(() => setError(''), 3000);
+        } else {
+            alert("Contraseña incorrecta. Inténtalo de nuevo."); 
+            setPasswordInput('');
+            // El modal se mantiene visible
         }
     }, [ADULTOS_PASSWORD, ADULTOS_CATEGORY_NAME, focusChannelCard]);
 
@@ -1987,12 +2176,7 @@ const PasswordModal = ({ isVisible, onClose, onUnlock, onInputChange, inputValue
             <div className="bg-gray-800 p-8 rounded-xl shadow-2xl w-96 text-white">
                 <h3 className="text-2xl font-bold mb-4">Acceso a {ADULTOS_CATEGORY_NAME}</h3>
                 <p className="text-sm text-gray-400 mb-6">Ingresa la contraseña para ver esta categoría.</p>
-                {/* 🔴 SECCIÓN DE ERROR INTEGRADA */}
-                {error && (
-                    <div className="mb-4 p-3 bg-red-500/20 border border-red-500 rounded-lg animate-pulse text-center">
-                        <p className="text-red-500 text-sm font-bold">⚠️ {error}</p>
-                    </div>
-                )}
+                
                 <form onSubmit={handleSubmit}>
                     <input
                         type="password"
@@ -2043,24 +2227,13 @@ const PasswordModal = ({ isVisible, onClose, onUnlock, onInputChange, inputValue
                 />
             )}
             
-           {/* 2. Pantalla de carga */}
-{!isAppReady && (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 text-white z-[100]">
-        <div className="flex flex-col items-center">
-            {/* Texto de carga */}
-            <h1 className="text-2xl font-bold mb-8 animate-pulse">Cargando...</h1>
+            {/* 2. Pantalla de carga */}
+            {videoCatalog === null && (
+                <div className="flex items-center justify-center w-full h-full bg-gray-900 text-white z-30">
+                    <h1 className="text-xl">Cargando Espere.. ⏳</h1>
+                </div>
+            )}
             
-            {/* Contenedor del Spinner */}
-            <div className="relative w-24 h-24 flex items-center justify-center">
-                <img 
-                    src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
-                    className="w-full h-full object-contain pointer-events-none" 
-                    alt="Cargando..."
-                />
-            </div>
-        </div>
-    </div>
-)}
             {/* 3. Menús */}
             {videoCatalog !== null && (
                 <React.Fragment>
@@ -2115,8 +2288,6 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
-
-
 
 
 

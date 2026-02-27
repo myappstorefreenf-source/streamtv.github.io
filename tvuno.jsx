@@ -10,23 +10,29 @@
 // ----------------------------------------------------------------------
 
 const LOCAL_M3U_DATA = [
-     {
-        title: "Prueba TV",
-        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
+    {
+        title: "El Trece  Opc3",
+        logoUrl: "https://images.seeklogo.com/logo-png/2/1/canal-trece-argentina-logo-png_seeklogo-25582.png",
         category: "Argentina",
-        url: "http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/47739.mp4",
-         referrer: "http://tv.zapping.life:8080/", 
+        url: "http://104.194.8.54:9090/278760_.m3u8",
+       // referrer:"https://www.eltrecetv.com.ar/",
+      //  origin: "https://www.eltrecetv.com.ar",
+    },
+     {
+        title: "canal NUeve",
+        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Canal_9_Argentina.png",
+        category: "Argentina",
+       url: "http://104.238.205.28:9090/278759_.m3u8",
+       //  referrer: "http://tv.zapping.life:8080/", 
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },
-    {
-  title: "Nombre de la Película",
-  category:"Argentina",
-  url: "http://tv.zapping.life:8080/series/1marvin/hNfsQOOt1g/47739.mp4",
- referrer: "http://206.123.140.62:8080/",
-  userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
- // workerId: 'pelicula',      
-},
-    
+         {
+        title: "América TV opc 2",
+        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
+        category: "Argentina",
+        url: "hhttp://104.238.205.28:9090/278751_.m3u8",
+         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
+    },
     {
         title: "América TV",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
@@ -53,11 +59,11 @@ const LOCAL_M3U_DATA = [
         url: "https://unlimited1-saopaulo.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
     {
-        title: "Telefe Satelital",
+        title: "Telefe internacional",
         logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
         category: "Argentina",
         // URL DASH (.mpd) que extrajimos
-        url: "https://cdn.sensa.com.ar/live/eds/Telefe/live_dash_cld/Telefe.mpd?|",
+        url: "http://104.238.205.28:9090/278773_.m3u8",
        // referrer: "https://player.sensa.com.ar/&webtoken=1.0",
         // Objeto DRM para que Shaka Player lo reconozca
      //   drm: {
@@ -66,19 +72,34 @@ const LOCAL_M3U_DATA = [
           //  }
        // }
     },
+     {
+        title: "Telefe AR",
+        logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
+        category: "Argentina",
+        // URL DASH (.mpd) que extrajimos
+        url: "http://104.238.205.28:9090/278774_.m3u8",
+       // referrer: "https://player.sensa.com.ar/&webtoken=1.0",
+        // Objeto DRM para que Shaka Player lo reconozca
+     //   drm: {
+        //    clearkey: {
+         //       "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
+          //  }
+       // }
+    },
+
 {
     title: "HBO HD",
     logoUrl: "https://github.com/masterentertainment/listas/blob/main/logos/HBOLA.png?raw=true",
     category: "HBO Pack",
     // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
-    url: "https://cdn.sensa.com.ar/live/eds/HBO/live_dash_cld/HBO.mpd?webtoken=1.0",
-    referrer: "https://player.sensa.com.ar/",
+    url: "http://104.238.205.28:9090/299284_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
     userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-    drm: {
-        clearKeys: {
-            "dead023f7a81634339ae639990c1517a": "ba970222b4466c61d0deccc67ab34452"
-        }
-    }
+  //  drm: {
+   //     clearKeys: {
+    //        "dead023f7a81634339ae639990c1517a": "ba970222b4466c61d0deccc67ab34452"
+    //    }
+ //   }
 },
     {
         title: "Canal 26",
@@ -971,79 +992,79 @@ const LOCAL_M3U_DATA = [
         title: "BRAZZERS",
         logoUrl: "http://www.tps.uk.com/img/products/120/Brazzers-TV-Viaccess-12-month.jpg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/blonde.m3u8"
+        url: "http://45.90.106.85:9090/165203_.m3u8"
     },
     {
-        title: "Sextreme",
+        title: "Porno vip Euro",
         logoUrl: "https://es.wikipedia.org/wiki/Sextreme#/media/Archivo:Sextreme_logo.png",
         category: "Adultos",
-        url: "https://live.adultiptv.net/anal.m3u8"
+        url: "http://45.90.106.85:9090/168520_.m3u8"
     },
     {
-        title: "PenthouseX",
+        title: "Porno vip euro 2",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Penthouse_text_logo.svg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/rough.m3u8"
+        url: "http://45.90.106.85:9090/168521_.m3u8"
     },
     {
         title: "VENUS",
         logoUrl: "http://vignette3.wikia.nocookie.net/logopedia/images/4/48/Logo_venus_out_color.jpg",
         category: "Adultos",
-        url: "https://live.redtraffic.xyz/russian.m3u8?fluxuslust.m3u8"
+        url: "http://104.238.222.251:9090/165201_.m3u8"
     },
     {
-        title: "Jasmin TV",
+        title: "Private",
         logoUrl: "https://i.imgur.com/DLEFDcv.png",
         category: "Adultos",
-        url: "https://live.adultiptv.net/pornstar.m3u8"
+        url: "http://45.90.106.85:9090/279171_.m3u8"
     },
     {
         title: "HOT",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/threesome.m3u8"
+        url: "http://45.90.106.85:9090/279271_.m3u8"
     },
     {
         title: "Teen",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/teen.m3u8"
+        url: "http://45.90.106.85:9090/279195_.m3u8"
     },
      {
-        title: "Russian",
+        title: "Slim 4k",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://cdn.redtraffic.net/russian.m3u8"
+        url: "http://45.90.106.85:9090/279179_.m3u8"
     },
      {
-        title: "Lesbian",
+        title: "Milf",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://cdn.redtraffic.net/lesbian.m3u8"
+        url: "http://108.181.135.111:9090/279157_.m3u8"
     },
      {
-        title: "Rough",
+        title: "Real sensual",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://cdn.redtraffic.net/rough.m3u8"
+        url: "http://79.143.17.114:9090/279176_.m3u8"
     },
      {
-        title: "Latina",
+        title: "Mofos",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://cdn.redtraffic.net/latina.m3u8"
+        url: "http://45.90.106.85:9090/279151_.m3u8"
     },
      {
-        title: "Anal",
+        title: "Mom Teach Sex",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://cdn.redtraffic.net/Anal.m3u8"
+        url: "http://104.194.8.54:9090/279152_.m3u8"
     },
      {
         title: "Adult Iptv",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://cdn.redtraffic.net/master.m3u8"
+        url: "http://108.181.135.111:9090/279154_.m3u8"
     },
 ];
 
@@ -2117,6 +2138,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

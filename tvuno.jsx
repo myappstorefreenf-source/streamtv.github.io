@@ -86,6 +86,118 @@ const LOCAL_M3U_DATA = [
           //  }
        // }
     },
+       },//::::::::::::::::::::::::::::::::::::::::::::::::::
+    //::::::::::::::::::::::::::::CANALES DE DEPORTE
+{  //::::::::::::::::::::::::::::::::::::::::::::::::::
+    title: "ESPN PREMIUM",
+    logoUrl: "https://images.seeklogo.com/logo-png/36/1/espn-logo-png_seeklogo-368956.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.58:9090/283887_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN",
+    logoUrl: "https://images.seeklogo.com/logo-png/36/1/espn-logo-png_seeklogo-368956.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.222.251:9090/278765_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN +",
+    logoUrl: "https://images.seeklogo.com/logo-png/36/1/espn-logo-png_seeklogo-368956.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/278763_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN 4",
+    logoUrl: "https://cdn.mitvstatic.com/channels/ar_espn_m.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.194.8.54:9090/278764_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN 2",
+    logoUrl: "https://cdn.mitvstatic.com/channels/ar_espn_m.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.194.8.54:9090/278762_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "FOX SPORT 1",
+    logoUrl: "https://es.smartsheet.com/sites/default/files/2024-09/fs_logo_4-16-2024.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://79.143.17.114:9090/278768_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "FOX SPORT 2",
+    logoUrl: "https://es.smartsheet.com/sites/default/files/2024-09/fs_logo_4-16-2024.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/278767_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "FOX SPORT 3",
+    logoUrl: "https://es.smartsheet.com/sites/default/files/2024-09/fs_logo_4-16-2024.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/278766_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "TyC SPORT INTERNACIONAL ",
+    logoUrl: "https://www.totalmedios.com/img/noticias/2009/02/Noticia4428__838x390.jpg",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.222.251:9090/278779_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "TyC SPORT AR",
+    logoUrl: "https://www.totalmedios.com/img/noticias/2009/02/Noticia4428__838x390.jpg",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://45.90.106.115:9090/278778_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "TNT SPORT AR",
+    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7e/TNT_Sports_Logo.svg",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://45.90.106.115:9090/278778_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
 
 {
     title: "HBO HD",
@@ -2138,6 +2250,7 @@ if (rootElement) {
 } else {
     console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
 }
+
 
 
 

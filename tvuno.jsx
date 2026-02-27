@@ -11,10 +11,40 @@
 
 const LOCAL_M3U_DATA = [
     {
+        title: "El Trece  Opc3",
+        logoUrl: "https://images.seeklogo.com/logo-png/2/1/canal-trece-argentina-logo-png_seeklogo-25582.png",
+        category: "Argentina",
+        url: "http://104.194.8.54:9090/278760_.m3u8",
+       // referrer:"https://www.eltrecetv.com.ar/",
+      //  origin: "https://www.eltrecetv.com.ar",
+    },
+     {
+        title: "canal NUeve",
+        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Canal_9_Argentina.png",
+        category: "Argentina",
+       url: "http://104.238.205.28:9090/278759_.m3u8",
+       //  referrer: "http://tv.zapping.life:8080/", 
+        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
+    },
+         {
+        title: "América TV opc 2",
+        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
+        category: "Argentina",
+        url: "hhttp://104.238.205.28:9090/278751_.m3u8",
+         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
+    },
+    {
         title: "América TV",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
         category: "Argentina",
         url: "https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8"
+    },
+    {
+        title: "Cronica Tv",
+        logoUrl: "https://argentina.mom-gmr.org/uploads/_processed_/8/6/csm_16062-1639_import_3467384d27.png",//ttps://upload.wikimedia.org/wikipedia/commons/3/3a/Canal_9_2015.png",
+        category: "Argentina",
+        url: "https://proxyhls.myappstore-free-nf.workers.dev/elnueve",
+        workerId: 'cronica',
     },
     {
         title: "El Trece",
@@ -29,19 +59,160 @@ const LOCAL_M3U_DATA = [
         url: "https://unlimited1-saopaulo.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
     {
-        title: "Telefe",
+        title: "Telefe internacional",
         logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
         category: "Argentina",
-        url: "https://telefe.com/Api/Videos/GetSourceUrl/694564/0/HLS?.m3u8"
+        // URL DASH (.mpd) que extrajimos
+        url: "http://104.238.205.28:9090/278773_.m3u8",
+       // referrer: "https://player.sensa.com.ar/&webtoken=1.0",
+        // Objeto DRM para que Shaka Player lo reconozca
+     //   drm: {
+        //    clearkey: {
+         //       "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
+          //  }
+       // }
     },
      {
-        title: "Telefe",
-        logoUrl: "https://vimetrix.lat/femonpanel/superadmin/paneltv/banners/68fd7fd8a908d5.88183605.png",
+        title: "Telefe AR",
+        logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
         category: "Argentina",
-       url:"https://chromecast.cvattv.com.ar/live/c6eds/TelefeHD/SA_Live_dash_enc_C/TelefeHD.mpd",
-        referrer: "https://portal.app.flow.com.py/", 
-        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" 
+        // URL DASH (.mpd) que extrajimos
+        url: "http://104.238.205.28:9090/278774_.m3u8",
+       // referrer: "https://player.sensa.com.ar/&webtoken=1.0",
+        // Objeto DRM para que Shaka Player lo reconozca
+     //   drm: {
+        //    clearkey: {
+         //       "9bb54fccffaddd38916e85c08de98cc9": "d06f509c418eb6f1b2fc2b766445328b"
+          //  }
+       // }
     },
+       },//::::::::::::::::::::::::::::::::::::::::::::::::::
+    //::::::::::::::::::::::::::::CANALES DE DEPORTE
+{  //::::::::::::::::::::::::::::::::::::::::::::::::::
+    title: "ESPN PREMIUM",
+    logoUrl: "https://images.seeklogo.com/logo-png/36/1/espn-logo-png_seeklogo-368956.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.58:9090/283887_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN",
+    logoUrl: "https://images.seeklogo.com/logo-png/36/1/espn-logo-png_seeklogo-368956.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.222.251:9090/278765_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN +",
+    logoUrl: "https://images.seeklogo.com/logo-png/36/1/espn-logo-png_seeklogo-368956.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/278763_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN 4",
+    logoUrl: "https://cdn.mitvstatic.com/channels/ar_espn_m.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.194.8.54:9090/278764_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "ESPN 2",
+    logoUrl: "https://cdn.mitvstatic.com/channels/ar_espn_m.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.194.8.54:9090/278762_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "FOX SPORT 1",
+    logoUrl: "https://es.smartsheet.com/sites/default/files/2024-09/fs_logo_4-16-2024.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://79.143.17.114:9090/278768_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "FOX SPORT 2",
+    logoUrl: "https://es.smartsheet.com/sites/default/files/2024-09/fs_logo_4-16-2024.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/278767_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "FOX SPORT 3",
+    logoUrl: "https://es.smartsheet.com/sites/default/files/2024-09/fs_logo_4-16-2024.png",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/278766_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "TyC SPORT INTERNACIONAL ",
+    logoUrl: "https://www.totalmedios.com/img/noticias/2009/02/Noticia4428__838x390.jpg",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.222.251:9090/278779_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "TyC SPORT AR",
+    logoUrl: "https://www.totalmedios.com/img/noticias/2009/02/Noticia4428__838x390.jpg",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://45.90.106.115:9090/278778_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+{
+    title: "TNT SPORT AR",
+    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7e/TNT_Sports_Logo.svg",
+    category: "Deportes",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://45.90.106.115:9090/278778_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+ 
+},
+
+{
+    title: "HBO HD",
+    logoUrl: "https://github.com/masterentertainment/listas/blob/main/logos/HBOLA.png?raw=true",
+    category: "HBO Pack",
+    // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
+    url: "http://104.238.205.28:9090/299284_.m3u8",
+    //referrer: "https://player.sensa.com.ar/",
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+  //  drm: {
+   //     clearKeys: {
+    //        "dead023f7a81634339ae639990c1517a": "ba970222b4466c61d0deccc67ab34452"
+    //    }
+ //   }
+},
     {
         title: "Canal 26",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Canal_26_logo_%282022%29.svg/2048px-Canal_26_logo_%282022%29.svg.png",
@@ -66,7 +237,7 @@ const LOCAL_M3U_DATA = [
         title: "Cronica",
         logoUrl: "https://argentina.mom-gmr.org/uploads/_processed_/8/6/csm_16062-1639_import_3467384d27.png",
         category: "Noticias",
-        url: "https://g4.vxral-slo.transport.edge-access.net/a14/ngrp:cronicatv_video1-100044_all/cronicatv_video1-100044_720p.m3u8",
+        url: "https://lemu.telecom.com.ar/eb5d51d53b38f1ae891163cf5fe76856/",
         referrer: "https://vmf.edge-apps.net/", 
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },
@@ -485,26 +656,16 @@ const LOCAL_M3U_DATA = [
         category: "Series",
         url: "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/60b4c06717da110007ee1af6/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&serverSideAds=false&studio_id=viacom&tags=ROKU_CONTENT_TAGS"
     },
+   
     {
-        title: "América TV",
-        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
-        category: "Argentina",
-        url: "https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8"
-    },
-    {
-        title: "El Trece",
+        title: "El Trece 2",
         logoUrl: "https://images.seeklogo.com/logo-png/2/1/canal-trece-argentina-logo-png_seeklogo-25582.png",
         category: "Argentina",
-        url: "https://livetrx01.vodgc.net/eltrecetv/index.m3u8"
+        url: "https://live-01-02-eltrece.vodgc.net/eltrecetv_noti/tracks-v3a1/mono.m3u8",
+        referrer:"https://www.eltrecetv.com.ar/",
+        origin: "https://www.eltrecetv.com.ar",
     },
-    {
-        title: "TN",
-        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/TN_todo_noticias_logo.svg/2560px-TN_todo_noticias_logo.svg.png",
-        category: "Noticias",
-        url: "http://streamingtv.vip:80/series/DanielMendoza/Agrolab2019/319637.mp4",
-        referrer: "https://tn.com.ar/envivo/24hs", 
-        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
-    },
+   
     {
         title: "TV",
         logoUrl: "https://images.pluto.tv/channels/6086d3f420fc8500075f8dbf/colorLogoPNG.png",
@@ -938,48 +1099,85 @@ const LOCAL_M3U_DATA = [
         category: "General",
         url: "https://unlimited1-us.dps.live/nettv/nettv.smil/playlist.m3u8"
     },
+//::::::::::::::::::COMIENZO CATADULTOS:::::::::::::::::::::::://
     {
         title: "BRAZZERS",
         logoUrl: "http://www.tps.uk.com/img/products/120/Brazzers-TV-Viaccess-12-month.jpg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/blonde.m3u8"
+        url: "http://45.90.106.85:9090/165203_.m3u8"
     },
     {
-        title: "Sextreme",
+        title: "Porno vip Euro",
         logoUrl: "https://es.wikipedia.org/wiki/Sextreme#/media/Archivo:Sextreme_logo.png",
         category: "Adultos",
-        url: "https://live.adultiptv.net/anal.m3u8"
+        url: "http://45.90.106.85:9090/168520_.m3u8"
     },
     {
-        title: "PenthouseX",
+        title: "Porno vip euro 2",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Penthouse_text_logo.svg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/rough.m3u8"
+        url: "http://45.90.106.85:9090/168521_.m3u8"
     },
     {
         title: "VENUS",
         logoUrl: "http://vignette3.wikia.nocookie.net/logopedia/images/4/48/Logo_venus_out_color.jpg",
         category: "Adultos",
-        url: "https://live.redtraffic.xyz/russian.m3u8?fluxuslust.m3u8"
+        url: "http://104.238.222.251:9090/165201_.m3u8"
     },
     {
-        title: "Jasmin TV",
+        title: "Private",
         logoUrl: "https://i.imgur.com/DLEFDcv.png",
         category: "Adultos",
-        url: "https://live.adultiptv.net/pornstar.m3u8"
+        url: "http://45.90.106.85:9090/279171_.m3u8"
     },
     {
         title: "HOT",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/threesome.m3u8"
+        url: "http://45.90.106.85:9090/279271_.m3u8"
     },
     {
         title: "Teen",
         logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
         category: "Adultos",
-        url: "https://live.adultiptv.net/teen.m3u8"
-    }
+        url: "http://45.90.106.85:9090/279195_.m3u8"
+    },
+     {
+        title: "Slim 4k",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://45.90.106.85:9090/279179_.m3u8"
+    },
+     {
+        title: "Milf",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://108.181.135.111:9090/279157_.m3u8"
+    },
+     {
+        title: "Real sensual",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://79.143.17.114:9090/279176_.m3u8"
+    },
+     {
+        title: "Mofos",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://45.90.106.85:9090/279151_.m3u8"
+    },
+     {
+        title: "Mom Teach Sex",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://104.194.8.54:9090/279152_.m3u8"
+    },
+     {
+        title: "Adult Iptv",
+        logoUrl: "https://www.shutterstock.com/image-photo/xxx-adult-rubber-stamp-over-600nw-135193052.jpg",
+        category: "Adultos",
+        url: "http://108.181.135.111:9090/279154_.m3u8"
+    },
 ];
 
 // ----------------------------------------------------------------------
@@ -1006,7 +1204,6 @@ const groupChannelsByCategory = (channels) => {
 // ----------------------------------------------------------------------
 const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive, isFocusable }, ref) => {
     const handlePlay = () => onPlay(video);
-    
     const tabIndexValue = isFocusable ? "0" : "-1"; 
 
     return (
@@ -1044,208 +1241,178 @@ const VideoCard = React.memo(React.forwardRef(({ video, onPlay, index, isActive,
 });
 
 
-// ----------------------------------------------------------------------
-// 3. COMPONENTE VIDEO PLAYER (Maneja HLS y la limpieza agresiva de audio)
-//    MODIFICADO para integrar la llamada nativa a AndroidBridge.launchPlayer()
-// ----------------------------------------------------------------------
 const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => {
-    
     const url = channel ? channel.url : null;
+    const drm = channel ? channel.drm : null;
     const referrer = channel ? channel.referrer : null;
     const userAgent = channel ? channel.userAgent : null;
-    
-    // Función para manejar la configuración del XHR (Referer/User-Agent)
-    const setupXhr = React.useCallback((xhr, url) => {
-        if (referrer) {
-            try {
-                xhr.setRequestHeader('Referer', referrer); 
-            } catch (e) {
-                console.warn("No se pudo establecer el Referer.", e);
-            }
+    const headers = channel ? channel.headers : null;
+
+    const finalHeaders = React.useMemo(() => {
+        const combined = headers ? { ...headers } : {};
+        if (referrer && !combined.Referer) combined.Referer = referrer;
+        if (userAgent && !combined['User-Agent']) combined['User-Agent'] = userAgent;
+        return Object.keys(combined).length > 0 ? combined : null;
+    }, [headers, referrer, userAgent]);
+
+    const setupXhr = React.useCallback((xhr) => {
+        if (finalHeaders) {
+            Object.entries(finalHeaders).forEach(([key, value]) => {
+                try { xhr.setRequestHeader(key, value); } catch (e) { console.warn(e); }
+            });
         }
-        if (userAgent) {
-            try {
-                xhr.setRequestHeader('User-Agent', userAgent);
-            } catch (e) {
-                // console.warn("No se pudo establecer User-Agent.", e);
-            }
-        }
-    }, [referrer, userAgent]);
+    }, [finalHeaders]);
 
     React.useEffect(() => {
         const video = ref.current;
-        const currentUrl = url;
-        
-        // Comprueba si el AndroidBridge y el método launchPlayer están disponibles
-        const isNativeBridgeAvailable = typeof window.AndroidBridge !== 'undefined' && 
-                                        typeof window.AndroidBridge.launchPlayer === 'function';
+        if (!video || !url) return;
 
-        // No hacer nada si no hay URL para cargar
-        if (!video || !currentUrl) return;
-        
         let hls;
-        const handleEnded = () => onFinish();
-        video.addEventListener('ended', handleEnded);
+        let shakaPlayer;
 
-        // ⭐ LIMPIEZA AGRESIVA INICIAL (Detiene el audio del canal anterior)
-        if (video.__hlsInstance) {
-            video.__hlsInstance.destroy();
-            delete video.__hlsInstance;
-        }
+        // Limpieza agresiva original
+        if (video.__hlsInstance) { video.__hlsInstance.destroy(); delete video.__hlsInstance; }
+        if (video.__shakaInstance) { video.__shakaInstance.destroy(); delete video.__shakaInstance; }
+        
         video.pause();
-        
-        // ⭐ PASO CLAVE 1: MUTE INMEDIATO Y LIMPIEZA DE FUENTE
-        video.muted = true; 
-        video.removeAttribute('src'); 
-        video.load(); 
-        
-        // ----------------------------------------------------------------------
-        // ⭐ LÓGICA NATIVA: Si el Bridge está disponible, lanza el ExoPlayer
-        // ----------------------------------------------------------------------
-        if (isNativeBridgeAvailable) {
-            console.log("AndroidBridge detectado. Lanzando reproductor nativo:", currentUrl);
+        video.muted = true;
+        video.removeAttribute('src');
+        video.load();
 
-            // 1. Limpieza final del web player para evitar cualquier eco.
-            if (video.__hlsInstance) {
-                video.__hlsInstance.destroy();
-                delete video.__hlsInstance;
+        const handleReady = () => {
+            if (isPlaying) {
+                video.play().catch(e => console.error("Error Autoplay:", e));
+                setTimeout(() => { if (video) video.muted = false; }, 500);
             }
-            video.pause();
-            video.currentTime = 0;
+        };
 
-            // 2. Llamada al método nativo. Esto forzará a la MainActivity a ir a onPause.
-            window.AndroidBridge.launchPlayer(currentUrl);
+        // --- MODO DASH + DRM ---
+        if (url.includes('.mpd') || drm) {
+            shakaPlayer = new shaka.Player(video);
+            video.__shakaInstance = shakaPlayer;
 
-            // Devolver una función de limpieza simple, ya que la Activity se está cerrando/pausando.
-            return () => {
-                video.removeEventListener('ended', handleEnded);
-                // No es necesario realizar una limpieza agresiva aquí, ya que onPause se encargará de ello.
-            };
+            shakaPlayer.configure({
+                drm: { clearKeys: drm?.clearkey || {}, robustness: '' },
+                streaming: { jumpLargeGaps: true, rebufferingGoal: 2 },
+                manifest: { dash: { ignoreMinBufferTime: true } }
+            });
+
+            shakaPlayer.getNetworkingEngine().registerRequestFilter((type, request) => {
+                if (finalHeaders) {
+                    Object.entries(finalHeaders).forEach(([key, value]) => {
+                        request.headers[key] = value;
+                    });
+                }
+            });
+
+            shakaPlayer.load(url).then(handleReady).catch(e => console.error("Shaka Error:", e));
         }
 
-        // ----------------------------------------------------------------------
-        // ⭐ LÓGICA WEB: SOLO si el Bridge NO está disponible (o si falla)
-        // ----------------------------------------------------------------------
-        if (window.Hls && Hls.isSupported()) { 
-            
-            const hlsConfig = {
-                // Configuración de HLS para búfer y headers
-                maxBufferLength: 30,      
-                minBufferLength: 15,      
-                autoSyncBuffer: 0.5,
-                xhrSetup: setupXhr 
-            };
-            if (video) {
-                video.pause(); // Asegura la pausa antes de la destrucción
-                video.muted = true; // Doble chequeo de silencio
-
-                if (video.__hlsInstance) {
-                    video.__hlsInstance.stopLoad(); // Detiene la descarga de segmentos
-                    video.__hlsInstance.detachMedia(); // Desconecta HLS del elemento <video>
-                    video.__hlsInstance.destroy(); // Destruye todo
-                    delete video.__hlsInstance;
-                }
-                
-                // ⭐ REFUERZO: Reiniciar el tiempo y fuente del video
-                video.currentTime = 0; // Reiniciar el puntero de reproducción
-                video.removeAttribute('src'); 
-                video.load(); 
-            }
-            
-            hls = new Hls(hlsConfig);
-            hls.loadSource(currentUrl); 
+        // --- MODO HLS ---
+        else if (window.Hls && Hls.isSupported() && (url.includes('.m3u8') || url.includes('8080'))) {
+            // He añadido "url.includes('8080')" porque tus links de Zapping usan ese puerto y suelen ser HLS
+            hls = new Hls({ xhrSetup: setupXhr, maxBufferLength: 30 });
+            hls.loadSource(url);
             hls.attachMedia(video);
             video.__hlsInstance = hls;
-            
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                 if (isPlaying) {
-                     video.play().catch(e => console.error("Error al iniciar la reproducción (Autoplay):", e));
-                     
-                     // ⭐ PASO CLAVE 2: DESMUTE CON RETRASO
-                     // Damos 500ms (reducido a 500ms en el código web para ser más rápido)
-                     setTimeout(() => {
-                         if (video && video.muted) {
-                             video.muted = false; // Reactivar el audio
-                             console.log("Audio Reactivado después del Mute Agresivo (Web Player).");
-                         }
-                     }, 500); // 500ms para el desmute web
-                 }
-            });
-
-            hls.on(Hls.Events.ERROR, function (event, data) {
-                 if (data.fatal) {
-                     console.error("Error fatal de HLS:", data);
-                     // Opcionalmente, aquí podrías considerar llamar al reproductor nativo
-                     // si falla la reproducción web, pero priorizamos la llamada inicial.
-                 }
-            });
-
-        } else {
-            // Reproducción nativa del navegador (Fallback)
-            video.src = currentUrl;
-            if (isPlaying) {
-                 video.play().catch(e => console.error("Error al iniciar la reproducción:", e));
-                 // Aplicar el desmute también al fallback nativo
-                 setTimeout(() => {
-                     if (video && video.muted) video.muted = false; 
-                 }, 500);
-            }
-        }
+            hls.on(Hls.Events.MANIFEST_PARSED, handleReady);
+        } 
         
-        // ⭐ FUNCIÓN DE LIMPIEZA FINAL (para el modo web)
+        // --- MODO NATIVO (MP4, MKV y otros) ---
+        else {
+            video.src = url;
+            // IMPORTANTE: Esto ayuda a que el navegador intente reproducir formatos como MKV si el codec está presente
+            video.type = url.includes('.mkv') ? 'video/x-matroska' : 'video/mp4';
+            video.addEventListener('loadedmetadata', handleReady, { once: true });
+        }
+
         return () => {
-             video.removeEventListener('ended', handleEnded);
-             video.pause();
-             // Asegurarse de silenciar el elemento saliente
-             video.muted = true; 
-             
-             if (video.__hlsInstance) {
-                 video.__hlsInstance.destroy();
-                 delete video.__hlsInstance;
-             }
-             video.removeAttribute('src');
-             video.load();
+            if (video.__hlsInstance) video.__hlsInstance.destroy();
+            if (video.__shakaInstance) video.__shakaInstance.destroy();
         };
-    }, [url, onFinish, ref, isPlaying, setupXhr]); // Dependencia actualizada a setupXhr
-    
-    // useEffect para controlar la pausa/reproducción
-    React.useEffect(() => {
-        // Solo aplica la pausa/play si no estamos delegando al reproductor nativo
-        const isNativeBridgeAvailable = typeof window.AndroidBridge !== 'undefined' && 
-                                        typeof window.AndroidBridge.launchPlayer === 'function';
-        
-        const video = ref.current;
-        if (video && !isNativeBridgeAvailable) {
-            if (isPlaying) {
-                video.play().catch(e => console.error("Error al reanudar:", e));
-            } else {
-                video.pause();
-            }
-        }
-    }, [isPlaying, ref]);
-    
+    }, [url, drm, isPlaying, setupXhr, finalHeaders, ref]);
+
     return (
-        <div className="absolute top-0 left-0 w-full h-full bg-black">
+        <div className="absolute top-0 left-0 w-full h-full bg-black flex items-center justify-center">
+            <img 
+                src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
+                className="absolute w-20 h-20 object-contain z-10 pointer-events-none" 
+                alt="Cargando..."
+                id="video-spinner"
+            />
             <video
                 ref={ref}
                 className='react-player'
+                poster="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx1.gif"
                 width='100%'
                 height='100%'
                 playsInline
                 autoPlay
                 controls={false}
+                   crossOrigin="anonymous" // <--- AÑADE ESTO PARA EL WEBVIEW
+                preload="auto"          // <--- AÑADE ESTO
+                onLoadedData={() => {
+                    const spinner = document.getElementById('video-spinner');
+                    if(spinner) spinner.style.display = 'none';
+                }}
+                onWaiting={() => {
+                    const spinner = document.getElementById('video-spinner');
+                    if(spinner) spinner.style.display = 'block';
+                }}
+                onPlaying={() => {
+                    const spinner = document.getElementById('video-spinner');
+                    if(spinner) spinner.style.display = 'none';
+                }}
             />
         </div>
     );
 });
+// App.js (o archivo que contiene las funciones de API)
+
+// 1. CONSTANTE DE LA URL BASE DE TU WORKER (La variable local)
+// Usamos la URL base que no tiene el servicio añadido
+const WORKER_BASE_URL = "https://proxyhls.myappstore-free-nf.workers.dev/"; 
+
+/**
+ * Función para obtener la URL HLS fresca con token.
+ * ESTA FUNCIÓN SE EJECUTA EN EL HILO PRINCIPAL (mínimo cambio).
+ * @param {string} serviceName - Identificador del canal (ej: 'telefe', 'eltrece').
+ * @returns {Promise<string|null>} URL de la transmisión con token, o null en caso de error.
+ */
+async function fetchTokenizedChannelUrl(serviceName) {
+    if (!serviceName) {
+        console.error("El nombre del servicio es requerido para el Worker.");
+        return null;
+    }
+    
+    // Construye la URL completa: BASE_URL + serviceName
+    const serviceUrl = WORKER_BASE_URL + serviceName;
+    
+    try {
+        // Tu lógica original, ahora usando la URL dinámica
+        const response = await fetch(serviceUrl); 
+        
+        if (!response.ok) {
+            throw new Error(`Worker falló con estado: ${response.status}. URL: ${serviceUrl}`);
+        }
+        
+        const finalUrl = (await response.text()).trim(); 
+        
+        return finalUrl;
+        
+    } catch (error) {
+        console.error(`Error al obtener la URL para ${serviceName}:`, error);
+        return null; 
+    }
+}
 // ----------------------------------------------------------------------
-// 4. COMPONENTE PRINCIPAL APP 
+// 4. COMPONENTE PRINCIPAL APP (MODIFICADO PARA SEGURIDAD)
 // ----------------------------------------------------------------------
 function App() {
     const [videoCatalog, setVideoCatalog] = React.useState(null); 
     const [currentChannel, setCurrentChannel] = React.useState(null); 
     const currentChannelUrl = currentChannel ? currentChannel.url : null;
-    
+   const [isAppReady, setIsAppReady] = React.useState(false); //retraso en la carga para dar tiempo al renderizado global
     const [isMenuVisible, setIsMenuVisible] = React.useState(true); 
     const playerRef = React.useRef(null);
     const [focusedIndex, setFocusedIndex] = React.useState(-1); 
@@ -1254,25 +1421,46 @@ function App() {
     const [selectedCategory, setSelectedCategory] = React.useState(null);
     const [isCategoryMenuVisible, setIsCategoryMenuVisible] = React.useState(false);
     const [isPlaying, setIsPlaying] = React.useState(false); 
-    // ELIMINADO: const [currentPage, setCurrentPage] = React.useState('tv'); 
     
     const allChannels = videoCatalog || [];
     const cardRefs = React.useRef(new Map());
     const categoryListRef = React.useRef(null); 
 
+    // ⭐ NUEVO ESTADO DE SEGURIDAD
+    const ADULTOS_CATEGORY_NAME = "Adultos"; // Nombre de la categoría a proteger
+    const ADULTOS_PASSWORD = "1234"; // Contraseña de ejemplo (¡Cámbiala!)
+    
+    const [isAdultosUnlocked, setIsAdultosUnlocked] = React.useState(false); 
+    const [isPasswordModalVisible, setIsPasswordModalVisible] = React.useState(false);
+    const [passwordInput, setPasswordInput] = React.useState(''); 
+    // FIN NUEVO ESTADO
+    
     const groupedChannels = React.useMemo(() => {
         return groupChannelsByCategory(allChannels);
     }, [allChannels]);
 
     const categories = React.useMemo(() => Object.keys(groupedChannels), [groupedChannels]);
     
-    const filteredChannels = React.useMemo(() => {
-        if (selectedCategory === null) {
-            return allChannels;
-        }
-        return allChannels.filter(channel => channel.category === selectedCategory);
-    }, [allChannels, selectedCategory]);
+const filteredChannels = React.useMemo(() => {
+    // Empezamos con todos los canales
+    let channels = allChannels;
+    
+    // ⭐ 1. Excluir canales 'Adultos' si está bloqueado, independientemente de la categoría seleccionada
+    if (!isAdultosUnlocked) {
+        channels = channels.filter(channel => channel.category !== ADULTOS_CATEGORY_NAME);
+    }
 
+    // ⭐ 2. Aplicar el filtro de categoría (si aplica)
+    if (selectedCategory !== null) {
+        channels = channels.filter(channel => channel.category === selectedCategory);
+    }
+    
+    // ⭐ 3. Si se seleccionó la categoría 'Adultos' estando bloqueada, la lista será vacía.
+    //    (Este caso ya se cubre implícitamente por el punto 1 y 2, pero lo mantenemos
+    //     como nota mental si la lógica fuera más compleja).
+    
+    return channels;
+}, [allChannels, selectedCategory, isAdultosUnlocked, ADULTOS_CATEGORY_NAME]);
 
     const focusChannelCard = React.useCallback((indexToFocus) => {
         const totalChannels = filteredChannels.length;
@@ -1309,13 +1497,12 @@ function App() {
 
 
     const openMenu = React.useCallback(() => {
-        setIsCategoryMenuVisible(false); // Al abrir el menú principal, mostramos las categorías
+        setIsCategoryMenuVisible(false); 
         setIsMenuVisible(true);
         setIsPlaying(false); 
         
         if (filteredChannels.length > 0) {
             const initialFocusIndex = focusedFilteredIndex !== -1 ? focusedFilteredIndex : 0;
-            // Damos foco a la tarjeta de canal, no a la categoría, si estábamos allí antes.
             requestAnimationFrame(() => focusChannelCard(initialFocusIndex)); 
         }
     }, [focusChannelCard, focusedFilteredIndex, filteredChannels.length]);
@@ -1325,28 +1512,61 @@ function App() {
         setIsCategoryMenuVisible(true);
         setIsPlaying(false);
         requestAnimationFrame(() => {
-            // Foco en el elemento actual (o Todos (-1) si no hay nada seleccionado)
             const targetId = focusedCategoryIndex === -1 ? 'cat-focus--1' : 
-                             focusedCategoryIndex === -2 ? 'cat-focus--2' : 
-                             `cat-focus-${focusedCategoryIndex}`;
+                                 focusedCategoryIndex === -2 ? 'cat-focus--2' : 
+                                 `cat-focus-${focusedCategoryIndex}`;
             document.getElementById(targetId)?.focus();
         });
     }, [isMenuVisible, focusedCategoryIndex]);
 
 
-    const handlePlayChannel = React.useCallback((channelObject) => {
-        setCurrentChannel(channelObject); 
-        
-        const newGlobalIndex = allChannels.findIndex(c => c.url === channelObject.url); 
-        setFocusedIndex(newGlobalIndex);
-        
-        const newFilteredIndex = filteredChannels.findIndex(c => c.url === channelObject.url);
-        setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
-        
-        setIsCategoryMenuVisible(false);
-        setIsMenuVisible(false);
-        setIsPlaying(true);
-    }, [allChannels, filteredChannels]);
+ const handlePlayChannel = React.useCallback(async (channelObject) => { 
+    
+    // 1. Inicializa la URL que se va a usar en el reproductor
+    let urlToPlay = channelObject.url;
+    
+    // ⭐ NUEVO IDENTIFICADOR: Usa la propiedad workerId
+    const serviceId = channelObject.workerId; // Será 'telefe' para ese canal
+
+    // 2. Lógica para verificar y obtener el token
+    if (serviceId) { // Verifica si existe un workerId
+        
+        console.log(`Detectado canal tokenizado. Llamando al Worker para ${serviceId}...`);
+        
+        // Llama a la función, pasándole el identificador
+        const tokenizedUrl = await fetchTokenizedChannelUrl(serviceId); 
+        
+        if (tokenizedUrl) {
+            urlToPlay = tokenizedUrl; 
+        } else {
+            console.error("No se pudo obtener la URL tokenizada. Usando URL de fallback.");
+        }
+    } 
+
+    // 3. Crear el objeto de canal final con la URL actualizada o la URL original
+    const finalChannelObject = {
+        ...channelObject,
+        url: urlToPlay,
+        // ⭐ CLAVE: Limpiar headers y referrer para evitar conflictos con el token de Akamai
+        headers: serviceId ? null : channelObject.headers,
+        referrer: serviceId ? null : channelObject.referrer
+    };
+
+    setCurrentChannel(finalChannelObject); 
+    
+    // 4. Lógica de enfoque e interfaz (el resto de tu lógica original)
+    const newGlobalIndex = allChannels.findIndex(c => c.url === channelObject.url); 
+    setFocusedIndex(newGlobalIndex);
+    
+    const newFilteredIndex = filteredChannels.findIndex(c => c.url === channelObject.url);
+    setFocusedFilteredIndex(newFilteredIndex !== -1 ? newFilteredIndex : 0);
+    
+    setIsCategoryMenuVisible(false);
+    setIsMenuVisible(false);
+    setIsPlaying(true);
+    
+}, [allChannels, filteredChannels]); // Asegúrate de incluir todas las dependencias
+ 
 
     
     const handleVideoEnd = React.useCallback(() => {
@@ -1359,22 +1579,26 @@ function App() {
     }, [focusChannelCard, focusedFilteredIndex]);
 
 
-    // Carga de datos local e inicialización (SIN INICIO DE VIDEO)
-    React.useEffect(() => {
-        
-        const data = LOCAL_M3U_DATA; 
-        
-        setVideoCatalog(data);
-        
-        if (data.length > 0) {
-            setFocusedIndex(0);
-            setFocusedFilteredIndex(0); 
-            setSelectedCategory(null);
-            setFocusedCategoryIndex(-1); // Foco en "Todos los Canales"
-        }
-        
-    }, []); 
+   // Carga de datos local e inicialización (CON RETRASO ARTIFICIAL)
+React.useEffect(() => {
+    // 1. Cargamos los datos inmediatamente
+    const data = LOCAL_M3U_DATA; 
+    setVideoCatalog(data);
     
+    if (data.length > 0) {
+        setFocusedIndex(0);
+        setFocusedFilteredIndex(0); 
+        setSelectedCategory(null);
+        setFocusedCategoryIndex(-1);
+    }
+
+    // 2. ⭐ FORZAMOS EL TIEMPO DE ESPERA (3000ms = 3 segundos)
+    const timer = setTimeout(() => {
+        setIsAppReady(true);
+    }, 5000);
+
+    return () => clearTimeout(timer); // Limpieza de memoria
+}, []);
     
     // Lógica de scroll para el menú de categorías
     const scrollCategoryList = React.useCallback((newCatIndex) => {
@@ -1406,34 +1630,101 @@ function App() {
         setIsPlaying(false); 
         
         if (page === 'movies') {
-            // ⭐ REDIRIGIR AL ARCHIVO HTML EXTERNO
-            window.location.href = 'pelis.html'; 
+            window.location.href = 'videos.html'; 
         }
-        // En la página 'tv', no necesitamos hacer nada más, ya estamos aquí.
     }, []);
 
 
-    // ⭐ LÓGICA DE NAVEGACIÓN D-PAD
+    // ⭐ NUEVA LÓGICA DE VALIDACIÓN DE CONTRASEÑA
+    const [error, setError] = React.useState('');
+    const handleUnlockAdultos = React.useCallback((password) => {
+        if (password === ADULTOS_PASSWORD) {
+            setIsAdultosUnlocked(true);
+            setIsPasswordModalVisible(false);
+            setPasswordInput('');
+            
+            // Regresar al menú de canales, con la categoría Adultos seleccionada
+            setIsMenuVisible(true);
+            setIsCategoryMenuVisible(false);
+            
+            // Necesitamos asegurarnos de que la categoría Adultos quede seleccionada
+            setSelectedCategory(ADULTOS_CATEGORY_NAME);
+            
+            // Damos foco al primer canal de la lista filtrada de Adultos
+            requestAnimationFrame(() => focusChannelCard(0));
+
+        }
+         else {
+          
+    setError("Contraseña incorrecta. Inténtalo de nuevo.");
+    setPasswordInput('');
+    // El error se limpia después de unos segundos si quieres
+    setTimeout(() => setError(''), 3000);
+        }
+    }, [ADULTOS_PASSWORD, ADULTOS_CATEGORY_NAME, focusChannelCard]);
+
+    const handleCloseModal = React.useCallback(() => {
+        setIsPasswordModalVisible(false);
+        setPasswordInput('');
+        // Regresa el foco al menú de categorías
+        openCategoryMenu(); 
+    }, [openCategoryMenu]);
+    // FIN NUEVA LÓGICA DE SEGURIDAD
+
+
+    // ⭐ LÓGICA DE NAVEGACIÓN D-PAD (MODIFICADA para el cambio de canal rápido)
     const handleDpadNavigation = React.useCallback((event) => {
         
         const key = event.key;
         const isDpadKey = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(key);
 
         if (!isMenuVisible) {
-            // Manejo al ver el video
+            // --- Manejo al ver el video ---
+            if (isPasswordModalVisible) {
+                // Si el modal de contraseña está abierto, prevenimos la navegación del video
+                event.preventDefault();
+                return;
+            }
+            
             if (key === 'ArrowLeft' || key === 'Enter' || key === ' ') {
                 event.preventDefault();
                 openMenu(); 
-                 setIsCategoryMenuVisible(false);
+                setIsCategoryMenuVisible(false); // Abrir menú de canales
+                return; 
+            } 
+            
+            // ⭐ LÓGICA DE CAMBIO DE CANAL RÁPIDO (Flecha Arriba/Abajo)
+            if (isPlaying && (key === 'ArrowUp' || key === 'ArrowDown')) {
+                event.preventDefault();
+                
+                const totalChannels = filteredChannels.length;
+                if (totalChannels === 0) return;
+
+                const currentFilteredIndex = focusedFilteredIndex;
+                let newFilteredIndex = currentFilteredIndex;
+
+                if (key === 'ArrowUp') {
+                    newFilteredIndex = (currentFilteredIndex === 0) ? totalChannels - 1 : currentFilteredIndex - 1;
+                } else if (key === 'ArrowDown') {
+                    newFilteredIndex = (currentFilteredIndex === totalChannels - 1) ? 0 : currentFilteredIndex + 1;
+                }
+
+                const nextChannelToPlay = filteredChannels[newFilteredIndex];
+                
+                if (nextChannelToPlay) {
+                    handlePlayChannel(nextChannelToPlay); 
+                }
+                return;
             }
-            return;
+            
+            return; 
         }
 
         if (isDpadKey) {
-            event.preventDefault();
+          event.preventDefault();
         } else {
             return;
-        }
+       }
 
         const totalCategories = categories.length;
         const totalFilteredChannels = filteredChannels.length;
@@ -1444,31 +1735,30 @@ function App() {
             
              let newCatIndex = focusedCategoryIndex;
              const isLastCategory = focusedCategoryIndex === totalCategories - 1;
-            
+             
              if (key === 'ArrowUp' || key === 'ArrowDown') {
                  if (totalCategories === 0) return; 
 
                  if (key === 'ArrowUp') {
-                     if (focusedCategoryIndex === -1) { // De "Todos" a "Películas"
+                     if (focusedCategoryIndex === -1) { 
                          newCatIndex = -2;
-                     } else if (focusedCategoryIndex === 0) { // De la primera categoría a "Todos"
+                     } else if (focusedCategoryIndex === 0) { 
                          newCatIndex = -1;
-                     } else if (focusedCategoryIndex === -2) { // De "Películas" a la última categoría
+                     } else if (focusedCategoryIndex === -2) { 
                          newCatIndex = totalCategories - 1;
                      } else {
                          newCatIndex -= 1;
                      }
                  } else { // ArrowDown
-                      if (isLastCategory) { // De la última categoría a "Películas"
+                      if (isLastCategory) { 
                           newCatIndex = -2;
-                      } else if (focusedCategoryIndex === -2) { // De "Películas" a "Todos"
+                      } else if (focusedCategoryIndex === -2) { 
                           newCatIndex = -1;
                       } else {
                           newCatIndex += 1;
                       }
                  }
 
-                 // Aseguramos que el foco se establezca en el elemento correcto
                  setFocusedCategoryIndex(newCatIndex);
                  requestAnimationFrame(() => {
                      let targetId;
@@ -1482,18 +1772,28 @@ function App() {
 
 
              } else if (key === 'ArrowRight' || key === 'Enter' || key === ' ') {
-                 if (focusedCategoryIndex === -2) {
-                     // Seleccionar Películas -> NAVEGACIÓN NATIVA
+                 
+                 // ⭐ Lógica para usar el nuevo handleCategorySelect
+                 const categoryName = newCatIndex === -1 ? null : categories[newCatIndex];
+                 
+                 // Si es la categoría Adultos y está bloqueada, abrirá el modal, si no, seleccionará la categoría.
+                 if (categoryName === ADULTOS_CATEGORY_NAME && !isAdultosUnlocked) {
+                     setIsCategoryMenuVisible(false); 
+                     setIsPasswordModalVisible(true);
+                     setFocusedCategoryIndex(newCatIndex); 
+                     return;
+                 }
+                 
+                 if (newCatIndex === -2) {
                      handleMainOptionSelect('movies');
                      return;
                  }
-
-                 // Seleccionar Categoría de TV y pasar a la lista de canales
-                 const categoryName = newCatIndex === -1 ? null : categories[newCatIndex];
+                 
                  setSelectedCategory(categoryName);
                  setIsCategoryMenuVisible(false); 
                  setFocusedFilteredIndex(-1); 
                  requestAnimationFrame(() => focusChannelCard(0));
+
 
              } else if (key === 'ArrowLeft') {
                  setIsCategoryMenuVisible(false);
@@ -1504,53 +1804,82 @@ function App() {
         // --- Manejo en el Menú Principal de Canales (Lista de Canales) ---
         } else {
             
-            if (key === 'Enter' || key === ' ') {
-                 const channelToPlay = filteredChannels[focusedFilteredIndex]; 
-                 if (channelToPlay) {
-                     handlePlayChannel(channelToPlay); 
-                 } else {
-                     focusChannelCard(0);
-                 }
-                 return;
+             if (key === 'Enter' || key === ' ') {
+                  const channelToPlay = filteredChannels[focusedFilteredIndex]; 
+                  if (channelToPlay) {
+                      handlePlayChannel(channelToPlay); 
+                  } else {
+                      focusChannelCard(0);
+                  }
+                  return;
 
-             } else if (key === 'ArrowLeft') {
-                 // Abrir Menú de Categorías (Padre)
-                 const currentSelectedCatIndex = selectedCategory === null ? -1 : categories.findIndex(c => c === selectedCategory);
-                 setFocusedCategoryIndex(currentSelectedCatIndex);
-                 openCategoryMenu(); 
-                 return;
+              } else if (key === 'ArrowLeft') {
+                  const currentSelectedCatIndex = selectedCategory === null ? -1 : categories.findIndex(c => c === selectedCategory);
+                  setFocusedCategoryIndex(currentSelectedCatIndex);
+                  openCategoryMenu(); 
+                  return;
 
-             } else if (key === 'ArrowRight') {
-                 setIsMenuVisible(false); 
-                 if (currentChannel) setIsPlaying(true);
-                 return;
+              } else if (key === 'ArrowRight') {
+                  setIsMenuVisible(false); 
+                  if (currentChannel) setIsPlaying(true);
+                  return;
 
-             } else if (key === 'ArrowUp' || key === 'ArrowDown') {
-                 if (totalFilteredChannels === 0) return;
+              } else if (key === 'ArrowUp' || key === 'ArrowDown') {
+                  if (totalFilteredChannels === 0) return;
 
-                 let newFilteredIndex = focusedFilteredIndex;
-                 if (newFilteredIndex === -1) newFilteredIndex = 0;
+                  let newFilteredIndex = focusedFilteredIndex;
+                  if (newFilteredIndex === -1) newFilteredIndex = 0;
 
-                 if (key === 'ArrowUp') {
-                     newFilteredIndex = (newFilteredIndex === 0) ? totalFilteredChannels - 1 : newFilteredIndex - 1;
-                 } else if (key === 'ArrowDown') {
-                     newFilteredIndex = (newFilteredIndex === totalFilteredChannels - 1) ? 0 : newFilteredIndex + 1;
-                 }
+                  if (key === 'ArrowUp') {
+                      newFilteredIndex = (newFilteredIndex === 0) ? totalFilteredChannels - 1 : newFilteredIndex - 1;
+                  } else if (key === 'ArrowDown') {
+                      newFilteredIndex = (newFilteredIndex === totalFilteredChannels - 1) ? 0 : newFilteredIndex + 1;
+                  }
 
-                 focusChannelCard(newFilteredIndex);
-             }
+                  focusChannelCard(newFilteredIndex);
+              }
         }
-    }, [isMenuVisible, isCategoryMenuVisible, focusedFilteredIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList, currentChannel, handleMainOptionSelect]);
+    }, [isMenuVisible, isCategoryMenuVisible, focusedFilteredIndex, filteredChannels, allChannels, focusChannelCard, handlePlayChannel, openMenu, openCategoryMenu, focusedCategoryIndex, categories, selectedCategory, scrollCategoryList, currentChannel, handleMainOptionSelect, isPasswordModalVisible, ADULTOS_CATEGORY_NAME, isAdultosUnlocked]);
 
 
-    // EFFECT PARA ESCUCHAR D-PAD
-    React.useEffect(() => {
-        window.addEventListener('keydown', handleDpadNavigation);
-        return () => window.removeEventListener('keydown', handleDpadNavigation);
-    }, [handleDpadNavigation]);
+   // ⭐ EFFECT PARA ESCUCHAR D-PAD (MODIFICADO)
+React.useEffect(() => {
+    
+    // Si el modal de contraseña está abierto, solo manejamos las teclas relevantes para el modal.
+    if (isPasswordModalVisible) {
+        
+        const handleModalKeys = (e) => {
+            const focusedElement = document.activeElement;
+            const isInputFocused = focusedElement && focusedElement.tagName === 'INPUT' && focusedElement.type === 'password';
+
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                // Si el foco está en el input, el form se envía (comportamiento nativo).
+                // Si el foco está en el botón 'Desbloquear', lo activamos.
+                if (!isInputFocused) {
+                    document.querySelector('.password-submit-button')?.click();
+                }
+            } 
+            
+            if (e.key === 'Escape' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                // ⭐ Permitimos que Flecha Izquierda funcione como cancelar.
+                handleCloseModal();
+            }
+        };
+        
+        window.addEventListener('keydown', handleModalKeys);
+        return () => window.removeEventListener('keydown', handleModalKeys);
+    }
+    
+    // Si el modal no está visible, usamos la navegación normal
+    window.addEventListener('keydown', handleDpadNavigation);
+    return () => window.removeEventListener('keydown', handleDpadNavigation);
+    
+}, [handleDpadNavigation, isPasswordModalVisible, handleCloseModal]);
 
     
-    // Componente CategoryMenu (Renderizado interno - MODIFICADO)
+    // Componente CategoryMenu (Renderizado interno - MODIFICADO para seguridad)
     const CategoryMenu = () => {
         
         if (categories.length === 0) return null;
@@ -1558,13 +1887,27 @@ function App() {
         const isCategoryListVisible = isMenuVisible && isCategoryMenuVisible;
         const isFocusableCategory = isCategoryListVisible;
         
+        // ⭐ LÓGICA MODIFICADA DE SELECCIÓN DE CATEGORÍA
         const handleCategorySelect = (categoryName, index) => {
-             // Si el índice es -2 (Películas), usamos la función principal
+             // 1. Manejar la opción Películas
              if (index === -2) {
                  handleMainOptionSelect('movies');
                  return;
              } 
              
+             // 2. Manejar la categoría Adultos: Si está bloqueada, mostramos el modal
+             if (categoryName === ADULTOS_CATEGORY_NAME && !isAdultosUnlocked) {
+                setPasswordInput('');
+                 setIsCategoryMenuVisible(false); 
+                 setIsMenuVisible(false); 
+                 setIsPlaying(false);
+                 setPasswordInput('');
+                 setIsPasswordModalVisible(true); 
+                 setFocusedCategoryIndex(index); 
+                 return;
+             }
+             
+             // 3. Selección normal de categoría
              setSelectedCategory(categoryName);
              setIsCategoryMenuVisible(false);
              setFocusedFilteredIndex(-1);
@@ -1578,8 +1921,8 @@ function App() {
                 className={`absolute top-0 left-0 h-full bg-gray-900/95 text-white transition-all duration-300 z-30 w-56 p-4 overflow-y-auto custom-scrollbar`}
                  style={{
                       transform: isCategoryListVisible
-                           ? 'translateX(0)' 
-                           : 'translateX(-100%)',
+                              ? 'translateX(0)' 
+                              : 'translateX(-100%)',
                  }}
             >
                 <h2 className="text-2xl font-bold mb-4 border-b border-gray-700 pb-2">
@@ -1589,12 +1932,12 @@ function App() {
                 <div className="space-y-1">
                     {/* Opción "Todos los Canales" */}
                     <button
-                         id={`cat-focus--1`} 
-                         className={`w-full text-left p-2 rounded-md transition-colors duration-200 
-                                      ${selectedCategory === null && focusedCategoryIndex !== -2 ? 'bg-blue-600' : 'hover:bg-gray-700'}
-                                      ${focusedCategoryIndex === -1 && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
-                         onClick={() => handleCategorySelect(null, -1)}
-                         tabIndex={isFocusableCategory ? "0" : "-1"}
+                        id={`cat-focus--1`} 
+                        className={`w-full text-left p-2 rounded-md transition-colors duration-200 
+                                     ${selectedCategory === null && focusedCategoryIndex !== -2 ? 'bg-blue-600' : 'hover:bg-gray-700'}
+                                     ${focusedCategoryIndex === -1 && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
+                        onClick={() => handleCategorySelect(null, -1)}
+                        tabIndex={isFocusableCategory ? "0" : "-1"}
                     >
                         Todos los Canales
                     </button>
@@ -1602,33 +1945,35 @@ function App() {
                     {/* Lista de Categorías */}
                     {categories.map((category, index) => (
                          <button
-                            id={`cat-focus-${index}`}
-                            key={category}
-                            className={`w-full text-left p-2 rounded-md transition-colors duration-200 
-                                         ${selectedCategory === category && focusedCategoryIndex !== -2 ? 'bg-blue-600' : 'hover:bg-gray-700'}
-                                         ${focusedCategoryIndex === index && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
-                            onClick={() => handleCategorySelect(category, index)}
-                            tabIndex={isFocusableCategory ? "0" : "-1"}
-                        >
-                            {category}
-                        </button>
+                             id={`cat-focus-${index}`}
+                             key={category}
+                             className={`w-full text-left p-2 rounded-md transition-colors duration-200 
+                                          ${selectedCategory === category && focusedCategoryIndex !== -2 ? 'bg-blue-600' : 'hover:bg-gray-700'}
+                                          ${focusedCategoryIndex === index && isFocusableCategory ? 'focus:ring-2 focus:ring-blue-500 focus:outline-none' : ''}`}
+                             onClick={() => handleCategorySelect(category, index)}
+                             tabIndex={isFocusableCategory ? "0" : "-1"}
+                         >
+                             {category}
+                             {/* ⭐ INDICADOR DE CANDADO */}
+                             {category === ADULTOS_CATEGORY_NAME && !isAdultosUnlocked && ' 🔒'} 
+                         </button>
                     ))}
                     
-                     <div className="h-4"></div> 
+                      <div className="h-4"></div> 
                     
                     {/* ⭐ OPCIÓN "PELÍCULAS" */}
                     <h2 className="text-2xl font-bold mb-4 border-b border-gray-700 pb-2 pt-2">
-                        🎬 Navegación
+                         🎬 Navegación
                     </h2>
                     <button
-                        id={`cat-focus--2`} 
-                        className={`w-full text-left p-2 rounded-md transition-colors duration-200 font-bold 
-                                     ${focusedCategoryIndex === -2 ? 'bg-red-600' : 'hover:bg-gray-700'}
-                                     ${focusedCategoryIndex === -2 && isFocusableCategory ? 'focus:ring-2 focus:ring-red-500 focus:outline-none' : ''}`}
-                        onClick={() => handleMainOptionSelect('movies')}
-                        tabIndex={isFocusableCategory ? "0" : "-1"}
+                         id={`cat-focus--2`} 
+                         className={`w-full text-left p-2 rounded-md transition-colors duration-200 font-bold 
+                                            ${focusedCategoryIndex === -2 ? 'bg-red-600' : 'hover:bg-gray-700'}
+                                            ${focusedCategoryIndex === -2 && isFocusableCategory ? 'focus:ring-2 focus:ring-red-500 focus:outline-none' : ''}`}
+                         onClick={() => handleMainOptionSelect('movies')}
+                         tabIndex={isFocusableCategory ? "0" : "-1"}
                     >
-                        Películas
+                         Películas
                     </button>
                 </div>
             </div>
@@ -1636,7 +1981,7 @@ function App() {
     };
 
 
-    // Componente ChannelsMenu (Renderizado interno)
+    // Componente ChannelsMenu (Renderizado interno - YA MODIFICADO ANTERIORMENTE)
     const ChannelsMenu = () => {
         
         const setCardRef = (index, element) => {
@@ -1652,62 +1997,108 @@ function App() {
         const isChannelsMenuVisible = isMenuVisible && !isCategoryMenuVisible;
         const isFocusableChannel = isChannelsMenuVisible;
         
-        const groupedFilteredChannels = groupChannelsByCategory(filteredChannels);
+        const groupedFilteredChannels = React.useMemo(() => groupChannelsByCategory(filteredChannels), [filteredChannels]);
         const filteredCategories = Object.keys(groupedFilteredChannels);
         
+        // --- Lógica de Renderizado de Canales ---
+        const renderChannels = () => {
+            if (filteredChannels.length === 0) {
+                 if (selectedCategory === ADULTOS_CATEGORY_NAME && !isAdultosUnlocked) {
+                    return (
+                        <div className="p-4 text-sm text-red-500 flex-grow">
+                             Categoría Adultos bloqueada. Introduce la contraseña.
+                        </div>
+                    );
+                }
+                return (
+                    <div className="p-4 text-sm text-yellow-500 flex-grow">
+                        No hay canales en esta categoría.
+                    </div>
+                );
+            }
+
+            // Caso 1: Se seleccionó una categoría específica (No nula).
+            if (selectedCategory !== null) {
+                return filteredCategories.map((category) => (
+                    <div key={category} className="category-group">
+                        <div className="space-y-1">
+                            {groupedFilteredChannels[category].map((video) => {
+                                const globalIndex = allChannels.findIndex(c => c.url === video.url);
+                                return (
+                                    <VideoCard 
+                                        ref={(el) => setCardRef(globalIndex, el)}
+                                        key={video.url}
+                                        video={video} 
+                                        onPlay={handlePlayChannel} 
+                                        index={globalIndex} 
+                                        isActive={globalIndex === focusedIndex} 
+                                        isFocusable={isFocusableChannel}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </div>
+                ));
+            }
+
+            // Caso 2: Se seleccionó "Todos los Canales" (selectedCategory === null).
+            // Renderizamos la lista plana sin agrupar por categorías.
+            return (
+                <div className="space-y-1">
+                    {filteredChannels.map((video) => {
+                        const globalIndex = allChannels.findIndex(c => c.url === video.url);
+                        return (
+                            <VideoCard 
+                                ref={(el) => setCardRef(globalIndex, el)}
+                                key={video.url}
+                                video={video} 
+                                onPlay={handlePlayChannel} 
+                                index={globalIndex} 
+                                isActive={globalIndex === focusedIndex} 
+                                isFocusable={isFocusableChannel}
+                            />
+                        );
+                    })}
+                </div>
+            );
+        };
+
+
         return (
             <div 
                 className={`absolute top-0 left-0 h-full bg-gray-900/90 text-white transition-all duration-300 z-20 w-1/3 max-w-md flex flex-col`}
                  style={{
                       transform: isChannelsMenuVisible
-                           ? 'translateX(0)' 
-                           : 'translateX(-100%)',
+                              ? 'translateX(0)' 
+                              : 'translateX(-100%)',
                  }}
             >
                 <div className={`p-8 h-full flex flex-col ${isChannelsMenuVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
-                    
+                    {/* ⭐ AÑADIDO: BOTÓN PARA ABRIR EL MENÚ DE CATEGORÍAS */}
+            <button
+                className="absolute top-2 right-2 p-2 bg-gray-700/70 rounded-full text-white z-40 
+                           transition-colors duration-200 
+                           hover:bg-gray-600/90 focus:bg-gray-600/90 focus:ring-2 focus:ring-blue-500 text-lg"
+                onClick={openCategoryMenu}
+                tabIndex={isChannelsMenuVisible ? "0" : "-1"}
+                aria-label="Abrir menú de categorías"
+            >
+                 <span role="img" aria-label="Flecha izquierda">
+                    &#x25C0; {/* Símbolo de triángulo/flecha izquierda */}
+                 </span>
+            </button>
+            {/* FIN BOTÓN */}
                     <h1 className="text-4xl font-bold mb-6 text-blue-400 flex-shrink-0">
                         {currentCategoryTitle}
                     </h1>
                     
-                    {filteredChannels.length === 0 ? (
-                        <div className="p-4 text-sm text-yellow-500 flex-grow">
-                            No hay canales en esta categoría.
-                        </div>
-                    ) : (
-                        <div 
-                            id="channels-list-container"
-                            className="space-y-4 overflow-y-auto flex-grow custom-scrollbar" 
-                            tabIndex="-1"
-                        > 
-                            {filteredCategories.map((category) => (
-                                <div key={category} className="category-group">
-                                    {selectedCategory === null && (
-                                        <h2 className={`text-xl font-semibold mb-2 pt-1 pb-1 sticky top-0 bg-gray-900/90 z-30 transition-colors`}>
-                                            {category}
-                                        </h2>
-                                    )}
-                                    <div className="space-y-1">
-                                             {groupedFilteredChannels[category].map((video) => {
-                                                  const globalIndex = allChannels.findIndex(c => c.url === video.url);
-
-                                                  return (
-                                                      <VideoCard 
-                                                          ref={(el) => setCardRef(globalIndex, el)}
-                                                          key={video.url}
-                                                          video={video} 
-                                                          onPlay={handlePlayChannel} 
-                                                          index={globalIndex} 
-                                                          isActive={globalIndex === focusedIndex} 
-                                                          isFocusable={isFocusableChannel}
-                                                      />
-                                                  );
-                                              })}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
+                    <div 
+                        id="channels-list-container"
+                        className="space-y-4 overflow-y-auto flex-grow custom-scrollbar" 
+                        tabIndex="-1"
+                    > 
+                        {renderChannels()}
+                    </div>
 
                    <div className="text-sm text-gray-500 mt-4 flex-shrink-0">
                         Canales visibles: **{filteredChannels.length}**←
@@ -1717,11 +2108,66 @@ function App() {
         );
     };
 
+ // ⭐ COMPONENTE MODAL DE CONTRASEÑA (NUEVO Y ACTUALIZADO)
+const PasswordModal = ({ isVisible, onClose, onUnlock, onInputChange, inputValue }) => {
+    if (!isVisible) return null;
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onUnlock(inputValue);
+    };
+
+    return (
+        <div className="absolute top-0 left-0 w-full h-full bg-gray-900/95 flex items-center justify-center z-50">
+            <div className="bg-gray-800 p-8 rounded-xl shadow-2xl w-96 text-white">
+                <h3 className="text-2xl font-bold mb-4">Acceso a {ADULTOS_CATEGORY_NAME}</h3>
+                <p className="text-sm text-gray-400 mb-6">Ingresa la contraseña para ver esta categoría.</p>
+                {/* 🔴 SECCIÓN DE ERROR INTEGRADA */}
+                {error && (
+                    <div className="mb-4 p-3 bg-red-500/20 border border-red-500 rounded-lg animate-pulse text-center">
+                        <p className="text-red-500 text-sm font-bold">⚠️ {error}</p>
+                    </div>
+                )}
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="password"
+                        placeholder="Contraseña"
+                        value={inputValue}
+                        onChange={(e) => onInputChange(e.target.value)}
+                        className="w-full p-3 mb-4 bg-gray-700 border border-gray-600 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                        tabIndex="0" 
+                        autoFocus
+                        autoComplete="new-password"
+                        // ⭐ 1. AÑADIR LA CLAVE PARA FORZAR LA LIMPIEZA
+                        key={isVisible ? 'password-show' : 'password-hide'} 
+                    />
+                    <div className="flex justify-end space-x-4">
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded-lg transition"
+                            tabIndex="0"
+                        >
+                            Cancelar (←)
+                        </button>
+                        <button
+                            type="submit"
+                            // ⭐ 2. AÑADIR LA CLASE PARA ACTIVACIÓN CON ENTER DESDE EL useEffect
+                            className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg font-bold transition password-submit-button" 
+                            tabIndex="0"
+                        >
+                            Desbloquear (Enter)
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
+};
 
     // RENDERIZADO PRINCIPAL (Solo la página de TV)
     return (
         <div className="relative w-screen h-screen bg-black overflow-hidden">
-             
             {/* 1. Video Player */}
             {videoCatalog !== null && currentChannelUrl && (
                 <VideoPlayer 
@@ -1731,64 +2177,80 @@ function App() {
                     onFinish={handleVideoEnd} 
                 />
             )}
-             
-            {/* 2. Pantalla de carga */}
-             {videoCatalog === null && (
-                 <div className="flex items-center justify-center w-full h-full bg-gray-900 text-white z-30">
-                     <h1 className="text-xl">Cargando catálogo localmente... ⏳</h1>
-                 </div>
-             )}
-             
+            
+           {/* 2. Pantalla de carga */}
+{!isAppReady && (
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 text-white z-[100]">
+        <div className="flex flex-col items-center">
+            {/* Texto de carga */}
+            <h1 className="text-2xl font-bold mb-8 animate-pulse">Cargando...</h1>
+            
+            {/* Contenedor del Spinner */}
+            <div className="relative w-24 h-24 flex items-center justify-center">
+                <img 
+                    src="https://raw.githubusercontent.com/myappstorefreenf-source/myappstorefreenf.github.io/main/icons/Spinnertx.gif" 
+                    className="w-full h-full object-contain pointer-events-none" 
+                    alt="Cargando..."
+                />
+            </div>
+        </div>
+    </div>
+)}
             {/* 3. Menús */}
             {videoCatalog !== null && (
-                 <React.Fragment>
-                      <CategoryMenu />
-                      <ChannelsMenu />
-                 </React.Fragment>
-             )}
+                <React.Fragment>
+                     <CategoryMenu />
+                     <ChannelsMenu />
+                </React.Fragment>
+            )}
 
             {/* 4. Overlay de video (Cuando no hay canal activo y se cerró el menú) */}
-             {videoCatalog !== null && !isMenuVisible && !currentChannelUrl && (
-                 <div className="absolute top-0 left-0 w-full h-full bg-gray-900/90 flex items-center justify-center text-white z-0">
-                     <p className="text-xl">Selecciona un canal en el menú (←)</p>
-                 </div>
-             )}
+            {videoCatalog !== null && !isMenuVisible && !currentChannelUrl && (
+                <div className="absolute top-0 left-0 w-full h-full bg-gray-900/90 flex items-center justify-center text-white z-0">
+                    <p className="text-xl"> (←)</p>
+                </div>
+            )}
 
             {/* 5. Botón para abrir menú */}
-             {!isMenuVisible && (
-                 <button
-                      className="absolute top-4 left-4 p-2 bg-gray-900/70 rounded-lg text-white z-10 
-                                   transition-all duration-200 
-                                   hover:bg-gray-700/90 focus:bg-gray-700/90 focus:ring-2 focus:ring-blue-500"
-                      onClick={openMenu}
-                      tabIndex="0" 
-                      aria-label="Abrir lista de canales"
-                 >
-                      <p className="text-sm font-light">
-                             ←
-                      </p>
-                 </button>
-             )}
+            {!isMenuVisible && ( 
+                <button
+                     className="absolute top-4 left-4 p-2 bg-gray-900/70 rounded-lg text-white z-10 
+                                  transition-all duration-200 
+                                  hover:bg-gray-700/90 focus:bg-gray-700/90 focus:ring-2 focus:ring-blue-500"
+                     onClick={openMenu}
+                     tabIndex="0" 
+                     aria-label="Abrir lista de canales"
+                >
+                    <p className="text-sm font-light">
+                        ← 
+                    </p>
+                </button>
+            )}
+
+            {/* ⭐ 6. Modal de Contraseña (NUEVO) */}
+            <PasswordModal 
+                isVisible={isPasswordModalVisible}
+                onClose={handleCloseModal}
+                onUnlock={handleUnlockAdultos}
+                onInputChange={setPasswordInput}
+                inputValue={passwordInput}
+            />
         </div>
     );
 }
 
-
 // ----------------------------------------------------------------------
 // 5. RENDERIZADO DE LA APLICACIÓN
 // ----------------------------------------------------------------------
-//const rootElement = document.getElementById('root');
-//if (rootElement) {
-    // Si estás usando React 18+
- //   const root = ReactDOM.createRoot(rootElement);
-//    root.render(<App />);
-//} else {
-//    console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
-//}
-
 const rootElement = document.getElementById('root');
-const root = ReactDOM.createRoot(rootElement);
-root.render(<App />);
+if (rootElement) {
+    // Si estás usando React 18+
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(<App />);
+} else {
+    console.error("No se encontró el elemento 'root'. Asegúrate de que tu HTML tiene <div id='root'></div>");
+}
+
 
 
 

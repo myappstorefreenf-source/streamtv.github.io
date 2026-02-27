@@ -28,12 +28,12 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
         <div translate="no" className="bg-zinc-900 p-4 rounded-2xl border border-white/10 shadow-2xl w-[320px] select-none">
             <div className="grid grid-cols-6 gap-1 mb-2">
                 {rows.map((row, rIdx) => row.map((letra, cIdx) => (
-                    <div key={`${rIdx}-${cIdx}`} className={`h-10 flex items-center justify-center rounded-lg font-bold text-sm ${!isBottom && f === rIdx && c === cIdx ? 'bg-red-600 text-white scale-105 shadow-md' : 'bg-zinc-800 text-zinc-500'}`}>{letra}</div>
+                    <div key={`${rIdx}-${cIdx}`} className={`h-10 flex items-center justify-center rounded-lg font-bold text-sm ${!isBottom && f === rIdx && c === cIdx ? 'bg-green-600 text-white scale-105 shadow-md' : 'bg-zinc-800 text-zinc-500'}`}>{letra}</div>
                 )))}
             </div>
             <div className="flex gap-1">
                 {['ESPACIO', 'BORRAR', 'LISTO'].map((t, i) => (
-                    <div key={t} className={`flex-1 py-2 rounded-lg text-[10px] font-black text-center ${isBottom && bCol === i ? 'bg-red-600 text-white shadow-md' : 'bg-zinc-800 text-zinc-600'}`}>{t}</div>
+                    <div key={t} className={`flex-1 py-2 rounded-lg text-[10px] font-black text-center ${isBottom && bCol === i ? 'bg-green-600 text-white shadow-md' : 'bg-zinc-800 text-zinc-600'}`}>{t}</div>
                 ))}
             </div>
         </div>
@@ -41,8 +41,8 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
 };
 
 const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total }) => (
-    <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esEpisodio ? 'w-28 h-28' : 'w-40'} ${esSeleccionado ? 'scale-110 ring-4 ring-red-600 z-10 opacity-100' : 'opacity-40'}`}>
-        <div className={`rounded-xl overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-red-700 aspect-[2/3]' : esEpisodio ? 'h-full bg-zinc-800 shadow-inner rounded-2xl' : 'bg-zinc-900 aspect-[2/3] shadow-lg'}`}>
+    <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esEpisodio ? 'w-28 h-28' : 'w-32'} ${esSeleccionado ? 'scale-95 ring-4  ring-green-600 z-10 opacity-100' : 'opacity-90'}`}>
+        <div className={`rounded-xl overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-green-700 aspect-[2/3]' : esEpisodio ? 'h-full bg-zinc-800 shadow-inner rounded-2xl' : 'bg-zinc-900 aspect-[2/3] shadow-lg'}`}>
             {esVerMas ? (
                 <div className="text-center p-4"><span className="block text-4xl mb-1">＋</span><span className="block text-[10px] font-black uppercase italic">Ver {total}</span></div>
             ) : esEpisodio ? (
@@ -221,20 +221,20 @@ function App() {
                 <div className="h-full overflow-y-auto p-12 no-scrollbar">
                     <div className="flex justify-between items-start mb-16">
                         <div className="flex flex-col">
-                            <h1 className="text-5xl font-black text-red-600 italic uppercase leading-none">MovieTube</h1>
+                            <h1 className="text-5xl font-black text-green-300 italic uppercase leading-none">Hood</h1>
                             <span className="text-[10px] text-zinc-700 font-bold tracking-[0.3em] ml-1 uppercase">Premium Interface</span>
                         </div>
                         <div className="relative flex flex-col items-end">
-                            <div id="fake-search" className={`w-72 px-5 py-3 rounded-xl border-2 transition-all flex justify-between items-center ${filaActiva === -1 ? 'border-red-600 bg-zinc-800 scale-105' : 'border-white/10 bg-zinc-900'}`}>
+                            <div id="fake-search" className={`w-72 px-5 py-3 rounded-xl border-2 transition-all flex justify-between items-center ${filaActiva === -1 ? 'border-green-600 bg-zinc-800 scale-105' : 'border-white/10 bg-zinc-900'}`}>
                                 <span className={`truncate text-sm ${busqueda ? 'text-white font-bold' : 'text-zinc-700'}`}>{busqueda || "Buscar contenido..."}</span>
-                                <div className="bg-red-600 text-[10px] px-2 py-0.5 rounded font-black shadow-lg">OK</div>
+                                <div className="bg-green-600 text-[10px] px-2 py-0.5 rounded font-black shadow-lg">OK</div>
                             </div>
                             {mostrarTeclado && <div className="absolute top-16 right-0 z-[2000]"><VirtualKeyboard busqueda={busqueda} onKeyPress={(t)=>setBusqueda(p=>p+t)} onBackspace={()=>setBusqueda(p=>p.slice(0,-1))} onClose={()=>setMostrarTeclado(false)} /></div>}
                         </div>
                     </div>
                     {categoriasKeys.map((cat, fIdx) => (
                         <div key={cat} className="mb-14">
-                            <h2 className={`text-lg font-bold mb-4 uppercase tracking-widest ${filaActiva === fIdx ? 'text-red-600' : 'text-zinc-800'}`}>{cat}</h2>
+                            <h2 className={`text-lg font-bold mb-4 uppercase tracking-widest ${filaActiva === fIdx ? 'text-green-600' : 'text-zinc-800'}`}>{cat}</h2>
                             <div className="flex gap-6 overflow-x-auto no-scrollbar py-4">
                                 {catalogoFiltrado[cat].slice(0, 11).map((v, cIdx) => (
                                     cIdx < 10 ? 
@@ -251,7 +251,7 @@ function App() {
                 <div className="h-full overflow-y-auto p-12 no-scrollbar bg-zinc-950">
                     <div className="flex items-center gap-6 mb-10">
                         <button onClick={handleCerrarVista} className="bg-zinc-800 p-2 rounded-full text-zinc-400">←</button>
-                        <h2 className="text-3xl font-black text-red-600 uppercase italic tracking-tighter leading-none">{vistaActual.data.titulo}</h2>
+                        <h2 className="text-3xl font-black text-green-600 uppercase italic tracking-tighter leading-none">{vistaActual.data.titulo}</h2>
                     </div>
                     {/* El grid es de 6 columnas */}
                     <div className="grid grid-cols-6 gap-8 pb-32">
@@ -265,14 +265,14 @@ function App() {
                     <div className="flex gap-10 mb-6">
                         <div className="w-48 aspect-[2/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0"><img src={vistaActual.data.info.logo} className="w-full h-full object-fill" /></div>
                         <div className="flex-1 overflow-hidden pt-4">
-                            <h2 className="text-5xl font-black uppercase italic mb-2 tracking-tighter leading-none truncate">{vistaActual.data.info.titulo}</h2>
+                            <h2 className="text-xl font-black uppercase italic mb-2 tracking-tighter leading-none truncate">{vistaActual.data.info.titulo}</h2>
                             <div className="flex gap-4 mb-6">
-                                <span className="bg-red-600/10 text-red-600 px-3 py-1 rounded text-[10px] font-black uppercase">{vistaActual.data.info.categoria}</span>
-                                <span className="text-zinc-600 text-[10px] font-bold uppercase pt-1">M3U Stream</span>
+                                <span className="text- px-3 py-1 rounded text-[12px] font-black uppercase">{vistaActual.data.info.categoria}</span>
+                                <span className="text-zinc-600 text-[10px] font-bold uppercase pt-1"></span>
                             </div>
-                            <button onClick={handleCerrarVista} className="bg-zinc-800 px-8 py-3 rounded-xl text-[10px] font-black uppercase hover:bg-red-600 transition-all shadow-lg border border-white/5">← Volver al Menú</button>
+                            <button onClick={handleCerrarVista} className="bg-zinc-800 px-8 py-3 rounded-xl text-[10px] font-black uppercase hover:bg-green-600 transition-all shadow-lg border border-white/5">← Volver al Menú</button>
                         </div>
-                        <div id="visor-container" className={`${enPantallaCompleta ? 'fixed inset-0 z-[500] bg-black' : 'relative w-[480px] aspect-video bg-black rounded-3xl overflow-hidden border-4 ' + (focoZona === 'visor' ? 'border-red-600 scale-105 shadow-2xl shadow-red-600/30' : 'border-zinc-800')}`}>
+                        <div id="visor-container" className={`${enPantallaCompleta ? 'fixed inset-0 z-[500] bg-black' : 'relative w-[480px] aspect-video bg-black rounded-3xl overflow-hidden border-4 ' + (focoZona === 'visor' ? 'border-green-600 scale-105 shadow-2xl shadow-green-600/30' : 'border-zinc-800')}`}>
                             <video ref={videoRef} src={videoActualUrl} key={videoActualUrl} className="w-full h-full object-contain" autoPlay disableRemotePlayback controls={enPantallaCompleta} />
                             {!enPantallaCompleta && <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-1 rounded-full text-[8px] font-black text-white/50 uppercase tracking-widest">OK PARA PANTALLA COMPLETA</div>}
                         </div>
@@ -281,7 +281,7 @@ function App() {
                         <div className="mt-auto border-t border-white/5 pt-6 bg-zinc-950/50 backdrop-blur">
                             <div className="flex gap-3 mb-6 overflow-x-auto no-scrollbar py-1">
                                 {Array.from({ length: Math.ceil(vistaActual.data.items.length / 10) }).map((_, i) => (
-                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-xl text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-red-600 border-red-500 text-white shadow-lg' : 'bg-zinc-900 border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-110' : ''}`}>
+                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-xl text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-green-600 border-green-500 text-white shadow-lg' : 'bg-zinc-900 border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-10' : ''}`}>
                                         {i * 10 + 1}-{Math.min((i + 1) * 10, vistaActual.data.items.length)}
                                     </div>
                                 ))}

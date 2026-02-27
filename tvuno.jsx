@@ -1688,7 +1688,7 @@ const filteredChannels = React.useMemo(() => {
         setIsPlaying(false); 
         
         if (page === 'movies') {
-            window.location.href = 'pelis.html'; 
+            window.location.href = 'videos.html'; 
         }
     }, []);
 

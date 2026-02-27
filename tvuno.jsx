@@ -194,7 +194,7 @@ const LOCAL_M3U_DATA = [
     logoUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7e/TNT_Sports_Logo.svg",
     category: "Deportes",
     // Quitamos los caracteres extra después del .mpd para evitar errores de sintaxis
-    url: "http://45.90.106.115:9090/278778_.m3u8",
+    url: "http://live.btv.mx:2424/stream/278777/smAVz_uhytj5REM-4pYNZbkrcB2 ",
     //referrer: "https://player.sensa.com.ar/",
     userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
  

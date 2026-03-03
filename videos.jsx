@@ -278,7 +278,7 @@ function App() {
         src={videoActualUrl} 
         key={videoActualUrl} 
         /* --- ESTO EVITA EL BLOQUEO DE STREAMING HTTP --- */
-       // crossOrigin="anonymous" 
+        crossOrigin="anonymous" 
         /* --- ESTO ACTIVA LA ACELERACIÓN POR HARDWARE (GPU) --- */
         style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
         className="w-full h-full object-contain" 
@@ -318,4 +318,5 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+
 

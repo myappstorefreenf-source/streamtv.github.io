@@ -41,7 +41,7 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
 };
 
 const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total }) => (
-    <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esEpisodio ? 'w-28 h-28' : 'w-32'} ${esSeleccionado ? 'scale-95 ring-4  ring-green-600 z-10 opacity-100' : 'opacity-90'}`}>
+    <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esEpisodio ? 'w-28 h-28' : 'w-32'} ${esSeleccionado ? 'scale-95 ring-4 ring-green-600 z-10 opacity-100' : 'opacity-90'}`}>
         <div className={`rounded-xl overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-green-700 aspect-[2/3]' : esEpisodio ? 'h-full bg-zinc-800 shadow-inner rounded-2xl' : 'bg-zinc-900 aspect-[2/3] shadow-lg'}`}>
             {esVerMas ? (
                 <div className="text-center p-4"><span className="block text-4xl mb-1">＋</span><span className="block text-[10px] font-black uppercase italic">Ver {total}</span></div>
@@ -65,8 +65,6 @@ function App() {
     const [indiceAux, setIndiceAux] = useState(0);
     const [rangoCapitulos, setRangoCapitulos] = useState(0); 
     const [focoZona, setFocoZona] = useState('grid');
-    const [enPantallaCompleta, setEnPantallaCompleta] = useState(false);
-    const videoRef = useRef(null);
 
     useEffect(() => {
         const rawData = window.m3uData || "";
@@ -104,15 +102,23 @@ function App() {
     const categoriasKeys = Object.keys(catalogoFiltrado);
 
     const handleCerrarVista = () => {
-        setEnPantallaCompleta(false);
         setVistaActual({ tipo: 'home', data: null });
         setFocoZona('grid');
         setIndiceAux(0);
         setTimeout(() => setColumnaActiva(c => c), 50);
     };
 
+    // FUNCIÓN PARA REPRODUCIR EN EXOPLAYER NATIVO
+    const lanzarVideoNativo = (url, titulo) => {
+        if (window.AndroidInterface) {
+            window.AndroidInterface.playVideo(url, titulo);
+        } else {
+            console.log("Reproduciendo en web (Fallback):", url);
+        }
+    };
+
     useEffect(() => {
-        if (enPantallaCompleta || mostrarTeclado) return;
+        if (mostrarTeclado) return;
         const timer = setTimeout(() => {
             let id = "";
             if (vistaActual.tipo === 'home') id = filaActiva === -1 ? "fake-search" : `item-${filaActiva}-${columnaActiva}`;
@@ -121,12 +127,10 @@ function App() {
                 id = focoZona === 'visor' ? 'visor-container' : focoZona === 'selector' ? `range-${rangoCapitulos}` : `cap-${indiceAux}`;
             }
             const el = document.getElementById(id);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-            }
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
         }, 100); 
         return () => clearTimeout(timer);
-    }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, enPantallaCompleta, indiceAux, rangoCapitulos]);
+    }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, indiceAux, rangoCapitulos]);
 
     useEffect(() => {
         const handleKeys = (e) => {
@@ -136,7 +140,6 @@ function App() {
             if (isBack) {
                 e.preventDefault();
                 if (mostrarTeclado) { setMostrarTeclado(false); return; }
-                if (enPantallaCompleta) { setEnPantallaCompleta(false); return; }
                 if (vistaActual.tipo === 'detalle') {
                     if (vistaActual.fromGrid) setVistaActual({ tipo: 'grilla', data: vistaActual.fromGrid });
                     else handleCerrarVista();
@@ -144,17 +147,6 @@ function App() {
                 }
                 if (vistaActual.tipo === 'grilla') { handleCerrarVista(); return; }
                 if (busqueda) { setBusqueda(""); return; } 
-            }
-
-            if (enPantallaCompleta && videoRef.current) {
-                if (isEnter) { 
-                    e.preventDefault(); 
-                    if (videoRef.current.paused) videoRef.current.play().catch(()=>{}); 
-                    else videoRef.current.pause();
-                }
-                if (e.key === 'ArrowRight') { e.preventDefault(); videoRef.current.currentTime += 10; }
-                if (e.key === 'ArrowLeft') { e.preventDefault(); videoRef.current.currentTime -= 10; }
-                return;
             }
 
             if (mostrarTeclado) return;
@@ -179,21 +171,22 @@ function App() {
                 } else if (isEnter) setMostrarTeclado(true);
             } else if (vistaActual.tipo === 'grilla') {
                 const total = vistaActual.data.items.length;
-                const columnas = 6; // Coincide con el grid-cols-6 del diseño
+                const columnas = 6;
                 if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, total - 1));
                 if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
-                // ARREGLO AQUÍ: Navegación vertical en la grilla
                 if (e.key === 'ArrowDown') setIndiceAux(p => Math.min(p + columnas, total - 1));
                 if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - columnas, 0));
-                
                 if (isEnter) { 
                     setVistaActual({ tipo: 'detalle', data: { info: vistaActual.data.items[indiceAux], items: vistaActual.data.items }, fromGrid: vistaActual.data }); 
                     setFocoZona('visor'); 
                 }
             } else if (vistaActual.tipo === 'detalle') {
                 const esSerie = vistaActual.data.info.categoria.toUpperCase().includes("SERIES");
+                const currentUrl = esSerie ? vistaActual.data.items[(rangoCapitulos * 10) + indiceAux]?.url : vistaActual.data.info.url;
+                const currentTitle = esSerie ? `${vistaActual.data.info.titulo} - Ep ${(rangoCapitulos * 10) + indiceAux + 1}` : vistaActual.data.info.titulo;
+
                 if (focoZona === 'visor') {
-                    if (isEnter) setEnPantallaCompleta(true);
+                    if (isEnter) lanzarVideoNativo(currentUrl, currentTitle);
                     if (e.key === 'ArrowDown') setFocoZona(esSerie ? 'selector' : 'grid');
                 } else if (focoZona === 'selector') {
                     if (e.key === 'ArrowUp') setFocoZona('visor');
@@ -205,15 +198,13 @@ function App() {
                     if (e.key === 'ArrowUp') setFocoZona(esSerie ? 'selector' : 'visor');
                     if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, maxInPage));
                     if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
-                    if (isEnter) setEnPantallaCompleta(true);
+                    if (isEnter) lanzarVideoNativo(currentUrl, currentTitle);
                 }
             }
         };
         window.addEventListener('keydown', handleKeys);
         return () => window.removeEventListener('keydown', handleKeys);
-    }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, enPantallaCompleta, categoriasKeys, catalogoFiltrado, indiceAux, rangoCapitulos, busqueda]);
-
-    const videoActualUrl = vistaActual.tipo === 'detalle' ? (vistaActual.data.info.categoria.toUpperCase().includes("SERIES") ? vistaActual.data.items[(rangoCapitulos * 10) + indiceAux]?.url : vistaActual.data.info.url) : "";
+    }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, categoriasKeys, catalogoFiltrado, indiceAux, rangoCapitulos, busqueda]);
 
     return (
         <div translate="no" className="fixed inset-0 bg-black text-white font-sans overflow-hidden select-none">
@@ -253,7 +244,6 @@ function App() {
                         <button onClick={handleCerrarVista} className="bg-zinc-800 p-2 rounded-full text-zinc-400">←</button>
                         <h2 className="text-3xl font-black text-green-600 uppercase italic tracking-tighter leading-none">{vistaActual.data.titulo}</h2>
                     </div>
-                    {/* El grid es de 6 columnas */}
                     <div className="grid grid-cols-6 gap-8 pb-32">
                         {vistaActual.data.items.map((v, i) => <VideoCard key={i} id={`grid-item-${i}`} video={v} esSeleccionado={indiceAux === i} />)}
                     </div>
@@ -267,37 +257,31 @@ function App() {
                         <div className="flex-1 overflow-hidden pt-4">
                             <h2 className="text-xl font-black uppercase italic mb-2 tracking-tighter leading-none truncate">{vistaActual.data.info.titulo}</h2>
                             <div className="flex gap-4 mb-6">
-                                <span className="text- px-3 py-1 rounded text-[12px] font-black uppercase">{vistaActual.data.info.categoria}</span>
-                                <span className="text-zinc-600 text-[10px] font-bold uppercase pt-1"></span>
+                                <span className="bg-zinc-800 px-3 py-1 rounded text-[12px] font-black uppercase text-green-500">{vistaActual.data.info.categoria}</span>
                             </div>
                             <button onClick={handleCerrarVista} className="bg-zinc-800 px-8 py-3 rounded-xl text-[10px] font-black uppercase hover:bg-green-600 transition-all shadow-lg border border-white/5">← Volver al Menú</button>
                         </div>
-                        <div id="visor-container" className={`${enPantallaCompleta ? 'fixed inset-0 z-[500] bg-black' : 'relative w-[480px] aspect-video bg-black rounded-3xl overflow-hidden border-4 ' + (focoZona === 'visor' ? 'border-green-600 scale-105 shadow-2xl shadow-green-600/30' : 'border-zinc-800')}`}>
-    <video 
-        ref={videoRef} 
-        src={videoActualUrl} 
-        key={videoActualUrl} 
-        /* --- ESTO EVITA EL BLOQUEO DE STREAMING HTTP --- */
-        crossOrigin="anonymous" 
-        /* --- ESTO ACTIVA LA ACELERACIÓN POR HARDWARE (GPU) --- */
-        style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
-        className="w-full h-full object-contain" 
-        autoPlay 
-        disableRemotePlayback 
-        controls={enPantallaCompleta} 
-    />
-    {!enPantallaCompleta && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-1 rounded-full text-[8px] font-black text-white/50 uppercase tracking-widest">
-            OK PARA PANTALLA COMPLETA
-        </div>
-    )}
-</div>
+
+                        {/* VISOR ESTÁTICO CON ANIMACIÓN */}
+                        <div id="visor-container" className={`relative w-[480px] aspect-video bg-zinc-900 rounded-3xl overflow-hidden border-4 transition-all duration-300 ${focoZona === 'visor' ? 'border-green-600 scale-105 shadow-2xl shadow-green-600/30' : 'border-zinc-800'}`}>
+                            <img src={vistaActual.data.info.logo} className="absolute inset-0 w-full h-full object-cover opacity-20 blur-md" />
+                            <img src={vistaActual.data.info.logo} className="relative z-10 w-full h-full object-contain p-8" />
+                            <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/30">
+                                <div className={`w-20 h-20 rounded-full flex items-center justify-center transition-all ${focoZona === 'visor' ? 'bg-green-600 scale-110 shadow-xl' : 'bg-white/20'}`}>
+                                    <span className="text-4xl ml-2">▶</span>
+                                </div>
+                            </div>
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 bg-black/60 px-4 py-1 rounded-full text-[8px] font-black text-white/50 uppercase tracking-widest">
+                                PRESIONA OK PARA REPRODUCIR
+                            </div>
+                        </div>
                     </div>
+
                     {vistaActual.data.info.categoria.toUpperCase().includes("SERIES") && (
                         <div className="mt-auto border-t border-white/5 pt-6 bg-zinc-950/50 backdrop-blur">
                             <div className="flex gap-3 mb-6 overflow-x-auto no-scrollbar py-1">
                                 {Array.from({ length: Math.ceil(vistaActual.data.items.length / 10) }).map((_, i) => (
-                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-xl text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-green-600 border-green-500 text-white shadow-lg' : 'bg-zinc-900 border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-10' : ''}`}>
+                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-xl text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-green-600 border-green-500 text-white shadow-lg' : 'bg-zinc-900 border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-105' : ''}`}>
                                         {i * 10 + 1}-{Math.min((i + 1) * 10, vistaActual.data.items.length)}
                                     </div>
                                 ))}
@@ -318,5 +302,3 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
-
-

@@ -1,4 +1,4 @@
-
+de
 // Asegúrate de que React, ReactDOM y Hls.js estén cargados en el scope global.
 // Por ejemplo:
 // <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -1317,7 +1317,7 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
             
             const hlsConfig = {
                 maxBufferLength: 30,    
-                minBufferLength: 3,     
+                minBufferLength: 13,     
                 autoSyncBuffer: 0.5,
                 xhrSetup: setupXhr // Usa la función modificada para enviar headers
             };

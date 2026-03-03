@@ -1316,8 +1316,8 @@ const VideoPlayer = React.forwardRef(({ channel, isPlaying, onFinish }, ref) => 
         if (window.Hls && Hls.isSupported()) { 
             
             const hlsConfig = {
-                maxBufferLength: 30,    
-                minBufferLength: 13,     
+                maxBufferLength: 20,    
+                minBufferLength: 5,     
                 autoSyncBuffer: 0.5,
                 xhrSetup: setupXhr // Usa la función modificada para enviar headers
             };

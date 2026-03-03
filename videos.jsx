@@ -273,9 +273,25 @@ function App() {
                             <button onClick={handleCerrarVista} className="bg-zinc-800 px-8 py-3 rounded-xl text-[10px] font-black uppercase hover:bg-green-600 transition-all shadow-lg border border-white/5">← Volver al Menú</button>
                         </div>
                         <div id="visor-container" className={`${enPantallaCompleta ? 'fixed inset-0 z-[500] bg-black' : 'relative w-[480px] aspect-video bg-black rounded-3xl overflow-hidden border-4 ' + (focoZona === 'visor' ? 'border-green-600 scale-105 shadow-2xl shadow-green-600/30' : 'border-zinc-800')}`}>
-                            <video ref={videoRef} src={videoActualUrl} key={videoActualUrl} className="w-full h-full object-contain" autoPlay disableRemotePlayback controls={enPantallaCompleta} />
-                            {!enPantallaCompleta && <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-1 rounded-full text-[8px] font-black text-white/50 uppercase tracking-widest">OK PARA PANTALLA COMPLETA</div>}
-                        </div>
+    <video 
+        ref={videoRef} 
+        src={videoActualUrl} 
+        key={videoActualUrl} 
+        /* --- ESTO EVITA EL BLOQUEO DE STREAMING HTTP --- */
+        crossOrigin="anonymous" 
+        /* --- ESTO ACTIVA LA ACELERACIÓN POR HARDWARE (GPU) --- */
+        style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}
+        className="w-full h-full object-contain" 
+        autoPlay 
+        disableRemotePlayback 
+        controls={enPantallaCompleta} 
+    />
+    {!enPantallaCompleta && (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-1 rounded-full text-[8px] font-black text-white/50 uppercase tracking-widest">
+            OK PARA PANTALLA COMPLETA
+        </div>
+    )}
+</div>
                     </div>
                     {vistaActual.data.info.categoria.toUpperCase().includes("SERIES") && (
                         <div className="mt-auto border-t border-white/5 pt-6 bg-zinc-950/50 backdrop-blur">

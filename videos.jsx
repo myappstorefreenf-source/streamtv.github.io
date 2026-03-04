@@ -2,7 +2,7 @@ const { useState, useEffect, useRef, useMemo } = React;
 
 // --- TECLADO VIRTUAL ---
 const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
-    const rows = [['A','B','C','D','E','F'],['G','H','I','J','K','L'],['M','N','O','P','Q','R'],['S','T','U','V','W','X'],['Y','Z','1','2','3','4'],['5','6','7','8','9','0']];
+    const filas = [['A','B','C','D','E','F'],['G','H','I','J','K','L'],['M','N','O','P','Q','R'],['S','T','U','V','W','X'],['Y','Z','1','2','3','4'],['5','6','7','8','9','0']];
     const [f, setF] = useState(0);
     const [c, setC] = useState(0);
     const [isBottom, setIsBottom] = useState(false);
@@ -16,7 +16,7 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
             if (e.key === 'ArrowDown') { if (!isBottom) { if (f === 5) setIsBottom(true); else setF(p => p + 1); } }
             if (e.key === 'ArrowUp') { if (isBottom) setIsBottom(false); else setF(p => Math.max(p - 1, 0)); }
             if (e.key === 'Enter' || e.keyCode === 13) {
-                if (!isBottom) onKeyPress(rows[f][c]);
+                if (!isBottom) onKeyPress(filas[f][c]);
                 else { if (bCol === 0) onKeyPress(' '); if (bCol === 1) onBackspace(); if (bCol === 2) onClose(); }
             }
         };
@@ -25,9 +25,9 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
     }, [f, c, isBottom, bCol]);
 
     return (
-        <div translate="no" className="bg-zinc-900 p-4 rounded-2xl border border-white/10 shadow-2xl w-[320px] select-none">
+        <div translate="no" className="bg-zinc-900 p-4 border rounded-2xl border-white/10 shadow-2xl w-[320px] select-none">
             <div className="grid grid-cols-6 gap-1 mb-2">
-                {rows.map((row, rIdx) => row.map((letra, cIdx) => (
+                {filas.map((fila, rIdx) => fila.map((letra, cIdx) => (
                     <div key={`${rIdx}-${cIdx}`} className={`h-10 flex items-center justify-center rounded-lg font-bold text-sm ${!isBottom && f === rIdx && c === cIdx ? 'bg-green-600 text-white scale-105 shadow-md' : 'bg-zinc-800 text-zinc-500'}`}>{letra}</div>
                 )))}
             </div>
@@ -41,7 +41,7 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
 };
 
 const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total }) => (
-    <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esEpisodio ? 'w-28 h-28' : 'w-32'} ${esSeleccionado ? 'scale-95 ring-4 ring-green-600 z-10 opacity-100' : 'opacity-90'}`}>
+    <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esEpisodio ? 'w-28 h-28' : 'w-32'} ${esSeleccionado ? 'scale-105 ring-4 ring-green-600 z-10 opacity-100 shadow-[0_0_20px_rgba(22,163,74,0.4)]' : 'opacity-70'}`}>
         <div className={`rounded-xl overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-green-700 aspect-[2/3]' : esEpisodio ? 'h-full bg-zinc-800 shadow-inner rounded-2xl' : 'bg-zinc-900 aspect-[2/3] shadow-lg'}`}>
             {esVerMas ? (
                 <div className="text-center p-4"><span className="block text-4xl mb-1">＋</span><span className="block text-[10px] font-black uppercase italic">Ver {total}</span></div>
@@ -63,23 +63,42 @@ function App() {
     const [vistaActual, setVistaActual] = useState({ tipo: 'home', data: null });
     const [mostrarTeclado, setMostrarTeclado] = useState(false);
     const [indiceAux, setIndiceAux] = useState(0);
-    const [rangoCapitulos, setRangoCapitulos] = useState(0); 
+    const [rangoCapitulos, setRangoCapitulos] = useState(0);
     const [focoZona, setFocoZona] = useState('grid');
+    
+    // --- NUEVOS ESTADOS PARA INFO EXTRA ---
+    const [extraInfo, setExtraInfo] = useState(null);
+    const [cargandoInfo, setCargandoInfo] = useState(false);
+    const API_KEY = "7ba138ff630dcf197f29d58e9de8ce10"; // REEMPLAZA CON TU API KEY
+
+    const buscarResena = async (titulo) => {
+        setCargandoInfo(true);
+        setExtraInfo(null);
+        try {
+            const queryClean = titulo.split('(')[0].split('-')[0].trim();
+            const response = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(queryClean)}&language=es-ES`);
+            const data = await response.json();
+            if (data.results && data.results.length > 0) {
+                setExtraInfo(data.results[0]);
+            }
+        } catch (e) { console.error(e); }
+        setCargandoInfo(false);
+    };
 
     useEffect(() => {
         const rawData = window.m3uData || "";
         if (!rawData) return;
-        const lines = rawData.split('\n');
+        const lineas = rawData.split('\n');
         const temp = {};
-        for (let i = 0; i < lines.length; i++) {
-            const line = lines[i].trim();
-            if (line.startsWith('#EXTINF')) {
-                const next = lines[i + 1] ? lines[i + 1].trim() : "";
-                const groupMatch = line.match(/group-title="([^"]+)"/);
+        for (let i = 0; i < lineas.length; i++) {
+            const linea = lineas[i].trim();
+            if (linea.startsWith('#EXTINF')) {
+                const next = lineas[i + 1] ? lineas[i + 1].trim() : "";
+                const groupMatch = linea.match(/group-title="([^"]+)"/);
                 const category = groupMatch ? groupMatch[1] : "Otros";
-                const logoMatch = line.match(/tvg-logo="([^"]+)"/);
-                const nameMatch = line.match(/tvg-name="([^"]+)"/);
-                const title = nameMatch ? nameMatch[1] : (line.split(',')[1] || "Sin título");
+                const logoMatch = linea.match(/tvg-logo="([^"]+)"/);
+                const nameMatch = linea.match(/tvg-name="([^"]+)"/);
+                const title = nameMatch ? nameMatch[1] : (linea.split(',')[1] || "Sin título");
                 if (next.startsWith('http')) {
                     if (!temp[category]) temp[category] = [];
                     temp[category].push({ titulo: title, logo: logoMatch ? logoMatch[1] : "", url: next, categoria: category });
@@ -105,15 +124,13 @@ function App() {
         setVistaActual({ tipo: 'home', data: null });
         setFocoZona('grid');
         setIndiceAux(0);
-        setTimeout(() => setColumnaActiva(c => c), 50);
     };
 
-    // FUNCIÓN PARA REPRODUCIR EN EXOPLAYER NATIVO
     const lanzarVideoNativo = (url, titulo) => {
         if (window.AndroidInterface) {
             window.AndroidInterface.playVideo(url, titulo);
         } else {
-            console.log("Reproduciendo en web (Fallback):", url);
+            console.log("Play:", url);
         }
     };
 
@@ -123,19 +140,17 @@ function App() {
             let id = "";
             if (vistaActual.tipo === 'home') id = filaActiva === -1 ? "fake-search" : `item-${filaActiva}-${columnaActiva}`;
             else if (vistaActual.tipo === 'grilla') id = `grid-item-${indiceAux}`;
-            else if (vistaActual.tipo === 'detalle') {
-                id = focoZona === 'visor' ? 'visor-container' : focoZona === 'selector' ? `range-${rangoCapitulos}` : `cap-${indiceAux}`;
-            }
+            else if (vistaActual.tipo === 'detalle') id = focoZona === 'visor' ? 'visor-container' : focoZona === 'selector' ? `range-${rangoCapitulos}` : `cap-${indiceAux}`;
             const el = document.getElementById(id);
             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-        }, 100); 
+        }, 100);
         return () => clearTimeout(timer);
     }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, indiceAux, rangoCapitulos]);
 
     useEffect(() => {
         const handleKeys = (e) => {
             const isEnter = e.key === 'Enter' || e.keyCode === 13;
-            const isBack = e.key === 'Escape' || e.key === 'Backspace' || e.keyCode === 8 || e.keyCode === 461 || e.keyCode === 27;
+            const isBack = e.key === 'Escape' || e.key === 'Backspace' || e.keyCode === 8 || e.keyCode === 27;
 
             if (isBack) {
                 e.preventDefault();
@@ -146,7 +161,7 @@ function App() {
                     return;
                 }
                 if (vistaActual.tipo === 'grilla') { handleCerrarVista(); return; }
-                if (busqueda) { setBusqueda(""); return; } 
+                if (busqueda) { setBusqueda(""); return; }
             }
 
             if (mostrarTeclado) return;
@@ -160,34 +175,41 @@ function App() {
                     if (e.key === 'ArrowRight') setColumnaActiva(p => Math.min(p + 1, maxCol));
                     if (e.key === 'ArrowLeft') setColumnaActiva(p => Math.max(p - 1, 0));
                     if (isEnter) {
-                        if (columnaActiva === 10) { 
-                            setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } }); 
-                            setIndiceAux(0); 
-                        } else { 
-                            setVistaActual({ tipo: 'detalle', data: { info: items[columnaActiva], items } }); 
-                            setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0); 
+                        if (columnaActiva === 10) {
+                            setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } });
+                            setIndiceAux(0);
+                        } else {
+                            const v = items[columnaActiva];
+                            setVistaActual({ tipo: 'detalle', data: { info: v, items } });
+                            setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0);
+                            buscarResena(v.titulo);
                         }
                     }
                 } else if (isEnter) setMostrarTeclado(true);
             } else if (vistaActual.tipo === 'grilla') {
                 const total = vistaActual.data.items.length;
-                const columnas = 6;
+                const cols = 6;
                 if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, total - 1));
                 if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
-                if (e.key === 'ArrowDown') setIndiceAux(p => Math.min(p + columnas, total - 1));
-                if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - columnas, 0));
-                if (isEnter) { 
-                    setVistaActual({ tipo: 'detalle', data: { info: vistaActual.data.items[indiceAux], items: vistaActual.data.items }, fromGrid: vistaActual.data }); 
-                    setFocoZona('visor'); 
+                if (e.key === 'ArrowDown') setIndiceAux(p => Math.min(p + cols, total - 1));
+                if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - cols, 0));
+                if (isEnter) {
+                    const v = vistaActual.data.items[indiceAux];
+                    setVistaActual({ tipo: 'detalle', data: { info: v, items: vistaActual.data.items }, fromGrid: vistaActual.data });
+                    setFocoZona('visor');
+                    buscarResena(v.titulo);
                 }
             } else if (vistaActual.tipo === 'detalle') {
-                const esSerie = vistaActual.data.info.categoria.toUpperCase().includes("SERIES");
+                const esSerie = vistaActual.data.info.categoria.toUpperCase().includes("SERIE");
                 const currentUrl = esSerie ? vistaActual.data.items[(rangoCapitulos * 10) + indiceAux]?.url : vistaActual.data.info.url;
                 const currentTitle = esSerie ? `${vistaActual.data.info.titulo} - Ep ${(rangoCapitulos * 10) + indiceAux + 1}` : vistaActual.data.info.titulo;
-
+                
                 if (focoZona === 'visor') {
                     if (isEnter) lanzarVideoNativo(currentUrl, currentTitle);
-                    if (e.key === 'ArrowDown') setFocoZona(esSerie ? 'selector' : 'grid');
+                    if (e.key === 'ArrowDown') {
+                        document.activeElement.blur();
+                        setFocoZona(esSerie ? 'selector' : 'grid');
+                    }
                 } else if (focoZona === 'selector') {
                     if (e.key === 'ArrowUp') setFocoZona('visor');
                     if (e.key === 'ArrowDown') setFocoZona('grid');
@@ -206,14 +228,27 @@ function App() {
         return () => window.removeEventListener('keydown', handleKeys);
     }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, categoriasKeys, catalogoFiltrado, indiceAux, rangoCapitulos, busqueda]);
 
-    return (
-        <div translate="no" className="fixed inset-0 bg-black text-white font-sans overflow-hidden select-none">
+   return (
+        <div translate="no" className="inset-0 fixed bg-black text-white font-sans overflow-hidden select-none">
+            <style>{`
+                * { -webkit-tap-highlight-color: transparent !important; outline: none !important; }
+                .no-scrollbar::-webkit-scrollbar { display: none; }
+                /* Esto ayuda a que el texto no se pase de 6 lineas */
+                .line-clamp-6 {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 6;
+                    -webkit-box-orient: vertical;  
+                    overflow: hidden;
+                }
+            `}</style>
+
+            {/* --- VISTA HOME --- */}
             {vistaActual.tipo === 'home' && (
                 <div className="h-full overflow-y-auto p-12 no-scrollbar">
                     <div className="flex justify-between items-start mb-16">
                         <div className="flex flex-col">
-                            <h1 className="text-5xl font-black text-green-300 italic uppercase leading-none">Hood</h1>
-                            <span className="text-[10px] text-zinc-700 font-bold tracking-[0.3em] ml-1 uppercase">Premium Interface</span>
+                            <h1 className="text-5xl font-black text-green-500 italic uppercase leading-none">Hood</h1>
+                            <span className="text-xs font-bold tracking-[0.3em] text-zinc-500">PREMIUM STREAMING</span>
                         </div>
                         <div className="relative flex flex-col items-end">
                             <div id="fake-search" className={`w-72 px-5 py-3 rounded-xl border-2 transition-all flex justify-between items-center ${filaActiva === -1 ? 'border-green-600 bg-zinc-800 scale-105' : 'border-white/10 bg-zinc-900'}`}>
@@ -228,7 +263,7 @@ function App() {
                             <h2 className={`text-lg font-bold mb-4 uppercase tracking-widest ${filaActiva === fIdx ? 'text-green-600' : 'text-zinc-800'}`}>{cat}</h2>
                             <div className="flex gap-6 overflow-x-auto no-scrollbar py-4">
                                 {catalogoFiltrado[cat].slice(0, 11).map((v, cIdx) => (
-                                    cIdx < 10 ? 
+                                    cIdx < 10 ?
                                     <VideoCard key={cIdx} id={`item-${fIdx}-${cIdx}`} video={v} esSeleccionado={filaActiva === fIdx && columnaActiva === cIdx} /> :
                                     <VideoCard id={`item-${fIdx}-10`} esVerMas={true} total={catalogoFiltrado[cat].length} esSeleccionado={filaActiva === fIdx && columnaActiva === 10} />
                                 ))}
@@ -238,50 +273,71 @@ function App() {
                 </div>
             )}
 
+            {/* --- VISTA GRILLA --- */}
             {vistaActual.tipo === 'grilla' && (
                 <div className="h-full overflow-y-auto p-12 no-scrollbar bg-zinc-950">
-                    <div className="flex items-center gap-6 mb-10">
-                        <button onClick={handleCerrarVista} className="bg-zinc-800 p-2 rounded-full text-zinc-400">←</button>
-                        <h2 className="text-3xl font-black text-green-600 uppercase italic tracking-tighter leading-none">{vistaActual.data.titulo}</h2>
-                    </div>
+                    <h2 className="text-3xl font-black text-green-600 uppercase italic mb-10">{vistaActual.data.titulo}</h2>
                     <div className="grid grid-cols-6 gap-8 pb-32">
                         {vistaActual.data.items.map((v, i) => <VideoCard key={i} id={`grid-item-${i}`} video={v} esSeleccionado={indiceAux === i} />)}
                     </div>
                 </div>
             )}
 
+            {/* --- VISTA DETALLE (LA QUE TENIA EL ERROR) --- */}
             {vistaActual.tipo === 'detalle' && (
-                <div className="fixed inset-0 bg-zinc-950 z-[100] p-10 flex flex-col no-scrollbar overflow-hidden">
-                    <div className="flex gap-10 mb-6">
-                        <div className="w-48 aspect-[2/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0"><img src={vistaActual.data.info.logo} className="w-full h-full object-fill" /></div>
-                        <div className="flex-1 overflow-hidden pt-4">
-                            <h2 className="text-xl font-black uppercase italic mb-2 tracking-tighter leading-none truncate">{vistaActual.data.info.titulo}</h2>
-                            <div className="flex gap-4 mb-6">
-                                <span className="bg-zinc-800 px-3 py-1 rounded text-[12px] font-black uppercase text-green-500">{vistaActual.data.info.categoria}</span>
+                <div className="inset-0 fixed bg-zinc-950 z-[100] p-10 flex flex-col overflow-hidden">
+                    {/* FONDO DINAMICO BLUR */}
+                    {extraInfo?.backdrop_path && (
+                        <img src={`https://image.tmdb.org/t/p/original${extraInfo.backdrop_path}`} className="absolute inset-0 w-full h-full object-cover opacity-10 blur-xl" />
+                    )}
+                    
+                    {/* El items-start es la clave para que no se estire nada verticalmente */}
+                    <div className="relative z-10 flex items-start gap-12 mb-6">
+                        
+                        {/* Poster con tamaño fijo garantizado */}
+                        <div className="w-52 aspect-[2/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0 bg-zinc-900">
+                            <img src={vistaActual.data.info.logo} className="w-full h-full object-fill" />
+                        </div>
+                        
+                        <div className="flex-1 pt-4">
+                            <h2 className="text-4xl font-black uppercase italic mb-4 tracking-tighter leading-tight text-green-500">
+                                {vistaActual.data.info.titulo}
+                            </h2>
+                            <div className="flex gap-4 mb-6 items-center">
+                                <span className="bg-zinc-800 px-3 py-1 rounded-lg font-black text-[10px] text-zinc-400 uppercase border border-white/5">
+                                    {vistaActual.data.info.categoria}
+                                </span>
+                                {extraInfo?.vote_average && (
+                                    <span className="text-yellow-500 font-bold text-sm">⭐ {extraInfo.vote_average.toFixed(1)}</span>
+                                )}
                             </div>
-                            <button onClick={handleCerrarVista} className="bg-zinc-800 px-8 py-3 rounded-xl text-[10px] font-black uppercase hover:bg-green-600 transition-all shadow-lg border border-white/5">← Volver al Menú</button>
+                            
+                            {/* Reseña con limite de lineas para que no empuje el diseño */}
+                            <div className="max-w-2xl bg-black/40 p-6 rounded-2xl border border-white/5 backdrop-blur-sm">
+                                <p className="text-zinc-300 text-sm leading-relaxed italic font-medium line-clamp-6">
+                                    {cargandoInfo ? "Cargando sinopsis..." : extraInfo?.overview || "No hay reseña disponible para este título."}
+                                </p>
+                            </div>
                         </div>
 
-                        {/* VISOR ESTÁTICO CON ANIMACIÓN */}
-                        <div id="visor-container" className={`relative w-[480px] aspect-video bg-zinc-900 rounded-3xl overflow-hidden border-4 transition-all duration-300 ${focoZona === 'visor' ? 'border-green-600 scale-105 shadow-2xl shadow-green-600/30' : 'border-zinc-800'}`}>
+                        {/* Visor de video */}
+                        <div id="visor-container" className={`relative w-[480px] aspect-video bg-zinc-900 rounded-3xl overflow-hidden border-4 transition-all duration-500 flex-shrink-0 ${focoZona === 'visor' ? 'border-green-600 scale-105 shadow-[0_0_50px_rgba(22,163,74,0.3)]' : 'border-zinc-800 opacity-50'}`}>
                             <img src={vistaActual.data.info.logo} className="absolute inset-0 w-full h-full object-cover opacity-20 blur-md" />
-                            <img src={vistaActual.data.info.logo} className="relative z-10 w-full h-full object-contain p-8" />
-                            <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/30">
-                                <div className={`w-20 h-20 rounded-full flex items-center justify-center transition-all ${focoZona === 'visor' ? 'bg-green-600 scale-110 shadow-xl' : 'bg-white/20'}`}>
+                            <img src={vistaActual.data.info.logo} className="relative z-10 w-full h-full object-contain p-12" />
+                            <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/20">
+                                <div className={`w-20 h-20 rounded-full flex items-center justify-center transition-all ${focoZona === 'visor' ? 'bg-green-600 scale-110' : 'bg-white/20'}`}>
                                     <span className="text-4xl ml-2">▶</span>
                                 </div>
-                            </div>
-                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 bg-black/60 px-4 py-1 rounded-full text-[8px] font-black text-white/50 uppercase tracking-widest">
-                                PRESIONA OK PARA REPRODUCIR
                             </div>
                         </div>
                     </div>
 
-                    {vistaActual.data.info.categoria.toUpperCase().includes("SERIES") && (
-                        <div className="mt-auto border-t border-white/5 pt-6 bg-zinc-950/50 backdrop-blur">
-                            <div className="flex gap-3 mb-6 overflow-x-auto no-scrollbar py-1">
+                    {/* Selector de Episodios (Solo si es serie) */}
+                    {vistaActual.data.info.categoria.toUpperCase().includes("SERIE") && (
+                        <div className="mt-auto relative z-10 pt-4">
+                            <div className="flex gap-3 mb-4 overflow-x-auto no-scrollbar">
                                 {Array.from({ length: Math.ceil(vistaActual.data.items.length / 10) }).map((_, i) => (
-                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-xl text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-green-600 border-green-500 text-white shadow-lg' : 'bg-zinc-900 border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-105' : ''}`}>
+                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-xl text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-green-600 border-green-500 text-white' : 'bg-zinc-900 border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-105' : ''}`}>
                                         {i * 10 + 1}-{Math.min((i + 1) * 10, vistaActual.data.items.length)}
                                     </div>
                                 ))}
@@ -295,7 +351,6 @@ function App() {
                     )}
                 </div>
             )}
-            <style>{`.no-scrollbar::-webkit-scrollbar { display: none; } .scroll-smooth { scroll-behavior: smooth; }`}</style>
         </div>
     );
 }

@@ -288,7 +288,7 @@ function App() {
                 <div className="inset-0 fixed bg-zinc-950 z-[100] p-10 flex flex-col overflow-hidden">
                     {/* FONDO DINAMICO BLUR */}
                     {extraInfo?.backdrop_path && (
-                        <img src={`https://image.tmdb.org/t/p/original${extraInfo.backdrop_path}`} className="absolute inset-0 w-full h-full object-cover opacity-10 blur-xl" />
+                        <img src={`https://image.tmdb.org/t/p/original${extraInfo.backdrop_path}`} className="absolute inset-0 w-full h-full object-cover opacity-10 blur-sm" />
                     )}
                     
                     {/* El items-start es la clave para que no se estire nada verticalmente */}
@@ -357,3 +357,4 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+

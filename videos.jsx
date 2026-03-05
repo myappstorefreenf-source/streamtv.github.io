@@ -342,7 +342,7 @@ function App() {
                             </div>
                         </div>
 
-                        <div id="visor-container" className={`relative w-[480px] aspect-video bg-zinc-900 rounded-3xl overflow-hidden border-4 transition-all duration-500 flex-shrink-0 ${focoZona === 'visor' ? 'border-green-600 scale-105 shadow-[0_0_50px_rgba(22,163,74,0.3)]' : 'border-zinc-800 opacity-50'}`}>
+                        <div id="visor-container" className={`relative w-[320px] aspect-video bg-zinc-900 rounded-3xl overflow-hidden border-4 transition-all duration-500 flex-shrink-0 ${focoZona === 'visor' ? 'border-green-600 scale-100 shadow-[0_0_50px_rgba(22,163,74,0.3)]' : 'border-zinc-800 opacity-50'}`}>
                             <img src={vistaActual.data.info.logo} className="absolute inset-0 w-full h-full object-cover opacity-20 blur-md" />
                             <img src={vistaActual.data.info.logo} className="relative z-10 w-full h-full object-contain p-12" />
                             <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/20">
@@ -396,4 +396,3 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
-

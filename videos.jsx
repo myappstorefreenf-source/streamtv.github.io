@@ -25,7 +25,7 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
     }, [f, c, isBottom, bCol]);
 
     return (
-        <div translate="no" className="bg-zinc-900 p-4 border rounded-2xl border-white/10 shadow-2xl w-[320px] select-none">
+        <div translate="no" className="bg-black p-4 border rounded-2xl border-white/10 shadow-2xl w-[320px] select-none">
             <div className="grid grid-cols-6 gap-1 mb-2">
                 {filas.map((fila, rIdx) => fila.map((letra, cIdx) => (
                     <div key={`${rIdx}-${cIdx}`} className={`h-10 flex items-center justify-center rounded-lg font-bold text-sm ${!isBottom && f === rIdx && c === cIdx ? 'bg-green-600 text-white scale-105 shadow-md' : 'bg-zinc-800 text-zinc-500'}`}>{letra}</div>
@@ -42,7 +42,7 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
 
 const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total, esSugerencia }) => (
     <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esSugerencia ? 'w-24' : esEpisodio ? 'w-28 h-28' : 'w-32'} ${esSeleccionado ? 'scale-90 ring-4 ring-green-600 z-10 opacity-100 shadow-[0_0_20px_rgba(22,163,74,0.4)]' : 'opacity-70'}`}>
-        <div className={`rounded-xl overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-green-700 aspect-[2/3]' : esEpisodio ? 'h-full bg-zinc-800 shadow-inner rounded-2xl' : 'bg-zinc-900 aspect-[2/3] shadow-lg'}`}>
+        <div className={`rounded-xl overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-green-700 aspect-[2/3]' : esEpisodio ? 'h-full bg-zinc-800 shadow-inner rounded-2xl' : 'bg-black aspect-[2/3] shadow-lg'}`}>
             {esVerMas ? (
                 <div className="text-center p-4"><span className="block text-4xl mb-1">＋</span><span className="block text-[10px] font-black uppercase italic">Ver {total}</span></div>
             ) : esEpisodio ? (
@@ -288,7 +288,7 @@ function App() {
                             <span className="text-xs font-bold tracking-[0.3em] text-zinc-500">PREMIUM STREAMING</span>
                         </div>
                         <div className="relative flex flex-col items-end">
-                            <div id="fake-search" className={`w-72 px-5 py-3 rounded-xl border-2 transition-all flex justify-between items-center ${filaActiva === -1 ? 'border-green-600 bg-zinc-800 scale-105' : 'border-white/10 bg-zinc-900'}`}>
+                            <div id="fake-search" className={`w-72 px-5 py-3 rounded-xl border-2 transition-all flex justify-between items-center ${filaActiva === -1 ? 'border-green-600 bg-zinc-800 scale-105' : 'border-white/10 bg-black'}`}>
                                 <span className={`truncate text-sm ${busqueda ? 'text-white font-bold' : 'text-zinc-700'}`}>{busqueda || "Buscar contenido..."}</span>
                                 <div className="bg-green-600 text-[10px] px-2 py-0.5 rounded font-black shadow-lg">OK</div>
                             </div>
@@ -312,7 +312,7 @@ function App() {
 
             {/* --- GRILLA --- */}
             {vistaActual.tipo === 'grilla' && (
-                <div className="h-full overflow-y-auto p-12 no-scrollbar bg-zinc-950">
+                <div className="h-full overflow-y-auto p-12 no-scrollbar bg-black">
                     <h2 className="text-3xl font-black text-green-600 uppercase italic mb-10">{vistaActual.data.titulo}</h2>
                     <div className="grid grid-cols-6 gap-8 pb-32">
                         {vistaActual.data.items.map((v, i) => <VideoCard key={i} id={`grid-item-${i}`} video={v} esSeleccionado={indiceAux === i} />)}
@@ -322,13 +322,13 @@ function App() {
 
             {/* --- DETALLE --- */}
             {vistaActual.tipo === 'detalle' && (
-                <div className="inset-0 fixed bg-zinc-950 z-[100] p-10 flex flex-col overflow-hidden">
+                <div className="inset-0 fixed bg-black z-[100] p-10 flex flex-col overflow-hidden">
                     {extraInfo?.backdrop_path && (
                         <img src={`https://image.tmdb.org/t/p/original${extraInfo.backdrop_path}`} className="absolute inset-0 w-full h-full object-cover opacity-10 blur-sm" />
                     )}
                     
                     <div className="relative z-10 flex items-start gap-12 mb-6">
-                        <div className="w-52 aspect-[2/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0 bg-zinc-900">
+                        <div className="w-52 aspect-[2/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0 bg-black">
                             <img src={vistaActual.data.info.logo} className="w-full h-full object-fill" />
                         </div>
                         
@@ -367,7 +367,7 @@ function App() {
                         <div className="mt-4 relative z-10">
                             <div className="flex gap-3 mb-4 overflow-x-auto no-scrollbar">
                                 {Array.from({ length: Math.ceil(vistaActual.data.items.length / 10) }).map((_, i) => (
-                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-xl text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-green-600 border-green-500 text-white' : 'bg-zinc-900 border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-105' : ''}`}>
+                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-xl text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-green-600 border-green-500 text-white' : 'bg-black border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-105' : ''}`}>
                                         {i * 10 + 1}-{Math.min((i + 1) * 10, vistaActual.data.items.length)}
                                     </div>
                                 ))}
@@ -405,6 +405,7 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+
 
 
 

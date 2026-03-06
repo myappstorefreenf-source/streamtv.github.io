@@ -264,11 +264,20 @@ function App() {
 
     return (
         <div translate="no" className="inset-0 fixed bg-black text-white font-sans overflow-hidden select-none">
-            <style>{`
-                * { -webkit-tap-highlight-color: transparent !important; outline: none !important; }
-                .no-scrollbar::-webkit-scrollbar { display: none; }
-                .line-clamp-6 { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
-            `}</style>
+           <style>{`
+    * { -webkit-tap-highlight-color: transparent !important; outline: none !important; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .line-clamp-6 { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+    
+    /* FUERZA EL NEGRO EN EL REPRODUCTOR Y BORDES */
+    body, #root, .fixed { background-color: #000000 !important; }
+    video, img, iframe { background-color: #000000 !important; }
+    
+    /* Evita que los contenedores tengan fondos grises */
+    .bg-zinc-900 { background-color: #000000 !important; }
+    .bg-zinc-950 { background-color: #000000 !important; }
+    .bg-zinc-800 { background-color: #0f0f0f !important; }
+`}</style>
 
             {/* --- HOME --- */}
             {vistaActual.tipo === 'home' && (
@@ -396,4 +405,5 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+
 

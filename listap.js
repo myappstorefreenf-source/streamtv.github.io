@@ -301,4 +301,4 @@ http://carnival-gap-surgical-karaoke.trycloudflare.com/play/Terror/Hostel.Part.I
 #EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=No+Logo" group-title="Terror",Dorian.Gray (2009)
 http://carnival-gap-surgical-karaoke.trycloudflare.com/play/Terror/Dorian.Gray%20%282009%29/Dorian.Gray.2009.720p.BluRay.x264-SiNNERS.mkv
 #EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=No+Logo" group-title="Terror",A.Haunting.in.Salem (2011)
-http://carnival-gap-surgical-karaoke.trycloudflare.com/play/Terror/A.Haunting.in.Salem%20%282011%29/A.Haunting.in.Salem.2011.720p.BluRay.x264-aAF.mkv`
+http://carnival-gap-surgical-karaoke.trycloudflare.com/play/Terror/A.Haunting.in.Salem%20%282011%29/A.Haunting.in.Salem.2011.720p.BluRay.x264-aAF.mkv` 

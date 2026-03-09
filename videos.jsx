@@ -25,7 +25,7 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
     }, [f, c, isBottom, bCol]);
 
     return (
-        <div translate="no" className="bg-black p-4 border rounded-2xl border-white/10 shadow-2xl w-[320px] select-none">
+        <div translate="no" className="bg-zinc-900 p-4 border rounded-2xl border-white/10 shadow-2xl w-[320px] select-none">
             <div className="grid grid-cols-6 gap-1 mb-2">
                 {filas.map((fila, rIdx) => fila.map((letra, cIdx) => (
                     <div key={`${rIdx}-${cIdx}`} className={`h-10 flex items-center justify-center rounded-lg font-bold text-sm ${!isBottom && f === rIdx && c === cIdx ? 'bg-green-600 text-white scale-105 shadow-md' : 'bg-zinc-800 text-zinc-500'}`}>{letra}</div>
@@ -75,23 +75,22 @@ function App() {
         setExtraInfo(null);
         setSugerencias([]);
         try {
-            const queryClean = titulo.split('(')[0].split('-')[0].trim();
+            const queryClean = titulo.split('(')[0].split(/ S\d| E\d/i)[0].split('-')[0].trim();
             const response = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(queryClean)}&language=es-ES`);
             const data = await response.json();
             
             if (data.results && data.results.length > 0) {
                 const info = data.results[0];
                 setExtraInfo(info);
-
                 const tipo = info.media_type === 'tv' ? 'tv' : 'movie';
                 const simRes = await fetch(`https://api.themoviedb.org/3/${tipo}/${info.id}/recommendations?api_key=${API_KEY}&language=es-ES`);
                 const simData = await simRes.json();
-                
                 const formateadas = simData.results.slice(0, 10).map(item => ({
                     titulo: item.title || item.name,
                     logo: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
                     url: "#",
-                    categoria: tipo === 'tv' ? 'SERIE' : 'PELICULA'
+                    categoria: tipo === 'tv' ? 'SERIE' : 'PELICULA',
+                    items: []
                 }));
                 setSugerencias(formateadas);
             }
@@ -104,21 +103,60 @@ function App() {
         if (!rawData) return;
         const lineas = rawData.split('\n');
         const temp = {};
+        const seriesAgrupadas = {};
+
         for (let i = 0; i < lineas.length; i++) {
             const linea = lineas[i].trim();
             if (linea.startsWith('#EXTINF')) {
                 const next = lineas[i + 1] ? lineas[i + 1].trim() : "";
+                if (!next.startsWith('http')) continue;
+
                 const groupMatch = linea.match(/group-title="([^"]+)"/);
                 const category = groupMatch ? groupMatch[1] : "Otros";
                 const logoMatch = linea.match(/tvg-logo="([^"]+)"/);
+                const subMatch = linea.match(/subtitles="([^"]+)"/);
                 const nameMatch = linea.match(/tvg-name="([^"]+)"/);
-                const title = nameMatch ? nameMatch[1] : (linea.split(',')[1] || "Sin título");
-                if (next.startsWith('http')) {
+                let title = nameMatch ? nameMatch[1] : (linea.split(',')[1] || "Sin título");
+
+                const esSerie = category.toUpperCase().includes("SERIE");
+
+                if (esSerie) {
+                    const nombreSerie = title.split(/ S\d| E\d/i)[0].trim();
+                    if (!seriesAgrupadas[nombreSerie]) {
+                        seriesAgrupadas[nombreSerie] = {
+                            titulo: nombreSerie,
+                            logo: logoMatch ? logoMatch[1] : "",
+                            categoria: category,
+                            items: [],
+                            esSerie: true
+                        };
+                        if (!temp[category]) temp[category] = [];
+                        temp[category].push(seriesAgrupadas[nombreSerie]);
+                    }
+                    seriesAgrupadas[nombreSerie].items.push({
+                        titulo: title,
+                        url: next,
+                        subtitulo: subMatch ? subMatch[1] : null,
+                        logo: logoMatch ? logoMatch[1] : ""
+                    });
+                } else {
                     if (!temp[category]) temp[category] = [];
-                    temp[category].push({ titulo: title, logo: logoMatch ? logoMatch[1] : "", url: next, categoria: category });
+                    temp[category].push({ 
+                        titulo: title, 
+                        logo: logoMatch ? logoMatch[1] : "", 
+                        url: next, 
+                        subtitulo: subMatch ? subMatch[1] : null,
+                        categoria: category,
+                        esSerie: false,
+                        items: [{ url: next, titulo: title, subtitulo: subMatch ? subMatch[1] : null }]
+                    });
                 }
             }
         }
+        // Ordenar episodios de cada serie
+        Object.values(seriesAgrupadas).forEach(s => {
+            s.items.sort((a, b) => a.titulo.localeCompare(b.titulo, undefined, {numeric: true, sensitivity: 'base'}));
+        });
         setCatalogo(temp);
     }, []);
 
@@ -141,12 +179,14 @@ function App() {
         setSugerencias([]);
     };
 
-    const lanzarVideoNativo = (url, titulo) => {
-        if (window.AndroidInterface) window.AndroidInterface.playVideo(url, titulo);
-        else console.log("Play:", url);
+    const lanzarVideoNativo = (url, titulo, subtitulo = null) => {
+        if (window.AndroidInterface) {
+            window.AndroidInterface.playVideo(url, titulo, subtitulo);
+        } else {
+            console.log("Play:", url, "Sub:", subtitulo);
+        }
     };
 
-    // --- SCROLL AUTOMATICO ---
     useEffect(() => {
         if (mostrarTeclado) return;
         const timer = setTimeout(() => {
@@ -165,7 +205,6 @@ function App() {
         return () => clearTimeout(timer);
     }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, indiceAux, rangoCapitulos]);
 
-    // --- MANEJO DE TECLAS (NAVEGACION) ---
     useEffect(() => {
         const handleKeys = (e) => {
             const isEnter = e.key === 'Enter' || e.keyCode === 13;
@@ -199,7 +238,8 @@ function App() {
                             setIndiceAux(0);
                         } else {
                             const v = items[columnaActiva];
-                            setVistaActual({ tipo: 'detalle', data: { info: v, items } });
+                            // CORRECCIÓN: Pasar siempre v.items para que el detalle tenga qué mostrar
+                            setVistaActual({ tipo: 'detalle', data: { info: v, items: v.items } });
                             setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0);
                             buscarResena(v.titulo);
                         }
@@ -215,18 +255,20 @@ function App() {
                 if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - cols, 0));
                 if (isEnter) {
                     const v = vistaActual.data.items[indiceAux];
-                    setVistaActual({ tipo: 'detalle', data: { info: v, items: vistaActual.data.items }, fromGrid: vistaActual.data });
+                    setVistaActual({ tipo: 'detalle', data: { info: v, items: v.items }, fromGrid: vistaActual.data });
                     setFocoZona('visor');
                     buscarResena(v.titulo);
                 }
 
             } else if (vistaActual.tipo === 'detalle') {
-                const esSerie = vistaActual.data.info.categoria.toUpperCase().includes("SERIE");
+                const esSerie = vistaActual.data.info.esSerie;
                 
                 if (focoZona === 'visor') {
-                    if (isEnter) lanzarVideoNativo(vistaActual.data.info.url, vistaActual.data.info.titulo);
+                    if (isEnter) {
+                        const target = esSerie ? vistaActual.data.items[0] : vistaActual.data.info;
+                        lanzarVideoNativo(target.url, target.titulo, target.subtitulo);
+                    }
                     if (e.key === 'ArrowDown') setFocoZona(esSerie ? 'selector' : sugerencias.length > 0 ? 'sugerencias' : 'visor');
-                    if (focoZona === 'visor' && e.key === 'ArrowDown' && sugerencias.length > 0 && !esSerie) setIndiceAux(0);
                 } 
                 else if (focoZona === 'selector') {
                     if (e.key === 'ArrowUp') setFocoZona('visor');
@@ -242,7 +284,7 @@ function App() {
                     if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
                     if (isEnter) {
                         const ep = vistaActual.data.items[(rangoCapitulos * 10) + indiceAux];
-                        lanzarVideoNativo(ep.url, `${vistaActual.data.info.titulo} - Ep ${(rangoCapitulos * 10) + indiceAux + 1}`);
+                        lanzarVideoNativo(ep.url, ep.titulo, ep.subtitulo);
                     }
                 } 
                 else if (focoZona === 'sugerencias') {
@@ -251,7 +293,7 @@ function App() {
                     if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
                     if (isEnter) {
                         const sug = sugerencias[indiceAux];
-                        setVistaActual({ tipo: 'detalle', data: { info: sug, items: [sug] } });
+                        setVistaActual({ tipo: 'detalle', data: { info: sug, items: sug.items || [sug] } });
                         setFocoZona('visor'); setIndiceAux(0);
                         buscarResena(sug.titulo);
                     }
@@ -264,22 +306,17 @@ function App() {
 
     return (
         <div translate="no" className="inset-0 fixed bg-black text-white font-sans overflow-hidden select-none">
-          <style>{`
-    * { -webkit-tap-highlight-color: transparent !important; outline: none !important; }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .line-clamp-6 { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
-    
-    /* Fuerza fondo negro en cualquier reproductor de video */
-    video, iframe, .video-js, canvas { 
-        background-color: #000000 !important; 
-        background: #000000 !important;
-    }
-    
-    /* Evita que el WebView de Android muestre fondo gris al cargar */
-    body { background-color: #000000 !important; }
-`}</style>
+            <style>{`
+                * { -webkit-tap-highlight-color: transparent !important; outline: none !important; }
+                .no-scrollbar::-webkit-scrollbar { display: none; }
+                .line-clamp-6 { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+                body, #root, .fixed { background-color: #000000 !important; }
+                video, img, iframe { background-color: #000000 !important; }
+                .bg-zinc-900 { background-color: #000000 !important; }
+                .bg-zinc-950 { background-color: #000000 !important; }
+                .bg-zinc-800 { background-color: #0f0f0f !important; }
+            `}</style>
 
-            {/* --- HOME --- */}
             {vistaActual.tipo === 'home' && (
                 <div className="h-full overflow-y-auto p-12 no-scrollbar">
                     <div className="flex justify-between items-start mb-16">
@@ -288,7 +325,7 @@ function App() {
                             <span className="text-xs font-bold tracking-[0.3em] text-zinc-500">PREMIUM STREAMING</span>
                         </div>
                         <div className="relative flex flex-col items-end">
-                            <div id="fake-search" className={`w-72 px-5 py-3 rounded-xl border-2 transition-all flex justify-between items-center ${filaActiva === -1 ? 'border-green-600 bg-zinc-800 scale-105' : 'border-white/10 bg-black'}`}>
+                            <div id="fake-search" className={`w-72 px-5 py-3 rounded-xl border-2 transition-all flex justify-between items-center ${filaActiva === -1 ? 'border-green-600 bg-zinc-800 scale-105' : 'border-white/10 bg-zinc-900'}`}>
                                 <span className={`truncate text-sm ${busqueda ? 'text-white font-bold' : 'text-zinc-700'}`}>{busqueda || "Buscar contenido..."}</span>
                                 <div className="bg-green-600 text-[10px] px-2 py-0.5 rounded font-black shadow-lg">OK</div>
                             </div>
@@ -310,9 +347,8 @@ function App() {
                 </div>
             )}
 
-            {/* --- GRILLA --- */}
             {vistaActual.tipo === 'grilla' && (
-                <div className="h-full overflow-y-auto p-12 no-scrollbar bg-black">
+                <div className="h-full overflow-y-auto p-12 no-scrollbar bg-zinc-950">
                     <h2 className="text-3xl font-black text-green-600 uppercase italic mb-10">{vistaActual.data.titulo}</h2>
                     <div className="grid grid-cols-6 gap-8 pb-32">
                         {vistaActual.data.items.map((v, i) => <VideoCard key={i} id={`grid-item-${i}`} video={v} esSeleccionado={indiceAux === i} />)}
@@ -320,15 +356,14 @@ function App() {
                 </div>
             )}
 
-            {/* --- DETALLE --- */}
             {vistaActual.tipo === 'detalle' && (
-                <div className="inset-0 fixed bg-black z-[100] p-10 flex flex-col overflow-hidden">
+                <div className="inset-0 fixed bg-zinc-950 z-[100] p-10 flex flex-col overflow-hidden">
                     {extraInfo?.backdrop_path && (
                         <img src={`https://image.tmdb.org/t/p/original${extraInfo.backdrop_path}`} className="absolute inset-0 w-full h-full object-cover opacity-10 blur-sm" />
                     )}
                     
                     <div className="relative z-10 flex items-start gap-12 mb-6">
-                        <div className="w-52 aspect-[2/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0 bg-black">
+                        <div className="w-52 aspect-[2/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0 bg-zinc-900">
                             <img src={vistaActual.data.info.logo} className="w-full h-full object-fill" />
                         </div>
                         
@@ -362,12 +397,11 @@ function App() {
                         </div>
                     </div>
 
-                    {/* SECCION SERIES */}
-                    {vistaActual.data.info.categoria.toUpperCase().includes("SERIE") && (
+                    {vistaActual.data.info.esSerie && (
                         <div className="mt-4 relative z-10">
                             <div className="flex gap-3 mb-4 overflow-x-auto no-scrollbar">
                                 {Array.from({ length: Math.ceil(vistaActual.data.items.length / 10) }).map((_, i) => (
-                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-xl text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-green-600 border-green-500 text-white' : 'bg-black border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-105' : ''}`}>
+                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-xl text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-green-600 border-green-500 text-white' : 'bg-zinc-900 border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-105' : ''}`}>
                                         {i * 10 + 1}-{Math.min((i + 1) * 10, vistaActual.data.items.length)}
                                     </div>
                                 ))}
@@ -380,19 +414,12 @@ function App() {
                         </div>
                     )}
 
-                    {/* SECCION SUGERENCIAS */}
                     {sugerencias.length > 0 && (
                         <div className="mt-auto relative z-10 pt-4 pb-8">
                             <h3 className="text-[10px] font-black text-green-500 uppercase tracking-widest mb-3 opacity-60">Te podría gustar</h3>
                             <div className="flex gap-4 overflow-x-auto no-scrollbar">
                                 {sugerencias.map((sug, i) => (
-                                    <VideoCard 
-                                        key={i} 
-                                        id={`sug-${i}`} 
-                                        video={sug} 
-                                        esSugerencia={true} 
-                                        esSeleccionado={focoZona === 'sugerencias' && indiceAux === i} 
-                                    />
+                                    <VideoCard key={i} id={`sug-${i}`} video={sug} esSugerencia={true} esSeleccionado={focoZona === 'sugerencias' && indiceAux === i} />
                                 ))}
                             </div>
                         </div>
@@ -405,8 +432,3 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
-
-
-
-
-

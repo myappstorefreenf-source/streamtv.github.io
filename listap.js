@@ -62,7 +62,7 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/ice%20wom
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/los%20angeles%20de%20lena/los%20angeles%20de%20lena.mp4
 #EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/lUo6Z1yryaqM3njHZRHbxvtXFjR.jpg" group-title="Adultos",dirty secrets
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/dirty%20secrets/dirty%20secrets.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Adultos",las perversas fantasias de monique
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BNDE5YzJlZWUtZjRlNS00NmZjLWFhNDEtY2UxNDlmZjk5ZDg2XkEyXkFqcGc@._V1_QL75_UY281_CR6,0,190,281_.jpg" group-title="Adultos",las perversas fantasias de monique
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/las%20perversas%20fantasias%20de%20monique/las%20perversas%20fantasias%20de%20monique.mp4
 #EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/huJxYV08PB3uxrBNbhE2e5msT4f.jpg" group-title="Adultos",sueño
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/sue%C3%B1o/Sue%C3%B1o.mp4

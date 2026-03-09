@@ -6,23 +6,23 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Comedia/Thats.My.
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Comedia/Oso%20intoxicado%20%282023%29/Oso%20intoxicado%20%282023%29%20.mp4
 #EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/miZFgV81xG324rpUknQX8dtXuBl.jpg" group-title="Aventura",Spider-Man - No Way Home (2021)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Aventura/Spider-Man%20-%20No%20Way%20Home%20%282021%29/Spider-Man%20-%20No%20Way%20Home%20%282021%29.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Series",The Last of Us S01E01.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@._V1_.jpg" group-title="Series",The Last of Us S01E01.mp4
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Series/The%20Last%20of%20Us%20%282023%29/The%20Last%20of%20Us%20S01E01.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Series",The Last of Us S01E02.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@._V1_.jpg" group-title="Series",The Last of Us S01E02.mp4
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Series/The%20Last%20of%20Us%20%282023%29/The%20Last%20of%20Us%20S01E02.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Series",The Last of Us S01E03.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@._V1_.jpg" group-title="Series",The Last of Us S01E03.mp4
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Series/The%20Last%20of%20Us%20%282023%29/The%20Last%20of%20Us%20S01E03.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Series",The Last of Us S01E04.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@._V1_.jpg" group-title="Series",The Last of Us S01E04.mp4
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Series/The%20Last%20of%20Us%20%282023%29/The%20Last%20of%20Us%20S01E04.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Series",The Last of Us S01E05.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@._V1_.jpg" group-title="Series",The Last of Us S01E05.mp4
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Series/The%20Last%20of%20Us%20%282023%29/The%20Last%20of%20Us%20S01E05.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Series",The Last of Us S01E06.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@._V1_.jpg" group-title="Series",The Last of Us S01E06.mp4
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Series/The%20Last%20of%20Us%20%282023%29/The%20Last%20of%20Us%20S01E06.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Series",The Last of Us S01E07.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@._V1_.jpg" group-title="Series",The Last of Us S01E07.mp4
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Series/The%20Last%20of%20Us%20%282023%29/The%20Last%20of%20Us%20S01E07.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Series",The Last of Us S01E08.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@._V1_.jpg" group-title="Series",The Last of Us S01E08.mp4
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Series/The%20Last%20of%20Us%20%282023%29/The%20Last%20of%20Us%20S01E08.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Series",The Last of Us S01E09.mp4
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@._V1_.jpg" group-title="Series",The Last of Us S01E09.mp4
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Series/The%20Last%20of%20Us%20%282023%29/The%20Last%20of%20Us%20S01E09.mp4
 #EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/md3ozIcllehMaKbl4Zb3WIoDJqb.jpg" group-title="Accion",sand castel
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Accion/sand%20castel/sand%20castel.mp4
@@ -94,7 +94,7 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Romance
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Romance/One.Day%20%282011%29/One.Day.2011.BluRay.720p.DTS.x264-CHD.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/Hanna%20%282011%29/Hanna.2011.RETAIL.720p.BluRay.X264-AMIABLE.srt" tvg-logo="https://image.tmdb.org/t/p/w500/6QDeHwBXDHbCbuzStgUpuUAqnap.jpg" group-title="Drama",Hanna (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/Hanna%20%282011%29/Hanna.2011.RETAIL.720p.BluRay.X264-AMIABLE.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Drama",Down.Terrace.2009
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BMTc0NTczMTc1Nl5BMl5BanBnXkFtZTcwOTYwMTE5Mw@@._V1_FMjpg_UX1000_.jpg" group-title="Drama",Down.Terrace.2009
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/Down.Terrace.2009/Down.Terrace.2009.LiMiTED.720p.BluRay.x264-NODLABS.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/Puncture%20%282011%29/Puncture.2011.srt" tvg-logo="https://image.tmdb.org/t/p/w500/it1gBvSFsgMCjL0OzYx5g8VcmuJ.jpg" group-title="Drama",Puncture (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/Puncture%20%282011%29/Puncture.2011.mp4
@@ -118,11 +118,11 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/I
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/J.Edgar%20%282011%29/J.Edgar.2011.720p.BluRay.x264-SPARKS.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/Cinema.Verite%20%282011%29/Cinema.Verite.2011.720p.BluRay.x264-Rx.srt" tvg-logo="https://image.tmdb.org/t/p/w500/yyXW04JEfVHBoK6ijeHiBle0odo.jpg" group-title="Drama",Cinema.Verite (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/Cinema.Verite%20%282011%29/Cinema.Verite.2011.720p.BluRay.x264-Rx.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/The.Awakening%20%282011%29%20SDX/The.Awakening.2011.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Drama",The.Awakening (2011) SDX
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/The.Awakening%20%282011%29%20SDX/The.Awakening.2011.srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BMzk0ODc1NDMxOV5BMl5BanBnXkFtZTcwNTAzMzgwOA@@._V1_.jpg" group-title="Drama",The.Awakening (2011) SDX
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/The.Awakening%20%282011%29%20SDX/The.Awakening.2011.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/The.Ledge%20%282011%29/The.Ledge%20%282011%29.srt" tvg-logo="https://image.tmdb.org/t/p/w500/bSZhgnlqfajabEHfXVmwCZIcpSI.jpg" group-title="Drama",The.Ledge (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/The.Ledge%20%282011%29/The.Ledge%20%282011%29.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/Snowtown%20%282011%29%20SDX/Snowtown%20%282011%29%20SDX.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Drama",Snowtown (2011) SDX
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/Snowtown%20%282011%29%20SDX/Snowtown%20%282011%29%20SDX.srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BMTM1NTE3MjkxM15BMl5BanBnXkFtZTcwMjE1Nzg4NA@@._V1_.jpg" group-title="Drama",Snowtown (2011) SDX
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/Snowtown%20%282011%29%20SDX/Snowtown%20%282011%29%20SDX.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/The.Others%20%282001%29/The.Others%20%282001%29.srt" tvg-logo="https://image.tmdb.org/t/p/w500/u03kblxsv3zar3Uqt6sRfICU9L6.jpg" group-title="Drama",The.Others (2001)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Drama/The.Others%20%282001%29/The.Others%20%282001%29.mp4
@@ -166,7 +166,7 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Captain.America.The.First.Avenger%20%282011%29/Captain.America.The.First.Avenger.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/The.Dead%20%282010%29/The.Dead%20%282010%29.srt" tvg-logo="https://image.tmdb.org/t/p/w500/Uxhy6OCDoACONHrNpkHzGXNOGO.jpg" group-title="Accion",The.Dead (2010)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/The.Dead%20%282010%29/The.Dead%20%282010%29.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Ninja.Assassin.2009.Bluray.1080p.DTS-HD.MA.x264-FLAWL3SS/Ninja.Assassin.2009.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Accion",Ninja.Assassin.2009.Bluray.1080p.DTS-HD.MA.x264-FLAWL3SS
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Ninja.Assassin.2009.Bluray.1080p.DTS-HD.MA.x264-FLAWL3SS/Ninja.Assassin.2009.srt" tvg-logo="https://m.media-amazon.com/images/S/pv-target-images/fe898627f1c638a1638b7f943387d4937e9ed66b4afa517ad188611410c6577b.jpg" group-title="Accion",Ninja.Assassin.2009.Bluray.1080p.DTS-HD.MA.x264-FLAWL3SS
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Ninja.Assassin.2009.Bluray.1080p.DTS-HD.MA.x264-FLAWL3SS/Ninja.Assassin.2009.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/The.Devils.Double%20%282011%29/The.Devils.Double%20%282011%29.srt" tvg-logo="https://image.tmdb.org/t/p/w500/4vcqzoNkBcgsYabRgV41iXUYkOD.jpg" group-title="Accion",The.Devils.Double (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/The.Devils.Double%20%282011%29/The.Devils.Double%20%282011%29.mp4
@@ -210,23 +210,23 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Drive.Angry%20%282011%29/Drive.Angry.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Catch.44%20%282011%29/Catch.44.2011.srt" tvg-logo="https://image.tmdb.org/t/p/w500/yevJ6BVh0jX9V0jrbe8R5jxBoCy.jpg" group-title="Accion",Catch.44 (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Catch.44%20%282011%29/Catch.44.2011.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/The.Town.EXTENDED%20%282010%29/The.Town.EXTENDED%20%282010%29.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Accion",The.Town.EXTENDED (2010)
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/The.Town.EXTENDED%20%282010%29/The.Town.EXTENDED%20%282010%29.srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BM2I4ZWNhYjgtZmI1OS00MTliLTg3YWQtNjg2ZmUyY2Y5NzdkXkEyXkFqcGc@._V1_.jpg" group-title="Accion",The.Town.EXTENDED (2010)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/The.Town.EXTENDED%20%282010%29/The.Town.EXTENDED%20%282010%29.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/13%20Thirteen%202010/13.Thirteen.2010..srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Accion",13 Thirteen 2010
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/13%20Thirteen%202010/13.Thirteen.2010..srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BMTkwMjYyNjk2Nl5BMl5BanBnXkFtZTcwMjczODUwNw@@._V1_.jpg" group-title="Accion",13 Thirteen 2010
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/13%20Thirteen%202010/13.Thirteen.2010..mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Margin.Call%20%282011%29/Margin.Call.LIMITED.srt" tvg-logo="https://image.tmdb.org/t/p/w500/lb79wPjijIXf1ZE6KhWVGUtv9AF.jpg" group-title="Accion",Margin.Call (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Margin.Call%20%282011%29/Margin.Call.LIMITED.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Drive%20%282011%29/Drive.2011.srt" tvg-logo="https://image.tmdb.org/t/p/w500/r63LaAngw0LAkgYmvA5gllmOUjm.jpg" group-title="Accion",Drive (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Drive%20%282011%29/Drive.2011.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Kites%20%282010%29%20SDX/Kites.2010.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Accion",Kites (2010) SDX
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Kites%20%282010%29%20SDX/Kites.2010.srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BOTJhMGM1NDAtNDJmOS00NDVlLWIzNzAtZTEzY2FhZTdjY2IxXkEyXkFqcGc@._V1_.jpg" group-title="Accion",Kites (2010) SDX
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Kites%20%282010%29%20SDX/Kites.2010.mp4
 #EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/rdQrh59Gq0DX8OmoQeECUtBkoH5.jpg" group-title="Accion",Fast.And.Furious 2001
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Fast.And.Furious%202001/inf-faf.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Terminator.Salvation.Director%27s.Cut%20%282009%29/Terminator.Salvation.2009.Director%27s.Cut.1080p.BluRay.DTS.x264-WiKi.srt" tvg-logo="https://image.tmdb.org/t/p/w500/qPORLTWsJrqB27xXCkJRMjMl7fk.jpg" group-title="Accion",Terminator.Salvation.Director's.Cut (2009)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Terminator.Salvation.Director%27s.Cut%20%282009%29/Terminator.Salvation.2009.Director%27s.Cut.1080p.BluRay.DTS.x264-WiKi.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Limitless.UNRATED%20%282011%29/Limitless.UNRATED.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Accion",Limitless.UNRATED (2011)
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Limitless.UNRATED%20%282011%29/Limitless.UNRATED.srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BMWQ4OTQ4YzYtODlmMi00ZjA0LTg5M2QtZWUzNjA5N2NmODE5XkEyXkFqcGc@._V1_.jpg" group-title="Accion",Limitless.UNRATED (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Limitless.UNRATED%20%282011%29/Limitless.UNRATED.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Red.Dog%20%282011%29%20SDX/Red.Dog.2011.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Accion",Red.Dog (2011) SDX
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Red.Dog%20%282011%29%20SDX/Red.Dog.2011.srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BMzM3NTE2NjY5M15BMl5BanBnXkFtZTcwMTY0MzUwNg@@._V1_FMjpg_UX1000_.jpg" group-title="Accion",Red.Dog (2011) SDX
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Red.Dog%20%282011%29%20SDX/Red.Dog.2011.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Rise.of.the.Planet.of.the.Apes%20%282011%29/Rise.of.the.Planet.of.the.Apes.2011.srt" tvg-logo="https://image.tmdb.org/t/p/w500/aGyeGL033oG4eVaf0CiXNqdUTbH.jpg" group-title="Accion",Rise.of.the.Planet.of.the.Apes (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Rise.of.the.Planet.of.the.Apes%20%282011%29/Rise.of.the.Planet.of.the.Apes.2011.mp4
@@ -236,7 +236,7 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Iron.Man.2%20%282010%29/Iron.Man.2.2010.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Red.State%20%282011%29/Red.State.srt" tvg-logo="https://image.tmdb.org/t/p/w500/vqaMx567PkL9b1qlI0Cm1XqTCs5.jpg" group-title="Accion",Red.State (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Red.State%20%282011%29/Red.State.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Memento.REMASTERED%20%282000%29%20SDX/Memento.2000.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Accion",Memento.REMASTERED (2000) SDX
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Memento.REMASTERED%20%282000%29%20SDX/Memento.2000.srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BMGQ3Y2Q4NjktN2E4Ny00Y2Q2LTliZDUtZTNiNjRhY2I0NGIyXkEyXkFqcGc@._V1_.jpg" group-title="Accion",Memento.REMASTERED (2000) SDX
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Accion/Memento.REMASTERED%20%282000%29%20SDX/Memento.2000.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Familiar/Frozen%20%282010%29/Frozen.2010.BluRay.1080p.DTS.x264-CHD.srt" tvg-logo="https://image.tmdb.org/t/p/w500/sGNuWC4BwqOB4l0tkbKwLy70tXC.jpg" group-title="Familiar",Frozen (2010)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Familiar/Frozen%20%282010%29/Frozen.2010.BluRay.1080p.DTS.x264-CHD.mp4
@@ -270,7 +270,7 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/Faces.In.The.Crowd%20%282011%29/Faces.In.The.Crowd.2011.720p.BluRay.x264-Japhson.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/Retreat%20%282011%29/Retreat.2011.srt" tvg-logo="https://image.tmdb.org/t/p/w500/w72RsZwfFGjpOKGUXrNMEmWStdO.jpg" group-title="Triler",Retreat (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/Retreat%20%282011%29/Retreat.2011.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/Choose%20%282011%29%20SDX/Choose.2011.BluRay.720p.DTS.X264-CHD.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Triler",Choose (2011) SDX
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/Choose%20%282011%29%20SDX/Choose.2011.BluRay.720p.DTS.X264-CHD.srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BMTc4OTI2MDgzM15BMl5BanBnXkFtZTcwMjAzNDY3NA@@._V1_FMjpg_UX1000_.jpg" group-title="Triler",Choose (2011) SDX
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/Choose%20%282011%29%20SDX/Choose.2011.BluRay.720p.DTS.X264-CHD.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/Beneath.The.Darkness%20%282011%29/Beneath.The.Darkness.2011.720p.BluRay.x264.DTS-HDChina.srt" tvg-logo="https://image.tmdb.org/t/p/w500/vzNQqXgIMxAAKQqnDziFtgksLbo.jpg" group-title="Triler",Beneath.The.Darkness (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/Beneath.The.Darkness%20%282011%29/Beneath.The.Darkness.2011.720p.BluRay.x264.DTS-HDChina.mp4
@@ -282,9 +282,9 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/And.Soon.The.Darkness%20%282010%29/And.Soon.The.Darkness.2010.720p.BluRay.x264-Japhson.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/The.Caller%20%282011%29/The.Caller%20%282011%29.srt" tvg-logo="https://image.tmdb.org/t/p/w500/uTMassx0Cr9IjTOQFUMRGvtjECW.jpg" group-title="Triler",The.Caller (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Triler/The.Caller%20%282011%29/The.Caller%20%282011%29.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/The.Change-Up.UNRATED%20%282011%29/The.Change-Up.UNRATED%20%282011%29.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Comedia",The.Change-Up.UNRATED (2011)
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/The.Change-Up.UNRATED%20%282011%29/The.Change-Up.UNRATED%20%282011%29.srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BMTk3NTM4NDg3OF5BMl5BanBnXkFtZTcwNDk3MzEwNQ@@._V1_.jpg" group-title="Comedia",The.Change-Up.UNRATED (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/The.Change-Up.UNRATED%20%282011%29/The.Change-Up.UNRATED%20%282011%29.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Comedia",Killers.2010.Bluray.720p.DTS.x264-CHD
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BMTU0NDIwOTcwOV5BMl5BanBnXkFtZTcwNjU3NTQ0Mw@@._V1_.jpg" group-title="Comedia",Killers.2010.Bluray.720p.DTS.x264-CHD
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Killers.2010.Bluray.720p.DTS.x264-CHD/Killers.2010.Bluray.720p.DTS.x264-CHD.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Jackass.3.5%20%282011%29%20SDX/Jackass.3.5.2011.720p.BluRay.X264-7SinS.srt" tvg-logo="https://image.tmdb.org/t/p/w500/o0cILOYbqfppTLAhkI2tzA2BWtX.jpg" group-title="Comedia",Jackass.3.5 (2011) SDX
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Jackass.3.5%20%282011%29%20SDX/Jackass.3.5.2011.720p.BluRay.X264-7SinS.mp4
@@ -302,7 +302,7 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Horrible.Bosses%20%282011%29/Horrible.Bosses.EXTENDED.REPACK.720p.Bluray.x264-TWiZTED.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Hall.Pass%20%282011%29/Hall.Pass.2011.720p.BluRay.x264-Felony.srt" tvg-logo="https://image.tmdb.org/t/p/w500/pgeAE9a5Vucq9ZLAhWHK9WEez3e.jpg" group-title="Comedia",Hall.Pass (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Hall.Pass%20%282011%29/Hall.Pass.2011.720p.BluRay.x264-Felony.mp4
-#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Barry.Munday.2010/barry.munday.2010.720p.bluray.x264-brmp.srt" tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Comedia",Barry.Munday.2010
+#EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Barry.Munday.2010/barry.munday.2010.720p.bluray.x264-brmp.srt" tvg-logo="https://m.media-amazon.com/images/M/MV5BMTM0MDQ2Njc1M15BMl5BanBnXkFtZTcwNzU2NjYxNA@@._V1_.jpg" group-title="Comedia",Barry.Munday.2010
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Barry.Munday.2010/barry.munday.2010.720p.bluray.x264-brmp.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Get.Him.to.the.Greek.Unrated%20%282010%29/Get.Him.to.the.Greek.2010.Unrated.BluRay.720p.DTS.x264-CHD.srt" tvg-logo="https://image.tmdb.org/t/p/w500/2pI3EsXCgERBrirQxpmJJeklRBl.jpg" group-title="Comedia",Get.Him.to.the.Greek.Unrated (2010)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Comedia/Get.Him.to.the.Greek.Unrated%20%282010%29/Get.Him.to.the.Greek.2010.Unrated.BluRay.720p.DTS.x264-CHD.mp4

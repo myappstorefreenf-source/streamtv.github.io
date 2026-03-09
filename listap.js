@@ -46,19 +46,19 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Accion/5.Days.of.
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Terror/Project.X%20%282012%29/Project.X.2012.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Drama/The.Good.Doctor%20%282011%29/The.Good.Doctor.2011.srt" tvg-logo="https://image.tmdb.org/t/p/w500/iXVMUSJaIhSmJxzlKJFwvXmHm8G.jpg" group-title="Drama",The.Good.Doctor (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Drama/The.Good.Doctor%20%282011%29/The.Good.Doctor.2011.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/vHoaCAv5deVdaJTRHqNBv6XOrL1.jpg" group-title="Adultos",just visite
+#EXTINF:-1 tvg-logo="https://imgs1cdn.adultempire.com/products/72/1639372h.jpg" group-title="Adultos",just visite
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/just%20visite/just%20visite.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/8J6M4gMxvFiQUq2j8eRIfRzAoiN.jpg" group-title="Adultos",pirates 2
+#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/j4QVZsnGYRWg19C0D70QTbGP55j.jpg" group-title="Adultos",pirates 2
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/pirates%202/Pirates2.mp4
-#EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Adultos",cugine vizise
+#EXTINF:-1 tvg-logo="https://www.erosdvd.it/img/Prodotti/000/012/235/22083.jpg" group-title="Adultos",cugine vizise
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/cugine%20vizise/cugine%20viziose.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/65oeFSIfvSuNi2g28slZaFJ8L86.jpg" group-title="Adultos",La niñera
+#EXTINF:-1 tvg-logo="https://ptx.cdntrex.com/contents/videos_screenshots/61000/61313/preview.jpg" group-title="Adultos",La niñera
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/La%20ni%C3%B1era/La%20Ni%C3%B1era.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/pklHgVOruEu9wM7CTB4VdYEME8z.jpg" group-title="Adultos",ice woman 2
+#EXTINF:-1 tvg-logo="https://imgs1cdn.adultempire.com/products/78/29678h.jpg" group-title="Adultos",ice woman 2
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/ice%20woman%202/Ice%20Woman%202%20-%20TubePornClassic.com.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/pklHgVOruEu9wM7CTB4VdYEME8z.jpg" group-title="Adultos",ice woman
+#EXTINF:-1 tvg-logo="https://imgs1cdn.adultempire.com/products/00/11300h.jpg" group-title="Adultos",ice woman
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/ice%20woman/ice%20woman.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/9YZeyalCdYtrJ4U6hl2J9cyI8iq.jpg" group-title="Adultos",los angeles de lena
+#EXTINF:-1 tvg-logo="https://m.media-amazon.com/images/M/MV5BNzBjMWQ2MzItM2E5Yy00MjU5LWExYzktNzkwNWIzNTEwOTQ5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" group-title="Adultos",los angeles de lena
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/los%20angeles%20de%20lena/los%20angeles%20de%20lena.mp4
 #EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/lUo6Z1yryaqM3njHZRHbxvtXFjR.jpg" group-title="Adultos",dirty secrets
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/dirty%20secrets/dirty%20secrets.mp4
@@ -66,21 +66,21 @@ http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/dirty%20s
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/las%20perversas%20fantasias%20de%20monique/las%20perversas%20fantasias%20de%20monique.mp4
 #EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/huJxYV08PB3uxrBNbhE2e5msT4f.jpg" group-title="Adultos",sueño
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/sue%C3%B1o/Sue%C3%B1o.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/1Gk8iihu4Q4BGh2n1IwNLB3zM8E.jpg" group-title="Adultos",tarzan
+#EXTINF:-1 tvg-logo="https://wilfmovies.com/wp-content/uploads/2019/12/coUpJLjJpSb4l3fJnb7HPdBhRjH.jpg" group-title="Adultos",tarzan
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/tarzan/tarzan%20la%20venganza%20de%20jane.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/owF9NIcQOPFAOjp2pni8BsVlnRq.jpg" group-title="Adultos",Proyecto x
+#EXTINF:-1 tvg-logo="https://imgs1cdn.adultempire.com/products/21/3071121h.jpg" group-title="Adultos",Proyecto x
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/Proyecto%20x/Project%20X%20-%20Episode%201%20HoHoJ.TV%20Player.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/owF9NIcQOPFAOjp2pni8BsVlnRq.jpg" group-title="Adultos",Proyecto x
+#EXTINF:-1 tvg-logo="https://imgs1cdn.adultempire.com/products/21/3071121h.jpg" group-title="Adultos",Proyecto x
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/Proyecto%20x/Project%20X%20-%20Episode%202%20Ryan%20Reid%20Holly.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/owF9NIcQOPFAOjp2pni8BsVlnRq.jpg" group-title="Adultos",Proyecto x
+#EXTINF:-1 tvg-logo="https://imgs1cdn.adultempire.com/products/21/3071121h.jpg" group-title="Adultos",Proyecto x
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/Proyecto%20x/Project%20X%20-%20Episode%203%20HoHoJ.TV%20Player.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/owF9NIcQOPFAOjp2pni8BsVlnRq.jpg" group-title="Adultos",Proyecto x
+#EXTINF:-1 tvg-logo="https://imgs1cdn.adultempire.com/products/21/3071121h.jpg" group-title="Adultos",Proyecto x
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/Proyecto%20x/Project%20X%20-%20Episode%204%20Mick%20Blue%20AlexJ.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/owF9NIcQOPFAOjp2pni8BsVlnRq.jpg" group-title="Adultos",Proyecto x
+#EXTINF:-1 tvg-logo="https://imgs1cdn.adultempire.com/products/21/3071121h.jpg" group-title="Adultos",Proyecto x
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/Proyecto%20x/Project%20X%20-%20Episodio%205%20final.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/iSx6SVqeVxGEh5QhHtJGrO8Z26Y.jpg" group-title="Adultos",the stand in
+#EXTINF:-1 tvg-logo="https://imgs1cdn.adultempire.com/products/32/45032h.jpg" group-title="Adultos",the stand in
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/the%20stand%20in/the%20stand%20in.mp4
-#EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/yw44YF67vCgacmz12hAnaQgUZbZ.jpg" group-title="Adultos",el ultimo metro
+#EXTINF:-1 tvg-logo="https://eroticmv.com/wp-content/uploads/2021/08/wy0m64zrmijh.jpg" group-title="Adultos",el ultimo metro
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/Adultos/el%20ultimo%20metro/el%20ultimo%20metro.mp4
 #EXTINF:-1 subtitles="http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Romance/Larry.Crowne%20%282011%29/Larry.Crowne.2011.720p.BluRay.x264-iNFAMOUS.srt" tvg-logo="https://image.tmdb.org/t/p/w500/uQ9UeFyg8MKc4dX0ppuWsp7ZqKE.jpg" group-title="Romance",Larry.Crowne (2011)
 http://ministry-cocktail-genetic-almost.trycloudflare.com/play/disco20tb/Romance/Larry.Crowne%20%282011%29/Larry.Crowne.2011.720p.BluRay.x264-iNFAMOUS.mp4

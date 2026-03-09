@@ -91,7 +91,8 @@ function App() {
                     titulo: item.title || item.name,
                     logo: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
                     url: "#",
-                    categoria: tipo === 'tv' ? 'SERIE' : 'PELICULA'
+                    categoria: tipo === 'tv' ? 'SERIE' : 'PELICULA',
+                    subtitles: ""
                 }));
                 setSugerencias(formateadas);
             }
@@ -99,28 +100,100 @@ function App() {
         setCargandoInfo(false);
     };
 
-    useEffect(() => {
-        const rawData = window.m3uData || "";
-        if (!rawData) return;
-        const lineas = rawData.split('\n');
-        const temp = {};
-        for (let i = 0; i < lineas.length; i++) {
-            const linea = lineas[i].trim();
-            if (linea.startsWith('#EXTINF')) {
-                const next = lineas[i + 1] ? lineas[i + 1].trim() : "";
-                const groupMatch = linea.match(/group-title="([^"]+)"/);
-                const category = groupMatch ? groupMatch[1] : "Otros";
-                const logoMatch = linea.match(/tvg-logo="([^"]+)"/);
-                const nameMatch = linea.match(/tvg-name="([^"]+)"/);
-                const title = nameMatch ? nameMatch[1] : (linea.split(',')[1] || "Sin título");
-                if (next.startsWith('http')) {
-                    if (!temp[category]) temp[category] = [];
-                    temp[category].push({ titulo: title, logo: logoMatch ? logoMatch[1] : "", url: next, categoria: category });
-                }
+  useEffect(() => {
+
+    const rawData = window.m3uData || "";
+    if (!rawData) return;
+
+    const lineas = rawData.split('\n');
+
+    const temp = {};
+    const seriesMap = {};
+
+    for (let i = 0; i < lineas.length; i++) {
+
+        const linea = lineas[i].trim();
+
+        if (!linea.startsWith('#EXTINF')) continue;
+
+        const next = lineas[i + 1] ? lineas[i + 1].trim() : "";
+
+        if (!next.startsWith("http")) continue;
+
+        const groupMatch = linea.match(/group-title="([^"]+)"/);
+        const category = groupMatch ? groupMatch[1] : "Otros";
+
+        const logoMatch = linea.match(/tvg-logo="([^"]+)"/);
+        const logo = logoMatch ? logoMatch[1] : "";
+
+        const subMatch = linea.match(/subtitles="([^"]+)"/);
+        const subtitles = subMatch ? subMatch[1] : null;
+
+        const nameMatch = linea.match(/,(.*)$/);
+        let titleRaw = nameMatch ? nameMatch[1].trim() : "Sin título";
+
+        titleRaw = titleRaw.replace(/\.(mp4|mkv|avi)$/i,'');
+
+        const epMatch = titleRaw.match(/S(\d+)E(\d+)/i);
+
+        if (epMatch) {
+
+            const season = parseInt(epMatch[1]);
+            const episode = parseInt(epMatch[2]);
+
+            const serieName = titleRaw.replace(/S\d+E\d+.*/i, '').trim();
+
+            if (!seriesMap[serieName]) {
+
+                seriesMap[serieName] = {
+                    titulo: serieName,
+                    logo: logo,
+                    categoria: "SERIE",
+                    items: []
+                };
             }
+
+            seriesMap[serieName].items.push({
+                titulo: titleRaw,
+                url: next,
+                subtitles: subtitles,
+                season: season,
+                episode: episode
+            });
+
+        } else {
+
+            if (!temp[category]) temp[category] = [];
+
+            temp[category].push({
+                titulo: titleRaw,
+                logo: logo,
+                url: next,
+                categoria: category,
+                subtitles: subtitles
+            });
         }
-        setCatalogo(temp);
-    }, []);
+    }
+
+    // ordenar episodios y agregar series
+    Object.values(seriesMap).forEach(serie => {
+
+        serie.items.sort((a,b)=>{
+
+            if(a.season !== b.season)
+                return a.season - b.season;
+
+            return a.episode - b.episode;
+        });
+
+        if (!temp["Series"]) temp["Series"] = [];
+
+        temp["Series"].push(serie);
+    });
+
+    setCatalogo(temp);
+
+}, []);
 
     const catalogoFiltrado = useMemo(() => {
         if (!busqueda) return catalogo;
@@ -141,9 +214,12 @@ function App() {
         setSugerencias([]);
     };
 
-    const lanzarVideoNativo = (url, titulo) => {
-        if (window.AndroidInterface) window.AndroidInterface.playVideo(url, titulo);
-        else console.log("Play:", url);
+    const lanzarVideoNativo = (url, titulo, subtitles = "") => {
+        if (window.AndroidInterface) {
+            window.AndroidInterface.playVideo(url, titulo, subtitles || "");
+        } else {
+            console.log("Play:", titulo, "URL:", url, "Subs:", subtitles);
+        }
     };
 
     // --- SCROLL AUTOMATICO ---
@@ -194,16 +270,38 @@ function App() {
                     if (e.key === 'ArrowRight') setColumnaActiva(p => Math.min(p + 1, maxCol));
                     if (e.key === 'ArrowLeft') setColumnaActiva(p => Math.max(p - 1, 0));
                     if (isEnter) {
-                        if (columnaActiva === 10) {
-                            setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } });
-                            setIndiceAux(0);
-                        } else {
-                            const v = items[columnaActiva];
-                            setVistaActual({ tipo: 'detalle', data: { info: v, items } });
-                            setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0);
-                            buscarResena(v.titulo);
-                        }
-                    }
+
+    if (columnaActiva === 10) {
+
+        setVistaActual({
+            tipo: 'grilla',
+            data: { titulo: categoriasKeys[filaActiva], items }
+        });
+
+        setIndiceAux(0);
+
+    } else {
+
+        const v = items[columnaActiva];
+
+        // SI ES SERIE usar episodios
+        const contenido = v.categoria === "SERIE" ? (v.items || []) : items;
+
+        setVistaActual({
+            tipo: 'detalle',
+            data: {
+                info: v,
+                items: contenido
+            }
+        });
+
+        setFocoZona('visor');
+        setRangoCapitulos(0);
+        setIndiceAux(0);
+
+        buscarResena(v.titulo);
+    }
+}
                 } else if (isEnter) setMostrarTeclado(true);
 
             } else if (vistaActual.tipo === 'grilla') {
@@ -221,12 +319,14 @@ function App() {
                 }
 
             } else if (vistaActual.tipo === 'detalle') {
-                const esSerie = vistaActual.data.info.categoria.toUpperCase().includes("SERIE");
+                const esSerie = (vistaActual.data.info.categoria || "").toUpperCase().includes("SERIE");
                 
                 if (focoZona === 'visor') {
-                    if (isEnter) lanzarVideoNativo(vistaActual.data.info.url, vistaActual.data.info.titulo);
+                    if (isEnter) {
+                        const info = vistaActual.data.info;
+                        lanzarVideoNativo(info.url, info.titulo, info.subtitles);
+                    }
                     if (e.key === 'ArrowDown') setFocoZona(esSerie ? 'selector' : sugerencias.length > 0 ? 'sugerencias' : 'visor');
-                    if (focoZona === 'visor' && e.key === 'ArrowDown' && sugerencias.length > 0 && !esSerie) setIndiceAux(0);
                 } 
                 else if (focoZona === 'selector') {
                     if (e.key === 'ArrowUp') setFocoZona('visor');
@@ -241,8 +341,13 @@ function App() {
                     if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, maxInPage));
                     if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
                     if (isEnter) {
-                        const ep = vistaActual.data.items[(rangoCapitulos * 10) + indiceAux];
-                        lanzarVideoNativo(ep.url, `${vistaActual.data.info.titulo} - Ep ${(rangoCapitulos * 10) + indiceAux + 1}`);
+                      const ep = vistaActual.data.items[(rangoCapitulos * 10) + indiceAux];
+if (!ep) return;
+lanzarVideoNativo(
+    ep.url,
+    `${vistaActual.data.info.titulo} - Ep ${(rangoCapitulos * 10) + indiceAux + 1}`,
+    ep.subtitles
+);
                     }
                 } 
                 else if (focoZona === 'sugerencias') {
@@ -268,14 +373,7 @@ function App() {
     * { -webkit-tap-highlight-color: transparent !important; outline: none !important; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .line-clamp-6 { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
-    
-    /* Fuerza fondo negro en cualquier reproductor de video */
-    video, iframe, .video-js, canvas { 
-        background-color: #000000 !important; 
-        background: #000000 !important;
-    }
-    
-    /* Evita que el WebView de Android muestre fondo gris al cargar */
+    video, iframe, .video-js, canvas { background-color: #000000 !important; background: #000000 !important; }
     body { background-color: #000000 !important; }
 `}</style>
 
@@ -329,7 +427,7 @@ function App() {
                     
                     <div className="relative z-10 flex items-start gap-12 mb-6">
                         <div className="w-52 aspect-[2/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0 bg-black">
-                            <img src={vistaActual.data.info.logo} className="w-full h-full object-fill" />
+                            <img src={vistaActual.data.info.logo || ""} className="w-full h-full object-fill" />
                         </div>
                         
                         <div className="flex-1 pt-4">
@@ -342,6 +440,9 @@ function App() {
                                 </span>
                                 {extraInfo?.vote_average && (
                                     <span className="text-yellow-500 font-bold text-sm">⭐ {extraInfo.vote_average.toFixed(1)}</span>
+                                )}
+                                {vistaActual.data.info.subtitles && (
+                                    <span className="bg-green-900/50 text-green-400 px-2 py-0.5 rounded text-[8px] font-bold border border-green-500/20">SUB CC</span>
                                 )}
                             </div>
                             <div className="max-w-2xl bg-black/40 p-6 rounded-2xl border border-white/5 backdrop-blur-sm">
@@ -405,8 +506,3 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
-
-
-
-
-

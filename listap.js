@@ -49,7 +49,7 @@ http://lowest-pirates-sign-yale.trycloudflare.com/play/Drama/The.Good.Doctor%20%
 #EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/vHoaCAv5deVdaJTRHqNBv6XOrL1.jpg" group-title="Adultos",just visite
 http://lowest-pirates-sign-yale.trycloudflare.com/play/Adultos/just%20visite/just%20visite.mp4
 #EXTINF:-1 subtitles="http://lowest-pirates-sign-yale.trycloudflare.com/play/Adultos/pirates%202/Pirates%202%20.srt" tvg-logo="https://image.tmdb.org/t/p/w500/8J6M4gMxvFiQUq2j8eRIfRzAoiN.jpg" group-title="Adultos",pirates 2
-http://lowest-pirates-sign-yale.trycloudflare.com/play/Adultos/pirates%202/Pirates%202%20.mp4
+http://lowest-pirates-sign-yale.trycloudflare.com/play/Adultos/pirates%202/Pirates.mp4
 #EXTINF:-1 tvg-logo="https://via.placeholder.com/500x750?text=Buscando..." group-title="Adultos",cugine vizise
 http://lowest-pirates-sign-yale.trycloudflare.com/play/Adultos/cugine%20vizise/cugine%20viziose.mp4
 #EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/65oeFSIfvSuNi2g28slZaFJ8L86.jpg" group-title="Adultos",La niñera

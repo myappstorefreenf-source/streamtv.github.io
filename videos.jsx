@@ -91,8 +91,7 @@ function App() {
                     titulo: item.title || item.name,
                     logo: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
                     url: "#",
-                    categoria: tipo === 'tv' ? 'SERIE' : 'PELICULA',
-                    subtitulo: ""
+                    categoria: tipo === 'tv' ? 'SERIE' : 'PELICULA'
                 }));
                 setSugerencias(formateadas);
             }
@@ -113,18 +112,10 @@ function App() {
                 const category = groupMatch ? groupMatch[1] : "Otros";
                 const logoMatch = linea.match(/tvg-logo="([^"]+)"/);
                 const nameMatch = linea.match(/tvg-name="([^"]+)"/);
-                const subMatch = linea.match(/subtitles="([^"]+)"/); // Extracción de subtítulos
                 const title = nameMatch ? nameMatch[1] : (linea.split(',')[1] || "Sin título");
-                
                 if (next.startsWith('http')) {
                     if (!temp[category]) temp[category] = [];
-                    temp[category].push({ 
-                        titulo: title, 
-                        logo: logoMatch ? logoMatch[1] : "", 
-                        url: next, 
-                        categoria: category,
-                        subtitulo: subMatch ? subMatch[1] : "" // Guardado en el objeto
-                    });
+                    temp[category].push({ titulo: title, logo: logoMatch ? logoMatch[1] : "", url: next, categoria: category });
                 }
             }
         }
@@ -150,12 +141,9 @@ function App() {
         setSugerencias([]);
     };
 
-    const lanzarVideoNativo = (url, titulo, subtitulo = "") => {
-        if (window.AndroidInterface) {
-            window.AndroidInterface.playVideo(url, titulo, subtitulo || "");
-        } else {
-            console.log("Play:", titulo, "URL:", url, "Subs:", subtitulo);
-        }
+    const lanzarVideoNativo = (url, titulo) => {
+        if (window.AndroidInterface) window.AndroidInterface.playVideo(url, titulo);
+        else console.log("Play:", url);
     };
 
     // --- SCROLL AUTOMATICO ---
@@ -236,11 +224,9 @@ function App() {
                 const esSerie = vistaActual.data.info.categoria.toUpperCase().includes("SERIE");
                 
                 if (focoZona === 'visor') {
-                    if (isEnter) {
-                        const info = vistaActual.data.info;
-                        lanzarVideoNativo(info.url, info.titulo, info.subtitulo);
-                    }
+                    if (isEnter) lanzarVideoNativo(vistaActual.data.info.url, vistaActual.data.info.titulo);
                     if (e.key === 'ArrowDown') setFocoZona(esSerie ? 'selector' : sugerencias.length > 0 ? 'sugerencias' : 'visor');
+                    if (focoZona === 'visor' && e.key === 'ArrowDown' && sugerencias.length > 0 && !esSerie) setIndiceAux(0);
                 } 
                 else if (focoZona === 'selector') {
                     if (e.key === 'ArrowUp') setFocoZona('visor');
@@ -256,7 +242,7 @@ function App() {
                     if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
                     if (isEnter) {
                         const ep = vistaActual.data.items[(rangoCapitulos * 10) + indiceAux];
-                        lanzarVideoNativo(ep.url, `${vistaActual.data.info.titulo} - Ep ${(rangoCapitulos * 10) + indiceAux + 1}`, ep.subtitulo);
+                        lanzarVideoNativo(ep.url, `${vistaActual.data.info.titulo} - Ep ${(rangoCapitulos * 10) + indiceAux + 1}`);
                     }
                 } 
                 else if (focoZona === 'sugerencias') {
@@ -282,7 +268,14 @@ function App() {
     * { -webkit-tap-highlight-color: transparent !important; outline: none !important; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .line-clamp-6 { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
-    video, iframe, .video-js, canvas { background-color: #000000 !important; background: #000000 !important; }
+    
+    /* Fuerza fondo negro en cualquier reproductor de video */
+    video, iframe, .video-js, canvas { 
+        background-color: #000000 !important; 
+        background: #000000 !important;
+    }
+    
+    /* Evita que el WebView de Android muestre fondo gris al cargar */
     body { background-color: #000000 !important; }
 `}</style>
 
@@ -350,9 +343,6 @@ function App() {
                                 {extraInfo?.vote_average && (
                                     <span className="text-yellow-500 font-bold text-sm">⭐ {extraInfo.vote_average.toFixed(1)}</span>
                                 )}
-                                {vistaActual.data.info.subtitulo && (
-                                    <span className="bg-green-900/50 text-green-400 px-2 py-0.5 rounded text-[8px] font-bold border border-green-500/20">SUB CC</span>
-                                )}
                             </div>
                             <div className="max-w-2xl bg-black/40 p-6 rounded-2xl border border-white/5 backdrop-blur-sm">
                                 <p className="text-zinc-300 text-sm leading-relaxed italic font-medium line-clamp-6">
@@ -415,3 +405,8 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+
+
+
+
+

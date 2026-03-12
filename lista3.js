@@ -1,3 +1,4 @@
+window.m3uData = `
 #EXTM3U
 #EXTINF:-1 tvg-logo="https://image.tmdb.org/t/p/w500/fZtSG5a6i5Ca39WQylLVmvWI5b.jpg" group-title="Accion", 2 Fast 2 Furious: A todo gas 2
 https://purchasing-brown-public-villages.trycloudflare.com/media/Accion%2F2.Fast.2.Furious.2003%2F2.fast.2.furious.2003.mp4
@@ -339,4 +340,4 @@ https://purchasing-brown-public-villages.trycloudflare.com/media/disco20tb%2FTri
 #EXTINF:-1 tvg-logo="" group-title="disco20tb", The Human Centipede II (2011)
 https://purchasing-brown-public-villages.trycloudflare.com/media/disco20tb%2FTriler%2FThe.Human.Centipede.II%20(2011)%2FThe.Human.Centipede.II%20(2011).mp4
 #EXTINF:-1 tvg-logo="" group-title="disco20tb", The Tortured (2010)
-https://purchasing-brown-public-villages.trycloudflare.com/media/disco20tb%2FTriler%2FThe.Tortured%20(2010)%2FThe.Tortured%20(2010).mp4
+https://purchasing-brown-public-villages.trycloudflare.com/media/disco20tb%2FTriler%2FThe.Tortured%20(2010)%2FThe.Tortured%20(2010).mp4`

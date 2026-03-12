@@ -119,18 +119,26 @@ function App() {
             const linea = lineas[i].trim();
             if (linea.startsWith('#EXTINF')) {
                 const next = lineas[i + 1] ? lineas[i + 1].trim() : "";
+                
+                // 1. Extraer Grupo/Categoría
                 const groupMatch = linea.match(/group-title="([^"]+)"/);
                 const category = groupMatch ? groupMatch[1] : "Otros";
+                
+                // 2. Extraer Logo
                 const logoMatch = linea.match(/tvg-logo="([^"]+)"/);
-                const nameMatch = linea.match(/tvg-name="([^"]+)"/);
-                const rawTitle = nameMatch ? nameMatch[1] : (linea.split(',')[1] || "Sin título");
+                
+                // 3. EXTRAER TÍTULO (Mejorado para tu lista)
+                // Buscamos lo que esté después de la última coma de la línea
+                const partes = linea.split(',');
+                let rawTitle = partes[partes.length - 1].trim(); 
 
                 if (next.startsWith('http')) {
                     if (!temp[category]) temp[category] = [];
-                    const nombreSerie = rawTitle.split(/S\d+|E\d+|Capitulo| - /i)[0].trim();
+                    
                     const esSerie = category.toUpperCase().includes("SERIE");
 
                     if (esSerie) {
+                        const nombreSerie = rawTitle.split(/S\d+|E\d+|Capitulo| - /i)[0].trim();
                         const serieExistente = temp[category].find(s => s.titulo === nombreSerie);
                         if (serieExistente) {
                             serieExistente.episodios.push({ titulo: rawTitle, url: next });
@@ -144,9 +152,9 @@ function App() {
                             });
                         }
                     } else {
-                        // CORRECCIÓN: Películas ahora tienen array 'episodios' con el video mismo
+                        // PARA PELÍCULAS (Tu lista actual)
                         temp[category].push({ 
-                            titulo: rawTitle, 
+                            titulo: rawTitle, // Aquí va el nombre limpio
                             logo: logoMatch ? logoMatch[1] : "", 
                             url: next, 
                             categoria: category, 

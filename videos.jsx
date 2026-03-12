@@ -77,7 +77,6 @@ function App() {
     const [sugerencias, setSugerencias] = useState([]);
     const API_KEY = "7ba138ff630dcf197f29d58e9de8ce10";
 
-    // --- RECOMENDACIONES FILTRADAS (SOLO LO QUE EXISTE EN M3U) ---
     const buscarResena = async (titulo) => {
         setCargandoInfo(true);
         setExtraInfo(null);
@@ -90,12 +89,9 @@ function App() {
             if (data.results && data.results.length > 0) {
                 const info = data.results[0];
                 setExtraInfo(info);
-
                 const tipo = info.media_type === 'tv' ? 'tv' : 'movie';
                 const simRes = await fetch(`https://api.themoviedb.org/3/${tipo}/${info.id}/recommendations?api_key=${API_KEY}&language=es-ES`);
                 const simData = await simRes.json();
-                
-                // Cruce de datos con el catálogo local
                 const todosMisContenidos = Object.values(catalogo).flat();
                 const filtradas = simData.results
                     .map(sug => {
@@ -107,14 +103,12 @@ function App() {
                     })
                     .filter(Boolean)
                     .slice(0, 10);
-
                 setSugerencias(filtradas);
             }
         } catch (e) { console.error(e); }
         setCargandoInfo(false);
     };
 
-    // --- CARGA Y AGRUPAMIENTO ---
     useEffect(() => {
         const rawData = window.m3uData || "";
         if (!rawData) return;
@@ -150,7 +144,14 @@ function App() {
                             });
                         }
                     } else {
-                        temp[category].push({ titulo: rawTitle, logo: logoMatch ? logoMatch[1] : "", url: next, categoria: category, episodios: [] });
+                        // CORRECCIÓN: Películas ahora tienen array 'episodios' con el video mismo
+                        temp[category].push({ 
+                            titulo: rawTitle, 
+                            logo: logoMatch ? logoMatch[1] : "", 
+                            url: next, 
+                            categoria: category, 
+                            episodios: [{ titulo: rawTitle, url: next }] 
+                        });
                     }
                 }
             }
@@ -178,11 +179,13 @@ function App() {
     };
 
     const lanzarVideoNativo = (url, titulo) => {
-        if (window.AndroidInterface) window.AndroidInterface.playVideo(url, titulo);
-        else console.log("Play:", url);
+        if (window.AndroidInterface) {
+            window.AndroidInterface.playVideo(url, titulo);
+        } else {
+            console.log("Play:", url, "Título:", titulo);
+        }
     };
 
-    // --- SCROLL AUTOMATICO ---
     useEffect(() => {
         if (mostrarTeclado) return;
         const timer = setTimeout(() => {
@@ -201,7 +204,6 @@ function App() {
         return () => clearTimeout(timer);
     }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, indiceAux, rangoCapitulos]);
 
-    // --- MANEJO DE TECLAS ---
     useEffect(() => {
         const handleKeys = (e) => {
             const isEnter = e.key === 'Enter' || e.keyCode === 13;
@@ -235,7 +237,8 @@ function App() {
                             setIndiceAux(0);
                         } else {
                             const v = items[columnaActiva];
-                            const eps = (v.episodios && v.episodios.length > 0) ? v.episodios : [v];
+                            // CORRECCIÓN: Items siempre basado en episodios procesados
+                            const eps = v.episodios; 
                             setVistaActual({ tipo: 'detalle', data: { info: v, items: eps } });
                             setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0);
                             buscarResena(v.titulo);
@@ -251,74 +254,52 @@ function App() {
                 if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - 6, 0));
                 if (isEnter) {
                     const v = vistaActual.data.items[indiceAux];
-                    const eps = (v.episodios && v.episodios.length > 0) ? v.episodios : [v];
-                    setVistaActual({ tipo: 'detalle', data: { info: v, items: eps }, fromGrid: vistaActual.data });
+                    setVistaActual({ tipo: 'detalle', data: { info: v, items: v.episodios }, fromGrid: vistaActual.data });
                     setFocoZona('visor'); setIndiceAux(0);
                     buscarResena(v.titulo);
                 }
 
-           } else if (vistaActual.tipo === 'detalle') {
-                // Definimos si es serie o película basado en la cantidad de items
+            } else if (vistaActual.tipo === 'detalle') {
                 const esSerie = vistaActual.data.items.length > 1;
                 
                 if (focoZona === 'visor') {
                     if (isEnter) {
-                        // Buscamos el item actual. Si es película, es el único que hay.
-                        // Si es serie, tomamos el primero por defecto.
-                        const itemAPlayer = vistaActual.data.items[0];
-                        if (itemAPlayer) {
-                            lanzarVideoNativo(itemAPlayer.url, itemAPlayer.titulo);
+                        // CORRECCIÓN: Extraemos el título del primer item disponible
+                        const itemFinal = vistaActual.data.items[0];
+                        if (itemFinal) {
+                            lanzarVideoNativo(itemFinal.url, itemFinal.titulo);
                         }
                     }
                     if (e.key === 'ArrowDown') {
-                        if (esSerie) {
-                            setFocoZona('selector');
-                        } else if (sugerencias.length > 0) {
-                            setFocoZona('sugerencias');
-                            setIndiceAux(0);
-                        }
+                        if (esSerie) setFocoZona('selector');
+                        else if (sugerencias.length > 0) { setFocoZona('sugerencias'); setIndiceAux(0); }
                     }
                 } 
                 else if (focoZona === 'selector') {
                     if (e.key === 'ArrowUp') setFocoZona('visor');
-                    if (e.key === 'ArrowDown') { 
-                        setFocoZona('grid'); 
-                        setIndiceAux(0); 
-                    }
+                    if (e.key === 'ArrowDown') { setFocoZona('grid'); setIndiceAux(0); }
                     if (e.key === 'ArrowRight') setRangoCapitulos(p => Math.min(p + 1, Math.ceil(vistaActual.data.items.length / 10) - 1));
                     if (e.key === 'ArrowLeft') setRangoCapitulos(p => Math.max(p - 1, 0));
                 } 
                 else if (focoZona === 'grid') {
                     const maxInPage = Math.min(10, vistaActual.data.items.length - (rangoCapitulos * 10)) - 1;
-                    
                     if (e.key === 'ArrowUp') setFocoZona('selector');
-                    if (e.key === 'ArrowDown' && sugerencias.length > 0) { 
-                        setFocoZona('sugerencias'); 
-                        setIndiceAux(0); 
-                    }
+                    if (e.key === 'ArrowDown' && sugerencias.length > 0) { setFocoZona('sugerencias'); setIndiceAux(0); }
                     if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, maxInPage));
                     if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
-                    
                     if (isEnter) {
                         const ep = vistaActual.data.items[(rangoCapitulos * 10) + indiceAux];
                         lanzarVideoNativo(ep.url, ep.titulo);
                     }
                 } 
                 else if (focoZona === 'sugerencias') {
-                    if (e.key === 'ArrowUp') {
-                        // Si es serie vuelve a la grilla, si es película vuelve al visor
-                        setFocoZona(esSerie ? 'grid' : 'visor');
-                    }
+                    if (e.key === 'ArrowUp') setFocoZona(esSerie ? 'grid' : 'visor');
                     if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, sugerencias.length - 1));
                     if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
-                    
                     if (isEnter) {
                         const sug = sugerencias[indiceAux];
-                        const eps = (sug.episodios && sug.episodios.length > 0) ? sug.episodios : [sug];
-                        setVistaActual({ tipo: 'detalle', data: { info: sug, items: eps } });
-                        setFocoZona('visor'); 
-                        setIndiceAux(0); 
-                        setRangoCapitulos(0);
+                        setVistaActual({ tipo: 'detalle', data: { info: sug, items: sug.episodios } });
+                        setFocoZona('visor'); setIndiceAux(0); setRangoCapitulos(0);
                         buscarResena(sug.titulo);
                     }
                 }
@@ -418,8 +399,8 @@ function App() {
                         </div>
                     </div>
 
-                    {/* SERIES */}
-                    {vistaActual.data.info.episodios?.length > 1 && (
+                    {/* SERIES / EPISODIOS */}
+                    {vistaActual.data.items.length > 1 && (
                         <div className="mt-4 relative z-10">
                             <div className="flex gap-3 mb-4 overflow-x-auto no-scrollbar">
                                 {Array.from({ length: Math.ceil(vistaActual.data.items.length / 10) }).map((_, i) => (
@@ -436,7 +417,7 @@ function App() {
                         </div>
                     )}
 
-                    {/* SUGERENCIAS (SOLO COINCIDENCIAS REALES) */}
+                    {/* SUGERENCIAS */}
                     {sugerencias.length > 0 && (
                         <div className="mt-auto relative z-10 pt-4 pb-8">
                             <h3 className="text-[10px] font-black text-green-500 uppercase tracking-widest mb-3 opacity-60">Recomendado para ti</h3>

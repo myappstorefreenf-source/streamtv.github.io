@@ -185,14 +185,28 @@ function App() {
         setIndiceAux(0);
         setSugerencias([]);
     };
-
     const lanzarVideoNativo = (url, titulo) => {
-        if (window.AndroidInterface) {
-            window.AndroidInterface.playVideo(url, titulo);
-        } else {
-            console.log("Play:", url, "Título:", titulo);
-        }
-    };
+    // ESTO ES PARA DEPURAR: Verás un mensaje en pantalla con el título
+    if (titulo) {
+        console.log("🚀 Enviando a Android - Título:", titulo);
+        // alert("Dato enviado: " + titulo); // Descomenta esta línea si quieres verlo físicamente
+    } else {
+        console.warn("⚠️ OJO: El título está vacío o es undefined");
+    }
+
+    if (window.AndroidInterface) {
+        window.AndroidInterface.playVideo(url, titulo);
+    } else {
+        console.log("No estoy en Android. URL:", url);
+    }
+};
+   // const lanzarVideoNativo = (url, titulo) => {
+    //    if (window.AndroidInterface) {
+      //      window.AndroidInterface.playVideo(url, titulo);
+     //   } else {
+     //       console.log("Play:", url, "Título:", titulo);
+     //   }
+   // };
 
     useEffect(() => {
         if (mostrarTeclado) return;

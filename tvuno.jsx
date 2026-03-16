@@ -30,7 +30,7 @@ const LOCAL_M3U_DATA = [
         title: "América TV opc 2",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logotipo_de_America_TV.svg/1933px-Logotipo_de_America_TV.svg.png",
         category: "Argentina",
-        url: "hhttp://104.238.205.28:9090/278751_.m3u8",
+        url: "http://138.121.114.91:8000/play/a094/index.m3u8",
          userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" 
     },
     {
@@ -63,7 +63,7 @@ const LOCAL_M3U_DATA = [
         logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
         category: "Argentina",
         // URL DASH (.mpd) que extrajimos
-        url: "http://live.btv.mx:2424/stream/278774/smAVz_uhytj5REM-4pYNZbkrcB2",
+        url: "http://138.121.114.91:8000/play/a08a/index.m3u8",
        // referrer: "https://player.sensa.com.ar/&webtoken=1.0",
         // Objeto DRM para que Shaka Player lo reconozca
      //   drm: {
@@ -77,7 +77,7 @@ const LOCAL_M3U_DATA = [
         logoUrl: "https://images.seeklogo.com/logo-png/45/1/telefe-tv-logo-png_seeklogo-451860.png",
         category: "Argentina",
         // URL DASH (.mpd) que extrajimos
-        url: "http://live.btv.mx:2424/stream/278773/smAVz_uhytj5REM-4pYNZbkrcB2",//104.238.205.28:9090/278774_.m3u8",
+        url: "http://138.121.114.91:8000/play/a08a/index.m3u8",//104.238.205.28:9090/278774_.m3u8",
        // referrer: "https://player.sensa.com.ar/&webtoken=1.0",
         // Objeto DRM para que Shaka Player lo reconozca
      //   drm: {

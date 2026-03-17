@@ -58,7 +58,7 @@ const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total, esS
                 </>
             )}
         </div>
-        {!esEpisodio && <p className={`mt-2 text-[8px] font-bold truncate text-center uppercase ${esSeleccionado ? 'text-white' : 'text-zinc-600'}`}>{esVerMas ? "Explorar Todo" : video.titulo}</p>}
+        {!esEpisodio && <p className={`mt-2 text-[14px] font-bold truncate text-center uppercase ${esSeleccionado ? 'text-white' : 'text-zinc-600'}`}>{esVerMas ? "Explorar Todo" : video.titulo}</p>}
     </div>
 );
 
@@ -394,9 +394,9 @@ function App() {
                         </div>
                         
                         <div className="flex-1 pt-4">
-                            <h2 className="text-4xl font-black uppercase italic mb-2 tracking-tighter leading-tight text-green-500">
-                                {vistaActual.data.info.titulo}
-                            </h2>
+                            <h2 className="text-3xl font-black uppercase italic mb-2 tracking-tighter leading-none text-green-500 max-w-xl line-clamp-2">
+    {vistaActual.data.info.titulo}
+</h2>
                             <div className="flex gap-4 mb-4 items-center">
                                 <span className="bg-zinc-800 px-3 py-1 rounded-lg font-black text-[10px] text-zinc-400 uppercase border border-white/5">
                                     {vistaActual.data.info.categoria}

@@ -116,51 +116,49 @@ function App() {
 
     // CARGA INICIAL DE AMBOS M3U (Elimina el lag al cambiar)
     useEffect(() => {
-        const parsear = (raw) => {
+    const parsear = (raw) => {
     if (!raw) return {};
     const lineas = raw.split('\n');
     const temp = {};
+    // Usamos un Map para las series: esto es 100 veces más rápido que usar .find()
+    const seriesMap = new Map();
+
     for (let i = 0; i < lineas.length; i++) {
-        if (lineas[i].startsWith('#EXTINF')) {
+        const linea = lineas[i].trim();
+        if (linea.startsWith('#EXTINF')) {
             const url = lineas[i + 1]?.trim();
             if (!url || !url.startsWith('http')) continue;
 
-            const category = lineas[i].match(/group-title="([^"]+)"/)?.[1] || "Otros";
-            const logo = lineas[i].match(/tvg-logo="([^"]+)"/)?.[1] || "";
+            const category = linea.match(/group-title="([^"]+)"/)?.[1] || "Otros";
+            const logo = linea.match(/tvg-logo="([^"]+)"/)?.[1] || "";
             
-            // 1. Obtenemos lo que hay después de la coma
-            let rawTitle = lineas[i].split(',').slice(1).join(',').trim() || "Sin título";
-
-            // 2. LIMPIEZA TOTAL: Eliminamos cualquier etiqueta que haya quedado pegada
-            const tituloLimpio = rawTitle
-                .replace(/tvg-logo="[^"]*"/gi, '')
-                .replace(/group-title="[^"]*"/gi, '')
-                .replace(/tvg-id="[^"]*"/gi, '')
-                .replace(/tvg-name="[^"]*"/gi, '')
-                .replace(/强制="[^"]*"/gi, '') // A veces vienen etiquetas raras en otros idiomas
-                .replace(/"/g, '') // Eliminamos comillas sueltas que sobran
-                .trim();
+            // LA CLAVE: Tomamos solo lo que está después de la ÚLTIMA coma.
+            // Esto elimina automáticamente toda la metadata basura de un solo golpe.
+            const partes = linea.split(',');
+            const tituloLimpio = partes[partes.length - 1].replace(/["']/g, '').trim();
 
             if (!temp[category]) temp[category] = [];
             const esSerie = category.toUpperCase().includes("SERIE");
 
             if (esSerie) {
-                // USAR tituloLimpio AQUÍ TAMBIÉN
                 const nombreSerie = tituloLimpio.split(/S\d+|E\d+|Capitulo| - /i)[0].trim();
-                let s = temp[category].find(x => x.titulo === nombreSerie);
-                if (s) {
-                    s.episodios.push({ titulo: tituloLimpio, url });
+                
+                // Usamos el Map para saber si la serie ya existe sin recorrer todo el array
+                const claveMapa = `${category}-${nombreSerie}`;
+                if (seriesMap.has(claveMapa)) {
+                    seriesMap.get(claveMapa).episodios.push({ titulo: tituloLimpio, url });
                 } else {
-                    temp[category].push({ 
+                    const nuevaSerie = { 
                         titulo: nombreSerie, 
                         logo, 
                         url, 
                         categoria: category, 
                         episodios: [{ titulo: tituloLimpio, url }] 
-                    });
+                    };
+                    seriesMap.set(claveMapa, nuevaSerie);
+                    temp[category].push(nuevaSerie);
                 }
             } else {
-                // Y AQUÍ PARA PELÍCULAS/TV
                 temp[category].push({ titulo: tituloLimpio, logo, url, categoria: category, episodios: [] });
             }
         }

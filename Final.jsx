@@ -39,7 +39,20 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
     );
 };
 
-// --- COMPONENTE: VIDEO CARD ---
+// --- COMPONENTE: CHANNEL ROW (MODO LISTA TV) ---
+const ChannelRow = ({ video, esSeleccionado, id }) => (
+    <div id={id} className={`flex items-center gap-6 p-3 transition-all duration-300 mx-24 rounded-r-xl border-l-4 
+        ${esSeleccionado ? 'bg-green-600/20 border-green-500 translate-x-4 shadow-lg opacity-100' : 'border-transparent opacity-40'}`}>
+        <div className="w-14 h-9 bg-black rounded flex items-center justify-center overflow-hidden border border-white/10 flex-shrink-0">
+            <img src={video.logo} className="w-full h-full object-contain" onError={(e)=>e.target.src='https://via.placeholder.com/100x60?text=TV'} />
+        </div>
+        <span className={`text-lg font-black tracking-widest uppercase truncate ${esSeleccionado ? 'text-white' : 'text-zinc-500'}`}>
+            {video.titulo}
+        </span>
+    </div>
+);
+
+// --- COMPONENTE: VIDEO CARD (STREAMING) ---
 const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total, esSugerencia }) => (
     <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esSugerencia ? 'w-24' : esEpisodio ? 'w-28 h-28' : 'w-32'} ${esSeleccionado ? 'scale-110 ring-2 ring-green-600 z-10 opacity-100 shadow-[0_0_25px_rgba(34,197,94,0.4)]' : 'opacity-60'}`}>
         <div className={`relative overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-green-700 aspect-[2/3] rounded-sm' : esEpisodio ? 'h-full bg-zinc-800 rounded-lg' : 'bg-zinc-900 aspect-[2/3] rounded-sm'}`}>
@@ -60,27 +73,22 @@ const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total, esS
     </div>
 );
 
-// --- COMPONENTE: SIDE MENU (Transparente y Fijo) ---
+// --- COMPONENTE: SIDE MENU ---
 const SideMenu = ({ activo, itemSeleccionado }) => {
-    const opciones = [
-        { id: 'search', label: 'BUSCAR', icon: '🔍' },
-        { id: 'tv', label: 'VIVO', icon: '📺' },
-        { id: 'vod', label: 'CONTENIDO', icon: '🎬' }
-    ];
-
+    const opciones = [{ id: 'search', label: 'BUSCAR', icon: '🔍' }, { id: 'tv', label: 'VIVO', icon: '📺' }, { id: 'vod', label: 'CONTENIDO', icon: '🎬' }];
     return (
         <div className={`fixed left-0 top-0 h-screen z-[500] flex flex-col items-center py-10 transition-all duration-500
-            ${activo ? 'w-64 bg-black/40 backdrop-blur-xl' : 'w-20 bg-transparent'}`}>
-            <div className="mb-20 text-white font-black text-3xl italic">{activo ? 'HOOD' : 'H'}</div>
-            <div className="flex flex-col gap-10 w-full items-center">
+            ${activo ? 'w-64 bg-transparent backdrop-blur-md' : 'w-20 bg-transparent'}`}>
+            <div className="mb-10 text-white font-black text-2xl italic"></div>
+            <div className="flex flex-col gap-8 w-full items-center">
                 {opciones.map((opt, index) => (
-                    <div key={opt.id} className={`flex items-center transition-all duration-300 w-full px-6 ${itemSeleccionado === index ? 'text-green-500 scale-110' : 'text-zinc-500'}`}>
+                    <div key={opt.id} className={`flex items-center transition-all duration-300 w-full px-6 ${itemSeleccionado === index ? 'text-green-500 scale-125' : 'text-zinc-500'}`}>
                         <span className="text-2xl min-w-[32px] text-center">{opt.icon}</span>
-                        <span className={`ml-4 font-black tracking-widest overflow-hidden transition-all duration-500 whitespace-nowrap ${activo ? 'opacity-100 max-w-xs' : 'opacity-0 max-w-0'}`}>{opt.label}</span>
+                        <span className={`ml-4 font-black tracking-widest overflow-hidden transition-all duration-500 ${activo ? 'opacity-100 max-w-xs' : 'opacity-0 max-w-0'}`}>{opt.label}</span>
                     </div>
                 ))}
             </div>
-            <div className="absolute left-0 w-1 bg-green-500 transition-all duration-300 rounded-r-full" style={{ height: '40px', top: `${176 + (itemSeleccionado * 72)}px`, opacity: itemSeleccionado >= 0 ? 1 : 0 }} />
+            <div className="absolute left-0 w-1 bg-green-500 transition-all duration-300 rounded-r-full" style={{ height: '40px', top: `${148 + (itemSeleccionado * 64)}px`, opacity: itemSeleccionado >= 0 ? 1 : 0 }} />
         </div>
     );
 };
@@ -172,6 +180,17 @@ function App() {
     };
 
     useEffect(() => {
+        if (mostrarTeclado || menuActivo) return;
+        const timer = setTimeout(() => {
+            let id = vistaActual.tipo === 'home' ? (filaActiva === -1 ? "fake-search" : `item-${filaActiva}-${columnaActiva}`) : 
+                     vistaActual.tipo === 'grilla' ? `grid-item-${indiceAux}` : 
+                     focoZona === 'visor' ? 'visor-container' : focoZona === 'selector' ? `range-${rangoCapitulos}` : focoZona === 'grid' ? `cap-${indiceAux}` : `sug-${indiceAux}`;
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }, 100);
+        return () => clearTimeout(timer);
+    }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, menuActivo, indiceAux, rangoCapitulos]);
+
+    useEffect(() => {
         const handleKeys = (e) => {
             const isEnter = e.key === 'Enter' || e.keyCode === 13;
             const isBack = e.key === 'Escape' || e.key === 'Backspace' || e.keyCode === 8 || e.keyCode === 27;
@@ -206,25 +225,89 @@ function App() {
 
             if (vistaActual.tipo === 'home') {
                 if (e.key === 'ArrowLeft' && (columnaActiva === 0 || filaActiva === -1)) { setMenuActivo(true); return; }
-                if (e.key === 'ArrowUp') { setFilaActiva(p => Math.max(p - 1, -1)); setColumnaActiva(0); }
-                if (e.key === 'ArrowDown') { setFilaActiva(p => Math.min(p + 1, categoriasKeys.length - 1)); setColumnaActiva(0); }
                 
-                if (filaActiva !== -1) {
-                    const items = catalogoFiltrado[categoriasKeys[filaActiva]] || [];
-                    const maxCol = items.length > 10 ? 10 : items.length - 1;
-                    if (e.key === 'ArrowRight') setColumnaActiva(p => Math.min(p + 1, maxCol));
-                    if (e.key === 'ArrowLeft') setColumnaActiva(p => Math.max(p - 1, 0));
-                    if (isEnter) {
-                        if (columnaActiva === 10) { setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } }); setIndiceAux(0); } 
-                        else {
+                if (fuenteActual === 'tv') {
+                    // NAVEGACIÓN VERTICAL PARA TV
+                    if (e.key === 'ArrowUp') {
+                        if (columnaActiva > 0) setColumnaActiva(p => p - 1);
+                        else { setFilaActiva(p => Math.max(p - 1, -1)); setColumnaActiva(0); }
+                    }
+                    if (e.key === 'ArrowDown') {
+                        const itemsFila = catalogoFiltrado[categoriasKeys[filaActiva]]?.length || 0;
+                        if (columnaActiva < itemsFila - 1) setColumnaActiva(p => p + 1);
+                        else { setFilaActiva(p => Math.min(p + 1, categoriasKeys.length - 1)); setColumnaActiva(0); }
+                    }
+                } else {
+                    // NAVEGACIÓN NORMAL VOD
+                    if (e.key === 'ArrowUp') { setFilaActiva(p => Math.max(p - 1, -1)); setColumnaActiva(0); }
+                    if (e.key === 'ArrowDown') { setFilaActiva(p => Math.min(p + 1, categoriasKeys.length - 1)); setColumnaActiva(0); }
+                    if (filaActiva !== -1) {
+                        const items = catalogoFiltrado[categoriasKeys[filaActiva]] || [];
+                        const maxCol = items.length > 10 ? 10 : items.length - 1;
+                        if (e.key === 'ArrowRight') setColumnaActiva(p => Math.min(p + 1, maxCol));
+                        if (e.key === 'ArrowLeft') setColumnaActiva(p => Math.max(p - 1, 0));
+                    }
+                }
+
+                if (isEnter) {
+                    if (filaActiva === -1) setMostrarTeclado(true);
+                    else {
+                        const items = catalogoFiltrado[categoriasKeys[filaActiva]] || [];
+                        if (fuenteActual === 'vod' && columnaActiva === 10) { 
+                            setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } }); 
+                            setIndiceAux(0); 
+                        } else {
                             const v = items[columnaActiva];
                             if (fuenteActual === 'tv') lanzarVideoNativo(v.url, v.titulo);
-                            else { setVistaActual({ tipo: 'detalle', data: { info: v, items: v.episodios.length ? v.episodios : [v] } }); setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0); buscarResena(v.titulo); }
+                            else { 
+                                setVistaActual({ tipo: 'detalle', data: { info: v, items: v.episodios.length ? v.episodios : [v] } }); 
+                                setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0); buscarResena(v.titulo); 
+                            }
                         }
                     }
-                } else if (isEnter) setMostrarTeclado(true);
+                }
             }
-            // ... (Resto de la lógica de grilla y detalle se mantiene igual)
+            // ... resto de la lógica de grilla y detalle (sin cambios)
+            else if (vistaActual.tipo === 'grilla') {
+                const total = vistaActual.data.items.length;
+                if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, total - 1));
+                if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
+                if (e.key === 'ArrowDown') setIndiceAux(p => Math.min(p + 6, total - 1));
+                if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - 6, 0));
+                if (isEnter) {
+                    const v = vistaActual.data.items[indiceAux];
+                    if (fuenteActual === 'tv') lanzarVideoNativo(v.url, v.titulo);
+                    else { setVistaActual({ tipo: 'detalle', data: { info: v, items: v.episodios.length ? v.episodios : [v] }, fromGrid: vistaActual.data }); setFocoZona('visor'); buscarResena(v.titulo); }
+                }
+            }
+            else if (vistaActual.tipo === 'detalle') {
+                const esSerie = vistaActual.data.items.length > 1;
+                if (focoZona === 'visor') {
+                    if (isEnter) lanzarVideoNativo(vistaActual.data.items[0].url, vistaActual.data.items[0].titulo);
+                    if (e.key === 'ArrowDown') { if (esSerie) setFocoZona('selector'); else if (sugerencias.length) { setFocoZona('sugerencias'); setIndiceAux(0); } }
+                } else if (focoZona === 'selector') {
+                    if (e.key === 'ArrowUp') setFocoZona('visor');
+                    if (e.key === 'ArrowDown') { setFocoZona('grid'); setIndiceAux(0); }
+                    if (e.key === 'ArrowRight') setRangoCapitulos(p => Math.min(p + 1, Math.ceil(vistaActual.data.items.length / 10) - 1));
+                    if (e.key === 'ArrowLeft') setRangoCapitulos(p => Math.max(p - 1, 0));
+                } else if (focoZona === 'grid') {
+                    const maxInPage = Math.min(10, vistaActual.data.items.length - (rangoCapitulos * 10)) - 1;
+                    if (e.key === 'ArrowUp') setFocoZona('selector');
+                    if (e.key === 'ArrowDown' && sugerencias.length) { setFocoZona('sugerencias'); setIndiceAux(0); }
+                    if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, maxInPage));
+                    if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
+                    if (isEnter) { const ep = vistaActual.data.items[(rangoCapitulos * 10) + indiceAux]; lanzarVideoNativo(ep.url, ep.titulo); }
+                } else if (focoZona === 'sugerencias') {
+                    if (e.key === 'ArrowUp') setFocoZona(esSerie ? 'grid' : 'visor');
+                    if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, sugerencias.length - 1));
+                    if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
+                    if (isEnter) {
+                        const sug = sugerencias[indiceAux];
+                        setVistaActual({ tipo: 'detalle', data: { info: sug, items: sug.episodios.length ? sug.episodios : [sug] } });
+                        setFocoZona('visor'); setIndiceAux(0); setRangoCapitulos(0); buscarResena(sug.titulo);
+                    }
+                }
+            }
         };
         window.addEventListener('keydown', handleKeys);
         return () => window.removeEventListener('keydown', handleKeys);
@@ -234,48 +317,113 @@ function App() {
         <div translate="no" className="inset-0 fixed bg-[#050505] text-white font-sans overflow-hidden select-none">
             <style>{`* { outline: none !important; } .no-scrollbar::-webkit-scrollbar { display: none; }`}</style>
             
-            <SideMenu activo={menuActivo} itemSeleccionado={menuIdx} />
+            <div className="absolute top-8 left-8 z-[1100] flex items-center">
+                <span className="text-white font-black text-3xl italic">H</span>
+                <div className="ml-1 border-y border-white px-1 leading-none">
+                    <span className="text-[11px] font-bold text-white uppercase tracking-tighter"></span>
+                </div>
+            </div>
 
-            <div className={`h-full transition-all duration-500 flex flex-col ${menuActivo ? 'opacity-40 blur-sm' : ''}`}>
-                {vistaActual.tipo === 'home' && (
-                    <div className="flex-1 overflow-y-auto no-scrollbar pb-10">
-                        {/* BUSCADOR */}
-                        <div className="flex justify-end p-10 pt-12">
-                            <div id="fake-search" className={`w-72 px-5 py-3 rounded-md border-2 transition-all flex justify-between items-center ${filaActiva === -1 ? 'border-green-600 bg-zinc-800' : 'border-white/5 bg-transparent'}`}>
-                                <span className="text-[10px] font-black tracking-widest text-zinc-400">{busqueda || "BUSCAR..."}</span>
-                            </div>
-                        </div>
-
-                        {/* CABECERA DINÁMICA */}
-                        <div className="pl-24 pr-10 mb-10">
-                            <p className="text-green-500 text-xl font-black uppercase mb-1">{categoriasKeys[filaActiva] || 'Catálogo'}</p>
-                            <h2 className="text-white text-6xl font-black uppercase italic italic tracking-tighter">{fuenteActual === 'tv' ? 'TV en Vivo' : 'Streaming'}</h2>
-                        </div>
-
-                        {/* FILAS DE CONTENIDO */}
-                        {categoriasKeys.map((cat, fIdx) => (
-                            <div key={cat} className="mb-12">
-                                <h2 className={`text-[18px] font-black mb-4 uppercase tracking-[0.3em] pl-24 ${filaActiva === fIdx ? 'text-green-600' : 'text-zinc-800'}`}>{cat}</h2>
-                                <div className="flex gap-6 overflow-x-auto no-scrollbar py-4">
-                                    {/* SEPARADOR INVISIBLE PARA NO ENCIMAR EL MENÚ */}
-                                    <div className="flex-shrink-0 w-20 h-full"></div> 
-                                    {catalogoFiltrado[cat].slice(0, 11).map((v, cIdx) => (
-                                        cIdx < 10 ? 
-                                        <VideoCard key={cIdx} id={`item-${fIdx}-${cIdx}`} video={v} esSeleccionado={filaActiva === fIdx && columnaActiva === cIdx} /> :
-                                        <VideoCard key="ver-mas" id={`item-${fIdx}-10`} esVerMas={true} total={catalogoFiltrado[cat].length} esSeleccionado={filaActiva === fIdx && columnaActiva === 10} />
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
+            <div className="absolute top-8 right-10 z-[1100]">
+                <div id="fake-search" className={`w-72 px-5 py-3 rounded-md border-2 transition-all flex justify-between items-center ${filaActiva === -1 || mostrarTeclado ? 'border-green-600 bg-zinc-800 scale-105 shadow-[0_0_20px_rgba(22,163,74,0.2)]' : 'border-white/5 bg-transparent'}`}>
+                    <span className={`truncate text-[10px] font-black tracking-widest ${busqueda ? 'text-white' : 'text-zinc-400'}`}>{busqueda || "BUSCAR TÍTULO..."}</span>
+                    <div className="bg-green-600 text-[8px] px-1.5 py-0.5 rounded-sm font-black text-white">OK</div>
+                </div>
+                {mostrarTeclado && (
+                    <div className="absolute top-14 right-0 z-[2000] animate-in slide-in-from-top-2 duration-300">
+                        <VirtualKeyboard busqueda={busqueda} onKeyPress={(t)=>setBusqueda(p=>p+t)} onBackspace={()=>setBusqueda(p=>p.slice(0,-1))} onClose={()=>setMostrarTeclado(false)} />
                     </div>
                 )}
             </div>
 
-            {mostrarTeclado && (
-                <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/80 backdrop-blur-sm">
-                    <VirtualKeyboard onKeyPress={(t)=>setBusqueda(p=>p+t)} onBackspace={()=>setBusqueda(p=>p.slice(0,-1))} onClose={()=>setMostrarTeclado(false)} />
+            <SideMenu activo={menuActivo} itemSeleccionado={menuIdx} />
+
+            <div className={`h-full transition-all duration-500 flex flex-col ${menuActivo ? 'opacity-50 blur-sm scale-95' : 'opacity-100 pl-20'}`}>
+                {vistaActual.tipo === 'home' && (
+                    <div className="flex-1 pt-32 overflow-y-auto no-scrollbar pb-32">
+                        <div className="pl-24 mb-12">
+                            <p className="text-green-500 text-xl font-black tracking-widest uppercase mb-1">{categoriasKeys[filaActiva] || 'Catálogo'}</p>
+                            <h2 className="text-white text-6xl font-black tracking-tighter uppercase italic">{fuenteActual === 'tv' ? 'TV en Vivo' : 'Streaming'}</h2>
+                        </div>
+
+                        {categoriasKeys.map((cat, fIdx) => (
+                            <div key={cat} className="mb-14">
+                                <h2 className={`text-[18px] font-black mb-6 uppercase tracking-[0.3em] pl-24 ${filaActiva === fIdx ? 'text-green-600' : 'text-zinc-800'}`}>{cat}</h2>
+                                
+                                {fuenteActual === 'tv' ? (
+                                    /* --- LISTA DE CANALES --- */
+                                    <div className="flex flex-col gap-1">
+                                        {catalogoFiltrado[cat].map((v, cIdx) => (
+                                            <ChannelRow key={cIdx} id={`item-${fIdx}-${cIdx}`} video={v} esSeleccionado={filaActiva === fIdx && columnaActiva === cIdx} />
+                                        ))}
+                                    </div>
+                                ) : (
+                                    /* --- GRILLA DE POSTERS --- */
+                                    <div className="flex gap-6 overflow-x-auto no-scrollbar py-4">
+                                        <div className="flex-shrink-0 w-16" aria-hidden="true"></div>
+                                        {catalogoFiltrado[cat].slice(0, 11).map((v, cIdx) => (
+                                            cIdx < 10 ? 
+                                            <VideoCard key={cIdx} id={`item-${fIdx}-${cIdx}`} video={v} esSeleccionado={filaActiva === fIdx && columnaActiva === cIdx} /> :
+                                            <VideoCard key="ver-mas" id={`item-${fIdx}-10`} esVerMas={true} total={catalogoFiltrado[cat].length} esSeleccionado={filaActiva === fIdx && columnaActiva === 10} />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {vistaActual.tipo === 'grilla' && (
+                    <div className="flex-1 pt-32 px-10 overflow-y-auto no-scrollbar bg-black">
+                        <h2 className="text-4xl font-black text-green-600 uppercase italic mb-10">{vistaActual.data.titulo}</h2>
+                        <div className="grid grid-cols-6 gap-8 pb-32">
+                            {vistaActual.data.items.map((v, i) => <VideoCard key={i} id={`grid-item-${i}`} video={v} esSeleccionado={indiceAux === i} />)}
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            {vistaActual.tipo === 'detalle' && (
+                <div className="inset-0 fixed bg-black z-[1200] p-12 flex flex-col overflow-hidden animate-in fade-in duration-500">
+                    {extraInfo?.backdrop_path && <img src={`https://image.tmdb.org/t/p/original${extraInfo.backdrop_path}`} className="absolute inset-0 w-full h-full object-cover opacity-10 blur-3xl" />}
+                    <div className="relative z-10 flex items-start gap-12 mb-8">
+                        <div className="w-56 aspect-[2/3] rounded-sm overflow-hidden border border-white/10 shadow-2xl bg-black flex-shrink-0">
+                            <img src={vistaActual.data.info.logo} className="w-full h-full object-cover" />
+                        </div>
+                        <div className="flex-1 pt-4">
+                            <h2 className="text-6xl font-black uppercase text-green-500 mb-4 italic tracking-tighter">{vistaActual.data.info.titulo}</h2>
+                            <div className="flex gap-4 mb-8 items-center">
+                                <span className="bg-zinc-800 px-3 py-1 rounded-sm font-black text-[10px] text-zinc-400 uppercase tracking-widest">{vistaActual.data.info.categoria}</span>
+                                {extraInfo?.vote_average && <span className="text-yellow-500 font-black text-sm">★ {extraInfo.vote_average.toFixed(1)}</span>}
+                            </div>
+                            <div className="max-w-3xl bg-black/40 p-8 rounded-sm border border-white/5 backdrop-blur-md">
+                                <p className="text-zinc-400 text-xs font-bold leading-relaxed line-clamp-5 uppercase tracking-wide">{cargandoInfo ? "OBTENIENDO INFORMACIÓN..." : extraInfo?.overview || "DESCRIPCIÓN NO DISPONIBLE."}</p>
+                            </div>
+                        </div>
+                        <div id="visor-container" className={`relative w-[400px] aspect-video bg-black rounded-xl overflow-hidden border-4 transition-all duration-500 flex-shrink-0 ${focoZona === 'visor' ? 'border-green-600 scale-105 shadow-[0_0_60px_rgba(22,163,74,0.4)]' : 'border-zinc-800 opacity-30'}`}>
+                            <div className="absolute inset-0 z-20 flex items-center justify-center">
+                                <div className={`w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-all ${focoZona === 'visor' ? 'bg-green-600 scale-110' : 'bg-white/10'}`}><span className="text-3xl ml-1">▶</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    {vistaActual.data.items.length > 1 && (
+                        <div className="mt-4 relative z-10">
+                            <div className="flex gap-3 mb-4 overflow-x-auto no-scrollbar">
+                                {Array.from({ length: Math.ceil(vistaActual.data.items.length / 10) }).map((_, i) => (
+                                    <div key={i} id={`range-${i}`} className={`px-6 py-2 rounded-sm text-[10px] font-black border transition-all ${rangoCapitulos === i ? 'bg-green-600 border-green-500 text-white' : 'bg-black border-white/5 text-zinc-600'} ${focoZona === 'selector' && rangoCapitulos === i ? 'ring-2 ring-white scale-110' : ''}`}>{i * 10 + 1}-{Math.min((i + 1) * 10, vistaActual.data.items.length)}</div>
+                                ))}
+                            </div>
+                            <div className="flex gap-6 overflow-x-auto no-scrollbar py-4">
+                                {vistaActual.data.items.slice(rangoCapitulos * 10, (rangoCapitulos + 1) * 10).map((v, i) => (
+                                    <VideoCard key={i} id={`cap-${i}`} video={{...v, num: (rangoCapitulos * 10) + i + 1}} esSeleccionado={focoZona === 'grid' && indiceAux === i} esEpisodio={true} />
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
+
+            <div className="fixed inset-0 -z-10 bg-gradient-to-tr from-black via-[#050505] to-[#0a0a0a] opacity-95" />
         </div>
     );
 }

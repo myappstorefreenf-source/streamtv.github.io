@@ -120,15 +120,6 @@ const SideMenu = ({ activo, itemSeleccionado }) => {
         </div>
     );
 };
-    </div>
-
-    {/* Indicador lateral fijo (opcional, borralo si sentís que el scroll del menú va lento) */}
-    <div className="absolute left-0 w-1 bg-green-500 transition-all duration-150" 
-         style={{ height: '40px', top: `${154 + (itemSeleccionado * 64)}px`, opacity: itemSeleccionado >= 0 ? 1 : 0 }} />
-</div>
-    );
-};
-
 // --- APLICACIÓN PRINCIPAL ---
 function App() {
     const [menuActivo, setMenuActivo] = useState(false);

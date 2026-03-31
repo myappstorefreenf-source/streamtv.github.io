@@ -81,24 +81,45 @@ const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total, esS
 );
 
 const SideMenu = ({ activo, itemSeleccionado }) => {
-    const opciones = [{ id: 'search', label: 'BUSCAR', icon: '🔍' }, { id: 'tv', label: 'VIVO', icon: '📺' }, { id: 'vod', label: 'CONTENIDO', icon: '🎬' }];
+    const opciones = [
+        { id: 'search', label: 'BUSCAR', icon: '🔍' }, 
+        { id: 'tv', label: 'VIVO', icon: '📺' }, 
+        { id: 'vod', label: 'CONTENIDO', icon: '🎬' }
+    ];
+
     return (
-     <div className={`fixed left-0 top-0 h-screen z-[500] flex flex-col items-center py-10 transition-width duration-150
-    ${activo ? 'w-64 bg-[#0a0a0a]' : 'w-20 bg-transparent'}`}>
-    
-    <div className="flex flex-col gap-8 w-full items-center mt-20">
-        {opciones.map((opt, index) => (
-            <div key={opt.id} 
-                 className={`flex items-center w-full px-6 py-2 transition-colors duration-150 
-                 ${itemSeleccionado === index ? 'text-green-500 bg-zinc-900 border-l-4 border-green-600' : 'text-zinc-500 bg-transparent border-l-4 border-transparent'}`}>
-                
-                <span className="text-2xl min-w-[32px] text-center">{opt.icon}</span>
-                
-                <span className={`ml-4 font-black tracking-widest overflow-hidden ${activo ? 'opacity-100 max-w-xs' : 'opacity-0 max-w-0'}`}>
-                    {opt.label}
-                </span>
+        /* Cambiamos transition-all por transition-[width] para que el fondo no haga 'zoom' */
+        <div className={`fixed left-0 top-0 h-screen z-[500] flex flex-col items-center py-10 transition-[width] duration-150 ease-out
+            ${activo ? 'w-64 bg-[#0a0a0a]' : 'w-20 bg-transparent'}`}>
+            
+            <div className="flex flex-col gap-8 w-full items-center mt-20">
+                {opciones.map((opt, index) => (
+                    <div key={opt.id} 
+                         /* Transición rápida solo para el color, sin escalas */
+                         className={`flex items-center w-full px-6 py-2 transition-colors duration-100
+                         ${itemSeleccionado === index ? 'text-green-500 bg-zinc-900 border-l-4 border-green-600' : 'text-zinc-500 bg-transparent border-l-4 border-transparent'}`}>
+                        
+                        <span className="text-2xl min-w-[32px] text-center">{opt.icon}</span>
+                        
+                        {/* El texto aparece/desaparece rápido sin animar opacidad pesada */}
+                        <span className={`ml-4 font-black tracking-widest overflow-hidden ${activo ? 'max-w-xs' : 'max-w-0'}`}>
+                            {opt.label}
+                        </span>
+                    </div>
+                ))}
             </div>
-        ))}
+
+            {/* El indicador lateral: Cambiamos transition-all por transition-[top] */}
+            <div className="absolute left-0 w-1 bg-green-500 transition-[top] duration-150 ease-out" 
+                 style={{ 
+                    height: '40px', 
+                    top: `${154 + (itemSeleccionado * 60)}px`, 
+                    opacity: itemSeleccionado >= 0 ? 1 : 0 
+                 }} 
+            />
+        </div>
+    );
+};
     </div>
 
     {/* Indicador lateral fijo (opcional, borralo si sentís que el scroll del menú va lento) */}

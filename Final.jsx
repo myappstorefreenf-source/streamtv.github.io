@@ -216,113 +216,111 @@ function App() {
     const categoriasKeys = Object.keys(catalogoFiltrado);
 
     // --- MANEJO DE TECLAS (REMOTE CONTROL) ---
-    useEffect(() => {
-        const handleKeys = (e) => {
-            const isEnter = e.key === 'Enter' || e.keyCode === 13 || e.keyCode === 23;
-            const isBack = e.key === 'Escape' || e.key === 'Backspace' || e.keyCode === 8 || e.keyCode === 27 || e.keyCode === 4;
+  useEffect(() => {
+    const handleKeys = (e) => {
+        const isEnter = e.key === 'Enter' || e.keyCode === 13 || e.keyCode === 23;
+        const isBack = e.key === 'Escape' || e.key === 'Backspace' || e.keyCode === 8 || e.keyCode === 27 || e.keyCode === 4;
 
-            if (isBack) {
-                e.preventDefault();
-                if (mostrarTeclado) { setMostrarTeclado(false); return; }
-                if (menuActivo) { setMenuActivo(false); return; }
-                if (vistaActual.tipo === 'detalle') { setVistaActual(vistaActual.fromGrid ? { tipo: 'grilla', data: vistaActual.fromGrid } : { tipo: 'home', data: null }); setFocoZona('grid'); return; }
-                if (vistaActual.tipo === 'grilla') { setVistaActual({ tipo: 'home', data: null }); return; }
-                if (busqueda) { setBusqueda(""); return; }
-            }
+       if (isBack) {
+    e.preventDefault();
 
-            if (mostrarTeclado) return;
+    // NIVEL 1: Si el teclado está abierto, solo lo cierra (mantiene el texto)
+    if (mostrarTeclado) {
+        setMostrarTeclado(false);
+        // Movemos el foco al primer resultado para que el usuario pueda elegir
+        setFilaActiva(0); 
+        setColumnaActiva(0);
+        return;
+    }
 
-            if (menuActivo) {
-                if (e.key === 'ArrowUp') setMenuIdx(p => Math.max(0, p - 1));
-                if (e.key === 'ArrowDown') setMenuIdx(p => Math.min(2, p + 1));
-                if (e.key === 'ArrowRight' || isEnter) {
-                    if (menuIdx === 0) { setMenuActivo(false); setMostrarTeclado(true); } 
-                    else {
-                        const nf = menuIdx === 1 ? 'tv' : 'vod';
-                        if (fuenteActual !== nf) { setFuenteActual(nf); setFilaActiva(0); setColumnaActiva(0); }
-                        setMenuActivo(false);
-                    }
+    // NIVEL 2: Si el teclado está cerrado pero hay una búsqueda activa
+    if (busqueda.length > 0) {
+        setBusqueda(""); // Limpia el filtro para mostrar todo el catálogo de nuevo
+        setFilaActiva(0);
+        return;
+    }
+
+    // NIVEL 3: Si no hay búsqueda y el menú está abierto
+    if (menuActivo) {
+        setMenuActivo(false);
+        return;
+    }
+
+    // ... resto de lógica (salir de la app o ir a home)
+}
+        if (mostrarTeclado) return;
+
+        if (menuActivo) {
+            if (e.key === 'ArrowUp') setMenuIdx(p => Math.max(0, p - 1));
+            if (e.key === 'ArrowDown') setMenuIdx(p => Math.min(2, p + 1));
+            // AL PULSAR DERECHA EN EL MENÚ, VOLVEMOS A LA LISTA
+            if (e.key === 'ArrowRight') { setMenuActivo(false); return; }
+            if (isEnter) {
+                if (menuIdx === 0) { setMenuActivo(false); setMostrarTeclado(true); } 
+                else {
+                    const nf = menuIdx === 1 ? 'tv' : 'vod';
+                    if (fuenteActual !== nf) { setFuenteActual(nf); setFilaActiva(0); setColumnaActiva(0); }
+                    setMenuActivo(false);
                 }
-                return;
+            }
+            return;
+        }
+
+        if (vistaActual.tipo === 'home') {
+            // --- CAMBIO CLAVE AQUÍ ---
+            // Permitir abrir menú desde CUALQUIER posición pulsando Izquierda
+            if (e.key === 'ArrowLeft') { 
+                setMenuActivo(true); 
+                return; 
             }
 
-            if (vistaActual.tipo === 'home') {
-                if (e.key === 'ArrowLeft' && (columnaActiva === 0 || filaActiva === -1)) { setMenuActivo(true); return; }
-                if (fuenteActual === 'tv') {
-                    if (e.key === 'ArrowUp') {
-                        if (columnaActiva > 0) setColumnaActiva(p => p - 1);
-                        else { setFilaActiva(p => Math.max(p - 1, -1)); setColumnaActiva(0); }
-                    }
-                    if (e.key === 'ArrowDown') {
-                        const items = catalogoFiltrado[categoriasKeys[filaActiva]]?.length || 0;
-                        if (columnaActiva < items - 1) setColumnaActiva(p => p + 1);
-                        else { setFilaActiva(p => Math.min(p + 1, categoriasKeys.length - 1)); setColumnaActiva(0); }
-                    }
-                    if (isEnter) {
-                        if (filaActiva === -1) setMostrarTeclado(true);
-                        else { const v = catalogoFiltrado[categoriasKeys[filaActiva]][columnaActiva]; lanzarVideoNativo(v.url, v.titulo); }
-                    }
-                } else {
-                    if (e.key === 'ArrowUp') { setFilaActiva(p => Math.max(p - 1, -1)); setColumnaActiva(0); }
-                    if (e.key === 'ArrowDown') { setFilaActiva(p => Math.min(p + 1, categoriasKeys.length - 1)); setColumnaActiva(0); }
-                    if (filaActiva !== -1) {
-                        const items = catalogoFiltrado[categoriasKeys[filaActiva]] || [];
-                        const maxCol = items.length > 10 ? 10 : items.length - 1;
-                        if (e.key === 'ArrowRight') setColumnaActiva(p => Math.min(p + 1, maxCol));
-                        if (e.key === 'ArrowLeft') setColumnaActiva(p => Math.max(p - 1, 0));
-                        if (isEnter) {
-                            if (columnaActiva === 10) { setVistaActual({ tipo: 'grilla', data: { titulo: categoriasKeys[filaActiva], items } }); setIndiceAux(0); } 
-                            else {
-                                const v = items[columnaActiva];
-                                setVistaActual({ tipo: 'detalle', data: { info: v, items: v.episodios.length ? v.episodios : [v] } }); 
-                                setFocoZona('visor'); setRangoCapitulos(0); setIndiceAux(0); buscarResena(v);
-                            }
+            if (fuenteActual === 'tv') {
+                if (e.key === 'ArrowUp') {
+                    // Si estamos en el buscador (-1), no subimos más
+                    if (filaActiva === -1) return;
+                    if (columnaActiva > 0) setColumnaActiva(p => p - 1);
+                    else { 
+                        // Si es el primer canal de la categoría, sube a la categoría anterior
+                        if (filaActiva === 0) setFilaActiva(-1);
+                        else {
+                            const prevCat = categoriasKeys[filaActiva - 1];
+                            setFilaActiva(p => p - 1);
+                            setColumnaActiva(catalogoFiltrado[prevCat].length - 1);
                         }
-                    } else if (isEnter) setMostrarTeclado(true);
-                }
-            } else if (vistaActual.tipo === 'grilla') {
-                const total = vistaActual.data.items.length;
-                if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, total - 1));
-                if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
-                if (e.key === 'ArrowDown') setIndiceAux(p => Math.min(p + 6, total - 1));
-                if (e.key === 'ArrowUp') setIndiceAux(p => Math.max(p - 6, 0));
-                if (isEnter) {
-                    const v = vistaActual.data.items[indiceAux];
-                    if (fuenteActual === 'tv') lanzarVideoNativo(v.url, v.titulo);
-                    else { setVistaActual({ tipo: 'detalle', data: { info: v, items: v.episodios.length ? v.episodios : [v] }, fromGrid: vistaActual.data }); setFocoZona('visor'); buscarResena(v); }
-                }
-            } else if (vistaActual.tipo === 'detalle') {
-                const esSerie = vistaActual.data.items.length > 1;
-                if (focoZona === 'visor') {
-                    if (isEnter) lanzarVideoNativo(vistaActual.data.items[0].url, vistaActual.data.items[0].titulo);
-                    if (e.key === 'ArrowDown') { if (esSerie) setFocoZona('selector'); else if (sugerencias.length) { setFocoZona('sugerencias'); setIndiceAux(0); } }
-                } else if (focoZona === 'selector') {
-                    if (e.key === 'ArrowUp') setFocoZona('visor');
-                    if (e.key === 'ArrowDown') { setFocoZona('grid'); setIndiceAux(0); }
-                    if (e.key === 'ArrowRight') setRangoCapitulos(p => Math.min(p + 1, Math.ceil(vistaActual.data.items.length / 10) - 1));
-                    if (e.key === 'ArrowLeft') setRangoCapitulos(p => Math.max(p - 1, 0));
-                } else if (focoZona === 'grid') {
-                    const maxInPage = Math.min(10, vistaActual.data.items.length - (rangoCapitulos * 10)) - 1;
-                    if (e.key === 'ArrowUp') setFocoZona('selector');
-                    if (e.key === 'ArrowDown' && sugerencias.length) { setFocoZona('sugerencias'); setIndiceAux(0); }
-                    if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, maxInPage));
-                    if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
-                    if (isEnter) { const ep = vistaActual.data.items[(rangoCapitulos * 10) + indiceAux]; lanzarVideoNativo(ep.url, ep.titulo); }
-                } else if (focoZona === 'sugerencias') {
-                    if (e.key === 'ArrowUp') setFocoZona(esSerie ? 'grid' : 'visor');
-                    if (e.key === 'ArrowRight') setIndiceAux(p => Math.min(p + 1, sugerencias.length - 1));
-                    if (e.key === 'ArrowLeft') setIndiceAux(p => Math.max(p - 1, 0));
-                    if (isEnter) {
-                        const sug = sugerencias[indiceAux];
-                        setVistaActual({ tipo: 'detalle', data: { info: sug, items: sug.episodios.length ? sug.episodios : [sug] } });
-                        setFocoZona('visor'); setIndiceAux(0); setRangoCapitulos(0); buscarResena(sug);
                     }
                 }
+                if (e.key === 'ArrowDown') {
+                    if (filaActiva === -1) { setFilaActiva(0); setColumnaActiva(0); return; }
+                    const items = catalogoFiltrado[categoriasKeys[filaActiva]]?.length || 0;
+                    if (columnaActiva < items - 1) setColumnaActiva(p => p + 1);
+                    else { 
+                        if (filaActiva < categoriasKeys.length - 1) {
+                            setFilaActiva(p => p + 1); 
+                            setColumnaActiva(0); 
+                        }
+                    }
+                }
+                if (isEnter) {
+                    if (filaActiva === -1) setMostrarTeclado(true);
+                    else { const v = catalogoFiltrado[categoriasKeys[filaActiva]][columnaActiva]; lanzarVideoNativo(v.url, v.titulo); }
+                }
+            } else {
+                // Lógica de VOD (Grilla horizontal)
+                if (e.key === 'ArrowUp') setFilaActiva(p => Math.max(p - 1, -1));
+                if (e.key === 'ArrowDown') setFilaActiva(p => Math.min(p + 1, categoriasKeys.length - 1));
+                
+                if (filaActiva !== -1) {
+                    if (e.key === 'ArrowRight') setColumnaActiva(p => Math.min(p + 1, 10));
+                    // El ArrowLeft ya está cubierto arriba para abrir el menú
+                    if (isEnter) { /* tu lógica de enter VOD */ }
+                } else if (isEnter) setMostrarTeclado(true);
             }
-        };
-        window.addEventListener('keydown', handleKeys);
-        return () => window.removeEventListener('keydown', handleKeys);
-    }, [filaActiva, columnaActiva, vistaActual, focoZona, categoriasKeys, catalogoFiltrado, indiceAux, rangoCapitulos, busqueda, sugerencias, menuActivo, menuIdx, fuenteActual, mostrarTeclado]);
+        }
+        // ... resto de lógica para grilla y detalle
+    };
+    window.addEventListener('keydown', handleKeys);
+    return () => window.removeEventListener('keydown', handleKeys);
+}, [filaActiva, columnaActiva, vistaActual, focoZona, categoriasKeys, catalogoFiltrado, indiceAux, rangoCapitulos, busqueda, sugerencias, menuActivo, menuIdx, fuenteActual, mostrarTeclado]);
 
     // --- AUTO-SCROLL ---
     useEffect(() => {
@@ -352,21 +350,46 @@ function App() {
                 <span className="text-white font-black text-3xl italic">H-</span>
             </div>
 
-            <div className="absolute top-8 right-10 z-[1100]">
-                <div id="fake-search" className={`w-72 px-5 py-3 rounded-md border-2 transition-all flex justify-between items-center ${filaActiva === -1 || mostrarTeclado ? 'border-green-600 bg-zinc-800 scale-95 shadow-[0_0_20px_rgba(22,163,74,0.2)]' : 'border-white/5 bg-transparent'}`}>
-                    <span className={`truncate text-[10px] font-black tracking-widest ${busqueda ? 'text-white' : 'text-zinc-400'}`}>{busqueda || "BUSCAR TÍTULO..."}</span>
-                    <div className="bg-green-600 text-[8px] px-1.5 py-0.5 rounded-sm font-black text-white">OK</div>
-                </div>
-                {mostrarTeclado && (
-                    <div className="absolute top-14 right-0 z-[2000] animate-in slide-in-from-top-2 duration-300">
-                        <VirtualKeyboard busqueda={busqueda} onKeyPress={(t)=>setBusqueda(p=>p+t)} onBackspace={()=>setBusqueda(p=>p.slice(0,-1))} onClose={()=>setMostrarTeclado(false)} />
-                    </div>
-                )}
+           {/* CONTENEDOR FIJO DE BÚSQUEDA (ESQUINA DERECHA) */}
+<div className="fixed top-8 right-10 z-[2000] flex flex-col items-end gap-4">
+    
+    {/* EL INPUT DE BÚSQUEDA */}
+    <div id="fake-search" className={`w-80 px-5 py-4 rounded-xl border-2 transition-all flex justify-between items-center 
+        ${filaActiva === -1 || mostrarTeclado ? 'border-green-600 bg-zinc-900/90 scale-105 shadow-[0_0_30px_rgba(34,197,94,0.3)]' : 'border-white/10 bg-black/60'}`}>
+        <div className="flex flex-col overflow-hidden">
+            <span className="text-[8px] text-zinc-500 font-black tracking-[0.2em] mb-1 uppercase">Buscando...</span>
+            <span className={`truncate text-lg font-black tracking-tighter italic ${busqueda ? 'text-white' : 'text-zinc-600'}`}>
+                {busqueda || "ESCRIBIR NOMBRE"}
+            </span>
+        </div>
+        <div className="bg-green-600 text-[10px] px-2 py-1 rounded-md font-black text-white shadow-lg">OK</div>
+    </div>
+
+    {/* EL TECLADO - AHORA LATERAL Y SIN FONDO OSCURO COMPLETO */}
+    {mostrarTeclado && (
+        <div className="animate-in slide-in-from-top-4 duration-300 origin-top-right">
+            {/* El teclado con un fondo semi-transparente para ver los resultados detrás */}
+            <div className="bg-black/40 backdrop-blur-md p-2 rounded-3xl border border-white/10 shadow-2xl">
+                <VirtualKeyboard 
+                    busqueda={busqueda} 
+                    onKeyPress={(t)=>setBusqueda(p=>p+t)} 
+                    onBackspace={()=>setBusqueda(p=>p.slice(0,-1))} 
+                    onClose={()=>setMostrarTeclado(false)} 
+                />
             </div>
+            
+            <div className="mt-4 text-right pr-4">
+                <p className="text-[10px] font-black text-zinc-500 tracking-widest uppercase animate-pulse">
+                    PULSA ATRÁS PARA VOLVER A LA LISTA
+                </p>
+            </div>
+        </div>
+    )}
+</div>
 
             <SideMenu activo={menuActivo} itemSeleccionado={menuIdx} />
 
-            <div className={`h-full transition-all duration-500 flex flex-col ${menuActivo ? 'opacity-50 scale-95 blur-sm pl-20' : 'pl-20'}`}>
+           <div className={`flex-1 pt-32 pb-32 ${menuActivo || mostrarTeclado ? 'overflow-hidden' : 'overflow-y-auto no-scrollbar'}`}>
                 {vistaActual.tipo === 'home' && (
                     <div className="flex-1 pt-32 overflow-y-auto no-scrollbar pb-32">
                         <div className="pl-32 mb-12">

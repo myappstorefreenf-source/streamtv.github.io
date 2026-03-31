@@ -400,7 +400,7 @@ function App() {
 
             <SideMenu activo={menuActivo} itemSeleccionado={menuIdx} />
 
-            <div className={`h-full transition-all duration-500 flex flex-col ${menuActivo ? 'opacity-50 scale-95 blur-sm pl-20' : 'pl-20'}`}>
+            <div className={`h-full flex flex-col pl-20 transition-opacity duration-200 ${menuActivo ? 'opacity-40' : 'opacity-100'}`}>
                 {vistaActual.tipo === 'home' && (
                     <div className="flex-1 pt-32 overflow-y-auto no-scrollbar pb-32">
                         <div className="pl-32 mb-12">

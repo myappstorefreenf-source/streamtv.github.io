@@ -49,7 +49,7 @@ const VirtualKeyboard = ({ onKeyPress, onBackspace, onClose, busqueda }) => {
 };
 
 const TVChannelRow = ({ video, esSeleccionado, id }) => (
-    <div id={id} className={`flex items-center gap-5 p-4 mx-24 mb-2 transition-all rounded-xl border-2
+    <div id={id} className={`flex items-center gap-5 p-4 mx-24 mb-2 transition-all rounded-sm border-2
         ${esSeleccionado ? 'border-green-600 bg-zinc-900/80 shadow-[0_0_15px_rgba(34,197,94,0.3)] opacity-100 scale-[1.02]' : 'border-white/5 opacity-40 bg-transparent'}`}>
         <div className="w-14 h-10 bg-black rounded-md flex items-center justify-center overflow-hidden border border-white/10 shadow-inner">
             <img src={video.logo} className="w-full h-full object-contain" onError={(e)=>e.target.src='https://via.placeholder.com/100x60?text=TV'} />
@@ -61,7 +61,7 @@ const TVChannelRow = ({ video, esSeleccionado, id }) => (
 );
 
 const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total, esSugerencia }) => (
-    <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esSugerencia ? 'w-24' : esEpisodio ? 'w-28 h-28' : 'w-32'} ${esSeleccionado ? 'scale-110 ring-2 ring-green-600 z-10 opacity-100 shadow-[0_0_25px_rgba(34,197,94,0.4)]' : 'opacity-60'}`}>
+    <div id={id} className={`flex-shrink-0 transition-all duration-300 ${esSugerencia ? 'w-24' : esEpisodio ? 'w-28 h-28' : 'w-32'} ${esSeleccionado ? 'scale-110 ring-2 ring-green-600 z-10 opacity-100 shadow-[0_0_25px_rgba(34,197,94,0.4)]' : 'opacity-95'}`}>
         <div className={`relative overflow-hidden border border-white/5 flex items-center justify-center ${esVerMas ? 'bg-green-700 aspect-[2/3] rounded-sm' : esEpisodio ? 'h-full bg-zinc-800 rounded-lg' : 'bg-zinc-900 aspect-[2/3] rounded-sm'}`}>
             {esVerMas ? (
                 <div className="text-center p-4"><span className="block text-4xl mb-1">＋</span><span className="block text-[10px] font-black uppercase italic">Ver {total}</span></div>
@@ -83,18 +83,28 @@ const VideoCard = ({ video, esSeleccionado, id, esEpisodio, esVerMas, total, esS
 const SideMenu = ({ activo, itemSeleccionado }) => {
     const opciones = [{ id: 'search', label: 'BUSCAR', icon: '🔍' }, { id: 'tv', label: 'VIVO', icon: '📺' }, { id: 'vod', label: 'CONTENIDO', icon: '🎬' }];
     return (
-        <div className={`fixed left-0 top-0 h-screen z-[500] flex flex-col items-center py-10 transition-all duration-500
-            ${activo ? 'w-64 bg-black/60 backdrop-blur-xl' : 'w-20 bg-transparent'}`}>
-            <div className="flex flex-col gap-8 w-full items-center mt-20">
-                {opciones.map((opt, index) => (
-                    <div key={opt.id} className={`flex items-center transition-all duration-300 w-full px-6 ${itemSeleccionado === index ? 'text-green-500 scale-125' : 'text-zinc-500'}`}>
-                        <span className="text-2xl min-w-[32px] text-center">{opt.icon}</span>
-                        <span className={`ml-4 font-black tracking-widest overflow-hidden transition-all duration-500 ${activo ? 'opacity-100 max-w-xs' : 'opacity-0 max-w-0'}`}>{opt.label}</span>
-                    </div>
-                ))}
+     <div className={`fixed left-0 top-0 h-screen z-[500] flex flex-col items-center py-10 transition-width duration-150
+    ${activo ? 'w-64 bg-[#0a0a0a]' : 'w-20 bg-transparent'}`}>
+    
+    <div className="flex flex-col gap-8 w-full items-center mt-20">
+        {opciones.map((opt, index) => (
+            <div key={opt.id} 
+                 className={`flex items-center w-full px-6 py-2 transition-colors duration-150 
+                 ${itemSeleccionado === index ? 'text-green-500 bg-zinc-900 border-l-4 border-green-600' : 'text-zinc-500 bg-transparent border-l-4 border-transparent'}`}>
+                
+                <span className="text-2xl min-w-[32px] text-center">{opt.icon}</span>
+                
+                <span className={`ml-4 font-black tracking-widest overflow-hidden ${activo ? 'opacity-100 max-w-xs' : 'opacity-0 max-w-0'}`}>
+                    {opt.label}
+                </span>
             </div>
-            <div className="absolute left-0 w-1 bg-green-500 transition-all duration-300 rounded-r-full" style={{ height: '40px', top: `${154 + (itemSeleccionado * 64)}px`, opacity: itemSeleccionado >= 0 ? 1 : 0 }} />
-        </div>
+        ))}
+    </div>
+
+    {/* Indicador lateral fijo (opcional, borralo si sentís que el scroll del menú va lento) */}
+    <div className="absolute left-0 w-1 bg-green-500 transition-all duration-150" 
+         style={{ height: '40px', top: `${154 + (itemSeleccionado * 64)}px`, opacity: itemSeleccionado >= 0 ? 1 : 0 }} />
+</div>
     );
 };
 
@@ -343,7 +353,7 @@ function App() {
             let id = vistaActual.tipo === 'home' ? (filaActiva === -1 ? "fake-search" : `item-${filaActiva}-${columnaActiva}`) : 
                      vistaActual.tipo === 'grilla' ? `grid-item-${indiceAux}` : 
                      focoZona === 'visor' ? 'visor-container' : focoZona === 'selector' ? `range-${rangoCapitulos}` : focoZona === 'grid' ? `cap-${indiceAux}` : `sug-${indiceAux}`;
-            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+            document.getElementById(id)?.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
         }, 100);
         return () => clearTimeout(timer);
     }, [filaActiva, columnaActiva, vistaActual, focoZona, mostrarTeclado, menuActivo, indiceAux, rangoCapitulos]);
@@ -422,7 +432,7 @@ function App() {
 
             {vistaActual.tipo === 'detalle' && (
                 <div className="inset-0 fixed bg-black z-[1200] p-12 flex flex-col overflow-hidden animate-in fade-in duration-500">
-                    {extraInfo?.backdrop_path && <img src={`https://image.tmdb.org/t/p/original${extraInfo.backdrop_path}`} className="absolute inset-0 w-full h-full object-cover opacity-10 blur-3xl" />}
+                    {extraInfo?.backdrop_path && <img src={`https://image.tmdb.org/t/p/original${extraInfo.backdrop_path}`} className="absolute inset-0 w-full h-full object-cover opacity-85 blur-sm scale-105" />}
                     
                     <div className="relative z-10 flex items-start gap-12 mb-8">
                         <div className="w-56 aspect-[2/3] rounded-sm overflow-hidden border border-white/10 shadow-2xl bg-black flex-shrink-0">

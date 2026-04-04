@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOOD PROJECT</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos críticos para el foco y scroll */
+        .focused {
+            border-color: #16a34a !important; /* Green-600 */
+            transform: scale(1.05);
+            z-index: 50;
+            box-shadow: 0 0 25px rgba(22, 163, 74, 0.5);
+            outline: none;
+        }
+        
+        /* Evita que el fondo se mueva lateralmente en detalle */
+        #modal-full { 
+            scroll-behavior: smooth; 
+            overflow-x: hidden !important; 
+        }
+
+        .card, .tv-row, .menu-item, .card-grid-item { transition: all 0.2s ease-in-out; }
+        
+        /* Ocultar scrollbars para que parezca una App */
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Corrección para que el botón no se deforme al recibir foco */
+        #btn-play.focused {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(22, 163, 74, 0.8);
+        }
+    </style>
+</head>
+<body class="select-none text-white bg-black overflow-hidden font-sans">
+
+    <div id="loading" class="fixed inset-0 bg-black flex flex-col items-center justify-center z-[9999]">
+        <div class="w-12 h-12 border-4 border-green-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <div id="loading-status" class="text-green-600 font-black text-xs uppercase text-center mt-4 tracking-[3px]">
+            Iniciando sistema...
+        </div>
+    </div>
+
+    <aside id="side-menu" class="fixed inset-y-0 left-0 w-80 transform -translate-x-full bg-[#050505] z-[5000] transition-transform duration-300 border-r border-white/5">
+        <div class="p-12 pb-6">
+            <div class="font-black text-3xl italic text-green-600 uppercase tracking-tighter">Hood Project</div>
+            <div class="text-[10px] text-zinc-500 tracking-[4px] mt-2 opacity-50">MEDIA CENTER</div>
+        </div>
+        <div id="menu-list" class="flex flex-col gap-2 p-6"></div>
+    </aside>
+
+    <main id="app-content" class="h-screen flex flex-col transition-all duration-300">
+        <header class="p-12 pb-4">
+            <div id="section-title" class="text-7xl font-black italic uppercase opacity-10 tracking-tighter">TELEVISIÓN</div>
+        </header>
+        <div id="main-scroll" class="flex-1 overflow-hidden">
+            <div id="rows-container" class="pb-20"></div>
+        </div>
+    </main>
+
+    <div id="modal-full" class="fixed inset-0 bg-black/95 z-[6000] hidden overflow-y-auto overflow-x-hidden"></div>
+
+    <script src="config.js"></script>
+    <script src="tv.js"></script>
+    <script src="vod.js"></script>
+    <script src="adultos.js"></script>
+
+    <script src="Components.js"></script>
+    <script src="ContentParser.js"></script>
+    <script src="AppController.js"></script> 
+    <script src="dpad.js"></script> 
+
+    <script>
+        // --- PUENTE NATIVO CON ANDROID ---
+window.reproducir = function(item) {
+    if (!item || !item.url) {
+        console.error("Error: Item sin URL de video", item);
+        return;
+    }
+
+    const url = item.url;
+    const titulo = item.titulo || "Hood Video";
+
+    // Usamos el puente que ya tienes configurado en tu WebView
+    if (window.AndroidInterface && window.AndroidInterface.playVideo) {
+        console.log("Lanzando a ExoPlayer:", titulo);
+        window.AndroidInterface.playVideo(url, titulo);
+    } else {
+        // Esto es lo que verás si pruebas la App en el navegador de la PC
+        console.log("MODO PC (Simulación):", {
+            accion: "Reproducir",
+            titulo: titulo,
+            url: url
+        });
+        //alert("Simulación PC: Reproduciendo " + titulo);
+    }
+};
+        const State = {
+            view: 'home', 
+            source: 'tv', 
+            catalog: {},
+            fila: 0, 
+            col: 0, 
+            menu: false, 
+            idxMenu: 0,
+            currentGridCat: null,
+            secciones: [
+                { id: 'tv', label: 'TELEVISIÓN' },
+                { id: 'peliculas', label: 'PELÍCULAS' },
+                { id: 'series', label: 'SERIES' },
+                { id: 'adultos', label: 'ADULTOS' }
+            ]
+        };
+
+        function bootstrap() {
+            const status = document.getElementById('loading-status');
+            
+            if (window.m3uTV || window.m3uVOD) {
+                try {
+                    if(window.m3uTV) {
+                        State.catalog.tv = ContentParser.parsearTV(window.m3uTV);
+                    }
+                    
+                    if(window.m3uVOD) {
+                        const vod = ContentParser.parsearVOD(window.m3uVOD);
+                        State.catalog.peliculas = vod.peliculas;
+                        State.catalog.series = vod.series;
+                        State.catalog.adultos = vod.adultos;
+                    }
+
+                    document.getElementById('menu-list').innerHTML = State.secciones.map((s, i) => 
+                        `<div id="menu-${i}" class="p-4 px-6 text-xl font-bold italic uppercase tracking-widest text-zinc-500 rounded-xl menu-item">${s.label}</div>`
+                    ).join('');
+
+                    AppController.renderHome();
+                    document.getElementById('loading').style.display = 'none';
+                    updateFocus();
+
+                } catch(e) {
+                    status.innerHTML = `<span class="text-red-500 uppercase">Error: ${e.message}</span>`;
+                    console.error(e);
+                }
+            } else {
+                status.innerHTML = `<span class="text-red-500 font-bold uppercase tracking-widest">Esperando Listas M3U...</span>`;
+                setTimeout(bootstrap, 1000);
+            }
+        }
+
+       function updateFocus() {
+    // 1. Limpiar focos previos
+    document.querySelectorAll('.focused').forEach(e => e.classList.remove('focused'));
+    
+    const menu = document.getElementById('side-menu');
+    const main = document.getElementById('app-content');
+    const title = document.getElementById('section-title');
+
+    // Manejo del Menú Lateral
+    if (State.menu) {
+        menu.style.transform = 'translateX(0)';
+        main.style.opacity = '0.3';
+        const el = document.getElementById(`menu-${State.idxMenu}`);
+        if(el) el.classList.add('focused');
+        return;
+    } 
+
+    menu.style.transform = 'translateX(-100%)';
+    main.style.opacity = '1';
+
+    let activeElement = null;
+
+    // 2. Identificar el elemento activo según la vista
+    if (State.view === 'home') {
+        const seccionActiva = State.secciones.find(s => s.id === State.source);
+        if(seccionActiva) title.innerText = seccionActiva.label;
+        activeElement = document.getElementById(`card-${State.fila}-${State.col}`);
+    } 
+    else if (State.view === 'grid') {
+        activeElement = document.getElementById(`card-grid-${State.col}`);
+    } 
+    else if (State.view === 'details') {
+        const modalCards = document.querySelectorAll('#modal-full .card');
+        activeElement = modalCards[State.col];
+    }
+
+    // 3. Aplicar el Foco y el Scroll Inteligente
+    if(activeElement) {
+        activeElement.classList.add('focused');
+
+        if (State.view === 'details') {
+            // BUSCAMOS SI EL ELEMENTO ESTÁ DENTRO DE UN CARRUSEL (Episodios o Sugerencias)
+            const parent = activeElement.parentElement;
+            
+            // Si el padre es un contenedor con scroll horizontal (carrusel)
+            if (parent && (parent.classList.contains('overflow-x-auto') || parent.scrollWidth > parent.clientWidth)) {
+                // Calculamos la posición: el offset del elemento menos un margen de 80px
+                const scrollTarget = activeElement.offsetLeft - parent.offsetLeft - 80;
+                
+                parent.scrollTo({
+                    left: scrollTarget,
+                    behavior: 'smooth'
+                });
+
+                // Para el scroll VERTICAL del modal completo (si la sección está muy abajo)
+                activeElement.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest', 
+                    inline: 'nearest' // 'nearest' evita que se mueva horizontalmente el modal
+                });
+            } else {
+                // Si es el botón PLAY u otros elementos estáticos
+                activeElement.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center', 
+                    inline: 'nearest' 
+                });
+            }
+        } else {
+            // Comportamiento normal para el Home y Grid
+            activeElement.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center', 
+                inline: State.view === 'home' ? 'start' : 'center' 
+            });
+        }
+    }
+}
+        window.addEventListener('keydown', (e) => {
+            if (!window.DPad) return;
+            
+            if (window.DPad.handlers.global) window.DPad.handlers.global(e);
+
+            if (State.menu) {
+                window.DPad.handlers.menu(e);
+            } else {
+                const currentHandler = window.DPad.handlers[State.view];
+                if (currentHandler) currentHandler(e);
+            }
+            updateFocus();
+        });
+
+        window.onload = bootstrap;
+    </script>
+</body>
+</html>

@@ -1,9 +1,20 @@
-/* styles.css */
-* { outline: none !important; box-sizing: border-box; }
-body { background: #000; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; margin: 0; }
+/* styles.css - CORRECCIÓN DE ESCALAS Y CONTRASTE */
+* { 
+    outline: none !important; 
+    box-sizing: border-box; 
+}
+
+body { 
+    background: #000; 
+    color: white; 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    overflow: hidden; 
+    margin: 0; 
+}
+
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
-/* --- MENÚ LATERAL PREMIUM --- */
+/* --- MENÚ LATERAL --- */
 #side-menu { 
     background: linear-gradient(to right, #050505, #000); 
     border-right: 2px solid #111; 
@@ -20,113 +31,120 @@ body { background: #000; color: white; font-family: 'Segoe UI', Tahoma, Geneva, 
     border-left: 5px solid transparent;
 }
 .menu-item.focused { 
-    color: #fff; 
-    background: rgba(22, 163, 74, 0.2); 
-    border-left-color: #16a34a;
-    transform: translateX(10px);
+    color: #fff !important; 
+    background: rgba(22, 163, 74, 0.2) !important; 
+    border-left-color: #16a34a !important;
+    transform: translateX(10px) !important;
+}
+
+/* --- FILAS DE CONTENIDO (HOME Y DETALLES) --- */
+.flex-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1.5rem;
+    /* CAMBIO CLAVE AQUÍ: */
+    overflow-x: auto !important; 
+    overflow-y: visible !important; 
+    scroll-behavior: smooth; /* Para que el movimiento sea fluido */
+    padding: 30px 60px !important;
+    -webkit-overflow-scrolling: touch; /* Mejora fluidez en WebViews */
+}
+
+/* Ocultar la barra de scroll para que no afee el diseño */
+.flex-row::-webkit-scrollbar {
+    display: none;
 }
 
 /* --- TARJETAS (CARDS) --- */
 .card { 
-    width: 12rem; aspect-ratio: 2/3; background: #111; 
-    border-radius: 12px; overflow: hidden; border: 3px solid transparent; 
-    transition: 0.3s; opacity: 0.4;
-}
-.card img { width: 100%; height: 100%; object-cover: cover; }
-.focused { border-color: #16a34a !important; opacity: 1 !important; transform: scale(1.1); z-index: 100; box-shadow: 0 0 30px rgba(22, 163, 74, 0.4); }
-
-/* --- TV ROWS --- */
-.tv-row { 
-    padding: 1rem 2rem; background: #080808; border-radius: 8px; 
-    margin-bottom: 5px; border: 2px solid transparent; transition: 0.2s; opacity: 0.6;
-}
-.tv-row.focused { background: #16a34a; color: #000; opacity: 1; transform: scale(1.03); }
-/* --- MODAL Y GRILLA (VER MÁS) --- */
-#modal-full {
-    background: radial-gradient(circle at top right, #0a0a0a, #000);
-    /* Quitar barras de scroll en todos los navegadores */
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-#modal-full::-webkit-scrollbar {
-    display: none;
-}
-
-/* Tarjetas dentro de la Grilla */
-.card-grid-item {
-    width: 100%;
-    aspect-ratio: 2/3;
-    background: #111;
-    border-radius: 12px;
-    border: 3px solid transparent;
-    overflow: hidden;
+    width: 10.5rem; /* Un poco más pequeñas para que quepan más y respiren */
+    aspect-ratio: 2/3; 
+    background: #111; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    border: 3px solid transparent; 
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
     opacity: 0.5;
+    flex-shrink: 0;
+    position: relative;
 }
 
-.card-grid-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.card img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
 }
 
-/* Título flotante en la grilla */
-.card-grid-item .title-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px 10px 10px;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    font-size: 0.7rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    text-align: center;
-    transform: translateY(100%);
-    transition: transform 0.3s;
+/* --- EL FOCO (ESCALA SEGURA PARA TV) --- */
+.focused { 
+    border: 4px solid #16a34a !important; 
+    opacity: 1 !important; 
+    transform: scale(1.08) !important; /* BAJAMOS LA ESCALA PARA QUE NO SE CORTE */
+    z-index: 999 !important; 
+    box-shadow: 0 0 35px rgba(22, 163, 74, 0.6) !important;
 }
 
-/* Foco en la Grilla */
-.card-grid-item.focused {
-    border-color: #16a34a !important;
-    opacity: 1 !important;
-    transform: scale(1.1);
-    z-index: 50;
-    box-shadow: 0 0 40px rgba(22, 163, 74, 0.5);
-}
-
-.card-grid-item.focused .title-overlay {
-    transform: translateY(0);
-}
-
-/* --- VISTA DE DETALLE (TMDB Style) --- */
-.detail-backdrop {
-    position: fixed;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.3) blur(10px);
-    z-index: -1;
-}
-
-.btn-action {
-    padding: 1rem 3rem;
+/* --- BOTÓN REPRODUCIR (FIX DE CONTRASTE) --- */
+#btn-play, .btn-action {
     background: #111;
-    border-radius: 50px;
-    font-weight: 900;
-    font-style: italic;
     border: 3px solid transparent;
     transition: 0.3s;
 }
 
-.btn-action.focused {
-    background: #16a34a;
-    color: #000;
-    transform: scale(1.1);
+#btn-play.focused, .btn-action.focused {
+    background: #16a34a !important; /* Fondo verde */
+    transform: scale(1.05) !important;
 }
 
-/* Ajuste para que las filas de TV no se corten */
+/* Forzamos que el texto dentro del botón enfocado sea negro puro */
+.focused span, 
+.focused div,
+.btn-action.focused {
+    color: #000 !important;
+    font-weight: 900 !important;
+}
+
+/* --- TV ROWS (CANALES) --- */
+.tv-row { 
+    padding: 1rem 2rem; 
+    background: #080808; 
+    border-radius: 8px; 
+    margin-bottom: 5px; 
+    border: 2px solid transparent; 
+    transition: 0.2s; 
+    opacity: 0.6;
+}
+.tv-row.focused { 
+    background: #16a34a !important; 
+    color: #000 !important; 
+    opacity: 1 !important; 
+    transform: scale(1.02) !important; 
+}
+
+/* --- MODAL Y GRILLA --- */
+#modal-full {
+    background: radial-gradient(circle at top right, #0a0a0a, #000);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-x: hidden;
+}
+
+.card-grid-item {
+    width: 100%;
+    aspect-ratio: 2/3;
+    border-radius: 12px;
+    border: 3px solid transparent;
+    overflow: hidden;
+    opacity: 0.6;
+}
+
 #rows-container {
     padding-bottom: 100px;
+    overflow-x: hidden;
+}
+
+/* Ajuste para las sugerencias de abajo en Detalles */
+[id^="sug-"] {
+    width: 15rem !important; /* Tamaño horizontal para sugerencias */
+    aspect-ratio: 16/9;
 }

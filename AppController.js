@@ -1,6 +1,9 @@
 window.AppController = {
     renderHome: function() {
         State.view = 'home';
+        // Al renderizar el Home, nos aseguramos de que no haya ninguna grilla pendiente
+        State.currentGridCat = null; 
+        
         const container = document.getElementById('rows-container');
         const titleElement = document.getElementById('section-title');
         
@@ -47,7 +50,7 @@ window.AppController = {
 
     abrirGrilla: function(catName) {
         State.view = 'grid';
-        State.currentGridCat = catName; 
+        State.currentGridCat = catName; // Aquí guardamos "Solicitadas", "Suspenso", etc.
         State.col = 0; 
         const items = State.catalog[State.source][catName];
         const modal = document.getElementById('modal-full');
@@ -98,7 +101,6 @@ window.AppController = {
                 </div>
             </div>`).join('');
         
-        // Sincronizar foco para que no se pierda al pulsar Enter
         setTimeout(() => {
             const todasLasCards = Array.from(document.querySelectorAll('#modal-full .card'));
             const miBotonId = `range-${index}`;
@@ -109,6 +111,11 @@ window.AppController = {
     },
 
     abrirDetalle: function(item) {
+        // Detectamos si venimos del Home para limpiar cualquier rastro de Grilla (como Solicitadas)
+        if (State.view === 'home') {
+            State.currentGridCat = null;
+        }
+
         State.view = 'details';
         State.col = 0;
         State.currentItem = item;
@@ -136,7 +143,6 @@ window.AppController = {
                 grupos.push(item.episodios.slice(i, i + 10));
             }
 
-            // Codificamos el string para que no rompa el onclick
             const episodiosString = encodeURIComponent(JSON.stringify(item.episodios));
 
             const htmlBotonesRangos = grupos.map((g, i) => {
@@ -183,22 +189,18 @@ window.AppController = {
                 <div class="absolute top-0 left-0 w-full h-[70vh] opacity-20 blur-[100px] pointer-events-none scale-150">
                     <img src="${item.logo}" class="w-full h-full object-cover">
                 </div>
-
                 <div class="relative z-10 p-10 lg:p-20 flex flex-col min-h-screen">
                     <div class="flex flex-col md:flex-row gap-12 items-start">
                         <div class="w-64 flex-shrink-0 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
                             <img src="${item.logo}" class="w-full h-full object-cover">
                         </div>
-
                         <div class="flex-1 pt-4">
                             <div class="flex items-center gap-4 mb-5">
                                 <span class="bg-white text-black px-3 py-1 text-[10px] font-black italic uppercase rounded">HOOD PRO</span>
                                 <span class="text-green-600 font-black italic text-xs uppercase tracking-[3px] opacity-70">${item.grupo}</span>
                             </div>
-
                             <h1 class="text-5xl lg:text-6xl font-black italic uppercase tracking-tighter leading-tight mb-8 max-w-4xl">${item.name || item.titulo}</h1>
                             <p class="text-zinc-400 text-lg max-w-2xl leading-relaxed mb-10">${sinopsis}</p>
-
                             ${!item.episodios ? `
                                <div id="btn-play" class="card flex-none w-fit min-w-[220px] h-[58px] px-8 bg-green-600 rounded-full flex items-center justify-center gap-4 cursor-pointer shadow-xl shadow-green-600/20 transition-all shrink-0 self-start" onclick='window.reproducir(State.currentItem)'>
                                     <div class="w-6 h-6 bg-black rounded-full flex items-center justify-center">
@@ -208,9 +210,7 @@ window.AppController = {
                                 </div>` : ''}
                         </div>
                     </div>
-
                     ${htmlSeccionEpisodios}
-
                     <div class="mt-16 mt-auto">
                         <h3 class="text-zinc-500 font-black italic text-[10px] uppercase tracking-[4px] mb-6">Porque viste ${item.grupo}</h3>
                         <div class="flex gap-4 overflow-x-auto pb-8 no-scrollbar">
@@ -219,19 +219,34 @@ window.AppController = {
                     </div>
                 </div>
             </div>`;
-
         window.updateFocus();
     },
 
     cerrarModal: function() {
         const modal = document.getElementById('modal-full');
-        if (State.view === 'details' && State.currentGridCat) {
-            this.abrirGrilla(State.currentGridCat);
+        
+        // Lógica de salida inteligente
+        if (State.view === 'details') {
+            if (State.currentGridCat) {
+                // Si veníamos de una grilla (ej. Solicitadas), volvemos ahí
+                this.abrirGrilla(State.currentGridCat);
+            } else {
+                // Si veníamos del Home, limpiamos y volvemos al Home
+                this.limpiarYRegresarAlHome();
+            }
         } else {
-            State.view = 'home';
-            modal.classList.add('hidden');
-            modal.innerHTML = '';
-            window.updateFocus();
+            // Si cerramos una grilla directamente
+            this.limpiarYRegresarAlHome();
         }
+    },
+
+    limpiarYRegresarAlHome: function() {
+        const modal = document.getElementById('modal-full');
+        State.view = 'home';
+        State.currentGridCat = null; // LIMPIEZA ABSOLUTA
+        modal.classList.add('hidden');
+        modal.innerHTML = '';
+        State.col = 0; // Reset de foco para que no salte al azar en el home
+        window.updateFocus();
     }
 };

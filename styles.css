@@ -75,14 +75,6 @@ body {
     object-fit: cover; 
 }
 
-/* --- EL FOCO (ESCALA SEGURA PARA TV) --- */
-.focused { 
-    border: 4px solid #16a34a !important; 
-    opacity: 1 !important; 
-    transform: scale(1.08) !important; /* BAJAMOS LA ESCALA PARA QUE NO SE CORTE */
-    z-index: 999 !important; 
-    box-shadow: 0 0 35px rgba(22, 163, 74, 0.6) !important;
-}
 
 /* --- BOTÓN REPRODUCIR (FIX DE CONTRASTE) --- */
 #btn-play, .btn-action {
@@ -128,7 +120,28 @@ body {
     scrollbar-width: none;
     overflow-x: hidden;
 }
+#modal-full {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    scroll-behavior: smooth;
+}
+/* Forzamos que los contenedores de detalles permitan scroll horizontal interno */
+#contenedor-episodios, 
+[id^="sug-"] {
+    display: flex !important;
+}
 
+/* El contenedor de sugerencias y episodios debe tener overflow-x auto */
+.no-scrollbar {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
 .card-grid-item {
     width: 100%;
     aspect-ratio: 2/3;
@@ -143,8 +156,35 @@ body {
     overflow-x: hidden;
 }
 
-/* Ajuste para las sugerencias de abajo en Detalles */
+/* Reducción general de escala para que nada se corte */
+.focused { 
+    border: 3px solid #16a34a !important; 
+    opacity: 1 !important; 
+    transform: scale(1.05) !important; /* Bajamos de 1.08 a 1.05 */
+    z-index: 999 !important; 
+    box-shadow: 0 0 20px rgba(22, 163, 74, 0.5) !important;
+}
+
+/* Ajuste para los Selectores de Rango (Capítulos) */
+.flex.gap-2.overflow-x-auto.no-scrollbar {
+    padding: 10px 0 !important;
+    overflow: visible !important;
+}
+
+#modal-full .card {
+    width: 9rem; /* Cartas más pequeñas en detalles para que quepa todo */
+    aspect-ratio: 2/3;
+}
+
+/* Ajuste específico para Miniaturas de Episodios */
+[id^="ep-"] {
+    width: 12rem !important; /* Eran muy grandes, las bajamos */
+    height: 7rem !important;
+    font-size: 0.8rem;
+}
+
+/* Ajuste para Sugerencias (Porque viste...) */
 [id^="sug-"] {
-    width: 15rem !important; /* Tamaño horizontal para sugerencias */
+    width: 12rem !important; 
     aspect-ratio: 16/9;
 }

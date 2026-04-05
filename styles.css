@@ -1,4 +1,15 @@
-/* styles.css - CORRECCIÓN DE ESCALAS Y CONTRASTE */
+/* styles.css - ADAPTACIÓN DINÁMICA UNIVERSAL */
+
+:root {
+    /* El secreto: 1rem dependerá del ancho de la pantalla */
+    font-size: 1vw; 
+}
+
+/* Para pantallas muy pequeñas (Tablets/Monitores viejos) */
+@media (max-width: 1024px) { :root { font-size: 1.2vw; } }
+/* Para pantallas muy grandes (4K) */
+@media (min-width: 2500px) { :root { font-size: 18px; } }
+
 * { 
     outline: none !important; 
     box-sizing: border-box; 
@@ -9,18 +20,22 @@ body {
     color: white; 
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
     overflow: hidden; 
-    margin: 0; 
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
-/* --- MENÚ LATERAL --- */
+/* --- MENÚ LATERAL (Ancho adaptable) --- */
 #side-menu { 
     background: linear-gradient(to right, #050505, #000); 
-    border-right: 2px solid #111; 
+    border-right: 0.2rem solid #111; 
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    width: 300px;
+    width: 18rem; /* Ahora usa rem */
+    height: 100vh;
 }
+
 .menu-item { 
     padding: 1.2rem 2.5rem; 
     font-size: 1.1rem; 
@@ -28,45 +43,38 @@ body {
     color: #444; 
     text-transform: uppercase; 
     transition: all 0.3s;
-    border-left: 5px solid transparent;
+    border-left: 0.4rem solid transparent;
 }
+
 .menu-item.focused { 
     color: #fff !important; 
     background: rgba(22, 163, 74, 0.2) !important; 
     border-left-color: #16a34a !important;
-    transform: translateX(10px) !important;
+    transform: translateX(0.8rem) !important;
 }
 
-/* --- FILAS DE CONTENIDO (HOME Y DETALLES) --- */
+/* --- FILAS DE CONTENIDO --- */
 .flex-row {
     display: flex !important;
     flex-direction: row !important;
     gap: 1.5rem;
-    /* CAMBIO CLAVE AQUÍ: */
     overflow-x: auto !important; 
     overflow-y: visible !important; 
-    scroll-behavior: smooth; /* Para que el movimiento sea fluido */
-    padding: 30px 60px !important;
-    -webkit-overflow-scrolling: touch; /* Mejora fluidez en WebViews */
+    scroll-behavior: smooth;
+    padding: 2rem 4rem !important; /* Padding en rem */
 }
 
-/* Ocultar la barra de scroll para que no afee el diseño */
-.flex-row::-webkit-scrollbar {
-    display: none;
-}
-
-/* --- TARJETAS (CARDS) --- */
+/* --- TARJETAS (CARDS) ADAPTABLES --- */
 .card { 
-    width: 10.5rem; /* Un poco más pequeñas para que quepan más y respiren */
+    width: 11rem; /* Tamaño base balanceado */
     aspect-ratio: 2/3; 
     background: #111; 
-    border-radius: 12px; 
+    border-radius: 0.8rem; 
     overflow: hidden; 
-    border: 3px solid transparent; 
+    border: 0.25rem solid transparent; 
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 0.5;
     flex-shrink: 0;
-    position: relative;
 }
 
 .card img { 
@@ -75,116 +83,69 @@ body {
     object-fit: cover; 
 }
 
-
-/* --- BOTÓN REPRODUCIR (FIX DE CONTRASTE) --- */
-#btn-play, .btn-action {
-    background: #111;
-    border: 3px solid transparent;
-    transition: 0.3s;
+/* --- ESTADO ENFOCADO (D-PAD) --- */
+.focused { 
+    border: 0.25rem solid #16a34a !important; 
+    opacity: 1 !important; 
+    transform: scale(1.08) !important; 
+    z-index: 50 !important; 
+    box-shadow: 0 0 1.5rem rgba(22, 163, 74, 0.4) !important;
 }
 
-#btn-play.focused, .btn-action.focused {
-    background: #16a34a !important; /* Fondo verde */
-    transform: scale(1.05) !important;
-}
-
-/* Forzamos que el texto dentro del botón enfocado sea negro puro */
-.focused span, 
-.focused div,
-.btn-action.focused {
+/* --- BOTÓN REPRODUCIR --- */
+#btn-play.focused {
+    background: #16a34a !important;
     color: #000 !important;
-    font-weight: 900 !important;
+}
+
+#btn-play.focused span, 
+#btn-play.focused svg {
+    color: #000 !important;
+    fill: #000 !important;
 }
 
 /* --- TV ROWS (CANALES) --- */
 .tv-row { 
     padding: 1rem 2rem; 
     background: #080808; 
-    border-radius: 8px; 
-    margin-bottom: 5px; 
-    border: 2px solid transparent; 
+    border-radius: 0.5rem; 
+    margin-bottom: 0.4rem; 
+    border: 0.15rem solid transparent; 
     transition: 0.2s; 
     opacity: 0.6;
 }
+
 .tv-row.focused { 
     background: #16a34a !important; 
     color: #000 !important; 
     opacity: 1 !important; 
-    transform: scale(1.02) !important; 
 }
 
-/* --- MODAL Y GRILLA --- */
+/* --- MODAL DETALLES --- */
 #modal-full {
     background: radial-gradient(circle at top right, #0a0a0a, #000);
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    overflow-x: hidden;
-}
-#modal-full {
     overflow-x: hidden !important;
     overflow-y: auto !important;
-    scroll-behavior: smooth;
 }
-/* Forzamos que los contenedores de detalles permitan scroll horizontal interno */
-#contenedor-episodios, 
+
+/* Ajuste de cartas dentro del modal */
+#modal-full .card {
+    width: 10rem;
+}
+
+/* Miniaturas de Episodios */
+[id^="ep-"] {
+    width: 15rem !important; 
+    height: 8.5rem !important;
+}
+
+/* Sugerencias (Similares) */
 [id^="sug-"] {
-    display: flex !important;
-}
-
-/* El contenedor de sugerencias y episodios debe tener overflow-x auto */
-.no-scrollbar {
-    overflow-x: auto !important;
-    overflow-y: visible !important;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-.card-grid-item {
-    width: 100%;
-    aspect-ratio: 2/3;
-    border-radius: 12px;
-    border: 3px solid transparent;
-    overflow: hidden;
-    opacity: 0.6;
+    width: 16rem !important; 
+    aspect-ratio: 16/9;
 }
 
 #rows-container {
-    padding-bottom: 100px;
-    overflow-x: hidden;
-}
-
-/* Reducción general de escala para que nada se corte */
-.focused { 
-    border: 3px solid #16a34a !important; 
-    opacity: 1 !important; 
-    transform: scale(1.05) !important; /* Bajamos de 1.08 a 1.05 */
-    z-index: 999 !important; 
-    box-shadow: 0 0 20px rgba(22, 163, 74, 0.5) !important;
-}
-
-/* Ajuste para los Selectores de Rango (Capítulos) */
-.flex.gap-2.overflow-x-auto.no-scrollbar {
-    padding: 10px 0 !important;
-    overflow: visible !important;
-}
-
-#modal-full .card {
-    width: 9rem; /* Cartas más pequeñas en detalles para que quepa todo */
-    aspect-ratio: 2/3;
-}
-
-/* Ajuste específico para Miniaturas de Episodios */
-[id^="ep-"] {
-    width: 12rem !important; /* Eran muy grandes, las bajamos */
-    height: 7rem !important;
-    font-size: 0.8rem;
-}
-
-/* Ajuste para Sugerencias (Porque viste...) */
-[id^="sug-"] {
-    width: 12rem !important; 
-    aspect-ratio: 16/9;
+    padding-bottom: 6rem;
+    padding-top: 2rem;
 }

@@ -1,7 +1,6 @@
 window.AppController = {
     renderHome: function() {
         State.view = 'home';
-        // Al renderizar el Home, nos aseguramos de que no haya ninguna grilla pendiente
         State.currentGridCat = null; 
         
         const container = document.getElementById('rows-container');
@@ -28,18 +27,18 @@ window.AppController = {
 
             if (hasMore) {
                 rowHtml += `
-                    <div id="card-${fIdx}-10" class="card flex-shrink-0 w-[180px] h-[270px] bg-green-600/10 border-2 border-green-600/30 rounded-xl flex items-center justify-center transition-all duration-200 group cursor-pointer" onclick="AppController.abrirGrilla('${cat.replace(/'/g, "\\'")}')">
-                        <span class="text-green-500 font-black italic text-center px-4 leading-tight uppercase text-sm">
+                    <div id="card-${fIdx}-10" class="card flex-shrink-0 w-[160px] h-[240px] bg-green-600/10 border-2 border-green-600/30 rounded-xl flex items-center justify-center transition-all duration-200 group cursor-pointer" onclick="AppController.abrirGrilla('${cat.replace(/'/g, "\\'")}')">
+                        <span class="text-green-500 font-black italic text-center px-4 leading-tight uppercase text-[10px]">
                             Ver Más<br>
-                            <span class="text-[10px] opacity-60">+${allItems.length - 10} items</span>
+                            <span class="text-[8px] opacity-60">+${allItems.length - 10} items</span>
                         </span>
                     </div>`;
             }
 
             container.insertAdjacentHTML('beforeend', `
-                <div class="mb-12 px-10">
-                    <h3 class="text-green-600 font-black text-[11px] tracking-[5px] mb-5 uppercase opacity-40 italic">${cat}</h3>
-                    <div class="${isTV ? 'flex flex-col gap-1' : 'flex flex-row gap-6 overflow-hidden'}">
+                <div class="mb-10 px-10">
+                    <h3 class="text-green-600 font-black text-[10px] tracking-[4px] mb-4 uppercase opacity-50 italic">${cat}</h3>
+                    <div class="${isTV ? 'flex flex-col gap-1' : 'flex flex-row gap-6 overflow-visible'}">
                         ${rowHtml}
                     </div>
                 </div>`);
@@ -50,7 +49,7 @@ window.AppController = {
 
     abrirGrilla: function(catName) {
         State.view = 'grid';
-        State.currentGridCat = catName; // Aquí guardamos "Solicitadas", "Suspenso", etc.
+        State.currentGridCat = catName;
         State.col = 0; 
         const items = State.catalog[State.source][catName];
         const modal = document.getElementById('modal-full');
@@ -58,17 +57,16 @@ window.AppController = {
         modal.scrollTop = 0; 
 
         modal.innerHTML = `
-            <div class="p-20 bg-black min-h-screen">
-                <div class="mb-12">
-                    <h1 class="text-6xl font-black italic uppercase text-green-600 tracking-tighter">${catName}</h1>
-                    <div class="h-1 w-24 bg-green-600 mt-2"></div>
+            <div class="p-16 bg-black min-h-screen">
+                <div class="mb-10">
+                    <h1 class="text-4xl font-black italic uppercase text-green-600 tracking-tighter">${catName}</h1>
+                    <div class="h-1 w-16 bg-green-600 mt-2"></div>
                 </div>
-                <div class="grid grid-cols-6 gap-8 pb-20">
-                    ${items.map((item, idx) => `
+                <div class="grid grid-cols-7 gap-6 pb-20"> ${items.map((item, idx) => `
                         <div id="card-grid-${idx}" class="card card-grid-item relative aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border-2 border-transparent transition-all cursor-pointer" onclick='AppController.abrirDetalle(${JSON.stringify(item).replace(/'/g, "&apos;")})'>
                             <img src="${item.logo}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300x450?text=SIN+POSTER'">
-                            <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black to-transparent">
-                                <p class="text-[10px] font-black uppercase truncate italic text-white">${item.name || item.titulo}</p>
+                            <div class="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black to-transparent">
+                                <p class="text-[8px] font-black uppercase truncate italic text-white">${item.name || item.titulo}</p>
                             </div>
                         </div>
                     `).join('')}
@@ -86,17 +84,17 @@ window.AppController = {
         if (!contenedor) return;
 
         contenedor.innerHTML = nuevosEpisodios.map((ep, idx) => `
-            <div id="ep-${idx}" class="card flex-none w-56 h-32 bg-zinc-900 border border-white/5 rounded-xl overflow-hidden transition-all cursor-pointer group relative" onclick='window.reproducir(${JSON.stringify(ep).replace(/'/g, "&apos;")})'>
-                <div class="p-4 h-full flex flex-col justify-between bg-zinc-900 group-[.focused]:bg-green-600/20 transition-colors">
+            <div id="ep-${idx}" class="card flex-none w-48 h-28 bg-zinc-900 border border-white/5 rounded-xl overflow-hidden transition-all cursor-pointer group relative" onclick='window.reproducir(${JSON.stringify(ep).replace(/'/g, "&apos;")})'>
+                <div class="p-3 h-full flex flex-col justify-between bg-zinc-900 group-[.focused]:bg-green-600/20 transition-colors">
                     <div>
-                        <div class="text-green-600 text-[9px] font-black italic uppercase tracking-tighter">Episodio ${inicio + idx + 1}</div>
-                        <div class="text-xs font-bold text-zinc-200 group-[.focused]:text-white line-clamp-2 uppercase italic leading-tight mt-1">${ep.titulo}</div>
+                        <div class="text-green-600 text-[8px] font-black italic uppercase tracking-tighter">Episodio ${inicio + idx + 1}</div>
+                        <div class="text-[10px] font-bold text-zinc-200 group-[.focused]:text-white line-clamp-2 uppercase italic leading-tight mt-1">${ep.titulo}</div>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-5 h-5 bg-green-600 rounded-full flex items-center justify-center">
-                            <svg class="w-2.5 h-2.5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="w-4 h-4 bg-green-600 rounded-full flex items-center justify-center">
+                            <svg class="w-2 h-2 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <span class="text-[8px] font-black italic uppercase text-white tracking-widest">VER</span>
+                        <span class="text-[7px] font-black italic uppercase text-white tracking-widest">VER</span>
                     </div>
                 </div>
             </div>`).join('');
@@ -110,8 +108,8 @@ window.AppController = {
         }, 10);
     },
 
-    abrirDetalle: function(item) {
-        // Detectamos si venimos del Home para limpiar cualquier rastro de Grilla (como Solicitadas)
+    // INTEGRACIÓN API.JS AQUÍ:
+    abrirDetalle: async function(item) {
         if (State.view === 'home') {
             State.currentGridCat = null;
         }
@@ -130,10 +128,10 @@ window.AppController = {
             .slice(0, 12);
 
         const htmlSimilares = similares.map((sim, idx) => `
-            <div id="sug-${idx}" class="card flex-none w-64 aspect-video bg-zinc-900 rounded-lg overflow-hidden border-2 border-transparent transition-all cursor-pointer relative group" onclick='AppController.abrirDetalle(${JSON.stringify(sim).replace(/'/g, "&apos;")})'>
-                <img src="${sim.logo}" class="w-full h-full object-cover opacity-60 group-[.focused]:opacity-100 transition-opacity" onerror="this.src='https://via.placeholder.com/400x225?text=SIN+PREVIA'">
+            <div id="sug-${idx}" class="card flex-none w-52 aspect-video bg-zinc-900 rounded-lg overflow-hidden border-2 border-transparent transition-all cursor-pointer relative group" onclick='AppController.abrirDetalle(${JSON.stringify(sim).replace(/'/g, "&apos;")})'>
+                <img src="${sim.logo}" class="w-full h-full object-cover opacity-50 group-[.focused]:opacity-100 transition-opacity" onerror="this.src='https://via.placeholder.com/400x225?text=SIN+PREVIA'">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div class="absolute bottom-2 left-3 right-3 text-[10px] font-black italic uppercase truncate text-white tracking-widest">${sim.name || sim.titulo}</div>
+                <div class="absolute bottom-2 left-3 right-3 text-[9px] font-black italic uppercase truncate text-white tracking-widest">${sim.name || sim.titulo}</div>
             </div>`).join('');
 
         let htmlSeccionEpisodios = '';
@@ -144,98 +142,117 @@ window.AppController = {
             }
 
             const episodiosString = encodeURIComponent(JSON.stringify(item.episodios));
-
             const htmlBotonesRangos = grupos.map((g, i) => {
                 const inicio = (i * 10) + 1;
                 const fin = Math.min((i + 1) * 10, item.episodios.length);
                 return `
-                <div id="range-${i}" class="card flex-none w-fit h-8 px-4 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-[10px] font-black italic uppercase text-zinc-400 transition-all cursor-pointer whitespace-nowrap shrink-0" onclick='AppController.cambiarRango(${i}, "${episodiosString}")'>
+                <div id="range-${i}" class="card flex-none w-fit h-7 px-3 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-[9px] font-black italic uppercase text-zinc-400 transition-all cursor-pointer whitespace-nowrap" onclick='AppController.cambiarRango(${i}, "${episodiosString}")'>
                     ${inicio}-${fin}
                 </div>`;
             }).join('');
 
             const htmlCardsEpisodios = grupos[0].map((ep, idx) => `
-                <div id="ep-${idx}" class="card flex-none w-56 h-32 bg-zinc-900 border border-white/5 rounded-xl overflow-hidden transition-all cursor-pointer group relative" onclick='window.reproducir(${JSON.stringify(ep).replace(/'/g, "&apos;")})'>
-                    <div class="p-4 h-full flex flex-col justify-between bg-zinc-900 group-[.focused]:bg-green-600/20 transition-colors">
+                <div id="ep-${idx}" class="card flex-none w-48 h-28 bg-zinc-900 border border-white/5 rounded-xl overflow-hidden transition-all cursor-pointer group relative" onclick='window.reproducir(${JSON.stringify(ep).replace(/'/g, "&apos;")})'>
+                    <div class="p-3 h-full flex flex-col justify-between bg-zinc-900 group-[.focused]:bg-green-600/20 transition-colors">
                         <div>
-                            <div class="text-green-600 text-[9px] font-black italic uppercase tracking-tighter">Episodio ${idx + 1}</div>
-                            <div class="text-xs font-bold text-zinc-200 group-[.focused]:text-white line-clamp-2 uppercase italic leading-tight mt-1">${ep.titulo}</div>
+                            <div class="text-green-600 text-[8px] font-black italic uppercase tracking-tighter">Episodio ${idx + 1}</div>
+                            <div class="text-[10px] font-bold text-zinc-200 group-[.focused]:text-white line-clamp-2 uppercase italic leading-tight mt-1">${ep.titulo}</div>
                         </div>
                         <div class="flex items-center gap-2">
-                            <div class="w-5 h-5 bg-green-600 rounded-full flex items-center justify-center">
-                                <svg class="w-2.5 h-2.5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <div class="w-4 h-4 bg-green-600 rounded-full flex items-center justify-center">
+                                <svg class="w-2 h-2 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
-                            <span class="text-[8px] font-black italic uppercase text-white tracking-widest">VER</span>
+                            <span class="text-[7px] font-black italic uppercase text-white tracking-widest">VER</span>
                         </div>
                     </div>
                 </div>`).join('');
 
             htmlSeccionEpisodios = `
-                <div class="mt-12">
-                    <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-xl font-black italic uppercase tracking-tighter text-white opacity-80">Capítulos</h3>
-                        <div class="flex gap-2 overflow-x-auto no-scrollbar">${htmlBotonesRangos}</div>
+                <div class="mt-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-black italic uppercase tracking-tighter text-white opacity-60">Capítulos</h3>
+                        <div class="flex gap-2 overflow-visible">${htmlBotonesRangos}</div>
                     </div>
-                    <div id="contenedor-episodios" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+                    <div id="contenedor-episodios" class="flex gap-4 overflow-visible py-4 no-scrollbar">
                         ${htmlCardsEpisodios}
                     </div>
                 </div>`;
         }
 
-        const sinopsis = item.plot || item.desc || item.sinopsis || "Sinopsis no disponible.";
+        // Sinopsis inicial rápida (del M3U o placeholder)
+        const sinopsisPlaceholder = item.overview || item.plot || item.desc || "Buscando sinopsis...";
 
         modal.innerHTML = `
-            <div class="relative min-h-screen w-full bg-[#080808] text-white overflow-x-hidden font-sans">
-                <div class="absolute top-0 left-0 w-full h-[70vh] opacity-20 blur-[100px] pointer-events-none scale-150">
-                    <img src="${item.logo}" class="w-full h-full object-cover">
+            <div class="relative min-h-screen w-full bg-[#050505] text-white overflow-hidden font-sans">
+                <div id="detalle-bg-container" class="absolute top-0 left-0 w-full h-[60vh] opacity-20 blur-[80px] pointer-events-none scale-125 transition-opacity duration-1000">
+                    <img id="detalle-bg" src="${item.logo}" class="w-full h-full object-cover">
                 </div>
-                <div class="relative z-10 p-10 lg:p-20 flex flex-col min-h-screen">
-                    <div class="flex flex-col md:flex-row gap-12 items-start">
-                        <div class="w-64 flex-shrink-0 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                <div class="relative z-10 p-12 lg:p-16 flex flex-col min-h-screen">
+                    <div class="flex flex-row gap-10 items-start">
+                        <div class="w-52 flex-shrink-0 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/5">
                             <img src="${item.logo}" class="w-full h-full object-cover">
                         </div>
-                        <div class="flex-1 pt-4">
-                            <div class="flex items-center gap-4 mb-5">
-                                <span class="bg-white text-black px-3 py-1 text-[10px] font-black italic uppercase rounded">HOOD PRO</span>
-                                <span class="text-green-600 font-black italic text-xs uppercase tracking-[3px] opacity-70">${item.grupo}</span>
+                        <div class="flex-1 pt-2">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="bg-green-600 text-black px-2 py-0.5 text-[9px] font-black italic uppercase rounded">HOOD PRO</span>
+                                <span class="text-white/40 font-black italic text-[10px] uppercase tracking-[2px]">${item.grupo}</span>
                             </div>
-                            <h1 class="text-5xl lg:text-6xl font-black italic uppercase tracking-tighter leading-tight mb-8 max-w-4xl">${item.name || item.titulo}</h1>
-                            <p class="text-zinc-400 text-lg max-w-2xl leading-relaxed mb-10">${sinopsis}</p>
+                            <h1 class="text-4xl lg:text-5xl font-black italic uppercase tracking-tighter leading-none mb-6 max-w-3xl">${item.name || item.titulo}</h1>
+                            <p id="detalle-sinopsis" class="text-zinc-400 text-sm max-w-xl leading-relaxed mb-8 line-clamp-5 transition-all duration-500">${sinopsisPlaceholder}</p>
+                            
                             ${!item.episodios ? `
-                               <div id="btn-play" class="card flex-none w-fit min-w-[220px] h-[58px] px-8 bg-green-600 rounded-full flex items-center justify-center gap-4 cursor-pointer shadow-xl shadow-green-600/20 transition-all shrink-0 self-start" onclick='window.reproducir(State.currentItem)'>
-                                    <div class="w-6 h-6 bg-black rounded-full flex items-center justify-center">
-                                        <svg class="w-3.5 h-3.5 text-green-600 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                               <div id="btn-play" class="card flex-none w-fit h-12 px-8 bg-green-600 rounded-full flex items-center justify-center gap-3 cursor-pointer transition-all" onclick='window.reproducir(State.currentItem)'>
+                                    <div class="w-5 h-5 bg-black rounded-full flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-green-600 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                     </div>
-                                    <span class="text-black font-black italic uppercase text-lg">Reproducir</span>
+                                    <span class="text-black font-black italic uppercase text-sm">Reproducir</span>
                                 </div>` : ''}
                         </div>
                     </div>
                     ${htmlSeccionEpisodios}
-                    <div class="mt-16 mt-auto">
-                        <h3 class="text-zinc-500 font-black italic text-[10px] uppercase tracking-[4px] mb-6">Porque viste ${item.grupo}</h3>
-                        <div class="flex gap-4 overflow-x-auto pb-8 no-scrollbar">
+                    <div class="mt-auto pt-10">
+                        <h3 class="text-zinc-500 font-black italic text-[9px] uppercase tracking-[3px] mb-4 opacity-50">Sugerencias</h3>
+                        <div class="flex gap-4 overflow-visible pb-4 no-scrollbar">
                             ${htmlSimilares}
                         </div>
                     </div>
                 </div>
             </div>`;
+            
         window.updateFocus();
+
+        // LLAMADA A LA API DE FORMA INVISIBLE
+        if (!item.overview || item.overview === "Buscando sinopsis...") {
+            try {
+                const infoReal = await API.obtenerDetalles(item);
+                
+                // Si el usuario sigue en el modal, actualizamos el texto suavemente
+                const pSinopsis = document.getElementById('detalle-sinopsis');
+                if (pSinopsis && State.view === 'details') {
+                    pSinopsis.innerText = infoReal;
+                }
+
+                // Si hay fondo nuevo de TMDB, lo aplicamos
+                const imgBg = document.getElementById('detalle-bg');
+                const containerBg = document.getElementById('detalle-bg-container');
+                if (imgBg && item.backdrop) {
+                    imgBg.src = item.backdrop;
+                    containerBg.style.opacity = "0.4"; // Subimos un poco la opacidad si es HD
+                }
+            } catch (e) {
+                console.log("No se pudo obtener info de la API");
+            }
+        }
     },
 
     cerrarModal: function() {
-        const modal = document.getElementById('modal-full');
-        
-        // Lógica de salida inteligente
         if (State.view === 'details') {
             if (State.currentGridCat) {
-                // Si veníamos de una grilla (ej. Solicitadas), volvemos ahí
                 this.abrirGrilla(State.currentGridCat);
             } else {
-                // Si veníamos del Home, limpiamos y volvemos al Home
                 this.limpiarYRegresarAlHome();
             }
         } else {
-            // Si cerramos una grilla directamente
             this.limpiarYRegresarAlHome();
         }
     },
@@ -243,10 +260,10 @@ window.AppController = {
     limpiarYRegresarAlHome: function() {
         const modal = document.getElementById('modal-full');
         State.view = 'home';
-        State.currentGridCat = null; // LIMPIEZA ABSOLUTA
+        State.currentGridCat = null;
         modal.classList.add('hidden');
         modal.innerHTML = '';
-        State.col = 0; // Reset de foco para que no salte al azar en el home
+        State.col = 0; 
         window.updateFocus();
     }
 };

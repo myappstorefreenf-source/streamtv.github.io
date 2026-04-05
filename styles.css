@@ -1,151 +1,209 @@
-/* styles.css - ADAPTACIÓN DINÁMICA UNIVERSAL */
+/* styles.css - HOOD PROJECT (ADAPTABLE PRO) */
 
 :root {
-    /* El secreto: 1rem dependerá del ancho de la pantalla */
-    font-size: 1vw; 
+  /* Hacemos que la unidad base sea el 0.8% del ancho de la pantalla */
+  font-size: 0.8vw;
 }
 
-/* Para pantallas muy pequeñas (Tablets/Monitores viejos) */
-@media (max-width: 1024px) { :root { font-size: 1.2vw; } }
-/* Para pantallas muy grandes (4K) */
-@media (min-width: 2500px) { :root { font-size: 18px; } }
+/* Ajustes para ganar espacio en TVs Box viejas (SD) */
+@media (max-width: 1200px) { :root { font-size: 1vw; } }
+/* Ajustes para pantallas 4K */
+@media (min-width: 2800px) { :root { font-size: 20px; } }
 
 * { 
-    outline: none !important; 
-    box-sizing: border-box; 
+  outline: none !important; 
+  box-sizing: border-box; 
 }
 
 body { 
-    background: #000; 
-    color: white; 
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-    overflow: hidden; 
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
+  background: #080808; /* Fondo un poco más Pro */
+  color: white; 
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+  overflow: hidden; 
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
-.no-scrollbar::-webkit-scrollbar { display: none; }
-
-/* --- MENÚ LATERAL (Ancho adaptable) --- */
+/* --- MENÚ LATERAL (Adaptable) --- */
 #side-menu { 
-    background: linear-gradient(to right, #050505, #000); 
-    border-right: 0.2rem solid #111; 
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    width: 18rem; /* Ahora usa rem */
-    height: 100vh;
+  background: linear-gradient(to right, #050505, #000); 
+  border-right: 0.15rem solid #111; 
+  width: 17rem; /* Reducido de 300px */
 }
 
 .menu-item { 
-    padding: 1.2rem 2.5rem; 
-    font-size: 1.1rem; 
-    font-weight: 800; 
-    color: #444; 
-    text-transform: uppercase; 
-    transition: all 0.3s;
-    border-left: 0.4rem solid transparent;
+  padding: 1rem 2rem; 
+  font-size: 1rem; 
+  font-weight: 800; 
+  color: #333; /* Más contraste */
+  text-transform: uppercase; 
+  border-left: 0.3rem solid transparent;
 }
 
 .menu-item.focused { 
-    color: #fff !important; 
-    background: rgba(22, 163, 74, 0.2) !important; 
-    border-left-color: #16a34a !important;
-    transform: translateX(0.8rem) !important;
+  color: #fff !important; 
+  background: rgba(22, 163, 74, 0.2) !important; 
+  border-left-color: #16a34a !important;
+  transform: translateX(0.5rem) !important;
 }
 
-/* --- FILAS DE CONTENIDO --- */
+/* --- FILAS DE CONTENIDO (HOME) --- */
 .flex-row {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 1.5rem;
-    overflow-x: auto !important; 
-    overflow-y: visible !important; 
-    scroll-behavior: smooth;
-    padding: 2rem 4rem !important; /* Padding en rem */
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1.2rem;
+  overflow-x: auto !important; 
+  overflow-y: visible !important; 
+  padding: 2rem 3rem !important; /* Respira más */
 }
 
-/* --- TARJETAS (CARDS) ADAPTABLES --- */
+/* --- TARJETAS (HOME) --- */
 .card { 
-    width: 11rem; /* Tamaño base balanceado */
-    aspect-ratio: 2/3; 
-    background: #111; 
-    border-radius: 0.8rem; 
-    overflow: hidden; 
-    border: 0.25rem solid transparent; 
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    opacity: 0.5;
-    flex-shrink: 0;
+  width: 10rem; /* Tamaño equilibrado para que entren 6-7 por fila */
+  height: 15rem; /* Forzamos la altura para mantener el 2:3 */
+  background: #111; 
+  border-radius: 0.6rem; 
+  overflow: hidden; 
+  border: 0.2rem solid transparent; 
+  opacity: 0.6;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
-
 .card img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
+  width: 100% !important; 
+  height: 100% !important; 
+  object-fit: cover !important; /* Esto evita que la imagen se estire o aplaste */
+  display: block;
 }
 
-/* --- ESTADO ENFOCADO (D-PAD) --- */
 .focused { 
-    border: 0.25rem solid #16a34a !important; 
-    opacity: 1 !important; 
-    transform: scale(1.08) !important; 
-    z-index: 50 !important; 
-    box-shadow: 0 0 1.5rem rgba(22, 163, 74, 0.4) !important;
+  border: 0.2rem solid #16a34a !important; 
+  opacity: 1 !important; 
+  transform: scale(1.06) !important; /* Resalte suave */
+  z-index: 50 !important; 
+  box-shadow: 0 0 1.5rem rgba(22, 163, 74, 0.4) !important;
 }
 
-/* --- BOTÓN REPRODUCIR --- */
+/* --- MODAL DETALLES (FIXED) --- */
+#modal-full {
+  background: radial-gradient(circle at top right, #0d0d0d, #000);
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+/* Cover (Poster) más chico en detalles */
+#modal-full .cover-image {
+  width: 15rem !important; /* Reducido para ganar espacio */
+  border-radius: 1rem;
+}
+
+/* Botón Reproducir (Achicado y adaptable) */
+#btn-play, .btn-action {
+  width: fit-content !important;
+  height: 3.2rem !important; /* Más Pro */
+  min-width: 14rem !important;
+  font-size: 1rem !important;
+  border-radius: 2rem !important;
+}
+
 #btn-play.focused {
-    background: #16a34a !important;
-    color: #000 !important;
+  background: #16a34a !important; 
+  color: #000 !important;
 }
 
 #btn-play.focused span, 
 #btn-play.focused svg {
-    color: #000 !important;
-    fill: #000 !important;
+  color: #000 !important;
+  fill: #000 !important;
 }
 
-/* --- TV ROWS (CANALES) --- */
-.tv-row { 
-    padding: 1rem 2rem; 
-    background: #080808; 
-    border-radius: 0.5rem; 
-    margin-bottom: 0.4rem; 
-    border: 0.15rem solid transparent; 
-    transition: 0.2s; 
-    opacity: 0.6;
+/* --- SECCIÓN CAPÍTULOS (ACHICADA) --- */
+#contenedor-episodios {
+  display: flex !important;
+  gap: 1rem;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  padding: 1rem 0;
 }
 
-.tv-row.focused { 
-    background: #16a34a !important; 
-    color: #000 !important; 
-    opacity: 1 !important; 
-}
-
-/* --- MODAL DETALLES --- */
-#modal-full {
-    background: radial-gradient(circle at top right, #0a0a0a, #000);
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-}
-
-/* Ajuste de cartas dentro del modal */
-#modal-full .card {
-    width: 10rem;
-}
-
-/* Miniaturas de Episodios */
+/* EPISODIOS MÁS CHICOS (Adaptación rem) */
 [id^="ep-"] {
-    width: 15rem !important; 
-    height: 8.5rem !important;
+  width: 12rem !important; /* Reducido significativamente */
+  height: 6.8rem !important; /* Proporción rem */
+  font-size: 0.8rem; /* Fuente base adaptable */
 }
 
-/* Sugerencias (Similares) */
+[id^="ep-"] .ep-title {
+    font-size: 0.9rem !important;
+}
+
+/* --- SECCIÓN SUGERENCIAS (ACHICADA) --- */
+#modal-full .similares-container {
+    padding-bottom: 3rem;
+    overflow-x: auto !important;
+    display: flex !important;
+    gap: 1.2rem;
+}
+
 [id^="sug-"] {
-    width: 16rem !important; 
-    aspect-ratio: 16/9;
+  width: 12rem !important; /* Reducido */
+  aspect-ratio: 16/9;
+}
+/* Esto asegura que la tarjeta enfocada flote sobre todas las demás */
+[id^="sug-"].focused, 
+.card.focused, 
+.card-grid-item.focused {
+    z-index: 999 !important; /* Valor muy alto para que nada la tape */
+    position: relative; /* Necesario para que el z-index funcione */
 }
 
+/* Fix para el contenedor de recomendaciones */
+.similares-container, 
+#contenedor-episodios, 
+.flex-row {
+    overflow-y: visible !important; /* PERMITE que la escala del foco sobresalga hacia arriba/abajo */
+    padding-top: 1.5rem !important; /* Espacio extra para que el escalado no se corte arriba */
+    padding-bottom: 1.5rem !important;
+}
 #rows-container {
-    padding-bottom: 6rem;
-    padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* --- ELIMINAR BARRA DE SCROLL GLOBAL --- */
+* {
+    scrollbar-width: none; /* Para Firefox */
+    -ms-overflow-style: none; /* Para Internet Explorer/Edge */
+}
+
+/* En lugar de display: none, la hacemos invisible */
+::-webkit-scrollbar {
+    width: 0px !important;  /* Casi 0 para que no robe espacio */
+    height: 0px !important;
+    background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent !important; /* El "palito" de la barra, invisible */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent !important; /* El carril de la barra, invisible */
+}
+
+/* Y para asegurar que los contenedores no intenten "hacerle sitio" a la barra */
+* {
+    scrollbar-width: none !important; /* Para motores nuevos */
+    -ms-overflow-style: none !important;
+}
+
+/* Forzar que el body y html no tengan scroll lateral */
+html, body {
+    overflow: hidden;
+    background: #000;
 }

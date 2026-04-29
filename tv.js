@@ -1,449 +1,4443 @@
 window.m3uTV =`
 #EXTM3U
-#EXTINF:-1 group-title="-",26TV
-http://138.121.114.91:8000/play/a05x/index.m3u8
-#EXTINF:-1 group-title="-",A&E HD
-http://138.121.114.91:8000/play/a09h/index.m3u8
-#EXTINF:-1 group-title="-",A24
-http://138.121.114.91:8000/play/a05u/index.m3u8
-#EXTINF:-1 group-title="-",AM Sports
-http://138.121.114.91:8000/play/a061/index.m3u8
-#EXTINF:-1 group-title="-",AMC
-http://138.121.114.91:8000/play/a064/index.m3u8
-#EXTINF:-1 group-title="-",AXN HD
-http://138.121.114.91:8000/play/a09e/index.m3u8
-#EXTINF:-1 group-title="-",Adult swim HD
-http://138.121.114.91:8000/play/a08d/index.m3u8
-#EXTINF:-1 group-title="-",America TV HD
-http://138.121.114.91:8000/play/a094/index.m3u8
-#EXTINF:-1 group-title="-",Baby TV
-http://138.121.114.91:8000/play/a06j/index.m3u8
-#EXTINF:-1 group-title="-",C5N
-http://138.121.114.91:8000/play/a05v/index.m3u8
-#EXTINF:-1 group-title="-",CNN en Espaæol
-http://138.121.114.91:8000/play/a093/index.m3u8
-#EXTINF:-1 group-title="-",Canal a
-http://138.121.114.91:8000/play/a06d/index.m3u8
-#EXTINF:-1 group-title="-",Canal de la Ciudad
-http://138.121.114.91:8000/play/a07c/index.m3u8
-#EXTINF:-1 group-title="-",Cartoon Network HD
-http://138.121.114.91:8000/play/a083/index.m3u8
-#EXTINF:-1 group-title="-",Cine.AR
-http://138.121.114.91:8000/play/a069/index.m3u8
-#EXTINF:-1 group-title="-",Cinecanal HD
-http://138.121.114.91:8000/play/a089/index.m3u8
-#EXTINF:-1 group-title="-",Cinemax
-http://138.121.114.91:8000/play/a08r/index.m3u8
-#EXTINF:-1 group-title="-",Comedy Central HD
-http://138.121.114.91:8000/play/a072/index.m3u8
-#EXTINF:-1 group-title="-",Crðnica
-http://138.121.114.91:8000/play/a05w/index.m3u8
-#EXTINF:-1 group-title="-",DeporTV
-http://138.121.114.91:8000/play/a07f/index.m3u8
-#EXTINF:-1 group-title="-",Discovery Channel HD
-http://138.121.114.91:8000/play/a08g/index.m3u8
-#EXTINF:-1 group-title="-",Discovery H&H HD
-http://138.121.114.91:8000/play/a08f/index.m3u8
-#EXTINF:-1 group-title="-",Discovery Kids
-http://138.121.114.91:8000/play/a07r/index.m3u8
-#EXTINF:-1 group-title="-",Discovery Science
-http://138.121.114.91:8000/play/a06p/index.m3u8
-#EXTINF:-1 group-title="-",Discovery Theater HD
-http://138.121.114.91:8000/play/a074/index.m3u8
-#EXTINF:-1 group-title="-",Discovery Turbo
-http://138.121.114.91:8000/play/a062/index.m3u8
-#EXTINF:-1 group-title="-",Discovery World HD
-http://138.121.114.91:8000/play/a076/index.m3u8
-#EXTINF:-1 group-title="-",Disney Channel HD
-http://138.121.114.91:8000/play/a06w/index.m3u8
-#EXTINF:-1 group-title="-",Disney Junior
-http://138.121.114.91:8000/play/a08x/index.m3u8
-#EXTINF:-1 group-title="-",E! Entertainment
-http://138.121.114.91:8000/play/a08z/index.m3u8
-#EXTINF:-1 group-title="-",ESPN 2 HD
-http://138.121.114.91:8000/play/a098/index.m3u8
-#EXTINF:-1 group-title="-",ESPN 3 HD
-http://138.121.114.91:8000/play/a09a/index.m3u8
-#EXTINF:-1 group-title="-",ESPN 4 HD
-http://138.121.114.91:8000/play/a084/index.m3u8
-#EXTINF:-1 group-title="-",ESPN HD
-http://138.121.114.91:8000/play/a099/index.m3u8
-#EXTINF:-1 group-title="-",ESPN Premium HD
-http://138.121.114.91:8000/play/a086/index.m3u8
-#EXTINF:-1 group-title="-",El Canal  de las Estrellas
-http://138.121.114.91:8000/play/a07x/index.m3u8
-#EXTINF:-1 group-title="-",El Gourmet
-http://138.121.114.91:8000/play/a07u/index.m3u8
-#EXTINF:-1 group-title="-",Encuentro
-http://138.121.114.91:8000/play/a05s/index.m3u8
-#EXTINF:-1 group-title="-",Europa Europa
-http://138.121.114.91:8000/play/a07t/index.m3u8
-#EXTINF:-1 group-title="-",FX HD
-http://138.121.114.91:8000/play/a070/index.m3u8
-#EXTINF:-1 group-title="-",Film & Arts HD
-http://138.121.114.91:8000/play/a075/index.m3u8
-#EXTINF:-1 group-title="-",Fox Sports 2 HD
-http://138.121.114.91:8000/play/a09b/index.m3u8
-#EXTINF:-1 group-title="-",Fox Sports 3 HD
-http://138.121.114.91:8000/play/a06y/index.m3u8
-#EXTINF:-1 group-title="-",Fox Sports HD
-http://138.121.114.91:8000/play/a085/index.m3u8
-#EXTINF:-1 group-title="-",Galicia TV
-http://138.121.114.91:8000/play/a06v/index.m3u8
-#EXTINF:-1 group-title="-",HBO
-http://138.121.114.91:8000/play/a07m/index.m3u8
-#EXTINF:-1 group-title="-",HBO 2
-http://138.121.114.91:8000/play/a07o/index.m3u8
-#EXTINF:-1 group-title="-",HBO Family
-http://138.121.114.91:8000/play/a07p/index.m3u8
-#EXTINF:-1 group-title="-",HBO Mundi
-http://138.121.114.91:8000/play/a06f/index.m3u8
-#EXTINF:-1 group-title="-",HBO Plus
-http://138.121.114.91:8000/play/a07n/index.m3u8
-#EXTINF:-1 group-title="-",HBO Signature
-http://138.121.114.91:8000/play/a06h/index.m3u8
-#EXTINF:-1 group-title="-",HBO Xtreme
-http://138.121.114.91:8000/play/a06g/index.m3u8
-#EXTINF:-1 group-title="-",HGTV
-http://138.121.114.91:8000/play/a06o/index.m3u8
-#EXTINF:-1 group-title="-",HTV
-http://138.121.114.91:8000/play/a06t/index.m3u8
-#EXTINF:-1 group-title="-",History 2
-http://138.121.114.91:8000/play/a06n/index.m3u8
-#EXTINF:-1 group-title="-",History Channel
-http://138.121.114.91:8000/play/a090/index.m3u8
-#EXTINF:-1 group-title="-",La Nacion TV
-http://138.121.114.91:8000/play/a05y/index.m3u8
-#EXTINF:-1 group-title="-",Lifetime
-http://138.121.114.91:8000/play/a07l/index.m3u8
-#EXTINF:-1 group-title="-",MTV
-http://138.121.114.91:8000/play/a06r/index.m3u8
-#EXTINF:-1 group-title="-",MTV×00
-http://138.121.114.91:8000/play/a092/index.m3u8
-#EXTINF:-1 group-title="-",Metro
-http://138.121.114.91:8000/play/a06l/index.m3u8
-#EXTINF:-1 group-title="-",Nat Geo HD
-http://138.121.114.91:8000/play/a09f/index.m3u8
-#EXTINF:-1 group-title="-",Nick Jr
-http://138.121.114.91:8000/play/a07s/index.m3u8
-#EXTINF:-1 group-title="-",Nickelodeon
-http://138.121.114.91:8000/play/a08y/index.m3u8
-#EXTINF:-1 group-title="-",Pakapaka
-http://138.121.114.91:8000/play/a05t/index.m3u8
-#EXTINF:-1 group-title="-",Paramount HD
-http://138.121.114.91:8000/play/a073/index.m3u8
-#EXTINF:-1 group-title="-",Playboy
-http://138.121.114.91:8000/play/a077/index.m3u8
-#EXTINF:-1 group-title="-",Quiero Musica
-http://138.121.114.91:8000/play/a06s/index.m3u8
-#EXTINF:-1 group-title="-",RAI Italia
-http://138.121.114.91:8000/play/a06u/index.m3u8
-#EXTINF:-1 group-title="-",RT en Espaæol
-http://138.121.114.91:8000/play/a07d/index.m3u8
-#EXTINF:-1 group-title="-",Rural
-http://138.121.114.91:8000/play/a06k/index.m3u8
-#EXTINF:-1 group-title="-",Sextreme
-http://138.121.114.91:8000/play/a079/index.m3u8
-#EXTINF:-1 group-title="-",Sony HD
-http://138.121.114.91:8000/play/a09c/index.m3u8
-#EXTINF:-1 group-title="-",Sony Movies HD
-http://138.121.114.91:8000/play/a09j/index.m3u8
-#EXTINF:-1 group-title="-",Space HD
-http://138.121.114.91:8000/play/a071/index.m3u8
-#EXTINF:-1 group-title="-",Star Channel HD
-http://138.121.114.91:8000/play/a087/index.m3u8
-#EXTINF:-1 group-title="-",Studio Universal
-http://138.121.114.91:8000/play/a067/index.m3u8
-#EXTINF:-1 group-title="-",TCM
-http://138.121.114.91:8000/play/a065/index.m3u8
-#EXTINF:-1 group-title="-",TLNovelas
-http://138.121.114.91:8000/play/a07y/index.m3u8
-#EXTINF:-1 group-title="-",TN HD
-http://138.121.114.91:8000/play/a097/index.m3u8
-#EXTINF:-1 group-title="-",TNT HD
-http://138.121.114.91:8000/play/a08b/index.m3u8
-#EXTINF:-1 group-title="-",TNT Novelas HD
-http://138.121.114.91:8000/play/a08e/index.m3u8
-#EXTINF:-1 group-title="-",TNT Series HD
-http://138.121.114.91:8000/play/a08c/index.m3u8
-#EXTINF:-1 group-title="-",TNT Sports HD
-http://138.121.114.91:8000/play/a06z/index.m3u8
-#EXTINF:-1 group-title="-",TV Publica HD
-http://138.121.114.91:8000/play/a095/index.m3u8
-#EXTINF:-1 group-title="-",TVE
-http://138.121.114.91:8000/play/a080/index.m3u8
-#EXTINF:-1 group-title="-",Telefe HD
-http://138.121.114.91:8000/play/a08a/index.m3u8
-#EXTINF:-1 group-title="-",The History Channel HD
-http://138.121.114.91:8000/play/a09g/index.m3u8
-#EXTINF:-1 group-title="-",TyC Sports HD
-http://138.121.114.91:8000/play/a06x/index.m3u8
-#EXTINF:-1 group-title="-",USA Network
-http://138.121.114.91:8000/play/a068/index.m3u8
-#EXTINF:-1 group-title="-",Universal HD
-http://138.121.114.91:8000/play/a09i/index.m3u8
-#EXTINF:-1 group-title="-",Venus
-http://138.121.114.91:8000/play/a078/index.m3u8
-#EXTINF:-1 group-title="-",Volver
-http://138.121.114.91:8000/play/a066/index.m3u8
-#EXTINF:-1 group-title="-",Warner Channel HD
-http://138.121.114.91:8000/play/a09d/index.m3u8
-#EXTINF:-1 group-title="-",ciudad magazine
-http://138.121.114.91:8000/play/a06m/index.m3u8
-#EXTINF:-1 group-title="-",el nueve HD
-http://138.121.114.91:8000/play/a08k/index.m3u8
-#EXTINF:-1 group-title="-",el trece HD
-http://138.121.114.91:8000/play/a07b/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Cl@ro $ports" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE1zmme9TeMQskteZUcp2FnWNrvVX26aiheoJ57qxodmAK.png" group-title="ºººJUEGOS OLÌMPICOSººº",Cl@ro $ports
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/545942
-#EXTINF:-1 tvg-id="" tvg-name="ADT || TEEN HD (PP)" tvg-logo="http://playente.ddns.me:80/images/448d32182088cbd26b9fc4a57de5ce64.jpg" group-title="♥ ADULTOS",ADT || TEEN HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530953
-#EXTINF:-1 tvg-id="" tvg-name="ADT || PORNSTAR HD (PP)" tvg-logo="http://playente.ddns.me:80/images/ac7cb2974ada3edb7e679c5db7bd8108.jpg" group-title="♥ ADULTOS",ADT || PORNSTAR HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530954
-#EXTINF:-1 tvg-id="" tvg-name="ADT || MILF HD (PP)" tvg-logo="http://playente.ddns.me:80/images/398cedda0e543897f9f1e98d1b2a212c.jpg" group-title="♥ ADULTOS",ADT || MILF HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530955
-#EXTINF:-1 tvg-id="" tvg-name="ADT || BIG ASS FULL (PP)" tvg-logo="http://playente.ddns.me:80/images/87d63292e16b72a83d9e2a60fdb421e1.jpg" group-title="♥ ADULTOS",ADT || BIG ASS FULL (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530956
-#EXTINF:-1 tvg-id="" tvg-name="ADT || BIG TITS HD (PP)" tvg-logo="http://playente.ddns.me:80/images/f62525e676d5879ad654eac6891deba1.jpg" group-title="♥ ADULTOS",ADT || BIG TITS HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530957
-#EXTINF:-1 tvg-id="" tvg-name="ADT || BIG DICKHD (PP)" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",ADT || BIG DICKHD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530958
-#EXTINF:-1 tvg-id="" tvg-name="ADT || LATINA HD (PP)" tvg-logo="http://playente.ddns.me:80/images/89f4286ad0f30cd8a4db11d5f1732555.jpg" group-title="♥ ADULTOS",ADT || LATINA HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530959
-#EXTINF:-1 tvg-id="" tvg-name="ADT || RUSSAS HD (PP)" tvg-logo="http://playente.ddns.me:80/images/b7baefc84cb46ae89e5a6108af2df24d.jpg" group-title="♥ ADULTOS",ADT || RUSSAS HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530960
-#EXTINF:-1 tvg-id="" tvg-name="ADT || RUBIAS HD (PP)" tvg-logo="http://playente.ddns.me:80/images/95b8ac3f8ae76454bc0fc73ed6eb31e4.jpg" group-title="♥ ADULTOS",ADT || RUBIAS HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530961
-#EXTINF:-1 tvg-id="" tvg-name="ADT || BRUNETTE HD (PP)" tvg-logo="https://s.xxxsexyteens.net/1gallery/258/109.jpg" group-title="♥ ADULTOS",ADT || BRUNETTE HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530962
-#EXTINF:-1 tvg-id="" tvg-name="ADT || ANNAL HD (PP)" tvg-logo="http://playente.ddns.me:80/images/165eb4e86441f101e5e2926416b3a160.jpg" group-title="♥ ADULTOS",ADT || ANNAL HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530963
-#EXTINF:-1 tvg-id="" tvg-name="ADT || FETICHE HD (PP)" tvg-logo="http://playente.ddns.me:80/images/dacebb1ce8fd8fd0413f2a5be3b3ac9e.jpg" group-title="♥ ADULTOS",ADT || FETICHE HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530964
-#EXTINF:-1 tvg-id="" tvg-name="ADT || LESBIANA HD (PP)" tvg-logo="https://img.huffingtonpost.com/asset/5c8ae1c52300007f0123de69.jpeg?ops=scalefit_630_noupscale" group-title="♥ ADULTOS",ADT || LESBIANA HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530965
-#EXTINF:-1 tvg-id="" tvg-name="ADT || GAYTORE HD (PP)" tvg-logo="https://img.huffingtonpost.com/asset/5c8ae1c52300007f0123de69.jpeg?ops=scalefit_630_noupscale" group-title="♥ ADULTOS",ADT || GAYTORE HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530966
-#EXTINF:-1 tvg-id="" tvg-name="ADT || TRANS 3 HD  (PP)" tvg-logo="https://img.huffingtonpost.com/asset/5c8ae1c52300007f0123de69.jpeg?ops=scalefit_630_noupscale" group-title="♥ ADULTOS",ADT || TRANS 3 HD  (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530967
-#EXTINF:-1 tvg-id="" tvg-name="ADT || GAYTORE 2 HD (PP)" tvg-logo="https://img.huffingtonpost.com/asset/5c8ae1c52300007f0123de69.jpeg?ops=scalefit_630_noupscale" group-title="♥ ADULTOS",ADT || GAYTORE 2 HD (PP)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530968
-#EXTINF:-1 tvg-id="" tvg-name="ADT || PLAYBOY [HD] (G)" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",ADT || PLAYBOY [HD] (G)
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530969
-#EXTINF:-1 tvg-id="" tvg-name="ADT || VENUS [SD]" tvg-logo="http://playente.ddns.me:80/images/6c3d17eb9fcdc85a3e59abcd25271d74.png" group-title="♥ ADULTOS",ADT || VENUS [SD]
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/530970
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| SCORELANT 5 HD" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE13xh6_kiim0K9gx9DgbErK_AEC__Xxx5vc1Um2mI9CKU.png" group-title="♥ ADULTOS",ADULT| SCORELANT 5 HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537635
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| SCORELANT 4 HD" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE13xh6_kiim0K9gx9DgbErK_AEC__Xxx5vc1Um2mI9CKU.png" group-title="♥ ADULTOS",ADULT| SCORELANT 4 HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537636
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| SCORELANT 1 HD" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE13xh6_kiim0K9gx9DgbErK_AEC__Xxx5vc1Um2mI9CKU.png" group-title="♥ ADULTOS",ADULT| SCORELANT 1 HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537637
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| VENUS" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE16-YIS2R3kmRBjT3Lj6BEWgXSsQh2m6EJMrE8WnUZBFP.png" group-title="♥ ADULTOS",ADULT| VENUS
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537638
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| BRAZZER TV HD" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE1zktBbf3hA5o6w7Lxw2pA6NP34TWuFEPWst2OMp1UM3X.png" group-title="♥ ADULTOS",ADULT| BRAZZER TV HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537639
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| FAP TV TEENS" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE140KMhA78cd05t3Wbi6ym7IXCn7OkrELt4qil2PX6KZO.png" group-title="♥ ADULTOS",ADULT| FAP TV TEENS
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537640
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| FAP TV COPILATION HD" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE13xh6_kiim0K9gx9DgbErK_AEC__Xxx5vc1Um2mI9CKU.png" group-title="♥ ADULTOS",ADULT| FAP TV COPILATION HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537641
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| EXXXOTICA TV HD" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE13xh6_kiim0K9gx9DgbErK_AEC__Xxx5vc1Um2mI9CKU.png" group-title="♥ ADULTOS",ADULT| EXXXOTICA TV HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537642
-#EXTINF:-1 tvg-id="" tvg-name="ADUL| CZECH GANG BANG" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE13xh6_kiim0K9gx9DgbErK_AEC__Xxx5vc1Um2mI9CKU.png" group-title="♥ ADULTOS",ADUL| CZECH GANG BANG
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537643
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| CZECH STREET" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE13xh6_kiim0K9gx9DgbErK_AEC__Xxx5vc1Um2mI9CKU.png" group-title="♥ ADULTOS",ADULT| CZECH STREET
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537644
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| GANGBANG HD" tvg-logo="http://onerestream.us:80/images/ucO2MBftoJeQSkfFas0qSDlyytecmj2MsbsT9KGxNu0EKFrT-6xL813E6SPCDeZ8PNg67HxJB3L9pRAfpSDJyQ.png" group-title="♥ ADULTOS",ADULT| GANGBANG HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537645
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| MILF HD" tvg-logo="http://onerestream.us:80/images/UXIx0Q4lbfLXWfquEVSfHULwEff3_HpN0if-UvS4BfbmaIv-puNFJro1-6_wypAnlySA_pwsDL7H5z9c5KjOuIhFFvV8YnoejuO1RXACO_I.png" group-title="♥ ADULTOS",ADULT| MILF HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537646
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| ROGH HD" tvg-logo="http://onerestream.us:80/images/N7YNET7jWua1a_cr_TeRAKmEr72jDZJqVu1yiIULZfYI9EMUmLH8IzaqOyew2ExHNh_2xGuiw2irJmgFN_zQpbXtxDPwE5FNQAJ-iRVjHOA.png" group-title="♥ ADULTOS",ADULT| ROGH HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537647
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| COMPILATION HD" tvg-logo="https://bestsquirtsex.com/wp-content/uploads/2019/07/Best-Squirt-Sex-Logo-2.png" group-title="♥ ADULTOS",ADULT| COMPILATION HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537648
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| BRUNETTE HD" tvg-logo="https://cdn1.pornid.xxx/img/logos/logo.png" group-title="♥ ADULTOS",ADULT| BRUNETTE HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537649
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| BLONDE HD" tvg-logo="http://onerestream.us:80/images/cYLo2Uh1FQDCE7DbYEhc_CddIg2PCfXC94BkpjjlGW1_PEbKUe3ZUhbK-SUetzwl.png" group-title="♥ ADULTOS",ADULT| BLONDE HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537650
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| ANAL HD" tvg-logo="http://onerestream.us:80/images/i_zzw8XfDuZRgKHqDynZc90kVwVeE0XnBqnMteY56SPbXlsgAuuCReT9Xu6mtWegS7HmF37hJYHYC-2t7aUwezrdj3FFxhEdoh2mQKvjnAM.png" group-title="♥ ADULTOS",ADULT| ANAL HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537651
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| CUCKOLD HD" tvg-logo="http://onerestream.us:80/images/zdrz69bn5FUlgVaz2r-QqRjOR9fSbnKDJHtNmzKwSLftzsd_i_Ga92gvteLNuJ0_.png" group-title="♥ ADULTOS",ADULT| CUCKOLD HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537652
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| THREESOME HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGaki5olboV0buoV8bZz_EBYXuaEVQ0-Wa8uElpsVs_TtfaugEgVhGyd6UIzYmDN8yo3IyTP2YR7wdgzUmAnOxaqY.png" group-title="♥ ADULTOS",ADULT| THREESOME HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537653
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| LATINA HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGagObefSIo3tTNZoFmkyFXuNbz9trsewZEyJv6KEFZwBZsRrNP5nJrLA7zT3tNpSVtM3mGsUnLFiLGfMNhst-dhA.png" group-title="♥ ADULTOS",ADULT| LATINA HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537654
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| POV HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGakrEuEmgUNgIJ5F5oeOKkTI-yvBlZpsQVOYUM8G29MoTGvJc_USSSQn7OM4qGYXcTWqONmKHPKVDgeu9dBfz-pw.png" group-title="♥ ADULTOS",ADULT| POV HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537655
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| BIG DICK HD" tvg-logo="http://onerestream.us:80/images/7OjiwobO9_lyGsgO41LuG5sOOJVI-Oq7_tUOG43G8uPhvKirGVqR_kihYOPniushi34tAIF6crC0ocspqObcmSLBIuzsQVVlIvAuF2ahBLs.png" group-title="♥ ADULTOS",ADULT| BIG DICK HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537656
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| FAT TV 2" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGaqaiFZFzRZCWuM4z1YQ8rbV107mwuuLus6mr8Mg63wzhJXzlDo-GjFqk6R1vfBeQFQi5sCOdX22QbB_j3jcWgVs.png" group-title="♥ ADULTOS",ADULT| FAT TV 2
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537657
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| VIVIRED HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGaiZSyGNs9W0Az2XHjBWu43iv7ctmpy_hjnugES1OxPlJdEqikt9IN_bTCPN9LBI5JJYWuYx1UfP4VsIjs7RfWAI.png" group-title="♥ ADULTOS",ADULT| VIVIRED HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537658
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| SEXTOSENSO TV HD" tvg-logo="http://onerestream.us:80/images/8MO0lTnj9M_ERwLqQMxWzi1koaIkjDn6Q2UJxkRP7TE-LtGdQLEerfsUx3bF87gt-HiH0WpmwEuMkuSoStwGSNIFgZvm-yeRXylKEQnZHOo.png" group-title="♥ ADULTOS",ADULT| SEXTOSENSO TV HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537659
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| PRIVATE TV HD" tvg-logo="http://onerestream.us:80/images/oBpY8U7BFPNJSsMWXPxbPknq41l3y9REiZmq6OKW7WFEnj6TP_eFaT8jsN9UjEW7dkTrOgOPdU1hyjEKkTAHmTPx6OZp8tzO9op0rBZvUWQ.png" group-title="♥ ADULTOS",ADULT| PRIVATE TV HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537660
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| PENTHOUSE 2 HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGauJg2vhW1gmCg_TE-YKwSyCa5Jc32pdo5G15IzAI5WFT-Gt-ShFkLx_rXiJeDf0lzJxLQAYnRn9-l7MGZvbxZq0.png" group-title="♥ ADULTOS",ADULT| PENTHOUSE 2 HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537661
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| OLALA HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGalaY60SXlLYgM7ZYqHwLEcYQLqxK8KLbjCqb3C_ZkKJKcSKi47YwcG8ldS6tZWSnhNTX3JU7spCB1exjlbU7dUw.png" group-title="♥ ADULTOS",ADULT| OLALA HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537662
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| SCORELANT 1 HD" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE13xh6_kiim0K9gx9DgbErK_AEC__Xxx5vc1Um2mI9CKU.png" group-title="♥ ADULTOS",ADULT| SCORELANT 1 HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537663
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| VENUS" tvg-logo="http://onerestream.us:80/images/QjSeU3keF4YpIALmJ3KE16-YIS2R3kmRBjT3Lj6BEWgXSsQh2m6EJMrE8WnUZBFP.png" group-title="♥ ADULTOS",ADULT| VENUS
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537664
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| CENTOXCENTO TV HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGaosBvLaJLPgoBWnwgqslgGttIoLqpKFXT9znpYzCr_067t5ln_S2-UXbvUDZ4zm0RCIaRfM6yelg0PFFdtcNhT0.png" group-title="♥ ADULTOS",ADULT| CENTOXCENTO TV HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537665
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| BLUE HUSTER TV HD" tvg-logo="http://onerestream.us:80/images/8MO0lTnj9M_ERwLqQMxWzt3_8fKOo33WxD9okqSdiJdGtzRdDRNj7okStKskyFA9Zl3GM6c6E6Ebs4SfuTfcOoEtHZrE3hcRuSU94SVxRpRRY-X8tBlgXxxqpN7kMmr_.png" group-title="♥ ADULTOS",ADULT| BLUE HUSTER TV HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537666
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| STARS XXX HD" tvg-logo="http://onerestream.us:80/images/ZKIQrTzTYdRgpfxKwt7XVHC6-GcRkE2mux8eQWadDRTEnsbe6KXgJ4I74gX2WUHjHbMU5mKHVveyAunNUnLzpfkiN0KYwZyKROiWV8qgs4nNv1RRm1v0wmAjQj_CLrXK.png" group-title="♥ ADULTOS",ADULT| STARS XXX HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537667
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| ALBA XXX 4 HD" tvg-logo="https://s4.cloudembed.net/49407.png" group-title="♥ ADULTOS",ADULT| ALBA XXX 4 HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537668
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| SUPERONE HD" tvg-logo="http://onerestream.us:80/images/8MO0lTnj9M_ERwLqQMxWzt3_8fKOo33WxD9okqSdiJdGtzRdDRNj7okStKskyFA9tOxSAKlWauWFJAi2KXVUag9i9hevYBKS26ffbmCsxAI.png" group-title="♥ ADULTOS",ADULT| SUPERONE HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537669
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| X1 XXX HD" tvg-logo="https://xxxpornsex.tv/wp-content/uploads/2019/04/vlcsnap-2019-04-26-00h20m48s112.png" group-title="♥ ADULTOS",ADULT| X1 XXX HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537670
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| XY MIX XXX HD" tvg-logo="http://onerestream.us:80/images/sViDqpFKOkKzmuIwJmZIrve2jfvXP5DHP3EAoR1Yv5R0ZZCH-kfXVt3BRpWLqeXFAhDIaJrZ7th6b21d-AELaa5Po9y_RDNgLgAvspgz-I9UoLYsi2iBYqyX3HbBCiSb.png" group-title="♥ ADULTOS",ADULT| XY MIX XXX HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537671
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| XY MAX XXX HD" tvg-logo="https://d24j9r7lck9cin.cloudfront.net/l/o/6/6261.1471157192.png" group-title="♥ ADULTOS",ADULT| XY MAX XXX HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537672
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| XY PLUS HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGaqlW9FOFrHHQYXT4B7G-pxDFb7dOmjeh-aqRtXKS4S4BQk4YM8Tlyly4TiAU8YQEnCpjG6SkXwR-1Pb7_jR3Qiw.png" group-title="♥ ADULTOS",ADULT| XY PLUS HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537673
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| BANGERZ XXX" tvg-logo="http://onerestream.us:80/images/D38viCLG0X8P1e8E0Nc37CynTb2FDjZpwwSnZ6B-qyN6V_Es5GPrDU4yLLHIu-friGxn0jfXVUT3rFVyVWToJdT2r12_3BqPQ7-RcB6QhR4.png" group-title="♥ ADULTOS",ADULT| BANGERZ XXX
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537674
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| NET XXX" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGaplC4aTxPnKLuA9IE9Eiukw3N53_3Lz7SPsOHizrltLSqXWhkj3C6FTKPXJcgaqz7vc8C8OPgmT1TMH5iHiFSC8.png" group-title="♥ ADULTOS",ADULT| NET XXX
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537675
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| PLAYHOUSE XXX" tvg-logo="http://onerestream.us:80/images/YpHJhxpYRO_ETHNbbHdmZhlJwXindSLdwlCDkAJz0gBqTz7nxcgz8xfdNImhdRu-Lyn49yRzSPgy7_REcz-v5SVIGrvueHypkilhfH-POr0.png" group-title="♥ ADULTOS",ADULT| PLAYHOUSE XXX
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537676
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| HOT PLEASURE HD" tvg-logo="http://onerestream.us:80/images/-7oKEATgI6CdWxwKW-B7i6nR0uMqY5SkXrMrzcK_1FxoKTUGuW_SURIsfquEzR5UayNzyanGh4JatJRiFIunRfQCNgsFPvfVj-zo6Dlhp4o.png" group-title="♥ ADULTOS",ADULT| HOT PLEASURE HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537677
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| RED XXX" tvg-logo="http://onerestream.us:80/images/kgtUgUkN7roFYuYMdTOr0pGzxlwMr74OzJkHYeeGCyH9ECwlfxHjcdZ74GKaFwWbu8BGnuCp9lY1sQw_GGnm-8ulZ5TXBC-vETxU2OnTpfeoE1KTmpGeRvNnC3FFydSY.png" group-title="♥ ADULTOS",ADULT| RED XXX
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537678
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| MILF TV" tvg-logo="http://onerestream.us:80/images/QKYnEisDZ7fq_HqbU3212SjinWkF_WVERCofxULDF_aBkPYI9WxUSWvTOVo_ta6FYmfQ8s5Mlmni9GD1FiHHSNFKRoi9G5lWhv-mqu4n3Co.png" group-title="♥ ADULTOS",ADULT| MILF TV
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537679
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| FRENCH LOVER XXX" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGauZg3SrQfIpCzU-O_2pZFJ60iusdCuHVq-5Q1wLRttwKJLjIAUsUErDvPl7S2LrpkHtC8o_dIMnbW7eK51SaTqw.png" group-title="♥ ADULTOS",ADULT| FRENCH LOVER XXX
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537680
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| EMANUELLE XXX" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGajA0SV2hejYaPKnl64k0_sIbNYWH3Jp_sQDyrclvfEv4o_djrdck7kpun4bF-D13-EYf5O6DiuvbNWsPs3BqgAo.png" group-title="♥ ADULTOS",ADULT| EMANUELLE XXX
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537681
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| SECRET CIRCLE TV HD" tvg-logo="http://onerestream.us:80/images/QEmMJwkwc_pTcDDG2__usdgvEJVXoyRn7KMWCs2-XYTbo1QpxrKE2pa6QLtdPs62Tq9JYUkah4V93Bf8DOeojRoYKv8ZpLEO1OUpgfx3_YQ.png" group-title="♥ ADULTOS",ADULT| SECRET CIRCLE TV HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537682
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| EXTASIS HD" tvg-logo="http://onerestream.us:80/images/RFpGgiFIwD-zg89GX_bnrM21ys_k7U76WWBBnJpgLF1Rpc_R1pL5ktUgtT_1kmRk6QidJmeEPADozqnhVopKj4csGrof9A5l0Wd3FBicvb7xgCs8keQ_sFtD-j0s9nPQ9ZBBVg4Okc2TR-em2HmkBQ.png" group-title="♥ ADULTOS",ADULT| EXTASIS HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537683
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| DORCEL XXX HD" tvg-logo="http://onerestream.us:80/images/64Yy70_ImlQ01Xp9mLLYfXoZvbiHtlfqN-Resbj2KuUL-cZ4tzR4Jve_vmnbNLlHrVmp-YoVbqJxztlJWBSaYi82g-NQsA70ekMJ2TjjmqVe-JLjOdgXTq_1qpCI55Er.png" group-title="♥ ADULTOS",ADULT| DORCEL XXX HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537684
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| XXL HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGauomgCzK69QLT4-VG75-LZaDCxKRtvu8XdgWQNeYYdehEKVKGAYbrm_ZOH6YVcWqZ5pIlZxQxSNPy7Q75f58V2M.png" group-title="♥ ADULTOS",ADULT| XXL HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537685
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| SEXTREME HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGatCYgFj1jVTP1n6Fs9KdEiXkUOQh_34HFMnDLKdddxuoQswcGeVN_IZGoRcCE0hJVdyGC2JwfQpXHx_-Jg4jQxc.png" group-title="♥ ADULTOS",ADULT| SEXTREME HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537686
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| DANCING BEAR HD" tvg-logo="http://onerestream.us:80/images/wa0mvnaHp95dlQYAfUtGajottV-Jfxik_r2pprBxYJE6OyeMEV1llrmXbuk69bSqlZ1PCbeWy-_dfUDLJUsb53dlM-n3StG7ye8AYqfzKJI.png" group-title="♥ ADULTOS",ADULT| DANCING BEAR HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537687
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| CASTING TOUCH HD" tvg-logo="http://51.81.47.69:8080/videosmiarea/logotransparente.png" group-title="♥ ADULTOS",ADULT| CASTING TOUCH HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537688
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| TEENS FOR CASH" tvg-logo="http://51.81.47.69:8080/videosmiarea/logotransparente.png" group-title="♥ ADULTOS",ADULT| TEENS FOR CASH
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537689
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| VERIFIED AMATEUR HD" tvg-logo="http://51.81.47.69:8080/videosmiarea/logotransparente.png" group-title="♥ ADULTOS",ADULT| VERIFIED AMATEUR HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537690
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| SHOPLIFTER HD" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",ADULT| SHOPLIFTER HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537691
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| BANG BUS HD" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",ADULT| BANG BUS HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537692
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| MIAMI TV XXX HD" tvg-logo="http://onerestream.us:80/images/Kanmk96vTt-hjZj_mC4RcPttLMlmeeoOsTOSXqs4fWWut4H7YcTxkVmlspnABM0Ey_xXRAtPwxXvVKN4CaxdtuU7wBVzS9ua-pM67Ytj-Xg.png" group-title="♥ ADULTOS",ADULT| MIAMI TV XXX HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537693
-#EXTINF:-1 tvg-id="" tvg-name="ADULT| SEXMEX HD" tvg-logo="http://51.81.47.69:8080/videosmiarea/logotransparente.png" group-title="♥ ADULTOS",ADULT| SEXMEX HD
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537694
-#EXTINF:-1 tvg-id="" tvg-name="VENUS" tvg-logo="http://onerestream.us:80/images/Uri9oBvwjYvWKyJhV1LzXfRdBhW5_jIr0RLpiifAmGEZtEvpVuSS7IDxcVa_JbQZ69pASAAPE4T2ngO3OwwrzL0kZj-HR8lQtAtrPufTExLFrJ6EVcpRnhxfK0B_AbMt.jpg" group-title="♥ ADULTOS",VENUS
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537700
-#EXTINF:-1 tvg-id="" tvg-name="RedlightX" tvg-logo="http://vercanalestv.com/imagenes/redlight.png" group-title="♥ ADULTOS",RedlightX
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537701
-#EXTINF:-1 tvg-id="" tvg-name="PrivateX" tvg-logo="http://onerestream.us:80/images/Wf5zxmvqM1EYNUh5yiEt30yR0L7YeaDeyCPPzD7BBcrxM_D2c_HLE_6xV0_ZDoWHeDfY_aNCkdIDU_Oi8ho-sQ.png" group-title="♥ ADULTOS",PrivateX
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537702
-#EXTINF:-1 tvg-id="" tvg-name="HustlerXXX" tvg-logo="https://s19.postimg.org/t9qpt32f7/HUSTLER.png" group-title="♥ ADULTOS",HustlerXXX
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537703
-#EXTINF:-1 tvg-id="" tvg-name="BRAZZERS" tvg-logo="http://onerestream.us:80/images/bH1wG2UWRV_K8ZpgsKcIP1tHwE_DDFXHqqAfDMxuOLbKjpJAPNglUElKt3v7A70eQuiHybL2L9RMR0Bf2hCyhwA1HPdbyj3mkjkNQ6Epb8E.jpg" group-title="♥ ADULTOS",BRAZZERS
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537704
-#EXTINF:-1 tvg-id="" tvg-name="Sextreme" tvg-logo="http://onerestream.us:80/images/LL7_M6QXxI8K-3yOR0RgS1AgcNU7GwNWI3D53da14R25LdVIehPEqhITyvX7TFrJBQPDJe0wjC1LLWesYzVEZRsjk8BbJGoPo8khzurRdkc.png" group-title="♥ ADULTOS",Sextreme
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537705
-#EXTINF:-1 tvg-id="" tvg-name="PenthouseX" tvg-logo="http://onerestream.us:80/images/vcgt4Kes67s-Zc4xNVLEqmdLwm6Ld2VU2uec0WJzKjonqPCfZlBN5gmZq21dn9GzceweJqxSrwpgIUbhx6HUjw.png" group-title="♥ ADULTOS",PenthouseX
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537706
-#EXTINF:-1 tvg-id="" tvg-name="You Porn" tvg-logo="http://onerestream.us:80/images/vcgt4Kes67s-Zc4xNVLEqmdLwm6Ld2VU2uec0WJzKjonqPCfZlBN5gmZq21dn9GzceweJqxSrwpgIUbhx6HUjw.png" group-title="♥ ADULTOS",You Porn
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537707
-#EXTINF:-1 tvg-id="" tvg-name="SEXTATION" tvg-logo="http://totaltv.tv/oec/images/tv_channels/bdc6d5c54bd382de621a6c1ec682ff89.png" group-title="♥ ADULTOS",SEXTATION
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537708
-#EXTINF:-1 tvg-id="" tvg-name="Juice" tvg-logo="http://onerestream.us:80/images/vcgt4Kes67s-Zc4xNVLEqmdLwm6Ld2VU2uec0WJzKjonqPCfZlBN5gmZq21dn9GzceweJqxSrwpgIUbhx6HUjw.png" group-title="♥ ADULTOS",Juice
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537709
-#EXTINF:-1 tvg-id="" tvg-name="Dusk" tvg-logo="http://onerestream.us:80/images/vcgt4Kes67s-Zc4xNVLEqmdLwm6Ld2VU2uec0WJzKjonqPCfZlBN5gmZq21dn9GzceweJqxSrwpgIUbhx6HUjw.png" group-title="♥ ADULTOS",Dusk
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537710
-#EXTINF:-1 tvg-id="" tvg-name="HOT" tvg-logo="http://onerestream.us:80/images/vcgt4Kes67s-Zc4xNVLEqmdLwm6Ld2VU2uec0WJzKjonqPCfZlBN5gmZq21dn9GzceweJqxSrwpgIUbhx6HUjw.png" group-title="♥ ADULTOS",HOT
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537711
-#EXTINF:-1 tvg-id="" tvg-name="PlayboyX Tv" tvg-logo="http://onerestream.us:80/images/Kanmk96vTt-hjZj_mC4RcPttLMlmeeoOsTOSXqs4fWUrmdA5NZEwgCbDDDhLIkPUvPvlGNenJ-JxDgGPiukPoFExXE3duW2_xMYlE2a9n7U.png" group-title="♥ ADULTOS",PlayboyX Tv
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537712
-#EXTINF:-1 tvg-id="" tvg-name="Gay  | US" tvg-logo="https://www.m3u.cl/logo/946_Gay.png" group-title="♥ ADULTOS",Gay  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537713
-#EXTINF:-1 tvg-id="" tvg-name="Lesbian  | US" tvg-logo="https://www.m3u.cl/logo/945_Lesbian.png" group-title="♥ ADULTOS",Lesbian  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537714
-#EXTINF:-1 tvg-id="" tvg-name="Cuckold  | US" tvg-logo="https://www.m3u.cl/logo/944_Cuckold.png" group-title="♥ ADULTOS",Cuckold  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537715
-#EXTINF:-1 tvg-id="" tvg-name="Live Cams  | US" tvg-logo="https://www.m3u.cl/logo/943_Live_Cams.png" group-title="♥ ADULTOS",Live Cams  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537716
-#EXTINF:-1 tvg-id="" tvg-name="Gangbang  | US" tvg-logo="https://www.m3u.cl/logo/942_Gangbang.png" group-title="♥ ADULTOS",Gangbang  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537717
-#EXTINF:-1 tvg-id="" tvg-name="Rough  | US" tvg-logo="https://www.m3u.cl/logo/941_Rough.png" group-title="♥ ADULTOS",Rough  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537718
-#EXTINF:-1 tvg-id="" tvg-name="Threesome  | US" tvg-logo="https://www.m3u.cl/logo/940_Threesome.png" group-title="♥ ADULTOS",Threesome  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537719
-#EXTINF:-1 tvg-id="" tvg-name="Blowjob  | US" tvg-logo="https://www.m3u.cl/logo/939_Blowjob.png" group-title="♥ ADULTOS",Blowjob  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537720
-#EXTINF:-1 tvg-id="" tvg-name="POV  | US" tvg-logo="https://www.m3u.cl/logo/938_POV.png" group-title="♥ ADULTOS",POV  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537721
-#EXTINF:-1 tvg-id="" tvg-name="Interracial  | US" tvg-logo="https://www.m3u.cl/logo/937_Interracial.png" group-title="♥ ADULTOS",Interracial  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537722
-#EXTINF:-1 tvg-id="" tvg-name="Brunette  | US" tvg-logo="https://www.m3u.cl/logo/936_Brunette.png" group-title="♥ ADULTOS",Brunette  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537723
-#EXTINF:-1 tvg-id="" tvg-name="Blonde  | US" tvg-logo="https://www.m3u.cl/logo/935_Blonde.png" group-title="♥ ADULTOS",Blonde  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537724
-#EXTINF:-1 tvg-id="" tvg-name="Latina  | US" tvg-logo="https://www.m3u.cl/logo/934_Latina.png" group-title="♥ ADULTOS",Latina  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537725
-#EXTINF:-1 tvg-id="" tvg-name="Teen  | US" tvg-logo="https://www.m3u.cl/logo/933_Teen.png" group-title="♥ ADULTOS",Teen  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537726
-#EXTINF:-1 tvg-id="" tvg-name="Anal  | US" tvg-logo="https://www.m3u.cl/logo/932_Anal.png" group-title="♥ ADULTOS",Anal  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537727
-#EXTINF:-1 tvg-id="" tvg-name="Big Ass  | US" tvg-logo="https://www.m3u.cl/logo/931_Big_Ass.png" group-title="♥ ADULTOS",Big Ass  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537728
-#EXTINF:-1 tvg-id="" tvg-name="Big Dick  | US" tvg-logo="https://www.m3u.cl/logo/930_Big_Dick.png" group-title="♥ ADULTOS",Big Dick  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537729
-#EXTINF:-1 tvg-id="" tvg-name="Big Tits  | US" tvg-logo="https://www.m3u.cl/logo/923_Big_Tits.png" group-title="♥ ADULTOS",Big Tits  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537730
-#EXTINF:-1 tvg-id="" tvg-name="Compilation  | US" tvg-logo="https://www.m3u.cl/logo/922_Compilation.png" group-title="♥ ADULTOS",Compilation  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537731
-#EXTINF:-1 tvg-id="" tvg-name="Fetish  | US" tvg-logo="https://www.m3u.cl/logo/921_Fetish.png" group-title="♥ ADULTOS",Fetish  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537732
-#EXTINF:-1 tvg-id="" tvg-name="Hardcore  | US" tvg-logo="https://www.m3u.cl/logo/920_Hardcore.png" group-title="♥ ADULTOS",Hardcore  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537733
-#EXTINF:-1 tvg-id="" tvg-name="MILF  | US" tvg-logo="https://www.m3u.cl/logo/919_MILF.png" group-title="♥ ADULTOS",MILF  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537734
-#EXTINF:-1 tvg-id="" tvg-name="Pornstar  | US" tvg-logo="https://www.m3u.cl/logo/918_Pornstar.png" group-title="♥ ADULTOS",Pornstar  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537735
-#EXTINF:-1 tvg-id="" tvg-name="Russian  | US" tvg-logo="https://www.m3u.cl/logo/917_Russian.png" group-title="♥ ADULTOS",Russian  | US
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537736
-#EXTINF:-1 tvg-id="" tvg-name="XXX Gay" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",XXX Gay
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537737
-#EXTINF:-1 tvg-id="" tvg-name="XXX Blonde" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",XXX Blonde
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537738
-#EXTINF:-1 tvg-id="" tvg-name="XXX Brunette" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",XXX Brunette
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537739
-#EXTINF:-1 tvg-id="" tvg-name="XXX Compilation" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",XXX Compilation
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537740
-#EXTINF:-1 tvg-id="" tvg-name="XXX Anal" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",XXX Anal
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537741
-#EXTINF:-1 tvg-id="" tvg-name="XXX Gangbang" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",XXX Gangbang
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537742
-#EXTINF:-1 tvg-id="" tvg-name="XXX Rough" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",XXX Rough
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537743
-#EXTINF:-1 tvg-id="" tvg-name="XXX Lesbian" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",XXX Lesbian
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537744
-#EXTINF:-1 tvg-id="" tvg-name="XXX Russian" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",XXX Russian
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537745
-#EXTINF:-1 tvg-id="" tvg-name="XXX Threesome" tvg-logo="http://127.0.0.1/" group-title="♥ ADULTOS",XXX Threesome
-http://campstvpro.com:8080/CNT397pe/5322GT2Uax3r/537746`
+#EXTINF:-1 tvg-id="" tvg-name="PPV 1 - EN VIVO | Supernova Genesis 2026 (e)(1080) " tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="EVENTOS PPV",PPV 1 - EN VIVO | Supernova Genesis 2026 (e)(1080) 
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/189004
+#EXTINF:-1 tvg-id="DSPORTS.(ARG).dtvsp" tvg-name="PPV 2 - (e)(720)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="EVENTOS PPV",PPV 2 - (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178775
+#EXTINF:-1 tvg-id="" tvg-name="PPV 3 - (e)(1080)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="EVENTOS PPV",PPV 3 - (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178776
+#EXTINF:-1 tvg-id="" tvg-name="PPV 4 - WWE Wrestlemania (e)(1080)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="EVENTOS PPV",PPV 4 - WWE Wrestlemania (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178777
+#EXTINF:-1 tvg-id="ESPN.co" tvg-name="DEPORTES - Espn 1 COL (PM)(1080)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 1 COL (PM)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9516
+#EXTINF:-1 tvg-id="ESPN.co" tvg-name="DEPORTES - Espn 1 COL (e)(720)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 1 COL (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9517
+#EXTINF:-1 tvg-id="ESPN.2.co" tvg-name="DEPORTES - Espn 1 ARG (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 1 ARG (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9521
+#EXTINF:-1 tvg-id="Canal.ESPN.2.(Colombia).sv" tvg-name="DEPORTES - Espn 1 ARG (i)(720)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 1 ARG (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9520
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - Espn 1 ARG (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 1 ARG (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9522
+#EXTINF:-1 tvg-id="Canal.ESPN.(Chile).cl" tvg-name="DEPORTES - Espn 1 CHI (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 1 CHI (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/99538
+#EXTINF:-1 tvg-id="Canal.ESPN.(Chile).cl" tvg-name="DEPORTES - Espn 1 CHI (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 1 CHI (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/99539
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 1 LAT (Z)(720)" tvg-logo="https://i.ibb.co/fs3t738/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 1 LAT (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179479
+#EXTINF:-1 tvg-id="ESPN.MX.mx" tvg-name="DEPORTES - Espn 1 MEX (i)(1080)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 1 MEX (i)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9525
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="DEPORTES - Espn 1 MEX (L)(720)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 1 MEX (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9523
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - Espn 2 ARG (PM)(1080)" tvg-logo="https://1.bp.blogspot.com/-_XxscAqVFhA/Xay_aGq3DuI/AAAAAAAAAkY/ga-t6_3827QQFqSnExfABTNBtMbpvJEYgCLcBGAsYHQ/s200/6.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 2 ARG (PM)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9527
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - Espn 2 ARG (e)(720)" tvg-logo="https://1.bp.blogspot.com/-_XxscAqVFhA/Xay_aGq3DuI/AAAAAAAAAkY/ga-t6_3827QQFqSnExfABTNBtMbpvJEYgCLcBGAsYHQ/s200/6.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 2 ARG (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9526
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - Espn 2 ARG (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-_XxscAqVFhA/Xay_aGq3DuI/AAAAAAAAAkY/ga-t6_3827QQFqSnExfABTNBtMbpvJEYgCLcBGAsYHQ/s200/6.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 2 ARG (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9528
+#EXTINF:-1 tvg-id="ESPN.2.co" tvg-name="DEPORTES - Espn 2 COL (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_XxscAqVFhA/Xay_aGq3DuI/AAAAAAAAAkY/ga-t6_3827QQFqSnExfABTNBtMbpvJEYgCLcBGAsYHQ/s200/6.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 2 COL (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9529
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 2 COL (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-_XxscAqVFhA/Xay_aGq3DuI/AAAAAAAAAkY/ga-t6_3827QQFqSnExfABTNBtMbpvJEYgCLcBGAsYHQ/s200/6.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 2 COL (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179486
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="DEPORTES - Espn 2 MEX (L)(720)" tvg-logo="https://1.bp.blogspot.com/-_XxscAqVFhA/Xay_aGq3DuI/AAAAAAAAAkY/ga-t6_3827QQFqSnExfABTNBtMbpvJEYgCLcBGAsYHQ/s200/6.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 2 MEX (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9530
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="DEPORTES - Espn 2 MEX (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_XxscAqVFhA/Xay_aGq3DuI/AAAAAAAAAkY/ga-t6_3827QQFqSnExfABTNBtMbpvJEYgCLcBGAsYHQ/s200/6.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 2 MEX (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9531
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 2 SUR (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-_XxscAqVFhA/Xay_aGq3DuI/AAAAAAAAAkY/ga-t6_3827QQFqSnExfABTNBtMbpvJEYgCLcBGAsYHQ/s200/6.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 2 SUR (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179489
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn  3 ARG (Z)(1080)" tvg-logo="https://i.ibb.co/SX0ztNpY/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn  3 ARG (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179492
+#EXTINF:-1 tvg-id="ESPN.3.HDTV.South.(Latin.America).(ESPN3HD).ar" tvg-name="DEPORTES - Espn 3 ARG (L)(720)" tvg-logo="https://1.bp.blogspot.com/-A1Uifycds-8/Xay_aTIse4I/AAAAAAAAAkc/CXqeatJad3EK19gehIfywsrzuaR17--pgCLcBGAsYHQ/s200/7.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 3 ARG (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9533
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - Espn 3 ARG (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-A1Uifycds-8/Xay_aTIse4I/AAAAAAAAAkc/CXqeatJad3EK19gehIfywsrzuaR17--pgCLcBGAsYHQ/s200/7.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 3 ARG (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9534
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 3 CH (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-A1Uifycds-8/Xay_aTIse4I/AAAAAAAAAkc/CXqeatJad3EK19gehIfywsrzuaR17--pgCLcBGAsYHQ/s200/7.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 3 CH (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179495
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - Espn 3 COL (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-A1Uifycds-8/Xay_aTIse4I/AAAAAAAAAkc/CXqeatJad3EK19gehIfywsrzuaR17--pgCLcBGAsYHQ/s200/7.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 3 COL (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9532
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 3 COL (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-A1Uifycds-8/Xay_aTIse4I/AAAAAAAAAkc/CXqeatJad3EK19gehIfywsrzuaR17--pgCLcBGAsYHQ/s200/7.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 3 COL (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179493
+#EXTINF:-1 tvg-id="ESPN.MX.mx" tvg-name="DEPORTES - Espn 3 MEX (M)(720)" tvg-logo="https://1.bp.blogspot.com/-A1Uifycds-8/Xay_aTIse4I/AAAAAAAAAkc/CXqeatJad3EK19gehIfywsrzuaR17--pgCLcBGAsYHQ/s200/7.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 3 MEX (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9536
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 3 Sur (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-A1Uifycds-8/Xay_aTIse4I/AAAAAAAAAkc/CXqeatJad3EK19gehIfywsrzuaR17--pgCLcBGAsYHQ/s200/7.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 3 Sur (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179498
+#EXTINF:-1 tvg-id="Canal.ESPN.4.(Sur).sv" tvg-name="DEPORTES - Espn 4 (TV)(720)" tvg-logo="https://i.postimg.cc/FF6fT894/Espn4.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 4 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9538
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 4 COL (Z)(720)" tvg-logo="https://i.ibb.co/rKqN1tms/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 4 COL (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179509
+#EXTINF:-1 tvg-id="ESPN.Extra.Centroamérica.HDTV.(ESPNXTRA).mx" tvg-name="DEPORTES - Espn 4 MEX (M)(1080)" tvg-logo="https://i.postimg.cc/FF6fT894/Espn4.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 4 MEX (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9537
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 4 MX (Z)(720)" tvg-logo="https://i.ibb.co/bgRKgH31/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 4 MX (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179502
+#EXTINF:-1 tvg-id="ESPN.5.co" tvg-name="DEPORTES - Espn 5 (M)(1080)" tvg-logo="https://i.postimg.cc/CKNknVHr/Proyecto-X-21.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 5 (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9539
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 5 (Z)(720)" tvg-logo="https://i.ibb.co/fs3t738/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 5 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179513
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 5 AR (Z)(720)" tvg-logo="https://i.ibb.co/N2rw1H27/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 5 AR (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179517
+#EXTINF:-1 tvg-id="Canal.ESPN.6.(Centroamérica.y.República.Dominicana).sv" tvg-name="DEPORTES - Espn 6 (M)(720)" tvg-logo="https://i.ibb.co/vv1FJdNV/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 6 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179518
+#EXTINF:-1 tvg-id="ESPN.7.HD.co" tvg-name="DEPORTES - Espn 7 (M)(720)" tvg-logo="https://i.postimg.cc/6pCdwZ7X/Proyecto-X-20.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 7 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9543
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - ESPN 7 (Z)(720)" tvg-logo="https://i.postimg.cc/6pCdwZ7X/Proyecto-X-20.png" group-title="CANALES-DEPORTES",DEPORTES - ESPN 7 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9574
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn 7 CH (Z)(720)" tvg-logo="https://i.ibb.co/gZF3ttc2/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn 7 CH (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179519
+#EXTINF:-1 tvg-id="CW.Plus.Mountain.us" tvg-name="DEPORTES - Espn Deportes (MEX) (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-vSV4gemywH8/Xay_akC3pjI/AAAAAAAAAkk/QhiScGYRuK0gmoHsOkqUAy5v1AijHvCwgCLcBGAsYHQ/s200/9.png" group-title="CANALES-DEPORTES",DEPORTES - Espn Deportes (MEX) (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9544
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn Deportes (Z)(720)" tvg-logo="https://i.ibb.co/gFtY6Tnm/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn Deportes (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179504
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - Espn Extra ARG (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-W6E6ZYNxtIg/Xay_ajYDpiI/AAAAAAAAAkg/49gGaM98NZ0m67_qvZeiy1kWIsGAhH0xACLcBGAsYHQ/s200/8.png" group-title="CANALES-DEPORTES",DEPORTES - Espn Extra ARG (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9545
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="DEPORTES - Espn Extra MEX (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-W6E6ZYNxtIg/Xay_ajYDpiI/AAAAAAAAAkg/49gGaM98NZ0m67_qvZeiy1kWIsGAhH0xACLcBGAsYHQ/s200/8.png" group-title="CANALES-DEPORTES",DEPORTES - Espn Extra MEX (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9547
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn News (Z)(1080)" tvg-logo="https://i.ibb.co/fs3t738/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn News (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179490
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - ESPN Premium ARG (L)(SD)" tvg-logo="https://lh3.googleusercontent.com/-jOfICTahjos/YoBRF4ftRiI/AAAAAAAADns/sO-bk2urxu0N3pCgD0ADRNC-D40slmGCgCNcBGAsYHQ/w200-h200/1652576530328166-0.png" group-title="CANALES-DEPORTES",DEPORTES - ESPN Premium ARG (L)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9549
+#EXTINF:-1 tvg-id="ESPN.Extra.Latin.America.HDTV.(Feed.A).(ESPNXTRA).ar" tvg-name="DEPORTES - Espn Premium ARG (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-W6E6ZYNxtIg/Xay_ajYDpiI/AAAAAAAAAkg/49gGaM98NZ0m67_qvZeiy1kWIsGAhH0xACLcBGAsYHQ/s200/8.png" group-title="CANALES-DEPORTES",DEPORTES - Espn Premium ARG (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9546
+#EXTINF:-1 tvg-id="ESPN.PREMIUM.ar" tvg-name="DEPORTES - ESPN Premium ARG (TV)(1080)" tvg-logo="https://lh3.googleusercontent.com/-jOfICTahjos/YoBRF4ftRiI/AAAAAAAADns/sO-bk2urxu0N3pCgD0ADRNC-D40slmGCgCNcBGAsYHQ/w200-h200/1652576530328166-0.png" group-title="CANALES-DEPORTES",DEPORTES - ESPN Premium ARG (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9550
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn Premium ARG (Z)(720)" tvg-logo="https://i.ibb.co/3LTR6JL/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn Premium ARG (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179511
+#EXTINF:-1 tvg-id="Canal.ESPN.Premium.(Chile).sv" tvg-name="DEPORTES - ESPN Premium CL (Z)(720)" tvg-logo="https://lh3.googleusercontent.com/-jOfICTahjos/YoBRF4ftRiI/AAAAAAAADns/sO-bk2urxu0N3pCgD0ADRNC-D40slmGCgCNcBGAsYHQ/w200-h200/1652576530328166-0.png" group-title="CANALES-DEPORTES",DEPORTES - ESPN Premium CL (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/115016
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Espn U (Z)(720)" tvg-logo="https://i.ibb.co/rKhQWz0L/image.png" group-title="CANALES-DEPORTES",DEPORTES - Espn U (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179512
+#EXTINF:-1 tvg-id="Fox.Deportes.en.Español.HDTV.(U.S.).(FXDEHD).us" tvg-name="DEPORTES - Fox Deportes (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-ZrLBW7y8kKE/Xay_YpKJ9bI/AAAAAAAAAkA/-UNQCYuie0glvhjIFsMXPDS6qVX5QlsCwCLcBGAsYHQ/s200/16.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Deportes (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9571
+#EXTINF:-1 tvg-id="CW.Plus.Mountain.us" tvg-name="DEPORTES - Fox Deportes (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-ZrLBW7y8kKE/Xay_YpKJ9bI/AAAAAAAAAkA/-UNQCYuie0glvhjIFsMXPDS6qVX5QlsCwCLcBGAsYHQ/s200/16.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Deportes (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9572
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Deportes (Z)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Fox_Sports_Argentina_2023.svg/1200px-Fox_Sports_Argentina_2023.svg.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Deportes (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179527
+#EXTINF:-1 tvg-id="Fox.Sports.Argentina.(Cono.Sur).(FOXSP).ar" tvg-name="DEPORTES - Fox Sports 1 ARG (L)(720)" tvg-logo="https://1.bp.blogspot.com/-ANvUBZdXt0M/Xay_WItSP3I/AAAAAAAAAjs/00yDNyTvcs846cmFIVHEOrwLYd6UPJehgCLcBGAsYHQ/s200/1.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 1 ARG (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9575
+#EXTINF:-1 tvg-id="Fox.Sports.Argentina.(Cono.Sur).(FOXSP).ar" tvg-name="DEPORTES - Fox Sports 1 ARG (M)(720)" tvg-logo="https://1.bp.blogspot.com/-ANvUBZdXt0M/Xay_WItSP3I/AAAAAAAAAjs/00yDNyTvcs846cmFIVHEOrwLYd6UPJehgCLcBGAsYHQ/s200/1.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 1 ARG (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9576
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Sports 1 CH (Z)(720)" tvg-logo="https://static.wikia.nocookie.net/tvcable/images/1/10/Logo_Fox_Sports_Chile.png/revision/latest?cb=20150224214037&path-prefix=es" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 1 CH (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179535
+#EXTINF:-1 tvg-id="FOX.Sports.2.HD(FSP2HD).co" tvg-name="DEPORTES - Fox Sports 1 COL (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-HGq7a6Cg1qA/XajpshDNjUI/AAAAAAAAASQ/jP319jFgSyI-F1U-VFhe0ooc7RY_Mkn2ACLcBGAsYHQ/s200/10.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 1 COL (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9577
+#EXTINF:-1 tvg-id="FOX.SPORTS.HD.(FoxSportsHD).pe" tvg-name="DEPORTES - Fox Sports 1 LAT (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-ANvUBZdXt0M/Xay_WItSP3I/AAAAAAAAAjs/00yDNyTvcs846cmFIVHEOrwLYd6UPJehgCLcBGAsYHQ/s200/1.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 1 LAT (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9578
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Sports 1 LAT (Z)(720)" tvg-logo="https://s3.us-east-1.amazonaws.com/forofms.na/monthly_2023_02/large.1336428652_FOXSportsARG(2023-).png.6d03e77ebf8b83b3d2abfe501322ccb2.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 1 LAT (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179523
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="DEPORTES - Fox Sports 1 MEX (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-ANvUBZdXt0M/Xay_WItSP3I/AAAAAAAAAjs/00yDNyTvcs846cmFIVHEOrwLYd6UPJehgCLcBGAsYHQ/s200/1.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 1 MEX (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9579
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Sports 2 (Z)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/9a/FOX_Sports_2_Argentina_%282023%29.png/revision/latest/scale-to-width-down/250?cb=20230207140157&path-prefix=es" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179531
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Sports 2 AR (Z)(1080)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/9a/FOX_Sports_2_Argentina_%282023%29.png/revision/latest/scale-to-width-down/250?cb=20230207140157&path-prefix=es" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 AR (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179524
+#EXTINF:-1 tvg-id="Canal.Fox.Sports.2.(Cono.Norte).sv" tvg-name="DEPORTES - Fox Sports 2 ARG (i)(1080)" tvg-logo="https://1.bp.blogspot.com/-F55EXTlQLLM/Xay_ZKpzh-I/AAAAAAAAAkI/aj1P5U_FLxUX17xtYY5q-J8ujgfiaG1ZACLcBGAsYHQ/s200/2.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 ARG (i)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9582
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - Fox Sports 2 ARG (L)(SD)" tvg-logo="https://1.bp.blogspot.com/-F55EXTlQLLM/Xay_ZKpzh-I/AAAAAAAAAkI/aj1P5U_FLxUX17xtYY5q-J8ujgfiaG1ZACLcBGAsYHQ/s200/2.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 ARG (L)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9581
+#EXTINF:-1 tvg-id="FOX.Sports.2.HD(FSP2HD).co" tvg-name="DEPORTES - Fox Sports 2 COL (TV)(1080)" tvg-logo="http://tv.proyectox.vip:8080/images/c81e728d9d4c2f636f067f89cc14862c.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 COL (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9583
+#EXTINF:-1 tvg-id="FOX.Sports.2.HD(FSP2HD).co" tvg-name="DEPORTES - Fox Sports 2 LAT (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-AJ5Rf2Jtldk/Xajps0BEM3I/AAAAAAAAASY/QhwqT65Cbtcfnva5b_ZG03mAgWevuOQ3wCLcBGAsYHQ/s200/11.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 LAT (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9580
+#EXTINF:-1 tvg-id="Canal.Fox.Sports.2.(Cono.Norte).sv" tvg-name="DEPORTES - Fox Sports 2 LAT (Z)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/9a/FOX_Sports_2_Argentina_%282023%29.png/revision/latest/scale-to-width-down/250?cb=20230207140157&path-prefix=es" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 LAT (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179522
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Sports 2 LAT (Z)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/9a/FOX_Sports_2_Argentina_%282023%29.png/revision/latest/scale-to-width-down/250?cb=20230207140157&path-prefix=es" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 LAT (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179528
+#EXTINF:-1 tvg-id="Fox.Sports.2.HDTV.(Cono.Norte).(FOXSP2HD).mx" tvg-name="DEPORTES - Fox Sports 2 MEX (L)(1080)" tvg-logo="http://tv.proyectox.vip:8080/images/c81e728d9d4c2f636f067f89cc14862c.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 MEX (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9584
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="DEPORTES - Fox Sports 2 MEX (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-F55EXTlQLLM/Xay_ZKpzh-I/AAAAAAAAAkI/aj1P5U_FLxUX17xtYY5q-J8ujgfiaG1ZACLcBGAsYHQ/s200/2.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 MEX (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9585
+#EXTINF:-1 tvg-id="Canal.Fox.Sports.2.(Cono.Norte).sv" tvg-name="DEPORTES - Fox Sports 2 MX (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-AJ5Rf2Jtldk/Xajps0BEM3I/AAAAAAAAASY/QhwqT65Cbtcfnva5b_ZG03mAgWevuOQ3wCLcBGAsYHQ/s200/11.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 MX (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9586
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Sports 2 MX (Z)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/9a/FOX_Sports_2_Argentina_%282023%29.png/revision/latest/scale-to-width-down/250?cb=20230207140157&path-prefix=es" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 MX (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179529
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Sports 2 Sur (Z)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/9a/FOX_Sports_2_Argentina_%282023%29.png/revision/latest/scale-to-width-down/250?cb=20230207140157&path-prefix=es" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 2 Sur (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179532
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Sports 3 (Z)(1080)" tvg-logo="https://s3.us-east-1.amazonaws.com/forofms.na/monthly_2023_02/large.551251533_FOXSports3ARG(2023-).png.9facfaf5bfc0dd66a8d9535ea8d7cb05.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 3 (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179520
+#EXTINF:-1 tvg-id="FOX.Sports.3.HD(FXS3HD).co" tvg-name="DEPORTES - Fox Sports 3 ARG (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-gZ-fKImbBrA/Xay_ZVexiDI/AAAAAAAAAkM/w2BvDpBX7kIdCeB5j8aK8maKVbORE6e8QCLcBGAsYHQ/s200/3.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 3 ARG (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9589
+#EXTINF:-1 tvg-id="FOX.Sports.3.HD(FXS3HD).co" tvg-name="DEPORTES - Fox Sports 3 COL (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-gZ-fKImbBrA/Xay_ZVexiDI/AAAAAAAAAkM/w2BvDpBX7kIdCeB5j8aK8maKVbORE6e8QCLcBGAsYHQ/s200/3.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 3 COL (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9590
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="DEPORTES - Fox Sports 3 MEX (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-gZ-fKImbBrA/Xay_ZVexiDI/AAAAAAAAAkM/w2BvDpBX7kIdCeB5j8aK8maKVbORE6e8QCLcBGAsYHQ/s200/3.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 3 MEX (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9591
+#EXTINF:-1 tvg-id="Canal.Fox.Sports.3.(Cono.Norte).sv" tvg-name="DEPORTES - Fox Sports 3 MX (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-gZ-fKImbBrA/Xay_ZVexiDI/AAAAAAAAAkM/w2BvDpBX7kIdCeB5j8aK8maKVbORE6e8QCLcBGAsYHQ/s200/3.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 3 MX (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9592
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="DEPORTES - Fox Sports 3 MX (Z)(1080)" tvg-logo="https://s3.us-east-1.amazonaws.com/forofms.na/monthly_2023_02/large.551251533_FOXSports3ARG(2023-).png.9facfaf5bfc0dd66a8d9535ea8d7cb05.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports 3 MX (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179525
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Sports Premium (Z)(1080)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/a2/Fox_Sports_Premium_Argentina_2019.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports Premium (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179530
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Fox Sports Premium (Z)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/a2/Fox_Sports_Premium_Argentina_2019.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports Premium (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179534
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="DEPORTES - Fox Sports Premium MX (i)(720)" tvg-logo="https://i.postimg.cc/SsSNFqg1/Proyectox-fox-premium.png" group-title="CANALES-DEPORTES",DEPORTES - Fox Sports Premium MX (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9593
+#EXTINF:-1 tvg-id="Tu.Deportes.Network.(TUDN).U.S..HDTV.(TUDNHD).us" tvg-name="DEPORTES - TUDN - MEX (M)(720)" tvg-logo="https://1.bp.blogspot.com/-7Q-tZrmqxEc/Xay_WNz8u5I/AAAAAAAAAjk/mpUDmIAQx9wXEXmTEN31PP7q70qTtzTnACLcBGAsYHQ/s200/11.png" group-title="CANALES-DEPORTES",DEPORTES - TUDN - MEX (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9603
+#EXTINF:-1 tvg-id="Canal.TUDN.(México).mx" tvg-name="DEPORTES - TUDN - MEX (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-7Q-tZrmqxEc/Xay_WNz8u5I/AAAAAAAAAjk/mpUDmIAQx9wXEXmTEN31PP7q70qTtzTnACLcBGAsYHQ/s200/11.png" group-title="CANALES-DEPORTES",DEPORTES - TUDN - MEX (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9604
+#EXTINF:-1 tvg-id="TUDN.us" tvg-name="DEPORTES - TUDN - USA (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-7Q-tZrmqxEc/Xay_WNz8u5I/AAAAAAAAAjk/mpUDmIAQx9wXEXmTEN31PP7q70qTtzTnACLcBGAsYHQ/s200/11.png" group-title="CANALES-DEPORTES",DEPORTES - TUDN - USA (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9605
+#EXTINF:-1 tvg-id="TUDN.us" tvg-name="DEPORTES - TUDN - USA (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-7Q-tZrmqxEc/Xay_WNz8u5I/AAAAAAAAAjk/mpUDmIAQx9wXEXmTEN31PP7q70qTtzTnACLcBGAsYHQ/s200/11.png" group-title="CANALES-DEPORTES",DEPORTES - TUDN - USA (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9606
+#EXTINF:-1 tvg-id="CW.Plus.Mountain.us" tvg-name="DEPORTES - beIN Sport USA (M)(720)" tvg-logo="https://1.bp.blogspot.com/-bwERD1EYUso/XjHTaAko5tI/AAAAAAAAA-M/MpTKAtCF0rUt9cvpn-Chpk3PKth9aEWJwCLcBGAsYHQ/s200/33.png" group-title="CANALES-DEPORTES",DEPORTES - beIN Sport USA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9551
+#EXTINF:-1 tvg-id="beIN.Sports.HDTV.(Spanish).(beINHD).us" tvg-name="DEPORTES - beIN Sports Xtra Ñ (TV)(720)" tvg-logo="https://lh3.googleusercontent.com/-ZKORTNZ8Szo/Ydx2UQH0MaI/AAAAAAAACfI/KuHHd0WsnfInxBXCju3l_xrCzRyVBQASwCNcBGAsYHQ/w200-h200/1641838155930717-1.png" group-title="CANALES-DEPORTES",DEPORTES - beIN Sports Xtra Ñ (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9552
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Claro Sports 2 (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-fscNkID2Ypo/XazGNHsWN-I/AAAAAAAAAlg/Ypqsm7nevxMjK0ArqE0roclpCZDt5kwCQCLcBGAsYHQ/s200/21.png" group-title="CANALES-DEPORTES",DEPORTES - Claro Sports 2 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9556
+#EXTINF:-1 tvg-id="DSPORTS.+.HD.dtvsp" tvg-name="DEPORTES - Directv Sports + (L)(720)" tvg-logo="https://lh3.googleusercontent.com/-dxZyXXWvJDs/Yqp2MbCoR6I/AAAAAAAADpo/seuq6KMCveEvoqmHXCpW5Z9W3fS7qtHyQCNcBGAsYHQ/w200-h200/1655338543433516-0.png" group-title="CANALES-DEPORTES",DEPORTES - Directv Sports + (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9557
+#EXTINF:-1 tvg-id="DSPORTS.+.HD.dtvsp" tvg-name="DEPORTES - Directv Sports + (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-WZoevRCibrQ/XazFPI2G7nI/AAAAAAAAAlQ/Tm2GHOyjZuIjYxYN8ynbjF34iTCRQZzSQCLcBGAsYHQ/s200/18.png" group-title="CANALES-DEPORTES",DEPORTES - Directv Sports + (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9558
+#EXTINF:-1 tvg-id="DSPORTS.+.HD.dtvsp" tvg-name="DEPORTES - Directv Sports + (TV)(720)" tvg-logo="https://lh3.googleusercontent.com/-dxZyXXWvJDs/Yqp2MbCoR6I/AAAAAAAADpo/seuq6KMCveEvoqmHXCpW5Z9W3fS7qtHyQCNcBGAsYHQ/w200-h200/1655338543433516-0.png" group-title="CANALES-DEPORTES",DEPORTES - Directv Sports + (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9559
+#EXTINF:-1 tvg-id="DSPORTS.(ARG).dtvsp" tvg-name="DEPORTES - Directv Sports 1 (ARG) (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-CE1czydcuuw/XazFPWYBLvI/AAAAAAAAAlY/R5o8SlM2tGo-vOu_SzNXEIZsiTY4zrPpACLcBGAsYHQ/s200/19.png" group-title="CANALES-DEPORTES",DEPORTES - Directv Sports 1 (ARG) (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9560
+#EXTINF:-1 tvg-id="Canal.Discovery.Kids.(Chile).cl" tvg-name="DEPORTES - Directv Sports 1 CHI (e)(1080)" tvg-logo="https://1.bp.blogspot.com/-CE1czydcuuw/XazFPWYBLvI/AAAAAAAAAlY/R5o8SlM2tGo-vOu_SzNXEIZsiTY4zrPpACLcBGAsYHQ/s200/19.png" group-title="CANALES-DEPORTES",DEPORTES - Directv Sports 1 CHI (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9561
+#EXTINF:-1 tvg-id="DSPORTS.(COL).(DTSC).co" tvg-name="DEPORTES - Directv Sports 1 ECU (e)(1080)" tvg-logo="https://i.postimg.cc/1RGWB30z/Dsports.png" group-title="CANALES-DEPORTES",DEPORTES - Directv Sports 1 ECU (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9562
+#EXTINF:-1 tvg-id="DSPORTS.(COL).(DTSC).co" tvg-name="DEPORTES - Directv Sports 1 ECU (e)(720)" tvg-logo="https://i.postimg.cc/1RGWB30z/Dsports.png" group-title="CANALES-DEPORTES",DEPORTES - Directv Sports 1 ECU (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9563
+#EXTINF:-1 tvg-id="DSPORTS.2.HD.dtvsp" tvg-name="DEPORTES - Directv Sports 2 (e)(1080)" tvg-logo="https://lh3.googleusercontent.com/-_9mzNNdXzjQ/Yqp2LxWG4FI/AAAAAAAADpk/1Tyz1yla_eUKENravElP8qX4Pmnym0y5gCNcBGAsYHQ/w200-h200/1655338541459072-1.png" group-title="CANALES-DEPORTES",DEPORTES - Directv Sports 2 (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9564
+#EXTINF:-1 tvg-id="DSPORTS.2.(DTS2).co" tvg-name="DEPORTES - Directv Sports 2 (e)(720)" tvg-logo="https://lh3.googleusercontent.com/-_9mzNNdXzjQ/Yqp2LxWG4FI/AAAAAAAADpk/1Tyz1yla_eUKENravElP8qX4Pmnym0y5gCNcBGAsYHQ/w200-h200/1655338541459072-1.png" group-title="CANALES-DEPORTES",DEPORTES - Directv Sports 2 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9565
+#EXTINF:-1 tvg-id="DSPORTS.2.HD.dtvsp" tvg-name="DEPORTES - Directv Sports 2 ARG (L)(720)" tvg-logo="https://lh3.googleusercontent.com/-_9mzNNdXzjQ/Yqp2LxWG4FI/AAAAAAAADpk/1Tyz1yla_eUKENravElP8qX4Pmnym0y5gCNcBGAsYHQ/w200-h200/1655338541459072-1.png" group-title="CANALES-DEPORTES",DEPORTES - Directv Sports 2 ARG (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9566
+#EXTINF:-1 tvg-id="The.Fight.Network.(United.States).(TFN).us" tvg-name="DEPORTES - Fight BOX  (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-trZC8_-fPrc/X2kBptXt-QI/AAAAAAAABZY/ebjwHb5BxW4LLF_iJltMKJ-mVQHv4gqbgCLcBGAsYHQ/w200-h200/Fight%2Bbox.png" group-title="CANALES-DEPORTES",DEPORTES - Fight BOX  (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9570
+#EXTINF:-1 tvg-id="GOL.TV.uy" tvg-name="DEPORTES - Gol TV ES (M)(720)" tvg-logo="https://1.bp.blogspot.com/-tAUwJtdvbyo/XzSE6JkSizI/AAAAAAAAA6Q/_piNFBzgsDIwr6cAbeqS3cteFcgInfjvACLcBGAsYHQ/w200-h200/128%2BGOL%2BTV.png" group-title="CANALES-DEPORTES",DEPORTES - Gol TV ES (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9594
+#EXTINF:-1 tvg-id="IndiePlex.HDTV.(INDIEHD).us" tvg-name="DEPORTES - Golf Latin America (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-bnHcR36sEwk/XmzurT8VcYI/AAAAAAAABac/WuIdPohEzLU9o2C4V0_UB2_CpO72CjfQACLcBGAsYHQ/s200/35.png" group-title="CANALES-DEPORTES",DEPORTES - Golf Latin America (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9596
+#EXTINF:-1 tvg-id="CW.Plus.Mountain.us" tvg-name="DEPORTES - Golf Latin MEX (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-bnHcR36sEwk/XmzurT8VcYI/AAAAAAAABac/WuIdPohEzLU9o2C4V0_UB2_CpO72CjfQACLcBGAsYHQ/s200/35.png" group-title="CANALES-DEPORTES",DEPORTES - Golf Latin MEX (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9597
+#EXTINF:-1 tvg-id="NBA.TV.HDTV.(NBA.HD).us" tvg-name="DEPORTES - NBA U (M)(720)" tvg-logo="https://1.bp.blogspot.com/-ri_Nr0yAHbc/XhA3NrtQMlI/AAAAAAAAA7g/POn3E9DM87w21_EvZWEi5D-YQCNLepdiACLcBGAsYHQ/s200/29.png" group-title="CANALES-DEPORTES",DEPORTES - NBA U (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9598
+#EXTINF:-1 tvg-id="Real.Madrid.TV.es" tvg-name="DEPORTES - Real Madrid TV (i)(720)" tvg-logo="" group-title="CANALES-DEPORTES",DEPORTES - Real Madrid TV (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165482
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Sky sports (TV)(720)" tvg-logo="https://lh3.googleusercontent.com/-x_CIVSy5Fzg/YkytpLNmlVI/AAAAAAAADek/5sv89DCrHMofx0iph8leofRZIbMQZHyEACNcBGAsYHQ/w200-h200/1649192355948000-0.png" group-title="CANALES-DEPORTES",DEPORTES - Sky sports (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9599
+#EXTINF:-1 tvg-id="beIN.SPORTS.CONNECT.LaLiga.(BEIN3-I).us" tvg-name="DEPORTES - SKY Sports La liga (TV)(720)" tvg-logo="https://i.postimg.cc/HxqZ8WFB/Sky-sports-proyectox.png" group-title="CANALES-DEPORTES",DEPORTES - SKY Sports La liga (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9601
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - SKY Sports LaLiga (Z)(720)" tvg-logo="https://i.postimg.cc/HLzWrYdb/Proyectox-sky-sports.png" group-title="CANALES-DEPORTES",DEPORTES - SKY Sports LaLiga (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164158
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - SKY Sports Premier League (Z)(720)" tvg-logo="" group-title="CANALES-DEPORTES",DEPORTES - SKY Sports Premier League (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164159
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - Telemundo Deportes (Z)(1080)" tvg-logo="https://www.brandemia.org/wp-content/uploads/2013/02/logo_telemundo_principal.jpg" group-title="CANALES-DEPORTES",DEPORTES - Telemundo Deportes (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179536
+#EXTINF:-1 tvg-id="Tennis.Channel.HDTV.(TNNSHD).us" tvg-name="DEPORTES - Tennis Channel (L)(720)" tvg-logo="https://1.bp.blogspot.com/-UHbphuMzTLI/Xjb-ajdIv1I/AAAAAAAABA0/W2Dhehq7thsNNu92yKs9orPOD9LLYaddACLcBGAsYHQ/s200/34.png" group-title="CANALES-DEPORTES",DEPORTES - Tennis Channel (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9602
+#EXTINF:-1 tvg-id="Canal.TVC.Deportes.mx" tvg-name="DEPORTES - TVC Deportes (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-fpt6Sm7APZ4/Xay_XGDKQ5I/AAAAAAAAAjw/--9czPX3msMJpPDjQcQx7FqDjyNMyPJfQCLcBGAsYHQ/s200/12.png" group-title="CANALES-DEPORTES",DEPORTES - TVC Deportes (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9607
+#EXTINF:-1 tvg-id="Canal.TyC.Sports.ar" tvg-name="DEPORTES - TyC Sports INT (i)(720)" tvg-logo="https://1.bp.blogspot.com/-clt7G_R4DNw/Xg-MJOM_YMI/AAAAAAAAA6A/ulOuWvu97K0QvGGyHNHcANUkSMGPeRLGQCLcBGAsYHQ/s200/23.png" group-title="CANALES-DEPORTES",DEPORTES - TyC Sports INT (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9608
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="DEPORTES - TyC Sports INT (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-clt7G_R4DNw/Xg-MJOM_YMI/AAAAAAAAA6A/ulOuWvu97K0QvGGyHNHcANUkSMGPeRLGQCLcBGAsYHQ/s200/23.png" group-title="CANALES-DEPORTES",DEPORTES - TyC Sports INT (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9609
+#EXTINF:-1 tvg-id="" tvg-name="DEPORTES - UFC (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-T4uG5FYIDek/XhA6fXlKRQI/AAAAAAAAA8U/xRyQIitNaVsNGYmrK2TVTPJKiCITuGGoACLcBGAsYHQ/s200/32.png" group-title="CANALES-DEPORTES",DEPORTES - UFC (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9610
+#EXTINF:-1 tvg-id="Food.Network.USA.-.Eastern.Feed.us" tvg-name="DEPORTES - UFC Fight PASS (i)(720)" tvg-logo="https://1.bp.blogspot.com/-T4uG5FYIDek/XhA6fXlKRQI/AAAAAAAAA8U/xRyQIitNaVsNGYmrK2TVTPJKiCITuGGoACLcBGAsYHQ/s200/32.png" group-title="CANALES-DEPORTES",DEPORTES - UFC Fight PASS (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9611
+#EXTINF:-1 tvg-id="Univision.(KLRA).Little.Rock,.AR.us" tvg-name="DEPORTES - Univision Deportes (Z)(720)" tvg-logo="https://i.ibb.co/8LD13Qvy/image.png" group-title="CANALES-DEPORTES",DEPORTES - Univision Deportes (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179537
+#EXTINF:-1 tvg-id="" tvg-name="PPV - Dazn 1 (L)" tvg-logo="https://i.postimg.cc/J4YTfty9/Proyecto-X-espana-31.png" group-title="EVENTOS PPV MUNDIAL",PPV - Dazn 1 (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/156148
+#EXTINF:-1 tvg-id="" tvg-name="PPV - Dazn 2 (L)" tvg-logo="https://i.postimg.cc/SxXZkqCq/Proyecto-X-espana-25.png" group-title="EVENTOS PPV MUNDIAL",PPV - Dazn 2 (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/156151
+#EXTINF:-1 tvg-id="" tvg-name="PPV - Dazn F1 (L)" tvg-logo="https://i.postimg.cc/0QZG7HDh/Proyecto-X-espana-30.png" group-title="EVENTOS PPV MUNDIAL",PPV - Dazn F1 (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/156163
+#EXTINF:-1 tvg-id="" tvg-name="PPV - Dazn LaLiga (L)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Dazn_LaLiga_logo.svg/1280px-Dazn_LaLiga_logo.svg.png" group-title="EVENTOS PPV MUNDIAL",PPV - Dazn LaLiga (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/156156
+#EXTINF:-1 tvg-id="" tvg-name="PPV - Dazn LaLiga 1 (TV)" tvg-logo="https://i.postimg.cc/mDTNzGz7/Proyecto-X-espana-29.png" group-title="EVENTOS PPV MUNDIAL",PPV - Dazn LaLiga 1 (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/156157
+#EXTINF:-1 tvg-id="" tvg-name="PPV - Dazn LaLiga 3 (TV) (Solo Eventos)" tvg-logo="https://i.postimg.cc/VL9GK1nn/Proyecto-X-ppv-1.png" group-title="EVENTOS PPV MUNDIAL",PPV - Dazn LaLiga 3 (TV) (Solo Eventos)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/156161
+#EXTINF:-1 tvg-id="" tvg-name="PPV - Dazn MotoGP (TV)" tvg-logo="" group-title="EVENTOS PPV MUNDIAL",PPV - Dazn MotoGP (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/191951
+#EXTINF:-1 tvg-id="" tvg-name="PPV - Serie A: Dazn Sport 1 (TV)" tvg-logo="https://i.postimg.cc/J4YTfty9/Proyecto-X-espana-31.png" group-title="EVENTOS PPV MUNDIAL",PPV - Serie A: Dazn Sport 1 (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/156173
+#EXTINF:-1 tvg-id="Canal.13.de.Argentina.(El.Trece).ar" tvg-name="CINE - A&E (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-943HqfCPxQg/XaokWqg1OdI/AAAAAAAAAVc/1AoqfgHWi54FdXNpoEWGn20gvUy83YB6QCLcBGAsYHQ/s200/1.png" group-title="CANALES-CINE Y SERIES",CINE - A&E (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9614
+#EXTINF:-1 tvg-id="Canal.A&E.(México).sv" tvg-name="CINE - A&E (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-943HqfCPxQg/XaokWqg1OdI/AAAAAAAAAVc/1AoqfgHWi54FdXNpoEWGn20gvUy83YB6QCLcBGAsYHQ/s200/1.png" group-title="CANALES-CINE Y SERIES",CINE - A&E (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9615
+#EXTINF:-1 tvg-id="A&E.co" tvg-name="CINE - A&E (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-943HqfCPxQg/XaokWqg1OdI/AAAAAAAAAVc/1AoqfgHWi54FdXNpoEWGn20gvUy83YB6QCLcBGAsYHQ/s200/1.png" group-title="CANALES-CINE Y SERIES",CINE - A&E (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9616
+#EXTINF:-1 tvg-id="Canal.HBO.(México).mx" tvg-name="CINE - HBO (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-J-xVlmkY0-M/Xas8rCDU8rI/AAAAAAAAAaM/HPB4pw0nAWEk-K2PDvQqRhiidzc3m4wXQCLcBGAsYHQ/s200/34.png" group-title="CANALES-CINE Y SERIES",CINE - HBO (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9666
+#EXTINF:-1 tvg-id="Canal.HBO.(México).mx" tvg-name="CINE - HBO (M)(720)" tvg-logo="https://1.bp.blogspot.com/-J-xVlmkY0-M/Xas8rCDU8rI/AAAAAAAAAaM/HPB4pw0nAWEk-K2PDvQqRhiidzc3m4wXQCLcBGAsYHQ/s200/34.png" group-title="CANALES-CINE Y SERIES",CINE - HBO (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9667
+#EXTINF:-1 tvg-id="Canal.HBO.(México).mx" tvg-name="CINE - HBO (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-J-xVlmkY0-M/Xas8rCDU8rI/AAAAAAAAAaM/HPB4pw0nAWEk-K2PDvQqRhiidzc3m4wXQCLcBGAsYHQ/s200/34.png" group-title="CANALES-CINE Y SERIES",CINE - HBO (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9668
+#EXTINF:-1 tvg-id="Canal.HBO.(México).mx" tvg-name="CINE - HBO (TV)(1080)" tvg-logo="https://multipress.com.mx/wp-content/uploads/2013/11/hbo-logo-01-g.jpg" group-title="CANALES-CINE Y SERIES",CINE - HBO (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9670
+#EXTINF:-1 tvg-id="Canal.HBO.(México).mx" tvg-name="CINE - HBO (TV)(SD)" tvg-logo="https://1.bp.blogspot.com/-J-xVlmkY0-M/Xas8rCDU8rI/AAAAAAAAAaM/HPB4pw0nAWEk-K2PDvQqRhiidzc3m4wXQCLcBGAsYHQ/s200/34.png" group-title="CANALES-CINE Y SERIES",CINE - HBO (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9669
+#EXTINF:-1 tvg-id="Canal.HBO.2.Latinoamérica.mx" tvg-name="CINE - HBO 2 (L)(720)" tvg-logo="https://1.bp.blogspot.com/-juIr-lsEvsQ/Xas8q-gU-fI/AAAAAAAAAaI/oQUWMOeVDIAAueeGkwweO76FIosqJndlgCLcBGAsYHQ/s200/33.png" group-title="CANALES-CINE Y SERIES",CINE - HBO 2 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9671
+#EXTINF:-1 tvg-id="HBO.2.co" tvg-name="CINE - HBO 2 (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-juIr-lsEvsQ/Xas8q-gU-fI/AAAAAAAAAaI/oQUWMOeVDIAAueeGkwweO76FIosqJndlgCLcBGAsYHQ/s200/33.png" group-title="CANALES-CINE Y SERIES",CINE - HBO 2 (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9673
+#EXTINF:-1 tvg-id="Canal.HBO.2.Latinoamérica.mx" tvg-name="CINE - HBO 2 (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-juIr-lsEvsQ/Xas8q-gU-fI/AAAAAAAAAaI/oQUWMOeVDIAAueeGkwweO76FIosqJndlgCLcBGAsYHQ/s200/33.png" group-title="CANALES-CINE Y SERIES",CINE - HBO 2 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9674
+#EXTINF:-1 tvg-id="Canal.HBO.2.Latinoamérica.mx" tvg-name="CINE - HBO 2 (Z)(1080)" tvg-logo="https://www.shopfortaleza.com.br/wp-content/uploads/2019/02/HBO2.jpg" group-title="CANALES-CINE Y SERIES",CINE - HBO 2 (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9675
+#EXTINF:-1 tvg-id="Canal.HBO.Family.Latinoamérica.mx" tvg-name="CINE - HBO Family (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-RfYNWzr47Q4/Xas8qIKw1II/AAAAAAAAAZ8/fbTjmjUfJB0_VyU3MDcYA5WQ65ntx6VPACLcBGAsYHQ/s200/32.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Family (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9676
+#EXTINF:-1 tvg-id="Canal.HBO.Family.Latinoamérica.mx" tvg-name="CINE - HBO Family (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-J-xVlmkY0-M/Xas8rCDU8rI/AAAAAAAAAaM/HPB4pw0nAWEk-K2PDvQqRhiidzc3m4wXQCLcBGAsYHQ/s200/34.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Family (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9678
+#EXTINF:-1 tvg-id="Canal.HBO.Family.Latinoamérica.mx" tvg-name="CINE - HBO Family (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-J-xVlmkY0-M/Xas8rCDU8rI/AAAAAAAAAaM/HPB4pw0nAWEk-K2PDvQqRhiidzc3m4wXQCLcBGAsYHQ/s200/34.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Family (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9679
+#EXTINF:-1 tvg-id="Canal.HBO.Family.Latinoamérica.mx" tvg-name="CINE - HBO Family (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-RfYNWzr47Q4/Xas8qIKw1II/AAAAAAAAAZ8/fbTjmjUfJB0_VyU3MDcYA5WQ65ntx6VPACLcBGAsYHQ/s200/32.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Family (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9680
+#EXTINF:-1 tvg-id="Canal.HBO.Family.Latinoamérica.mx" tvg-name="CINE - HBO Family. (TV)(SD)" tvg-logo="https://1.bp.blogspot.com/-RfYNWzr47Q4/Xas8qIKw1II/AAAAAAAAAZ8/fbTjmjUfJB0_VyU3MDcYA5WQ65ntx6VPACLcBGAsYHQ/s200/32.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Family. (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9677
+#EXTINF:-1 tvg-id="Canal.HBO.Mundi.mx" tvg-name="CINE - HBO Mundi (L)(720)" tvg-logo="https://1.bp.blogspot.com/-oN7wX127j3Q/Xw8lq7qqpSI/AAAAAAAAAWA/gTwoVU0sXXsbMIDKd7I6ojgR-28dars6ACLcBGAsYHQ/w200-h200/hbomundi.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Mundi (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9682
+#EXTINF:-1 tvg-id="Canal.HBO.Mundi.mx" tvg-name="CINE - HBO Mundi (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-oN7wX127j3Q/Xw8lq7qqpSI/AAAAAAAAAWA/gTwoVU0sXXsbMIDKd7I6ojgR-28dars6ACLcBGAsYHQ/w200-h200/hbomundi.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Mundi (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9683
+#EXTINF:-1 tvg-id="Canal.HBO.Plus.mx" tvg-name="CINE - HBO Plus (M)(SD) [Dual Audio]" tvg-logo="http://tv.proyectox.vip:8080/images/34173cb38f07f89ddbebc2ac9128303f.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Plus (M)(SD) [Dual Audio]
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9686
+#EXTINF:-1 tvg-id="Canal.HBO.Plus.mx" tvg-name="CINE - HBO Plus (TV)(SD)" tvg-logo="https://1.bp.blogspot.com/-SyuYLWL8P5c/Xas8qLDrVDI/AAAAAAAAAaA/tcVF_CR7qFo4GS7wwvVfgRnuCTx1KuYMQCLcBGAsYHQ/s200/30.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Plus (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9687
+#EXTINF:-1 tvg-id="Canal.HBO.Plus.mx" tvg-name="CINE - HBO Plus (Z)(1080)" tvg-logo="http://cineparallevar.mx/admin/wp-content/uploads/2017/10/copypasteimage-4.jpg" group-title="CANALES-CINE Y SERIES",CINE - HBO Plus (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9688
+#EXTINF:-1 tvg-id="Canal.HBO.Pop.mx" tvg-name="CINE - HBO POP (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-ZCqUx5e0L-4/XkN9ArS4SuI/AAAAAAAABWU/IICrJNBTYNMVKKru6mbn52W8fShz0eoggCLcBGAsYHQ/s200/67.png" group-title="CANALES-CINE Y SERIES",CINE - HBO POP (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9689
+#EXTINF:-1 tvg-id="Canal.HBO.Pop.mx" tvg-name="CINE - HBO POP (Z)(720)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVnMHcQQbV1arQqL1aXSdsPQjQOS1BoB_zOB1rOphseF5cNjelO7wA6blvVo9lA8b6N8E&usqp=CAU" group-title="CANALES-CINE Y SERIES",CINE - HBO POP (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9691
+#EXTINF:-1 tvg-id="HBO.POP.co" tvg-name="CINE - HBO POP. (TV)(SD)" tvg-logo="https://1.bp.blogspot.com/-ZCqUx5e0L-4/XkN9ArS4SuI/AAAAAAAABWU/IICrJNBTYNMVKKru6mbn52W8fShz0eoggCLcBGAsYHQ/s200/67.png" group-title="CANALES-CINE Y SERIES",CINE - HBO POP. (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9690
+#EXTINF:-1 tvg-id="Canal.HBO.Signature.Latinoamérica.mx" tvg-name="CINE - HBO Signature (M)(720)" tvg-logo="https://1.bp.blogspot.com/-U60Pby9cnqI/Xw8ovhvpzuI/AAAAAAAAAWY/iU_CaOeTilQPEcKEGo7-rJ0MbA_sDb8SgCLcBGAsYHQ/w200-h200/SIGNATURE.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Signature (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9692
+#EXTINF:-1 tvg-id="Canal.HBO.Signature.Latinoamérica.mx" tvg-name="CINE - HBO Signature (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-jsXerJmFHK0/Xas8qIXagZI/AAAAAAAAAaE/c3OP25KYkFUA2IGufDn-M7eyR0JPdSkXgCLcBGAsYHQ/s200/31.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Signature (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9693
+#EXTINF:-1 tvg-id="Canal.HBO.Signature.Latinoamérica.mx" tvg-name="CINE - HBO Signature Dual Audio (L)(720)" tvg-logo="https://1.bp.blogspot.com/-U60Pby9cnqI/Xw8ovhvpzuI/AAAAAAAAAWY/iU_CaOeTilQPEcKEGo7-rJ0MbA_sDb8SgCLcBGAsYHQ/w200-h200/SIGNATURE.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Signature Dual Audio (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9695
+#EXTINF:-1 tvg-id="HBO.XTREME.co" tvg-name="CINE - HBO Xtream (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-SZ8DsKx6WHk/XkN9AsoXzII/AAAAAAAABWQ/Yxqzc1Ds71kYuQgf7xYBuX7bp0Ajj2pKgCLcBGAsYHQ/s200/66.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Xtream (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9697
+#EXTINF:-1 tvg-id="HBO.XTREME.co" tvg-name="CINE - HBO Xtreme (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-SZ8DsKx6WHk/XkN9AsoXzII/AAAAAAAABWQ/Yxqzc1Ds71kYuQgf7xYBuX7bp0Ajj2pKgCLcBGAsYHQ/s200/66.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Xtreme (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9698
+#EXTINF:-1 tvg-id="HBO.XTREME.co" tvg-name="CINE - HBO Xtreme (TV)(SD)" tvg-logo="https://1.bp.blogspot.com/-SZ8DsKx6WHk/XkN9AsoXzII/AAAAAAAABWQ/Yxqzc1Ds71kYuQgf7xYBuX7bp0Ajj2pKgCLcBGAsYHQ/s200/66.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Xtreme (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9700
+#EXTINF:-1 tvg-id="HBO.XTREME.co" tvg-name="CINE - HBO Xtreme (Z)(720)" tvg-logo="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/7a6a31bc-5276-4bd1-b25c-5d229990651c/ddpgt7p-e56bd6a5-5392-4dba-b2c2-18df39490d48.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Xtreme (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9701
+#EXTINF:-1 tvg-id="Canal.HBO.Xtreme.sv" tvg-name="CINE - HBO Xtreme Dual (L)(720)" tvg-logo="https://1.bp.blogspot.com/-SZ8DsKx6WHk/XkN9AsoXzII/AAAAAAAABWQ/Yxqzc1Ds71kYuQgf7xYBuX7bp0Ajj2pKgCLcBGAsYHQ/s200/66.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Xtreme Dual (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9779
+#EXTINF:-1 tvg-id="HBO.XTREME.co" tvg-name="CINE - HBO Xtreme. (M)(720)" tvg-logo="https://1.bp.blogspot.com/-SZ8DsKx6WHk/XkN9AsoXzII/AAAAAAAABWQ/Yxqzc1Ds71kYuQgf7xYBuX7bp0Ajj2pKgCLcBGAsYHQ/s200/66.png" group-title="CANALES-CINE Y SERIES",CINE - HBO Xtreme. (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9699
+#EXTINF:-1 tvg-id="Canal.HBO.2.Latinoamérica.mx" tvg-name="CINE - HBO. 2 (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-juIr-lsEvsQ/Xas8q-gU-fI/AAAAAAAAAaI/oQUWMOeVDIAAueeGkwweO76FIosqJndlgCLcBGAsYHQ/s200/33.png" group-title="CANALES-CINE Y SERIES",CINE - HBO. 2 (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9672
+#EXTINF:-1 tvg-id="Canal.FX.(México).mx" tvg-name="CINE - FX (L)(720)" tvg-logo="https://1.bp.blogspot.com/-MUjPzmbITqs/XatNGMM5_FI/AAAAAAAAAc0/KlUpHFhNkGMPz9cyXVoNYm_yJ-RU4LMSwCLcBGAsYHQ/s200/46.png" group-title="CANALES-CINE Y SERIES",CINE - FX (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9652
+#EXTINF:-1 tvg-id="Canal.FX.(México).mx" tvg-name="CINE - FX (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-MUjPzmbITqs/XatNGMM5_FI/AAAAAAAAAc0/KlUpHFhNkGMPz9cyXVoNYm_yJ-RU4LMSwCLcBGAsYHQ/s200/46.png" group-title="CANALES-CINE Y SERIES",CINE - FX (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9653
+#EXTINF:-1 tvg-id="FX.co" tvg-name="CINE - FX (Z)(1080)" tvg-logo="https://style.shockvisual.net/wp-content/uploads/2019/07/fx.jpg" group-title="CANALES-CINE Y SERIES",CINE - FX (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9654
+#EXTINF:-1 tvg-id="Canal.FX.(México).mx" tvg-name="CINE - FX MEX (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-MUjPzmbITqs/XatNGMM5_FI/AAAAAAAAAc0/KlUpHFhNkGMPz9cyXVoNYm_yJ-RU4LMSwCLcBGAsYHQ/s200/46.png" group-title="CANALES-CINE Y SERIES",CINE - FX MEX (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9655
+#EXTINF:-1 tvg-id="STAR.CHANNEL.co" tvg-name="CINE - STAR Channel CO (M)(1080) [Dual Audio]" tvg-logo="https://lh3.googleusercontent.com/-yvtMpSceSWI/Yf9U8n6XN7I/AAAAAAAADGQ/HQ7NWPvhrwkmM8sQxwUZ3kRyu1u0iyIOgCNcBGAsYHQ/w200-h200/1644123375803213-1.png" group-title="CANALES-CINE Y SERIES",CINE - STAR Channel CO (M)(1080) [Dual Audio]
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9721
+#EXTINF:-1 tvg-id="STAR.CHANNEL.co" tvg-name="CINE - STAR Channel CO. (M)(720)" tvg-logo="https://lh3.googleusercontent.com/-yvtMpSceSWI/Yf9U8n6XN7I/AAAAAAAADGQ/HQ7NWPvhrwkmM8sQxwUZ3kRyu1u0iyIOgCNcBGAsYHQ/w200-h200/1644123375803213-1.png" group-title="CANALES-CINE Y SERIES",CINE - STAR Channel CO. (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9722
+#EXTINF:-1 tvg-id="Canal.Star.Channel.(México).mx" tvg-name="CINE - STAR Channel MX (L)(1080)" tvg-logo="https://lh3.googleusercontent.com/-yvtMpSceSWI/Yf9U8n6XN7I/AAAAAAAADGQ/HQ7NWPvhrwkmM8sQxwUZ3kRyu1u0iyIOgCNcBGAsYHQ/w200-h200/1644123375803213-1.png" group-title="CANALES-CINE Y SERIES",CINE - STAR Channel MX (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9723
+#EXTINF:-1 tvg-id="Canal.Star.Channel.(México).mx" tvg-name="CINE - Star Channel Norte (Z)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Star_Action_2020.svg/1280px-Star_Action_2020.svg.png" group-title="CANALES-CINE Y SERIES",CINE - Star Channel Norte (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9724
+#EXTINF:-1 tvg-id="Canal.Star.Channel.(Argentina).ar" tvg-name="CINE - Star Channel Sur (Z)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Star_Action_2020.svg/1280px-Star_Action_2020.svg.png" group-title="CANALES-CINE Y SERIES",CINE - Star Channel Sur (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9725
+#EXTINF:-1 tvg-id="Canal.TNT.(México).mx" tvg-name="CINE - TNT (L)(720)" tvg-logo="https://1.bp.blogspot.com/-gvPayEmPc-0/XaqYSotqp-I/AAAAAAAAAY4/4YmafnkAwdkT2YrPdajCmQ-5WJj4en0-wCLcBGAsYHQ/s200/26.png" group-title="CANALES-CINE Y SERIES",CINE - TNT (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9742
+#EXTINF:-1 tvg-id="Canal.TNT.(México).mx" tvg-name="CINE - TNT (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-gvPayEmPc-0/XaqYSotqp-I/AAAAAAAAAY4/4YmafnkAwdkT2YrPdajCmQ-5WJj4en0-wCLcBGAsYHQ/s200/26.png" group-title="CANALES-CINE Y SERIES",CINE - TNT (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9743
+#EXTINF:-1 tvg-id="Canal.TNT.(México).mx" tvg-name="CINE - TNT (M)(720)" tvg-logo="https://1.bp.blogspot.com/-gvPayEmPc-0/XaqYSotqp-I/AAAAAAAAAY4/4YmafnkAwdkT2YrPdajCmQ-5WJj4en0-wCLcBGAsYHQ/s200/26.png" group-title="CANALES-CINE Y SERIES",CINE - TNT (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9744
+#EXTINF:-1 tvg-id="TNT.co" tvg-name="CINE - TNT (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-gvPayEmPc-0/XaqYSotqp-I/AAAAAAAAAY4/4YmafnkAwdkT2YrPdajCmQ-5WJj4en0-wCLcBGAsYHQ/s200/26.png" group-title="CANALES-CINE Y SERIES",CINE - TNT (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9745
+#EXTINF:-1 tvg-id="Canal.TLNovelas.(México).mx" tvg-name="CINE - TNT Novelas  (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-GuBKhe6BjNU/XaqbhYUEY9I/AAAAAAAAZU/GoNTclP8BQYz3LWW1FRbP0e_zV7-V_bNACLcBGAsYHQ/s200/28.png" group-title="CANALES-CINE Y SERIES",CINE - TNT Novelas  (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9747
+#EXTINF:-1 tvg-id="Canal.TNT.Novelas.(Latinoamérica).sv" tvg-name="CINE - TNT Novelas (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-GuBKhe6BjNU/XaqbhYUEY9I/AAAAAAAAAZU/GoNTclP8BQYz3LWW1FRbP0e_zV7-V_bNACLcBGAsYHQ/s200/28.png" group-title="CANALES-CINE Y SERIES",CINE - TNT Novelas (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9737
+#EXTINF:-1 tvg-id="Canal.TNT.Series.(México).mx" tvg-name="CINE - TNT Series (L)(720)" tvg-logo="https://1.bp.blogspot.com/-RU1QI0P40Bk/XaqXTmeUMsI/AAAAAAAAAYo/mKi7kYCtzykrjx76Ft-YMnk17IS3OdK0QCLcBGAsYHQ/s200/25.png" group-title="CANALES-CINE Y SERIES",CINE - TNT Series (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9748
+#EXTINF:-1 tvg-id="Canal.TNT.Series.(México).mx" tvg-name="CINE - TNT Series (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-RU1QI0P40Bk/XaqXTmeUMsI/AAAAAAAAAYo/mKi7kYCtzykrjx76Ft-YMnk17IS3OdK0QCLcBGAsYHQ/s200/25.png" group-title="CANALES-CINE Y SERIES",CINE - TNT Series (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9749
+#EXTINF:-1 tvg-id="Canal.TNT.Series.(México).mx" tvg-name="CINE - TNT Series (Z)(720)." tvg-logo="https://1.bp.blogspot.com/-RU1QI0P40Bk/XaqXTmeUMsI/AAAAAAAAAYo/mKi7kYCtzykrjx76Ft-YMnk17IS3OdK0QCLcBGAsYHQ/s200/25.png" group-title="CANALES-CINE Y SERIES",CINE - TNT Series (Z)(720).
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9751
+#EXTINF:-1 tvg-id="Canal.Universal.TV.(México).mx" tvg-name="CINE - Universal Channel (L)(720)" tvg-logo="https://1.bp.blogspot.com/-wIjU7SeLay0/XatoZA--t0I/AAAAAAAAAec/HbZ16hL1yKohaQDAxLTlqls-Sd6OVf2LQCLcBGAsYHQ/s200/51.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Channel (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9753
+#EXTINF:-1 tvg-id="Canal.Universal.TV.(México).mx" tvg-name="CINE - Universal Channel (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-wIjU7SeLay0/XatoZA--t0I/AAAAAAAAAec/HbZ16hL1yKohaQDAxLTlqls-Sd6OVf2LQCLcBGAsYHQ/s200/51.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Channel (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9755
+#EXTINF:-1 tvg-id="Canal.Universal.Cinema.sv" tvg-name="CINE - Universal Cinema (L)(720)" tvg-logo="https://lh3.googleusercontent.com/-xjHq4RLu1gk/YgMWBy84XZI/AAAAAAAADNg/GdbsRVc8rt0bvu5IB9zOI1ptmADB5qycACNcBGAsYHQ/w200-h200/1644369412566727-2.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Cinema (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9756
+#EXTINF:-1 tvg-id="Canal.Universal.Cinema.sv" tvg-name="CINE - Universal Cinema (M)(1080) [Dual Audio]" tvg-logo="https://lh3.googleusercontent.com/-xjHq4RLu1gk/YgMWBy84XZI/AAAAAAAADNg/GdbsRVc8rt0bvu5IB9zOI1ptmADB5qycACNcBGAsYHQ/w200-h200/1644369412566727-2.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Cinema (M)(1080) [Dual Audio]
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9757
+#EXTINF:-1 tvg-id="Canal.Universal.Comedy.sv" tvg-name="CINE - Universal Comedy (TV)(720)" tvg-logo="https://lh3.googleusercontent.com/-SoNWrnF8TnQ/YmxO2XzcUnI/AAAAAAAADg0/nXRD_Ja3KYoO4SJyp2gqQkeFYeWBqt1xwCNcBGAsYHQ/w200-h200/1651265240279800-54.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Comedy (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9759
+#EXTINF:-1 tvg-id="Canal.Universal.Crime.sv" tvg-name="CINE - Universal Crime (M)(720)" tvg-logo="https://lh3.googleusercontent.com/-xjHq4RLu1gk/YgMWBy84XZI/AAAAAAAADNg/GdbsRVc8rt0bvu5IB9zOI1ptmADB5qycACNcBGAsYHQ/w200-h200/1644369412566727-2.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Crime (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9762
+#EXTINF:-1 tvg-id="Canal.Universal.Crime.sv" tvg-name="CINE - Universal Crime (TV)(720)" tvg-logo="https://lh3.googleusercontent.com/-xjHq4RLu1gk/YgMWBy84XZI/AAAAAAAADNg/GdbsRVc8rt0bvu5IB9zOI1ptmADB5qycACNcBGAsYHQ/w200-h200/1644369412566727-2.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Crime (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9763
+#EXTINF:-1 tvg-id="Canal.Universal.Crime.sv" tvg-name="CINE - Universal Crime (Z)(720)" tvg-logo="https://i.pinimg.com/originals/21/a4/0b/21a40b26045eed8dd42a3d5b6245310a.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Crime (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9764
+#EXTINF:-1 tvg-id="Canal.Universal.Premiere.sv" tvg-name="CINE - Universal Premier (L)(720)" tvg-logo="https://lh3.googleusercontent.com/-LG2ri7fQLfc/YgMWEH-ycuI/AAAAAAAADNo/ASe9pUx6JxMEHmZuDP8fnteyPsU8ZBGigCNcBGAsYHQ/w200-h200/1644369421908968-0.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Premier (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9765
+#EXTINF:-1 tvg-id="Canal.Universal.Premiere.sv" tvg-name="CINE - Universal Premier (M)(1080) [Dual Audio]" tvg-logo="https://lh3.googleusercontent.com/-LG2ri7fQLfc/YgMWEH-ycuI/AAAAAAAADNo/ASe9pUx6JxMEHmZuDP8fnteyPsU8ZBGigCNcBGAsYHQ/w200-h200/1644369421908968-0.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Premier (M)(1080) [Dual Audio]
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9766
+#EXTINF:-1 tvg-id="Canal.Universal.Premiere.sv" tvg-name="CINE - Universal Premier (TV)(720)" tvg-logo="https://lh3.googleusercontent.com/-LG2ri7fQLfc/YgMWEH-ycuI/AAAAAAAADNo/ASe9pUx6JxMEHmZuDP8fnteyPsU8ZBGigCNcBGAsYHQ/w200-h200/1644369421908968-0.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Premier (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9767
+#EXTINF:-1 tvg-id="Canal.Universal.Premiere.sv" tvg-name="CINE - Universal Premiere Norte (Z)(720)" tvg-logo="https://i.pinimg.com/originals/21/a4/0b/21a40b26045eed8dd42a3d5b6245310a.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Premiere Norte (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9768
+#EXTINF:-1 tvg-id="Canal.Universal.Reality.sv" tvg-name="CINE - Universal Reality (L)(720)" tvg-logo="https://lh3.googleusercontent.com/-jrUcCNjGjiA/YgMWDP_MqhI/AAAAAAAADNk/hSVW-HGIAE8x-ESHmjGqeoP3TZYwU1V9wCNcBGAsYHQ/w200-h200/1644369417411612-1.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Reality (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9770
+#EXTINF:-1 tvg-id="Canal.Universal.Reality.sv" tvg-name="CINE - Universal Reality (M)(1080)" tvg-logo="https://lh3.googleusercontent.com/-jrUcCNjGjiA/YgMWDP_MqhI/AAAAAAAADNk/hSVW-HGIAE8x-ESHmjGqeoP3TZYwU1V9wCNcBGAsYHQ/w200-h200/1644369417411612-1.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Reality (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9771
+#EXTINF:-1 tvg-id="Canal.Universal.Reality.sv" tvg-name="CINE - Universal Reality (TV)(720)" tvg-logo="https://lh3.googleusercontent.com/-jrUcCNjGjiA/YgMWDP_MqhI/AAAAAAAADNk/hSVW-HGIAE8x-ESHmjGqeoP3TZYwU1V9wCNcBGAsYHQ/w200-h200/1644369417411612-1.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Reality (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9772
+#EXTINF:-1 tvg-id="Canal.Universal.Reality.sv" tvg-name="CINE - Universal Reality (Z)(720)" tvg-logo="https://i.pinimg.com/originals/21/a4/0b/21a40b26045eed8dd42a3d5b6245310a.png" group-title="CANALES-CINE Y SERIES",CINE - Universal Reality (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9773
+#EXTINF:-1 tvg-id="Canal.Warner.TV.(México).sv" tvg-name="CINE - Warner Channel (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-FfuoassQMwg/XaqRIDyHsII/AAAAAAAAAXI/jd8OpoO8C20tOoSbCOmLgf-lG87ZA8V5gCLcBGAsYHQ/s200/18.png" group-title="CANALES-CINE Y SERIES",CINE - Warner Channel (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9774
+#EXTINF:-1 tvg-id="Canal.Warner.TV.(Chile).cl" tvg-name="CINE - Warner Channel (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-FfuoassQMwg/XaqRIDyHsII/AAAAAAAAAXI/jd8OpoO8C20tOoSbCOmLgf-lG87ZA8V5gCLcBGAsYHQ/s200/18.png" group-title="CANALES-CINE Y SERIES",CINE - Warner Channel (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9776
+#EXTINF:-1 tvg-id="Canal.Warner.TV.(México).sv" tvg-name="CINE - Warner Channel Dual Audio (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-FfuoassQMwg/XaqRIDyHsII/AAAAAAAAAXI/jd8OpoO8C20tOoSbCOmLgf-lG87ZA8V5gCLcBGAsYHQ/s200/18.png" group-title="CANALES-CINE Y SERIES",CINE - Warner Channel Dual Audio (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9775
+#EXTINF:-1 tvg-id="Canal.AMC.(México).sv" tvg-name="CINE - AMC (L)(720)" tvg-logo="https://1.bp.blogspot.com/-FwlH6QzpV-8/XaokZRCO07I/AAAAAAAAAWA/2fjkTYGqsp03aenYpNBo2pChRQ6T485_ACLcBGAsYHQ/s200/2.png" group-title="CANALES-CINE Y SERIES",CINE - AMC (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9619
+#EXTINF:-1 tvg-id="Canal.AMC.(México).mx" tvg-name="CINE - AMC (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-FwlH6QzpV-8/XaokZRCO07I/AAAAAAAAAWA/2fjkTYGqsp03aenYpNBo2pChRQ6T485_ACLcBGAsYHQ/s200/2.png" group-title="CANALES-CINE Y SERIES",CINE - AMC (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9702
+#EXTINF:-1 tvg-id="Canal.AMC.(México).mx" tvg-name="CINE - AMC (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-FwlH6QzpV-8/XaokZRCO07I/AAAAAAAAAWA/2fjkTYGqsp03aenYpNBo2pChRQ6T485_ACLcBGAsYHQ/s200/2.png" group-title="CANALES-CINE Y SERIES",CINE - AMC (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9620
+#EXTINF:-1 tvg-id="Canal.AXN.(México).mx" tvg-name="CINE - AXN (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-iWQgVHxICdU/XaokZV-N4aI/AAAAAAAAAWE/iYvSleZzU88F9QKcmm4JOG2Di8OEgz0KwCLcBGAsYHQ/s200/3.png" group-title="CANALES-CINE Y SERIES",CINE - AXN (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9623
+#EXTINF:-1 tvg-id="AXN.co" tvg-name="CINE - AXN (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-iWQgVHxICdU/XaokZV-N4aI/AAAAAAAAAWE/iYvSleZzU88F9QKcmm4JOG2Di8OEgz0KwCLcBGAsYHQ/s200/3.png" group-title="CANALES-CINE Y SERIES",CINE - AXN (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9624
+#EXTINF:-1 tvg-id="Canal.AXN.(México).mx" tvg-name="CINE - AXN (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-iWQgVHxICdU/XaokZV-N4aI/AAAAAAAAAWE/iYvSleZzU88F9QKcmm4JOG2Di8OEgz0KwCLcBGAsYHQ/s200/3.png" group-title="CANALES-CINE Y SERIES",CINE - AXN (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9625
+#EXTINF:-1 tvg-id="Atreseries.es" tvg-name="CINE - A3 Series (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-nYXXZBWn3K8/Xbf03udfliI/AAAAAAAAAuQ/TbR_EaUFPp4owroSxx09nXC7CHvvW1q0ACLcBGAsYHQ/s200/58.png" group-title="CANALES-CINE Y SERIES",CINE - A3 Series (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9618
+#EXTINF:-1 tvg-id="Canal.Cinelatino.cl" tvg-name="CINE - Cine Latino (L)(720)" tvg-logo="https://1.bp.blogspot.com/-3-EvoMrQo-M/XaokZPxvp-I/AAAAAAAAAV8/wiPsHTnn5TQPaAOxfW6h00GSoQA1UvGgwCLcBGAsYHQ/s200/17.png" group-title="CANALES-CINE Y SERIES",CINE - Cine Latino (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9626
+#EXTINF:-1 tvg-id="Canal.Cinelatino.cl" tvg-name="CINE - Cine Latino (Z)(SD)" tvg-logo="http://127.0.0.1/" group-title="CANALES-CINE Y SERIES",CINE - Cine Latino (Z)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9627
+#EXTINF:-1 tvg-id="AdultSwim.co" tvg-name="CINE - CineCanal (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-ZvhVOTsSTzg/XaokZ4XKSPI/AAAAAAAAAWI/MsjCS3r3rQop2YtmW8uC0_gyZU5WsAgqACLcBGAsYHQ/s200/4.png" group-title="CANALES-CINE Y SERIES",CINE - CineCanal (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9629
+#EXTINF:-1 tvg-id="Cinecanal.co" tvg-name="CINE - CineCanal (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-ZvhVOTsSTzg/XaokZ4XKSPI/AAAAAAAAAWI/MsjCS3r3rQop2YtmW8uC0_gyZU5WsAgqACLcBGAsYHQ/s200/4.png" group-title="CANALES-CINE Y SERIES",CINE - CineCanal (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9630
+#EXTINF:-1 tvg-id="Canal.Cinecanal.(México).mx" tvg-name="CINE - Cinecanal (Z)(1080)" tvg-logo="http://fanc.tmsimg.com/assets/s105609_ll_h3_aa.png" group-title="CANALES-CINE Y SERIES",CINE - Cinecanal (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9631
+#EXTINF:-1 tvg-id="" tvg-name="CINE - Cinema Dinamita (Z)(720)" tvg-logo="https://payload.cargocollective.com/1/18/598638/11690943/cd1_895.png" group-title="CANALES-CINE Y SERIES",CINE - Cinema Dinamita (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9632
+#EXTINF:-1 tvg-id="Canal.Cinemax.(México).mx" tvg-name="CINE - Cinemax (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-SWgMvQVmNFs/XatKBoFk9XI/AAAAAAAAAcE/iIZCNfcElxsfxcj0hGdLxHZ0l7D7wRJ6wCLcBGAsYHQ/s200/43.png" group-title="CANALES-CINE Y SERIES",CINE - Cinemax (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9633
+#EXTINF:-1 tvg-id="Canal.Cinemax.(México).mx" tvg-name="CINE - Cinemax (Z)(1080)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTapWv0ZtvCDDJbWxrh_B-9xTzIpgcamrL0Hl7QU6_hzmT9YorrLtKqi1KOf99Rdj2fjZU&usqp=CAU" group-title="CANALES-CINE Y SERIES",CINE - Cinemax (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9635
+#EXTINF:-1 tvg-id="Comedy.Central.co" tvg-name="CINE - Comedy Central (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-EGNc3XiW2mg/Xaoka4Z2TQI/AAAAAAAAAWU/WzeyBpAFtHw2hkqTpQi6FZCazB0eVIlHACLcBGAsYHQ/s200/7.png" group-title="CANALES-CINE Y SERIES",CINE - Comedy Central (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9636
+#EXTINF:-1 tvg-id="Comedy.Central.co" tvg-name="CINE - Comedy Central (M)(SD)" tvg-logo="http://tv.proyectox.vip:8080/images/8f14e45fceea167a5a36dedd4bea2543.png" group-title="CANALES-CINE Y SERIES",CINE - Comedy Central (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9637
+#EXTINF:-1 tvg-id="Canal.De.Película.mx" tvg-name="CINE - De Pelicula (M)(1080)" tvg-logo="http://tv.proyectox.vip:8080/images/f7177163c833dff4b38fc8d2872f1ec6.png" group-title="CANALES-CINE Y SERIES",CINE - De Pelicula (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9638
+#EXTINF:-1 tvg-id="De.Pelicula.Clasico.us" tvg-name="CINE - De Pelicula Plus (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-p0k4fKEUr58/XatKxE50PxI/AAAAAAAAAcM/jvKKEeW_T-8c-q7zmdG1CuyLiD4B1T0WQCLcBGAsYHQ/s200/44.png" group-title="CANALES-CINE Y SERIES",CINE - De Pelicula Plus (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9639
+#EXTINF:-1 tvg-id="Canal.De.Película.mx" tvg-name="CINE - De Película (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-p0k4fKEUr58/XatKxE50PxI/AAAAAAAAAcM/jvKKEeW_T-8c-q7zmdG1CuyLiD4B1T0WQCLcBGAsYHQ/s200/44.png" group-title="CANALES-CINE Y SERIES",CINE - De Película (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9642
+#EXTINF:-1 tvg-id="DHE.HD.co" tvg-name="CINE - DHE (TV)(1080)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Canal_DHE_logo.svg/1200px-Canal_DHE_logo.svg.png" group-title="CANALES-CINE Y SERIES",CINE - DHE (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9643
+#EXTINF:-1 tvg-id="Canal.Distrito.Comedia.mx" tvg-name="CINE - Distrito Comedia (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-beLeA0PDR3M/XatLcKHkHhI/AAAAAAAAAcY/qDSVdbA5CVwlSBEJV_XDE08auVkEZleBwCLcBGAsYHQ/s200/45.png" group-title="CANALES-CINE Y SERIES",CINE - Distrito Comedia (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9644
+#EXTINF:-1 tvg-id="Canal.E!.Entertainment.Television.(México).mx" tvg-name="CINE - E! (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-8Sj9qIuwrcY/Xbft9AfFG8I/AAAAAAAAAtE/IsyxPWzh5n0sYocYCV7ebne0xlAeANvNgCLcBGAsYHQ/s200/54.png" group-title="CANALES-CINE Y SERIES",CINE - E! (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9646
+#EXTINF:-1 tvg-id="Canal.Elgourmet.mx" tvg-name="CINE - El Gourmet (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-CBdE6D49lec/XdtQjO47pYI/AAAAAAAAA3M/6wPiW4palq8OIODpugRUzyKO4LHK6Kl1wCLcBGAsYHQ/s200/21.png" group-title="CANALES-CINE Y SERIES",CINE - El Gourmet (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9647
+#EXTINF:-1 tvg-id="Canal.Europa.Europa.mx" tvg-name="CINE - Europa Europa (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-hp_TVEc208E/Xg-BsZUcaKI/AAAAAAAAA48/eXROhRPKdKop12SD74yIK-zUaK-OZr_tACLcBGAsYHQ/s200/64.png" group-title="CANALES-CINE Y SERIES",CINE - Europa Europa (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9648
+#EXTINF:-1 tvg-id="Canal.Film.&.Arts.mx" tvg-name="CINE - Film & Arts (Z)(1080)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNpsw81Sk4WqgDl5Pk0BZWu7740GNi_mEAtw&usqp=CAU" group-title="CANALES-CINE Y SERIES",CINE - Film & Arts (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9649
+#EXTINF:-1 tvg-id="Canal.De.Película.mx" tvg-name="CINE - Filmex (Z)(1080)" tvg-logo="" group-title="CANALES-CINE Y SERIES",CINE - Filmex (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9640
+#EXTINF:-1 tvg-id="De.Pelicula.Clasico.us" tvg-name="CINE - Filmex Clasico (Z)(1080)" tvg-logo="" group-title="CANALES-CINE Y SERIES",CINE - Filmex Clasico (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9641
+#EXTINF:-1 tvg-id="Food.Network.co" tvg-name="CINE - Food Network (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-7LnO12UdM74/XkOMWms5SLI/AAAAAAAABWw/1_TuyGdHKgUvadJu2umfY-JB3zGZvdzqQCLcBGAsYHQ/s200/68.png" group-title="CANALES-CINE Y SERIES",CINE - Food Network (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9651
+#EXTINF:-1 tvg-id="Canal.Golden.(México).mx" tvg-name="CINE - Golden (Z)(1080)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYLx_K907PBpH9a9Zzu4M_YR_qJCnhP8q9r-ZJKkFy8ctFsbFoPTz1SyoF6tI3CWylvzY&usqp=CAU" group-title="CANALES-CINE Y SERIES",CINE - Golden (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9657
+#EXTINF:-1 tvg-id="Canal.Golden.Edge.mx" tvg-name="CINE - Golden Edge (M)(720)" tvg-logo="https://1.bp.blogspot.com/-a_dgujjjSt4/XatPMFS5hlI/AAAAAAAAAdQ/P_h_eb7MZV4sgYDwZ_0tNV2XDn3iFsn4QCLcBGAsYHQ/s200/48.png" group-title="CANALES-CINE Y SERIES",CINE - Golden Edge (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9658
+#EXTINF:-1 tvg-id="Canal.Golden.Edge.mx" tvg-name="CINE - Golden Edge (Z)(1080)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/b8/Golden_Edge_2016.png/revision/latest/scale-to-width-down/310?cb=20191215195803&path-prefix=es" group-title="CANALES-CINE Y SERIES",CINE - Golden Edge (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9659
+#EXTINF:-1 tvg-id="Canal.Golden.Plus.mx" tvg-name="CINE - Golden Plus (L)(720)" tvg-logo="https://1.bp.blogspot.com/-xAsbQLg2Jh4/XatB0liBxTI/AAAAAAAAAaw/0DJSM8f-dGYbfmZhsUXXGokODQRxIrpXwCLcBGAsYHQ/s200/35.png" group-title="CANALES-CINE Y SERIES",CINE - Golden Plus (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9660
+#EXTINF:-1 tvg-id="Canal.Golden.Plus.mx" tvg-name="CINE - Golden Plus (M)(1080) [Dual Audio]" tvg-logo="https://1.bp.blogspot.com/-xAsbQLg2Jh4/XatB0liBxTI/AAAAAAAAAaw/0DJSM8f-dGYbfmZhsUXXGokODQRxIrpXwCLcBGAsYHQ/s200/35.png" group-title="CANALES-CINE Y SERIES",CINE - Golden Plus (M)(1080) [Dual Audio]
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9661
+#EXTINF:-1 tvg-id="Canal.Golden.Plus.mx" tvg-name="CINE - Golden Plus (Z)(1080)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzfPAfYQMBjlLveOOYfg-4RSj7VSTmctWclQ&usqp=CAU" group-title="CANALES-CINE Y SERIES",CINE - Golden Plus (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9662
+#EXTINF:-1 tvg-id="Canal.Golden.Premier.mx" tvg-name="CINE - Golden Premier 2 (Z)(720)" tvg-logo="https://cdn.mitvstatic.com/channels/co_golden-premier-(Z)(720)_m.png" group-title="CANALES-CINE Y SERIES",CINE - Golden Premier 2 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9663
+#EXTINF:-1 tvg-id="Canal.Golden.Premier.mx" tvg-name="CINE - Golden Premiere (M)(1080) [Dual Audio]" tvg-logo="https://1.bp.blogspot.com/-j59YyvcAhO4/XatB1WwVKKI/AAAAAAAAAa0/DMlvXZYGuHgvfLb_ggo3sXcUkoeGcGVaQCLcBGAsYHQ/s200/36.png" group-title="CANALES-CINE Y SERIES",CINE - Golden Premiere (M)(1080) [Dual Audio]
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9664
+#EXTINF:-1 tvg-id="Canal.Golden.Premier.2.mx" tvg-name="CINE - Golden Premiere 2 (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-j59YyvcAhO4/XatB1WwVKKI/AAAAAAAAAa0/DMlvXZYGuHgvfLb_ggo3sXcUkoeGcGVaQCLcBGAsYHQ/s200/36.png" group-title="CANALES-CINE Y SERIES",CINE - Golden Premiere 2 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9665
+#EXTINF:-1 tvg-id="Canal.Lifetime.(México).mx" tvg-name="CINE - Lifetime (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-iMAi_8FJwwQ/XatGmhKYmbI/AAAAAAAAAbQ/0z9DR3Ur5KYfsAzeHVCogx2jNUubeChrACLcBGAsYHQ/s200/37.png" group-title="CANALES-CINE Y SERIES",CINE - Lifetime (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9703
+#EXTINF:-1 tvg-id="Canal.Paramount.Channel.Latinoamérica.sv" tvg-name="CINE - Paramount (Z)(720)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU0Jlpo6Q-pz4sRAKzNcgMkA_A75_A6yPVSA&usqp=CAU" group-title="CANALES-CINE Y SERIES",CINE - Paramount (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9705
+#EXTINF:-1 tvg-id="Showtime.Extreme.-.Eastern.us" tvg-name="CINE - Showtime Extreme (Z)" tvg-logo="https://lovingseries.files.wordpress.com/2016/01/showtime-logo.jpg" group-title="CANALES-CINE Y SERIES",CINE - Showtime Extreme (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9709
+#EXTINF:-1 tvg-id="Paramount+.with.Showtime..West.us" tvg-name="CINE - Showtime West Dual (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-1CyRY6HMjJE/XxCHEUy_trI/AAAAAAAAAbg/g0eCuMarEbA_5d3m7g468QjwKuXA91EjgCLcBGAsYHQ/w200-h200/Showtime%2BWEST.png" group-title="CANALES-CINE Y SERIES",CINE - Showtime West Dual (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9710
+#EXTINF:-1 tvg-id="Canal.Sony.(México).mx" tvg-name="CINE - Sony Channel (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-Ess4VrXYpAQ/XatGnkceQRI/AAAAAAAAAbc/OqfYrJcB2UcrnplBlalhQncSDVbKkP2fwCLcBGAsYHQ/s200/41.png" group-title="CANALES-CINE Y SERIES",CINE - Sony Channel (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9711
+#EXTINF:-1 tvg-id="Canal.Sony.(México).mx" tvg-name="CINE - Sony Channel (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-Ess4VrXYpAQ/XatGnkceQRI/AAAAAAAAAbc/OqfYrJcB2UcrnplBlalhQncSDVbKkP2fwCLcBGAsYHQ/s200/41.png" group-title="CANALES-CINE Y SERIES",CINE - Sony Channel (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9712
+#EXTINF:-1 tvg-id="SONY.HD.(Sony.HD).pe" tvg-name="CINE - Sony Cine (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-pDZUOqatcCc/YDSFENFbt6I/AAAAAAAACFk/aG-Brvhw2Hoz5IsWO5eyTJtIdk3FqDS7wCLcBGAsYHQ/w200-h200/Sony.png" group-title="CANALES-CINE Y SERIES",CINE - Sony Cine (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9713
+#EXTINF:-1 tvg-id="Canal.TNT.Novelas.(México).mx" tvg-name="CINE - Sony Novelas (TV)(720)" tvg-logo="https://lh3.googleusercontent.com/-JYH4OV2UZyY/YrOngMaC-EI/AAAAAAAADqY/2lSJe3QRzDM4qzssNcDa2qhVLQllQDPNwCNcBGAsYHQ/w200-h200/1655940990366011-0.png" group-title="CANALES-CINE Y SERIES",CINE - Sony Novelas (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9716
+#EXTINF:-1 tvg-id="Canal.Space.(México).mx" tvg-name="CINE - Space (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-6wvhPq5IaU0/XatGn62vaSI/AAAAAAAAAbg/Ag7mkwAVGCM4eBE7PoLyqAUwkyHiFFAIwCLcBGAsYHQ/s200/42.png" group-title="CANALES-CINE Y SERIES",CINE - Space (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9717
+#EXTINF:-1 tvg-id="Space.co" tvg-name="CINE - Space (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-6wvhPq5IaU0/XatGn62vaSI/AAAAAAAAAbg/Ag7mkwAVGCM4eBE7PoLyqAUwkyHiFFAIwCLcBGAsYHQ/s200/42.png" group-title="CANALES-CINE Y SERIES",CINE - Space (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9718
+#EXTINF:-1 tvg-id="Star.es" tvg-name="CINE - Star TVE (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-Ru5-dc21HTI/Xmvz5ztZLnI/AAAAAAAABZs/25I5OIJh_tEoTM5rCvQfFtj83-GqrI_fwCLcBGAsYHQ/s200/71.png" group-title="CANALES-CINE Y SERIES",CINE - Star TVE (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9726
+#EXTINF:-1 tvg-id="Starz.Comedy.HD.-.Eastern.us" tvg-name="CINE - Starz Comedy (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-65SSCnBQbP4/Xbf6BdncZvI/AAAAAAAAAvM/P7AAIx-1ZV09VxM9GwpIFr6VoawVs3U8ACLcBGAsYHQ/s200/63.png" group-title="CANALES-CINE Y SERIES",CINE - Starz Comedy (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9728
+#EXTINF:-1 tvg-id="Starz.Encore.Family.-.Eastern.us" tvg-name="CINE - Starz Family (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-eEgFDxMCYm8/Xbf6BQ5kAxI/AAAAAAAAAvQ/dtgBpkQi2Yg_N2MrsCndofbWOjPmk4ywQCLcBGAsYHQ/s200/61.png" group-title="CANALES-CINE Y SERIES",CINE - Starz Family (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9731
+#EXTINF:-1 tvg-id="Canal.Studio.Universal.(México).mx" tvg-name="CINE - Studio Universal (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-Mm4RcdZlydc/XatpNZ2eSDI/AAAAAAAAAek/B1kOZW_TEv0GakL-m6tUYEmi592FBiSEQCLcBGAsYHQ/s200/52.png" group-title="CANALES-CINE Y SERIES",CINE - Studio Universal (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9732
+#EXTINF:-1 tvg-id="Syfy.-.Eastern.Feed.us" tvg-name="CINE - Syfy (M)(720)" tvg-logo="https://1.bp.blogspot.com/-jfjNpEHTpUo/XaqcohSN_RI/AAAAAAAAAZg/zMNahbdtrzEcLIfwhOB4OpzhAg_HyR0OwCLcBGAsYHQ/s200/29.png" group-title="CANALES-CINE Y SERIES",CINE - Syfy (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9735
+#EXTINF:-1 tvg-id="TBS.-.East.us" tvg-name="CINE - TBS (Z)" tvg-logo="https://www.kindpng.com/picc/m/483-4832828_tbs-logo-png-transparent-transparent-tbs-logo-png.png" group-title="CANALES-CINE Y SERIES",CINE - TBS (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9738
+#EXTINF:-1 tvg-id="TBS.-.East.us" tvg-name="CINE - TBS Very Funny (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-wMzLh7XtNXQ/XaqajETYhtI/AAAAAAAAAZM/PSGrPhF2qbMiqH0jLk_-dY-A3yehkNxkwCLcBGAsYHQ/s200/27.png" group-title="CANALES-CINE Y SERIES",CINE - TBS Very Funny (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9739
+#EXTINF:-1 tvg-id="Canal.TCM.(México).mx" tvg-name="CINE - TCM (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-I0it6XRRNxo/XdtVtXF2xPI/AAAAAAAAA30/Cb3ZdzakgygMU2_98viDf2CFqek_sQRTACLcBGAsYHQ/s200/24.png" group-title="CANALES-CINE Y SERIES",CINE - TCM (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9740
+#EXTINF:-1 tvg-id="Canal.TCM.(México).mx" tvg-name="CINE - TCM (Z)(1080)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/ef/Turner_Classic_Movies_%28TCM%2C_Latin_America%29_-_2015_logo.png" group-title="CANALES-CINE Y SERIES",CINE - TCM (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9741
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Animal Planet (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-FmcbBWBcW04/XzWYaAuXQeI/AAAAAAAABCE/Sxqhgw-oCiEDD8qSiWZZnw_c9BVKOKFVwCLcBGAsYHQ/w200-h200/153%2BAnimal%2BPlanet.png" group-title="CANALES-DOCUMENTALES",DOC-Animal Planet (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9811
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Animal Planet (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-FmcbBWBcW04/XzWYaAuXQeI/AAAAAAAABCE/Sxqhgw-oCiEDD8qSiWZZnw_c9BVKOKFVwCLcBGAsYHQ/w200-h200/153%2BAnimal%2BPlanet.png" group-title="CANALES-DOCUMENTALES",DOC-Animal Planet (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9812
+#EXTINF:-1 tvg-id="Animal.Planet.co" tvg-name="DOC-Animal Planet (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-FmcbBWBcW04/XzWYaAuXQeI/AAAAAAAABCE/Sxqhgw-oCiEDD8qSiWZZnw_c9BVKOKFVwCLcBGAsYHQ/w200-h200/153%2BAnimal%2BPlanet.png" group-title="CANALES-DOCUMENTALES",DOC-Animal Planet (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9813
+#EXTINF:-1 tvg-id="Canal.Animal.Planet.(México).sv" tvg-name="DOC-Animal Planet (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-FmcbBWBcW04/XzWYaAuXQeI/AAAAAAAABCE/Sxqhgw-oCiEDD8qSiWZZnw_c9BVKOKFVwCLcBGAsYHQ/w200-h200/153%2BAnimal%2BPlanet.png" group-title="CANALES-DOCUMENTALES",DOC-Animal Planet (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9780
+#EXTINF:-1 tvg-id="Canal.Comedy.Central.(Centro).sv" tvg-name="DOC-Comedy Central (Z)(1080)." tvg-logo="https://static.epg.best/mx/ComedyCentral.mx.png" group-title="CANALES-CINE Y SERIES",DOC-Comedy Central (Z)(1080).
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9781
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Channel (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-3wjrLsfsfCo/XaukfXyPOwI/AAAAAAAAAgI/ActiBvKEJj8SyoNqq-5A6ErNez2UGZ9LACLcBGAsYHQ/s200/3.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Channel (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9814
+#EXTINF:-1 tvg-id="Canal.Discovery.Channel.(México).mx" tvg-name="DOC-Discovery Channel (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-3wjrLsfsfCo/XaukfXyPOwI/AAAAAAAAAgI/ActiBvKEJj8SyoNqq-5A6ErNez2UGZ9LACLcBGAsYHQ/s200/3.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Channel (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9816
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Channel (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-3wjrLsfsfCo/XaukfXyPOwI/AAAAAAAAAgI/ActiBvKEJj8SyoNqq-5A6ErNez2UGZ9LACLcBGAsYHQ/s200/3.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Channel (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9782
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Familia (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-ENut58cGev8/XzNOsI6dCwI/AAAAAAAAAuU/W1b7DwjU3209Qzu9_K7nKNnu8Wh0EErdwCLcBGAsYHQ/w200-h200/65%2BDiscovery%2BFamily.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Familia (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9817
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery FAMILIA (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-ENut58cGev8/XzNOsI6dCwI/AAAAAAAAAuU/W1b7DwjU3209Qzu9_K7nKNnu8Wh0EErdwCLcBGAsYHQ/w200-h200/65%2BDiscovery%2BFamily.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery FAMILIA (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9783
+#EXTINF:-1 tvg-id="CW.Plus.Mountain.us" tvg-name="DOC-Discovery Familia (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-ENut58cGev8/XzNOsI6dCwI/AAAAAAAAAuU/W1b7DwjU3209Qzu9_K7nKNnu8Wh0EErdwCLcBGAsYHQ/w200-h200/65%2BDiscovery%2BFamily.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Familia (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9818
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery H&H (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-795qtfdAvTU/XaukceRJkUI/AAAAAAAAAfg/7NrIFGl6jvIpQHoLxcjGda1mAhZ8yRZAQCLcBGAsYHQ/s200/11.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery H&H (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9784
+#EXTINF:-1 tvg-id="HGTV.co" tvg-name="DOC-Discovery HGTV (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-krRxJeizvDU/XzQdUcia0SI/AAAAAAAAA0s/ouYB4v2X10EiAsYCQJ2LtajrGEBUSfaagCLcBGAsYHQ/w200-h200/112%2BHgtv.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery HGTV (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9819
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Home & Health (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-795qtfdAvTU/XaukceRJkUI/AAAAAAAAAfg/7NrIFGl6jvIpQHoLxcjGda1mAhZ8yRZAQCLcBGAsYHQ/s200/11.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Home & Health (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9821
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Home & Health (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-795qtfdAvTU/XaukceRJkUI/AAAAAAAAAfg/7NrIFGl6jvIpQHoLxcjGda1mAhZ8yRZAQCLcBGAsYHQ/s200/11.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Home & Health (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9820
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery ID (Z)" tvg-logo="https://1.bp.blogspot.com/-1wsiKCXFQwQ/XaukeKJb7pI/AAAAAAAAAf0/yIW1q0Xu334yYzGXEJSoR5g8RObOTjGHwCLcBGAsYHQ/s200/15.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery ID (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9785
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Science (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-bM2_Q39fvdM/XaukeQIiYhI/AAAAAAAAAf4/yvKvVd55HEM8phsmoOuHyu0LMdHgTR9bgCLcBGAsYHQ/s200/16.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Science (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9822
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Science (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-bM2_Q39fvdM/XaukeQIiYhI/AAAAAAAAAf4/yvKvVd55HEM8phsmoOuHyu0LMdHgTR9bgCLcBGAsYHQ/s200/16.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Science (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9823
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Science (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-bM2_Q39fvdM/XaukeQIiYhI/AAAAAAAAAf4/yvKvVd55HEM8phsmoOuHyu0LMdHgTR9bgCLcBGAsYHQ/s200/16.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Science (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9786
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Theater (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-BzAhrKSxP3M/Xaukgj6CHCI/AAAAAAAAAgc/GsnF0u2sAvI-wB4L3yFhac_zhO8mg50hgCLcBGAsYHQ/s200/8.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Theater (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9787
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="DOC-Discovery Theater (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-BzAhrKSxP3M/Xaukgj6CHCI/AAAAAAAAAgc/GsnF0u2sAvI-wB4L3yFhac_zhO8mg50hgCLcBGAsYHQ/s200/8.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Theater (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9824
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Theater (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-BzAhrKSxP3M/Xaukgj6CHCI/AAAAAAAAAgc/GsnF0u2sAvI-wB4L3yFhac_zhO8mg50hgCLcBGAsYHQ/s200/8.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Theater (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9788
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery TLC (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-HOVUuBuEOZM/Xaukegk8w4I/AAAAAAAAAf8/y-jpMQsSCV80Xvk1S8dDwdMLyx6c4JohgCLcBGAsYHQ/s200/17.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery TLC (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9825
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery TLC (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-HOVUuBuEOZM/Xaukegk8w4I/AAAAAAAAAf8/y-jpMQsSCV80Xvk1S8dDwdMLyx6c4JohgCLcBGAsYHQ/s200/17.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery TLC (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9826
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery TLC (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-HOVUuBuEOZM/Xaukegk8w4I/AAAAAAAAAf8/y-jpMQsSCV80Xvk1S8dDwdMLyx6c4JohgCLcBGAsYHQ/s200/17.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery TLC (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9827
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery TURBO (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-eJqGszkGWFI/XaukdxerPHI/AAAAAAAAAfw/Qa6E_CIqIO4-exGRGJYvJnohIQ7B2G-SQCLcBGAsYHQ/s200/14.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery TURBO (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9829
+#EXTINF:-1 tvg-id="Discovery.Turbo.co" tvg-name="DOC-Discovery Turbo (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-eJqGszkGWFI/XaukdxerPHI/AAAAAAAAAfw/Qa6E_CIqIO4-exGRGJYvJnohIQ7B2G-SQCLcBGAsYHQ/s200/14.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Turbo (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9830
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery Turbo (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-eJqGszkGWFI/XaukdxerPHI/AAAAAAAAAfw/Qa6E_CIqIO4-exGRGJYvJnohIQ7B2G-SQCLcBGAsYHQ/s200/14.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery Turbo (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9789
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery World (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-UP7Lxz2Td8g/XaukgY8HACI/AAAAAAAAAgY/HFeHTRkVWe4w5VJb-QATOz7rmIMfAFKSQCLcBGAsYHQ/s200/7.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery World (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9831
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery World (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-UP7Lxz2Td8g/XaukgY8HACI/AAAAAAAAAgY/HFeHTRkVWe4w5VJb-QATOz7rmIMfAFKSQCLcBGAsYHQ/s200/7.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery World (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9832
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery World (M)(720)" tvg-logo="https://1.bp.blogspot.com/-UP7Lxz2Td8g/XaukgY8HACI/AAAAAAAAAgY/HFeHTRkVWe4w5VJb-QATOz7rmIMfAFKSQCLcBGAsYHQ/s200/7.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery World (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9833
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery World (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-UP7Lxz2Td8g/XaukgY8HACI/AAAAAAAAAgY/HFeHTRkVWe4w5VJb-QATOz7rmIMfAFKSQCLcBGAsYHQ/s200/7.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery World (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9834
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Discovery World (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-UP7Lxz2Td8g/XaukgY8HACI/AAAAAAAAAgY/HFeHTRkVWe4w5VJb-QATOz7rmIMfAFKSQCLcBGAsYHQ/s200/7.png" group-title="CANALES-DOCUMENTALES",DOC-Discovery World (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9790
+#EXTINF:-1 tvg-id="" tvg-name="DOC-DW En Español (Z)(1080)" tvg-logo="https://static.epg.best/de/DeutscheWelleEs.de.png" group-title="CANALES-DOCUMENTALES",DOC-DW En Español (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9791
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Food Network (Z)(720)" tvg-logo="https://static.epg.best/us/FoodNetwork.us.png" group-title="CANALES-DOCUMENTALES",DOC-Food Network (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9792
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Garage TV (Z)(720)" tvg-logo="https://i.imgur.com/M0ZqURk.png" group-title="CANALES-DOCUMENTALES",DOC-Garage TV (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9793
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Glitz (Z)(1080)" tvg-logo="http://fanc.tmsimg.com/assets/s61514_ll_h3_aa.png" group-title="CANALES-DOCUMENTALES",DOC-Glitz (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9794
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Gourmet (Z)(1080)" tvg-logo="https://static.epg.best/mx/Elgourmet.mx.png" group-title="CANALES-DOCUMENTALES",DOC-Gourmet (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9795
+#EXTINF:-1 tvg-id="" tvg-name="DOC-H2 (M)(1080)" tvg-logo="http://tv.proyectox.vip:8080/images/c20ad4d76fe97759aa27a0c99bff6710.png" group-title="CANALES-DOCUMENTALES",DOC-H2 (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9836
+#EXTINF:-1 tvg-id="" tvg-name="DOC-H2 (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-xSsX0Ia8wF4/XaukdVsLyAI/AAAAAAAAAfo/k34jiOUjQKYMLSGBsGCOIR2ZZTKD7tkhQCLcBGAsYHQ/s200/12.png" group-title="CANALES-DOCUMENTALES",DOC-H2 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9837
+#EXTINF:-1 tvg-id="" tvg-name="DOC-HGTV (Z)(1080)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/HGTV_logo.png/1200px-HGTV_logo.png" group-title="CANALES-DOCUMENTALES",DOC-HGTV (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9796
+#EXTINF:-1 tvg-id="" tvg-name="DOC-History (L)(1080) (1080p)" tvg-logo="https://logos.xbots.com.mx/89.png" group-title="CANALES-DOCUMENTALES",DOC-History (L)(1080) (1080p)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9838
+#EXTINF:-1 tvg-id="" tvg-name="DOC-History (Z)(1080)" tvg-logo="https://static.epg.best/ar/HistoryChannel.ar.png" group-title="CANALES-DOCUMENTALES",DOC-History (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9797
+#EXTINF:-1 tvg-id="" tvg-name="DOC-History 2 (L)(1080)" tvg-logo="https://logos.xbots.com.mx/41063.png" group-title="CANALES-DOCUMENTALES",DOC-History 2 (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9839
+#EXTINF:-1 tvg-id="" tvg-name="DOC-History 2 (Z)(1080)" tvg-logo="https://static.epg.best/pa/History2LatinAmerica.pa.png" group-title="CANALES-DOCUMENTALES",DOC-History 2 (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9798
+#EXTINF:-1 tvg-id="" tvg-name="DOC-History Channel (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-GLj7yNpt2KU/XaukdqE8vgI/AAAAAAAAAfs/nKa7QQhNNrwjMW4AVyNOX8yyPjioQbM0wCLcBGAsYHQ/s200/13.png" group-title="CANALES-DOCUMENTALES",DOC-History Channel (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9840
+#EXTINF:-1 tvg-id="Canal.History.(México).mx" tvg-name="DOC-History Channel (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-GLj7yNpt2KU/XaukdqE8vgI/AAAAAAAAAfs/nKa7QQhNNrwjMW4AVyNOX8yyPjioQbM0wCLcBGAsYHQ/s200/13.png" group-title="CANALES-DOCUMENTALES",DOC-History Channel (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9841
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Hola TV (Z)(720)" tvg-logo="https://static.epg.best/co/HolaTv.co.png" group-title="CANALES-DOCUMENTALES",DOC-Hola TV (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9799
+#EXTINF:-1 tvg-id="Canal.Investigation.Discovery.(México).mx" tvg-name="DOC-Investigation Discovery (L)(1080)" tvg-logo="https://logos.xbots.com.mx/41020.png" group-title="CANALES-DOCUMENTALES",DOC-Investigation Discovery (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9842
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Investigation Discovery (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-1wsiKCXFQwQ/XaukeKJb7pI/AAAAAAAAAf0/yIW1q0Xu334yYzGXEJSoR5g8RObOTjGHwCLcBGAsYHQ/s200/15.png" group-title="CANALES-DOCUMENTALES",DOC-Investigation Discovery (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9843
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Investigation Discovery (M)(SD)" tvg-logo="http://tv.proyectox.vip:8080/images/9bf31c7ff062936a96d3c8bd1f8f2ff3.png" group-title="CANALES-DOCUMENTALES",DOC-Investigation Discovery (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9844
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Lifetime (Z)(720)" tvg-logo="https://static.epg.best/mx/Lifetime.mx.png" group-title="CANALES-DOCUMENTALES",DOC-Lifetime (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9800
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Lifetime 2 (Z)" tvg-logo="https://static.epg.best/mx/Lifetime.mx.png" group-title="CANALES-DOCUMENTALES",DOC-Lifetime 2 (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9801
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Love Nature (TV)(1080)" tvg-logo="https://lh3.googleusercontent.com/-2GYKih7BFa4/YmbK5fEP2OI/AAAAAAAADgU/qyuxYJ3W2CE6oUubrv-U_MyeqXmntD4OACNcBGAsYHQ/w200-h200/1650903778225091-0.png" group-title="CANALES-DOCUMENTALES",DOC-Love Nature (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9845
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Love Nature (Z)(1080)" tvg-logo="https://upload.wikimedia.org/wikipedia/en/1/1d/Love_Nature_TV.png" group-title="CANALES-DOCUMENTALES",DOC-Love Nature (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9802
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Mas Chic (Z)(720)" tvg-logo="https://static.epg.best/mx/MasChicTV.mx.png" group-title="CANALES-DOCUMENTALES",DOC-Mas Chic (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9803
+#EXTINF:-1 tvg-id="" tvg-name="DOC-NatGeo (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-MGoRDUDmarw/Xaukg9DsL8I/AAAAAAAAAgg/9FgoGgGAUWMkAdNxwa_1hcuBYf8ElS9BACLcBGAsYHQ/s200/9.png" group-title="CANALES-DOCUMENTALES",DOC-NatGeo (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9847
+#EXTINF:-1 tvg-id="National.Geographic.co" tvg-name="DOC-NatGeo (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-MGoRDUDmarw/Xaukg9DsL8I/AAAAAAAAAgg/9FgoGgGAUWMkAdNxwa_1hcuBYf8ElS9BACLcBGAsYHQ/s200/9.png" group-title="CANALES-DOCUMENTALES",DOC-NatGeo (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9846
+#EXTINF:-1 tvg-id="Canal.National.Geographic.(México).sv" tvg-name="DOC-Natgeo (Z)(1080)" tvg-logo="https://static.epg.best/mx/NatGeo.mx.png" group-title="CANALES-DOCUMENTALES",DOC-Natgeo (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9805
+#EXTINF:-1 tvg-id="NAT.GEO.co" tvg-name="DOC-NatGeo Mundo (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-5azFICqil-U/XxSzvxN17FI/AAAAAAAACS8/N-KRlf6C1FcisOo3m7_NWtVvs-KGcXZZwCLcBGAsYHQ/s200/25.png" group-title="CANALES-DOCUMENTALES",DOC-NatGeo Mundo (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9848
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Natgeo Wild (Z)(1080)" tvg-logo="https://static.epg.best/mx/NatGeo.mx.png" group-title="CANALES-DOCUMENTALES",DOC-Natgeo Wild (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9807
+#EXTINF:-1 tvg-id="National.Geographic.Wild.HD.es" tvg-name="DOC-NatGeo Wild Ñ (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-FhNEkhNUM58/Xaukf7PCtkI/AAAAAAAAAgQ/azD1CxOYTugM3KsRnyICXyCVweXcKp1_gCLcBGAsYHQ/s200/5.png" group-title="CANALES-DOCUMENTALES",DOC-NatGeo Wild Ñ (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9849
+#EXTINF:-1 tvg-id="" tvg-name="DOC-Smithsonian Channel (L)(720)" tvg-logo="https://lh3.googleusercontent.com/-UfD9uLqw3Nk/YmbHWDDkmZI/AAAAAAAADgM/IlWLqsL-yxQ41nOSbtWtmQ8IQ-nC9p2PgCNcBGAsYHQ/w200-h200/1650902870130586-0.png" group-title="CANALES-DOCUMENTALES",DOC-Smithsonian Channel (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9850
+#EXTINF:-1 tvg-id="" tvg-name="DOC-TLC (Z)(1080)" tvg-logo="https://static.epg.best/mx/TLC.mx.png" group-title="CANALES-DOCUMENTALES",DOC-TLC (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9810
+#EXTINF:-1 tvg-id="" tvg-name="DOC-TRU TV (L)(1080)" tvg-logo="https://logos.xbots.com.mx/79.png" group-title="CANALES-DOCUMENTALES",DOC-TRU TV (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9852
+#EXTINF:-1 tvg-id="" tvg-name="Reality-Famosos MX | Camara 1 (L)" tvg-logo="https://assets.chismecito.mx/__export/1767971739034/sites/formula/img/2026/01/09/conductores_de_la_casa_de_los_famosos.png_911186587.png" group-title="CANALES-REALITY LIVE",Reality-Famosos MX | Camara 1 (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179560
+#EXTINF:-1 tvg-id="" tvg-name="INF-Baby First (M)(SD)" tvg-logo="" group-title="CANALES-INFANTILES",INF-Baby First (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9854
+#EXTINF:-1 tvg-id="" tvg-name="INF-Baby TV (Z)(1080)" tvg-logo="http://daleplay.club:8080/images/07d716b7a2daab061d6ea4121f11d31e.png" group-title="CANALES-INFANTILES",INF-Baby TV (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9855
+#EXTINF:-1 tvg-id="" tvg-name="INF-Boomerang (Z)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Boomerang_2014_logo.svg/1200px-Boomerang_2014_logo.svg.png" group-title="CANALES-INFANTILES",INF-Boomerang (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9857
+#EXTINF:-1 tvg-id="" tvg-name="INF-Cartoon Network (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-9UXQbO1ONHc/XbCJ8AM4PDI/AAAAAAAAAnQ/KAQFIcqoRJ81qr-mxPGwBOs5BqQRSumFwCLcBGAsYHQ/s200/4.png" group-title="CANALES-INFANTILES",INF-Cartoon Network (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9858
+#EXTINF:-1 tvg-id="" tvg-name="INF-Cartoon Network (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-9UXQbO1ONHc/XbCJ8AM4PDI/AAAAAAAAAnQ/KAQFIcqoRJ81qr-mxPGwBOs5BqQRSumFwCLcBGAsYHQ/s200/4.png" group-title="CANALES-INFANTILES",INF-Cartoon Network (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9859
+#EXTINF:-1 tvg-id="" tvg-name="INF-Cartoon Network (Z)(720)" tvg-logo="http://fanc.tmsimg.com/assets/s59562_ll_h3_aa.png" group-title="CANALES-INFANTILES",INF-Cartoon Network (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9861
+#EXTINF:-1 tvg-id="" tvg-name="INF-Cartoonito (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-QpOaYsWgcPg/XbCJ8KR8dqI/AAAAAAAAAnM/ZbLWuXslEYs_34QSlNCN1NxCJD_LIhEjQCLcBGAsYHQ/s200/3.png" group-title="CANALES-INFANTILES",INF-Cartoonito (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9856
+#EXTINF:-1 tvg-id="" tvg-name="INF-Discovery Kids (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-7wtBrbM92zg/XbCJ8pRUYFI/AAAAAAAAAnU/FcyjlaqBFvcyjS_btzHk80hR-QiDISgvQCLcBGAsYHQ/s200/5.png" group-title="CANALES-INFANTILES",INF-Discovery Kids (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9862
+#EXTINF:-1 tvg-id="" tvg-name="INF-Discovery Kids (M)(SD)" tvg-logo="http://tv.proyectox.vip:8080/images/e4da3b7fbbce2345d7772b0674a318d5.png" group-title="CANALES-INFANTILES",INF-Discovery Kids (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9863
+#EXTINF:-1 tvg-id="" tvg-name="INF-Discovery Kids (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-7wtBrbM92zg/XbCJ8pRUYFI/AAAAAAAAAnU/FcyjlaqBFvcyjS_btzHk80hR-QiDISgvQCLcBGAsYHQ/s200/5.png" group-title="CANALES-INFANTILES",INF-Discovery Kids (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9864
+#EXTINF:-1 tvg-id="" tvg-name="INF-Discovery Kids (Z)(1080)" tvg-logo="http://daleplay.club:8080/images/0709ebf7999dae6684fc2c945ae315ef.png" group-title="CANALES-INFANTILES",INF-Discovery Kids (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9865
+#EXTINF:-1 tvg-id="" tvg-name="INF-Disney Channel (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-jC_71uPSavo/XbCJ81p6qLI/AAAAAAAAAnY/Exgk_229xPQY-vQB55oAWD9a9gO5Ep-sACLcBGAsYHQ/s200/6.png" group-title="CANALES-INFANTILES",INF-Disney Channel (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9866
+#EXTINF:-1 tvg-id="" tvg-name="INF-Disney Channel (Z)" tvg-logo="http://daleplay.club:8080/images/1af27c4b7880c46b862f41093b2222a3.png" group-title="CANALES-INFANTILES",INF-Disney Channel (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9867
+#EXTINF:-1 tvg-id="" tvg-name="INF-Disney JR (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-UbKrve2iADs/XbCJ9H4V49I/AAAAAAAAAnc/P_zFX6qME9sp29_KgVUdMq7lGghzeE7FACLcBGAsYHQ/s200/7.png" group-title="CANALES-INFANTILES",INF-Disney JR (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9868
+#EXTINF:-1 tvg-id="" tvg-name="INF-Disney Jr (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-UbKrve2iADs/XbCJ9H4V49I/AAAAAAAAAnc/P_zFX6qME9sp29_KgVUdMq7lGghzeE7FACLcBGAsYHQ/s200/7.png" group-title="CANALES-INFANTILES",INF-Disney Jr (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9869
+#EXTINF:-1 tvg-id="" tvg-name="INF-Disney JR (Z)(720)" tvg-logo="http://daleplaypro.com:8080/images/627e7fa12773e20f3d430dd147f39c1d.png" group-title="CANALES-INFANTILES",INF-Disney JR (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9870
+#EXTINF:-1 tvg-id="" tvg-name="INF-Nick (M)(720)" tvg-logo="https://1.bp.blogspot.com/-ienC4RYwebg/XbCJ6586sGI/AAAAAAAAAm4/Tnw_2TQefvEA0V1OwlajeJl3hfSo27oEQCLcBGAsYHQ/s200/12.png" group-title="CANALES-INFANTILES",INF-Nick (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9871
+#EXTINF:-1 tvg-id="" tvg-name="INF-Nick (Z)(720)" tvg-logo="http://daleplaypro.com:8080/images/aa751d00697408024bca5ef69d02b5ee.png" group-title="CANALES-INFANTILES",INF-Nick (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9872
+#EXTINF:-1 tvg-id="" tvg-name="INF-Nick 2 (Z)(720)" tvg-logo="http://daleplay.club:8080/images/fca21adc35170a5bda5d664e14b08295.png" group-title="CANALES-INFANTILES",INF-Nick 2 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9874
+#EXTINF:-1 tvg-id="" tvg-name="INF-Nick Jr (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-X24mfjteGIE/XbCJ6OlCKII/AAAAAAAAAms/WRRle8oe1HgQh1YWorHwp6DjUZEwHub3QCLcBGAsYHQ/s200/11.png" group-title="CANALES-INFANTILES",INF-Nick Jr (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9875
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="INF-Nick Jr (M)(720)" tvg-logo="https://1.bp.blogspot.com/-X24mfjteGIE/XbCJ6OlCKII/AAAAAAAAAms/WRRle8oe1HgQh1YWorHwp6DjUZEwHub3QCLcBGAsYHQ/s200/11.png" group-title="CANALES-INFANTILES",INF-Nick Jr (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9876
+#EXTINF:-1 tvg-id="" tvg-name="INF-Nick JR (Z)(720)" tvg-logo="http://daleplaypro.com:8080/images/9760c7476e6274990edda067e059d332.png" group-title="CANALES-INFANTILES",INF-Nick JR (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9877
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="INF-Nickelodeon (M)(720)" tvg-logo="https://1.bp.blogspot.com/-556Wpt2x81s/XbCJ7J0zvgI/AAAAAAAAAm8/M-3PaCQ6EsE1NBCXLOXvyNWVyL62gvJhQCLcBGAsYHQ/s200/13.png" group-title="CANALES-INFANTILES",INF-Nickelodeon (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9879
+#EXTINF:-1 tvg-id="" tvg-name="INF-Nicktoons (M)(720)" tvg-logo="https://1.bp.blogspot.com/-I4ldwtW75bg/XbCJ7UTo99I/AAAAAAAAAnA/11FY3X5w_-shKupLj0Lct2mTe7JMURH_wCLcBGAsYHQ/s200/14.png" group-title="CANALES-INFANTILES",INF-Nicktoons (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9882
+#EXTINF:-1 tvg-id="" tvg-name="INF-TeenNick (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-dFHl1z4YcQk/XbCJ6BgemaI/AAAAAAAAAm0/aQt5GvD7r5ATZetNP-4LfG1aS01FsKnMgCLcBGAsYHQ/s200/10.png" group-title="CANALES-INFANTILES",INF-TeenNick (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9873
+#EXTINF:-1 tvg-id="" tvg-name="INF-Tooncast (M)(720)" tvg-logo="https://1.bp.blogspot.com/-ilF13a10Ezk/XbCJ7kw7jxI/AAAAAAAAAnE/7IuCyG1j-J0vgluvh4osCiMq6zQUmv8pwCLcBGAsYHQ/s200/15.png" group-title="CANALES-INFANTILES",INF-Tooncast (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9883
+#EXTINF:-1 tvg-id="" tvg-name="INF-Tooncast (Z)(720)" tvg-logo="http://daleplaypro.com:8080/images/ebdac901ea46a900977d3f1b260823f2.png" group-title="CANALES-INFANTILES",INF-Tooncast (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9884
+#EXTINF:-1 tvg-id="" tvg-name="Liga GT OP2 (Z)" tvg-logo="https://i.postimg.cc/YqmPk24J/GUA.jpg" group-title="GUATEMALA",Liga GT OP2 (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173681
+#EXTINF:-1 tvg-id="" tvg-name="MUS-Bandamax (M)(SD)" tvg-logo="http://23.153.216.121:25461/images/6f4922f45568161a8cdf4ad2299f6d23.png" group-title="CANALES-MUSICA",MUS-Bandamax (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8307
+#EXTINF:-1 tvg-id="" tvg-name="MUS-Bandamax (TV)(720)" tvg-logo="" group-title="CANALES-MUSICA",MUS-Bandamax (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8308
+#EXTINF:-1 tvg-id="" tvg-name="MUS-HTV (M)(720)" tvg-logo="" group-title="CANALES-MUSICA",MUS-HTV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8309
+#EXTINF:-1 tvg-id="" tvg-name="MUS-MTV (M)(1080)" tvg-logo="http://23.153.216.121:25461/images/45c48cce2e2d7fbdea1afc51c7c6ad26.png" group-title="CANALES-MUSICA",MUS-MTV (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8310
+#EXTINF:-1 tvg-id="" tvg-name="MUS-MTV Live (M)(1080)" tvg-logo="http://23.153.216.121:25461/images/1679091c5a880faf6fb5e6087eb1b2dc.png" group-title="CANALES-MUSICA",MUS-MTV Live (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8312
+#EXTINF:-1 tvg-id="" tvg-name="MUS-Telehit (M)(1080)" tvg-logo="http://23.153.216.121:25461/images/8f14e45fceea167a5a36dedd4bea2543.png" group-title="CANALES-MUSICA",MUS-Telehit (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8315
+#EXTINF:-1 tvg-id="" tvg-name="MUS-Telehit (M)(SD)" tvg-logo="http://23.153.216.121:25461/images/8f14e45fceea167a5a36dedd4bea2543.png" group-title="CANALES-MUSICA",MUS-Telehit (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8316
+#EXTINF:-1 tvg-id="" tvg-name="MUS-Telehit Plus(M)(1080)" tvg-logo="http://23.153.216.121:25461/images/c51ce410c124a10e0db5e4b97fc2af39.png" group-title="CANALES-MUSICA",MUS-Telehit Plus(M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8317
+#EXTINF:-1 tvg-id="" tvg-name="MUS-Teleritmo (L)(SD)" tvg-logo="http://23.153.216.121:25461/images/c4ca4238a0b923820dcc509a6f75849b.png" group-title="CANALES-MUSICA",MUS-Teleritmo (L)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8318
+#EXTINF:-1 tvg-id="" tvg-name="MUS-VH1 (TV)(720)" tvg-logo="http://23.153.216.121:25461/images/e4da3b7fbbce2345d7772b0674a318d5.png" group-title="CANALES-MUSICA",MUS-VH1 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8320
+#EXTINF:-1 tvg-id="" tvg-name="MUS-VH1 Mega Hits (M)(SD)" tvg-logo="http://23.153.216.121:25461/images/eccbc87e4b5ce2fe28308fd9f2a7baf3.png" group-title="CANALES-MUSICA",MUS-VH1 Mega Hits (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8322
+#EXTINF:-1 tvg-id="" tvg-name="NOT-BBC World News (M)(720)" tvg-logo="https://1.bp.blogspot.com/-X4Twi3pHIRM/Xm5XtyganmI/AAAAAAAABbk/6byY3ZUAXUYkg6WVzsqg_MjZY5x5Bg-2gCLcBGAsYHQ/s200/5.png" group-title="CANALES-NOTICIA",NOT-BBC World News (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10250
+#EXTINF:-1 tvg-id="" tvg-name="NOT-CNN en Español (M)(1080)" tvg-logo="" group-title="CANALES-NOTICIA",NOT-CNN en Español (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10251
+#EXTINF:-1 tvg-id="" tvg-name="NOT-CNN en Español (M)(720)" tvg-logo="https://1.bp.blogspot.com/-nmME0jZ5xn4/Xm5XuuyNAAI/AAAAAAAABb0/3LTprvv_5jgsQmQEwdrJyUUf4OUSww6dgCLcBGAsYHQ/s200/9.png" group-title="CANALES-NOTICIA",NOT-CNN en Español (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10252
+#EXTINF:-1 tvg-id="" tvg-name="NOT-CNN USA (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-EvQ65hBDha4/Xm5XsvwMm8I/AAAAAAAABbU/i6tLNE9eN4cHVxK_-It9hruH-81eLn16ACLcBGAsYHQ/s200/1.png" group-title="CANALES-NOTICIA",NOT-CNN USA (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10253
+#EXTINF:-1 tvg-id="FETV.(Family.Entertainment.Television).us" tvg-name="NOT-DW (M)(720)" tvg-logo="https://1.bp.blogspot.com/-bIt6cFjY83E/Xm5Xt7QIQ7I/AAAAAAAABbo/BWlM_fR5IjQpd6KNZ6uikhy5f1fxQ-YOwCLcBGAsYHQ/s200/6.png" group-title="CANALES-NOTICIA",NOT-DW (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10254
+#EXTINF:-1 tvg-id="" tvg-name="NOT-NTN 24 (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-Qgr-jgmFI2s/Xm5XuXmxYBI/AAAAAAAABbw/eURPOer17pQMJS7tAF8uLXtT-eISGwzCgCLcBGAsYHQ/s200/8.png" group-title="CANALES-NOTICIA",NOT-NTN 24 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10255
+#EXTINF:-1 tvg-id="Canal.NTN24.(Nuestra.Tele.Noticias.24.Horas).sv" tvg-name="NOT-NTN24 (TV)(SD)" tvg-logo="https://1.bp.blogspot.com/-Qgr-jgmFI2s/Xm5XuXmxYBI/AAAAAAAABbw/eURPOer17pQMJS7tAF8uLXtT-eISGwzCgCLcBGAsYHQ/s200/8.png" group-title="CANALES-NOTICIA",NOT-NTN24 (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10256
+#EXTINF:-1 tvg-id="" tvg-name="NOT-Wobi (TV)(SD)" tvg-logo="https://1.bp.blogspot.com/-IkZ4XSP5dp4/Xm5XtoL93eI/AAAAAAAABbg/bLy9q5_WDL0ZhmIHVBYI1uNZ0uvNFuUWACLcBGAsYHQ/s200/4.png" group-title="CANALES-NOTICIA",NOT-Wobi (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10258
+#EXTINF:-1 tvg-id="Galavision.-.Eastern.Feed.us" tvg-name="NOV-Galavision Miami (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-p_i9w0OZlsI/Xz88xUiHfjI/AAAAAAAABKQ/ZNiXDDTDvZ0ylIjUC2Mu3B4Yi4iMD9VRACLcBGAsYHQ/w200-h200/6%2BGala%2Bvisi%25C3%25B3n.png" group-title="CANALES-NOVELAS",NOV-Galavision Miami (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8333
+#EXTINF:-1 tvg-id="Galavision.-.Eastern.Feed.us" tvg-name="NOV-Galavision NY (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-p_i9w0OZlsI/Xz88xUiHfjI/AAAAAAAABKQ/ZNiXDDTDvZ0ylIjUC2Mu3B4Yi4iMD9VRACLcBGAsYHQ/w200-h200/6%2BGala%2Bvisi%25C3%25B3n.png" group-title="CANALES-NOVELAS",NOV-Galavision NY (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8334
+#EXTINF:-1 tvg-id="Canal.#Vamos.sv" tvg-name="NOV-Galavision NY (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-p_i9w0OZlsI/Xz88xUiHfjI/AAAAAAAABKQ/ZNiXDDTDvZ0ylIjUC2Mu3B4Yi4iMD9VRACLcBGAsYHQ/w200-h200/6%2BGala%2Bvisi%25C3%25B3n.png" group-title="CANALES-NOVELAS",NOV-Galavision NY (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/67002
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Mega Tv Miami (Z)(720)" tvg-logo="" group-title="CANALES-NOVELAS",NOV-Mega Tv Miami (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/67003
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Pasiones (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-m1oCMFjG3ug/Xz87KGiI1EI/AAAAAAAABJ4/ArWG1xLYopM3dqWio3izvW6V-8QWOAOlwCLcBGAsYHQ/w200-h200/5%2BPasiones.png" group-title="CANALES-NOVELAS",NOV-Pasiones (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8335
+#EXTINF:-1 tvg-id="Canal.Pasiones.(Latinoamérica).sv" tvg-name="NOV-Pasiones (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-m1oCMFjG3ug/Xz87KGiI1EI/AAAAAAAABJ4/ArWG1xLYopM3dqWio3izvW6V-8QWOAOlwCLcBGAsYHQ/w200-h200/5%2BPasiones.png" group-title="CANALES-NOVELAS",NOV-Pasiones (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/67004
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo (i)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/62093
+#EXTINF:-1 tvg-id="Telemundo.(KXNU-LD).Laredo,.Texas.us" tvg-name="NOV-Telemundo (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8336
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Atlanta (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Atlanta (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8338
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Boston (i)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Boston (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/62100
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Boston (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Boston (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8339
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Boston (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Boston (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8340
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Chicago (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Chicago (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8342
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Chicago (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Chicago (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8343
+#EXTINF:-1 tvg-id="Telemundo.(WSNS).Chicago,.IL.us" tvg-name="NOV-Telemundo - Chicago (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Chicago (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8344
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Dallas (L)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Dallas (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8345
+#EXTINF:-1 tvg-id="Telemundo.(KXTX).Dallas,.TX.us" tvg-name="NOV-Telemundo - Dallas (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Dallas (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8346
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Dallas 39 (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Dallas 39 (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8347
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Denver (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Denver (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8348
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Fresno (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Fresno (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8349
+#EXTINF:-1 tvg-id="Telemundo.(KTMD).Houston,.TX.us" tvg-name="NOV-Telemundo - Houston (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Houston (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8350
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Internacional (L)(HQ)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Internacional (L)(HQ)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8351
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Las Vegas (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Las Vegas (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8352
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Los Angeles (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Los Angeles (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8353
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Los Angeles (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Los Angeles (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8354
+#EXTINF:-1 tvg-id="Telemundo.(KVEA).Los.Angeles,.CA.us" tvg-name="NOV-Telemundo - Los Angeles (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Los Angeles (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8355
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Miami (i)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Miami (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8356
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Miami (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Miami (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8357
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - National East (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - National East (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8359
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - National West (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - National West (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8360
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - New Orleans (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - New Orleans (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8361
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - New York (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - New York (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8362
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - New York (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - New York (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8364
+#EXTINF:-1 tvg-id="Telemundo.(WRMD).Tampa,.FL.us" tvg-name="NOV-Telemundo - Orlando Florida (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Orlando Florida (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8365
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Philadelphia (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Philadelphia (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8366
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Phoenix (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Phoenix (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8367
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Phoenix Arizona (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Phoenix Arizona (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8368
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - San Diego (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - San Diego (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8371
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - San Francisco (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - San Francisco (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8372
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - San francisco (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - San francisco (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8373
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Tampa (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Tampa (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8374
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Texas (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Texas (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8375
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Washington (L)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Washington (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8376
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Washington (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Washington (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8377
+#EXTINF:-1 tvg-id="Telemundo.(WZDC).Washington,.DC.us" tvg-name="NOV-Telemundo - Washington (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Washington (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8379
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo - Washington (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo - Washington (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8378
+#EXTINF:-1 tvg-id="Telemundo.(WRDQ-DT3).Orlando,.FL.us" tvg-name="NOV-Telemundo 31 - Orlando WTMO (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo 31 - Orlando WTMO (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/62094
+#EXTINF:-1 tvg-id="Telemundo.(KTAZ).Phoenix,.AZ.us" tvg-name="NOV-Telemundo 33 - Phoenix KTAZ (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo 33 - Phoenix KTAZ (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/62095
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo 44 - Chicago (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo 44 - Chicago (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/62097
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo 48 - San Fransico KSTS (i)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo 48 - San Fransico KSTS (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/62098
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Telemundo Internacional (i)(720)" tvg-logo="https://1.bp.blogspot.com/-_GFXbzVQh9k/Xz8_lLKPCaI/AAAAAAAABK8/hcKKV288eDIDeBwu81Eehn4BtgVQC4kVwCLcBGAsYHQ/w200-h200/9%2BTELEMUNDO.png" group-title="CANALES-NOVELAS",NOV-Telemundo Internacional (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/62101
+#EXTINF:-1 tvg-id="" tvg-name="NOV-TLNovelas (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-TLNovelas (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8406
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Unicable (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-R4850qWMRRM/Xz8-484rEaI/AAAAAAAABK0/gZWnuvKx8ss-Gdc8vGOdQY0PlY8-hVr3wCLcBGAsYHQ/w200-h200/8%2BUnicable.png" group-title="CANALES-NOVELAS",NOV-Unicable (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8381
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Unicable (L)(720)" tvg-logo="https://1.bp.blogspot.com/-R4850qWMRRM/Xz8-484rEaI/AAAAAAAABK0/gZWnuvKx8ss-Gdc8vGOdQY0PlY8-hVr3wCLcBGAsYHQ/w200-h200/8%2BUnicable.png" group-title="CANALES-NOVELAS",NOV-Unicable (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8382
+#EXTINF:-1 tvg-id="Canal.Unicable.(México).sv" tvg-name="NOV-Unicable (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-R4850qWMRRM/Xz8-484rEaI/AAAAAAAABK0/gZWnuvKx8ss-Gdc8vGOdQY0PlY8-hVr3wCLcBGAsYHQ/w200-h200/8%2BUnicable.png" group-title="CANALES-NOVELAS",NOV-Unicable (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/67006
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Unimas (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-Jsf5T1tyaT0/Xz86K8Fi9aI/AAAAAAAABJs/dC669Vkn_ecmmwo9N72w5p_a3GVwE5eaQCLcBGAsYHQ/w200-h200/4%2Bunimas.png" group-title="CANALES-NOVELAS",NOV-Unimas (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/67007
+#EXTINF:-1 tvg-id="" tvg-name="NOV-UNIMáS (KFTR-Los Angeles CA) (M)(720)" tvg-logo="https://1.bp.blogspot.com/-Jsf5T1tyaT0/Xz86K8Fi9aI/AAAAAAAABJs/dC669Vkn_ecmmwo9N72w5p_a3GVwE5eaQCLcBGAsYHQ/w200-h200/4%2Bunimas.png" group-title="CANALES-NOVELAS",NOV-UNIMáS (KFTR-Los Angeles CA) (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8384
+#EXTINF:-1 tvg-id="" tvg-name="NOV-UNIMáS (M)(720)" tvg-logo="https://1.bp.blogspot.com/-Jsf5T1tyaT0/Xz86K8Fi9aI/AAAAAAAABJs/dC669Vkn_ecmmwo9N72w5p_a3GVwE5eaQCLcBGAsYHQ/w200-h200/4%2Bunimas.png" group-title="CANALES-NOVELAS",NOV-UNIMáS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8386
+#EXTINF:-1 tvg-id="" tvg-name="NOV-UNIMáS New York (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-Jsf5T1tyaT0/Xz86K8Fi9aI/AAAAAAAABJs/dC669Vkn_ecmmwo9N72w5p_a3GVwE5eaQCLcBGAsYHQ/w200-h200/4%2Bunimas.png" group-title="CANALES-NOVELAS",NOV-UNIMáS New York (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8390
+#EXTINF:-1 tvg-id="" tvg-name="NOV-UNIMáS NY (M)(720)" tvg-logo="https://1.bp.blogspot.com/-Jsf5T1tyaT0/Xz86K8Fi9aI/AAAAAAAABJs/dC669Vkn_ecmmwo9N72w5p_a3GVwE5eaQCLcBGAsYHQ/w200-h200/4%2Bunimas.png" group-title="CANALES-NOVELAS",NOV-UNIMáS NY (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8388
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Universo (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-I5coVQh61s8/XzNOnK_MruI/AAAAAAAAAtg/FXnVyaZkKrso3K6ppfYzk9omGs-ttSgXQCLcBGAsYHQ/w200-h200/53%2BUniverso%2Btv.png" group-title="CANALES-NOVELAS",NOV-Universo (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8391
+#EXTINF:-1 tvg-id="Canal.Universo.sv" tvg-name="NOV-Universo (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-I5coVQh61s8/XzNOnK_MruI/AAAAAAAAAtg/FXnVyaZkKrso3K6ppfYzk9omGs-ttSgXQCLcBGAsYHQ/w200-h200/53%2BUniverso%2Btv.png" group-title="CANALES-NOVELAS",NOV-Universo (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/67008
+#EXTINF:-1 tvg-id="Univision.(KUOK-CD).Oklahoma.City,.OK.us" tvg-name="NOV-Univision (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/67009
+#EXTINF:-1 tvg-id="Canal.Univision.TLNovelas.sv" tvg-name="NOV-Univision - TeleNovelas (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision - TeleNovelas (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/67012
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Univision Chicago (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision Chicago (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8394
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Univision Houston (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision Houston (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8395
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Univision Los Angeles (M)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision Los Angeles (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8396
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Univision Los Angeles (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision Los Angeles (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8397
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Univision Miami (M)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision Miami (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8398
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Univision Miami (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision Miami (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8399
+#EXTINF:-1 tvg-id="Univision.(KWNL-CD).Winslow,.AR.us" tvg-name="NOV-Univision Network (TV)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision Network (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8400
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Univision New York (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision New York (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8401
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Univision New York (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision New York (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8402
+#EXTINF:-1 tvg-id="" tvg-name="NOV-Univision TLNovelas (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-2dxUf0Es7Tw/Xz81WjWqiuI/AAAAAAAABJU/_D9dk-RDbfkf7lotdG3UxhMoVpUFqx9SwCLcBGAsYHQ/w200-h200/1%2BUnivision.png" group-title="CANALES-NOVELAS",NOV-Univision TLNovelas (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8405
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La rosa de Guadalupe (2008)" tvg-logo="https://i.postimg.cc/TwPCQDmD/rosa-de-guadalupe.png" group-title="24/7 TELENOVELAS",24/7 La rosa de Guadalupe (2008)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181926
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Como dice el dicho (e)(720)" tvg-logo="https://i.postimg.cc/8C8QDqny/comodice-el-dicho.png" group-title="24/7 TELENOVELAS",24/7 Como dice el dicho (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/188477
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Betty la Fea: Parte 1 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/hoVompPF0UDZiYwe2pr16zMAWjS.jpg" group-title="24/7 TELENOVELAS",24/7 Betty la Fea: Parte 1 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166967
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Betty la Fea: Parte 2 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/bxVd9IIYA1YA1F7OpVDnSXhIC7k.jpg" group-title="24/7 TELENOVELAS",24/7 Betty la Fea: Parte 2 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166968
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Betty la Fea: Parte 3 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/47fyfo9LB2S04zNFUSFn61fJEaE.jpg" group-title="24/7 TELENOVELAS",24/7 Betty la Fea: Parte 3 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166969
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Amor a la plancha (e)(SD)" tvg-logo="https://unity-img.tbxapis.com/v0/images/801ca66694329da3ba697f38c94bf0a1/content/676eabde73fec95dc8e62e9d/6ad4732670fe6197326c535c1fe1baf5/img.png" group-title="24/7 TELENOVELAS",24/7 Amor a la plancha (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178783
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Angel de la Guarda Mi Dulce Compañia (e)(SD)" tvg-logo="https://upload.wikimedia.org/wikipedia/sr/thumb/6/65/Angel_de_la_guarda.jpg/250px-Angel_de_la_guarda.jpg" group-title="24/7 TELENOVELAS",24/7 Angel de la Guarda Mi Dulce Compañia (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178784
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Bermúdez (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/6JtigtSkR6693YrA9lxuFt7rbgr.jpg" group-title="24/7 TELENOVELAS",24/7 Bermúdez (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178785
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Bloque de búsqueda (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/lM8zAmNKXdDQaXtWiTHrnvl6h36.jpg" group-title="24/7 TELENOVELAS",24/7 Bloque de búsqueda (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178786
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Chepe Fortuna (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/8KwiQK3PdhWLD0jiOprCgDimLrV.jpg" group-title="24/7 TELENOVELAS",24/7 Chepe Fortuna (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178787
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - 4K (e)(4K)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - 4K (e)(4K)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164942
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Accion 1 (e)(1080)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Accion 1 (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164581
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Accion 2 (e)(1080)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Accion 2 (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164582
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Accion 3 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Accion 3 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164583
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Accion 4 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Accion 4 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164584
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Accion 5 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Accion 5 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164586
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Accion 6 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Accion 6 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164781
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Accion 7 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Accion 7 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164782
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Accion 8 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Accion 8 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164783
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Accion 9 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Accion 9 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164787
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Accion 10 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Accion 10 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164788
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Amazon Prime 1 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Amazon Prime 1 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164869
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Amazon Prime 10 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Amazon Prime 10 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164940
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Amazon Prime 2 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Amazon Prime 2 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164870
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Amazon Prime 3 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Amazon Prime 3 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164871
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Amazon Prime 4 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Amazon Prime 4 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164934
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Amazon Prime 5 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Amazon Prime 5 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164935
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Amazon Prime 6 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Amazon Prime 6 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164936
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Amazon Prime 7 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Amazon Prime 7 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164937
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Amazon Prime 8 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Amazon Prime 8 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164938
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Amazon Prime 9 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Amazon Prime 9 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164939
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Animacion 1 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Animacion 1 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164949
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Animacion 2 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Animacion 2 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164950
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - APPLE TV (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - APPLE TV (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164956
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Aventura (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Aventura (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164957
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Comedias 1 (e)(1080)(Dual Audio)" tvg-logo="https://i.postimg.cc/6QH8pPBG/Cine-Comedia-Proyecto-x.png" group-title="24/7 CINEMA ",24/7 Cinema - Comedias 1 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164959
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Comedias 2 (e)(1080)(Dual Audio)" tvg-logo="https://i.postimg.cc/66ZCM99D/CINE-COMEDIA-2.png" group-title="24/7 CINEMA ",24/7 Cinema - Comedias 2 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164960
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Comedias 3 (e)(1080)(Dual Audio)" tvg-logo="https://i.postimg.cc/5NHT7QXP/Comedia-3-Proyecto-X.png" group-title="24/7 CINEMA ",24/7 Cinema - Comedias 3 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164961
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Comedias 4 (e)(1080)(Dual Audio)" tvg-logo="https://i.postimg.cc/qMkXqPTZ/Comedia-4-proyectox.png" group-title="24/7 CINEMA ",24/7 Cinema - Comedias 4 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164962
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Comedias 5 (e)(1080)(Dual Audio)" tvg-logo="https://i.postimg.cc/bNt8GB91/Comedia-5-proyecto-x.png" group-title="24/7 CINEMA ",24/7 Cinema - Comedias 5 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164963
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Comedias 6 (e)(1080)(Dual Audio)" tvg-logo="https://i.postimg.cc/zB7F8Nfs/comedia-6.png" group-title="24/7 CINEMA ",24/7 Cinema - Comedias 6 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164964
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Comedias 7 (e)(1080)(Dual Audio)" tvg-logo="https://i.postimg.cc/q7jGd0gk/Comedia-7.png" group-title="24/7 CINEMA ",24/7 Cinema - Comedias 7 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164965
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Comedias 8 (e)(1080)(Dual Audio)" tvg-logo="https://i.postimg.cc/yYsXWkRp/247-Cinema-Comedias-8.png" group-title="24/7 CINEMA ",24/7 Cinema - Comedias 8 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164966
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Disney Animacion 1 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Disney Animacion 1 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164953
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Disney Animacion 2 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Disney Animacion 2 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164954
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Disney Animacion 3 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Disney Animacion 3 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164955
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Disney Cinema 1 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Disney Cinema 1 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164951
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Disney Cinema 2 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Disney Cinema 2 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164952
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Fantasia (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Fantasia (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164958
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - HBO MAX (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - HBO MAX (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164941
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Infantil 1 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Infantil 1 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164943
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Infantil 2 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Infantil 2 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164944
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Infantil 3 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Infantil 3 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164946
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Netflix Premier 1 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Netflix Premier 1 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164802
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Netflix Premier 2 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Netflix Premier 2 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164863
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Netflix Premier 3 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Netflix Premier 3 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164864
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Netflix Premier 4 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Netflix Premier 4 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164865
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Netflix Premier 5 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Netflix Premier 5 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164866
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Netflix Premier 6 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Netflix Premier 6 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164867
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Netflix Premier 7 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Netflix Premier 7 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164868
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Saga Arma Mortal (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Saga Arma Mortal (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164789
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Saga Duro de Matar (e)(1080)(Dual Audio)  " tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Saga Duro de Matar (e)(1080)(Dual Audio)  
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164792
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Saga Ip Man (e)(1080)(Dual Audio)  " tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Saga Ip Man (e)(1080)(Dual Audio)  
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164793
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Saga John Wick (e)(1080)(Dual Audio)  " tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Saga John Wick (e)(1080)(Dual Audio)  
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164794
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Saga Kickboxer (e)(1080)(Dual Audio)  " tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Saga Kickboxer (e)(1080)(Dual Audio)  
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164796
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Saga: Karate Kid (e)(1080)(Dual Audio)  " tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Saga: Karate Kid (e)(1080)(Dual Audio)  
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164795
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Saga: Mision Imposible (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Saga: Mision Imposible (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164798
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Saga: Rambo (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Saga: Rambo (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164799
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Saga: Rapidos y Furiosos (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Saga: Rapidos y Furiosos (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164800
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Saga: Taxi Drive (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Saga: Taxi Drive (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164801
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas Asaltos (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas Asaltos (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164790
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas Asesinos (e)(1080)(Dual Audio)  " tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas Asesinos (e)(1080)(Dual Audio)  
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164791
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: 007 James Bond - Daniel Craig (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: 007 James Bond - Daniel Craig (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164980
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: 007 James Bond - Pierce Brosnan (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: 007 James Bond - Pierce Brosnan (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164979
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: 007 James Bond - Roger Moore (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: 007 James Bond - Roger Moore (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164977
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: 007 James Bond - Sean Connery (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: 007 James Bond - Sean Connery (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164976
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: 007 James Bond - Timothy Dalton (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: 007 James Bond - Timothy Dalton (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164978
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: American Pie (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: American Pie (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164967
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Barbie (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Barbie (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164945
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Batman (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Batman (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164948
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Batman Animado (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Batman Animado (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164947
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: El Planeta de los Simios - Clasico (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: El Planeta de los Simios - Clasico (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164982
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: El Planeta de los Simios - Moderno (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: El Planeta de los Simios - Moderno (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164981
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: El Señor de los Anillos (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: El Señor de los Anillos (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164974
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Harry Potter (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Harry Potter (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164970
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Harry Potter (e)(4K)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Harry Potter (e)(4K)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164971
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Jurassic Park (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Jurassic Park (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164975
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Kung fu (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Kung fu (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164797
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Loca Academia de Policias (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Loca Academia de Policias (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164969
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Madagascar (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 INFANTIL",24/7 Cinema - Sagas: Madagascar (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164984
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Scary Movie (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Scary Movie (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164968
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Star Wars (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Star Wars (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164972
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Star Wars (e)(4K)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Star Wars (e)(4K)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164973
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema - Sagas: Toy Story (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema - Sagas: Toy Story (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164983
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Accion - Sagas: The Matrix (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Accion - Sagas: The Matrix (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165064
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Comedias - Sagas: Asu Mare (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Comedias - Sagas: Asu Mare (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164986
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Ficcion - Sagas: Guardianes de la Galaxia (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Ficcion - Sagas: Guardianes de la Galaxia (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165067
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Ficcion - Sagas: Marvel (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Ficcion - Sagas: Marvel (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165068
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Ficcion - Sagas: Marvel Universo (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Ficcion - Sagas: Marvel Universo (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165065
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Ficcion - Sagas: Spider Man (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Ficcion - Sagas: Spider Man (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165066
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Infantil - Sagas: La Era del hielo (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 INFANTIL",24/7 Cinema Infantil - Sagas: La Era del hielo (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164985
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - El Conjuro (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - El Conjuro (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164989
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - Halloween (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - Halloween (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164987
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - Sagas: Alien (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - Sagas: Alien (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164990
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - Sagas: Chucky (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - Sagas: Chucky (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164997
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - Sagas: El Duende Maldito "Leprechaun" (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - Sagas: El Duende Maldito "Leprechaun" (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164996
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - Sagas: La Maldicion (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - Sagas: La Maldicion (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164995
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - Sagas: Pesadilla en Elm Street (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - Sagas: Pesadilla en Elm Street (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164994
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - Sagas: Resident Evil (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - Sagas: Resident Evil (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164991
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - Sagas: Underworld (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - Sagas: Underworld (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164992
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - Sagas: Viernes 13 (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - Sagas: Viernes 13 (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164993
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cinema Terror - SAW (e)(1080)(Dual Audio)" tvg-logo="" group-title="24/7 CINEMA ",24/7 Cinema Terror - SAW (e)(1080)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164988
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Crimen - Hawaii Five-0 (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/ej5VNvBy4VqCqsuamY4oe4EiwFb.jpg" group-title="24/7 SERIES",24/7 Crimen - Hawaii Five-0 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165477
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Doña Bella (e)(1080)" tvg-logo="https://criticatvblog.wordpress.com/wp-content/uploads/2020/05/donabella-720x405_0.jpg" group-title="24/7 TELENOVELAS",24/7 Doña Bella (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178790
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball - Saga de Pilaf (e)(720)" tvg-logo="https://i.postimg.cc/pdsmRd1S/247-Dragon-Ball-Saga-de-Pilaf.png" group-title="24/7 ANIME",24/7 Dragon Ball - Saga de Pilaf (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179011
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball - Saga 21° Torneo de las artes Marciales (e)(720)" tvg-logo="https://i.postimg.cc/JzdP920j/247-Dragon-Ball-Saga-de-la-Patrulla-Roja.png" group-title="24/7 ANIME",24/7 Dragon Ball - Saga 21° Torneo de las artes Marciales (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179196
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball - Saga de la Patrulla Roja (e)(720)" tvg-logo="https://i.postimg.cc/JzdP920j/247-Dragon-Ball-Saga-de-la-Patrulla-Roja.png" group-title="24/7 ANIME",24/7 Dragon Ball - Saga de la Patrulla Roja (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179197
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball - Saga el Palacio de Uranai Baba (e)(720)" tvg-logo="https://i.postimg.cc/vTqQry8Z/247-Dragon-Ball-Saga-el-Palacio-de-Uranai-Baba.png" group-title="24/7 ANIME",24/7 Dragon Ball - Saga el Palacio de Uranai Baba (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179198
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball - Saga 22° Torneo de las Artes Marciales (e)(720)" tvg-logo="https://i.postimg.cc/wxPcVm1Z/247-Dragon-Ball-Saga-22-Torneo-de-las-Artes-Marciales.png" group-title="24/7 ANIME",24/7 Dragon Ball - Saga 22° Torneo de las Artes Marciales (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179200
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball - Saga Piccolo Daimaku (e)(720)" tvg-logo="https://i.postimg.cc/yxNQZ4rZ/247-Dragon-Ball-Saga-Piccolo-Daimaku.png" group-title="24/7 ANIME",24/7 Dragon Ball - Saga Piccolo Daimaku (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179201
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball - Saga 23° Torneo de las Artes Marciales (e)(720)" tvg-logo="https://i.postimg.cc/2jwNLC3F/247-Dragon-Ball-Saga-23-Torneo-de-las-Artes-Marciale.png" group-title="24/7 ANIME",24/7 Dragon Ball - Saga 23° Torneo de las Artes Marciales (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179202
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Z - Saga Saiyajin (e)(720)" tvg-logo="https://i.postimg.cc/QMC7yPXT/247-Dragon-Ball-Z-Saga-Saiyajin.png" group-title="24/7 ANIME",24/7 Dragon Ball Z - Saga Saiyajin (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179013
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Z - Saga Freezer (e)(720)" tvg-logo="https://i.postimg.cc/mgqnq3TN/247-Dragon-Ball-Z-Saga-Freeze.png" group-title="24/7 ANIME",24/7 Dragon Ball Z - Saga Freezer (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179014
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Z - Saga Garlic Jr. (e)(720)" tvg-logo="https://i.postimg.cc/hjjfj7Jg/247-Dragon-Ball-Z-Saga-Garlic-Jr.png" group-title="24/7 ANIME",24/7 Dragon Ball Z - Saga Garlic Jr. (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179016
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Z - Saga Androides (e)(720)" tvg-logo="https://i.postimg.cc/2SKtJsQN/247-Dragon-Ball-Z-Saga-Androides.png" group-title="24/7 ANIME",24/7 Dragon Ball Z - Saga Androides (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179018
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Z - Saga Cell (e)(720)" tvg-logo="https://i.postimg.cc/R0ZYbM6f/247-Dragon-Ball-Z-Saga-Cell.png" group-title="24/7 ANIME",24/7 Dragon Ball Z - Saga Cell (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179019
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Z - Saga Torneo del Otro Mundo (e)(720)" tvg-logo="https://i.postimg.cc/N0N7ng7s/247-Dragon-Ball-Z-Saga-Torneo-del-Otro-Mundo.png" group-title="24/7 ANIME",24/7 Dragon Ball Z - Saga Torneo del Otro Mundo (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179020
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Z - Saga 25º. Torneo de las artes Marciales (e)(720)" tvg-logo="https://i.postimg.cc/LXNkrmzx/247-Dragon-Ball-Z-Saga-25º-Torneo-de-las-artes-Marciales.png" group-title="24/7 ANIME",24/7 Dragon Ball Z - Saga 25º. Torneo de las artes Marciales (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179021
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Z - Saga Majin Buu (e)(720)" tvg-logo="https://i.postimg.cc/GpxZNs9F/247-Dragon-Ball-Z-Saga-Majin-Buu-(e)(721).png" group-title="24/7 ANIME",24/7 Dragon Ball Z - Saga Majin Buu (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179022
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball GT - Saga Estrella Negra (e)(720)" tvg-logo="https://i.postimg.cc/xCGhHVym/247-Dragon-Ball-GT-Saga-Estrella-Negra.png" group-title="24/7 ANIME",24/7 Dragon Ball GT - Saga Estrella Negra (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179024
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball GT - Saga Baby (e)(1080)" tvg-logo="https://i.postimg.cc/tJTZPpQY/247-Dragon-Ball-GT-Saga-Baby.png" group-title="24/7 ANIME",24/7 Dragon Ball GT - Saga Baby (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179025
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball GT - Saga Super Android 17 (e)(720)" tvg-logo="https://i.postimg.cc/43917vbZ/247-Dragon-Ball-GT-Saga-Super-Android-17.png" group-title="24/7 ANIME",24/7 Dragon Ball GT - Saga Super Android 17 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179026
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball GT - Saga Shadow Dragon (e)(720)" tvg-logo="https://i.postimg.cc/J7fMjRLG/247-Dragon-Ball-GT-Saga-Shadow-Dragon.png" group-title="24/7 ANIME",24/7 Dragon Ball GT - Saga Shadow Dragon (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179028
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Super - Saga la Batalla de los Dioses (e)(720)" tvg-logo="https://i.postimg.cc/HkSwPZ3g/247-Dragon-Ball-Super-Saga-la-Batalla-de-los-Dioses.png" group-title="24/7 ANIME",24/7 Dragon Ball Super - Saga la Batalla de los Dioses (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179029
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Super - Saga Golden Freezer (e)(720)" tvg-logo="https://i.postimg.cc/XJjsyG2X/247-Dragon-Ball-Super-Saga-Golden-Freezer.png" group-title="24/7 ANIME",24/7 Dragon Ball Super - Saga Golden Freezer (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179030
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Super - Saga Torneo del Universo 6 (e)(1080)" tvg-logo="https://i.postimg.cc/zXVTMSbg/247-Dragon-Ball-Super-Saga-Torneo-del-Universo-6.png" group-title="24/7 ANIME",24/7 Dragon Ball Super - Saga Torneo del Universo 6 (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179031
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Super - Saga Zamasu (e)(720)" tvg-logo="https://i.postimg.cc/v8vPMzZf/247-Dragon-Ball-Super-Saga-Zamasu.png" group-title="24/7 ANIME",24/7 Dragon Ball Super - Saga Zamasu (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179032
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Super - Saga Torneo de la Fuerza (e)(720)" tvg-logo="https://i.postimg.cc/fTK12s9q/247-Dragon-Ball-Super-Saga-Torneo-de-la-Fuerza.png" group-title="24/7 ANIME",24/7 Dragon Ball Super - Saga Torneo de la Fuerza (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179033
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Daima (e)(720)" tvg-logo="https://i.postimg.cc/J4RDj3m8/247-Dragon-Ball-Daima.png" group-title="24/7 ANIME",24/7 Dragon Ball Daima (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179035
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Heroes (e)(1080)" tvg-logo="https://i.postimg.cc/bN1GXDvy/247-Dragon-Ball-Heroes.png" group-title="24/7 ANIME",24/7 Dragon Ball Heroes (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179036
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Dragon Ball Z Kai (e)(720)" tvg-logo="https://i.postimg.cc/tT3XSfyt/Dragon-Ball-Z-Kai.png" group-title="24/7 ANIME",24/7 Dragon Ball Z Kai (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179034
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Ecomoda (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/ndqlV3A5s4F2mPE11I2P0Xj1Cbn.jpg" group-title="24/7 TELENOVELAS",24/7 Ecomoda (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178791
+#EXTINF:-1 tvg-id="" tvg-name="24/7 El Amor Es Mas Fuerte (e)(SD)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxs9L2yXBnJtD4O3r-fqhNreZ4qm4FEc3sag&s" group-title="24/7 TELENOVELAS",24/7 El Amor Es Mas Fuerte (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178793
+#EXTINF:-1 tvg-id="" tvg-name="24/7 El Autentico Rodrigo Leal" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 El Autentico Rodrigo Leal
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178795
+#EXTINF:-1 tvg-id="" tvg-name="24/7 El Bronx" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 El Bronx
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178796
+#EXTINF:-1 tvg-id="" tvg-name="24/7 El encantador " tvg-logo="" group-title="24/7 TELENOVELAS",24/7 El encantador 
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178822
+#EXTINF:-1 tvg-id="" tvg-name="24/7 El inutil " tvg-logo="" group-title="24/7 TELENOVELAS",24/7 El inutil 
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178835
+#EXTINF:-1 tvg-id="" tvg-name="24/7 El man es Germán " tvg-logo="" group-title="24/7 TELENOVELAS",24/7 El man es Germán 
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178837
+#EXTINF:-1 tvg-id="" tvg-name="24/7 En Los Tacones De Eva" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 En Los Tacones De Eva
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178842
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Gabriela, giros del destino " tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Gabriela, giros del destino 
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178844
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Hasta Que La Plata Nos Separe (2022)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Hasta Que La Plata Nos Separe (2022)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179002
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Hermanitas Calles (2016)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Hermanitas Calles (2016)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179003
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Hilo De Sangre Azul" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Hilo De Sangre Azul
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179004
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Hilos De Amor" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Hilos De Amor
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179005
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Historias Clasificadas (2012)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Historias Clasificadas (2012)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179006
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Avatar: La leyenda de Aang (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/gPKbX01yY0o9hMRez2RFFOghPSD.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Avatar: La leyenda de Aang (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169534
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Ben 10: Supremacia Alienigena  (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/fIulszr8TjX2EkCbc14Y78158cg.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Ben 10: Supremacia Alienigena  (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169535
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Billy y Mandy (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/BIelSEykzWJrckKCkYIWYKvRFt.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Billy y Mandy (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169554
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Bob Esponja (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/aEfJnhglu5HXsF7suH6TCOTbwkF.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Bob Esponja (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169536
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Capitan Calzoncillos (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/o9JLT4uYhilpk6MMendvlUjyRyf.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Capitan Calzoncillos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169553
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - El Chavo Animado (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/jaVm0r1ooIsMnwBi4nj0Ff6M8LM.jpg" group-title="24/7 INFANTIL",24/7 Infantil - El Chavo Animado (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169540
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - El increible mundo de Gumball (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/hYCX2WDZoJOzlmbbejHkUXMAUc7.jpg" group-title="24/7 INFANTIL",24/7 Infantil - El increible mundo de Gumball (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169538
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - El Pajaro Loco y sus amigos (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/u1GkVcmiDVLZV4n2Q2TWkYnSCQN.jpg" group-title="24/7 INFANTIL",24/7 Infantil - El Pajaro Loco y sus amigos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169541
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - El Show de los Looney Tunes (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/kt5Pxl9kwZHWjp2poRZ40PGAruZ.jpg" group-title="24/7 INFANTIL",24/7 Infantil - El Show de los Looney Tunes (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169577
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - En busca del valle encantado: La serie (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/oWLc5nZuzPEaH55f3x31I8pllIj.jpg" group-title="24/7 INFANTIL",24/7 Infantil - En busca del valle encantado: La serie (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169542
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Gravity Falls (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/cvJPd911PMS7cY8ajwZlnF0xClj.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Gravity Falls (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169544
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Hora de Aventura (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/qaNf7MO7Jfo9hUPC23mwfFgP3Uh.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Hora de Aventura (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169545
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Hotel Transilvania: La serie (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/wHa1zu5yV1PMccoizNk4z19GQvl.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Hotel Transilvania: La serie (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169546
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Jefe en Pañales (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/zjBzGqpR3w8fPox84pQHQ20E34d.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Jefe en Pañales (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169539
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Jimmy Neutron (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/mV8DMChmDLrLTH2OcLWZ4yeWOyp.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Jimmy Neutron (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169547
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Kick Buttowski (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/dGTFplcGMDgxvPJ4EElZOyKMpFB.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Kick Buttowski (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169548
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - KND: Los chicos del barrio (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/58vNrrVjhVatJLajju48p4Z8SB1.jpg" group-title="24/7 INFANTIL",24/7 Infantil - KND: Los chicos del barrio (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169537
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Kung Fu Panda: La Leyenda de Po (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/jH5oMgMOpeQSCe31UHf0YZaZu01.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Kung Fu Panda: La Leyenda de Po (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169549
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - La princesa Sofía (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/gEB4Zi9OmRIIJ7T2GbXsl2saktE.jpg" group-title="24/7 INFANTIL",24/7 Infantil - La princesa Sofía (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169550
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - La sirenita (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/aYwzO7GVrurzpYMR5c9rQgHBGP3.jpg" group-title="24/7 INFANTIL",24/7 Infantil - La sirenita (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169551
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Las nuevas locuras del emperador (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/n3YOLGfJ73zZ0i6X50migVl1bEQ.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Las nuevas locuras del emperador (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169556
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - LazyTown (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/qBRD1412A7tDQBvLZrUzJEI66za.jpg" group-title="24/7 INFANTIL",24/7 Infantil - LazyTown (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169558
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Lilo y Stitch (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/yrkR6ZjC0opBgLsX20N2OcEPy0p.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Lilo y Stitch (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169559
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Looney Tunes Platinum V1 (e)(720)" tvg-logo="https://i.postimg.cc/767nBNwZ/247-Infantil-Looney-Tunes-Platinum-V1.png" group-title="24/7 INFANTIL",24/7 Infantil - Looney Tunes Platinum V1 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169560
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Looney Tunes Platinum V2 (e)(720)" tvg-logo="https://i.postimg.cc/m2rFkSJj/247-Infantil-Looney-Tunes-Platinum-V2.png" group-title="24/7 INFANTIL",24/7 Infantil - Looney Tunes Platinum V2 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169561
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Looney Tunes Platinum V3 (e)(720)" tvg-logo="https://i.postimg.cc/hhFj294g/247-Infantil-Looney-Tunes-Platinum-V3-(e)(720).png" group-title="24/7 INFANTIL",24/7 Infantil - Looney Tunes Platinum V3 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169562
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Los padrinos mágicos (e)(720)" tvg-logo="https://i.postimg.cc/Hxm615VF/247-los-padrinos-magico.png" group-title="24/7 INFANTIL",24/7 Infantil - Los padrinos mágicos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169564
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Los pingüinos de Madagascar (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/nbmNNWllrcanrv0QFkYZYWEthP7.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Los pingüinos de Madagascar (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169566
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Peppa Pig (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/bZGs5YIWTnscuaxuFeMmeKCnrw8.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Peppa Pig (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169568
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Phineas y Ferb (e)(720)" tvg-logo="https://i.postimg.cc/tT4JmqhW/247-Infantil-Phineas-y-Ferb-(e)(720).png" group-title="24/7 INFANTIL",24/7 Infantil - Phineas y Ferb (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169569
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Pocoyo (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/3mMZZuUTAW1pIziHyKRVfZLnjKk.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Pocoyo (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169571
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Rapunzel (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/pRH2IyjZfdLpywDULnNagF5UhKb.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Rapunzel (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169543
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Rugrats Crecidos (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/41MKnLkGIcHLfy0PrZK6XEXu4Dx.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Rugrats Crecidos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169533
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Scooby Doo y compañía (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/JaAd5QQe46gTKR64VGvYE1PmVO.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Scooby Doo y compañía (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169574
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Teen Titans (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/kECEmLPLiGKRetN21qTcZ6TGVN4.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Teen Titans (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169576
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Infantil - Un show mas (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/6MI0ASNsRlIaiO9viXBhaU8u9N1.jpg" group-title="24/7 INFANTIL",24/7 Infantil - Un show mas (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169572
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Josué y la tierra prometida (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/2GCbXAP6eSTWmzq7tU6fqr02v7R.jpg" group-title="24/7 TELENOVELAS",24/7 Josué y la tierra prometida (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166970
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Juegos Prohibidos " tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Juegos Prohibidos 
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179007
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Juveniles - Agente K.C. (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/exv4ByoeNT16QQd28AWMO18u2Qm.jpg" group-title="24/7 SERIES JUVENILES",24/7 Juveniles - Agente K.C. (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173427
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Juveniles - Big Time Rush (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/uEmEqAE3yazeibhQyJoBVk6zK6c.jpg" group-title="24/7 SERIES JUVENILES",24/7 Juveniles - Big Time Rush (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173426
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Juveniles - Buena Suerte Charlie (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/39gJL4a7HqmTCQAGfHM99DhJsSo.jpg" group-title="24/7 SERIES JUVENILES",24/7 Juveniles - Buena Suerte Charlie (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173431
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Juveniles - Drake y Josh (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/4yz5PvVNRW9IqfRywo9zZ9FCSA5.jpg" group-title="24/7 SERIES JUVENILES",24/7 Juveniles - Drake y Josh (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173429
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Juveniles - Hanna Montana (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/tEkKlXYjVkDNEJW4SY7a9RFqOyY.jpg" group-title="24/7 SERIES JUVENILES",24/7 Juveniles - Hanna Montana (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173432
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Juveniles - Henry Danger (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/ziQMHCEbDDEjnmylFhT9gs0Tko4.jpg" group-title="24/7 SERIES JUVENILES",24/7 Juveniles - Henry Danger (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173433
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Juveniles - iCarly (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/i0OQOTyfVQDUltdBrhEaU3Ava7E.jpg" group-title="24/7 SERIES JUVENILES",24/7 Juveniles - iCarly (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173434
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Juveniles - Kenan y Kel (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/90Ep5fOXeUXeaYWp3pq7zmPK742.jpg" group-title="24/7 SERIES JUVENILES",24/7 Juveniles - Kenan y Kel (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173435
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La baby sister (2000)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La baby sister (2000)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179008
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La Caponera (1990)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La Caponera (1990)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179010
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La costeña y el cachaco (2003)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La costeña y el cachaco (2003)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179012
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La gloria de Lucho (2019)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La gloria de Lucho (2019)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179015
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La mujer en el espejo (1997)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La mujer en el espejo (1997)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179017
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La Nocturna" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La Nocturna
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179023
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La Pasión Según Nuestros Días" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La Pasión Según Nuestros Días
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179027
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La reina del Flow" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La reina del Flow
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179037
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La Saga Negocio de Familia (2004)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La Saga Negocio de Familia (2004)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179195
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La Seleccion (2014)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La Seleccion (2014)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179199
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Lady, La Vendedora De Rosas (2015)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Lady, La Vendedora De Rosas (2015)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179203
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Lizzie McGuire (e)(720)" tvg-logo="https://image.tmdb.org/t/p/original/yXRvq0gGhUj7gjkCUSwUoESDEby.jpg" group-title="24/7 SERIES JUVENILES",24/7 Lizzie McGuire (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175552
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Los Reyes" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Los Reyes
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179204
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Los Reyes de la Colina (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/gNooZTdj3H2wVcQhoLGg5ItXrn4.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Los Reyes de la Colina (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178788
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Los Simpson Temp. 1 al 9 (e)(720)(Trial Audio)" tvg-logo="https://image.tmdb.org/t/p/original/35AfqMTE4SfmwzsUe7yi5COtFPe.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Los Simpson Temp. 1 al 9 (e)(720)(Trial Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178834
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Los Simpson Temp. 10 al 19 (e)(720)(Trial Audio)" tvg-logo="https://image.tmdb.org/t/p/original/wnRxhctl0aoomdDT882DljozGq6.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Los Simpson Temp. 10 al 19 (e)(720)(Trial Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178836
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Los Simpson Temp. 20 al 29 (e)(720)" tvg-logo="https://image.tmdb.org/t/p/original/pbbMIbYgUD64t22xLLSyOfp0Rxt.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Los Simpson Temp. 20 al 29 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178839
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Los Simpson Temp. 30 al 37 (e)(720)" tvg-logo="https://image.tmdb.org/t/p/original/soMLjF2VQRl3XkZIB5OoXdOqeLd.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Los Simpson Temp. 30 al 37 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178841
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Luzbel está de visita " tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Luzbel está de visita 
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179205
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Manual de supervivencia escolar de Ned (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/npDLsYbOKET90mECCJlWqhyAkTt.jpg" group-title="24/7 SERIES JUVENILES",24/7 Manual de supervivencia escolar de Ned (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175553
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Mythic Quest (e)(1080)" tvg-logo="https://image.tmdb.org/t/p/original/1LDKEbU4aDgP3r7vBiSQp2VQ7m9.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Mythic Quest (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178806
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - A Corazon Abierto (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/dxFg4JnEdUEQBbDPciqeHIHgdaL.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - A Corazon Abierto (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168029
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - A mano limpia (e)(720)" tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnrjzpHD8seT_G8oAZWSc3R7g95mccB0fTDs8o8Qfl8kH4vfUK1Qpjhxjpw0Kyzi5YpLepwlRZsqxQq2s-n5i4B0i2sJkDYwYV85j7o54t4d40m1wpxtygm9gdcwTwwBRkWWU0jlNaj0d9/s640/a-mano-limpia-protagonistas.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - A mano limpia (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168032
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Abrázame muy fuerte (e)(720)" tvg-logo="https://i.ytimg.com/vi/6cu3NCRPBUQ/maxresdefault.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Abrázame muy fuerte (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168028
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Al diablo con los guapos (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/2tsYTe2woupPzTiZ6BbBePjF560.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Al diablo con los guapos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168031
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Alias el Mexicano (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/gTCnjZUVNmKjvouR7hclUDWbK9b.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Alias el Mexicano (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168035
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Alma De Hierro (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/o6QAI2Gf1mlbT1xRpoivS9po8f0.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Alma De Hierro (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168034
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Amantes Del Desierto (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/fAoqzjwSN6pRaiFXL6sYRVsb2Mq.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Amantes Del Desierto (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168038
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Amar Otra Vez (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/oQg1x7cQGRRga0uRTCri4Q6uPWh.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Amar Otra Vez (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168037
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Apocalipse (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/4LwTaadbSSOP1A9yebuuH2lTMx9.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Apocalipse (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168036
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Cuna de Lobos (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/fBUgTaPLelwPtib4Dkfipb6z7Q9.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Cuna de Lobos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166972
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Jesus (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/sVTQtpvdTm0ba7yknetuCgwnlWw.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Jesus (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168030
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Josue y la tierra prometida (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/2GCbXAP6eSTWmzq7tU6fqr02v7R.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Josue y la tierra prometida (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168027
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - La usurpadora (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/3moc7TWclUSMs100k2wjFtloi2p.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - La usurpadora (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166973
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Rey David (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/mxlh9jE30nLAoHZpMfFRKx5Zwyg.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Rey David (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168033
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Rubi (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/vwiEPUVjAijzdId5jCb551XYezv.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Rubi (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166975
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Rubi 2020 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/xHn96XVRiAJidOTqcErdoiq1V5F.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Rubi 2020 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166974
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Novelas - Tres milagros (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/sIcNZ6XYZkSF79loTvhWGJvkyrC.jpg" group-title="24/7 TELENOVELAS",24/7 Novelas - Tres milagros (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166971
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Pa' Quererte (2020)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Pa' Quererte (2020)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179206
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Pandillas guerra y paz (1999)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Pandillas guerra y paz (1999)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179207
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Paradise PD (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/jqt7XVkNNJ6uMU3NjhQXcKD177A.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Paradise PD (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178789
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Pecados Capitales (2002)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Pecados Capitales (2002)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179216
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Pedro El Escamoso (2001)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Pedro El Escamoso (2001)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179217
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - ALF (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/X7SzDqIUEHxyjXwP0pRijSrWNm.jpg" group-title="24/7 RETRO",24/7 Retro - ALF (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/174837
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Aunque usted no lo crea de Ripley (e)(720)" tvg-logo="https://i.ytimg.com/vi/sOfOaoCv1b4/maxresdefault.jpg" group-title="24/7 RETRO",24/7 Retro - Aunque usted no lo crea de Ripley (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/176973
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Batman: La Serie Animada (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/x7oIDmaaeSg3zBaGgaRivUMYpgg.jpg" group-title="24/7 RETRO INFANTIL",24/7 Retro - Batman: La Serie Animada (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/168380
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Bonanza (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/9lA8E6ShDiTECyjmnnBNQdQpifK.jpg" group-title="24/7 RETRO",24/7 Retro - Bonanza (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/174839
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Buffy la cazavampiros (e)(720)(Dual)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/lStohEROE7obb8DmTvtGbC6wELq.jpg" group-title="24/7 RETRO",24/7 Retro - Buffy la cazavampiros (e)(720)(Dual)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/174840
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - CatDog (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/tE97ia5rtOJBEppzE3eXTjMVgVy.jpg" group-title="24/7 RETRO INFANTIL",24/7 Retro - CatDog (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173428
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Comisario Rex (e)(720)" tvg-logo="https://alba-cl-lared.cdn.mediatiquepress.com/wp-content/uploads/2025/09/Captura-de-pantalla-2025-09-05-a-las-6.24.18%E2%80%AFp.m.-700x394.png" group-title="24/7 RETRO",24/7 Retro - Comisario Rex (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/176974
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Cuentos de la Cripta (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/yJgWU2oEoqpXr9c2A8RplYWIczd.jpg" group-title="24/7 RETRO INFANTIL",24/7 Retro - Cuentos de la Cripta (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177122
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - El Auto Fantástico (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/3iV2v7mGBhqMZY20jUDgfXzycs4.jpg" group-title="24/7 RETRO",24/7 Retro - El Auto Fantástico (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/176975
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - El Super Agente 86 (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/6ahKNfvLGWYDlhUfSagJfClXkoi.jpg" group-title="24/7 RETRO",24/7 Retro - El Super Agente 86 (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/174841
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Escalofríos (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/nW5i0D5T1FYz6S2k1dkaniot9AY.jpg" group-title="24/7 RETRO",24/7 Retro - Escalofríos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177117
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Hechizada (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/vQqYplGZLwpy8TveD2Lqk1PzmSm.jpg" group-title="24/7 RETRO",24/7 Retro - Hechizada (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/174838
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - La familia Ingalls (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/4ly1PKbNyvMMTPC0wWIeqffLkhE.jpg" group-title="24/7 RETRO",24/7 Retro - La familia Ingalls (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177121
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - La familia Monster (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/jN2lGqCWuHkFKCJmWXg5vTs8llY.jpg" group-title="24/7 RETRO",24/7 Retro - La familia Monster (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177131
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - La Tremenda Corte (e)(SD)" tvg-logo="https://i.ytimg.com/vi/DObuX4qzUjI/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGH8gSiguMA8=&rs=AOn4CLDw9x16N5rMeyAatGDT7EXukxSZUw" group-title="24/7 RETRO",24/7 Retro - La Tremenda Corte (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177119
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - La Tropa Goofy (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/3ziQwpSjwBcgUpK0ibc6ZCnmJFm.jpg" group-title="24/7 RETRO INFANTIL",24/7 Retro - La Tropa Goofy (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169552
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Las Tortugas Ninja (e)(720)" tvg-logo="https://i.postimg.cc/HLjZ2jM0/247-Retro-Las-Tortugas-Ninja-(e)(720).png" group-title="24/7 RETRO INFANTIL",24/7 Retro - Las Tortugas Ninja (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169557
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Looney Tunes and Merrie Melodies (e)(1080)" tvg-logo="https://i.postimg.cc/15WgDzrt/247-Retro-Looney-Tunes-and-Merrie-Melodies.png" group-title="24/7 RETRO INFANTIL",24/7 Retro - Looney Tunes and Merrie Melodies (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169563
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Los años maravillosos (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/byPzylSGwc30S7VeRblLvzshrvx.jpg" group-title="24/7 RETRO",24/7 Retro - Los años maravillosos (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177133
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Los Cuentos de la Cripta (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/3j7oS0KXOmI0Q0sww21EGPQkMN2.jpg" group-title="24/7 RETRO",24/7 Retro - Los Cuentos de la Cripta (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177123
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Los Dukes de Hazzard (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/5BJfGTtke5MtPUuC9teenNbZ6kE.jpg" group-title="24/7 RETRO",24/7 Retro - Los Dukes de Hazzard (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177130
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Los locos Addams (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/h4lmTTK5pVtLPx7jDiuJttciy1N.jpg" group-title="24/7 RETRO",24/7 Retro - Los locos Addams (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177129
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Los Magníficos (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/5EBGtvnLmb06OBrILwrb6G3eSXg.jpg" group-title="24/7 RETRO",24/7 Retro - Los Magníficos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/176976
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Los pequeños Picapiedras (e)(720)" tvg-logo="https://i.postimg.cc/4xB17Zmq/247-Retro-Los-pequenos-Picapiedras-(e)(720).png" group-title="24/7 RETRO INFANTIL",24/7 Retro - Los pequeños Picapiedras (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169565
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Los Pitufos (e)(720)" tvg-logo="https://i.postimg.cc/6qp02t8H/247-Retro-Los-Pitufos-(e)(720).png" group-title="24/7 RETRO INFANTIL",24/7 Retro - Los Pitufos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169567
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Los Tres Chiflados (e)(SD)" tvg-logo="https://i.postimg.cc/8zS1wdyr/247tres-chiflados-eclusivo-proyectox.png" group-title="24/7 RETRO",24/7 Retro - Los Tres Chiflados (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177132
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - MacGyver (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/smA3i4mG0ScrXQNYLajrGXAQXq5.jpg" group-title="24/7 RETRO",24/7 Retro - MacGyver (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177125
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Mi Bella Genio (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/kvSX1lUSCsNDOQmIzFcynayan4e.jpg" group-title="24/7 RETRO",24/7 Retro - Mi Bella Genio (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/174842
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Pinky y Cerebro (e)(720)" tvg-logo="https://i.postimg.cc/mk7b9f0x/247-Retro-Pinky-y-Cerebro-(e)(720).png" group-title="24/7 RETRO INFANTIL",24/7 Retro - Pinky y Cerebro (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169570
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Robocop (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/ayfwBr79hFnDuff15mm59ZRbU0W.jpg" group-title="24/7 RETRO",24/7 Retro - Robocop (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177127
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Rugrats: Aventuras en pañales (e)(SD)" tvg-logo="https://i.postimg.cc/QCf8Xk7w/247-Retro-Rugrats-Aventuras-en-panales-(e)(SD).png" group-title="24/7 RETRO INFANTIL",24/7 Retro - Rugrats: Aventuras en pañales (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169573
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Salvados por la Campana (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/wFLrO0ZzuA16F54QosK9GqXaGhG.jpg" group-title="24/7 RETRO",24/7 Retro - Salvados por la Campana (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177128
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Spiderman (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/4QNBIgt5fwgNCN3OSU6BTFv0NGR.jpg" group-title="24/7 RETRO INFANTIL",24/7 Retro - Spiderman (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169575
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Walker Comisario de Texas (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/pyE8tPgqgQIZ62IDw1lisG60nSI.jpg" group-title="24/7 RETRO",24/7 Retro - Walker Comisario de Texas (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177134
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Winnie the Pooh (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/mpnq1bOgZfFHpTH8C5hNNlpWMZa.jpg" group-title="24/7 RETRO INFANTIL",24/7 Retro - Winnie the Pooh (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169555
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Xena: La Princesa Guerrera (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/j8gCDq7WoauDFYhurwWLUK9dXQW.jpg" group-title="24/7 RETRO",24/7 Retro - Xena: La Princesa Guerrera (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177135
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Rick y Morty (e)(720)" tvg-logo="https://image.tmdb.org/t/p/original/ieA8tZrVGXU0kHu1Qko7xQokXaD.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Rick y Morty (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178792
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Rigo (2023)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Rigo (2023)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179561
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Rosario Tijeras (2016)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Rosario Tijeras (2016)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179563
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - (Des)encanto (e)(720)" tvg-logo="https://image.tmdb.org/t/p/original/vz4NbG9QYymFq4sKCoPbOmKuRIA.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Series - (Des)encanto (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177733
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - American Dad (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/fWZ1EkDxqE0ArmG2nEfHuVYBh9D.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Series - American Dad (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177730
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - BoJack Horseman (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/7uJ3L7IsiUZKEe0hQ4k2r9om66a.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Series - BoJack Horseman (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177731
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - Daria (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/owDyjt7yv3LfRlfecDCd8tkFUTm.jpg" group-title="24/7 RETRO",24/7 Series - Daria (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177732
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - Futurama Tem. 1 al 5 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/fyYBSS4cZYQGLl8BARALtKWINBH.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Series - Futurama Tem. 1 al 5 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177739
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - Futurama Tem. 6 al 13 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/bmsKWnZBEYD5GBTgivONPBdcxJO.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Series - Futurama Tem. 6 al 13 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177740
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - La Casa de los Dibujos (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/23XTh0wrIceP1r8qUTH1GKAdLzu.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Series - La Casa de los Dibujos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177734
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - Padre de Familia Tem. 1 al 5 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/hwBwh07cylRzjjwtqIEbxZnYPZd.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Series - Padre de Familia Tem. 1 al 5 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177735
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - Padre de Familia Tem. 12 al 18 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/ptHSVdvL9D7PdnsawocVo8EKhfV.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Series - Padre de Familia Tem. 12 al 18 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177737
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - Padre de Familia Tem. 19 al 24 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/xrfziQ6BTzrLiMIHGyyRFlj36Jo.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Series - Padre de Familia Tem. 19 al 24 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177738
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series - Padre de Familia Tem. 6 al 11 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/zZnHd5rT0DN3GyCSiseMKSNxViO.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Series - Padre de Familia Tem. 6 al 11 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177736
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - 40 y 20 Parte 1 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/sg6NeA08UwoNFsFGffcNVRj5jU7.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - 40 y 20 Parte 1 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165559
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - 40 y 20 Parte 2 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/zxfEkeV7NXQ0otFzNLPljFQ7FAy.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - 40 y 20 Parte 2 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165560
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Aida (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/9ddqbEdWYTXRRLWGllc8EzM22dH.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Aida (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165612
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Aquí no hay quien viva (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/8yYriRk3jpIzZ4JGykQwkCXammK.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Aquí no hay quien viva (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165621
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Casados con Hijos (ARG)(e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/b4MWFEp2lSBgIo6byrRvqRXXz8e.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Casados con Hijos (ARG)(e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165556
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Comedy Central Stand-Up (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/givt8reIsYiBkRqFSgOH6ECOAQR.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Comedy Central Stand-Up (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165557
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Como Conoci a tu Madre (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/xVO1aKyVQYbjAiV9nIqi0W3sm3E.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Como Conoci a tu Madre (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166092
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Dos Hombres y Medio: Parte 1 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/xvSG1sRrZ3A83pQpEmoUnR8DBZg.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Dos Hombres y Medio: Parte 1 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166307
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Dos Hombres y Medio: Parte 2 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/cvERlmPn4GBngMA3qqfRhRK5Ose.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Dos Hombres y Medio: Parte 2 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166308
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - El Chapulín Colorado (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/1wRh3Sy01okGHTjGObMXY5CfIul.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - El Chapulín Colorado (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165887
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - El Chavo del Ocho (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/dA9CLZltKTzxMNKR7PUlld8JgmY.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - El Chavo del Ocho (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166082
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - El Chavo del Ocho (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/6t2JFpcc85VD7UfPKZX6cc25PJw.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - El Chavo del Ocho (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165622
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - El Joven Sheldon (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/tzrKcbVwvK14chdeSZArX8vU6b4.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - El Joven Sheldon (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166866
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - El Pueblo (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/sZkCjcDlICslTvTI3dFqRatmZ1k.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - El Pueblo (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166084
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Friends: Parte 1 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/vQJ1sJPImYXAGosHJ1pnrQnUjWN.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Friends: Parte 1 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166086
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Friends: Parte 2 (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/nNU9WCkxEfBujzboBmSMOXGdLrT.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Friends: Parte 2 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166087
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Full House: Parte 1 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/A1o3XnlN1kKUQyZGQSwWda78eWr.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Full House: Parte 1 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166090
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Full House: Parte 2 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/x9vQ8fwObssNj8pNhLm9Tc43AWg.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Full House: Parte 2 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166091
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - La familia P. Luche (e)(SD)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/8jRAkvPREERnRMyNyi7c0nkGn4I.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - La familia P. Luche (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166093
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - La Oficina (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/iANE2xpMlBPXqA7pvNFsl8XpZmk.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - La Oficina (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166306
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - La que se avecina: Parte 1 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/A9pYIhx2w9fWpaBt73k3XPjNeZj.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - La que se avecina: Parte 1 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166094
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - La que se avecina: Parte 2 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/dA4K9fSSL6fLBnMUxyTYnrrggCw.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - La que se avecina: Parte 2 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166095
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Malcolm (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/qxEwQj3zjwHD0V2Hv8NKdOWBdC4.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Malcolm (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166096
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Modern Family: Parte 1 (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/7n6wzgT2jir7nueAXZb2DWt70mx.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Modern Family: Parte 1 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166218
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Modern Family: Parte 2 (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/ENNsd3XNUjOnfVFYB67GHcNXaT.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Modern Family: Parte 2 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166219
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Scrubs (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/su8bUwwYnljLPLjRUeARuXvlI10.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Scrubs (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166220
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Sexo en la Ciudad (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/veFvRHkQgZxfMuJ6UmEKZ45TTzx.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Sexo en la Ciudad (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166221
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Superstore (e)(720)(Trial Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/wdbcKwYhQ1gkOPlp2lYKdQYXT0S.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Superstore (e)(720)(Trial Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166222
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Ted Lasso (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/qG60jgIUnE0HfEORPFtIRe9EGw3.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Ted Lasso (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166223
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - The Big Bang Theory: Parte 1 (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/8be88ga07zR69SJEDf2XPytZFTg.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - The Big Bang Theory: Parte 1 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166304
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - The Big Bang Theory: Parte 2 (e)(1080)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/dym18Te4gTN5BYqyXChEvMfy0wQ.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - The Big Bang Theory: Parte 2 (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166305
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Todos Odian a Chris (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/xm99ndfWhYaUCpPJgd70A0CWxGi.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Todos Odian a Chris (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166085
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Una familia de diez (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/xqmpe5hb9MCnUMeFu6xRWyAWsVM.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Una familia de diez (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166420
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Comedias - Vecinos MX (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/rOfXmseielNwTqht0Nr5kIuqgVY.jpg" group-title="24/7 SERIES COMEDIAS",24/7 Series Comedias - Vecinos MX (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166865
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - 911 (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w300_and_h450_face/n3IbaTXhPsnP68I5wsoKe7vchgS.jpg" group-title="24/7 SERIES",24/7 Series Crimen - 911 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165200
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Barry (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w300_and_h450_face/j1XpwD11f0BAEI7pX6UdMhUVX2F.png" group-title="24/7 SERIES",24/7 Series Crimen - Barry (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165201
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Better Call Saul (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/1dxwH5FDceBTRcBzPp6tpRONXy0.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Better Call Saul (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165552
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Blindspot (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w300_and_h450_face/tHN1BwqEeRsNefHWscN6W7FXrar.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Blindspot (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165202
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Boardwalk Empire (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w300_and_h450_face/kL6SqlVPpfAof2nQbh1VxkUuXBQ.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Boardwalk Empire (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165356
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Bones Temp. 1 al 6 (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/7fFnGyE5jRd72DZk0iv2mtA1S46.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Bones Temp. 1 al 6 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165357
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Bones Temp. 7 al 12 (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/k3fgKtXisl4c55xpM2JPTUYDuBb.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Bones Temp. 7 al 12 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165358
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Breaking Bad (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/63FA8vwSZnXkGxedrDQwni4JuZN.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Breaking Bad (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165359
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Chicago Fire Temp. 8al14 (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/8Lwn0r6wPDxmXcD4aN3yr71KhvL.jpg" group-title="CANALES-CINE Y SERIES",24/7 Series Crimen - Chicago Fire Temp. 8al14 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165361
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Chicago Fire Temp.1al7 (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/nIRkbnnSHZhbjR01ZEKFZGyCoUc.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Chicago Fire Temp.1al7 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165360
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Chicago Justice (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/7WyWk8bWgbWKqnhNEj8PYt4VjPo.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Chicago Justice (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165362
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Chicago Med (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/q18TcyP7w8yS44Sp6jW7kc3Buvm.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Chicago Med (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165363
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Chicago P.D (e)(720) (Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/t0GTpqzNZLa9xSHhPnUFw3M0EvZ.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Chicago P.D (e)(720) (Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165364
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Codigos de familia Temp. 1 al 7 (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w300_and_h450_face/c82lWgp2JDSoFjYhpbeS2TrOQtD.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Codigos de familia Temp. 1 al 7 (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165203
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - CSI Miami (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/bhG1XJ1fubbZkLnoBAxNrzzGXOg.jpg" group-title="24/7 SERIES",24/7 Series Crimen - CSI Miami (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165366
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - CSI: Cyber (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/goo03FkWc1ZzNrJpACjJuCrDXtv.jpg" group-title="24/7 SERIES",24/7 Series Crimen - CSI: Cyber (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165369
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - CSI: Las Vegas (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/A6NYYMk6DarcPvxAiPmXHMFpDDq.jpg" group-title="24/7 SERIES",24/7 Series Crimen - CSI: Las Vegas (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165368
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - CSI: New York (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/86wjyojIb06cLHxydu2sJkE3tqo.jpg" group-title="24/7 SERIES",24/7 Series Crimen - CSI: New York (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165367
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Dexter (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/fIKc2cR1GglarzChMAb4BOP1qHP.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Dexter (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165370
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - El Marginal (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/rQQ25oaCeFI8LNgYmpBEzjkQ9qg.jpg" group-title="24/7 SERIES",24/7 Series Crimen - El Marginal (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165473
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - El Mentalista (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/dwMZ8BW1tUp69baogSrcTAumKuR.jpg" group-title="24/7 SERIES",24/7 Series Crimen - El Mentalista (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165549
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - El Padrino de Harlem (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/tgH5BaWIrPGbDNnFyA4aHtamjWF.jpg" group-title="24/7 SERIES",24/7 Series Crimen - El Padrino de Harlem (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165475
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Gangsters de Londres (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/9aJ6KwLASA38WzdMRVjk7ILpuTv.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Gangsters de Londres (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165474
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Hannibal (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/vlG182ZY2WMzD5bjFZNnhyvv5V4.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Hannibal (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165476
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - La Casa de Papel (e)(720)" tvg-logo="https://image.tmdb.org/t/p/original/uneEmfKFbyOZsN77JAHXK1cIAmX.jpg" group-title="24/7 SERIES",24/7 Series Crimen - La Casa de Papel (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165478
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - La Ley y el Orden: Crimen Organizado (e)(720)" tvg-logo="https://image.tmdb.org/t/p/original/ao2ybmFWpRXmb4A1PePOjBCEsxU.jpg" group-title="24/7 SERIES",24/7 Series Crimen - La Ley y el Orden: Crimen Organizado (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165480
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - La Ley y el Orden: U.V.C (e)(720)" tvg-logo="https://image.tmdb.org/t/p/original/9xxLWtnFxkpJ2h1uthpvCRK6vta.jpg" group-title="24/7 SERIES",24/7 Series Crimen - La Ley y el Orden: U.V.C (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165479
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Mentes Criminales (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/nWw20ipGipwdOyLTkFfX2Uz4Grp.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Mentes Criminales (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165365
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Mr. Robot (e)(720)" tvg-logo="https://blog.desdelinux.net/wp-content/uploads/2015/06/MrRobot_Intro.png" group-title="24/7 SERIES",24/7 Series Crimen - Mr. Robot (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165481
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - NCIS: Criminología Naval (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/td7iVrM6FBXUWdngh95TrBnEj2V.jpg" group-title="24/7 SERIES",24/7 Series Crimen - NCIS: Criminología Naval (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165551
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - NCIS: Los Angeles (e)(720)" tvg-logo="https://image.tmdb.org/t/p/original/t5NK58wFhNIwaPTKOt19WbfxcID.jpg" group-title="24/7 SERIES",24/7 Series Crimen - NCIS: Los Angeles (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165544
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Peaky Blinders (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/wiE9doxiLwq3WCGamDIOb2PqBqc.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Peaky Blinders (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165545
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Prison Break (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/jiZ4D6LrZhGxQSfHhAuTaxoT2ue.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Prison Break (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165546
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Riverdale (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/zkrfMee9Gn26WnM1NTuxZHfJaET.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Riverdale (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165547
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - S.W.A.T. (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/7j4ug9B6JXVeh5HhQjjPScrdj4Z.jpg" group-title="24/7 SERIES",24/7 Series Crimen - S.W.A.T. (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165555
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Scorpion (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/fThSrHjuS1X82XoH9VrtvgvMIXm.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Scorpion (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165548
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - The Rookie (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/zjtcZVj62ZEYVSXUOeF3McuWqxy.jpg" group-title="24/7 SERIES",24/7 Series Crimen - The Rookie (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165554
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - Tulsa King (e)(720)(Dual Audio)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg" group-title="24/7 SERIES",24/7 Series Crimen - Tulsa King (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165553
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Crimen - White Collar (e)(720)(Dual Audio)" tvg-logo="https://image.tmdb.org/t/p/original/j1csA5FdMJjcmI19Hk3dmoTCfqE.jpg" group-title="24/7 SERIES",24/7 Series Crimen - White Collar (e)(720)(Dual Audio)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165550
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Capo (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Capo (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165186
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Cartel de los Sapos 1 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w130_and_h195_face/ujHhmWiNy8NinqGTgxvIOK84K29.png" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Cartel de los Sapos 1 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165197
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Cartel de los Sapos 2 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w130_and_h195_face/kMXkXfURZVbP8z8p0TUan95FAWJ.jpg" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Cartel de los Sapos 2 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165198
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El cartel de los sapos: El origen (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El cartel de los sapos: El origen (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165183
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Chapo (e)(1080)(Dual)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Chapo (e)(1080)(Dual)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165069
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Chema (e)(1080)(Dual)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Chema (e)(1080)(Dual)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165070
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El General Naranjo (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El General Naranjo (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165081
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Señor de los Cielos "Temporada 1" (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Señor de los Cielos "Temporada 1" (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165071
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Señor de los Cielos "Temporada 2" (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Señor de los Cielos "Temporada 2" (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165072
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Señor de los Cielos "Temporada 3" (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Señor de los Cielos "Temporada 3" (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165073
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Señor de los Cielos "Temporada 4" (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Señor de los Cielos "Temporada 4" (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165074
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Señor de los Cielos "Temporada 5" (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Señor de los Cielos "Temporada 5" (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165075
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Señor de los Cielos "Temporada 6" (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Señor de los Cielos "Temporada 6" (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165076
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Señor de los Cielos "Temporada 7" (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Señor de los Cielos "Temporada 7" (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165077
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Señor de los Cielos "Temporada 8" (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Señor de los Cielos "Temporada 8" (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165078
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - El Señor de los Cielos "Temporada 9" (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - El Señor de los Cielos "Temporada 9" (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165079
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - La Reina del Sur (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - La Reina del Sur (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165082
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - Las muñecas de la mafia (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - Las muñecas de la mafia (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165083
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - Las muñecas de la mafia 2 (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - Las muñecas de la mafia 2 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165084
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - Narcos (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w58_and_h87_face/qEfVfmR6KFuwjAV6Ew5RObj73xS.png" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - Narcos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165184
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - Narcos: México (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - Narcos: México (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165085
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - Pablo Escobar (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - Pablo Escobar (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165187
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - Sobreviviendo a Escobar, Alias JJ (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - Sobreviviendo a Escobar, Alias JJ (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165080
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Series Narcos - Tres Caines (e)(720)" tvg-logo="" group-title="24/7 SERIES NARCOS",24/7 Series Narcos - Tres Caines (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/165195
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Sin Senos no hay Paraíso (2008)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Sin Senos no hay Paraíso (2008)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179564
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Sin tetas no hay paraíso (2006)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Sin tetas no hay paraíso (2006)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179565
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Solar Opposites (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/eOwfiYHJvbQlViEKhrWoHSIeDll.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 Solar Opposites (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178794
+#EXTINF:-1 tvg-id="" tvg-name="24/7 South Park Temp 1 al 14 (e)(720)" tvg-logo="https://image.tmdb.org/t/p/original/wMbyBgyzhn2eAAt8z9SUcRZVKTJ.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 South Park Temp 1 al 14 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178797
+#EXTINF:-1 tvg-id="" tvg-name="24/7 South Park Temp 15 al 28 (e)(720)" tvg-logo="https://media.themoviedb.org/t/p/w500_and_h282_face/1RnTRQEi1LHWulyd1O1ji4QHKhn.jpg" group-title="24/7 COMEDIA ANIMADA",24/7 South Park Temp 15 al 28 (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/178807
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Super Campeones (e)(720)" tvg-logo="https://i.postimg.cc/7LL2CRd6/247-Super-Campeones.png" group-title="24/7 ANIME",24/7 Super Campeones (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179009
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Tu Voz Estereo (2006)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Tu Voz Estereo (2006)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179566
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Vecinos" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Vecinos
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179567
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Western Clasicos 1 (e)(1080)" tvg-logo="https://play-lh.googleusercontent.com/uhI-TytBptSsrbn2o7OSKEA0Gznyv-tMeqL2-S-6WpOiIQ961XXIS3nbjPDZWomV9CM" group-title="24/7 CINEMA ",24/7 Western Clasicos 1 (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177728
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Western Clasicos 2 (e)(1080)" tvg-logo="https://image.roku.com/developer_channels/prod/1bc2a51056e2169b6ab171bc070cd61e82e82aade0006d21407fe57918c8db68.png" group-title="24/7 CINEMA ",24/7 Western Clasicos 2 (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/177729
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cine Latino - Mexico (e)(1080)" tvg-logo="https://i.postimg.cc/GpyW4wjt/mexico-moderno-proyecto-x.png" group-title="24/7 CINEMA ",24/7 Cine Latino - Mexico (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180656
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cine Latino - Mexico Clasicas (e)(1080)" tvg-logo="https://i.postimg.cc/GpWDdYXS/Mexico-Clasicas-proyecto-x.png" group-title="24/7 CINEMA ",24/7 Cine Latino - Mexico Clasicas (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181288
+#EXTINF:-1 tvg-id="" tvg-name="24/7  Amarte es mi pecado (2004)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7  Amarte es mi pecado (2004)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181322
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Anime - Ataque a los Titanes (e)(720)" tvg-logo="https://i.postimg.cc/SRMQcWPj/247-Anime-Ataque-a-los-titanes-proyecto-x.png" group-title="24/7 ANIME",24/7 Anime - Ataque a los Titanes (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181323
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Amigas y rivales (2001)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Amigas y rivales (2001)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181324
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Amor Real (2003)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Amor Real (2003)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181331
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Carita de Ángel (2000)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Carita de Ángel (2000)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181332
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Anime - Beyblade (e)(720)" tvg-logo="https://i.postimg.cc/GhKH9Zyd/247-beyblade-proyecto-X.png" group-title="24/7 ANIME",24/7 Anime - Beyblade (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181333
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Carrusel (1989)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Carrusel (1989)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181334
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Anime - Boruto: Naruto Next Generations (e)(720)" tvg-logo="https://i.postimg.cc/d3tD9Bbp/247-boruto-naruto.png" group-title="24/7 ANIME",24/7 Anime - Boruto: Naruto Next Generations (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181335
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cero en conducta (1999)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Cero en conducta (1999)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181336
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Clase 406 (2002)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Clase 406 (2002)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181337
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Código Postal (2006)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Código Postal (2006)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181338
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Anime - Death Note (e)(720)" tvg-logo="https://i.postimg.cc/Wzw0nV2S/247-deat-note-proyectox.png" group-title="24/7 ANIME",24/7 Anime - Death Note (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181339
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Anime - Demon Slayer Kimetsu no Yaiba (e)(1080)" tvg-logo="https://i.postimg.cc/289Cm7Py/247-Anime-Demon-Slayer-Kimetsu-no-Yaiba.png" group-title="24/7 ANIME",24/7 Anime - Demon Slayer Kimetsu no Yaiba (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181555
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Anime - Detective Conan (e)(SD)" tvg-logo="https://i.postimg.cc/FFMjpwrc/247-Anime-Detective-Conan.png" group-title="24/7 ANIME",24/7 Anime - Detective Conan (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181556
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Contra viento y marea (2005)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Contra viento y marea (2005)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181601
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Corazon Salvaje (1993)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Corazon Salvaje (1993)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181602
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cuidado con el Ángel (2008)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Cuidado con el Ángel (2008)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181603
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Cuna de Lobos (2019)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Cuna de Lobos (2019)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181604
+#EXTINF:-1 tvg-id="" tvg-name="24/7 De Pocas Pocas Pulgas (2003)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 De Pocas Pocas Pulgas (2003)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181605
+#EXTINF:-1 tvg-id="" tvg-name="24/7 En Tierras Salvajes (2017)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 En Tierras Salvajes (2017)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181606
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La Fea Más Bella (2006)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La Fea Más Bella (2006)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181607
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La Guzmán: La Reina Del Rock (2019)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La Guzmán: La Reina Del Rock (2019)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181608
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La Hija del Jardinero (2003)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La Hija del Jardinero (2003)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181609
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La Reina Soy Yo (2019)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La Reina Soy Yo (2019)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181610
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Digimon Adventure (e)(720)" tvg-logo="https://i.postimg.cc/B6rpBsf8/247-Digimon-Adventure-(e)(720).png" group-title="24/7 ANIME",24/7 Digimon Adventure (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181927
+#EXTINF:-1 tvg-id="" tvg-name="24/7 La Usurpadora (2019)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 La Usurpadora (2019)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181928
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Doraemon (720)" tvg-logo="https://i.postimg.cc/hPpxSgZ2/247-Doraemon-(720).png" group-title="24/7 ANIME",24/7 Doraemon (720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181929
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Haikyu (e)(720)" tvg-logo="https://i.postimg.cc/mDPRF3T3/247-Haikyu-(e)(720).png" group-title="24/7 ANIME",24/7 Haikyu (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181930
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Hunter x Hunter (e)(720)" tvg-logo="https://i.postimg.cc/Xqv55zpY/247-Hunter-x-Hunter.png" group-title="24/7 ANIME",24/7 Hunter x Hunter (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181931
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Laberintos de Pasion" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Laberintos de Pasion
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181932
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Initial D (e)(720)" tvg-logo="https://i.postimg.cc/bwL9ZkCY/initial.jpg" group-title="24/7 ANIME",24/7 Initial D (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181933
+#EXTINF:-1 tvg-id="" tvg-name="24/7 María la del Barrio (1995)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 María la del Barrio (1995)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181934
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Inu-Yasha (e)(720)" tvg-logo="https://i.postimg.cc/C1p5Y6jr/247-anime-(e)(720)Inu-Yasha.png" group-title="24/7 ANIME",24/7 Inu-Yasha (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181935
+#EXTINF:-1 tvg-id="" tvg-name="24/7 María Mercedes (1992)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 María Mercedes (1992)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181936
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Jujutsu Kaisen (e)(720)" tvg-logo="https://i.postimg.cc/nhsqhgDX/247-Jujutsu-Kaisen-(e)(720).png" group-title="24/7 ANIME",24/7 Jujutsu Kaisen (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181937
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Kengan Ashura (720)(e)" tvg-logo="https://i.postimg.cc/qvdpNCtw/247-Kengan-Ashura-(720)(e).png" group-title="24/7 ANIME",24/7 Kengan Ashura (720)(e)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181938
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Monster (e)(720)" tvg-logo="https://i.postimg.cc/cHWDY07W/247-anime-Monster-(e)(720).png" group-title="24/7 ANIME",24/7 Monster (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181939
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Marimar (1994)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Marimar (1994)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181940
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Naruto (e)(720)" tvg-logo="https://i.postimg.cc/KzrGbPrN/247-Naruto-(e)(720).png" group-title="24/7 ANIME",24/7 Naruto (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/181941
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Por ella soy Eva (2012)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Por ella soy Eva (2012)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184008
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Teresa (2010)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Teresa (2010)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184018
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Tierra de Esperanza (2023)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Tierra de Esperanza (2023)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184028
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Tres milagros (2018)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Tres milagros (2018)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184029
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Rebelde (2004)" tvg-logo="" group-title="24/7 TELENOVELAS",24/7 Rebelde (2004)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184031
+#EXTINF:-1 tvg-id="" tvg-name="Reality-Gran Hermano - 24 hs (L)(720)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnNG30u0dBxGNure5iO1FTR-bnTAFQr9MXiw&s" group-title="CANALES-REALITY LIVE",Reality-Gran Hermano - 24 hs (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184317
+#EXTINF:-1 tvg-id="" tvg-name="Reality-Gran Hermano - Cámara 1 (L)(720)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnNG30u0dBxGNure5iO1FTR-bnTAFQr9MXiw&s" group-title="CANALES-REALITY LIVE",Reality-Gran Hermano - Cámara 1 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184318
+#EXTINF:-1 tvg-id="" tvg-name="Reality-Gran Hermano - Cámara 2 (L)(720)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnNG30u0dBxGNure5iO1FTR-bnTAFQr9MXiw&s" group-title="CANALES-REALITY LIVE",Reality-Gran Hermano - Cámara 2 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184319
+#EXTINF:-1 tvg-id="" tvg-name="Reality-Gran Hermano - Cámara 3 (L)(720)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnNG30u0dBxGNure5iO1FTR-bnTAFQr9MXiw&s" group-title="CANALES-REALITY LIVE",Reality-Gran Hermano - Cámara 3 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184320
+#EXTINF:-1 tvg-id="" tvg-name="Reality-Gran Hermano - Experiencia Multicámara (L)(720)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnNG30u0dBxGNure5iO1FTR-bnTAFQr9MXiw&s" group-title="CANALES-REALITY LIVE",Reality-Gran Hermano - Experiencia Multicámara (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184321
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos - USA 02 (Z)" tvg-logo="" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos - USA 02 (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/187981
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos - USA 01 (Z)" tvg-logo="" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos - USA 01 (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/187982
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - HABITACION TORMENTA (Z)" tvg-logo="http://onerestream.us:80/images/E8KGoSwj2u7k1yTTl5XI6QIw5RHsM5idmSlUbG46URGX8wBLkH5gGJQgakPfOeiMRQgvrX3IcM5U61YnNb-unrOPNZk-qAH1PKzvUTxdPgpGBgL0Q-EAOMk0BaaOhjXOg1TTh0u50E7Rtn8Rb_0M11fVHLnSVrnP5RazLhPJhFScetU427qhFi60qE5pDh5-.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - HABITACION TORMENTA (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/187983
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - BAÑOS (Z)" tvg-logo="http://onerestream.us:80/images/E8KGoSwj2u7k1yTTl5XI6QIw5RHsM5idmSlUbG46URGX8wBLkH5gGJQgakPfOeiMRQgvrX3IcM5U61YnNb-unrOPNZk-qAH1PKzvUTxdPgpGBgL0Q-EAOMk0BaaOhjXOg1TTh0u50E7Rtn8Rb_0M11fVHLnSVrnP5RazLhPJhFScetU427qhFi60qE5pDh5-.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - BAÑOS (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/187984
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - HABITACION CALMA (Z)" tvg-logo="http://onerestream.us:80/images/E8KGoSwj2u7k1yTTl5XI6QIw5RHsM5idmSlUbG46URGX8wBLkH5gGJQgakPfOeiMRQgvrX3IcM5U61YnNb-unrOPNZk-qAH1PKzvUTxdPgpGBgL0Q-EAOMk0BaaOhjXOg1TTh0u50E7Rtn8Rb_0M11fVHLnSVrnP5RazLhPJhFScetU427qhFi60qE5pDh5-.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - HABITACION CALMA (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/187985
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - COMEDOR (Z)" tvg-logo="http://onerestream.us:80/images/E8KGoSwj2u7k1yTTl5XI6QIw5RHsM5idmSlUbG46URGX8wBLkH5gGJQgakPfOeiMRQgvrX3IcM5U61YnNb-unrOPNZk-qAH1PKzvUTxdPgpGBgL0Q-EAOMk0BaaOhjXOg1TTh0u50E7Rtn8Rb_0M11fVHLnSVrnP5RazLhPJhFScetU427qhFi60qE5pDh5-.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - COMEDOR (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/187986
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - PRINCIPAL (Z)" tvg-logo="http://onerestream.us:80/images/E8KGoSwj2u7k1yTTl5XI6QIw5RHsM5idmSlUbG46URGX8wBLkH5gGJQgakPfOeiMRQgvrX3IcM5U61YnNb-unrOPNZk-qAH1PKzvUTxdPgpGBgL0Q-EAOMk0BaaOhjXOg1TTh0u50E7Rtn8Rb_0M11fVHLnSVrnP5RazLhPJhFScetU427qhFi60qE5pDh5-.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - PRINCIPAL (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/187987
+#EXTINF:-1 tvg-id="" tvg-name="PPV 1 - Ecuador (e)(1080)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="ECUADOR",PPV 1 - Ecuador (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/190237
+#EXTINF:-1 tvg-id="" tvg-name="PPV 2 - Ecuador (e)(720)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="ECUADOR",PPV 2 - Ecuador (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/190238
+#EXTINF:-1 tvg-id="" tvg-name="PPV 3 - Ecuador (e)(720)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="ECUADOR",PPV 3 - Ecuador (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/190239
+#EXTINF:-1 tvg-id="" tvg-name="PPV 4 - Ecuador (TV)(720)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="ECUADOR",PPV 4 - Ecuador (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/190240
+#EXTINF:-1 tvg-id="" tvg-name="24/7 101 Dalmatas La serie animada (e)(SD)" tvg-logo="" group-title="24/7 RETRO INFANTIL",24/7 101 Dalmatas La serie animada (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/192029
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Los Picapiedra (e)(SD)" tvg-logo="" group-title="24/7 RETRO INFANTIL",24/7 Los Picapiedra (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/192030
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Retro - Tazmania (e)(720)" tvg-logo="https://i.postimg.cc/RZJcVWWg/Gemini-Generated-Image-hckdv9hckdv9hckd.png" group-title="24/7 RETRO INFANTIL",24/7 Retro - Tazmania (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/193332
+#EXTINF:-1 tvg-id="" tvg-name="24/7 ¿Le Temes a la Oscuridad? (e)(720)" tvg-logo="https://i.postimg.cc/T1Wr9NVH/247-Le-Temes-a-la-Oscuridad-(e)(720).png" group-title="24/7 RETRO",24/7 ¿Le Temes a la Oscuridad? (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/194386
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Don Gato y su Pandilla (e)(720)" tvg-logo="https://i.postimg.cc/ydRCc9Qv/247-Don-Gato-y-su-Pandilla-(e)(SD).png" group-title="24/7 RETRO INFANTIL",24/7 Don Gato y su Pandilla (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/194388
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Los Supersónicos (e)(720)" tvg-logo="https://i.postimg.cc/t4mhVVn8/247-Los-Supersonicos.png" group-title="24/7 RETRO INFANTIL",24/7 Los Supersónicos (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/194389
+#EXTINF:-1 tvg-id="" tvg-name="24/7 El laboratorio de Dexter (e)(720)" tvg-logo="https://i.postimg.cc/G2FtKpd7/247-El-laboratorio-de-Dexter-(e)(720).png" group-title="24/7 RETRO INFANTIL",24/7 El laboratorio de Dexter (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/194445
+#EXTINF:-1 tvg-id="" tvg-name="24/7 Timón y Pumba (e)(720)" tvg-logo="https://i.postimg.cc/6qRQq51R/247-Timon-y-Pumba-(e)(720).png" group-title="24/7 RETRO INFANTIL",24/7 Timón y Pumba (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/194446
+#EXTINF:-1 tvg-id="" tvg-name="24/7 X-Men (e)(720)" tvg-logo="https://i.postimg.cc/1zfVPPPb/247-X-Men.png" group-title="24/7 RETRO INFANTIL",24/7 X-Men (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/194447
+#EXTINF:-1 tvg-id="" tvg-name="Greenland: 2 Migration (2026)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/q7aijAKE98Fcp6dgR6oWiUkFO2g.jpg" group-title="VOD-ESTRENOS 2026",Greenland: 2 Migration (2026)
+http://tv.diablotv.net:8080/movie/yuliduran/3edd87689ce3/180290.mkv
+#EXTINF:-1 tvg-id="" tvg-name="Sin piedad (2026)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/mgqAZeEI5hnAgeVZ0kAdYiPy1Rs.jpg" group-title="VOD-ESTRENOS 2026",Sin piedad (2026)
+http://tv.diablotv.net:8080/movie/yuliduran/3edd87689ce3/180291.mkv
+#EXTINF:-1 tvg-id="" tvg-name="Gente que conocemos en vacaciones (2026)" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/9SUEbyc5OUaNkGPLK3f1w3Ryoyo.jpg" group-title="VOD-ESTRENOS 2026",Gente que conocemos en vacaciones (2026)
+http://tv.diablotv.net:8080/movie/yuliduran/3edd87689ce3/180292.mkv
+#EXTINF:-1 tvg-id="" tvg-name="Super Mario Bros. La película (2023)(4K)" tvg-logo="https://image.tmdb.org/t/p/original/8oYfilyGooI0B4NnInrBMgKTAxp.jpg" group-title="VOD-4K",Super Mario Bros. La película (2023)(4K)
+http://tv.diablotv.net:8080/movie/yuliduran/3edd87689ce3/193687.mkv
+#EXTINF:-1 tvg-id="" tvg-name="Reality - La Mansion VIP (L)" tvg-logo="https://www.lamansionvip.com/logo-3d.png" group-title="CANALES-REALITY LIVE",Reality - La Mansion VIP (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/195058
+#EXTINF:-1 tvg-id="" tvg-name="US | Sunday NFL Red Zone" tvg-logo="https://www.rev.bs/wp-content/uploads/2021/09/REDZONE-LOGO-1-1024x478.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",US | Sunday NFL Red Zone
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197487
+#EXTINF:-1 tvg-id="" tvg-name="EPL | 13:00 Manchester United vs Brentford" tvg-logo="https://1000marcas.net/wp-content/uploads/2020/03/Premier-League-Logo.png" group-title="EVENTOS PPV",EPL | 13:00 Manchester United vs Brentford
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197488
+#EXTINF:-1 tvg-id="" tvg-name="LES | 13:00 Espanyol vs. Levante" tvg-logo="https://assets.laliga.com/assets/logos/LALIGA_EA_SPORTS_RGB_h_color/LALIGA_EA_SPORTS_RGB_h_color.png" group-title="EVENTOS PPV",LES | 13:00 Espanyol vs. Levante
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197489
+#EXTINF:-1 tvg-id="" tvg-name="Serie A | 10:30 Cagliari vs. Atalanta" tvg-logo="https://www.fifplay.com/img/public/serie-a-logo-transparent.png" group-title="EVENTOS PPV",Serie A | 10:30 Cagliari vs. Atalanta
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197490
+#EXTINF:-1 tvg-id="" tvg-name="Serie A | 12:45 Lazio vs. Udinese" tvg-logo="https://www.fifplay.com/img/public/serie-a-logo-transparent.png" group-title="EVENTOS PPV",Serie A | 12:45 Lazio vs. Udinese
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197491
+#EXTINF:-1 tvg-id="" tvg-name="Portugal | 13:15 Gil Vicente vs Casa Pia" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/5a/S%C3%ADmbolo_da_Liga_Portuguesa_de_Futebol_Profissional.png" group-title="EVENTOS PPV",Portugal | 13:15 Gil Vicente vs Casa Pia
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197492
+#EXTINF:-1 tvg-id="" tvg-name="Arg | 15:45 Vélez Sarsfield vs Unión" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png" group-title="EVENTOS PPV",Arg | 15:45 Vélez Sarsfield vs Unión
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197493
+#EXTINF:-1 tvg-id="" tvg-name="Arg | 18:00 Huracán vs. Argentinos Jrs." tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png" group-title="EVENTOS PPV",Arg | 18:00 Huracán vs. Argentinos Jrs.
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197494
+#EXTINF:-1 tvg-id="" tvg-name="Chipre | 10:00 AEL vs Anorthosis" tvg-logo="https://e7.pngegg.com/pngimages/247/709/png-clipart-cypriot-first-division-cyprus-national-football-team-doxa-katokopias-fc-premier-league-premier-league-team-logo.png" group-title="EVENTOS PPV",Chipre | 10:00 AEL vs Anorthosis
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197495
+#EXTINF:-1 tvg-id="" tvg-name="LSmartBank | 12:30 Cádiz vs Las Palmas" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/LaLiga_Hypermotion_2023_Vertical_Logo.svg/512px-LaLiga_Hypermotion_2023_Vertical_Logo.svg.png" group-title="EVENTOS PPV",LSmartBank | 12:30 Cádiz vs Las Palmas
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197496
+#EXTINF:-1 tvg-id="" tvg-name="Turquía | 11:00 Besiktas vs. Fatih Karagumruk" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/S%C3%BCper_Lig_logo.svg/2160px-S%C3%BCper_Lig_logo.svg_logo.png" group-title="EVENTOS PPV",Turquía | 11:00 Besiktas vs. Fatih Karagumruk
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197497
+#EXTINF:-1 tvg-id="" tvg-name="Turquía | 11:00 Konyaspor vs. Trabzonspor" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/S%C3%BCper_Lig_logo.svg/2160px-S%C3%BCper_Lig_logo.svg_logo.png" group-title="EVENTOS PPV",Turquía | 11:00 Konyaspor vs. Trabzonspor
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197498
+#EXTINF:-1 tvg-id="" tvg-name="Uruguay | 16:30 Defensor Sporting vs. Progreso" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZMhrbB2fnxlNQnMLa-CNayvWFEOIW5iOfsQ&s_logo.png" group-title="EVENTOS PPV",Uruguay | 16:30 Defensor Sporting vs. Progreso
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197499
+#EXTINF:-1 tvg-id="" tvg-name="Segunda Uruguay | 16:00 Atenas vs. Fénix" tvg-logo="https://pbs.twimg.com/profile_images/1694769519414108161/bV8M9cnT_400x400.jpg" group-title="EVENTOS PPV",Segunda Uruguay | 16:00 Atenas vs. Fénix
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197500
+#EXTINF:-1 tvg-id="" tvg-name="Albania | 11:00 AF Elbasani vs Vllaznia Shkodër" tvg-logo="https://futboljobs.com/wp-content/uploads/emblems/04744932f3b2270a72f45774eae1f99a.png" group-title="EVENTOS PPV",Albania | 11:00 AF Elbasani vs Vllaznia Shkodër
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197501
+#EXTINF:-1 tvg-id="" tvg-name="Albania | 11:00 Flamurtari Vlorë vs Dinamo Tirana" tvg-logo="https://futboljobs.com/wp-content/uploads/emblems/04744932f3b2270a72f45774eae1f99a.png" group-title="EVENTOS PPV",Albania | 11:00 Flamurtari Vlorë vs Dinamo Tirana
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197502
+#EXTINF:-1 tvg-id="" tvg-name="Segunda Chile | 18:00 Dep. Iquique vs S. Wanderers" tvg-logo="https://cdn.footystats.org/img/competitions/chile-primera-b.png" group-title="EVENTOS PPV",Segunda Chile | 18:00 Dep. Iquique vs S. Wanderers
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197503
+#EXTINF:-1 tvg-id="" tvg-name="Segunda Colombia | 16:00 Bogotá vs Unión Magdalena" tvg-logo="https://images.fotmob.com/image_resources/logo/leaguelogo/9125.png" group-title="EVENTOS PPV",Segunda Colombia | 16:00 Bogotá vs Unión Magdalena
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197504
+#EXTINF:-1 tvg-id="" tvg-name="Segunda Colombia | 18:30 Barranquilla vs Real Cartagena" tvg-logo="https://images.fotmob.com/image_resources/logo/leaguelogo/9125.png" group-title="EVENTOS PPV",Segunda Colombia | 18:30 Barranquilla vs Real Cartagena
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197505
+#EXTINF:-1 tvg-id="" tvg-name="Ecuador | 15:30 Manta vs Universidad Católica" tvg-logo="https://www.zerozero.pt/img/logos/competicoes/274_imgbank_d1_20250313153049.png" group-title="EVENTOS PPV",Ecuador | 15:30 Manta vs Universidad Católica
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197506
+#EXTINF:-1 tvg-id="" tvg-name="Ecuador | 18:00 Aucas vs Delfin" tvg-logo="https://www.zerozero.pt/img/logos/competicoes/274_imgbank_d1_20250313153049.png" group-title="EVENTOS PPV",Ecuador | 18:00 Aucas vs Delfin
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197507
+#EXTINF:-1 tvg-id="" tvg-name="Honduras | 15:30 Policía Nacional vs Victoria" tvg-logo="https://www.thesportsdb.com/images/media/league/badge/94pogz1646830106.png" group-title="EVENTOS PPV",Honduras | 15:30 Policía Nacional vs Victoria
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197508
+#EXTINF:-1 tvg-id="" tvg-name="Perú | 14:00 ADT vs Los Chankas" tvg-logo="https://i.pinimg.com/222x/47/45/76/4745769af544f2771531c6751a48eb98.jpg" group-title="EVENTOS PPV",Perú | 14:00 ADT vs Los Chankas
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197509
+#EXTINF:-1 tvg-id="" tvg-name="Perú | 18:00 Deportivo Garcilaso vs Melgar" tvg-logo="https://i.pinimg.com/222x/47/45/76/4745769af544f2771531c6751a48eb98.jpg" group-title="EVENTOS PPV",Perú | 18:00 Deportivo Garcilaso vs Melgar
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197510
+#EXTINF:-1 tvg-id="" tvg-name="Sudamericano Sub17 Fem | 14:00 Venezuela (F) vs. Ecuador (F)" tvg-logo="https://cdn.conmebol.com/wp-content/uploads/2026/04/logo@2x.png" group-title="EVENTOS PPV",Sudamericano Sub17 Fem | 14:00 Venezuela (F) vs. Ecuador (F)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197511
+#EXTINF:-1 tvg-id="" tvg-name="Sudamericano Sub17 Fem | 17:00 Uruguay (F) vs. Brasil (F)" tvg-logo="https://cdn.conmebol.com/wp-content/uploads/2026/04/logo@2x.png" group-title="EVENTOS PPV",Sudamericano Sub17 Fem | 17:00 Uruguay (F) vs. Brasil (F)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197512
+#EXTINF:-1 tvg-id="" tvg-name="Bundesliga Fem | 10:00 Hoffenheim vs. Koln" tvg-logo="https://upload.wikimedia.org/wikipedia/ru/1/14/Frauen_bundesliga.png" group-title="EVENTOS PPV",Bundesliga Fem | 10:00 Hoffenheim vs. Koln
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197513
+#EXTINF:-1 tvg-id="" tvg-name="MLB 01 | 16:10 Guardians vs Rays" tvg-logo="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fmlb.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",MLB 01 | 16:10 Guardians vs Rays
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197514
+#EXTINF:-1 tvg-id="" tvg-name="MLB 02 | 16:40 Pirates vs Cardinals" tvg-logo="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fmlb.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",MLB 02 | 16:40 Pirates vs Cardinals
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197515
+#EXTINF:-1 tvg-id="" tvg-name="MLB 03 | 17:07 Blue Jays vs Red Sox" tvg-logo="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fmlb.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",MLB 03 | 17:07 Blue Jays vs Red Sox
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197516
+#EXTINF:-1 tvg-id="" tvg-name="MLB 04 | 17:40 White Sox vs Angels" tvg-logo="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fmlb.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",MLB 04 | 17:40 White Sox vs Angels
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197517
+#EXTINF:-1 tvg-id="" tvg-name="MLB 05 | 17:40 Twins vs Mariners" tvg-logo="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fmlb.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",MLB 05 | 17:40 Twins vs Mariners
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197518
+#EXTINF:-1 tvg-id="" tvg-name="MLB 06 | 17:40 Twins vs Mariners Español" tvg-logo="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fmlb.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",MLB 06 | 17:40 Twins vs Mariners Español
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197519
+#EXTINF:-1 tvg-id="" tvg-name="MLB 07 | 18:05 Rangers vs Yankees" tvg-logo="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fmlb.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",MLB 07 | 18:05 Rangers vs Yankees
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197520
+#EXTINF:-1 tvg-id="" tvg-name="MLB 08 | 18:05 Rangers vs Yankees Español" tvg-logo="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fmlb.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",MLB 08 | 18:05 Rangers vs Yankees Español
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197521
+#EXTINF:-1 tvg-id="" tvg-name="MLB 09 | 19:40 Padres vs Cubs" tvg-logo="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fmlb.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",MLB 09 | 19:40 Padres vs Cubs
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197522
+#EXTINF:-1 tvg-id="" tvg-name="MLB 10 | 20:10 Dodgers vs Marlins" tvg-logo="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fespn%2Fmisc_logos%2F500%2Fmlb.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",MLB 10 | 20:10 Dodgers vs Marlins
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197523
+#EXTINF:-1 tvg-id="" tvg-name="LMB 01 | 18:30 Quintana Roo vs Yucatan" tvg-logo="https://r2.thesportsdb.com/images/media/league/logo/f975vs1625460045.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",LMB 01 | 18:30 Quintana Roo vs Yucatan
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197524
+#EXTINF:-1 tvg-id="" tvg-name="Beisbol | Liga Japon 22:00 Seibu Lions vs Nippon Ham Fighters" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/NPB_logo.svg/1280px-NPB_logo.svg.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",Beisbol | Liga Japon 22:00 Seibu Lions vs Nippon Ham Fighters
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197525
+#EXTINF:-1 tvg-id="" tvg-name="NBA 01 | 18:00 Pistons vs. Magic" tvg-logo="https://1000marcas.net/wp-content/uploads/2019/12/NBA-Logo.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",NBA 01 | 18:00 Pistons vs. Magic
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197526
+#EXTINF:-1 tvg-id="" tvg-name="NBA 02 | 19:30 Thunder vs. Suns" tvg-logo="https://1000marcas.net/wp-content/uploads/2019/12/NBA-Logo.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",NBA 02 | 19:30 Thunder vs. Suns
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197527
+#EXTINF:-1 tvg-id="" tvg-name="NBA 03 | 20:30 Timberwolves vs. Nuggets" tvg-logo="https://1000marcas.net/wp-content/uploads/2019/12/NBA-Logo.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",NBA 03 | 20:30 Timberwolves vs. Nuggets
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197528
+#EXTINF:-1 tvg-id="" tvg-name="NHL 01 | 17:00 Penguins vs Flyers" tvg-logo="https://1000logos.net/wp-content/uploads/2017/05/NHL-logo.jpg" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",NHL 01 | 17:00 Penguins vs Flyers
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197529
+#EXTINF:-1 tvg-id="" tvg-name="NHL 02 | 19:30 Mammoth vs Golden Knights" tvg-logo="https://1000logos.net/wp-content/uploads/2017/05/NHL-logo.jpg" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",NHL 02 | 19:30 Mammoth vs Golden Knights
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197530
+#EXTINF:-1 tvg-id="" tvg-name="Hockey | Mundial Sub18 08:00 USA vs Alemania" tvg-logo="https://blob.iihf.com/iihf-media/iihfmvc/media/2026/wm18/wm18ib/logos/wm18ib_portrait_color.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",Hockey | Mundial Sub18 08:00 USA vs Alemania
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197531
+#EXTINF:-1 tvg-id="" tvg-name="ATP | 04:00 Mutua Madrid Open / Arantxa Sánchez Stadium" tvg-logo="https://upload.wikimedia.org/wikipedia/fr/f/f6/ATP_Tour_2019_Logo.png" group-title="EVENTOS PPV",ATP | 04:00 Mutua Madrid Open / Arantxa Sánchez Stadium
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197532
+#EXTINF:-1 tvg-id="" tvg-name="WTA | 04:00 Mutua Madrid Open / Court 4 (Doubles)" tvg-logo="https://images.seeklogo.com/logo-png/39/1/wta-2020-logo-png_seeklogo-392673.png" group-title="EVENTOS PPV",WTA | 04:00 Mutua Madrid Open / Court 4 (Doubles)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197533
+#EXTINF:-1 tvg-id="" tvg-name="WTA | 05:00 Mutua Madrid Open / Manolo Santana Stadium" tvg-logo="https://images.seeklogo.com/logo-png/39/1/wta-2020-logo-png_seeklogo-392673.png" group-title="EVENTOS PPV",WTA | 05:00 Mutua Madrid Open / Manolo Santana Stadium
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197534
+#EXTINF:-1 tvg-id="" tvg-name="11:00 NCAA Baseball: Lafayette vs. Army" tvg-logo="https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/baseball.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",11:00 NCAA Baseball: Lafayette vs. Army
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197535
+#EXTINF:-1 tvg-id="" tvg-name="19:00 NCAA Baseball: UC Davis vs. Stanford" tvg-logo="https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/baseball.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",19:00 NCAA Baseball: UC Davis vs. Stanford
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197536
+#EXTINF:-1 tvg-id="" tvg-name="09:00 NCAA Golf: Sun Belt Men's Golf Championship" tvg-logo="https://loodibee.com/wp-content/uploads/NCAA_logo.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",09:00 NCAA Golf: Sun Belt Men's Golf Championship
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197537
+#EXTINF:-1 tvg-id="" tvg-name="10:00 NCAA Softball: SE Missouri vs. Morehead St" tvg-logo="https://a.espncdn.com/i/espn/misc_logos/500/ncaa_womens_softball.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",10:00 NCAA Softball: SE Missouri vs. Morehead St
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197538
+#EXTINF:-1 tvg-id="" tvg-name="11:00 NCAA Softball: Army vs. Bucknell" tvg-logo="https://a.espncdn.com/i/espn/misc_logos/500/ncaa_womens_softball.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",11:00 NCAA Softball: Army vs. Bucknell
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197539
+#EXTINF:-1 tvg-id="" tvg-name="12:30 NCAA Softball: Brown vs. Cornell" tvg-logo="https://a.espncdn.com/i/espn/misc_logos/500/ncaa_womens_softball.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",12:30 NCAA Softball: Brown vs. Cornell
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197540
+#EXTINF:-1 tvg-id="" tvg-name="17:00 NCAA Softball: #2 Alabama vs. #9 Tennessee" tvg-logo="https://a.espncdn.com/i/espn/misc_logos/500/ncaa_womens_softball.png" group-title="DEPORTES PPV (NBA,MLS,NFL,MLB,NHL)",17:00 NCAA Softball: #2 Alabama vs. #9 Tennessee
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/197541
+#EXTINF:-1 tvg-id="" tvg-name="ARG - TNT Sports (L)(720)" tvg-logo="https://i.postimg.cc/7Yn2ddSJ/Proyecto-X-Argentina-(25).png" group-title="ARGENTINA",ARG - TNT Sports (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157585
+#EXTINF:-1 tvg-id="" tvg-name="ARG - TNT Sports (TV)(720)" tvg-logo="https://i.postimg.cc/7Yn2ddSJ/Proyecto-X-Argentina-(25).png" group-title="ARGENTINA",ARG - TNT Sports (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157584
+#EXTINF:-1 tvg-id="" tvg-name="ARG - DEPORTV (L)(720)" tvg-logo="https://i.postimg.cc/hv9dS3w0/Proyecto-X-Argentina-(11).png" group-title="ARGENTINA",ARG - DEPORTV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157596
+#EXTINF:-1 tvg-id="" tvg-name="ARG - ESPN (M)(720)" tvg-logo="https://i.postimg.cc/T1rDRHFT/Proyecto-X-Argentina-(12).png" group-title="ARGENTINA",ARG - ESPN (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157558
+#EXTINF:-1 tvg-id="" tvg-name="ARG - ESPN 2 (M)(720)" tvg-logo="https://i.postimg.cc/59vvq60L/Proyecto-X-Argentina-(13).png" group-title="ARGENTINA",ARG - ESPN 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157559
+#EXTINF:-1 tvg-id="" tvg-name="ARG - ESPN 3 (M)(720)" tvg-logo="https://i.postimg.cc/jqNNQL5z/Proyecto-X-Argentina-(14).png" group-title="ARGENTINA",ARG - ESPN 3 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157560
+#EXTINF:-1 tvg-id="" tvg-name="ARG - ESPN 4 (M)(720)" tvg-logo="https://i.postimg.cc/v899LcBL/Proyecto-X-Argentina-(15).png" group-title="ARGENTINA",ARG - ESPN 4 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157561
+#EXTINF:-1 tvg-id="" tvg-name="ARG - ESPN Premium (M)(720)" tvg-logo="" group-title="ARGENTINA",ARG - ESPN Premium (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157562
+#EXTINF:-1 tvg-id="" tvg-name="ARG - TV Publica (L)(720)" tvg-logo="https://i.postimg.cc/4NQ9qqpb/Proyecto-X-Argentina-(26).png" group-title="ARGENTINA",ARG - TV Publica (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157586
+#EXTINF:-1 tvg-id="" tvg-name="ARG - TV Publica (Z)(720)" tvg-logo="https://i.postimg.cc/4NQ9qqpb/Proyecto-X-Argentina-(26).png" group-title="ARGENTINA",ARG - TV Publica (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157587
+#EXTINF:-1 tvg-id="" tvg-name="ARG - TV Pública (M)(720)" tvg-logo="https://i.postimg.cc/4NQ9qqpb/Proyecto-X-Argentina-(26).png" group-title="ARGENTINA",ARG - TV Pública (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157578
+#EXTINF:-1 tvg-id="" tvg-name="ARG - TyC Sports (L)(720)" tvg-logo="https://i.postimg.cc/GpN0rbZz/Proyecto-X-Argentina-(28).png" group-title="ARGENTINA",ARG - TyC Sports (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157583
+#EXTINF:-1 tvg-id="" tvg-name="ARG - TyC Sports (M)(720)" tvg-logo="https://i.postimg.cc/GpN0rbZz/Proyecto-X-Argentina-(28).png" group-title="ARGENTINA",ARG - TyC Sports (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157580
+#EXTINF:-1 tvg-id="Canal.TyC.Sports.sv" tvg-name="ARG - TyC Sports (TV)(720)" tvg-logo="https://i.postimg.cc/GpN0rbZz/Proyecto-X-Argentina-(28).png" group-title="ARGENTINA",ARG - TyC Sports (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157614
+#EXTINF:-1 tvg-id="Canal.America.TV.(Argentina).sv" tvg-name="ARG - A24 (Z)(720)" tvg-logo="https://i.postimg.cc/9fMZGbRp/Proyecto-X-Argentina.png" group-title="ARGENTINA",ARG - A24 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157613
+#EXTINF:-1 tvg-id="Canal.America.TV.(Argentina).sv" tvg-name="ARG - America TV (L)(720)" tvg-logo="https://i.postimg.cc/d01r86km/Proyecto-X-Argentina-(1).png" group-title="ARGENTINA",ARG - America TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157612
+#EXTINF:-1 tvg-id="Canal.America.TV.(Argentina).sv" tvg-name="ARG - America TV (L)(720)" tvg-logo="https://i.postimg.cc/d01r86km/Proyecto-X-Argentina-(1).png" group-title="ARGENTINA",ARG - America TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157624
+#EXTINF:-1 tvg-id="Canal.America.TV.(Argentina).sv" tvg-name="ARG - America TV (M)(720)" tvg-logo="https://i.postimg.cc/d01r86km/Proyecto-X-Argentina-(1).png" group-title="ARGENTINA",ARG - America TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157623
+#EXTINF:-1 tvg-id="Canal.America.TV.(Argentina).sv" tvg-name="ARG - America TV (TV)(720)" tvg-logo="https://i.postimg.cc/d01r86km/Proyecto-X-Argentina-(1).png" group-title="ARGENTINA",ARG - America TV (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157622
+#EXTINF:-1 tvg-id="Canal.Televisión.Pública.(Argentina).ar" tvg-name="ARG - Argentinisima (i)(720)" tvg-logo="https://i.postimg.cc/xdCMK5Js/Proyecto-X-Argentina-(2).png" group-title="ARGENTINA",ARG - Argentinisima (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157608
+#EXTINF:-1 tvg-id="" tvg-name="ARG - C5N (L)(720)" tvg-logo="https://i.postimg.cc/nLzBv2jT/Proyecto-X-Argentina-(3).png" group-title="ARGENTINA",ARG - C5N (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157607
+#EXTINF:-1 tvg-id="" tvg-name="ARG - C5N (M)(720)" tvg-logo="https://i.postimg.cc/nLzBv2jT/Proyecto-X-Argentina-(3).png" group-title="ARGENTINA",ARG - C5N (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157566
+#EXTINF:-1 tvg-id="Canal.13.de.Argentina.(El.Trece).sv" tvg-name="ARG - Canal 13 (M)(720)" tvg-logo="https://i.postimg.cc/zBHhQfF4/Proyecto-X-Argentina-(4).png" group-title="ARGENTINA",ARG - Canal 13 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157567
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="ARG - Canal 26 (L)(720)" tvg-logo="https://i.postimg.cc/zfcWphT5/Proyecto-X-Argentina-(5).png" group-title="ARGENTINA",ARG - Canal 26 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157594
+#EXTINF:-1 tvg-id="" tvg-name="ARG - Canal 26 (M)(720)" tvg-logo="https://i.postimg.cc/zfcWphT5/Proyecto-X-Argentina-(5).png" group-title="ARGENTINA",ARG - Canal 26 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157568
+#EXTINF:-1 tvg-id="Canal.1.(Colombia).ar" tvg-name="ARG - Canal 9 (M)(720)" tvg-logo="https://i.postimg.cc/3R0GqwZT/Proyecto-X-Argentina-(6).png" group-title="ARGENTINA",ARG - Canal 9 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157569
+#EXTINF:-1 tvg-id="" tvg-name="ARG - Cinear (Z)(720)" tvg-logo="https://i.postimg.cc/PJGDnk63/Proyecto-X-Argentina-(8).png" group-title="ARGENTINA",ARG - Cinear (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157601
+#EXTINF:-1 tvg-id="" tvg-name="ARG - Ciudad Magazine (M)(720)" tvg-logo="https://i.postimg.cc/9039HjxS/Proyecto-X-Argentina-(9).png" group-title="ARGENTINA",ARG - Ciudad Magazine (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157565
+#EXTINF:-1 tvg-id="" tvg-name="ARG - Crónica TV (M)(720)" tvg-logo="https://i.postimg.cc/L5z1H07D/Proyecto-X-Argentina-(10).png" group-title="ARGENTINA",ARG - Crónica TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157572
+#EXTINF:-1 tvg-id="" tvg-name="ARG - Deportv (L)(720)" tvg-logo="https://i.postimg.cc/hv9dS3w0/Proyecto-X-Argentina-(11).png" group-title="ARGENTINA",ARG - Deportv (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157620
+#EXTINF:-1 tvg-id="" tvg-name="ARG - DeporTV (M)(720)" tvg-logo="https://i.postimg.cc/hv9dS3w0/Proyecto-X-Argentina-(11).png" group-title="ARGENTINA",ARG - DeporTV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157573
+#EXTINF:-1 tvg-id="" tvg-name="ARG - El Nueve (Z)(720)" tvg-logo="https://i.postimg.cc/3R0GqwZT/Proyecto-X-Argentina-(6).png" group-title="ARGENTINA",ARG - El Nueve (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157595
+#EXTINF:-1 tvg-id="" tvg-name="ARG - El Nueve (L)(720)" tvg-logo="https://i.postimg.cc/3R0GqwZT/Proyecto-X-Argentina-(6).png" group-title="ARGENTINA",ARG - El Nueve (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157621
+#EXTINF:-1 tvg-id="" tvg-name="ARG - El trece (L)(720)" tvg-logo="https://i.postimg.cc/zBHhQfF4/Proyecto-X-Argentina-(4).png" group-title="ARGENTINA",ARG - El trece (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157591
+#EXTINF:-1 tvg-id="" tvg-name="ARG - LN + (L)(720)" tvg-logo="https://i.postimg.cc/Fs4SPNdC/Proyecto-X-Argentina-(17).png" group-title="ARGENTINA",ARG - LN + (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157592
+#EXTINF:-1 tvg-id="" tvg-name="ARG - LN+ (L)(720)" tvg-logo="https://i.postimg.cc/Fs4SPNdC/Proyecto-X-Argentina-(17).png" group-title="ARGENTINA",ARG - LN+ (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157593
+#EXTINF:-1 tvg-id="" tvg-name="ARG - LN+ (M)(720)" tvg-logo="https://i.postimg.cc/Fs4SPNdC/Proyecto-X-Argentina-(17).png" group-title="ARGENTINA",ARG - LN+ (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157574
+#EXTINF:-1 tvg-id="" tvg-name="ARG - Metro (i)(720)" tvg-logo="https://i.postimg.cc/m2s9dB1f/Proyecto-X-Argentina-(18).png" group-title="ARGENTINA",ARG - Metro (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157606
+#EXTINF:-1 tvg-id="" tvg-name="ARG - Paka Paka (M)(720)" tvg-logo="https://i.postimg.cc/m2s9dB1R/Proyecto-X-Argentina-(20).png" group-title="ARGENTINA",ARG - Paka Paka (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157575
+#EXTINF:-1 tvg-id="" tvg-name="ARG - Telefe (TV)(720)" tvg-logo="https://i.postimg.cc/5NVzPbQ6/Proyecto-X-Argentina-(21).png" group-title="ARGENTINA",ARG - Telefe (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157590
+#EXTINF:-1 tvg-id="" tvg-name="ARG - Telefe (L)(720)" tvg-logo="https://i.postimg.cc/5NVzPbQ6/Proyecto-X-Argentina-(21).png" group-title="ARGENTINA",ARG - Telefe (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157589
+#EXTINF:-1 tvg-id="Canal.Telefé.(Argentina).sv" tvg-name="ARG - Telefe Noticias (i)(720)" tvg-logo="https://i.postimg.cc/gkHZQQ30/Proyecto-X-Argentina-(22).png" group-title="ARGENTINA",ARG - Telefe Noticias (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157617
+#EXTINF:-1 tvg-id="" tvg-name="ARG - Telesur (i)(720)" tvg-logo="https://i.postimg.cc/wTQmZZDy/Proyecto-X-Argentina-(23).png" group-title="ARGENTINA",ARG - Telesur (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157604
+#EXTINF:-1 tvg-id="" tvg-name="ARG - TN (M)(720)" tvg-logo="https://i.postimg.cc/xT3zhhLX/Proyecto-X-Argentina-(24).png" group-title="ARGENTINA",ARG - TN (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157577
+#EXTINF:-1 tvg-id="" tvg-name="ARG - TV5 Monde (M)(720)" tvg-logo="https://i.postimg.cc/XYNCbLgQ/Proyecto-X-Argentina-(27).png" group-title="ARGENTINA",ARG - TV5 Monde (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/157579
+#EXTINF:-1 tvg-id="" tvg-name="BOL-ATB (TV)(1080)" tvg-logo="http://swedtv.vip/logos/bolivia/ATB.png" group-title="BOLIVIA",BOL-ATB (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/98508
+#EXTINF:-1 tvg-id="" tvg-name="BOL-Bolivision (TV)(1080)" tvg-logo="http://swedtv.vip/logos/bolivia/bolivision.png" group-title="BOLIVIA",BOL-Bolivision (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/98504
+#EXTINF:-1 tvg-id="" tvg-name="BOL-Gigavision (TV)(720)" tvg-logo="http://swedtv.vip/logos/bolivia/gigavision.jpg" group-title="BOLIVIA",BOL-Gigavision (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/98503
+#EXTINF:-1 tvg-id="" tvg-name="CHI PPV 1 - (e)(1080)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="CHILE",CHI PPV 1 - (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9885
+#EXTINF:-1 tvg-id="I1.82970.schedulesdirect.org" tvg-name="CHI-TNT Sports Premium (M)(1080)" tvg-logo="https://i.postimg.cc/yYcGLqsG/TNT-Sports-Premium-Chile.png" group-title="CHILE",CHI-TNT Sports Premium (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/112994
+#EXTINF:-1 tvg-id="I1.82970.schedulesdirect.org" tvg-name="CHI-TNT Sports Premium (M)(1080)" tvg-logo="https://i.postimg.cc/yYcGLqsG/TNT-Sports-Premium-Chile.png" group-title="CHILE",CHI-TNT Sports Premium (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/112995
+#EXTINF:-1 tvg-id="0401" tvg-name="CHI-TNT Sports Premium (M)(SD)" tvg-logo="https://i.postimg.cc/yYcGLqsG/TNT-Sports-Premium-Chile.png" group-title="CHILE",CHI-TNT Sports Premium (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/112993
+#EXTINF:-1 tvg-id="I540.80442.schedulesdirect.org" tvg-name="CHI-TNT Sports Premium (TV)(1080)" tvg-logo="https://i.postimg.cc/yYcGLqsG/TNT-Sports-Premium-Chile.png" group-title="CHILE",CHI-TNT Sports Premium (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9923
+#EXTINF:-1 tvg-id="0402" tvg-name="CHI-TNT Sports 2 (L)(1080)" tvg-logo="https://i.postimg.cc/mg45qdrg/Tn-T-Sports-Chile.png" group-title="CHILE",CHI-TNT Sports 2 (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9925
+#EXTINF:-1 tvg-id="I1.82970.schedulesdirect.org" tvg-name="CHI-TNT Sports 2 (M)(SD)" tvg-logo="https://i.postimg.cc/mg45qdrg/Tn-T-Sports-Chile.png" group-title="CHILE",CHI-TNT Sports 2 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87176
+#EXTINF:-1 tvg-id="I1246.82451.schedulesdirect.org" tvg-name="CHI-TNT Sports 2 (TV)(1080)" tvg-logo="https://i.postimg.cc/mg45qdrg/Tn-T-Sports-Chile.png" group-title="CHILE",CHI-TNT Sports 2 (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9926
+#EXTINF:-1 tvg-id="I1.82970.schedulesdirect.org" tvg-name="CHI-TNT Sports 2 (Z)(1080)" tvg-logo="https://i.postimg.cc/mg45qdrg/Tn-T-Sports-Chile.png" group-title="CHILE",CHI-TNT Sports 2 (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/112997
+#EXTINF:-1 tvg-id="I1.82970.schedulesdirect.org" tvg-name="CHI-TNT Sports 3 (L)(1080)" tvg-logo="https://i.postimg.cc/mg45qdrg/Tn-T-Sports-Chile.png" group-title="CHILE",CHI-TNT Sports 3 (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9929
+#EXTINF:-1 tvg-id="I1.82970.schedulesdirect.org" tvg-name="CHI-CDO (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-HEq9Fr6haPg/XaoHsfkDTPI/AAAAAAAAAUs/6FaGhc-wdVkg7m4PVBuIf9Vxyhgk3PfyQCLcBGAsYHQ/s200/21.png" group-title="CHILE",CHI-CDO (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84884
+#EXTINF:-1 tvg-id="I1.82970.schedulesdirect.org" tvg-name="CHI-CDO 2 (TV)(SD)" tvg-logo="https://1.bp.blogspot.com/-HEq9Fr6haPg/XaoHsfkDTPI/AAAAAAAAAUs/6FaGhc-wdVkg7m4PVBuIf9Vxyhgk3PfyQCLcBGAsYHQ/s200/21.png" group-title="CHILE",CHI-CDO 2 (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9896
+#EXTINF:-1 tvg-id="Canal.ESPN.(Chile).cl" tvg-name="CHI-CDO Premium 1 (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-HEq9Fr6haPg/XaoHsfkDTPI/AAAAAAAAAUs/6FaGhc-wdVkg7m4PVBuIf9Vxyhgk3PfyQCLcBGAsYHQ/s200/21.png" group-title="CHILE",CHI-CDO Premium 1 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9897
+#EXTINF:-1 tvg-id="DSPORTS.2.HD.dtvsp" tvg-name="CHI-Directv 2 (L)(1080)" tvg-logo="https://lh3.googleusercontent.com/-_9mzNNdXzjQ/Yqp2LxWG4FI/AAAAAAAADpk/1Tyz1yla_eUKENravElP8qX4Pmnym0y5gCNcBGAsYHQ/w200-h200/1655338541459072-1.png" group-title="CHILE",CHI-Directv 2 (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9904
+#EXTINF:-1 tvg-id="Canal.ESPN.(Chile).sv" tvg-name="CHI-Espn 1 (L)(720)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CHILE",CHI-Espn 1 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9905
+#EXTINF:-1 tvg-id="Canal.ESPN.(Chile).cl" tvg-name="CHI-Espn 1 (PM)(1080)" tvg-logo="https://1.bp.blogspot.com/-_-38APt-8pM/Xay_Z5zsLcI/AAAAAAAAAkU/PF6BQcFPL5YtdLFw8kn4prIX6q2UbXF_gCLcBGAsYHQ/s200/5.png" group-title="CHILE",CHI-Espn 1 (PM)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/143375
+#EXTINF:-1 tvg-id="ESPN.7.Latin.America.HDTV.(Cono.Sur).(FOXSP2HD).cl" tvg-name="CHI-Espn 2 (M)(720)" tvg-logo="https://1.bp.blogspot.com/-_XxscAqVFhA/Xay_aGq3DuI/AAAAAAAAAkY/ga-t6_3827QQFqSnExfABTNBtMbpvJEYgCLcBGAsYHQ/s200/6.png" group-title="CHILE",CHI-Espn 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9906
+#EXTINF:-1 tvg-id="Canal.Discovery.Kids.(Chile).cl" tvg-name="CHI-Espn 2 (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-_XxscAqVFhA/Xay_aGq3DuI/AAAAAAAAAkY/ga-t6_3827QQFqSnExfABTNBtMbpvJEYgCLcBGAsYHQ/s200/6.png" group-title="CHILE",CHI-Espn 2 (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9907
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Fox Sports 2 (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-AJ5Rf2Jtldk/Xajps0BEM3I/AAAAAAAAASY/QhwqT65Cbtcfnva5b_ZG03mAgWevuOQ3wCLcBGAsYHQ/s200/11.png" group-title="CHILE",CHI-Fox Sports 2 (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9913
+#EXTINF:-1 tvg-id="I346.123582.schedulesdirect.org" tvg-name="CHI-Espn Premium (TV)(SD)" tvg-logo="https://lh3.googleusercontent.com/-jOfICTahjos/YoBRF4ftRiI/AAAAAAAADns/sO-bk2urxu0N3pCgD0ADRNC-D40slmGCgCNcBGAsYHQ/w200-h200/1652576530328166-0.png" group-title="CHILE",CHI-Espn Premium (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87175
+#EXTINF:-1 tvg-id="Canal.Chilevisión.(CHV).sv" tvg-name="CHI-Chilevision (e)(1080)" tvg-logo="https://1.bp.blogspot.com/-aKKnE5zelf0/XajpwuQbiiI/AAAAAAAAATA/5f4gU1aoAV8DeFtUKrBem58nsrj8P8HHQCLcBGAsYHQ/s200/5.png" group-title="CHILE",CHI-Chilevision (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9899
+#EXTINF:-1 tvg-id="Canal.Chilevisión.(CHV).sv" tvg-name="CHI-Chilevision (L)(720)" tvg-logo="https://1.bp.blogspot.com/-aKKnE5zelf0/XajpwuQbiiI/AAAAAAAAATA/5f4gU1aoAV8DeFtUKrBem58nsrj8P8HHQCLcBGAsYHQ/s200/5.png" group-title="CHILE",CHI-Chilevision (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9898
+#EXTINF:-1 tvg-id="Canal.Chilevisión.(CHV).sv" tvg-name="CHI-Chilevision (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-aKKnE5zelf0/XajpwuQbiiI/AAAAAAAAATA/5f4gU1aoAV8DeFtUKrBem58nsrj8P8HHQCLcBGAsYHQ/s200/5.png" group-title="CHILE",CHI-Chilevision (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87170
+#EXTINF:-1 tvg-id="Canal.Chilevisión.(CHV).sv" tvg-name="CHI-Chilevision (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-aKKnE5zelf0/XajpwuQbiiI/AAAAAAAAATA/5f4gU1aoAV8DeFtUKrBem58nsrj8P8HHQCLcBGAsYHQ/s200/5.png" group-title="CHILE",CHI-Chilevision (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9900
+#EXTINF:-1 tvg-id="Canal.Chilevisión.(CHV).sv" tvg-name="CHI-Chilevisión (720)(M)" tvg-logo="https://1.bp.blogspot.com/-aKKnE5zelf0/XajpwuQbiiI/AAAAAAAAATA/5f4gU1aoAV8DeFtUKrBem58nsrj8P8HHQCLcBGAsYHQ/s200/5.png" group-title="CHILE",CHI-Chilevisión (720)(M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9901
+#EXTINF:-1 tvg-id="Canal.Mega.(Chile).sv" tvg-name="CHI-Mega (e)(1080)" tvg-logo="https://1.bp.blogspot.com/-AUWZ0lqvHw4/XajpwcGPL2I/AAAAAAAAAS8/2mLLh5UN2FYLtwIFNcr2bd6LpqZxOcrJACLcBGAsYHQ/s200/4.png" group-title="CHILE",CHI-Mega (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9918
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Mega (L)(720)" tvg-logo="https://1.bp.blogspot.com/-AUWZ0lqvHw4/XajpwcGPL2I/AAAAAAAAAS8/2mLLh5UN2FYLtwIFNcr2bd6LpqZxOcrJACLcBGAsYHQ/s200/4.png" group-title="CHILE",CHI-Mega (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9919
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Mega (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-AUWZ0lqvHw4/XajpwcGPL2I/AAAAAAAAAS8/2mLLh5UN2FYLtwIFNcr2bd6LpqZxOcrJACLcBGAsYHQ/s200/4.png" group-title="CHILE",CHI-Mega (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/174760
+#EXTINF:-1 tvg-id="Canal.Mega.(Chile).sv" tvg-name="CHI-Mega (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-AUWZ0lqvHw4/XajpwcGPL2I/AAAAAAAAAS8/2mLLh5UN2FYLtwIFNcr2bd6LpqZxOcrJACLcBGAsYHQ/s200/4.png" group-title="CHILE",CHI-Mega (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/174761
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Mega 2 (e)(1080)" tvg-logo="" group-title="CHILE",CHI-Mega 2 (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9921
+#EXTINF:-1 tvg-id="Canal.13.de.Chile.sv" tvg-name="CHI-Canal 13 (i)(720)" tvg-logo="https://1.bp.blogspot.com/-GOpSKNaK61Y/Xajps_-nfoI/AAAAAAAAASU/Fpl7LXkTkW4b6EaNkaIjtFzQHUZQVKTUgCLcBGAsYHQ/s200/1.png" group-title="CHILE",CHI-Canal 13 (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84885
+#EXTINF:-1 tvg-id="Canal.13.de.Chile.sv" tvg-name="CHI-Canal 13 (L)(720)" tvg-logo="https://1.bp.blogspot.com/-GOpSKNaK61Y/Xajps_-nfoI/AAAAAAAAASU/Fpl7LXkTkW4b6EaNkaIjtFzQHUZQVKTUgCLcBGAsYHQ/s200/1.png" group-title="CHILE",CHI-Canal 13 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9889
+#EXTINF:-1 tvg-id="Canal.13.de.Chile.sv" tvg-name="CHI-Canal 13 (M)(720)" tvg-logo="https://1.bp.blogspot.com/-GOpSKNaK61Y/Xajps_-nfoI/AAAAAAAAASU/Fpl7LXkTkW4b6EaNkaIjtFzQHUZQVKTUgCLcBGAsYHQ/s200/1.png" group-title="CHILE",CHI-Canal 13 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9890
+#EXTINF:-1 tvg-id="Canal.13.de.Chile.sv" tvg-name="CHI-Canal 13 (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-GOpSKNaK61Y/Xajps_-nfoI/AAAAAAAAASU/Fpl7LXkTkW4b6EaNkaIjtFzQHUZQVKTUgCLcBGAsYHQ/s200/1.png" group-title="CHILE",CHI-Canal 13 (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9893
+#EXTINF:-1 tvg-id="I1.82970.schedulesdirect.org" tvg-name="CHI-Canal 13C (i)(720)" tvg-logo="https://1.bp.blogspot.com/-KWICGOwxJ0c/XajpxZqpW4I/AAAAAAAAATM/wLSjZ_y0yNsiRbTEd3ZrGvOS_NgHjicAgCLcBGAsYHQ/s200/8.png" group-title="CHILE",CHI-Canal 13C (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84886
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Canal 13c (L)(720)" tvg-logo="https://1.bp.blogspot.com/-KWICGOwxJ0c/XajpxZqpW4I/AAAAAAAAATM/wLSjZ_y0yNsiRbTEd3ZrGvOS_NgHjicAgCLcBGAsYHQ/s200/8.png" group-title="CHILE",CHI-Canal 13c (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9894
+#EXTINF:-1 tvg-id="I1.82970.schedulesdirect.org" tvg-name="CHI-Canal 13c (M)(720)" tvg-logo="https://1.bp.blogspot.com/-KWICGOwxJ0c/XajpxZqpW4I/AAAAAAAAATM/wLSjZ_y0yNsiRbTEd3ZrGvOS_NgHjicAgCLcBGAsYHQ/s200/8.png" group-title="CHILE",CHI-Canal 13c (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9895
+#EXTINF:-1 tvg-id="Canal.24.Horas.(Chile).sv" tvg-name="CHI-24 Horas (i)(720)" tvg-logo="https://1.bp.blogspot.com/-q3LsPocPUvA/Xajpuil_n6I/AAAAAAAAASo/pOK1mbX7lnA3mbqN-qqdVSNbx6ea33PEgCLcBGAsYHQ/s200/15.png" group-title="CHILE",CHI-24 Horas (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84887
+#EXTINF:-1 tvg-id="" tvg-name="CHI-24 Horas (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-q3LsPocPUvA/Xajpuil_n6I/AAAAAAAAASo/pOK1mbX7lnA3mbqN-qqdVSNbx6ea33PEgCLcBGAsYHQ/s200/15.png" group-title="CHILE",CHI-24 Horas (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9888
+#EXTINF:-1 tvg-id="Canal.CNN.Chile.cl" tvg-name="CHI-CNN CL (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-1MYo2aoLlTg/XdIRAtMZA4I/AAAAAAAAA2M/2vPXTAlEaf4uuLj4AMSo37JfShkRdtzrgCLcBGAsYHQ/s200/44.png" group-title="CHILE",CHI-CNN CL (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9902
+#EXTINF:-1 tvg-id="" tvg-name="CHI-CNN CL (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-1MYo2aoLlTg/XdIRAtMZA4I/AAAAAAAAA2M/2vPXTAlEaf4uuLj4AMSo37JfShkRdtzrgCLcBGAsYHQ/s200/44.png" group-title="CHILE",CHI-CNN CL (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9903
+#EXTINF:-1 tvg-id="" tvg-name="CHI-ETC (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-08UXr5rCW5A/XajpxIJ8MZI/AAAAAAAAATI/wUGS1sufclQdgaVE0-Smam8E_LHIwD6RQCLcBGAsYHQ/s200/7.png" group-title="CHILE",CHI-ETC (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9911
+#EXTINF:-1 tvg-id="Canal.La.Red.(Chile).sv" tvg-name="CHI-La Red (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-SUSMLk6Nd9s/XajptfrmHrI/AAAAAAAAASc/lEEtobK_kGkKh2qqZO3G-eguobRQWKUJwCLcBGAsYHQ/s200/12.png" group-title="CHILE",CHI-La Red (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9915
+#EXTINF:-1 tvg-id="Canal.La.Red.(Chile).sv" tvg-name="CHI-La Red TV (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-SUSMLk6Nd9s/XajptfrmHrI/AAAAAAAAASc/lEEtobK_kGkKh2qqZO3G-eguobRQWKUJwCLcBGAsYHQ/s200/12.png" group-title="CHILE",CHI-La Red TV (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9916
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TV+ (L)(720)" tvg-logo="https://1.bp.blogspot.com/-wk9aj76dkuM/XajpxUSsJoI/AAAAAAAAATQ/aWvKWEaQGts9yYJ5nt0UuBRpN4yd_T_fACLcBGAsYHQ/s200/9.png" group-title="CHILE",CHI-TV+ (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9930
+#EXTINF:-1 tvg-id="I63.26098.schedulesdirect.org" tvg-name="CHI-TV+ (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-wk9aj76dkuM/XajpxUSsJoI/AAAAAAAAATQ/aWvKWEaQGts9yYJ5nt0UuBRpN4yd_T_fACLcBGAsYHQ/s200/9.png" group-title="CHILE",CHI-TV+ (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84889
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TVN (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-0MX8CrqCS_Q/XajpwmY8XSI/AAAAAAAAATE/DjSc2WVCh9cxoTOZVi9CxkRUA8LZq0OSwCLcBGAsYHQ/s200/6.png" group-title="CHILE",CHI-TVN (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9931
+#EXTINF:-1 tvg-id="I1.82970.schedulesdirect.org" tvg-name="CHI-TVN (L)(720)" tvg-logo="https://1.bp.blogspot.com/-0MX8CrqCS_Q/XajpwmY8XSI/AAAAAAAAATE/DjSc2WVCh9cxoTOZVi9CxkRUA8LZq0OSwCLcBGAsYHQ/s200/6.png" group-title="CHILE",CHI-TVN (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9932
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TVN (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-0MX8CrqCS_Q/XajpwmY8XSI/AAAAAAAAATE/DjSc2WVCh9cxoTOZVi9CxkRUA8LZq0OSwCLcBGAsYHQ/s200/6.png" group-title="CHILE",CHI-TVN (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9934
+#EXTINF:-1 tvg-id="Canal.TVN.(Chile).sv" tvg-name="CHI-TVN (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-0MX8CrqCS_Q/XajpwmY8XSI/AAAAAAAAATE/DjSc2WVCh9cxoTOZVi9CxkRUA8LZq0OSwCLcBGAsYHQ/s200/6.png" group-title="CHILE",CHI-TVN (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84890
+#EXTINF:-1 tvg-id="" tvg-name="PPV 1 Colombia -" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="COLOMBIA",PPV 1 Colombia -
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/174445
+#EXTINF:-1 tvg-id="Win.Sports+.co" tvg-name="COL-WinSports + (L)(720)" tvg-logo="https://1.bp.blogspot.com/-V-KBxr90Zco/Xjbo-4biSDI/AAAAAAAAA-k/Ne9wkBm1r2Ef7FXZOUtZiKU3XHLxQiAKQCLcBGAsYHQ/s200/25.png" group-title="COLOMBIA",COL-WinSports + (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8510
+#EXTINF:-1 tvg-id="Win.Sports.Premium(Win+).co" tvg-name="COL-WinSports + (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-V-KBxr90Zco/Xjbo-4biSDI/AAAAAAAAA-k/Ne9wkBm1r2Ef7FXZOUtZiKU3XHLxQiAKQCLcBGAsYHQ/s200/25.png" group-title="COLOMBIA",COL-WinSports + (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8511
+#EXTINF:-1 tvg-id="Win.Sports.Premium.HD(Win+HD).co" tvg-name="COL-Winsport + (i)(720)" tvg-logo="https://1.bp.blogspot.com/-V-KBxr90Zco/Xjbo-4biSDI/AAAAAAAAA-k/Ne9wkBm1r2Ef7FXZOUtZiKU3XHLxQiAKQCLcBGAsYHQ/s200/25.png" group-title="COLOMBIA",COL-Winsport + (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84897
+#EXTINF:-1 tvg-id="Win.Sports.co" tvg-name="COL-Winsports + (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-ET4BGjbjvhE/XbDQzT1G3LI/AAAAAAAAApE/9SUkF9HkiE8JliWhm-IllaKmK0b6XcySwCLcBGAsYHQ/s200/23.png" group-title="COLOMBIA",COL-Winsports + (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84896
+#EXTINF:-1 tvg-id="Win.Sports.co" tvg-name="COL-WinSports (L)(720)" tvg-logo="https://1.bp.blogspot.com/-ET4BGjbjvhE/XbDQzT1G3LI/AAAAAAAAApE/9SUkF9HkiE8JliWhm-IllaKmK0b6XcySwCLcBGAsYHQ/s200/23.png" group-title="COLOMBIA",COL-WinSports (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8505
+#EXTINF:-1 tvg-id="Win.Sports.co" tvg-name="COL-WinSports (L)(SD)" tvg-logo="https://1.bp.blogspot.com/-ET4BGjbjvhE/XbDQzT1G3LI/AAAAAAAAApE/9SUkF9HkiE8JliWhm-IllaKmK0b6XcySwCLcBGAsYHQ/s200/23.png" group-title="COLOMBIA",COL-WinSports (L)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8506
+#EXTINF:-1 tvg-id="Win.Sports.co" tvg-name="COL-WinSports (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-ET4BGjbjvhE/XbDQzT1G3LI/AAAAAAAAApE/9SUkF9HkiE8JliWhm-IllaKmK0b6XcySwCLcBGAsYHQ/s200/23.png" group-title="COLOMBIA",COL-WinSports (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8507
+#EXTINF:-1 tvg-id="" tvg-name="COL-Claro Sports (M)" tvg-logo="https://1.bp.blogspot.com/-fscNkID2Ypo/XazGNHsWN-I/AAAAAAAAAlg/Ypqsm7nevxMjK0ArqE0roclpCZDt5kwCQCLcBGAsYHQ/s200/21.png" group-title="COLOMBIA",COL-Claro Sports (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8488
+#EXTINF:-1 tvg-id="DSPORTS.(COL).(DTSC).co" tvg-name="COL-Directv Sports (TV)(720)" tvg-logo="https://lh3.googleusercontent.com/-_9mzNNdXzjQ/Yqp2LxWG4FI/AAAAAAAADpk/1Tyz1yla_eUKENravElP8qX4Pmnym0y5gCNcBGAsYHQ/w200-h200/1655338541459072-1.png" group-title="COLOMBIA",COL-Directv Sports (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8489
+#EXTINF:-1 tvg-id="Caracol.co" tvg-name="COL-Caracol (L)(720)" tvg-logo="https://1.bp.blogspot.com/-LXfdKZnjC3s/XbDQ1XtfCTI/AAAAAAAAApg/T1bw6lumSDs11z0xC82JCXrGUG2Js4-ygCLcBGAsYHQ/s200/9.png" group-title="COLOMBIA",COL-Caracol (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8480
+#EXTINF:-1 tvg-id="Canal.Caracol.(Colombia).sv" tvg-name="COL-Caracol (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-LXfdKZnjC3s/XbDQ1XtfCTI/AAAAAAAAApg/T1bw6lumSDs11z0xC82JCXrGUG2Js4-ygCLcBGAsYHQ/s200/9.png" group-title="COLOMBIA",COL-Caracol (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8481
+#EXTINF:-1 tvg-id="Caracol.co" tvg-name="COL-Caracol (i)(1080)" tvg-logo="https://1.bp.blogspot.com/-LXfdKZnjC3s/XbDQ1XtfCTI/AAAAAAAAApg/T1bw6lumSDs11z0xC82JCXrGUG2Js4-ygCLcBGAsYHQ/s200/9.png" group-title="COLOMBIA",COL-Caracol (i)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8483
+#EXTINF:-1 tvg-id="Caracol.co" tvg-name="COL-Caracol (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-LXfdKZnjC3s/XbDQ1XtfCTI/AAAAAAAAApg/T1bw6lumSDs11z0xC82JCXrGUG2Js4-ygCLcBGAsYHQ/s200/9.png" group-title="COLOMBIA",COL-Caracol (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8484
+#EXTINF:-1 tvg-id="Canal.Caracol.(Colombia).sv" tvg-name="COL-Caracol (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-LXfdKZnjC3s/XbDQ1XtfCTI/AAAAAAAAApg/T1bw6lumSDs11z0xC82JCXrGUG2Js4-ygCLcBGAsYHQ/s200/9.png" group-title="COLOMBIA",COL-Caracol (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/130359
+#EXTINF:-1 tvg-id="Caracol.co" tvg-name="COL-Caracol 2 (TV)" tvg-logo="" group-title="COLOMBIA",COL-Caracol 2 (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/130358
+#EXTINF:-1 tvg-id="NBA.League.Pass.2.us" tvg-name="COL-Caracol Internacional (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-ZPyxVnk8WeA/XbDQumlWx4I/AAAAAAAAAoQ/8lE0ENHHPykGNXyTS0aOpSAwEi9GZFckACLcBGAsYHQ/s200/10.png" group-title="COLOMBIA",COL-Caracol Internacional (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8485
+#EXTINF:-1 tvg-id="CableNoticias.co" tvg-name="COL-Cable Noticias (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-6qBWy0B-kzM/X3IdKD9-cLI/AAAAAAAABho/-WepO7Ffbrko7C08koMU5s-jbvyazbVyACLcBGAsYHQ/w200-h200/Cable%2BNoticias%2Bcolombia.png" group-title="COLOMBIA",COL-Cable Noticias (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84908
+#EXTINF:-1 tvg-id="Canal.1.co" tvg-name="COL-Canal Uno (i)(720)" tvg-logo="https://1.bp.blogspot.com/-Lkjw87pS4Us/X3Ia7IrKrFI/AAAAAAAABhQ/Yi5wpZOdOR4Q4jXrbsrH6mOw8CwztMwpQCLcBGAsYHQ/w200-h200/Canal%2B1.png" group-title="COLOMBIA",COL-Canal Uno (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84899
+#EXTINF:-1 tvg-id="Canal.1.co" tvg-name="COL-Canal Uno (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-Lkjw87pS4Us/X3Ia7IrKrFI/AAAAAAAABhQ/Yi5wpZOdOR4Q4jXrbsrH6mOw8CwztMwpQCLcBGAsYHQ/w200-h200/Canal%2B1.png" group-title="COLOMBIA",COL-Canal Uno (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8478
+#EXTINF:-1 tvg-id="Canal.City.TV.sv" tvg-name="COL-City Tv (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-Ku1Pv3IrW7o/X3IubH8boTI/AAAAAAAABkE/BvFiBQ437MIEhnL5M4Z7l61HtGX9e7QdwCLcBGAsYHQ/w200-h200/City%2Btv.png" group-title="COLOMBIA",COL-City Tv (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84904
+#EXTINF:-1 tvg-id="NTN24.co" tvg-name="COL-NTN24 (Z)(720)" tvg-logo="https://i.postimg.cc/CMf8xMW6/COL-NTN24.png" group-title="COLOMBIA",COL-NTN24 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84905
+#EXTINF:-1 tvg-id="PASIONES.co" tvg-name="COL-Pasiones (M)(720)" tvg-logo="https://i.postimg.cc/50njP0kb/COL-Pasiones.png" group-title="COLOMBIA",COL-Pasiones (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84909
+#EXTINF:-1 tvg-id="RCN.co" tvg-name="COL-RCN (i)(720)" tvg-logo="https://1.bp.blogspot.com/-vf2zeK5YmVU/XbDQxAqJTcI/AAAAAAAAAok/zLMf6Az3QDMWdLZqgmVSEk-K9zwh31GDACLcBGAsYHQ/s200/16.png" group-title="COLOMBIA",COL-RCN (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84900
+#EXTINF:-1 tvg-id="RCN.co" tvg-name="COL-RCN (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-vf2zeK5YmVU/XbDQxAqJTcI/AAAAAAAAAok/zLMf6Az3QDMWdLZqgmVSEk-K9zwh31GDACLcBGAsYHQ/s200/16.png" group-title="COLOMBIA",COL-RCN (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84350
+#EXTINF:-1 tvg-id="RCN.co" tvg-name="COL-RCN (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-vf2zeK5YmVU/XbDQxAqJTcI/AAAAAAAAAok/zLMf6Az3QDMWdLZqgmVSEk-K9zwh31GDACLcBGAsYHQ/s200/16.png" group-title="COLOMBIA",COL-RCN (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8491
+#EXTINF:-1 tvg-id="RCN.co" tvg-name="COL-RCN (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-vf2zeK5YmVU/XbDQxAqJTcI/AAAAAAAAAok/zLMf6Az3QDMWdLZqgmVSEk-K9zwh31GDACLcBGAsYHQ/s200/16.png" group-title="COLOMBIA",COL-RCN (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8492
+#EXTINF:-1 tvg-id="CW.Plus.Mountain.us" tvg-name="COL-RCN Internacional (i)(720)" tvg-logo="https://1.bp.blogspot.com/-vf2zeK5YmVU/XbDQxAqJTcI/AAAAAAAAAok/zLMf6Az3QDMWdLZqgmVSEk-K9zwh31GDACLcBGAsYHQ/s200/16.png" group-title="COLOMBIA",COL-RCN Internacional (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84901
+#EXTINF:-1 tvg-id="CW.Plus.Mountain.us" tvg-name="COL-RCN Nuestra Tele (i)(720)" tvg-logo="https://1.bp.blogspot.com/-vf2zeK5YmVU/XbDQxAqJTcI/AAAAAAAAAok/zLMf6Az3QDMWdLZqgmVSEk-K9zwh31GDACLcBGAsYHQ/s200/16.png" group-title="COLOMBIA",COL-RCN Nuestra Tele (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84903
+#EXTINF:-1 tvg-id="IndiePlex.HDTV.(INDIEHD).us" tvg-name="COL-RCN Nuestra Tele (M)" tvg-logo="https://1.bp.blogspot.com/-vf2zeK5YmVU/XbDQxAqJTcI/AAAAAAAAAok/zLMf6Az3QDMWdLZqgmVSEk-K9zwh31GDACLcBGAsYHQ/s200/16.png" group-title="COLOMBIA",COL-RCN Nuestra Tele (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8496
+#EXTINF:-1 tvg-id="" tvg-name="COL-Suram TV (W)(1080)" tvg-logo="https://i.imgur.com/2N9LCES.png" group-title="COLOMBIA (LOCAL)",COL-Suram TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160854
+#EXTINF:-1 tvg-id="Teleantioquia.co" tvg-name="COL-TeleAntioquia (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-w5pYQM0YFcM/YJIS5tiWBqI/AAAAAAAACJ4/I9WLhqQ-Z1cmiBaPuMhlZVsqx9i-w9s3wCLcBGAsYHQ/w200-h200/TeleAntioquia.png" group-title="COLOMBIA",COL-TeleAntioquia (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84906
+#EXTINF:-1 tvg-id="Telecafé.co" tvg-name="COL-TeleCafe (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-uymnve3YKYY/XbDQx_IKbGI/AAAAAAAAAow/jW5B9EBjV3c8Rt0i87QJcl-dSK5uOhU-QCLcBGAsYHQ/s200/19.png" group-title="COLOMBIA",COL-TeleCafe (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84911
+#EXTINF:-1 tvg-id="Telepacifico.co" tvg-name="COL-Telepacifico (Z)(720)" tvg-logo="https://i.postimg.cc/6qqqFXDR/COL-Telepacifico.png" group-title="COLOMBIA",COL-Telepacifico (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84912
+#EXTINF:-1 tvg-id="" tvg-name="COL-TV Agro (M)(720)" tvg-logo="https://1.bp.blogspot.com/-QFD7HnsLCKs/X3Irz_DnKfI/AAAAAAAABjY/bqXo7qn-MmkSIx4pMnWUZr_pJ5bUV7aPgCLcBGAsYHQ/w200-h200/Tv%2Bagro.png" group-title="COLOMBIA",COL-TV Agro (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8503
+#EXTINF:-1 tvg-id="" tvg-name="COL-TV Agro (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-QFD7HnsLCKs/X3Irz_DnKfI/AAAAAAAABjY/bqXo7qn-MmkSIx4pMnWUZr_pJ5bUV7aPgCLcBGAsYHQ/w200-h200/Tv%2Bagro.png" group-title="COLOMBIA",COL-TV Agro (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84913
+#EXTINF:-1 tvg-id="" tvg-name="COL-BUM Televisión (W)(720)" tvg-logo="https://i.imgur.com/I0eGYI0.png" group-title="COLOMBIA (LOCAL)",COL-BUM Televisión (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160790
+#EXTINF:-1 tvg-id="" tvg-name="COL-Cablenoticias (W)(1080)" tvg-logo="https://i.imgur.com/FfhOGR9.png" group-title="COLOMBIA (LOCAL)",COL-Cablenoticias (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160791
+#EXTINF:-1 tvg-id="" tvg-name="COL-Cali TV (540p) (W)(SD)" tvg-logo="https://i.imgur.com/2312Luq.png" group-title="COLOMBIA (LOCAL)",COL-Cali TV (540p) (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160792
+#EXTINF:-1 tvg-id="" tvg-name="COL-Canal 14 Codazzi (W)(720)" tvg-logo="https://i.imgur.com/wNSUMhJ.png" group-title="COLOMBIA (LOCAL)",COL-Canal 14 Codazzi (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160797
+#EXTINF:-1 tvg-id="" tvg-name="COL-Canal 2 Alpavisión Neiva (W)(720)" tvg-logo="https://i.imgur.com/Yv8XIGW.png" group-title="COLOMBIA (LOCAL)",COL-Canal 2 Alpavisión Neiva (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160794
+#EXTINF:-1 tvg-id="" tvg-name="COL-Canica TV (240p)" tvg-logo="https://i.imgur.com/RuQDwTt.jpeg" group-title="COLOMBIA (LOCAL)",COL-Canica TV (240p)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160810
+#EXTINF:-1 tvg-id="" tvg-name="COL-Canal 8 TV+ (W)(720)" tvg-logo="https://i.imgur.com/peOIG1F.png" group-title="COLOMBIA (LOCAL)",COL-Canal 8 TV+ (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160795
+#EXTINF:-1 tvg-id="" tvg-name="COL-Canal Dos Yopal (W)(720)" tvg-logo="https://i.imgur.com/BYsyNHZ.jpg" group-title="COLOMBIA (LOCAL)",COL-Canal Dos Yopal (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160800
+#EXTINF:-1 tvg-id="" tvg-name="COL-Canal Nets (W)(720)" tvg-logo="https://i.imgur.com/edaAexc.png" group-title="COLOMBIA (LOCAL)",COL-Canal Nets (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160803
+#EXTINF:-1 tvg-id="" tvg-name="COL-Canal Oración Con Son (W)(1080)" tvg-logo="https://i.imgur.com/rfnFqU3.png" group-title="COLOMBIA (LOCAL)",COL-Canal Oración Con Son (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160804
+#EXTINF:-1 tvg-id="" tvg-name="COL-Canal Telefamilia (W)(720)" tvg-logo="https://i.imgur.com/D1s1Q3k.png" group-title="COLOMBIA (LOCAL)",COL-Canal Telefamilia (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160807
+#EXTINF:-1 tvg-id="" tvg-name="COL-CNC Santander de Quilichao (W)(SD)" tvg-logo="https://i.imgur.com/LNl2o9q.jpg" group-title="COLOMBIA (LOCAL)",COL-CNC Santander de Quilichao (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160821
+#EXTINF:-1 tvg-id="" tvg-name="COL-Cúcuta Retro TV (W)(SD)" tvg-logo="https://i.imgur.com/GltIfWW.jpeg" group-title="COLOMBIA (LOCAL)",COL-Cúcuta Retro TV (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160825
+#EXTINF:-1 tvg-id="" tvg-name="COL-Eduvision (W)(1080)" tvg-logo="https://i.imgur.com/ppBdqel.png" group-title="COLOMBIA (LOCAL)",COL-Eduvision (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160827
+#EXTINF:-1 tvg-id="" tvg-name="COL-La Hermandad Salsera (W)(720)" tvg-logo="https://i.imgur.com/7Wlt6bc.png" group-title="COLOMBIA (LOCAL)",COL-La Hermandad Salsera (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160833
+#EXTINF:-1 tvg-id="" tvg-name="COL-La Morada Radio TV (W)(720)" tvg-logo="https://i.imgur.com/E3wDEX5.png" group-title="COLOMBIA (LOCAL)",COL-La Morada Radio TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160835
+#EXTINF:-1 tvg-id="" tvg-name="COL-NSTV (W)(720)" tvg-logo="https://i.imgur.com/ES6xFAv.png" group-title="COLOMBIA (LOCAL)",COL-NSTV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160844
+#EXTINF:-1 tvg-id="" tvg-name="COL-Oasis TV (W)(720)" tvg-logo="https://i.imgur.com/VKYzFpZ.png" group-title="COLOMBIA (LOCAL)",COL-Oasis TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160845
+#EXTINF:-1 tvg-id="" tvg-name="COL-Ondambiental TV (360p)" tvg-logo="https://i.imgur.com/u5804Au.jpg" group-title="COLOMBIA (LOCAL)",COL-Ondambiental TV (360p)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160846
+#EXTINF:-1 tvg-id="" tvg-name="COL-Parranda Vallenata (W)(720)" tvg-logo="https://i.imgur.com/BzBX7Qx.jpeg" group-title="COLOMBIA (LOCAL)",COL-Parranda Vallenata (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160847
+#EXTINF:-1 tvg-id="" tvg-name="COL-Reyali (614p)" tvg-logo="https://i.imgur.com/YmFjnsF.png" group-title="COLOMBIA (LOCAL)",COL-Reyali (614p)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160849
+#EXTINF:-1 tvg-id="" tvg-name="COL-Supermúsica TV (W)(720)" tvg-logo="https://i.imgur.com/MiVs42N.jpeg" group-title="COLOMBIA (LOCAL)",COL-Supermúsica TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160853
+#EXTINF:-1 tvg-id="" tvg-name="COL-Teleislas (486p) (W)(SD)" tvg-logo="https://i.imgur.com/aKHGRyk.png" group-title="COLOMBIA (LOCAL)",COL-Teleislas (486p) (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160866
+#EXTINF:-1 tvg-id="" tvg-name="COL-Tu Universo TV (W)(720)" tvg-logo="https://i.imgur.com/e6esjLZ.jpg" group-title="COLOMBIA (LOCAL)",COL-Tu Universo TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160870
+#EXTINF:-1 tvg-id="" tvg-name="COL-TV San Jorge (W)(720)" tvg-logo="https://i.imgur.com/vLU4Tcu.png" group-title="COLOMBIA (LOCAL)",COL-TV San Jorge (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160874
+#EXTINF:-1 tvg-id="" tvg-name="COL-Ultra Casanare TV (W)(720)" tvg-logo="https://i.imgur.com/1voWgLI.png" group-title="COLOMBIA (LOCAL)",COL-Ultra Casanare TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160875
+#EXTINF:-1 tvg-id="" tvg-name="COL-Vallenato Internacional (W)(720)" tvg-logo="https://i.imgur.com/rVKroNW.png" group-title="COLOMBIA (LOCAL)",COL-Vallenato Internacional (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160877
+#EXTINF:-1 tvg-id="" tvg-name="COL-Vive TV Colombia (W)(1080)" tvg-logo="https://i.imgur.com/25CFHpB.png" group-title="COLOMBIA (LOCAL)",COL-Vive TV Colombia (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160878
+#EXTINF:-1 tvg-id="" tvg-name="COL-Zoom (W)(1080)" tvg-logo="https://i.imgur.com/euy5zp6.png" group-title="COLOMBIA (LOCAL)",COL-Zoom (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160879
+#EXTINF:-1 tvg-id="" tvg-name="CR-Canal 14 Tv Sur (TV)(720)" tvg-logo="http://l3d.us:8080/images/879ee15abcc5ae31125df0d901af9f4c.png" group-title="COSTARICA",CR-Canal 14 Tv Sur (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8111
+#EXTINF:-1 tvg-id="" tvg-name="CR-FUTV (L)(1080)" tvg-logo="" group-title="COSTARICA",CR-FUTV (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8113
+#EXTINF:-1 tvg-id="" tvg-name="CR-FUTV (M)(SD)" tvg-logo="" group-title="COSTARICA",CR-FUTV (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8114
+#EXTINF:-1 tvg-id="" tvg-name="CR-FUTV (TV)(720)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThA6HkKqYo0jMnPwMXsu5Uyt88GNrmExQ8QQ&usqp=CAU" group-title="COSTARICA",CR-FUTV (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8115
+#EXTINF:-1 tvg-id="" tvg-name="CR-Repretel 11 (M)" tvg-logo="" group-title="COSTARICA",CR-Repretel 11 (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8116
+#EXTINF:-1 tvg-id="Canal.11.de.Costa.Rica.sv" tvg-name="CR-Repretel 11 (TV)(720)" tvg-logo="http://tv.dominiotv.xyz:25461/images/0bc75b556f89ef4e9bfb7eb45eb61b56.png" group-title="COSTARICA",CR-Repretel 11 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8117
+#EXTINF:-1 tvg-id="" tvg-name="CR-Repretel 4 (M)" tvg-logo="" group-title="COSTARICA",CR-Repretel 4 (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8118
+#EXTINF:-1 tvg-id="Canal.4.de.Costa.Rica.sv" tvg-name="CR-Repretel 4 (TV)(720)" tvg-logo="http://tv.dominiotv.xyz:25461/images/f12c62586d76e81cd752c577905bff2a.png" group-title="COSTARICA",CR-Repretel 4 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8119
+#EXTINF:-1 tvg-id="" tvg-name="CR-Repretel 6 (M)" tvg-logo="" group-title="COSTARICA",CR-Repretel 6 (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8120
+#EXTINF:-1 tvg-id="Canal.6.de.Costa.Rica.sv" tvg-name="CR-Repretel 6 (TV)(720)" tvg-logo="http://tv.dominiotv.xyz:25461/images/67714a43e5c2b9b3390cea34847f9a3c.png" group-title="COSTARICA",CR-Repretel 6 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8121
+#EXTINF:-1 tvg-id="" tvg-name="CR-Tele Uno (L)(720)" tvg-logo="http://tv.dominiotv.xyz:25461/images/0ad00ac33dd421c509da1a7cd5826441.png" group-title="COSTARICA",CR-Tele Uno (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8126
+#EXTINF:-1 tvg-id="Canal.7.de.Costa.Rica.(Teletica).sv" tvg-name="CR-Teletica (TV)(720)" tvg-logo="http://l3d.us:8080/images/a595b6beed22d68dbd6dfff91bc6b34f.png" group-title="COSTARICA",CR-Teletica (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8128
+#EXTINF:-1 tvg-id="" tvg-name="CR-Teletica 7 (L)(1080)" tvg-logo="" group-title="COSTARICA",CR-Teletica 7 (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8129
+#EXTINF:-1 tvg-id="Canal.Tigo.Sports.(Costa.Rica).sv" tvg-name="CR-Tigo Sports (TV)(720)" tvg-logo="http://l3d.us:8080/images/1e07aa6fbec1107166ed2353f2db8230.png" group-title="COSTARICA",CR-Tigo Sports (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8130
+#EXTINF:-1 tvg-id="" tvg-name="CR-Tigo Sports 1 (1080)(M)" tvg-logo="" group-title="COSTARICA",CR-Tigo Sports 1 (1080)(M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8131
+#EXTINF:-1 tvg-id="" tvg-name="CU-America TV (TV)" tvg-logo="http://swedtv.vip/logos/LAT_centroamerica/america_tv.png" group-title="CUBA",CU-America TV (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10082
+#EXTINF:-1 tvg-id="" tvg-name="CU-CubaMax (TV)" tvg-logo="http://swedtv.vip/logos/LAT_centroamerica/cuba_max.png" group-title="CUBA",CU-CubaMax (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10083
+#EXTINF:-1 tvg-id="" tvg-name="CU-Cubavision (TV)" tvg-logo="http://swedtv.vip/logos/LAT_centroamerica/cubavision.png" group-title="CUBA",CU-Cubavision (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10079
+#EXTINF:-1 tvg-id="" tvg-name="CU-Tele Marti (TV)" tvg-logo="http://swedtv.vip/logos/LAT_centroamerica/cub_marti.png" group-title="CUBA",CU-Tele Marti (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10080
+#EXTINF:-1 tvg-id="" tvg-name="CU-Tele Rebelde (Z)" tvg-logo="http://swedtv.vip/logos/LAT_centroamerica/cub_tele_rebelde.png" group-title="CUBA",CU-Tele Rebelde (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10081
+#EXTINF:-1 tvg-id="" tvg-name="ECU- Canal del Futbol (e)(1080)" tvg-logo="https://i.postimg.cc/MHgykJxQ/Proyectox-24-7-series-Retro1-23.png" group-title="ECUADOR",ECU- Canal del Futbol (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/107639
+#EXTINF:-1 tvg-id="" tvg-name="ECU- Canal del Futbol (e)(720)" tvg-logo="https://i.postimg.cc/MHgykJxQ/Proyectox-24-7-series-Retro1-23.png" group-title="ECUADOR",ECU- Canal del Futbol (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/107640
+#EXTINF:-1 tvg-id="" tvg-name="ECU- El Canal del Futbol (M)(1080)" tvg-logo="https://i.postimg.cc/MHgykJxQ/Proyectox-24-7-series-Retro1-23.png" group-title="ECUADOR",ECU- El Canal del Futbol (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/109833
+#EXTINF:-1 tvg-id="DSPORTS.(ARG).dtvsp" tvg-name="ECU-Directv Sports (e)(1080)" tvg-logo="https://i.postimg.cc/1RGWB30z/Dsports.png" group-title="ECUADOR",ECU-Directv Sports (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/88483
+#EXTINF:-1 tvg-id="DSPORTS.HD.(COL)(DTSCHD).co" tvg-name="ECU-Directv Sports (e)(720)" tvg-logo="https://1.bp.blogspot.com/-CE1czydcuuw/XazFPWYBLvI/AAAAAAAAAlY/R5o8SlM2tGo-vOu_SzNXEIZsiTY4zrPpACLcBGAsYHQ/s200/19.png" group-title="ECUADOR",ECU-Directv Sports (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8625
+#EXTINF:-1 tvg-id="DSPORTS.(COL).(DTSC).co" tvg-name="ECU-Copa Ecuador (e)(1080)" tvg-logo="https://i.postimg.cc/gk3gxSKb/Copa-Ecuador.png" group-title="ECUADOR",ECU-Copa Ecuador (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84793
+#EXTINF:-1 tvg-id="DSPORTS.HD.(COL)(DTSCHD).co" tvg-name="ECU-Copa Ecuador (e)(720)" tvg-logo="https://i.postimg.cc/gk3gxSKb/Copa-Ecuador.png" group-title="ECUADOR",ECU-Copa Ecuador (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84794
+#EXTINF:-1 tvg-id="Canal.Teleamazonas.sv" tvg-name="ECU-Teleamazonas Quito (e)(1080)" tvg-logo="https://1.bp.blogspot.com/-vnDdEpVWZrI/XjhCQ7uzvVI/AAAAAAAABCY/tiQzWxXnRtoP5l96kvGpXs1UsPvcJSZngCLcBGAsYHQ/s200/4.png" group-title="ECUADOR",ECU-Teleamazonas Quito (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8648
+#EXTINF:-1 tvg-id="Canal.Teleamazonas.sv" tvg-name="ECU-Teleamazonas Quito (e)(1080) Opc 2" tvg-logo="https://1.bp.blogspot.com/-vnDdEpVWZrI/XjhCQ7uzvVI/AAAAAAAABCY/tiQzWxXnRtoP5l96kvGpXs1UsPvcJSZngCLcBGAsYHQ/s200/4.png" group-title="ECUADOR",ECU-Teleamazonas Quito (e)(1080) Opc 2
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8649
+#EXTINF:-1 tvg-id="Canal.Teleamazonas.sv" tvg-name="ECU-Teleamazonas Quito (e)(720)" tvg-logo="https://1.bp.blogspot.com/-vnDdEpVWZrI/XjhCQ7uzvVI/AAAAAAAABCY/tiQzWxXnRtoP5l96kvGpXs1UsPvcJSZngCLcBGAsYHQ/s200/4.png" group-title="ECUADOR",ECU-Teleamazonas Quito (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8650
+#EXTINF:-1 tvg-id="Canal.Teleamazonas.sv" tvg-name="ECU-Teleamazona Costa (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-vnDdEpVWZrI/XjhCQ7uzvVI/AAAAAAAABCY/tiQzWxXnRtoP5l96kvGpXs1UsPvcJSZngCLcBGAsYHQ/s200/4.png" group-title="ECUADOR",ECU-Teleamazona Costa (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8644
+#EXTINF:-1 tvg-id="Canal.Teleamazonas.sv" tvg-name="ECU-Teleamazonas Costa (e)(1080)" tvg-logo="https://i.postimg.cc/CKXd8NFb/ECU-Tele-Amazonas-Costa.png" group-title="ECUADOR",ECU-Teleamazonas Costa (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8645
+#EXTINF:-1 tvg-id="Canal.Teleamazonas.sv" tvg-name="ECU-TeleAmazonas Costa (e)(720)" tvg-logo="https://i.postimg.cc/CKXd8NFb/ECU-Tele-Amazonas-Costa.png" group-title="ECUADOR",ECU-TeleAmazonas Costa (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8646
+#EXTINF:-1 tvg-id="Canal.Teleamazonas.sv" tvg-name="ECU-TeleAmazonas Costa (e)(SD)" tvg-logo="https://i.postimg.cc/CKXd8NFb/ECU-Tele-Amazonas-Costa.png" group-title="ECUADOR",ECU-TeleAmazonas Costa (e)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8647
+#EXTINF:-1 tvg-id="Canal.Ecuavisa.(Ecuador).sv" tvg-name="ECU-Ecuavisa Quito (e)(1080)" tvg-logo="https://1.bp.blogspot.com/-A77n66o-FQI/XjcBYqkTzXI/AAAAAAAABBU/uhcdf-8Bmp4WjMiaUtm0f_O5MxQi1KeiACLcBGAsYHQ/s200/1.png" group-title="ECUADOR",ECU-Ecuavisa Quito (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8629
+#EXTINF:-1 tvg-id="Canal.Ecuavisa.(Ecuador).sv" tvg-name="ECU-Ecuavisa Quito (e)(720)" tvg-logo="https://1.bp.blogspot.com/-A77n66o-FQI/XjcBYqkTzXI/AAAAAAAABBU/uhcdf-8Bmp4WjMiaUtm0f_O5MxQi1KeiACLcBGAsYHQ/s200/1.png" group-title="ECUADOR",ECU-Ecuavisa Quito (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8630
+#EXTINF:-1 tvg-id="Canal.Ecuavisa.(Ecuador).ec" tvg-name="ECU-Ecuavisa Costa (e)(1080)" tvg-logo="https://i.postimg.cc/8PWw3KFn/ECU-Ecuavisa.png" group-title="ECUADOR",ECU-Ecuavisa Costa (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8626
+#EXTINF:-1 tvg-id="Canal.Ecuavisa.(Ecuador).sv" tvg-name="ECU-Ecuavisa Costa (e)(720)" tvg-logo="https://i.postimg.cc/8PWw3KFn/ECU-Ecuavisa.png" group-title="ECUADOR",ECU-Ecuavisa Costa (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8628
+#EXTINF:-1 tvg-id="Canal.Ecuavisa.(Ecuador).sv" tvg-name="ECU-Ecuavisa Costa (Z)(SD)" tvg-logo="https://i.postimg.cc/8PWw3KFn/ECU-Ecuavisa.png" group-title="ECUADOR",ECU-Ecuavisa Costa (Z)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8627
+#EXTINF:-1 tvg-id="Canal.TC.Televisión.sv" tvg-name="ECU-TC Television Quito (e)(1080)" tvg-logo="https://1.bp.blogspot.com/-wcP6VMNt7Bw/XjhDeq1NnRI/AAAAAAAABCk/ZzNl6uX20GAFmO0F4x6aP92rvwPY3ge2gCLcBGAsYHQ/s200/5.png" group-title="ECUADOR",ECU-TC Television Quito (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8642
+#EXTINF:-1 tvg-id="Canal.TC.Televisión.sv" tvg-name="ECU-TC Television Quito (e)(720)" tvg-logo="https://1.bp.blogspot.com/-wcP6VMNt7Bw/XjhDeq1NnRI/AAAAAAAABCk/ZzNl6uX20GAFmO0F4x6aP92rvwPY3ge2gCLcBGAsYHQ/s200/5.png" group-title="ECUADOR",ECU-TC Television Quito (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8643
+#EXTINF:-1 tvg-id="Canal.TC.Televisión.sv" tvg-name="ECU-TC Television Costa (e)(1080)" tvg-logo="https://i.postimg.cc/PrL0qQCm/ECU-TC-COSTA.png" group-title="ECUADOR",ECU-TC Television Costa (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8640
+#EXTINF:-1 tvg-id="Canal.TC.Televisión.sv" tvg-name="ECU-TC Television Costa (e)(720)" tvg-logo="https://i.postimg.cc/PrL0qQCm/ECU-TC-COSTA.png" group-title="ECUADOR",ECU-TC Television Costa (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8641
+#EXTINF:-1 tvg-id="Canal.TC.Televisión.sv" tvg-name="ECU-TC Television Sierra (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-wcP6VMNt7Bw/XjhDeq1NnRI/AAAAAAAABCk/ZzNl6uX20GAFmO0F4x6aP92rvwPY3ge2gCLcBGAsYHQ/s200/5.png" group-title="ECUADOR",ECU-TC Television Sierra (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8639
+#EXTINF:-1 tvg-id="Canal.RTS.sv" tvg-name="ECU-RTS Costa (e)(1080)" tvg-logo="https://1.bp.blogspot.com/-KhPTmjn2F70/XjhEgEy3cNI/AAAAAAAABC4/2bYqzV2TdQwD9MpRAI_FvDrcajmunSMugCLcBGAsYHQ/s200/6.png" group-title="ECUADOR",ECU-RTS Costa (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8635
+#EXTINF:-1 tvg-id="Canal.RTS.ec" tvg-name="ECU-RTS Costa (e)(720)" tvg-logo="https://1.bp.blogspot.com/-KhPTmjn2F70/XjhEgEy3cNI/AAAAAAAABC4/2bYqzV2TdQwD9MpRAI_FvDrcajmunSMugCLcBGAsYHQ/s200/6.png" group-title="ECUADOR",ECU-RTS Costa (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8637
+#EXTINF:-1 tvg-id="Canal.RTS.sv" tvg-name="ECU-RTS Costa (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-KhPTmjn2F70/XjhEgEy3cNI/AAAAAAAABC4/2bYqzV2TdQwD9MpRAI_FvDrcajmunSMugCLcBGAsYHQ/s200/6.png" group-title="ECUADOR",ECU-RTS Costa (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8636
+#EXTINF:-1 tvg-id="Canal.RTS.ec" tvg-name="ECU-RTS Costa (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-KhPTmjn2F70/XjhEgEy3cNI/AAAAAAAABC4/2bYqzV2TdQwD9MpRAI_FvDrcajmunSMugCLcBGAsYHQ/s200/6.png" group-title="ECUADOR",ECU-RTS Costa (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/132029
+#EXTINF:-1 tvg-id="I729.60855.schedulesdirect.org" tvg-name="ECU-TVC Quito (e)(1080)" tvg-logo="https://i.postimg.cc/ryDRN9Yw/proyectox4-22.png" group-title="ECUADOR",ECU-TVC Quito (e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8632
+#EXTINF:-1 tvg-id="I729.60855.schedulesdirect.org" tvg-name="ECU-TVC Quito (e)(720)" tvg-logo="https://i.postimg.cc/ryDRN9Yw/proyectox4-22.png" group-title="ECUADOR",ECU-TVC Quito (e)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8633
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Oromar (i)(720)" tvg-logo="https://1.bp.blogspot.com/-zZisdj4cxaA/XjhIBJtxXHI/AAAAAAAABDw/HXpmjpAlU-YeWqNI3BywBg_whbI3N6PEACLcBGAsYHQ/s200/10.png" group-title="ECUADOR",ECU-Oromar (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8634
+#EXTINF:-1 tvg-id="" tvg-name="ECU-TVC UIO (Z)(720)" tvg-logo="https://i.postimg.cc/ryDRN9Yw/proyectox4-22.png" group-title="ECUADOR",ECU-TVC UIO (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8651
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Ciracu TV (W)(720)" tvg-logo="https://i.imgur.com/mkf2TJ6.png" group-title="ECUADOR-LOCAL",ECU-Ciracu TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175892
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Curiquingue TV (W)(720)" tvg-logo="https://i.imgur.com/oukGx28.png" group-title="ECUADOR-LOCAL",ECU-Curiquingue TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175895
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Ecuador TV (W)(720)" tvg-logo="https://i.imgur.com/cma6WO0.png" group-title="ECUADOR-LOCAL",ECU-Ecuador TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175901
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Ecuavisa Guayaquil (W)(1080)" tvg-logo="https://i.imgur.com/Hl5wowk.png" group-title="ECUADOR-LOCAL",ECU-Ecuavisa Guayaquil (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175903
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Ecuavisa Quito (W)(1080)" tvg-logo="https://i.imgur.com/Hl5wowk.png" group-title="ECUADOR-LOCAL",ECU-Ecuavisa Quito (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175904
+#EXTINF:-1 tvg-id="" tvg-name="ECU-El Sol Network TV (W)(1080)" tvg-logo="https://i.imgur.com/TIH3zlP.png" group-title="ECUADOR-LOCAL",ECU-El Sol Network TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175906
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Hechos Ecuador (W)(1080)" tvg-logo="https://i.imgur.com/koMQZNX.png" group-title="ECUADOR-LOCAL",ECU-Hechos Ecuador (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175911
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Loreto TV (W)(720)" tvg-logo="https://i.imgur.com/3qGSAT3.png" group-title="ECUADOR-LOCAL",ECU-Loreto TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175920
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Majestad Televisión (W)(720)" tvg-logo="https://i.imgur.com/d1GWRnm.png" group-title="ECUADOR-LOCAL",ECU-Majestad Televisión (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175922
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Manavisión (480p)" tvg-logo="https://i.imgur.com/mZkW342.png" group-title="ECUADOR-LOCAL",ECU-Manavisión (480p)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175924
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Marca TV (W)(1080)" tvg-logo="https://i.imgur.com/ez1NxwJ.jpg" group-title="ECUADOR-LOCAL",ECU-Marca TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175925
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Mel Radio TV (W)(SD)" tvg-logo="https://i.imgur.com/uu8Clh2.png" group-title="ECUADOR-LOCAL",ECU-Mel Radio TV (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175927
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Metropoli Medios TV (W)(720)" tvg-logo="https://i.imgur.com/yID5T2S.jpg" group-title="ECUADOR-LOCAL",ECU-Metropoli Medios TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175928
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Ondas Quevedeñas TV (W)(720)" tvg-logo="https://i.imgur.com/K9pW0LA.jpeg" group-title="ECUADOR-LOCAL",ECU-Ondas Quevedeñas TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175934
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Oromar TV (W)(720)" tvg-logo="https://i.imgur.com/j5Vvxd5.png" group-title="ECUADOR-LOCAL",ECU-Oromar TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175935
+#EXTINF:-1 tvg-id="" tvg-name="ECU-PJ Digital Radio TV (W)(720)" tvg-logo="https://i.imgur.com/m92oDuB.png" group-title="ECUADOR-LOCAL",ECU-PJ Digital Radio TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175937
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Radio Bonita 106.7 (W)(720)" tvg-logo="https://i.imgur.com/IvZtqyz.png" group-title="ECUADOR-LOCAL",ECU-Radio Bonita 106.7 (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175941
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Radio Cuenca Estéreo (W)(720)" tvg-logo="https://i.imgur.com/qZzSOeU.png" group-title="ECUADOR-LOCAL",ECU-Radio Cuenca Estéreo (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175942
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Radio Fantástica 98.9 FM (W)(1080)" tvg-logo="https://i.imgur.com/mpcIbrH.jpg" group-title="ECUADOR-LOCAL",ECU-Radio Fantástica 98.9 FM (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175943
+#EXTINF:-1 tvg-id="" tvg-name="ECU-RTRTV (W)(1080)" tvg-logo="https://i.imgur.com/dvP2yqB.png" group-title="ECUADOR-LOCAL",ECU-RTRTV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175948
+#EXTINF:-1 tvg-id="" tvg-name="ECU-TV Color Canal 36 (W)(720)" tvg-logo="https://i.imgur.com/QJW6khK.jpg" group-title="ECUADOR-LOCAL",ECU-TV Color Canal 36 (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175958
+#EXTINF:-1 tvg-id="" tvg-name="ECU-TV Universal Ecuador (W)(720)" tvg-logo="https://i.imgur.com/TIsk5zN.png" group-title="ECUADOR-LOCAL",ECU-TV Universal Ecuador (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175960
+#EXTINF:-1 tvg-id="" tvg-name="ECU-TVC (480p)" tvg-logo="https://i.imgur.com/zhdIwlm.png" group-title="ECUADOR-LOCAL",ECU-TVC (480p)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175961
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Unsion TV (W)(1080)" tvg-logo="https://i.imgur.com/HQGBqGU.png" group-title="ECUADOR-LOCAL",ECU-Unsion TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175964
+#EXTINF:-1 tvg-id="" tvg-name="ECU-Wuan+ (W)(720)" tvg-logo="https://i.imgur.com/pJNx1za.png" group-title="ECUADOR-LOCAL",ECU-Wuan+ (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/175966
+#EXTINF:-1 tvg-id="" tvg-name="PPV Guatemala - Liga GT (Z)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="GUATEMALA",PPV Guatemala - Liga GT (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/173680
+#EXTINF:-1 tvg-id="" tvg-name="GUA-Claro Sports GT (TV)(720)" tvg-logo="http://23.153.216.121:25461/images/3c59dc048e8850243be8079a5c74d079.png" group-title="GUATEMALA",GUA-Claro Sports GT (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8262
+#EXTINF:-1 tvg-id="" tvg-name="GUA-Canal 11 (M)(SD)" tvg-logo="http://23.153.216.121:25461/images/5598d665eb5a2ff3744f00ad3df1e2d6.png" group-title="GUATEMALA",GUA-Canal 11 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8255
+#EXTINF:-1 tvg-id="" tvg-name="GUA-Canal 11 (TV)(720)" tvg-logo="http://latinoamericatv.vip:8080/images/985a875a3b25d7596c2cac4cac35feb0.png" group-title="GUATEMALA",GUA-Canal 11 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8256
+#EXTINF:-1 tvg-id="" tvg-name="GUA-Canal 3 (M)(SD)" tvg-logo="http://23.153.216.121:25461/images/db2ae04ba9c3f628c9b0eeb551bf1153.png" group-title="GUATEMALA",GUA-Canal 3 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8257
+#EXTINF:-1 tvg-id="" tvg-name="GUA-Canal 7 (TV)(720)" tvg-logo="http://latinoamericatv.vip:8080/images/d3f6238cf4186e4b807ad607dd963c1e.png" group-title="GUATEMALA",GUA-Canal 7 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8259
+#EXTINF:-1 tvg-id="" tvg-name="GUA-Canal Antigua (M)(SD)" tvg-logo="http://23.153.216.121:25461/images/e13ae01a031a7e6d10e9aa16ac31e37e.png" group-title="GUATEMALA",GUA-Canal Antigua (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8261
+#EXTINF:-1 tvg-id="" tvg-name="GUA-Guatevision (M)(720)" tvg-logo="http://23.153.216.121:25461/images/f3f13b660fcbed601c7481d96cef90f3.png" group-title="GUATEMALA",GUA-Guatevision (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8264
+#EXTINF:-1 tvg-id="" tvg-name="GUA-TN23 (TV)(SD)" tvg-logo="http://23.153.216.121:25461/images/79f16a96b22999021e2bcdf94b963ca7.png" group-title="GUATEMALA",GUA-TN23 (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8269
+#EXTINF:-1 tvg-id="" tvg-name="HON-Alsacias Televisión (ATV | Canal 28) (W)(720)" tvg-logo="https://i.imgur.com/SbuD1UW.png" group-title="HONDURAS",HON-Alsacias Televisión (ATV | Canal 28) (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159358
+#EXTINF:-1 tvg-id="" tvg-name="HON-CANAL 11 (M)(SD)" tvg-logo="" group-title="HONDURAS",HON-CANAL 11 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10262
+#EXTINF:-1 tvg-id="" tvg-name="HON-Canal 11 (W)(1080)" tvg-logo="https://i.imgur.com/Sht2Rd4.png" group-title="HONDURAS",HON-Canal 11 (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159366
+#EXTINF:-1 tvg-id="" tvg-name="HON-Choluteca TV (W)(1080)" tvg-logo="https://i.imgur.com/mpc4Isd.png" group-title="HONDURAS",HON-Choluteca TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159373
+#EXTINF:-1 tvg-id="" tvg-name="HON-Dios Te Ve (W)(720)" tvg-logo="https://i.imgur.com/7hNwUV2.png" group-title="HONDURAS",HON-Dios Te Ve (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159378
+#EXTINF:-1 tvg-id="" tvg-name="HON-Dios Te Ve Kids (W)(720)" tvg-logo="https://i.imgur.com/GnZicVH.png" group-title="HONDURAS",HON-Dios Te Ve Kids (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159379
+#EXTINF:-1 tvg-id="" tvg-name="HON-Ebenezer TV (W)(1080)" tvg-logo="https://i.imgur.com/IC30j61.png" group-title="HONDURAS",HON-Ebenezer TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159381
+#EXTINF:-1 tvg-id="" tvg-name="HON-HCH (M)(SD)" tvg-logo="" group-title="HONDURAS",HON-HCH (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10261
+#EXTINF:-1 tvg-id="" tvg-name="HON-HCH (Z)(1080)" tvg-logo="" group-title="HONDURAS",HON-HCH (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10269
+#EXTINF:-1 tvg-id="" tvg-name="HON-Kerusso TV (W)(720)" tvg-logo="https://i.imgur.com/S79uof0.png" group-title="HONDURAS",HON-Kerusso TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159392
+#EXTINF:-1 tvg-id="" tvg-name="HON-Lenca Television Canal 40 (W)(720)" tvg-logo="https://i.imgur.com/fc5IHSy.png" group-title="HONDURAS",HON-Lenca Television Canal 40 (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159396
+#EXTINF:-1 tvg-id="" tvg-name="HON-Litoral Atlántico HD (W)(720)" tvg-logo="https://i.imgur.com/UXsgEPX.png" group-title="HONDURAS",HON-Litoral Atlántico HD (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159397
+#EXTINF:-1 tvg-id="" tvg-name="HON-Metro TV (W)(720)" tvg-logo="https://i.imgur.com/BqS8BHi.png" group-title="HONDURAS",HON-Metro TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159401
+#EXTINF:-1 tvg-id="" tvg-name="HON-Radio Ideal 104.7 FM (La Esperanza) (W)(720)" tvg-logo="https://i.imgur.com/chPfoOs.png" group-title="HONDURAS",HON-Radio Ideal 104.7 FM (La Esperanza) (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159407
+#EXTINF:-1 tvg-id="" tvg-name="HON-Radio Imagen 105.1 FM (W)(720)" tvg-logo="https://i.ibb.co/C9zjz9p/343159606-190989583743350-3489987129696505785-n.jpg" group-title="HONDURAS",HON-Radio Imagen 105.1 FM (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159408
+#EXTINF:-1 tvg-id="" tvg-name="HON-Sula TV (W)(720)" tvg-logo="https://i.imgur.com/v90r5jS.png" group-title="HONDURAS",HON-Sula TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159414
+#EXTINF:-1 tvg-id="" tvg-name="HON-Suyapa (M)(SD)" tvg-logo="" group-title="HONDURAS",HON-Suyapa (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10263
+#EXTINF:-1 tvg-id="" tvg-name="HON-Telecadena (Z)(720)" tvg-logo="" group-title="HONDURAS",HON-Telecadena (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10268
+#EXTINF:-1 tvg-id="" tvg-name="HON-Teleceiba (Z)(720)" tvg-logo="" group-title="HONDURAS",HON-Teleceiba (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10271
+#EXTINF:-1 tvg-id="" tvg-name="HON-Telerayo (W)(1080)" tvg-logo="https://i.imgur.com/jLQsU1u.png" group-title="HONDURAS",HON-Telerayo (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159423
+#EXTINF:-1 tvg-id="" tvg-name="HON-Television Olanchana (W)(720)" tvg-logo="https://i.imgur.com/8LnLEQz.png" group-title="HONDURAS",HON-Television Olanchana (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159427
+#EXTINF:-1 tvg-id="" tvg-name="HON-TV Centro 27.2 HD (W)(720)" tvg-logo="https://i.imgur.com/Wo2scQf.jpg" group-title="HONDURAS",HON-TV Centro 27.2 HD (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159430
+#EXTINF:-1 tvg-id="" tvg-name="HON-TV Copán (W)(720)" tvg-logo="https://i.imgur.com/JiPmRFr.png" group-title="HONDURAS",HON-TV Copán (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/159432
+#EXTINF:-1 tvg-id="" tvg-name="HON-TVC Deportes (L)(720)" tvg-logo="" group-title="HONDURAS",HON-TVC Deportes (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10259
+#EXTINF:-1 tvg-id="" tvg-name="HON-TVC Deportes (Z)(720)" tvg-logo="" group-title="HONDURAS",HON-TVC Deportes (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/153365
+#EXTINF:-1 tvg-id="" tvg-name="HON-VTV (M)(SD)" tvg-logo="" group-title="HONDURAS",HON-VTV (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/10265
+#EXTINF:-1 tvg-id="" tvg-name="MEX-ADN 40 (W)(720)" tvg-logo="https://i.imgur.com/Og17U9N.png" group-title="MEXICO-LOCAL",MEX-ADN 40 (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164589
+#EXTINF:-1 tvg-id="" tvg-name="MEX-AMX Noticias (W)(720)" tvg-logo="https://i.imgur.com/snIU1UA.jpg" group-title="MEXICO-LOCAL",MEX-AMX Noticias (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164592
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Aym Sports (M)(720)" tvg-logo="https://1.bp.blogspot.com/-e9y9a28jbXM/Xg-MrwQCrJI/AAAAAAAAA6I/pOByATddwpU3laULegV5jkTZjwE2gqxIACLcBGAsYHQ/s200/24.png" group-title="MEXICO",MEX-Aym Sports (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87584
+#EXTINF:-1 tvg-id="" tvg-name="MEX-AZ Cinema (M)(720)" tvg-logo="https://1.bp.blogspot.com/--fcykTIfCuM/Xm5wXqrCohI/AAAAAAAABgo/SG1Fhjw4qfwahRTffNn7aqsPxHr7h8YMwCLcBGAsYHQ/s200/19.png" group-title="MEXICO",MEX-AZ Cinema (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87585
+#EXTINF:-1 tvg-id="" tvg-name="MEX-AZ Clic (L)(720)" tvg-logo="https://1.bp.blogspot.com/-wEdnDWpnH8s/Xm50SQKAvmI/AAAAAAAABh0/D5VhjaejxVE9xUGTHVw67W54Q7B8OL5VwCLcBGAsYHQ/s200/25.png" group-title="MEXICO",MEX-AZ Clic (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87566
+#EXTINF:-1 tvg-id="" tvg-name="MEX-AZ Clic (M)(720)" tvg-logo="https://1.bp.blogspot.com/-wEdnDWpnH8s/Xm50SQKAvmI/AAAAAAAABh0/D5VhjaejxVE9xUGTHVw67W54Q7B8OL5VwCLcBGAsYHQ/s200/25.png" group-title="MEXICO",MEX-AZ Clic (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87586
+#EXTINF:-1 tvg-id="" tvg-name="MEX-AZ Corazon (L)(720)" tvg-logo="https://1.bp.blogspot.com/-zz1_OIGBpiI/Xm7S6119EdI/AAAAAAAABns/OelXG9baVowgd8o_32iLCp4fCFfVnoIowCLcBGAsYHQ/s200/48.png" group-title="MEXICO",MEX-AZ Corazon (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87568
+#EXTINF:-1 tvg-id="" tvg-name="MEX-AZ Corazón (M)(720)" tvg-logo="https://1.bp.blogspot.com/-zz1_OIGBpiI/Xm7S6119EdI/AAAAAAAABns/OelXG9baVowgd8o_32iLCp4fCFfVnoIowCLcBGAsYHQ/s200/48.png" group-title="MEXICO",MEX-AZ Corazón (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87587
+#EXTINF:-1 tvg-id="" tvg-name="MEX-AZ Mundo (L)(720)" tvg-logo="https://1.bp.blogspot.com/-aSfRTznx_v8/Xm5mz-FGAgI/AAAAAAAABdU/PnxFmzGDX9sOAjXi_hKnUfL4LNf3jRpYwCLcBGAsYHQ/s200/3.png" group-title="MEXICO",MEX-AZ Mundo (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87589
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Azteca 7 (L)(720)" tvg-logo="https://1.bp.blogspot.com/-ie8UXB6UqPM/Xm55jaDr75I/AAAAAAAABjI/653qMC9f1pEKsLM1D_PgRVXhJwRFOlpBACLcBGAsYHQ/s200/31.png" group-title="MEXICO",MEX-Azteca 7 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87572
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Azteca 7 (L)(SD)" tvg-logo="https://1.bp.blogspot.com/-ie8UXB6UqPM/Xm55jaDr75I/AAAAAAAABjI/653qMC9f1pEKsLM1D_PgRVXhJwRFOlpBACLcBGAsYHQ/s200/31.png" group-title="MEXICO",MEX-Azteca 7 (L)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87571
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Azteca 7 (M)(720)" tvg-logo="https://1.bp.blogspot.com/-ie8UXB6UqPM/Xm55jaDr75I/AAAAAAAABjI/653qMC9f1pEKsLM1D_PgRVXhJwRFOlpBACLcBGAsYHQ/s200/31.png" group-title="MEXICO",MEX-Azteca 7 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87569
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Azteca 7 (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-ie8UXB6UqPM/Xm55jaDr75I/AAAAAAAABjI/653qMC9f1pEKsLM1D_PgRVXhJwRFOlpBACLcBGAsYHQ/s200/31.png" group-title="MEXICO",MEX-Azteca 7 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87570
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Azteca Deportes (L)(720)" tvg-logo="https://i.postimg.cc/sx2Qs4zp/Azteca-Deportes.png" group-title="MEXICO",MEX-Azteca Deportes (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87574
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Azteca UNO (L)(720)" tvg-logo="https://1.bp.blogspot.com/-rCbIcWgf8KM/Xm54--dqL2I/AAAAAAAABjA/WfovYd6uNOMJFVGwof8uwuxEN4lHorZ_gCLcBGAsYHQ/s200/30.png" group-title="MEXICO",MEX-Azteca UNO (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87576
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Azteca Uno (M)(720)" tvg-logo="https://1.bp.blogspot.com/-rCbIcWgf8KM/Xm54--dqL2I/AAAAAAAABjA/WfovYd6uNOMJFVGwof8uwuxEN4lHorZ_gCLcBGAsYHQ/s200/30.png" group-title="MEXICO",MEX-Azteca Uno (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87593
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Azteca UNO -2 Horas (L)(SD)" tvg-logo="https://1.bp.blogspot.com/-rCbIcWgf8KM/Xm54--dqL2I/AAAAAAAABjA/WfovYd6uNOMJFVGwof8uwuxEN4lHorZ_gCLcBGAsYHQ/s200/30.png" group-title="MEXICO",MEX-Azteca UNO -2 Horas (L)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87575
+#EXTINF:-1 tvg-id="" tvg-name="MEX-BitMe (M)(720)" tvg-logo="https://i.postimg.cc/bNyrXTgr/bitme.png" group-title="MEXICO",MEX-BitMe (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87592
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Bloomberg (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-apx9Di-xHJM/Xm6zVXRpOnI/AAAAAAAABmY/fLo91xzoCjEJf2TdmBIqfwyc0Z-1WBjtgCLcBGAsYHQ/s200/42.png" group-title="MEXICO",MEX-Bloomberg (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87577
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Canal 15 ILCE Summa Sabres (W)(720)" tvg-logo="https://i.imgur.com/r7czgOc.png" group-title="MEXICO-LOCAL",MEX-Canal 15 ILCE Summa Sabres (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164617
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Canal 44 Ciudad Juárez (W)(720)" tvg-logo="https://i.imgur.com/oRudPXX.png" group-title="MEXICO-LOCAL",MEX-Canal 44 Ciudad Juárez (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164624
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Canal 5 (L)(720)" tvg-logo="https://1.bp.blogspot.com/-MmJ4TgLhKa0/Xm5o4_B3H8I/AAAAAAAABeQ/b7jztTDAi5g7UDvJLofwH1KNMZmv0OvGwCLcBGAsYHQ/s200/12.png" group-title="MEXICO",MEX-Canal 5 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87598
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Canal 5 (L)(SD)" tvg-logo="https://1.bp.blogspot.com/-MmJ4TgLhKa0/Xm5o4_B3H8I/AAAAAAAABeQ/b7jztTDAi5g7UDvJLofwH1KNMZmv0OvGwCLcBGAsYHQ/s200/12.png" group-title="MEXICO",MEX-Canal 5 (L)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87597
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Canal 5 TV Cozumel (W)(1080)" tvg-logo="https://i.imgur.com/0nzNMuP.jpeg" group-title="MEXICO-LOCAL",MEX-Canal 5 TV Cozumel (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164602
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Conecta TV (W)(720)" tvg-logo="https://i.imgur.com/qEk0QGa.png" group-title="MEXICO-LOCAL",MEX-Conecta TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164630
+#EXTINF:-1 tvg-id="" tvg-name="MEX-CreaLaTV (W)(1080)" tvg-logo="https://i.imgur.com/Bnjj29f.png" group-title="MEXICO-LOCAL",MEX-CreaLaTV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164632
+#EXTINF:-1 tvg-id="" tvg-name="MEX-IERTBCS Canal 8 La Paz (W)(1080)" tvg-logo="https://i.imgur.com/R3icGuG.png" group-title="MEXICO-LOCAL",MEX-IERTBCS Canal 8 La Paz (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164647
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Imagen TV (L)(720)" tvg-logo="https://1.bp.blogspot.com/-6DGj3EE5_5E/Xm60PTxOCXI/AAAAAAAABmg/m1B-y-CiE-U0Fxwxnvt5OV7nklSDRbsEgCLcBGAsYHQ/s200/43.png" group-title="MEXICO",MEX-Imagen TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87616
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Imagen TV (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-6DGj3EE5_5E/Xm60PTxOCXI/AAAAAAAABmg/m1B-y-CiE-U0Fxwxnvt5OV7nklSDRbsEgCLcBGAsYHQ/s200/43.png" group-title="MEXICO",MEX-Imagen TV (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87615
+#EXTINF:-1 tvg-id="" tvg-name="MEX-ITV Deportes" tvg-logo="https://iili.io/J1kV1Bn.png" group-title="MEXICO-LOCAL",MEX-ITV Deportes
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164650
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Jalisco TV (W)(720)" tvg-logo="https://i.imgur.com/N4meE8I.png" group-title="MEXICO-LOCAL",MEX-Jalisco TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164651
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Justicia TV (W)(720)" tvg-logo="https://i.imgur.com/zyAS1hk.png" group-title="MEXICO-LOCAL",MEX-Justicia TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164652
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Las Estrellas (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-e2wz8A8TfGM/Xm56KL_9AVI/AAAAAAAABjU/Ukz1VU_TSlAuHvW8BFmY7kgneq_wuU80QCLcBGAsYHQ/s200/32.png" group-title="MEXICO",MEX-Las Estrellas (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87578
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Las Estrellas -2 Horas (L)(720)" tvg-logo="https://1.bp.blogspot.com/-e2wz8A8TfGM/Xm56KL_9AVI/AAAAAAAABjU/Ukz1VU_TSlAuHvW8BFmY7kgneq_wuU80QCLcBGAsYHQ/s200/32.png" group-title="MEXICO",MEX-Las Estrellas -2 Horas (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87583
+#EXTINF:-1 tvg-id="" tvg-name="MEX-María Visión Mexico (W)(SD)" tvg-logo="https://i.postimg.cc/Ghy9ZLBy/mariavision.png" group-title="MEXICO-LOCAL",MEX-María Visión Mexico (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164656
+#EXTINF:-1 tvg-id="" tvg-name="MEX-MyTime Movie Network Mexico (W)(720)" tvg-logo="https://i.imgur.com/pw4NZK1.png" group-title="MEXICO-LOCAL",MEX-MyTime Movie Network Mexico (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164670
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Once México (W)(1080)" tvg-logo="https://i.imgur.com/K0351vF.png" group-title="MEXICO-LOCAL",MEX-Once México (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164679
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Once TV (M)(720)" tvg-logo="https://1.bp.blogspot.com/-0GKPjFkLCbw/Xm5sWsaodSI/AAAAAAAABfo/5qrJ-GrvG2YtVS9bSETVayaR4Aui9tcBACLcBGAsYHQ/s200/15.png" group-title="MEXICO",MEX-Once TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87603
+#EXTINF:-1 tvg-id="" tvg-name="MEX-PSN (W)(SD)" tvg-logo="https://i.imgur.com/7i7GkSL.png" group-title="MEXICO-LOCAL",MEX-PSN (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164681
+#EXTINF:-1 tvg-id="" tvg-name="MEX-PSN Canal 45.2 (W)(SD)" tvg-logo="https://i.imgur.com/7i7GkSL.png" group-title="MEXICO-LOCAL",MEX-PSN Canal 45.2 (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164682
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Raly TV (W)(720)" tvg-logo="https://i.imgur.com/W8a1dIa.png" group-title="MEXICO-LOCAL",MEX-Raly TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164686
+#EXTINF:-1 tvg-id="" tvg-name="MEX-SET Televisión Canal 26.2 (W)(720)" tvg-logo="https://i.imgur.com/dbJKErB.png" group-title="MEXICO-LOCAL",MEX-SET Televisión Canal 26.2 (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164693
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Super Channel 12 (W)(1080)" tvg-logo="https://i.imgur.com/dLHIvKz.png" group-title="MEXICO-LOCAL",MEX-Super Channel 12 (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164702
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Teleplay Sureste (W)(720)" tvg-logo="https://i.imgur.com/MeV5N08.png" group-title="MEXICO-LOCAL",MEX-Teleplay Sureste (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164708
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Televisa Monterrey (L)(SD)" tvg-logo="https://1.bp.blogspot.com/-OXCQ1Od1dUM/Xm5mzH9uszI/AAAAAAAABdQ/plWLCcO44SEliyJkdO1zd_3BU_Z0ElUSgCLcBGAsYHQ/s200/1.png" group-title="MEXICO",MEX-Televisa Monterrey (L)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87605
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Tlaxcala Televisión (W)(SD)" tvg-logo="https://i.imgur.com/5vaEhfy.png" group-title="MEXICO-LOCAL",MEX-Tlaxcala Televisión (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164711
+#EXTINF:-1 tvg-id="" tvg-name="MEX-TUDN (M)(720)" tvg-logo="" group-title="MEXICO",MEX-TUDN (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87590
+#EXTINF:-1 tvg-id="" tvg-name="MEX-TV Azteca Noreste (Info7 Monterrey) (W)(720)" tvg-logo="https://i.imgur.com/aGup2ag.png" group-title="MEXICO-LOCAL",MEX-TV Azteca Noreste (Info7 Monterrey) (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164715
+#EXTINF:-1 tvg-id="" tvg-name="MEX-TV Mar Puerto Vallarta (W)(1080)" tvg-logo="https://i.imgur.com/z9iVlMn.png" group-title="MEXICO-LOCAL",MEX-TV Mar Puerto Vallarta (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164726
+#EXTINF:-1 tvg-id="" tvg-name="MEX-TVC Deportes (L)(720)" tvg-logo="https://i.postimg.cc/4x1DhDhb/tvc-deportes1.png" group-title="MEXICO",MEX-TVC Deportes (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87610
+#EXTINF:-1 tvg-id="" tvg-name="MEX-USA Latino (L)(720)" tvg-logo="https://i.postimg.cc/HLdSDz3S/Usa-N-Latino.png" group-title="MEXICO",MEX-USA Latino (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87614
+#EXTINF:-1 tvg-id="" tvg-name="MEX-VB Media TV (W)(1080)" tvg-logo="https://i.imgur.com/5qlVblr.png" group-title="MEXICO-LOCAL",MEX-VB Media TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164741
+#EXTINF:-1 tvg-id="" tvg-name="MEX-Visión Televisión (W)(720)" tvg-logo="https://i.imgur.com/HV5tgcM.png" group-title="MEXICO-LOCAL",MEX-Visión Televisión (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164742
+#EXTINF:-1 tvg-id="" tvg-name="MEX_Canal 5 (L)(720)" tvg-logo="https://1.bp.blogspot.com/-MmJ4TgLhKa0/Xm5o4_B3H8I/AAAAAAAABeQ/b7jztTDAi5g7UDvJLofwH1KNMZmv0OvGwCLcBGAsYHQ/s200/12.png" group-title="MEXICO",MEX_Canal 5 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87596
+#EXTINF:-1 tvg-id="" tvg-name="MEX_Foro TV (M)(720)" tvg-logo="https://1.bp.blogspot.com/-97qblKLDK5A/Xm5m0h85WuI/AAAAAAAABdg/a6PjI8WcZxIT5OOM3M8D7GdQInJ1uy5qgCLcBGAsYHQ/s200/6.png" group-title="MEXICO",MEX_Foro TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87595
+#EXTINF:-1 tvg-id="" tvg-name="MEX_Las Estrellas -1hr (M)(720)" tvg-logo="https://1.bp.blogspot.com/-e2wz8A8TfGM/Xm56KL_9AVI/AAAAAAAABjU/Ukz1VU_TSlAuHvW8BFmY7kgneq_wuU80QCLcBGAsYHQ/s200/32.png" group-title="MEXICO",MEX_Las Estrellas -1hr (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87580
+#EXTINF:-1 tvg-id="" tvg-name="MEX_Las Estrellas -2hr (M)(720)" tvg-logo="https://1.bp.blogspot.com/-e2wz8A8TfGM/Xm56KL_9AVI/AAAAAAAABjU/Ukz1VU_TSlAuHvW8BFmY7kgneq_wuU80QCLcBGAsYHQ/s200/32.png" group-title="MEXICO",MEX_Las Estrellas -2hr (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87581
+#EXTINF:-1 tvg-id="" tvg-name="MEX_MilenioTV (M)(720)" tvg-logo="https://1.bp.blogspot.com/-pmqpRTK0wEM/Xm5m0CyDFmI/AAAAAAAABdY/rozixqEQGM0JdWCUTThU2y9ruNGfD75cQCLcBGAsYHQ/s200/4.png" group-title="MEXICO",MEX_MilenioTV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/87599
+#EXTINF:-1 tvg-id="" tvg-name="NIC-Canal 10 (M)(1080)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/4f/Canal_10_Nicaragua.png" group-title="NICARAGUA",NIC-Canal 10 (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/85728
+#EXTINF:-1 tvg-id="" tvg-name="NIC-Canal 11 (Z)(SD)" tvg-logo="" group-title="NICARAGUA",NIC-Canal 11 (Z)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/85729
+#EXTINF:-1 tvg-id="" tvg-name="NIC-Canal 13 (M)(SD)" tvg-logo="" group-title="NICARAGUA",NIC-Canal 13 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/85731
+#EXTINF:-1 tvg-id="" tvg-name="NIC-Canal 14 (M)(SD)" tvg-logo="" group-title="NICARAGUA",NIC-Canal 14 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/85733
+#EXTINF:-1 tvg-id="" tvg-name="NIC-Canal 14 (Z)(720)" tvg-logo="http://svtv.xyz:8000/images/a538f2e6ae76e548f89bb8c13ce69356.png" group-title="NICARAGUA",NIC-Canal 14 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/85734
+#EXTINF:-1 tvg-id="" tvg-name="NIC-Canal 2 (M)(SD)" tvg-logo="" group-title="NICARAGUA",NIC-Canal 2 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/85735
+#EXTINF:-1 tvg-id="" tvg-name="NIC-Canal 2 (Z)(720)" tvg-logo="http://svtv.xyz:8000/images/4e8158e9faa2f5c0044c6402b8ed401c.png" group-title="NICARAGUA",NIC-Canal 2 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/85736
+#EXTINF:-1 tvg-id="" tvg-name="NIC-Canal 6 (M)(SD)" tvg-logo="" group-title="NICARAGUA",NIC-Canal 6 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/85742
+#EXTINF:-1 tvg-id="" tvg-name="NIC-Canal 8 (M)(SD)" tvg-logo="" group-title="NICARAGUA",NIC-Canal 8 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/85743
+#EXTINF:-1 tvg-id="" tvg-name="NIC-NicaVision Canal 12 (Z)(720)" tvg-logo="http://127.0.0.1/" group-title="NICARAGUA",NIC-NicaVision Canal 12 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/85749
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Cable Onda Sports (M)(720)" tvg-logo="https://i.postimg.cc/gJyYKgsY/Proyecto-X-Panama-7.png" group-title="PANAMA",PAN-Cable Onda Sports (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154351
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Cable Onda Sports FC (Z)(720)" tvg-logo="https://i.postimg.cc/nh6pbywn/Proyecto-X-Panama-8.png" group-title="PANAMA",PAN-Cable Onda Sports FC (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154376
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Cable Onda Sports FC 1270 (M)(720)" tvg-logo="https://i.postimg.cc/nh6pbywn/Proyecto-X-Panama-8.png" group-title="PANAMA",PAN-Cable Onda Sports FC 1270 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154352
+#EXTINF:-1 tvg-id="" tvg-name="PAN-CableOnda Sports FC (TV)(720)" tvg-logo="https://i.postimg.cc/nh6pbywn/Proyecto-X-Panama-8.png" group-title="PANAMA",PAN-CableOnda Sports FC (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154365
+#EXTINF:-1 tvg-id="" tvg-name="PAN-MAS TV +23 (Z)(720)" tvg-logo="https://i.postimg.cc/FRXrcMjY/Proyecto-X-Panama-6.png" group-title="PANAMA",PAN-MAS TV +23 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154368
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Nex Canal 21 (TV)(720)" tvg-logo="https://i.postimg.cc/N0HGKsrc/Proyecto-X-Panama-5.png" group-title="PANAMA",PAN-Nex Canal 21 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154360
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Next TV 21 (TV)(720)" tvg-logo="https://i.postimg.cc/N0HGKsrc/Proyecto-X-Panama-5.png" group-title="PANAMA",PAN-Next TV 21 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154367
+#EXTINF:-1 tvg-id="" tvg-name="PAN-RPC 4 (TV)(720)" tvg-logo="https://i.postimg.cc/NjPLyCCt/Proyecto-X-Panama-3.png" group-title="PANAMA",PAN-RPC 4 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154361
+#EXTINF:-1 tvg-id="" tvg-name="PAN-RPC 4 (Z)(720)" tvg-logo="https://i.postimg.cc/NjPLyCCt/Proyecto-X-Panama-3.png" group-title="PANAMA",PAN-RPC 4 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154369
+#EXTINF:-1 tvg-id="" tvg-name="PAN-SER TV (Z)(720)" tvg-logo="https://i.postimg.cc/FHzYGXwV/panama-1.png" group-title="PANAMA",PAN-SER TV (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154373
+#EXTINF:-1 tvg-id="" tvg-name="PAN-SERTV (M)(720)" tvg-logo="https://i.postimg.cc/FHzYGXwV/panama-1.png" group-title="PANAMA",PAN-SERTV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154344
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Telemetro (TV)(720)" tvg-logo="https://i.postimg.cc/x1FqkpxL/Proyecto-X-Panama-2.png" group-title="PANAMA",PAN-Telemetro (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154362
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Telemetro 13 (M)(720)" tvg-logo="https://i.postimg.cc/x1FqkpxL/Proyecto-X-Panama-2.png" group-title="PANAMA",PAN-Telemetro 13 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154342
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Telemetro 13 (Z)(720)" tvg-logo="https://i.postimg.cc/x1FqkpxL/Proyecto-X-Panama-2.png" group-title="PANAMA",PAN-Telemetro 13 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154371
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Tigo Sports (Panama) (Z)(720)" tvg-logo="https://i.postimg.cc/SN1mV26f/Proyecto-X-Panama-9.png" group-title="PANAMA",PAN-Tigo Sports (Panama) (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154377
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Tigo Sports (TV)(720)" tvg-logo="https://i.postimg.cc/SN1mV26f/Proyecto-X-Panama-9.png" group-title="PANAMA",PAN-Tigo Sports (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154366
+#EXTINF:-1 tvg-id="" tvg-name="PAN-Tigo Sports PAN (M)(720)" tvg-logo="https://i.postimg.cc/SN1mV26f/Proyecto-X-Panama-9.png" group-title="PANAMA",PAN-Tigo Sports PAN (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154353
+#EXTINF:-1 tvg-id="" tvg-name="PAN-TV Max (TV)(720)" tvg-logo="https://i.postimg.cc/cLJrLGmK/Proyecto-X-Panama-1.png" group-title="PANAMA",PAN-TV Max (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154363
+#EXTINF:-1 tvg-id="" tvg-name="PAN-TV MAX 9 (Z)(1080)" tvg-logo="https://i.postimg.cc/cLJrLGmK/Proyecto-X-Panama-1.png" group-title="PANAMA",PAN-TV MAX 9 (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154372
+#EXTINF:-1 tvg-id="Canal.2.de.Panamá.(TVN-2).sv" tvg-name="PAN-TVN (i)(720)" tvg-logo="https://i.postimg.cc/NfDKtj15/Proyecto-X-Panama.png" group-title="PANAMA",PAN-TVN (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154370
+#EXTINF:-1 tvg-id="" tvg-name="PAN-TVN 2 (M)(720)" tvg-logo="https://i.postimg.cc/NfDKtj15/Proyecto-X-Panama.png" group-title="PANAMA",PAN-TVN 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154340
+#EXTINF:-1 tvg-id="" tvg-name="PAN-TVN 2 (M)(SD)" tvg-logo="https://i.postimg.cc/NfDKtj15/Proyecto-X-Panama.png" group-title="PANAMA",PAN-TVN 2 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154350
+#EXTINF:-1 tvg-id="" tvg-name="PAN-TVN 2 (TV)(720)" tvg-logo="https://i.postimg.cc/NfDKtj15/Proyecto-X-Panama.png" group-title="PANAMA",PAN-TVN 2 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154357
+#EXTINF:-1 tvg-id="" tvg-name="PAN-TVN 2 (TV)(720)" tvg-logo="https://i.postimg.cc/NfDKtj15/Proyecto-X-Panama.png" group-title="PANAMA",PAN-TVN 2 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154359
+#EXTINF:-1 tvg-id="" tvg-name="PAN-TVN 2 (Z)(720)" tvg-logo="https://i.postimg.cc/NfDKtj15/Proyecto-X-Panama.png" group-title="PANAMA",PAN-TVN 2 (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/154375
+#EXTINF:-1 tvg-id="" tvg-name="PAR-C9N (TV)(720)" tvg-logo="JrOIpxZm44M/X3O4mgdBcjI/AAAAAAAABqw/8lbyMtW-2s41XGOWRCpSP168bU18B_l3ACLcBGAsYHQ/w200-h200/Canal%2Bc9n%2BParaguay" group-title="PARAGUAY",PAR-C9N (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84565
+#EXTINF:-1 tvg-id="" tvg-name="PAR-Farra Play (Z)(720)" tvg-logo="QVh14wfX-1Q/X3O4l9KvTfI/AAAAAAAABqg/MlbExVBmd34hWVgWTT63NdkZVEzPin2kgCLcBGAsYHQ/w200-h200/Cana%2BGen%2Btv%2BParaguay" group-title="PARAGUAY",PAR-Farra Play (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84566
+#EXTINF:-1 tvg-id="" tvg-name="PAR-La Tele (TV)(720)" tvg-logo="ay35-McTdkA/X3O4ndUsEHI/AAAAAAAABq0/F6ytXdEqeIcsVdeOoLvo2H2-JFBfsUrxwCLcBGAsYHQ/w200-h200/Canal%2Bla%2Btele%2BParaguay" group-title="PARAGUAY",PAR-La Tele (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84567
+#EXTINF:-1 tvg-id="" tvg-name="PAR-NEXTV (Z)(720)" tvg-logo="aE1eBYx3jco/X3O4n4uYtyI/AAAAAAAABq4/ffFGmnbRDckjc9VuE7PYqqSXYD2Tty3EQCLcBGAsYHQ/w200-h200/Canal%2Bnoticias%2BParaguay" group-title="PARAGUAY",PAR-NEXTV (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84568
+#EXTINF:-1 tvg-id="" tvg-name="PAR-Paravision (T)(720)" tvg-logo="zJzM4ug1J-E/X3O4l11abFI/AAAAAAAABqk/V6ZgtTnTG6ITcyXGwcDyaTfvYzY4gLveQCLcBGAsYHQ/w200-h200/Canal%2BParaguay%2Btv%2BParaguay" group-title="PARAGUAY",PAR-Paravision (T)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84570
+#EXTINF:-1 tvg-id="" tvg-name="PAR-Paravision (Z)(720)" tvg-logo="JltdzB525gk/X3O4oWM-i4I/AAAAAAAABq8/y7Ioet0emlQ8SW5oD5Z7_zbiKJAZRyRBgCLcBGAsYHQ/w200-h200/Canal%2Bparavisi%25C3%25B3n%2BParaguay" group-title="PARAGUAY",PAR-Paravision (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84572
+#EXTINF:-1 tvg-id="" tvg-name="PAR-RCC (Z)(720)" tvg-logo="zJzM4ug1J-E/X3O4l11abFI/AAAAAAAABqk/V6ZgtTnTG6ITcyXGwcDyaTfvYzY4gLveQCLcBGAsYHQ/w200-h200/Canal%2BParaguay%2Btv%2BParaguay" group-title="PARAGUAY",PAR-RCC (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84571
+#EXTINF:-1 tvg-id="" tvg-name="PAR-RPC PY (HD)(Z)" tvg-logo="5l28tZx2j7w/X3O4pf-jWeI/AAAAAAAABrE/eZwAPegHCrYzWtMblWfnPrO1fh3o2ZqSwCLcBGAsYHQ/w200-h200/Canal%2Brpc%2BParaguay" group-title="PARAGUAY",PAR-RPC PY (HD)(Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84573
+#EXTINF:-1 tvg-id="" tvg-name="PAR-Telefuturo (Z)(720)" tvg-logo="uqXbbS3at5I/X3O4pwNY8PI/AAAAAAAABrI/1UcKlG4GxPk_IIKc5cx3w_QP2YQE5eBTwCLcBGAsYHQ/w200-h200/Canal%2Btelefuturo%2BParaguay" group-title="PARAGUAY",PAR-Telefuturo (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84574
+#EXTINF:-1 tvg-id="" tvg-name="PAR-Unicanal (Z)(720)" tvg-logo="NSFaHxIZvsU/X3O4rTPeqrI/AAAAAAAABrU/_X4L4S_rHiYiIIucuqmzowWIx-HJZXTKgCLcBGAsYHQ/w200-h200/Unicanal%2Bparaguay" group-title="PARAGUAY",PAR-Unicanal (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/84575
+#EXTINF:-1 tvg-id="" tvg-name="PER-Liga 1 MAX (L)(720)" tvg-logo="https://i.postimg.cc/wxQSmwbJ/Proyecto-X-liga1max.png" group-title="PERU",PER-Liga 1 MAX (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8457
+#EXTINF:-1 tvg-id="" tvg-name="PER-Liga 1 MAX (TV)(720)" tvg-logo="https://i.postimg.cc/wxQSmwbJ/Proyecto-X-liga1max.png" group-title="PERU",PER-Liga 1 MAX (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8458
+#EXTINF:-1 tvg-id="" tvg-name="PER-Liga 1 MAX (TV)(720)" tvg-logo="https://i.postimg.cc/wxQSmwbJ/Proyecto-X-liga1max.png" group-title="PERU",PER-Liga 1 MAX (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8459
+#EXTINF:-1 tvg-id="" tvg-name="PER-Liga 1 MAX (Z)(720)" tvg-logo="https://i.postimg.cc/wxQSmwbJ/Proyecto-X-liga1max.png" group-title="PERU",PER-Liga 1 MAX (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8460
+#EXTINF:-1 tvg-id="" tvg-name="PER-Liga 1 (L)(720)" tvg-logo="https://i.postimg.cc/yxwspHkL/Proyectox-Liga1peru.png" group-title="PERU",PER-Liga 1 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8455
+#EXTINF:-1 tvg-id="" tvg-name="PER-Liga 1 (L)(720)" tvg-logo="https://i.postimg.cc/yxwspHkL/Proyectox-Liga1peru.png" group-title="PERU",PER-Liga 1 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8456
+#EXTINF:-1 tvg-id="" tvg-name="PER-GOL Peru (L)(1080)" tvg-logo="https://i.postimg.cc/RC1WyJg9/Proyectox.png" group-title="PERU",PER-GOL Peru (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8446
+#EXTINF:-1 tvg-id="" tvg-name="PER-Gol Peru (TV)(1080)" tvg-logo="https://i.postimg.cc/RC1WyJg9/Proyectox.png" group-title="PERU",PER-Gol Peru (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8447
+#EXTINF:-1 tvg-id="" tvg-name="PER-Gol Peru (TV)(1080)" tvg-logo="https://i.postimg.cc/RC1WyJg9/Proyectox.png" group-title="PERU",PER-Gol Peru (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8448
+#EXTINF:-1 tvg-id="" tvg-name="PER-Movistar Deportes (L)(720)" tvg-logo="https://1.bp.blogspot.com/-UtHJhqvvDbI/Xw_Bo3Fwg0I/AAAAAAAAAZ8/C7QrwvMh00oA_Ddkfrc1UakMBItRA7WsQCLcBGAsYHQ/w200-h200/Movistar%2BDeportes%2BPeru.png" group-title="PERU",PER-Movistar Deportes (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8461
+#EXTINF:-1 tvg-id="MOVISTAR.EVENTOS.(Movistar.Eventos).pe" tvg-name="PER-Movistar Deportes (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-UtHJhqvvDbI/Xw_Bo3Fwg0I/AAAAAAAAAZ8/C7QrwvMh00oA_Ddkfrc1UakMBItRA7WsQCLcBGAsYHQ/w200-h200/Movistar%2BDeportes%2BPeru.png" group-title="PERU",PER-Movistar Deportes (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8462
+#EXTINF:-1 tvg-id="" tvg-name="PER-America (L)(1080)" tvg-logo="https://1.bp.blogspot.com/-bKiI31EDp2U/Xw_BmpCazvI/AAAAAAAAAZo/u2LRHhgCGJwV7gqwsqFFV3yFwyuBWZaFwCLcBGAsYHQ/w200-h200/America%2BTv.png" group-title="PERU",PER-America (L)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8433
+#EXTINF:-1 tvg-id="AMERICA.TELEVISION.HD.(America.HD).pe" tvg-name="PER-America TV (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-bKiI31EDp2U/Xw_BmpCazvI/AAAAAAAAAZo/u2LRHhgCGJwV7gqwsqFFV3yFwyuBWZaFwCLcBGAsYHQ/w200-h200/America%2BTv.png" group-title="PERU",PER-America TV (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8434
+#EXTINF:-1 tvg-id="" tvg-name="PER-America TV (Z)(1080)" tvg-logo="https://1.bp.blogspot.com/-bKiI31EDp2U/Xw_BmpCazvI/AAAAAAAAAZo/u2LRHhgCGJwV7gqwsqFFV3yFwyuBWZaFwCLcBGAsYHQ/w200-h200/America%2BTv.png" group-title="PERU",PER-America TV (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8435
+#EXTINF:-1 tvg-id="Canal.América.Televisión.(Perú).sv" tvg-name="PER-America TV (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-bKiI31EDp2U/Xw_BmpCazvI/AAAAAAAAAZo/u2LRHhgCGJwV7gqwsqFFV3yFwyuBWZaFwCLcBGAsYHQ/w200-h200/America%2BTv.png" group-title="PERU",PER-America TV (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/74885
+#EXTINF:-1 tvg-id="" tvg-name="PER-ATV (L)(720)" tvg-logo="http://daleplay.club:8080/images/271c6c11fe0cf24ef7e4e567f8bc04a9.png" group-title="PERU",PER-ATV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8436
+#EXTINF:-1 tvg-id="" tvg-name="PER-ATV (M)(720)" tvg-logo="https://1.bp.blogspot.com/-llu-9dmTbq8/Xw_BmejBqTI/AAAAAAAAAZg/0AEQSQYwOAgun2AKJL1B7Bb3G5A4ulkdACLcBGAsYHQ/w200-h200/ATV.png" group-title="PERU",PER-ATV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8437
+#EXTINF:-1 tvg-id="Canal.ATV.sv" tvg-name="PER-ATV (TV)(SD)" tvg-logo="https://1.bp.blogspot.com/-llu-9dmTbq8/Xw_BmejBqTI/AAAAAAAAAZg/0AEQSQYwOAgun2AKJL1B7Bb3G5A4ulkdACLcBGAsYHQ/w200-h200/ATV.png" group-title="PERU",PER-ATV (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8438
+#EXTINF:-1 tvg-id="" tvg-name="PER-ATV (Z)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/df13ed57843877b21ad969184ab6888f.png" group-title="PERU",PER-ATV (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8439
+#EXTINF:-1 tvg-id="" tvg-name="PER-ATV+ (L)(720)" tvg-logo="http://daleplay.club:8080/images/5a021cd8bff20a0d536aa252ab0a9757.png" group-title="PERU",PER-ATV+ (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8440
+#EXTINF:-1 tvg-id="" tvg-name="PER-ATV+ (Z)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/8e1d55cda293949513ca9d81fc1a00d1.png" group-title="PERU",PER-ATV+ (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8441
+#EXTINF:-1 tvg-id="CANAL.N.HD.(Canal.N.HD).pe" tvg-name="PER-Canal N (i)(1080)" tvg-logo="http://tv.proyectox.vip:8080/images/bdb07524ad5eb655c0661ce62ee03726.png" group-title="PERU",PER-Canal N (i)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8443
+#EXTINF:-1 tvg-id="" tvg-name="PER-Exitosa (L)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/1a5a73ceeba767d8c4a12facd0299135.png" group-title="PERU",PER-Exitosa (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8445
+#EXTINF:-1 tvg-id="" tvg-name="PER-Latina (L)(720)" tvg-logo="https://i.postimg.cc/fTHtw31d/Proyectox-1.png" group-title="PERU",PER-Latina (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8450
+#EXTINF:-1 tvg-id="" tvg-name="PER-Latina (TV)(720)" tvg-logo="https://i.postimg.cc/fTHtw31d/Proyectox-1.png" group-title="PERU",PER-Latina (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8452
+#EXTINF:-1 tvg-id="" tvg-name="PER-Latina (W)(HD)" tvg-logo="https://i.postimg.cc/fTHtw31d/Proyectox-1.png" group-title="PERU",PER-Latina (W)(HD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8451
+#EXTINF:-1 tvg-id="LATINA.HD.(Latina.HD).pe" tvg-name="PER-Latina (Z)(1080)" tvg-logo="http://tv.proyectox.vip:8080/images/873305461e5f4545090df56e8373ad38.png" group-title="PERU",PER-Latina (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8453
+#EXTINF:-1 tvg-id="" tvg-name="PER-Latina TV (TV)(SD)" tvg-logo="https://i.postimg.cc/fTHtw31d/Proyectox-1.png" group-title="PERU",PER-Latina TV (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8454
+#EXTINF:-1 tvg-id="Canal.Panamericana.Televisión.sv" tvg-name="PER-Panamericana (M)(720)" tvg-logo="https://1.bp.blogspot.com/-Yi5SdOxVD0k/X2OreAwr7zI/AAAAAAAABTM/1AO8kxQONDcJYaa2djtLDmiygDFB9tEPwCLcBGAsYHQ/w200-h200/Panamericana.png" group-title="PERU",PER-Panamericana (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8466
+#EXTINF:-1 tvg-id="Canal.Panamericana.Televisión.sv" tvg-name="PER-Panamericana (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-Yi5SdOxVD0k/X2OreAwr7zI/AAAAAAAABTM/1AO8kxQONDcJYaa2djtLDmiygDFB9tEPwCLcBGAsYHQ/w200-h200/Panamericana.png" group-title="PERU",PER-Panamericana (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8465
+#EXTINF:-1 tvg-id="PANAMERICANA.TELEVISION.HD.(Panamericana.HD).pe" tvg-name="PER-Panamericana (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-Yi5SdOxVD0k/X2OreAwr7zI/AAAAAAAABTM/1AO8kxQONDcJYaa2djtLDmiygDFB9tEPwCLcBGAsYHQ/w200-h200/Panamericana.png" group-title="PERU",PER-Panamericana (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/74884
+#EXTINF:-1 tvg-id="" tvg-name="PER-RPP (SD)(M)" tvg-logo="https://1.bp.blogspot.com/-OXeqCZJyBC8/Xw_Bp5Ata6I/AAAAAAAAAaE/Zzghr8Od0SEBNhtra0v8Ro-5tfwKekFrgCLcBGAsYHQ/w200-h200/RPP%2BPeru.png" group-title="PERU",PER-RPP (SD)(M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8469
+#EXTINF:-1 tvg-id="" tvg-name="PER-TV Peru (M)" tvg-logo="https://1.bp.blogspot.com/-LcIibmp-imU/Xw_JKzUTs0I/AAAAAAAAAa0/Joe5mdjnqwAL7mUBBP0xIWpFG_-S359_gCLcBGAsYHQ/w200-h200/TV%2BPeru.png" group-title="PERU",PER-TV Peru (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8471
+#EXTINF:-1 tvg-id="LA.TELE.PERU.(La.Tele).pe" tvg-name="PER-TV Peru (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-LcIibmp-imU/Xw_JKzUTs0I/AAAAAAAAAa0/Joe5mdjnqwAL7mUBBP0xIWpFG_-S359_gCLcBGAsYHQ/w200-h200/TV%2BPeru.png" group-title="PERU",PER-TV Peru (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/74877
+#EXTINF:-1 tvg-id="" tvg-name="PER-Willas  (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-vzBDxerR2qw/X2Ordzmt9VI/AAAAAAAABTE/pxcJlNpzG0YQ2eQG9mh70VNzYr06pg4_ACLcBGAsYHQ/w200-h200/Willax.png" group-title="PERU",PER-Willas  (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8472
+#EXTINF:-1 tvg-id="" tvg-name="PER-Willasx (Z)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/eefbeb9ecb737c3bec0f9abd281c9330.png" group-title="PERU",PER-Willasx (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8473
+#EXTINF:-1 tvg-id="" tvg-name="PER-Willax (L)(720)" tvg-logo="http://iptvlatino.one:8080/images/96a6baee16738886cbb36a2d14670d9d.jpg" group-title="PERU",PER-Willax (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8474
+#EXTINF:-1 tvg-id="Canal.Willax.TV.sv" tvg-name="PER-Willax (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-vzBDxerR2qw/X2Ordzmt9VI/AAAAAAAABTE/pxcJlNpzG0YQ2eQG9mh70VNzYr06pg4_ACLcBGAsYHQ/w200-h200/Willax.png" group-title="PERU",PER-Willax (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8475
+#EXTINF:-1 tvg-id="" tvg-name="PR-Mega TV (L)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/50761531d3ec40a70b94df11f6e31db2.png" group-title="PUERTO RICO",PR-Mega TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14325
+#EXTINF:-1 tvg-id="" tvg-name="PR-Mega TV (TV)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/50761531d3ec40a70b94df11f6e31db2.png" group-title="PUERTO RICO",PR-Mega TV (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14326
+#EXTINF:-1 tvg-id="" tvg-name="PR-Punto 2 (TV)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/7770a2457674eb67200cf18013eb24e8.png" group-title="PUERTO RICO",PR-Punto 2 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14327
+#EXTINF:-1 tvg-id="" tvg-name="PR-Telemicro (M)(1080)" tvg-logo="http://tv.proyectox.vip:8080/images/c1b8596ec54505c9f64d8d1c2e063364.png" group-title="PUERTO RICO",PR-Telemicro (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14328
+#EXTINF:-1 tvg-id="" tvg-name="PR-Telemundo (i)(1080)" tvg-logo="http://tv.proyectox.vip:8080/images/d7809d368e9afffdab5769aa44df8248.png" group-title="PUERTO RICO",PR-Telemundo (i)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14329
+#EXTINF:-1 tvg-id="" tvg-name="PR-Telemundo Puerto Rico (L)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/d7809d368e9afffdab5769aa44df8248.png" group-title="PUERTO RICO",PR-Telemundo Puerto Rico (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14330
+#EXTINF:-1 tvg-id="Canal.Telemundo.Puerto.Rico.sv" tvg-name="PR-Telemundo Puerto Rico (TV)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/d7809d368e9afffdab5769aa44df8248.png" group-title="PUERTO RICO",PR-Telemundo Puerto Rico (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14331
+#EXTINF:-1 tvg-id="" tvg-name="PR-TeleOnce (TV)(720)" tvg-logo="" group-title="PUERTO RICO",PR-TeleOnce (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14340
+#EXTINF:-1 tvg-id="Univision.(KUTU).Tulsa,.OK.us" tvg-name="PR-Univision (TV)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/e842d9162c1deb34911032d6b8442ee7.png" group-title="PUERTO RICO",PR-Univision (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14332
+#EXTINF:-1 tvg-id="" tvg-name="PR-Wapa (TV)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/d656f1039b936a0c1e3c5e0e2c27c62b.png" group-title="PUERTO RICO",PR-Wapa (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14336
+#EXTINF:-1 tvg-id="" tvg-name="PR-Wapa 2 (M)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/d656f1039b936a0c1e3c5e0e2c27c62b.png" group-title="PUERTO RICO",PR-Wapa 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14334
+#EXTINF:-1 tvg-id="" tvg-name="PR-Wapa America (M)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/d656f1039b936a0c1e3c5e0e2c27c62b.png" group-title="PUERTO RICO",PR-Wapa America (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14337
+#EXTINF:-1 tvg-id="" tvg-name="PR-Wapa America (TV)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/d656f1039b936a0c1e3c5e0e2c27c62b.png" group-title="PUERTO RICO",PR-Wapa America (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14338
+#EXTINF:-1 tvg-id="" tvg-name="PR-Wapa Deportes (Z)(720)" tvg-logo="" group-title="PUERTO RICO",PR-Wapa Deportes (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/14339
+#EXTINF:-1 tvg-id="" tvg-name="RPD-5 Telemicro HD (M)" tvg-logo="https://1.bp.blogspot.com/-HImsRlXb3MU/X3PN8Zg_gzI/AAAAAAAABtw/_6CWiInP2mYSy3pGCNa1JSe5LXYpI0AJwCLcBGAsYHQ/w200-h200/Tele%2Bmicro%2Brep%25C3%25BAblica%2BDominicana.png" group-title="REPUBLICA DOMINICANA",RPD-5 Telemicro HD (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9291
+#EXTINF:-1 tvg-id="" tvg-name="RPD-Antena Latina (M)(720)" tvg-logo="https://1.bp.blogspot.com/-icVJqVqodrk/X3PN2Pic1WI/AAAAAAAABsw/fht9YY8pnwIVOCKhAZSCPrw_Y8FaiskXACLcBGAsYHQ/w200-h200/Antena%2Blatina%2BRep%25C3%25BAblica%2BDominicana.png" group-title="REPUBLICA DOMINICANA",RPD-Antena Latina (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9292
+#EXTINF:-1 tvg-id="" tvg-name="RPD-CDN 2 (M)" tvg-logo="https://1.bp.blogspot.com/-8VnLdErnceY/X3PN2XnCb4I/AAAAAAAABs0/_2S2NnKKU9ArQNF3ywESglu7QggvNb0oACLcBGAsYHQ/w200-h200/CDN%2B2%2BRep%25C3%25BAblica%2BDominicana.png" group-title="REPUBLICA DOMINICANA",RPD-CDN 2 (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9294
+#EXTINF:-1 tvg-id="" tvg-name="RPD-CDN 37 (M)" tvg-logo="https://1.bp.blogspot.com/-UxBePBl2Q2c/X3PN2lao_MI/AAAAAAAABs4/eChJd6BCtPsmyV8Mfeg4OK6JqJ-AHrc3gCLcBGAsYHQ/w200-h200/CDN%2B37%2BRep%25C3%25BAblica%2BDominicana.png" group-title="REPUBLICA DOMINICANA",RPD-CDN 37 (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9295
+#EXTINF:-1 tvg-id="" tvg-name="RPD-CDN Sport MAX (M)(720)" tvg-logo="https://1.bp.blogspot.com/-8pf8yz0Dc-A/XzWxMksPWgI/AAAAAAAABDo/YU15Wly2ozInqOjeKzEzPGXPlwC60250wCLcBGAsYHQ/w200-h200/159%2BCDN%2BSPORT.png" group-title="REPUBLICA DOMINICANA",RPD-CDN Sport MAX (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9296
+#EXTINF:-1 tvg-id="" tvg-name="RPD-Digital 15 (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-pL0WacmTMh0/X3PN5a3DbKI/AAAAAAAABtY/I8vFVTBdY5oKUyD8XCQJ9koGHFenAprLgCLcBGAsYHQ/w200-h200/Digital%2B15%2BRep%25C3%25BAblica%2BDominicana.png" group-title="REPUBLICA DOMINICANA",RPD-Digital 15 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9300
+#EXTINF:-1 tvg-id="" tvg-name="RPD-Telefuturo (M)(720)" tvg-logo="https://1.bp.blogspot.com/-xavji18xK0I/X3PN96-pW8I/AAAAAAAABt8/k3MD6mhluY8_sZFnxmgI2qMay0-9iH7owCLcBGAsYHQ/w200-h200/Telefuturo%2BRep%25C3%25BAblica%2BDominicana.png" group-title="REPUBLICA DOMINICANA",RPD-Telefuturo (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9302
+#EXTINF:-1 tvg-id="" tvg-name="RPD-Telemicro (M)" tvg-logo="http://tv.proyectox.vip:8080/images/9e32d652adec9df782babcfb96f855f9.png" group-title="REPUBLICA DOMINICANA",RPD-Telemicro (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9303
+#EXTINF:-1 tvg-id="" tvg-name="RPD-Telesistema HD (M)(720)" tvg-logo="https://1.bp.blogspot.com/-jNaf3vHMOqA/X3PN-2QFvaI/AAAAAAAABuE/DHDATqhJC-4Oq5y9uvqo4GsvR-hcpQUQwCLcBGAsYHQ/w200-h200/Telesistema%2BRep%25C3%25BAblica%2BDominicana.png" group-title="REPUBLICA DOMINICANA",RPD-Telesistema HD (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9304
+#EXTINF:-1 tvg-id="" tvg-name="RPD-Teleuniverso (M)(SD)" tvg-logo="https://1.bp.blogspot.com/-Lz9hOF5eEY4/X3PN82Z1mXI/AAAAAAAABt0/m9fhCQNi9g8AfkqLVOIHnV0TKh_i-LsdwCLcBGAsYHQ/w200-h200/Tele%2Buniverso%2BRep%25C3%25BAblica%2BDominicana.png" group-title="REPUBLICA DOMINICANA",RPD-Teleuniverso (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9305
+#EXTINF:-1 tvg-id="" tvg-name="RPD-Television Dominicana (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-7vMoBSXAcfg/X3PN_elrmQI/AAAAAAAABuI/o59Q0xyO83sfsHwrwwIlJL2Zv1y1YJdBwCLcBGAsYHQ/w200-h200/Tv%2Bdominica%2BRep%25C3%25BAblica%2BDominicana.png" group-title="REPUBLICA DOMINICANA",RPD-Television Dominicana (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9306
+#EXTINF:-1 tvg-id="" tvg-name="SAL-Canal 12 (TV)(720)" tvg-logo="http://s3.i3ns.net/portal/picon/2021-06/70c3a76f846899c633ec789079fe1e4c.png" group-title="SALVADOR",SAL-Canal 12 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9309
+#EXTINF:-1 tvg-id="" tvg-name="SAL-Canal 19 (M)" tvg-logo="" group-title="SALVADOR",SAL-Canal 19 (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9310
+#EXTINF:-1 tvg-id="" tvg-name="SAL-Canal 2 (M)" tvg-logo="" group-title="SALVADOR",SAL-Canal 2 (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9311
+#EXTINF:-1 tvg-id="" tvg-name="SAL-Canal 21 (L)" tvg-logo="" group-title="SALVADOR",SAL-Canal 21 (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9312
+#EXTINF:-1 tvg-id="" tvg-name="SAL-Canal 4 (M)(720)" tvg-logo="http://wohuogai.com:37000/live/LatiNtv..YhnGrfDS/jbHsNHJdIa/35854.m3u8" group-title="SALVADOR",SAL-Canal 4 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9313
+#EXTINF:-1 tvg-id="" tvg-name="SAL-Canal 4 (M)(SD)" tvg-logo="" group-title="SALVADOR",SAL-Canal 4 (M)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9314
+#EXTINF:-1 tvg-id="" tvg-name="SAL-Canal 4 (TV)(720)" tvg-logo="http://s3.i3ns.net/portal/picon/2021-06/24d82e8c83f43928bfadf134dcb0968e.png" group-title="SALVADOR",SAL-Canal 4 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9315
+#EXTINF:-1 tvg-id="" tvg-name="SAL-Canal 6 (M)" tvg-logo="" group-title="SALVADOR",SAL-Canal 6 (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9316
+#EXTINF:-1 tvg-id="" tvg-name="SAL-Canal 6 (TV)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e8/Canal_6_TCS.png" group-title="SALVADOR",SAL-Canal 6 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9317
+#EXTINF:-1 tvg-id="" tvg-name="SAL-Megavision Canal 19 (T)(720)" tvg-logo="http://s3.i3ns.net/portal/picon/2021-06/8e3c0e0389f7dc44b8bca823e29c111f.png" group-title="SALVADOR",SAL-Megavision Canal 19 (T)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9318
+#EXTINF:-1 tvg-id="" tvg-name="SAL-VTV Canal 35 (M)" tvg-logo="" group-title="SALVADOR",SAL-VTV Canal 35 (M)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/9319
+#EXTINF:-1 tvg-id="" tvg-name="Teletrak (W)(720)" tvg-logo="https://i.imgur.com/NoJvlig.png" group-title="CHILE",Teletrak (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/145832
+#EXTINF:-1 tvg-id="CANAL.10.HD.uy" tvg-name="URU-PPV 1 - e)(1080)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="URUGUAY",URU-PPV 1 - e)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/94286
+#EXTINF:-1 tvg-id="DSPORTS.(ARG).dtvsp" tvg-name="URU PPV 2 - (TV)(720)" tvg-logo="https://i.postimg.cc/D43vFj76/PPV1.png" group-title="URUGUAY",URU PPV 2 - (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/94287
+#EXTINF:-1 tvg-id="" tvg-name="URU-VTV Futbol (TV)(720)" tvg-logo="" group-title="URUGUAY",URU-VTV Futbol (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184011
+#EXTINF:-1 tvg-id="+TELEVISIÓN.HD.uy" tvg-name="URU-VTV Plus (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-9Z1GdBPiRbo/X2phWG5IWlI/AAAAAAAABcM/nZWo_pYbpRoOHexB0GEJdLzmDiXNA6nGwCLcBGAsYHQ/w200-h200/27VTV%2B%252B.png" group-title="URUGUAY",URU-VTV Plus (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8542
+#EXTINF:-1 tvg-id="VTV.PLUS..uy" tvg-name="URU-VTV Plus (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-9Z1GdBPiRbo/X2phWG5IWlI/AAAAAAAABcM/nZWo_pYbpRoOHexB0GEJdLzmDiXNA6nGwCLcBGAsYHQ/w200-h200/27VTV%2B%252B.png" group-title="URUGUAY",URU-VTV Plus (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8541
+#EXTINF:-1 tvg-id="+TELEVISIÓN.HD.uy" tvg-name="URU-VTV Plus (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-9Z1GdBPiRbo/X2phWG5IWlI/AAAAAAAABcM/nZWo_pYbpRoOHexB0GEJdLzmDiXNA6nGwCLcBGAsYHQ/w200-h200/27VTV%2B%252B.png" group-title="URUGUAY",URU-VTV Plus (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8543
+#EXTINF:-1 tvg-id="+TELEVISIÓN.HD.uy" tvg-name="URU-VTV Plus (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-9Z1GdBPiRbo/X2phWG5IWlI/AAAAAAAABcM/nZWo_pYbpRoOHexB0GEJdLzmDiXNA6nGwCLcBGAsYHQ/w200-h200/27VTV%2B%252B.png" group-title="URUGUAY",URU-VTV Plus (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8540
+#EXTINF:-1 tvg-id="+TELEVISIÓN.HD.uy" tvg-name="URU-VTV Plus (L)(720)" tvg-logo="https://1.bp.blogspot.com/-9Z1GdBPiRbo/X2phWG5IWlI/AAAAAAAABcM/nZWo_pYbpRoOHexB0GEJdLzmDiXNA6nGwCLcBGAsYHQ/w200-h200/27VTV%2B%252B.png" group-title="URUGUAY",URU-VTV Plus (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8539
+#EXTINF:-1 tvg-id="" tvg-name="URU-Directv Premium UY (TV)(720)" tvg-logo="" group-title="URUGUAY",URU-Directv Premium UY (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184013
+#EXTINF:-1 tvg-id="" tvg-name="URU-Directv Premium UY (TV)(SD)" tvg-logo="" group-title="URUGUAY",URU-Directv Premium UY (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184012
+#EXTINF:-1 tvg-id="DSPORTS.(ARG).dtvsp" tvg-name="URU-Directv Sports 1 UY (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-CE1czydcuuw/XazFPWYBLvI/AAAAAAAAAlY/R5o8SlM2tGo-vOu_SzNXEIZsiTY4zrPpACLcBGAsYHQ/s200/19.png" group-title="URUGUAY",URU-Directv Sports 1 UY (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8530
+#EXTINF:-1 tvg-id="" tvg-name="URU-Directv Sports 1 UY (L)(720)" tvg-logo="https://1.bp.blogspot.com/-CE1czydcuuw/XazFPWYBLvI/AAAAAAAAAlY/R5o8SlM2tGo-vOu_SzNXEIZsiTY4zrPpACLcBGAsYHQ/s200/19.png" group-title="URUGUAY",URU-Directv Sports 1 UY (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184009
+#EXTINF:-1 tvg-id="" tvg-name="URU-FixTV (L)(720)" tvg-logo="" group-title="URUGUAY",URU-FixTV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/184010
+#EXTINF:-1 tvg-id="VTV.HD.uy" tvg-name="URU-VTV (L)(720)" tvg-logo="https://1.bp.blogspot.com/-6L57k7oliDQ/X2phWjJbVXI/AAAAAAAABcQ/uFSEO9qK9IcDzukHAtM7z6WT3XORGOAuwCLcBGAsYHQ/w200-h200/28VTV.png" group-title="URUGUAY",URU-VTV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8534
+#EXTINF:-1 tvg-id="+TELEVISIÓN.HD.uy" tvg-name="URU-VTV (M)(1080)" tvg-logo="https://1.bp.blogspot.com/-6L57k7oliDQ/X2phWjJbVXI/AAAAAAAABcQ/uFSEO9qK9IcDzukHAtM7z6WT3XORGOAuwCLcBGAsYHQ/w200-h200/28VTV.png" group-title="URUGUAY",URU-VTV (M)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8535
+#EXTINF:-1 tvg-id="VTV.HD.uy" tvg-name="URU-VTV (M)(720)" tvg-logo="https://1.bp.blogspot.com/-6L57k7oliDQ/X2phWjJbVXI/AAAAAAAABcQ/uFSEO9qK9IcDzukHAtM7z6WT3XORGOAuwCLcBGAsYHQ/w200-h200/28VTV.png" group-title="URUGUAY",URU-VTV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8536
+#EXTINF:-1 tvg-id="VTV.HD.uy" tvg-name="URU-VTV (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-6L57k7oliDQ/X2phWjJbVXI/AAAAAAAABcQ/uFSEO9qK9IcDzukHAtM7z6WT3XORGOAuwCLcBGAsYHQ/w200-h200/28VTV.png" group-title="URUGUAY",URU-VTV (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8538
+#EXTINF:-1 tvg-id="CANAL.4.HD.uy" tvg-name="URU-Canal 4 (TV)(1080)" tvg-logo="https://1.bp.blogspot.com/-BAcvdP2-GHw/X2phQBd1nBI/AAAAAAAABbE/VoMrM5jiY-IcIiPoYVW4S3QGAsc7YuiEQCLcBGAsYHQ/w200-h200/09Canal%2B4%2BHD.png" group-title="URUGUAY",URU-Canal 4 (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8525
+#EXTINF:-1 tvg-id="CANAL.4.MONTECARLO..uy" tvg-name="URU-Canal 4 - Montecarlo (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-BAcvdP2-GHw/X2phQBd1nBI/AAAAAAAABbE/VoMrM5jiY-IcIiPoYVW4S3QGAsc7YuiEQCLcBGAsYHQ/w200-h200/09Canal%2B4%2BHD.png" group-title="URUGUAY",URU-Canal 4 - Montecarlo (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8526
+#EXTINF:-1 tvg-id="CANAL.4.HD.uy" tvg-name="URU-Canal 4 Monte Carlo (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/af/Canalcuatrovivoparavos.png" group-title="URUGUAY",URU-Canal 4 Monte Carlo (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8527
+#EXTINF:-1 tvg-id="[MONTTV].Canal.4.uy" tvg-name="URU-Canal 4 Montecarlo (TV)(HQ)" tvg-logo="https://1.bp.blogspot.com/-BAcvdP2-GHw/X2phQBd1nBI/AAAAAAAABbE/VoMrM5jiY-IcIiPoYVW4S3QGAsc7YuiEQCLcBGAsYHQ/w200-h200/09Canal%2B4%2BHD.png" group-title="URUGUAY",URU-Canal 4 Montecarlo (TV)(HQ)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8528
+#EXTINF:-1 tvg-id="MTV..uy" tvg-name="URU-Canal 4 Montecarlo (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-BAcvdP2-GHw/X2phQBd1nBI/AAAAAAAABbE/VoMrM5jiY-IcIiPoYVW4S3QGAsc7YuiEQCLcBGAsYHQ/w200-h200/09Canal%2B4%2BHD.png" group-title="URUGUAY",URU-Canal 4 Montecarlo (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8529
+#EXTINF:-1 tvg-id="CANAL.10.HD.uy" tvg-name="URU-Canal 10 (L)(HQ)" tvg-logo="https://1.bp.blogspot.com/-AMgC9i9AlN0/X2phNyqDekI/AAAAAAAABak/OxzAjjhxVkUnVClapZCKB_dhJS6qktpLACLcBGAsYHQ/w200-h200/03.png" group-title="URUGUAY",URU-Canal 10 (L)(HQ)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8515
+#EXTINF:-1 tvg-id="CANAL.10.HD.uy" tvg-name="URU-Canal 10 (M)(720)" tvg-logo="https://1.bp.blogspot.com/-AMgC9i9AlN0/X2phNyqDekI/AAAAAAAABak/OxzAjjhxVkUnVClapZCKB_dhJS6qktpLACLcBGAsYHQ/w200-h200/03.png" group-title="URUGUAY",URU-Canal 10 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8516
+#EXTINF:-1 tvg-id="CANAL.10.HD.uy" tvg-name="URU-Canal 10 (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-AMgC9i9AlN0/X2phNyqDekI/AAAAAAAABak/OxzAjjhxVkUnVClapZCKB_dhJS6qktpLACLcBGAsYHQ/w200-h200/03.png" group-title="URUGUAY",URU-Canal 10 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8518
+#EXTINF:-1 tvg-id="CANAL.10.HD.uy" tvg-name="URU-Canal 10 (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-AMgC9i9AlN0/X2phNyqDekI/AAAAAAAABak/OxzAjjhxVkUnVClapZCKB_dhJS6qktpLACLcBGAsYHQ/w200-h200/03.png" group-title="URUGUAY",URU-Canal 10 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8519
+#EXTINF:-1 tvg-id="CANAL.12.HD.uy" tvg-name="URU-Canal 12 (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-o4Zm4MYzQu8/X2phOqt2WrI/AAAAAAAABa0/EQBLJeRvxXosB0eaerjFKxDs20n95HQeACLcBGAsYHQ/w200-h200/05Teledoce.png" group-title="URUGUAY",URU-Canal 12 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8520
+#EXTINF:-1 tvg-id="CANAL.12.HD.uy" tvg-name="URU-Canal 12 La Tele (L)(720)" tvg-logo="https://1.bp.blogspot.com/-o4Zm4MYzQu8/X2phOqt2WrI/AAAAAAAABa0/EQBLJeRvxXosB0eaerjFKxDs20n95HQeACLcBGAsYHQ/w200-h200/05Teledoce.png" group-title="URUGUAY",URU-Canal 12 La Tele (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8521
+#EXTINF:-1 tvg-id="CANAL.12.HD.uy" tvg-name="URU-Canal 12 La Tele (Z)(720)" tvg-logo="https://1.bp.blogspot.com/-o4Zm4MYzQu8/X2phOqt2WrI/AAAAAAAABa0/EQBLJeRvxXosB0eaerjFKxDs20n95HQeACLcBGAsYHQ/w200-h200/05Teledoce.png" group-title="URUGUAY",URU-Canal 12 La Tele (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8522
+#EXTINF:-1 tvg-id="CANAL.12.HD.uy" tvg-name="URU-Canal 12 La Tele (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-o4Zm4MYzQu8/X2phOqt2WrI/AAAAAAAABa0/EQBLJeRvxXosB0eaerjFKxDs20n95HQeACLcBGAsYHQ/w200-h200/05Teledoce.png" group-title="URUGUAY",URU-Canal 12 La Tele (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8524
+#EXTINF:-1 tvg-id="CANAL.12.HD.uy" tvg-name="URU-Canal 12 La Tele (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-o4Zm4MYzQu8/X2phOqt2WrI/AAAAAAAABa0/EQBLJeRvxXosB0eaerjFKxDs20n95HQeACLcBGAsYHQ/w200-h200/05Teledoce.png" group-title="URUGUAY",URU-Canal 12 La Tele (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8523
+#EXTINF:-1 tvg-id="26.TV.uy" tvg-name="URU-A+V (L)(720)" tvg-logo="https://1.bp.blogspot.com/-qirB8B7_Zq4/X2phN9rq3aI/AAAAAAAABao/6htN_zWiScAp7eez4fVWxs9iJQX6SJ2qwCLcBGAsYHQ/w200-h200/01A%252Bv.png" group-title="URUGUAY",URU-A+V (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8514
+#EXTINF:-1 tvg-id="Canal.TN23.sv" tvg-name="URU-TNU (L)(720)" tvg-logo="https://1.bp.blogspot.com/-NKmQf3VC8hQ/X2phUrR98kI/AAAAAAAABcA/rUxcUZUAw6MmBKTlMjhRY-_HgYdMqm5CQCLcBGAsYHQ/w200-h200/24Tnu.png" group-title="URUGUAY",URU-TNU (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8532
+#EXTINF:-1 tvg-id="TV.CIUDAD.uy" tvg-name="URU-TV Ciudad (TV)(720)" tvg-logo="https://1.bp.blogspot.com/-qohNCdLBKdM/X2phVOtEdBI/AAAAAAAABcE/tBZm9UpeJxszBxcf7YTix5HlohHhypuqQCLcBGAsYHQ/w200-h200/25Tv%2Bciudad.png" group-title="URUGUAY",URU-TV Ciudad (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8533
+#EXTINF:-1 tvg-id="" tvg-name="VEN-BTA TV (W)(720)" tvg-logo="https://i.imgur.com/vygOosC.png" group-title="VENEZUELA",VEN-BTA TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160484
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Catatumbo TV (W)(SD)" tvg-logo="https://i.imgur.com/LBI2la0.png" group-title="VENEZUELA",VEN-Catatumbo TV (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160491
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Globovision (Z)(HQ)" tvg-logo="" group-title="VENEZUELA",VEN-Globovision (Z)(HQ)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/13014
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Grande TV" tvg-logo="https://i.imgur.com/jxCirrP.png" group-title="VENEZUELA",VEN-Grande TV
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160498
+#EXTINF:-1 tvg-id="" tvg-name="VEN-interTV (W)(1080)" tvg-logo="https://i.ibb.co/HG2DM8G/IMG-20230705-153952.jpg" group-title="VENEZUELA",VEN-interTV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160500
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Isla TV (W)(SD)" tvg-logo="https://i.imgur.com/l11Ixhi.jpeg" group-title="VENEZUELA",VEN-Isla TV (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160501
+#EXTINF:-1 tvg-id="" tvg-name="VEN-KandelaTV (W)(SD)" tvg-logo="https://i.imgur.com/cCFxyIp.jpg" group-title="VENEZUELA",VEN-KandelaTV (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160503
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Latina TV (W)(1080)" tvg-logo="https://i0.wp.com/latinamedios.com/wp-content/uploads/2023/03/LOGO-LATINA-TV-H-500.png?w=500&ssl=1" group-title="VENEZUELA",VEN-Latina TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160505
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Más Talk (W)(1080)" tvg-logo="https://i.imgur.com/unE2LGz.jpg" group-title="VENEZUELA",VEN-Más Talk (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160507
+#EXTINF:-1 tvg-id="" tvg-name="VEN-PromarTV (W)(1080)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/9/9f/Promar_Television.png" group-title="VENEZUELA",VEN-PromarTV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160518
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Reforma TV (W)(1080)" tvg-logo="https://i.imgur.com/iZMDddR.png" group-title="VENEZUELA",VEN-Reforma TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160519
+#EXTINF:-1 tvg-id="" tvg-name="VEN-TeleAragua (W)(SD)" tvg-logo="https://i.imgur.com/jPzcb2S.png" group-title="VENEZUELA",VEN-TeleAragua (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160524
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Telecolor (W)(SD)" tvg-logo="https://i.imgur.com/YvdzJHj.png" group-title="VENEZUELA",VEN-Telecolor (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160527
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Telesur (W)(SD)" tvg-logo="https://i.imgur.com/P50VjRX.png" group-title="VENEZUELA",VEN-Telesur (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160529
+#EXTINF:-1 tvg-id="Canal.Discovery.Kids.(Chile).cl" tvg-name="VEN-Telesur (Z)(1080)" tvg-logo="http://tv.proyectox.vip:8080/images/157b12de6f8e3396866e8b890859ed1a.png" group-title="VENEZUELA",VEN-Telesur (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/13017
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Telesur English (W)(SD)" tvg-logo="https://i.imgur.com/P50VjRX.png" group-title="VENEZUELA",VEN-Telesur English (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160530
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Televisora de Oriente (W)(SD)" tvg-logo="https://i.imgur.com/wFC6Xxq.png" group-title="VENEZUELA",VEN-Televisora de Oriente (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160533
+#EXTINF:-1 tvg-id="" tvg-name="VEN-TLT (Z)(1080)" tvg-logo="http://tv.proyectox.vip:8080/images/6605d0ddf74d47d20ddba3993f4f41da.png" group-title="VENEZUELA",VEN-TLT (Z)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/13020
+#EXTINF:-1 tvg-id="" tvg-name="VEN-TRT (W)(SD)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/67/Canal_trt_logo.PNG" group-title="VENEZUELA",VEN-TRT (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160536
+#EXTINF:-1 tvg-id="" tvg-name="VEN-TV FANB (W)(720)" tvg-logo="https://i.imgur.com/yaEyv29.png" group-title="VENEZUELA",VEN-TV FANB (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160540
+#EXTINF:-1 tvg-id="" tvg-name="VEN-TVM para ti (W)(1080)" tvg-logo="https://intervenhosting.net/imagenes/tvmparati.jpg" group-title="VENEZUELA",VEN-TVM para ti (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160541
+#EXTINF:-1 tvg-id="" tvg-name="VEN-TVS (W)(720)" tvg-logo="https://i.imgur.com/J8ztiAN.png" group-title="VENEZUELA",VEN-TVS (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160542
+#EXTINF:-1 tvg-id="" tvg-name="VEN-UniTV (W)(720)" tvg-logo="https://i.imgur.com/KLGeznX.png" group-title="VENEZUELA",VEN-UniTV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160543
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Venevision (Z)(720)" tvg-logo="http://tv.proyectox.vip:8080/images/73aaf358f23a64d0d44fbf27178a810f.png" group-title="VENEZUELA",VEN-Venevision (Z)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/13022
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Venevisión Internacional (W)(720)" tvg-logo="https://i.imgur.com/vtGED07.jpg" group-title="VENEZUELA",VEN-Venevisión Internacional (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160546
+#EXTINF:-1 tvg-id="" tvg-name="VEN-Vepaco TV (W)(SD)" tvg-logo="https://i.imgur.com/0bqJksL.png" group-title="VENEZUELA",VEN-Vepaco TV (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160547
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Main (TV)(720)" tvg-logo="https://i.ibb.co/M5WyT6SR/fas.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Main (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166110
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Sala (TV)(720)" tvg-logo="https://i.ibb.co/M5WyT6SR/fas.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Sala (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166111
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Comedor (TV)(720)" tvg-logo="https://i.ibb.co/M5WyT6SR/fas.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Comedor (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166112
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Team Calma (TV)(720)" tvg-logo="https://i.ibb.co/M5WyT6SR/fas.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Team Calma (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166113
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Team Tormenta (TV)(720)" tvg-logo="https://i.ibb.co/M5WyT6SR/fas.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Team Tormenta (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166114
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Beaty (TV)(720)" tvg-logo="https://i.ibb.co/M5WyT6SR/fas.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Beaty (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166115
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Banos (TV)(720)" tvg-logo="https://i.ibb.co/M5WyT6SR/fas.jpg" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Banos (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166116
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Principal (L)(720)" tvg-logo="" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Principal (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179544
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Sala (L)(720)" tvg-logo="" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Sala (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179545
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Comedor (L)(720)" tvg-logo="" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Comedor (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179546
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Calma (L)(720)" tvg-logo="" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Calma (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179547
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Tormenta (L)(720)" tvg-logo="" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Tormenta (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179548
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Beauty (L)(720)" tvg-logo="" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Beauty (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179549
+#EXTINF:-1 tvg-id="" tvg-name="Reality-La Casa de los Famosos Colombia - Baños (L)(720)" tvg-logo="" group-title="CANALES-REALITY LIVE",Reality-La Casa de los Famosos Colombia - Baños (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/179550
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Teletrak (W)(720)" tvg-logo="https://hipodromo.cl/generales_imagenes/logos/logo_hch-230x50px.png" group-title="CHILE [GEO BLOQUEO]",CHI-Teletrak (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180037
+#EXTINF:-1 tvg-id="" tvg-name="CHI-13C (W)(1080)" tvg-logo="https://i.imgur.com/Zfe2f5j.png" group-title="CHILE [GEO BLOQUEO]",CHI-13C (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186492
+#EXTINF:-1 tvg-id="" tvg-name="CHI-13 Festival (W)(1080)" tvg-logo="https://i.imgur.com/Ymk6j5o.png" group-title="CHILE [GEO BLOQUEO]",CHI-13 Festival (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186494
+#EXTINF:-1 tvg-id="" tvg-name="CHI-13 Kids (W)(1080)" tvg-logo="https://i.imgur.com/8WJUbSD.png" group-title="CHILE [GEO BLOQUEO]",CHI-13 Kids (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186496
+#EXTINF:-1 tvg-id="" tvg-name="CHI-13 Realities (W)(1080)" tvg-logo="https://i.imgur.com/m0SuwMU.png" group-title="CHILE [GEO BLOQUEO]",CHI-13 Realities (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186498
+#EXTINF:-1 tvg-id="" tvg-name="CHI-13 Teleseries (W)(720)" tvg-logo="https://i.imgur.com/csBNi2L.png" group-title="CHILE [GEO BLOQUEO]",CHI-13 Teleseries (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186499
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Antofagasta TV (ATV) (W)(1080)" tvg-logo="https://i.imgur.com/XIQr0fs.png" group-title="CHILE [GEO BLOQUEO]",CHI-Antofagasta TV (ATV) (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186501
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Atacama Noticias (W)(720)" tvg-logo="https://i.imgur.com/Avx4Ecf.png" group-title="CHILE [GEO BLOQUEO]",CHI-Atacama Noticias (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186503
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Atacama TV (Copiapó) (W)(720)" tvg-logo="https://i.postimg.cc/rwS082hL/atacama-tv.png" group-title="CHILE [GEO BLOQUEO]",CHI-Atacama TV (Copiapó) (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186504
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Aysen TV (W)(720)" tvg-logo="https://i.imgur.com/DmdBf9S.png" group-title="CHILE [GEO BLOQUEO]",CHI-Aysen TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186505
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Campus TV (Talca) (W)(720)" tvg-logo="https://i.imgur.com/LvzLg33.png" group-title="CHILE [GEO BLOQUEO]",CHI-Campus TV (Talca) (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186507
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Canal 9 Bío Bío Televisión (W)(1080)" tvg-logo="https://i.imgur.com/J2G1WMs.png" group-title="CHILE [GEO BLOQUEO]",CHI-Canal 9 Bío Bío Televisión (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186509
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Canal 13 (W)(1080)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/0/01/Canal_13_2018.png/revision/latest/scale-to-width-down/512/" group-title="CHILE [GEO BLOQUEO]",CHI-Canal 13 (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186510
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Canal ISB (Iglesia San Bernardo) (W)(720)" tvg-logo="https://i.imgur.com/cQ4ggTw.png" group-title="CHILE [GEO BLOQUEO]",CHI-Canal ISB (Iglesia San Bernardo) (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186512
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Chile Channel (W)(720)" tvg-logo="https://i.imgur.com/F1it6fh.png" group-title="CHILE [GEO BLOQUEO]",CHI-Chile Channel (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186514
+#EXTINF:-1 tvg-id="" tvg-name="CHI-ChileVision (W)(1080)" tvg-logo="https://i.imgur.com/PRijvR0.png" group-title="CHILE [GEO BLOQUEO]",CHI-ChileVision (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186515
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Chiloe Red 25 (W)(720)" tvg-logo="https://i.imgur.com/3tqrImm.png" group-title="CHILE [GEO BLOQUEO]",CHI-Chiloe Red 25 (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186516
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Click TV (Coronel) (W)(720)" tvg-logo="https://i.imgur.com/H0XNbMS.png" group-title="CHILE [GEO BLOQUEO]",CHI-Click TV (Coronel) (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186517
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Contivision (W)(720)" tvg-logo="https://i.imgur.com/Lz2OlKf.png" group-title="CHILE [GEO BLOQUEO]",CHI-Contivision (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186518
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Dance FM (W)(720)" tvg-logo="https://i2.paste.pics/ff3e1e1045a1968dcdbcda3824a94eb3.png" group-title="CHILE [GEO BLOQUEO]",CHI-Dance FM (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186519
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Décima TV (Ancud) (W)(720)" tvg-logo="https://i.imgur.com/eu8hDDc.png" group-title="CHILE [GEO BLOQUEO]",CHI-Décima TV (Ancud) (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186520
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Girovisual (W)(720)" tvg-logo="https://i.imgur.com/BYBMuhf.png" group-title="CHILE [GEO BLOQUEO]",CHI-Girovisual (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186523
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Holvoet TV (Copiapó) (W)(720)" tvg-logo="https://i.imgur.com/9JKRO3R.png" group-title="CHILE [GEO BLOQUEO]",CHI-Holvoet TV (Copiapó) (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186524
+#EXTINF:-1 tvg-id="" tvg-name="CHI-La Popular TV (W)(720)" tvg-logo="https://i.imgur.com/AWdgMCC.png" group-title="CHILE [GEO BLOQUEO]",CHI-La Popular TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186527
+#EXTINF:-1 tvg-id="" tvg-name="CHI-La Red (W)(720)" tvg-logo="https://i.imgur.com/nJOVM6e.png" group-title="CHILE [GEO BLOQUEO]",CHI-La Red (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186528
+#EXTINF:-1 tvg-id="" tvg-name="CHI-MTNA TV (W)(720)" tvg-logo="https://i.imgur.com/v7SA92F.png" group-title="CHILE [GEO BLOQUEO]",CHI-MTNA TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186530
+#EXTINF:-1 tvg-id="" tvg-name="CHI-NCTV (W)(1080)" tvg-logo="https://i.imgur.com/oo5vDBv.png" group-title="CHILE [GEO BLOQUEO]",CHI-NCTV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186532
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Nublevision (W)(720)" tvg-logo="https://i.imgur.com/nkQyR1X.png" group-title="CHILE [GEO BLOQUEO]",CHI-Nublevision (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186535
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Pichilemu TV (W)(1080)" tvg-logo="https://i.imgur.com/eaJVCwM.png" group-title="CHILE [GEO BLOQUEO]",CHI-Pichilemu TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186536
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Pucón TV (W)(1080)" tvg-logo="https://i.imgur.com/nO4cV3E.png" group-title="CHILE [GEO BLOQUEO]",CHI-Pucón TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186537
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Puranoticia TV (W)(720)" tvg-logo="https://i.imgur.com/NklUi6Y.png" group-title="CHILE [GEO BLOQUEO]",CHI-Puranoticia TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186538
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Santa María Televisión (W)(720)" tvg-logo="https://i.imgur.com/SnbGpoK.png" group-title="CHILE [GEO BLOQUEO]",CHI-Santa María Televisión (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186540
+#EXTINF:-1 tvg-id="" tvg-name="CHI-SoloBáilalo (W)(SD)" tvg-logo="https://i.imgur.com/SImJE7c.png" group-title="CHILE [GEO BLOQUEO]",CHI-SoloBáilalo (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186541
+#EXTINF:-1 tvg-id="" tvg-name="CHI-T-Vinet (W)(SD)" tvg-logo="https://i.imgur.com/KisHIpA.png" group-title="CHILE [GEO BLOQUEO]",CHI-T-Vinet (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186544
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Teletrak (W)(720)" tvg-logo="https://i.imgur.com/NoJvlig.png" group-title="CHILE [GEO BLOQUEO]",CHI-Teletrak (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186547
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Tevex (W)(720)" tvg-logo="https://i.imgur.com/FnInQRd.png" group-title="CHILE [GEO BLOQUEO]",CHI-Tevex (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186549
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Thema Televisión (La Serena) (W)(720)" tvg-logo="https://www.thematelevision.cl/wp-content/uploads/2019/08/fffffffff.png" group-title="CHILE [GEO BLOQUEO]",CHI-Thema Televisión (La Serena) (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186550
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TNE (W)(720)" tvg-logo="https://i.imgur.com/8QbvXva.png" group-title="CHILE [GEO BLOQUEO]",CHI-TNE (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186551
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Turf Movil (W)(720)" tvg-logo="https://i.imgur.com/TwIe4lK.png" group-title="CHILE [GEO BLOQUEO]",CHI-Turf Movil (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186552
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TV Quellón (W)(1080)" tvg-logo="https://i.imgur.com/MOwLCwT.png" group-title="CHILE [GEO BLOQUEO]",CHI-TV Quellón (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186554
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TV Senado (W)(SD)" tvg-logo="https://i.imgur.com/CNUZ6ig.png" group-title="CHILE [GEO BLOQUEO]",CHI-TV Senado (W)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186555
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TV UCT (W)(1080)" tvg-logo="https://i.imgur.com/tpI0WQH.png" group-title="CHILE [GEO BLOQUEO]",CHI-TV UCT (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186556
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TVN3 (W)(1080) [Geo-blocked]" tvg-logo="https://i.imgur.com/9LEiQPJ.png" group-title="CHILE [GEO BLOQUEO]",CHI-TVN3 (W)(1080) [Geo-blocked]
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186557
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TVO San Vicente (W)(720)" tvg-logo="https://i.imgur.com/PCVWtHd.png" group-title="CHILE [GEO BLOQUEO]",CHI-TVO San Vicente (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186558
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TVR (W)(1080)" tvg-logo="https://i.postimg.cc/prDRDZw3/TVR-Logo.png" group-title="CHILE [GEO BLOQUEO]",CHI-TVR (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186559
+#EXTINF:-1 tvg-id="" tvg-name="CHI-TVU Concepción (W)(1080)" tvg-logo="https://i.ibb.co/5vFMTxt/Logo-tvu.png" group-title="CHILE [GEO BLOQUEO]",CHI-TVU Concepción (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186560
+#EXTINF:-1 tvg-id="" tvg-name="CHI-U Los Lagos TV (W)(1080)" tvg-logo="https://i.imgur.com/HxUZseV.png" group-title="CHILE [GEO BLOQUEO]",CHI-U Los Lagos TV (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186561
+#EXTINF:-1 tvg-id="" tvg-name="CHI-UCV TV (W)(720)" tvg-logo="https://i.postimg.cc/jjGpZf4T/UCV-Logo.png" group-title="CHILE [GEO BLOQUEO]",CHI-UCV TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186562
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Universidad Autónoma Temuco (UATV) (W)(1080)" tvg-logo="https://i.imgur.com/BdZGS66.png" group-title="CHILE [GEO BLOQUEO]",CHI-Universidad Autónoma Temuco (UATV) (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186564
+#EXTINF:-1 tvg-id="" tvg-name="CHI-UTV (W)(720)" tvg-logo="https://i.imgur.com/ZJNSpfZ.png" group-title="CHILE [GEO BLOQUEO]",CHI-UTV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186565
+#EXTINF:-1 tvg-id="" tvg-name="CHI-V Classic TV (W)(720)" tvg-logo="https://i.imgur.com/WIACJSy.png" group-title="CHILE [GEO BLOQUEO]",CHI-V Classic TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186566
+#EXTINF:-1 tvg-id="" tvg-name="CHI-Vision Plus TV (W)(720)" tvg-logo="https://i.imgur.com/mpNcG5F.png" group-title="CHILE [GEO BLOQUEO]",CHI-Vision Plus TV (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186568
+#EXTINF:-1 tvg-id="" tvg-name="CHI-VTV Valle de Aconcagua (W)(720)" tvg-logo="https://i.imgur.com/0bFVvKj.png" group-title="CHILE [GEO BLOQUEO]",CHI-VTV Valle de Aconcagua (W)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/186569
+#EXTINF:-1 tvg-id="" tvg-name="ESP - BEIN LALIGA 1 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - BEIN LALIGA 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161871
+#EXTINF:-1 tvg-id="" tvg-name="ESP - BEIN SPORTS LA LIGA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - BEIN SPORTS LA LIGA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161872
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR DEPORTE 2 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR DEPORTE 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161873
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR DEPORTE 3 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR DEPORTE 3 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161874
+#EXTINF:-1 tvg-id="" tvg-name="ESP - LA LIGA 2 TV (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - LA LIGA 2 TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161875
+#EXTINF:-1 tvg-id="" tvg-name="ESP - LA LIGA TV (M)(720) BAR" tvg-logo="" group-title="ESPAÑA",ESP - LA LIGA TV (M)(720) BAR
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161877
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR DEPORTES (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR DEPORTES (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161878
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR FOTBOL F(M)(720) 4K" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR FOTBOL F(M)(720) 4K
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161907
+#EXTINF:-1 tvg-id="" tvg-name="ESP - EUROSPORT 1 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - EUROSPORT 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161908
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR FORMULA 1 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR FORMULA 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161910
+#EXTINF:-1 tvg-id="" tvg-name="ESP - LA LIGA TV BAR 1 [LIVE-EVENT]" tvg-logo="" group-title="ESPAÑA",ESP - LA LIGA TV BAR 1 [LIVE-EVENT]
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161916
+#EXTINF:-1 tvg-id="" tvg-name="ESP - EUROSPORT 1 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - EUROSPORT 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161919
+#EXTINF:-1 tvg-id="" tvg-name="ES DAZN 1 F(M)(720)" tvg-logo="" group-title="ESPAÑA",ES DAZN 1 F(M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161922
+#EXTINF:-1 tvg-id="" tvg-name="ES DAZN 2 F(M)(720)" tvg-logo="" group-title="ESPAÑA",ES DAZN 2 F(M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161923
+#EXTINF:-1 tvg-id="" tvg-name="ESP - DAZN 4 F(M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - DAZN 4 F(M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161924
+#EXTINF:-1 tvg-id="" tvg-name="ES DAZN 3 (M)(720)" tvg-logo="" group-title="ESPAÑA",ES DAZN 3 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161925
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Teledeporte (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Teledeporte (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161951
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MADRID TV (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MADRID TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161952
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTARr GOLF F(M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTARr GOLF F(M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161954
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Movistar Deportes (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Movistar Deportes (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161955
+#EXTINF:-1 tvg-id="M+.Liga.de.Campeones.es" tvg-name="ESP - Movistar Liga de Campeones (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Movistar Liga de Campeones (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161959
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TELEMADRID (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TELEMADRID (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161988
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR LIGA CAMPEONES 2 [LIVE-EVENT]" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR LIGA CAMPEONES 2 [LIVE-EVENT]
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162011
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR LIGA CAMPEONES" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR LIGA CAMPEONES
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162012
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Movistar LaLiga (L)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Movistar LaLiga (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162017
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Movistar LaLiga (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Movistar LaLiga (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162018
+#EXTINF:-1 tvg-id="" tvg-name="ES:Movistar Liga de Campeones (M)(720)" tvg-logo="" group-title="ESPAÑA",ES:Movistar Liga de Campeones (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162019
+#EXTINF:-1 tvg-id="" tvg-name="ES:Movistar Fórmula 1 (M)(720)" tvg-logo="" group-title="ESPAÑA",ES:Movistar Fórmula 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162020
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Movistar Liga de Campeones (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Movistar Liga de Campeones (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162021
+#EXTINF:-1 tvg-id="" tvg-name="ES:Movistar Deportes (M)(720)" tvg-logo="" group-title="ESPAÑA",ES:Movistar Deportes (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162022
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Movistar Deportes 1 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Movistar Deportes 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162023
+#EXTINF:-1 tvg-id="" tvg-name="ESP - #Vamos (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/071331bfe2ef65c648c23a23720c1c7e.png" group-title="ESPAÑA",ESP - #Vamos (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8134
+#EXTINF:-1 tvg-id="" tvg-name="ESP - 24h (TV)(720)" tvg-logo="http://tvgolatino.com:8080/images/6be7cbfc3e262821b3c3cf041f24de5c.png" group-title="ESPAÑA",ESP - 24h (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8136
+#EXTINF:-1 tvg-id="" tvg-name="ESP - A3Series (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/aa72578fb81aa3510cb3ba860b8925cc.png" group-title="ESPAÑA",ESP - A3Series (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8138
+#EXTINF:-1 tvg-id="" tvg-name="ESP - AMC (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/e2c26deb02e0c7fc77a8028e3955dec6.png" group-title="ESPAÑA",ESP - AMC (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8140
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Antena 3 Internacional (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/70d0c97078cc29a450de49c7a4e4d2f6.png" group-title="ESPAÑA",ESP - Antena 3 Internacional (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8143
+#EXTINF:-1 tvg-id="" tvg-name="ESP - AXN White (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/9051a0a08d3c5d5390a485b47d3102d0.png" group-title="ESPAÑA",ESP - AXN White (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8146
+#EXTINF:-1 tvg-id="" tvg-name="ESP - BeMad (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/8a45b4a43167bcbf78de7a1faeebe876.png" group-title="ESPAÑA",ESP - BeMad (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8151
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Bom Cine (TV)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Bom Cine (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8154
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Calle 13 (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/fa96ad727b37d8dac3f1dd504a781976.png" group-title="ESPAÑA",ESP - Calle 13 (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8156
+#EXTINF:-1 tvg-id="" tvg-name="ESP - DARK (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/2350435c7d30336da90420b9b2931497.png" group-title="ESPAÑA",ESP - DARK (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8168
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Disney Channel (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/09062220ca78d6c2587628e68ec361ba.png" group-title="ESPAÑA",ESP - Disney Channel (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8171
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Energy (TV)(SD)" tvg-logo="http://tvgolatino.com:8080/images/40cb0e93363408e0087033cc724aa9d2.png" group-title="ESPAÑA",ESP - Energy (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8179
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Eurosport 2 (TV)(720)" tvg-logo="http://23.153.216.121:25461/images/111256bc3d526aa689154822101f20a3.png" group-title="ESPAÑA",ESP - Eurosport 2 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8181
+#EXTINF:-1 tvg-id="" tvg-name="ESP - GOL (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/7fd69a57aa39430953380549ec247b4a.png" group-title="ESPAÑA",ESP - GOL (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8187
+#EXTINF:-1 tvg-id="" tvg-name="ESP - La 1 (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/a924160875308aca0b0c65016cc520ee.png" group-title="ESPAÑA",ESP - La 1 (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8192
+#EXTINF:-1 tvg-id="" tvg-name="ESP - La 2 (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/90ecf40ad33b1bd3f632b06e297c8615.png" group-title="ESPAÑA",ESP - La 2 (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8193
+#EXTINF:-1 tvg-id="" tvg-name="ESP - La Sexta (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/4ad96d32906d80a3359345be9f8a20d6.png" group-title="ESPAÑA",ESP - La Sexta (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8195
+#EXTINF:-1 tvg-id="" tvg-name="ESP - M. Accion (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/5d58a602d028589e28a558f8980a08c1.png" group-title="ESPAÑA",ESP - M. Accion (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8196
+#EXTINF:-1 tvg-id="" tvg-name="ESP - M. Cine Español (TV)(720)" tvg-logo="http://23.153.216.121:25461/images/bd8c0148c56ab8adf0425fb3ed9e9fb9.png" group-title="ESPAÑA",ESP - M. Cine Español (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8197
+#EXTINF:-1 tvg-id="" tvg-name="ESP - M. Comedia (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/42b52e9629284dbf30c4f378512716f6.png" group-title="ESPAÑA",ESP - M. Comedia (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8198
+#EXTINF:-1 tvg-id="" tvg-name="ESP - M. Deportes (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/a1c1e337292ad263f3031aab71beb7c9.png" group-title="ESPAÑA",ESP - M. Deportes (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8199
+#EXTINF:-1 tvg-id="" tvg-name="ESP - M. Drama (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/7b7f24505f4e793b05df3d6c6e25ddbe.png" group-title="ESPAÑA",ESP - M. Drama (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8200
+#EXTINF:-1 tvg-id="" tvg-name="ESP - M. Dreamworks (TV)(1080)" tvg-logo="" group-title="ESPAÑA",ESP - M. Dreamworks (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8201
+#EXTINF:-1 tvg-id="" tvg-name="ESP - M. Series (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/077bd8bad93170796c768290e12ad0b7.png" group-title="ESPAÑA",ESP - M. Series (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8203
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Mega (L)(720)" tvg-logo="http://23.153.216.121:25461/images/4ed0e0ecb998940e016def789ae1bdd0.png" group-title="ESPAÑA",ESP - Mega (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8204
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MEGA (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/d859fd3f0c05be226b0523af2c709455.png" group-title="ESPAÑA",ESP - MEGA (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8205
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Mundo Toros (TV)(720)" tvg-logo="http://23.153.216.121:25461/images/227318f510fb320fafbdac770f16dcb4.png" group-title="ESPAÑA",ESP - Mundo Toros (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8217
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Nat Geo Wild (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/5102ce3be98d74f57156e462a208ae35.png" group-title="ESPAÑA",ESP - Nat Geo Wild (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8218
+#EXTINF:-1 tvg-id="National.Geographic.es" tvg-name="ESP - National Geographic (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/3123d9e8a5ac317c848d30fdfe79022e.png" group-title="ESPAÑA",ESP - National Geographic (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8221
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Neox (TV)(SD)" tvg-logo="http://23.153.216.121:25461/images/4bd915ca6138751f28c472db3d6b3f5e.png" group-title="ESPAÑA",ESP - Neox (TV)(SD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8223
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Nickelodeon (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/80422e9a138487b496a13e04533e2b32.png" group-title="ESPAÑA",ESP - Nickelodeon (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8226
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Odisea (TV)(720)" tvg-logo="http://tvgolatino.com:8080/images/c7e1a13ded82ddb8c09500522b443ffd.png" group-title="ESPAÑA",ESP - Odisea (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8229
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Paramount Channel (TV)(720)" tvg-logo="http://23.153.216.121:25461/images/1ee9fef6d5c6cc7c7917ea651f59673c.png" group-title="ESPAÑA",ESP - Paramount Channel (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8231
+#EXTINF:-1 tvg-id="" tvg-name="ESP - SOMOS (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/34ee1df0c9b3ce9f185e5a79391bcf1b.png" group-title="ESPAÑA",ESP - SOMOS (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8234
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TCM (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/0b40af06d362dd88373a2c0e2b81c265.png" group-title="ESPAÑA",ESP - TCM (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8239
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Telecinco (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/f20b260961505a415a3a1f11f8c06aad.png" group-title="ESPAÑA",ESP - Telecinco (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8241
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Telecinco (TV)(720)" tvg-logo="http://23.153.216.121:25461/images/f20b260961505a415a3a1f11f8c06aad.png" group-title="ESPAÑA",ESP - Telecinco (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8242
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Teledeporte (TV)(1080)" tvg-logo="http://23.153.216.121:25461/images/dca55d4c00daa95a5856ecc9530fbc0d.png" group-title="ESPAÑA",ESP - Teledeporte (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8243
+#EXTINF:-1 tvg-id="" tvg-name="ESP - XTRM (TV)(1080)" tvg-logo="" group-title="ESPAÑA",ESP - XTRM (TV)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/8254
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR ACCION (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR ACCION (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161879
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR DRAMA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR DRAMA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161880
+#EXTINF:-1 tvg-id="" tvg-name="ESP - SERIES MANIA F(M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - SERIES MANIA F(M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161881
+#EXTINF:-1 tvg-id="" tvg-name="ESP - COMEDIA. (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - COMEDIA. (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161882
+#EXTINF:-1 tvg-id="" tvg-name="ESP -  CINE ESPANOL (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP -  CINE ESPANOL (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161883
+#EXTINF:-1 tvg-id="" tvg-name="ESP - AXN WHITE. (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - AXN WHITE. (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161884
+#EXTINF:-1 tvg-id="" tvg-name="ESP - NICKELODEON  (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - NICKELODEON  (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161885
+#EXTINF:-1 tvg-id="" tvg-name="ESP - CALLE 13 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - CALLE 13 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161886
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Fox (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Fox (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161887
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Fox Life (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Fox Life (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161888
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Neox (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Neox (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161889
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Energy (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Energy (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161890
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Cocina TV (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Cocina TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161891
+#EXTINF:-1 tvg-id="" tvg-name="ESP -  Dark2 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP -  Dark2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161892
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Telecinco (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Telecinco (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161893
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Cuatro (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Cuatro (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161894
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Antena 3 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Antena 3 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161895
+#EXTINF:-1 tvg-id="" tvg-name="ESP - La 2 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - La 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161896
+#EXTINF:-1 tvg-id="" tvg-name="ESP - La 1 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - La 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161897
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TNT (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TNT (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161898
+#EXTINF:-1 tvg-id="" tvg-name="ESP -  VIAJAR (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP -  VIAJAR (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161899
+#EXTINF:-1 tvg-id="" tvg-name="ESP - #VAMOS (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - #VAMOS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161900
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR SERIES (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR SERIES (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161901
+#EXTINF:-1 tvg-id="" tvg-name="ESP - I24 NEWS (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - I24 NEWS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161902
+#EXTINF:-1 tvg-id="" tvg-name="ESP - DISNEY CHANNEL (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - DISNEY CHANNEL (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161903
+#EXTINF:-1 tvg-id="" tvg-name="ESP - ACCION (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - ACCION (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161904
+#EXTINF:-1 tvg-id="" tvg-name="ESP - IBERALIA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - IBERALIA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161905
+#EXTINF:-1 tvg-id="" tvg-name="ESP - HISTORIA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - HISTORIA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161906
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR ESTRENOS (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR ESTRENOS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161909
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Odisea (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Odisea (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161911
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Movistar LaLiga (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Movistar LaLiga (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161912
+#EXTINF:-1 tvg-id="" tvg-name="ESP - COSMO. (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - COSMO. (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161913
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR DRAMA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR DRAMA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161914
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR DEPORTES(M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR DEPORTES(M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161915
+#EXTINF:-1 tvg-id="" tvg-name="ESP - HOLLYWOOD(M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - HOLLYWOOD(M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161917
+#EXTINF:-1 tvg-id="" tvg-name="ESP - FOX (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - FOX (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161918
+#EXTINF:-1 tvg-id="" tvg-name="ESP - COMEDY CENTRAL (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - COMEDY CENTRAL (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161920
+#EXTINF:-1 tvg-id="" tvg-name="ESP - #VAMOS (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - #VAMOS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161921
+#EXTINF:-1 tvg-id="" tvg-name="ESP - BLAZE (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - BLAZE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161926
+#EXTINF:-1 tvg-id="" tvg-name="ESP - BABY TV (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - BABY TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161927
+#EXTINF:-1 tvg-id="" tvg-name="ESP - #0 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - #0 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161928
+#EXTINF:-1 tvg-id="" tvg-name="ESP - 24 Horas (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - 24 Horas (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161929
+#EXTINF:-1 tvg-id="" tvg-name="ESP - A3 Series (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - A3 Series (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161930
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Movistar LaLIGA (L)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Movistar LaLIGA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161931
+#EXTINF:-1 tvg-id="" tvg-name="ESP - BLOOMBERG (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - BLOOMBERG (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161932
+#EXTINF:-1 tvg-id="" tvg-name="ESP - CANAL GOLF F(M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - CANAL GOLF F(M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161933
+#EXTINF:-1 tvg-id="" tvg-name="ESP - CANAL SUR (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - CANAL SUR (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161934
+#EXTINF:-1 tvg-id="" tvg-name="ESP - CRIME AND INVESTIGATION (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - CRIME AND INVESTIGATION (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161935
+#EXTINF:-1 tvg-id="" tvg-name="ESP - DISCOVERY CHANNEL(M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - DISCOVERY CHANNEL(M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161936
+#EXTINF:-1 tvg-id="" tvg-name="ESP - DMAX (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - DMAX (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161937
+#EXTINF:-1 tvg-id="" tvg-name="ESP - FOX NEWS (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - FOX NEWS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161938
+#EXTINF:-1 tvg-id="" tvg-name="ESP - GALICIA TV (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - GALICIA TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161939
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Movistar Deportes (i)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Movistar Deportes (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161940
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR CINEDOC&ROLL (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR CINEDOC&ROLL (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161941
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR DEPORTES 2 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR DEPORTES 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161942
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR COMEDIA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR COMEDIA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161943
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR SERIE (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR SERIE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161944
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR SERIE MANIA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR SERIE MANIA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161945
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TAQUILLA 2 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TAQUILLA 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161946
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TAQUILLA 3 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TAQUILLA 3 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161947
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TOROS (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TOROS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161948
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TRECE TV (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TRECE TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161949
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TVE 24H (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TVE 24H (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161950
+#EXTINF:-1 tvg-id="" tvg-name="ESP -  Dazn F1 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP -  Dazn F1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161953
+#EXTINF:-1 tvg-id="" tvg-name="ESP - IBERALIA TV (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - IBERALIA TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161956
+#EXTINF:-1 tvg-id="" tvg-name="ESP - GOL TV (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - GOL TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161957
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Eurosport 2 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Eurosport 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161958
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MEZZO LIVE (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MEZZO LIVE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161960
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Mega (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Mega (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161961
+#EXTINF:-1 tvg-id="" tvg-name="ESP - FOX (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - FOX (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161962
+#EXTINF:-1 tvg-id="" tvg-name="ESP - FDF (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - FDF (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161963
+#EXTINF:-1 tvg-id="" tvg-name="ESP - DKISS (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - DKISS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161964
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Divinity (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Divinity (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161965
+#EXTINF:-1 tvg-id="" tvg-name="ESP - DISNEY CHANEL (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - DISNEY CHANEL (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161966
+#EXTINF:-1 tvg-id="" tvg-name="ESP - DISNEY (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - DISNEY (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161967
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Disney Jr (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Disney Jr (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161968
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Canal Casa (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Canal Casa (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161969
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Cosmo (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Cosmo (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161970
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Comedy Central (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Comedy Central (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161971
+#EXTINF:-1 tvg-id="" tvg-name="ESP - CANAL COCINA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - CANAL COCINA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161972
+#EXTINF:-1 tvg-id="" tvg-name="ESP - CLAN TVE (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - CLAN TVE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161973
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Caza y Pesca (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Caza y Pesca (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161974
+#EXTINF:-1 tvg-id="" tvg-name="ESP - BLAZE (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - BLAZE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161976
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Be Mad (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Be Mad (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161977
+#EXTINF:-1 tvg-id="" tvg-name="ESP - BARCA TV (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - BARCA TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161978
+#EXTINF:-1 tvg-id="" tvg-name="ESP - AXN WHITE (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - AXN WHITE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161979
+#EXTINF:-1 tvg-id="" tvg-name="ESP - AXN (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - AXN (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161980
+#EXTINF:-1 tvg-id="" tvg-name="ESP - ARAGON TV (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - ARAGON TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161981
+#EXTINF:-1 tvg-id="" tvg-name="ESP - AMC (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - AMC (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161982
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Nova (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Nova (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161983
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Boing (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Boing (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161984
+#EXTINF:-1 tvg-id="" tvg-name="ESP - HOLLYWOOD (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - HOLLYWOOD (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161985
+#EXTINF:-1 tvg-id="" tvg-name="ESP - VIAJAR (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - VIAJAR (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161986
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TNT (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TNT (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161987
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TCM (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TCM (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161989
+#EXTINF:-1 tvg-id="" tvg-name="ESP - SYFY (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - SYFY (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161990
+#EXTINF:-1 tvg-id="" tvg-name="ESP - SUNDANCE (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - SUNDANCE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161991
+#EXTINF:-1 tvg-id="" tvg-name="ESP - PARAMOUNT NETWORK (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - PARAMOUNT NETWORK (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161992
+#EXTINF:-1 tvg-id="" tvg-name="ESP - PANDA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - PANDA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161993
+#EXTINF:-1 tvg-id="" tvg-name="ESP - ODESEA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - ODESEA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161994
+#EXTINF:-1 tvg-id="" tvg-name="ESP - NICKELODEON (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - NICKELODEON (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161995
+#EXTINF:-1 tvg-id="" tvg-name="ESP - NICK JUNIOR (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - NICK JUNIOR (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161996
+#EXTINF:-1 tvg-id="" tvg-name="ESP - NAT GEO WILD (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - NAT GEO WILD (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161997
+#EXTINF:-1 tvg-id="" tvg-name="ESP - NAT GEO (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - NAT GEO (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161998
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MTV ESPAÑA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MTV ESPAÑA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/161999
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MoviStar ESTRENOS (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MoviStar ESTRENOS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162000
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR CINE N (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR CINE N (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162001
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR Disney (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR Disney (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162002
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR ACCION (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR ACCION (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162003
+#EXTINF:-1 tvg-id="" tvg-name="ESP - La Sexta (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - La Sexta (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162004
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Cuatro (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Cuatro (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162005
+#EXTINF:-1 tvg-id="" tvg-name="ESP - Antena 3 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - Antena 3 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162006
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TVE LA 2 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TVE LA 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162007
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TVE LA 1 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TVE LA 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162008
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR SERIES MANIA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR SERIES MANIA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162009
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MOVISTAR COMEDIA (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MOVISTAR COMEDIA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162010
+#EXTINF:-1 tvg-id="" tvg-name="ESP - MEZZO LIVE (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - MEZZO LIVE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162013
+#EXTINF:-1 tvg-id="" tvg-name="ESP - NATIONAL GEO WILD (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - NATIONAL GEO WILD (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162014
+#EXTINF:-1 tvg-id="" tvg-name="ESP - SYFY (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - SYFY (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162015
+#EXTINF:-1 tvg-id="" tvg-name="ESP - TCM (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - TCM (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162016
+#EXTINF:-1 tvg-id="" tvg-name="ESP - ETB 1 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - ETB 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162024
+#EXTINF:-1 tvg-id="" tvg-name="ESP - ETB 2 (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - ETB 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162025
+#EXTINF:-1 tvg-id="" tvg-name="ESP - ETB Basque (M)(720)" tvg-logo="" group-title="ESPAÑA",ESP - ETB Basque (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162026
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Canal D (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/canal_d.png" group-title="CANADA-FRANCES",CA-FR: Canal D (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166422
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Canal Savoir (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/canal_savoir.png" group-title="CANADA-FRANCES",CA-FR: Canal Savoir (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166423
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Casa (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/casa.png" group-title="CANADA-FRANCES",CA-FR: Casa (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166424
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: CBC Montreal (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/cbc_montreal.png" group-title="CANADA-FRANCES",CA-FR: CBC Montreal (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166425
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Cine Pop (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/cine_pop.png" group-title="CANADA-FRANCES",CA-FR: Cine Pop (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166426
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: CTV Montreal (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/ctv.png" group-title="CANADA-FRANCES",CA-FR: CTV Montreal (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166427
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Disney (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/disney_channel.png" group-title="CANADA-FRANCES",CA-FR: Disney (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166428
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Evasion (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/evasion.png" group-title="CANADA-FRANCES",CA-FR: Evasion (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166429
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: ICI Montreal" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/ici_montreal.png" group-title="CANADA-FRANCES",CA-FR: ICI Montreal
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166430
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: MAX (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/max.png" group-title="CANADA-FRANCES",CA-FR: MAX (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166431
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Meteo (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/meteo_media.png" group-title="CANADA-FRANCES",CA-FR: Meteo (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166432
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Prise 2 (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/prise_2.png" group-title="CANADA-FRANCES",CA-FR: Prise 2 (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166434
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: RDS 2 (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/rds_2.png" group-title="CANADA-FRANCES",CA-FR: RDS 2 (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166435
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: RDS Info (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/rds_info.png" group-title="CANADA-FRANCES",CA-FR: RDS Info (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166436
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Super Ecran 1 (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/super_ecran.png" group-title="CANADA-FRANCES",CA-FR: Super Ecran 1 (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166437
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Super Ecran 2 (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/super_ecran.png" group-title="CANADA-FRANCES",CA-FR: Super Ecran 2 (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166438
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Super Ecran 3 (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/super_ecran.png" group-title="CANADA-FRANCES",CA-FR: Super Ecran 3 (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166439
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Super Ecran 4 (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/super_ecran.png" group-title="CANADA-FRANCES",CA-FR: Super Ecran 4 (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166440
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: TV5 Quebec (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/tv5_quebec.png" group-title="CANADA-FRANCES",CA-FR: TV5 Quebec (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166442
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Unis TV (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/unis_tV.png" group-title="CANADA-FRANCES",CA-FR: Unis TV (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166444
+#EXTINF:-1 tvg-id="" tvg-name="CA-FR: Zeste (FR)(TV)" tvg-logo="http://logos.ti7an.net/logos/ENG_Canada/zeste.png" group-title="CANADA-FRANCES",CA-FR: Zeste (FR)(TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166445
+#EXTINF:-1 tvg-id="" tvg-name="CA: CP24 (TV)(HD)" tvg-logo="" group-title="CANADA PREMIUM",CA: CP24 (TV)(HD)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/7959
+#EXTINF:-1 tvg-id="" tvg-name="CA: Zeste" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/1/16/Zeste_HD.png" group-title="CANADA-FRANCES",CA: Zeste
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/166421
+#EXTINF:-1 tvg-id="" tvg-name="CAN-A&E (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-A&E (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45813
+#EXTINF:-1 tvg-id="" tvg-name="CAN-ABC (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-ABC (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45814
+#EXTINF:-1 tvg-id="" tvg-name="CAN-AMC (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-AMC (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45815
+#EXTINF:-1 tvg-id="Canal.Azteca.Uno.mx" tvg-name="CAN-Animal Planet (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Animal Planet (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45816
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Bein Sports (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Bein Sports (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45817
+#EXTINF:-1 tvg-id="" tvg-name="CAN-BET (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-BET (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45818
+#EXTINF:-1 tvg-id="" tvg-name="CAN-CBC (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-CBC (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45820
+#EXTINF:-1 tvg-id="" tvg-name="CAN-CBC Edmonton (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-CBC Edmonton (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45821
+#EXTINF:-1 tvg-id="" tvg-name="CAN-City Toronto (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-City Toronto (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45824
+#EXTINF:-1 tvg-id="" tvg-name="CAN-City TV (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-City TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45825
+#EXTINF:-1 tvg-id="" tvg-name="CAN-CMT Canada (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-CMT Canada (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45826
+#EXTINF:-1 tvg-id="" tvg-name="CAN-CNBC (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-CNBC (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45827
+#EXTINF:-1 tvg-id="" tvg-name="CAN-CNN  HD (L)" tvg-logo="http://live.detodotvplay.com:8080/images/9aecccf3b71b078328364882ab2820a1.png" group-title="CANADA PREMIUM",CAN-CNN  HD (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/7964
+#EXTINF:-1 tvg-id="" tvg-name="CAN-CNN (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-CNN (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45828
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Cooking Channel (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Cooking Channel (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45829
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Cottage Life (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Cottage Life (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45830
+#EXTINF:-1 tvg-id="" tvg-name="CAN-CP24 (TV)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-CP24 (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45831
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Crave 3 (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Crave 3 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45832
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Crave 4 (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Crave 4 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45833
+#EXTINF:-1 tvg-id="" tvg-name="CAN-CTV SCI-FI (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-CTV SCI-FI (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45836
+#EXTINF:-1 tvg-id="" tvg-name="CAN-CTV Vancouver (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-CTV Vancouver (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45837
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Dejaview (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Dejaview (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45838
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Disney JR (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Disney JR (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45840
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Fight Network (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Fight Network (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45844
+#EXTINF:-1 tvg-id="" tvg-name="CAN-FX (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-FX (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45847
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Global (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Global (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45848
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Global Halifax (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Global Halifax (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45849
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Golf (TV)(720)" tvg-logo="http://23.153.216.121:25461/images/133d4e7f4eca063588f263c218275565.png" group-title="CANADA PREMIUM",CAN-Golf (TV)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/7967
+#EXTINF:-1 tvg-id="" tvg-name="CAN-HBO (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-HBO (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45852
+#EXTINF:-1 tvg-id="" tvg-name="CAN-HBO HD (L)" tvg-logo="http://live.detodotvplay.com:8080/images/e53796f7cf1cb0db7a49657574167725.png" group-title="CANADA PREMIUM",CAN-HBO HD (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/7968
+#EXTINF:-1 tvg-id="" tvg-name="CAN-IFC (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-IFC (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45854
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Movietime (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Movietime (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45857
+#EXTINF:-1 tvg-id="" tvg-name="CAN-OLN (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-OLN (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45858
+#EXTINF:-1 tvg-id="" tvg-name="CAN-OMNI 1 (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-OMNI 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45859
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Silver Screen Classics (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Silver Screen Classics (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45865
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Smithsonian Channel (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Smithsonian Channel (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45866
+#EXTINF:-1 tvg-id="" tvg-name="CAN-SPORTS NET 360 HD (L)" tvg-logo="http://live.detodotvplay.com:8080/images/46d3a8a08eb2cf06479b866ce87ba5b2.png" group-title="CANADA PREMIUM",CAN-SPORTS NET 360 HD (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/7969
+#EXTINF:-1 tvg-id="" tvg-name="CAN-SPORTS NET EAST HD (L)" tvg-logo="" group-title="CANADA PREMIUM",CAN-SPORTS NET EAST HD (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/7970
+#EXTINF:-1 tvg-id="" tvg-name="CAN-SPORTS NET ONTARIO HD (L)" tvg-logo="" group-title="CANADA PREMIUM",CAN-SPORTS NET ONTARIO HD (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/7971
+#EXTINF:-1 tvg-id="" tvg-name="CAN-SPORTS NET WEST HD (L)" tvg-logo="" group-title="CANADA PREMIUM",CAN-SPORTS NET WEST HD (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/7972
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Sportsnet 360 (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Sportsnet 360 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45805
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Sportsnet East (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Sportsnet East (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45806
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Sportsnet Ontario (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Sportsnet Ontario (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45808
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Sportsnet Pacific (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Sportsnet Pacific (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45809
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Teletoon (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Teletoon (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45867
+#EXTINF:-1 tvg-id="" tvg-name="CAN-TSN 1 (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-TSN 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45802
+#EXTINF:-1 tvg-id="" tvg-name="CAN-TSN 3 (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-TSN 3 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45803
+#EXTINF:-1 tvg-id="" tvg-name="CAN-TSN 5 (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-TSN 5 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45804
+#EXTINF:-1 tvg-id="" tvg-name="CAN-TSN SPORTS 1 (L)" tvg-logo="http://23.153.216.121:25461/images/e332e5181d3415c55225f406583c4d2d.png" group-title="CANADA PREMIUM",CAN-TSN SPORTS 1 (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/7974
+#EXTINF:-1 tvg-id="" tvg-name="CAN-TSN SPORTS 5 (L)" tvg-logo="http://23.153.216.121:25461/images/1ad19be89a6ed3a66a7050db2d47a0f0.png" group-title="CANADA PREMIUM",CAN-TSN SPORTS 5 (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/7978
+#EXTINF:-1 tvg-id="" tvg-name="CAN-TV 5 Quebec (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-TV 5 Quebec (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45869
+#EXTINF:-1 tvg-id="" tvg-name="CAN-TVA Montreal (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-TVA Montreal (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45870
+#EXTINF:-1 tvg-id="" tvg-name="CAN-TVA Sports (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-TVA Sports (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45871
+#EXTINF:-1 tvg-id="" tvg-name="CAN-YES Network (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-YES Network (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45873
+#EXTINF:-1 tvg-id="" tvg-name="CAN-YES TV (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-YES TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45874
+#EXTINF:-1 tvg-id="" tvg-name="CAN-Zeste (M)(720)" tvg-logo="" group-title="CANADA PREMIUM",CAN-Zeste (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/45875
+#EXTINF:-1 tvg-id="" tvg-name="Canada: LCN (FR)(L)" tvg-logo="" group-title="CANADA-FRANCES",Canada: LCN (FR)(L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/170357
+#EXTINF:-1 tvg-id="" tvg-name="NHL Network (i)(720)" tvg-logo="" group-title="USA-SPORTS",NHL Network (i)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169385
+#EXTINF:-1 tvg-id="" tvg-name="US | Sunday NFL Red Zone (L)" tvg-logo="https://www.rev.bs/wp-content/uploads/2021/09/REDZONE-LOGO-1-1024x478.png" group-title="USA-SPORTS",US | Sunday NFL Red Zone (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169208
+#EXTINF:-1 tvg-id="" tvg-name="US | Sunday NFL Red Zone (L)" tvg-logo="https://www.rev.bs/wp-content/uploads/2021/09/REDZONE-LOGO-1-1024x478.png" group-title="USA-SPORTS",US | Sunday NFL Red Zone (L)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169209
+#EXTINF:-1 tvg-id="" tvg-name="USA- HBO LATINO (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/HBO_Latino_Logo.svg/1280px-HBO_Latino_Logo.svg.png" group-title="USA-ENTERTAINMENT",USA- HBO LATINO (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162601
+#EXTINF:-1 tvg-id="" tvg-name="USA-5 STARMAX (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/1a/5starMax_2011.svg/revision/latest/scale-to-width-down/300?cb=20201110161556&path-prefix=es" group-title="USA-ENTERTAINMENT",USA-5 STARMAX (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162605
+#EXTINF:-1 tvg-id="" tvg-name="USA-6 ABC WPVI Philadelphia (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-6 ABC WPVI Philadelphia (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162762
+#EXTINF:-1 tvg-id="" tvg-name="USA-A&E (L)(720)" tvg-logo="https://logos.xbots.com.mx/ae.png" group-title="USA-ENTERTAINMENT",USA-A&E (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162600
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC 10 KXTV  | Sacramento (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC 10 KXTV  | Sacramento (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162607
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC 13 KTRK  |  Houston (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC 13 KTRK  |  Houston (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162608
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC 15 Phoenix KNXV (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC 15 Phoenix KNXV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162609
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC 5 KECY-DT | Yuma Az (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC 5 KECY-DT | Yuma Az (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162610
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC 6 WJBF  Augusta GA (L)(720)" tvg-logo="https://www.nicepng.com/png/detail/806-8061607_abc-6-logo-cd.png" group-title="USA-NEWS/MISC",USA-ABC 6 WJBF  Augusta GA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162611
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC 7 Chicago (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC 7 Chicago (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162612
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC 7 WABC | New York (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC 7 WABC | New York (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162613
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC KABC Los Angeles (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC KABC Los Angeles (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162614
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC KFSN 30 Fresno (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC KFSN 30 Fresno (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162794
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC KGTV 10 San Diego (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC KGTV 10 San Diego (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162606
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC KITV 4 Honolulu (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/KITV_ABC_4_Honolulu_logo.svg/2560px-KITV_ABC_4_Honolulu_logo.svg.png" group-title="USA-NEWS/MISC",USA-ABC KITV 4 Honolulu (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162781
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC KRGV | McAllen (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC KRGV | McAllen (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162615
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC KTUL Tulsa (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/KTUL_logo.svg/1200px-KTUL_logo.svg.png" group-title="USA-NEWS/MISC",USA-ABC KTUL Tulsa (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162766
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC KVUE | AUSTIN (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC KVUE | AUSTIN (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162616
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC Las Vegas | KTNV (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC Las Vegas | KTNV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162617
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC Seattle | KOMO 4 (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC Seattle | KOMO 4 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162620
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC WEWS  | Cleveland (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC WEWS  | Cleveland (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162619
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC WFTV 9 | Orlando (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC WFTV 9 | Orlando (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162621
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC WHAS Louisville (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC WHAS Louisville (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162784
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC WKRN | Tennessee (L)(720)" tvg-logo="https://static.wikia.nocookie.net/tvstations/images/2/25/Wkrnnews2-color_sponsor500.png" group-title="USA-NEWS/MISC",USA-ABC WKRN | Tennessee (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162622
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC WMUR | Boston (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC WMUR | Boston (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162623
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC WPLG  MIAMI (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC WPLG  MIAMI (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162618
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC WSB 2 Atlanta (L)(720)" tvg-logo="https://yt3.ggpht.com/y_tP6OCshhdg6FWpQEaRiI_Pu3CL2QpQBCOq9QbUSdy33tMA67IIifBSpBH4c_XkKCH2dpijZOid=ns-nd" group-title="USA-NEWS/MISC",USA-ABC WSB 2 Atlanta (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162624
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC WSOC 9 Charlotte (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/WSOC-TV_logo.svg/1200px-WSOC-TV_logo.svg.png" group-title="USA-NEWS/MISC",USA-ABC WSOC 9 Charlotte (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162625
+#EXTINF:-1 tvg-id="" tvg-name="USA-ABC WSYX Columbus (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/d/d3/WSYX_ABC6_color_calls_blk.png" group-title="USA-NEWS/MISC",USA-ABC WSYX Columbus (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162759
+#EXTINF:-1 tvg-id="" tvg-name="USA-ACC Network (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/ACC_Network_ESPN_logo.svg/1280px-ACC_Network_ESPN_logo.svg.png" group-title="USA-ENTERTAINMENT",USA-ACC Network (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162626
+#EXTINF:-1 tvg-id="" tvg-name="USA-Action Max (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/e6/Action_max.png/revision/latest?cb=20200121211921&path-prefix=es" group-title="USA-ENTERTAINMENT",USA-Action Max (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162627
+#EXTINF:-1 tvg-id="" tvg-name="USA-Altitude Sports (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMJ1C6QUldUlzFAsvUMZZFnNoF0G1bpz-zWT0WOn3f74t7tgvdST4GhfY0sykXzLl5N8ClysxGtM7BVi60UNknI1a1Bp2xb02bEKgl76eUoCGUmRh4s02T0DwdOkpYzel0.png" group-title="USA-SPORTS",USA-Altitude Sports (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162771
+#EXTINF:-1 tvg-id="" tvg-name="USA-American Heroes Channel (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/American_Heroes_Channel_logo.svg/2560px-American_Heroes_Channel_logo.svg.png" group-title="USA-DOCUMENTARY",USA-American Heroes Channel (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162628
+#EXTINF:-1 tvg-id="" tvg-name="USA-ANIMAL PLANET (L)(720)" tvg-logo="https://logos.xbots.com.mx/307503.png" group-title="USA-DOCUMENTARY",USA-ANIMAL PLANET (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162629
+#EXTINF:-1 tvg-id="" tvg-name="USA-Aspire TV (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/88/Aspire_tv.png" group-title="USA-ENTERTAINMENT",USA-Aspire TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162754
+#EXTINF:-1 tvg-id="" tvg-name="USA-AXS TV (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/A5hqm3YdAH5RuAQJgDIoOxbLmD6EX9TppD5-DuQhFktObz4tgp78p9Z7UVWnqf1JiFa67ijVmzq83s6B6Z9XhpA0VJuNaHF6eDeJtIL0H80ING4TUV0ompkhejM7Jggo.png" group-title="USA-ENTERTAINMENT",USA-AXS TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162519
+#EXTINF:-1 tvg-id="" tvg-name="USA-BBC America (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/7ed698503a56d4b5a27c62c5918596ae.png" group-title="USA-DOCUMENTARY",USA-BBC America (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162630
+#EXTINF:-1 tvg-id="" tvg-name="USA-BBC World News (L)(720)" tvg-logo="https://newsweekespanol.com/wp-content/uploads/2018/12/bbc_news_logo.png" group-title="USA-DOCUMENTARY",USA-BBC World News (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162631
+#EXTINF:-1 tvg-id="" tvg-name="USA-Bein Sports Xtra (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bein_sport_logo.png/1280px-Bein_sport_logo.png" group-title="USA-SPORTS",USA-Bein Sports Xtra (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162520
+#EXTINF:-1 tvg-id="" tvg-name="USA-BET HER (L)(720)" tvg-logo="https://logodownload.org/wp-content/uploads/2021/05/bet-channel-logo-0.png" group-title="USA-ENTERTAINMENT",USA-BET HER (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162632
+#EXTINF:-1 tvg-id="" tvg-name="USA-Bet Jams (L)(720)" tvg-logo="https://logodownload.org/wp-content/uploads/2021/05/bet-channel-logo-0.png" group-title="USA-ENTERTAINMENT",USA-Bet Jams (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162633
+#EXTINF:-1 tvg-id="" tvg-name="USA-BET SOUL (L)(720)" tvg-logo="https://logodownload.org/wp-content/uploads/2021/05/bet-channel-logo-0.png" group-title="USA-ENTERTAINMENT",USA-BET SOUL (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162634
+#EXTINF:-1 tvg-id="" tvg-name="USA-BET West (L)(720)" tvg-logo="https://logodownload.org/wp-content/uploads/2021/05/bet-channel-logo-0.png" group-title="USA-ENTERTAINMENT",USA-BET West (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162521
+#EXTINF:-1 tvg-id="" tvg-name="USA-BOOMERANG (L)(720)" tvg-logo="https://logos.xbots.com.mx/8.png" group-title="USA-CHILDREN",USA-BOOMERANG (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162635
+#EXTINF:-1 tvg-id="" tvg-name="USA-Bounce TV (L)(720)" tvg-logo="https://storage.googleapis.com/btvwp-uploads/2018/02/5bfb1301-bounce_adjusted1.png" group-title="USA-ENTERTAINMENT",USA-Bounce TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162755
+#EXTINF:-1 tvg-id="" tvg-name="USA-BRAVO (L)(720)" tvg-logo="https://static.wikia.nocookie.net/cableguide/images/4/46/493px-Bravo_TV_svg.png/revision/latest?cb=20090413150847" group-title="USA-ENTERTAINMENT",USA-BRAVO (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162636
+#EXTINF:-1 tvg-id="" tvg-name="USA-BTN (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Big_Ten_Network_Logo.svg/240px-Big_Ten_Network_Logo.svg.png" group-title="USA-ENTERTAINMENT",USA-BTN (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162522
+#EXTINF:-1 tvg-id="" tvg-name="USA-CARTOON NETWORK (L)(720)" tvg-logo="https://logos.xbots.com.mx/112.png" group-title="USA-CHILDREN",USA-CARTOON NETWORK (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162637
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS  WSAW | Wisconsin (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/0/07/WISC-TV_2019_Logo.svg/1200px-WISC-TV_2019_Logo.svg.png" group-title="USA-NEWS/MISC",USA-CBS  WSAW | Wisconsin (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162663
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 10TV WRBL | Columbus (L)(720)" tvg-logo="https://www.logolynx.com/images/logolynx/65/65abf86f0841a218dbea90ec8defe2fd.png" group-title="USA-NEWS/MISC",USA-CBS 10TV WRBL | Columbus (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162638
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 14 | Wyoming (L)(720)" tvg-logo="https://www.livenewsworld.com/wp-content/uploads/2019/05/KGWC-14-Casper-WY.png" group-title="USA-NEWS/MISC",USA-CBS 14 | Wyoming (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162640
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 2 Chicago (L)(720)" tvg-logo="https://yt3.ggpht.com/2a7jT0OWZMnQlDIwNzTC2Z_k-RZw8BDm842jQM6FWg9DwIIQiBPGruO4inleodSo2eCyZoV7-tqw=ns-nd" group-title="USA-NEWS/MISC",USA-CBS 2 Chicago (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162641
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 2 | California Los Angeles (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/250c51527f347066847969f002be67a2.png" group-title="USA-NEWS/MISC",USA-CBS 2 | California Los Angeles (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162523
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 3 | Philadelphia (L)(720)" tvg-logo="https://livenewsglobe.com/wp-content/uploads/2020/10/CBS_3_News_Philly_logo.png" group-title="USA-NEWS/MISC",USA-CBS 3 | Philadelphia (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162642
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 4 Miami (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/Iwjy8x0vE8NggagHCwBfSzsaQtV0Cgcg4JcAYqMTiB4U7DqU__-QQAknY6dumW5Rq7WS3NtsimK5ziMgekFgK3FDwvZ73qyyVxrWaI_2V3apK-U8aS4FY-SgxnRIiyC3.png" group-title="USA-NEWS/MISC",USA-CBS 4 Miami (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162643
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 4 | McAllen (L)(720)" tvg-logo="https://www.valleycentral.com/wp-content/uploads/sites/39/2018/11/04997acd-7535-4419-8c6e-b371b1e27716-VALLEYCENTRAL_HI-1.png" group-title="USA-NEWS/MISC",USA-CBS 4 | McAllen (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162644
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 46 WANF Atlanta (L)(720)" tvg-logo="https://yt3.ggpht.com/2a7jT0OWZMnQlDIwNzTC2Z_k-RZw8BDm842jQM6FWg9DwIIQiBPGruO4inleodSo2eCyZoV7-tqw=ns-nd" group-title="USA-NEWS/MISC",USA-CBS 46 WANF Atlanta (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162645
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 47 Fresno (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/0e79797c5b2740eb6001ea4896b77b13.png" group-title="USA-NEWS/MISC",USA-CBS 47 Fresno (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162767
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 5 KPHO | Arizona (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/KPHO_2019_Logo.svg/1200px-KPHO_2019_Logo.svg.png" group-title="USA-NEWS/MISC",USA-CBS 5 KPHO | Arizona (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162647
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 5 Phoenix (L)(720)" tvg-logo="https://yt3.ggpht.com/2a7jT0OWZMnQlDIwNzTC2Z_k-RZw8BDm842jQM6FWg9DwIIQiBPGruO4inleodSo2eCyZoV7-tqw=ns-nd" group-title="USA-NEWS/MISC",USA-CBS 5 Phoenix (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162646
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS 8 San Diego (L)(720)" tvg-logo="https://yt3.ggpht.com/2a7jT0OWZMnQlDIwNzTC2Z_k-RZw8BDm842jQM6FWg9DwIIQiBPGruO4inleodSo2eCyZoV7-tqw=ns-nd" group-title="USA-NEWS/MISC",USA-CBS 8 San Diego (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162648
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS KEYE | AUSTIN (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZOSs2gwm9bJ8ijyElpn_45vtt0kuT5fVDNGlNmCI5fxvPQkoHbP3zLuX-emqGlurnc.png" group-title="USA-NEWS/MISC",USA-CBS KEYE | AUSTIN (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162650
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS KGMB Honolulu (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMJ1C6QUldUlzFAsvUMZZFnDHTyuXjJwWOXm88f2qaTEofMfrbIRx3b1NnXzM3S3mu2VdDtQqzSa8JwLmvJub4iiVS55fUoLFY66kyQ5gpi9w.png" group-title="USA-NEWS/MISC",USA-CBS KGMB Honolulu (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162651
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS KHOU 11 Houston (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/7VgXke3Z4O7fM8Xn8woFRTPKvqWvTEI_fqIv5YdZcjfG_b18RHWMvCgRMfUV8cKArb7zwueH27TXyaBBQBJCHCelojp8iRkRBTVwzhizhKI.png" group-title="USA-NEWS/MISC",USA-CBS KHOU 11 Houston (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162652
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS KKTV 11 Colorado (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/_7nh0-WXmPHx8x0Cr98nm44e3vunSiWY_1aw4zaDHHuz6xJSGZMJyXHu7DL7RhKFCuhUl9ztm6uuvhXuSQUXeD7DHEkM2Ql-1YQlp0oTt52h_E1EoNEzi0rzlxnGdbV6G0QTWI4qD594JyKtY5C50A.png" group-title="USA-NEWS/MISC",USA-CBS KKTV 11 Colorado (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162653
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS KMOV 4 Missouri (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/FBlYFUQcTmRzHUedCtvPvY-fkFN0fJW19bwCcGB6arMWXI-2TcrKGV_r9k8bnzJJTT2AXmEZHlfjGbeM9jWjh92pZrB1vhzb4tBRy1HlwteoDnUDCLDBov7ACygtg0o-NNmo-q87bhKfonfypOOrLkhUQR21e5vbH-6sjzWxWj5umJNoWbAr_eC3Z1esIS3vuv0ctBtugRO9MzdjVUsBKA.png" group-title="USA-NEWS/MISC",USA-CBS KMOV 4 Missouri (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162654
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS KOTV 6 Tulsa (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/en/4/49/KOTV_6_logo.png" group-title="USA-NEWS/MISC",USA-CBS KOTV 6 Tulsa (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162778
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS KOVR Sacramento (L)(720)" tvg-logo="https://yt3.ggpht.com/2a7jT0OWZMnQlDIwNzTC2Z_k-RZw8BDm842jQM6FWg9DwIIQiBPGruO4inleodSo2eCyZoV7-tqw=ns-nd" group-title="USA-NEWS/MISC",USA-CBS KOVR Sacramento (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162639
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS Las Vegas | KLAS (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZO9v6NBm1n5bC9GMfrBLxJh2zsJ_mEdkbhtVePPL97Yom-PqqcAF6AyPvLGsE6FQXk.png" group-title="USA-NEWS/MISC",USA-CBS Las Vegas | KLAS (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162656
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS News 6 WKMG Orlando (L)(720)" tvg-logo="https://yt3.ggpht.com/2a7jT0OWZMnQlDIwNzTC2Z_k-RZw8BDm842jQM6FWg9DwIIQiBPGruO4inleodSo2eCyZoV7-tqw=ns-nd" group-title="USA-NEWS/MISC",USA-CBS News 6 WKMG Orlando (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162657
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS News | New York (L)(720)" tvg-logo="https://www.restartlife.com/wp-content/uploads/logo-cbsnews-1-300x200.png" group-title="USA-NEWS/MISC",USA-CBS News | New York (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162658
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS SPORTS NETWORK (L)(720)" tvg-logo="https://www.pngkey.com/png/full/143-1432094_ww-motocross-park-jacksonville-30-august-2017-as.png" group-title="USA-SPORTS",USA-CBS SPORTS NETWORK (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162524
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS Tennessee | WTVF (L)(720)" tvg-logo="http://74.208.186.29:25461/ytv_locals/locals_logos/CBS.png" group-title="USA-NEWS/MISC",USA-CBS Tennessee | WTVF (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162659
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS WBTV | Charlotte (L)(720)" tvg-logo="https://cloudfront-us-east-1.images.arcpublishing.com/gray/AERISHLTVVE77I4IUP2N3DCPSY.png" group-title="USA-NEWS/MISC",USA-CBS WBTV | Charlotte (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162660
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS WBZ 4 Boston (L)(720)" tvg-logo="https://pbs.twimg.com/profile_images/530749632175804417/zgbOMOnw_400x400.png" group-title="USA-NEWS/MISC",USA-CBS WBZ 4 Boston (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162661
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS WFSB 3 Conneticut (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/dAVFdyX7T1hfY4rYevN7-1AiwQbV4vBYfEi3_TuSWxujIIBX30rO8JgMZ8bx_ZXgBgoxZcvl1Hw4LRGGJh3S1nA0p05Wzy6jqxcFW4luyG4.png" group-title="USA-NEWS/MISC",USA-CBS WFSB 3 Conneticut (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162662
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS WLKY Louisville (L)(720)" tvg-logo="https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/htv_default_image/wlky/logo.png" group-title="USA-NEWS/MISC",USA-CBS WLKY Louisville (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162785
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS WLTX Columbia (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/7-gX4mH47duEIsQCrBM_U7luTUcWFyeIjcw1Tc4QbecdD-vX7IBOjSr9VMjvhFtm3kZ2JbZtWAZJp4sCtFRWIr08Dw-Z2L1UGn42o-CAh1n5CiIGg9QUGqQXt8805CNaWtUsyrOUAYKV-5NR4Wb9EQ.png" group-title="USA-NEWS/MISC",USA-CBS WLTX Columbia (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162655
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS WTAJ Pennsylvania (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZNSJ4dnnI6pF_rCgYhl8XrvPzybcu__Hh1z2be1-UxVTw.png" group-title="USA-NEWS/MISC",USA-CBS WTAJ Pennsylvania (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162664
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS WTOC 11 | Georgia (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/WTOC-TV_11_logo.svg/1200px-WTOC-TV_11_logo.svg.png" group-title="USA-NEWS/MISC",USA-CBS WTOC 11 | Georgia (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162665
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS WTSP Cleveland 19 (L)(720)" tvg-logo="https://yt3.ggpht.com/2a7jT0OWZMnQlDIwNzTC2Z_k-RZw8BDm842jQM6FWg9DwIIQiBPGruO4inleodSo2eCyZoV7-tqw=ns-nd" group-title="USA-NEWS/MISC",USA-CBS WTSP Cleveland 19 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162649
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS | KYMA | Yuma Az (L)(720)" tvg-logo="https://static.wikia.nocookie.net/tvstations/images/0/07/KSWT_Logo.png" group-title="USA-NEWS/MISC",USA-CBS | KYMA | Yuma Az (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162666
+#EXTINF:-1 tvg-id="" tvg-name="USA-CBS | NEWS 12 WRDW Augusta GA (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/aa/The_updated_News12_logo_as_of_November_2019.png" group-title="USA-NEWS/MISC",USA-CBS | NEWS 12 WRDW Augusta GA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162667
+#EXTINF:-1 tvg-id="" tvg-name="USA-Cheddar News (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/90083ed6cc8f7960377d1a9f0eae4e0b.png" group-title="USA-ENTERTAINMENT",USA-Cheddar News (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162668
+#EXTINF:-1 tvg-id="" tvg-name="USA-CINEMAX East (L)(720)" tvg-logo="https://logos.xbots.com.mx/3935.png" group-title="USA-ENTERTAINMENT",USA-CINEMAX East (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162669
+#EXTINF:-1 tvg-id="" tvg-name="USA-CMT (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/a40f72b89fc05bd01905ede14140615f.png" group-title="USA-ENTERTAINMENT",USA-CMT (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162670
+#EXTINF:-1 tvg-id="" tvg-name="USA-CNBC HD (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRQQDsLNkaR1K7HLOAM1qPpmCL_cZnhs6FfkZ-ZlOBUnGC-Xnj5ZEOAc3d5K6o_cZFYbc_7Gr-ud3xF3kzlHzfOQ.png" group-title="USA-DOCUMENTARY",USA-CNBC HD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162525
+#EXTINF:-1 tvg-id="" tvg-name="USA-CNBC World (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMJ1C6QUldUlzFAsvUMZZFnB9z3LArnsL-iPxv9iWdjsN0yqDV2f-bYRI_EEzR9RU9fdOB52Q1ZCHpZC16aak5k.png" group-title="USA-DOCUMENTARY",USA-CNBC World (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162671
+#EXTINF:-1 tvg-id="" tvg-name="USA-COMEDY CENTRAL (L)(720)" tvg-logo="https://logos.xbots.com.mx/340.png" group-title="USA-ENTERTAINMENT",USA-COMEDY CENTRAL (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162526
+#EXTINF:-1 tvg-id="" tvg-name="USA-Comet (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/nulSsJO1HjtWmXnGvVQLKVVsT9SBFMZ2egBEu1e7ANi1MXXaaoZlJSd4kzEQ19H0FIS3FKnUQ0JmypR4gJMn3tMPTXL6c9xdaISRK-8scRI.png" group-title="USA-ENTERTAINMENT",USA-Comet (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162672
+#EXTINF:-1 tvg-id="" tvg-name="USA-COZI TV (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRMMnDf0gaWtQr3JIS9QmuQe6x2ucxxOZTdHQpbrLYwVKDdMVX0VvznDXJLOTlOGcKalb9jwV3VccTs0RilZ1o4Q.png" group-title="USA-ENTERTAINMENT",USA-COZI TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162527
+#EXTINF:-1 tvg-id="" tvg-name="USA-DESTINATION AMERICA (L)(720)" tvg-logo="https://tmsimg.fancybits.co/assets/s60468_ll_h3_aa.png" group-title="USA-DOCUMENTARY",USA-DESTINATION AMERICA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162528
+#EXTINF:-1 tvg-id="" tvg-name="USA-DISCOVERY CHANNEL (L)(720)" tvg-logo="https://logos.xbots.com.mx/2417.png" group-title="USA-DOCUMENTARY",USA-DISCOVERY CHANNEL (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162529
+#EXTINF:-1 tvg-id="" tvg-name="USA-DISCOVERY EN ESPANOL (L)(720)" tvg-logo="https://www.pngfind.com/pngs/m/431-4314348_gac-hallmark-channel-discovery-channel-logo-drug-discovery.png" group-title="USA-DOCUMENTARY",USA-DISCOVERY EN ESPANOL (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162673
+#EXTINF:-1 tvg-id="" tvg-name="USA-DISCOVERY FAMILIA (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZNzCjiMfBvO1wvn18LhUcHkRnTHUrl2kW3eJtrbOM93C_epezXfarrTmp2Llaa12Sg.png" group-title="USA-DOCUMENTARY",USA-DISCOVERY FAMILIA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162530
+#EXTINF:-1 tvg-id="" tvg-name="USA-Discovery Life (L)(720)" tvg-logo="https://www.foromedios.com/uploads/monthly_2017_01/large.discovery_life_us.png.4d143229b3dae5c7122955fac77a4075.png" group-title="USA-DOCUMENTARY",USA-Discovery Life (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162531
+#EXTINF:-1 tvg-id="" tvg-name="USA-DISNEY CHANNEL (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/78/Disney_Channel_Germany_Logo_2014.png" group-title="USA-CHILDREN",USA-DISNEY CHANNEL (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162532
+#EXTINF:-1 tvg-id="" tvg-name="USA-DISNEY JR (L)(720)" tvg-logo="http://www.tmsimg.com/assets/s60506_ll_h3_aa.png" group-title="USA-CHILDREN",USA-DISNEY JR (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162674
+#EXTINF:-1 tvg-id="" tvg-name="USA-DISNEY XD (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c7/Logo_Disney_XD.png" group-title="USA-CHILDREN",USA-DISNEY XD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162533
+#EXTINF:-1 tvg-id="" tvg-name="USA-E! ENTERTAINMENT (L)(720)" tvg-logo="https://logos.xbots.com.mx/41036.png" group-title="USA-ENTERTAINMENT",USA-E! ENTERTAINMENT (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162534
+#EXTINF:-1 tvg-id="" tvg-name="USA-Eleven Sports Networks (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZNzCjiMfBvO1wvn18LhUcHkr-Dqq-jJAHvYZOgUd470i-1ebfwCtyrxJEMg78chP9rxm48PqOWZK67JZA7Ib7CP.png" group-title="USA-SPORTS",USA-Eleven Sports Networks (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162535
+#EXTINF:-1 tvg-id="" tvg-name="USA-ESPN (L)(720)" tvg-logo="https://logos.xbots.com.mx/espn.png" group-title="USA-SPORTS",USA-ESPN (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162675
+#EXTINF:-1 tvg-id="" tvg-name="USA-ESPN 2 (L)(720)" tvg-logo="https://logos.xbots.com.mx/espn2.png" group-title="USA-SPORTS",USA-ESPN 2 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162676
+#EXTINF:-1 tvg-id="" tvg-name="USA-ESPNews (L)(720)" tvg-logo="https://1000logos.net/wp-content/uploads/2022/01/ESPNews-Logo.png" group-title="USA-SPORTS",USA-ESPNews (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162677
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Detroit.24/7.HDTV.us" tvg-name="USA-FanDuel Sports Network Detroit (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/53/FanDuel_Sports_Network_Detroit_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021163503" group-title="USA-SPORTS",USA-FanDuel Sports Network Detroit (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163686
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Florida.HDTV.(Out.of.Market).us" tvg-name="USA-FanDuel Sports Network Florida (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/ec/FanDuel_Sports_Network_Florida_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180401" group-title="USA-SPORTS",USA-FanDuel Sports Network Florida (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163696
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Indiana.24/7.HDTV.us" tvg-name="USA-FanDuel Sports Network Indiana (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/3/31/FanDuel_Sports_Network_Indiana_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180352" group-title="USA-SPORTS",USA-FanDuel Sports Network Indiana (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163678
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Midwest.24/7.HDTV.(Kansas.City).us" tvg-name="USA-FanDuel Sports Network Kansas City (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/ba/FanDuel_Sports_Network_Kansas_City_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180350" group-title="USA-SPORTS",USA-FanDuel Sports Network Kansas City (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163672
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Midwest.24/7.HDTV.us" tvg-name="USA-FanDuel Sports Network Midwest (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/2/2b/FanDuel_Sports_Network_Midwest_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180400" group-title="USA-SPORTS",USA-FanDuel Sports Network Midwest (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163668
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.North.HDTV.us" tvg-name="USA-FanDuel Sports Network North (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/b6/FanDuel_Sports_Network_North_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180356" group-title="USA-SPORTS",USA-FanDuel Sports Network North (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163682
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.North.HDTV.us" tvg-name="USA-FanDuel Sports Network North Extra (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/b6/FanDuel_Sports_Network_North_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180356" group-title="USA-SPORTS",USA-FanDuel Sports Network North Extra (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163676
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Ohio.(Cleveland).HDTV.us" tvg-name="USA-FanDuel Sports Network Ohio (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/FanDuel_Sports_Network_Ohio_logo.svg/1200px-FanDuel_Sports_Network_Ohio_logo.svg.png" group-title="USA-SPORTS",USA-FanDuel Sports Network Ohio (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163690
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Oklahoma.24/7.HDTV.(Tulsa).us" tvg-name="USA-FanDuel Sports Network Oklahoma (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/e5/FanDuel_Sports_Network_Oklahoma_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180353" group-title="USA-SPORTS",USA-FanDuel Sports Network Oklahoma (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163674
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.SoCal.HDTV.us" tvg-name="USA-FanDuel Sports Network SoCal (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/8/8e/FanDuel_Sports_Network_SoCal_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180402" group-title="USA-SPORTS",USA-FanDuel Sports Network SoCal (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163692
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.South.Carolinas.us" tvg-name="USA-FanDuel Sports Network South (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/f/f0/FanDuel_Sports_Network_South_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180355" group-title="USA-SPORTS",USA-FanDuel Sports Network South (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163698
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Southeast.Alternate.DirecTV.us" tvg-name="USA-FanDuel Sports Network Southeast (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/6/6d/FanDuel_Sports_Network_Southeast_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180356" group-title="USA-SPORTS",USA-FanDuel Sports Network Southeast (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163670
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Extra.Alternate.HDTV.DirecTV.(Southwest).us" tvg-name="USA-FanDuel Sports Network Southwest (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/FanDuel_Sports_Network_Southwest_logo.svg/1200px-FanDuel_Sports_Network_Southwest_logo.svg.png" group-title="USA-SPORTS",USA-FanDuel Sports Network Southwest (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163694
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Sun.South.24/7.HDTV.(South.Marlins,.Rays,.Heat).us" tvg-name="USA-FanDuel Sports Network Sun (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/1f/FanDuel_Sports_Network_Sun_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180359" group-title="USA-SPORTS",USA-FanDuel Sports Network Sun (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163688
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.West.HDTV.us" tvg-name="USA-FanDuel Sports Network West (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/4/4a/FanDuel_Sports_Network_West_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180359" group-title="USA-SPORTS",USA-FanDuel Sports Network West (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163680
+#EXTINF:-1 tvg-id="FanDuel.Sports.Network.Wisconsin.HDTV.(Out.of.Market).us" tvg-name="USA-FanDuel Sports Network Wisconsin (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/8/82/FanDuel_Sports_Network_Wisconsin_2024.svg/revision/latest/scale-to-width-down/300?cb=20241021180357" group-title="USA-SPORTS",USA-FanDuel Sports Network Wisconsin (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/163684
+#EXTINF:-1 tvg-id="" tvg-name="USA-FISHING NETWORK (L)(720)" tvg-logo="https://logos.xbots.com.mx/41027.png" group-title="USA-ENTERTAINMENT",USA-FISHING NETWORK (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162537
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOOD NETWORK USA (L)(720)" tvg-logo="https://logos.xbots.com.mx/2196.png" group-title="USA-DOCUMENTARY",USA-FOOD NETWORK USA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162678
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 11 | California Los Angeles (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/1cbdb8043b37c7c9ca83582f9218c8b4.png" group-title="USA-NEWS/MISC",USA-FOX 11 | California Los Angeles (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162679
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 25 | Boston | WFXT (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/2af90b9c0c1d3e6b147d6c03502a8d2f.png" group-title="USA-NEWS/MISC",USA-FOX 25 | Boston | WFXT (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162680
+#EXTINF:-1 tvg-id="" tvg-name="USA-Fox 26 Fresno (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/LOGO_KMPH_FOX26_solid_calls_blu.png/1200px-LOGO_KMPH_FOX26_solid_calls_blu.png" group-title="USA-NEWS/MISC",USA-Fox 26 Fresno (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162768
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 26 KRIV Houston (L)(720)" tvg-logo="https://paul-daugherty.com/wp-content/uploads/2018/04/Fox-26-Houston.png" group-title="USA-NEWS/MISC",USA-FOX 26 KRIV Houston (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162540
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 28 Columbus (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3b/WTTE_logo_2021.png" group-title="USA-NEWS/MISC",USA-FOX 28 Columbus (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162760
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 29 Philadelphia (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Fts-philadelphia-a.svg/1200px-Fts-philadelphia-a.svg.png" group-title="USA-NEWS/MISC",USA-FOX 29 Philadelphia (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162763
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 32 Chicago (L)(720)" tvg-logo="https://yt3.ggpht.com/qr9I-WMPoZqn1PsAzy-JouQiyB3mqCsnk-aRWd5dcOwr-aMzytODm9mVgFf0mtDLhSUsEzADSOA=ns-nd" group-title="USA-NEWS/MISC",USA-FOX 32 Chicago (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162681
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 35 WOFL Orlando (L)(720)" tvg-logo="https://yt3.ggpht.com/qr9I-WMPoZqn1PsAzy-JouQiyB3mqCsnk-aRWd5dcOwr-aMzytODm9mVgFf0mtDLhSUsEzADSOA=ns-nd" group-title="USA-NEWS/MISC",USA-FOX 35 WOFL Orlando (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162682
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 40 KTXL Sacramento (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/UFN8OdgBERoxROOHbElajdfFtM64EBoNcGZdt_-0-MICyUf76kGMELwGQNsx3DXthi2vw1_Odx5dZiBoGfIU9-29Z1JCKY-lmJ-kRqZe0tqHuD6iaW0byUvFJMaDl3oDJzVXaenZr5mXm6VCbo4RZg.png" group-title="USA-NEWS/MISC",USA-FOX 40 KTXL Sacramento (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162683
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 46 WJZY Charlotte (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/rAdMbzWm_O6OTPW499AOBsgEupcFamgMAor-eBaldxHeUqV_P7DSaNWfW6xZ1c-Nj5VJ3N1kRb8g_tAdUqqvOISIjfgbla2pfs3m66uBVkjCTbPO150Fkl5PDZMUGYf9.png" group-title="USA-NEWS/MISC",USA-FOX 46 WJZY Charlotte (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162684
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 5 Atlanta (L)(720)" tvg-logo="https://yt3.ggpht.com/qr9I-WMPoZqn1PsAzy-JouQiyB3mqCsnk-aRWd5dcOwr-aMzytODm9mVgFf0mtDLhSUsEzADSOA=ns-nd" group-title="USA-NEWS/MISC",USA-FOX 5 Atlanta (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162685
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 5 KSWB San Diego (L)(720)" tvg-logo="https://yt3.ggpht.com/qr9I-WMPoZqn1PsAzy-JouQiyB3mqCsnk-aRWd5dcOwr-aMzytODm9mVgFf0mtDLhSUsEzADSOA=ns-nd" group-title="USA-NEWS/MISC",USA-FOX 5 KSWB San Diego (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162686
+#EXTINF:-1 tvg-id="" tvg-name="USA-Fox 5 KVVU Las Vegas (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/KVVU-TV_Fox_5_Henderson_-_Las_Vegas.svg/2560px-KVVU-TV_Fox_5_Henderson_-_Las_Vegas.svg.png" group-title="USA-NEWS/MISC",USA-Fox 5 KVVU Las Vegas (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162780
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 5 | New York (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Fts-new-york-a.svg/1200px-Fts-new-york-a.svg.png" group-title="USA-NEWS/MISC",USA-FOX 5 | New York (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162538
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 54 WFXG Augusta (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZOqpRNk9cK_UOwKT89FCqXWkLvRlCxkmJq1aG5tp0eBXsUTbsz2NBVZBBriTruOC30.png" group-title="USA-NEWS/MISC",USA-FOX 54 WFXG Augusta (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162687
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 7 | AUSTIN (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/82904196258813e85a506f4956c17374.png" group-title="USA-NEWS/MISC",USA-FOX 7 | AUSTIN (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162688
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX 8 Cleveland (L)(720)" tvg-logo="https://yt3.ggpht.com/qr9I-WMPoZqn1PsAzy-JouQiyB3mqCsnk-aRWd5dcOwr-aMzytODm9mVgFf0mtDLhSUsEzADSOA=ns-nd" group-title="USA-NEWS/MISC",USA-FOX 8 Cleveland (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162689
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX BUSINESS NETWORK (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Fox_Business.svg/1200px-Fox_Business.svg.png" group-title="USA-NEWS/MISC",USA-FOX BUSINESS NETWORK (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162539
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX DEPORTES HD (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/FOX_Deportes_logo.svg/1280px-FOX_Deportes_logo.svg.png" group-title="USA-NEWS/MISC",USA-FOX DEPORTES HD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162691
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX DEPORTES SD (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/FOX_Deportes_logo.svg/1280px-FOX_Deportes_logo.svg.png" group-title="USA-NEWS/MISC",USA-FOX DEPORTES SD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162756
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX KECY | Yuma Az (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/52d779302503eb28ce0ae04594f070ea.jpg" group-title="USA-NEWS/MISC",USA-FOX KECY | Yuma Az (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162690
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX KFXV-TV | McAllen (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/e673829c1339e86c27bfbd2ce208d6f4.png" group-title="USA-NEWS/MISC",USA-FOX KFXV-TV | McAllen (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162692
+#EXTINF:-1 tvg-id="" tvg-name="USA-Fox KHON 2 Honolulu (L)(720)" tvg-logo="https://www.khon2.com/wp-content/uploads/sites/8/2021/09/cropped-cropped-cropped-cropped-KHON-SITE-LOGO-1500X150-1.png" group-title="USA-NEWS/MISC",USA-Fox KHON 2 Honolulu (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162783
+#EXTINF:-1 tvg-id="" tvg-name="USA-Fox New York (TV)" tvg-logo="" group-title="USA-NEWS/MISC",USA-Fox New York (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164786
+#EXTINF:-1 tvg-id="Fox.News.us" tvg-name="USA-Fox News Channel (TV)" tvg-logo="" group-title="USA-NEWS/MISC",USA-Fox News Channel (TV)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/164784
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX SOCCER PLUS (L)(720)" tvg-logo="https://tmsimg.fancybits.co/assets/s66880_ll_h3_aa.png" group-title="USA-SPORTS",USA-FOX SOCCER PLUS (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162542
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX WDRB Louisville (L)(720)" tvg-logo="https://m.bbb.org/prod/ProfileImages/2023/9fdb925e-50b8-46a7-bfd0-4d8f9f9db451.png" group-title="USA-NEWS/MISC",USA-FOX WDRB Louisville (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162787
+#EXTINF:-1 tvg-id="" tvg-name="USA-FOX WSVN 7 Miami (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/uU7dC1RkMkAO4WvR6VxRhFT2lKEkLfuqzGO-IgasXsGnr0ePy79e3-tum7EU-Fkw1YKdNyp4Ign4VSz2fAmPRg.png" group-title="USA-NEWS/MISC",USA-FOX WSVN 7 Miami (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162541
+#EXTINF:-1 tvg-id="" tvg-name="USA-FREEFORM (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/4d/Freeform_2018.svg" group-title="USA-ENTERTAINMENT",USA-FREEFORM (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162693
+#EXTINF:-1 tvg-id="" tvg-name="USA-FS1 (L)(720)" tvg-logo="https://www.clipartmax.com/png/full/233-2332507_fox-sports-fs1-logo-white.png" group-title="USA-SPORTS",USA-FS1 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162694
+#EXTINF:-1 tvg-id="" tvg-name="USA-FS2 (L)(720)" tvg-logo="https://static-media.fox.com/fmc/prod/network_assets/FS2_Color@3x.png" group-title="USA-SPORTS",USA-FS2 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162695
+#EXTINF:-1 tvg-id="" tvg-name="USA-Fuse (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/57/Fuse_universal_logo_new.png" group-title="USA-ENTERTAINMENT",USA-Fuse (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162696
+#EXTINF:-1 tvg-id="" tvg-name="USA-FX (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/FX_International_logo.svg/800px-FX_International_logo.svg.png" group-title="USA-ENTERTAINMENT",USA-FX (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162543
+#EXTINF:-1 tvg-id="" tvg-name="USA-FXM (L)(720)" tvg-logo="http://logos.xbots.com.mx/3917.png" group-title="USA-ENTERTAINMENT",USA-FXM (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162697
+#EXTINF:-1 tvg-id="" tvg-name="USA-FXX (L)(720)" tvg-logo="https://cpng.pikpng.com/pngl/s/443-4439624_nbc-sports-network-and-regular-old-fox-get.png" group-title="USA-ENTERTAINMENT",USA-FXX (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162698
+#EXTINF:-1 tvg-id="" tvg-name="USA-FYI (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/FYI%2C_logo.svg/220px-FYI%2C_logo.svg.png" group-title="USA-ENTERTAINMENT",USA-FYI (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162544
+#EXTINF:-1 tvg-id="" tvg-name="USA-Game Show Network (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMROtRMQUa-Xy8kpZrfpcaJSdoYj3_IG0QuNvOJaZXlwaWWUq4swDw0pQIRhB861JzNji9rKTvjhWJ7Vqq34417GLh8aWtc6ZqeQi0QCR5CwHA.png" group-title="USA-ENTERTAINMENT",USA-Game Show Network (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162699
+#EXTINF:-1 tvg-id="" tvg-name="USA-Great American Country (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZOtjBFMhv4CiD-4mamAtsqq9B97AAyxU8CB09pGKAcEAYWH7WTDYLBMoJ22BdHgEYZDa-ECMZBIDWKZMIzQrBqD.png" group-title="USA-DOCUMENTARY",USA-Great American Country (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162700
+#EXTINF:-1 tvg-id="" tvg-name="USA-Hallmark Channel (L)(720)" tvg-logo="https://1000logos.net/wp-content/uploads/2022/01/Hallmark-Channel-Logo.png" group-title="USA-ENTERTAINMENT",USA-Hallmark Channel (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162701
+#EXTINF:-1 tvg-id="" tvg-name="USA-HALLMARK DRAMA (L)(720)" tvg-logo="https://cdn.tvpassport.com/image/station/240x135/hallmark-drama.png" group-title="USA-ENTERTAINMENT",USA-HALLMARK DRAMA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162546
+#EXTINF:-1 tvg-id="" tvg-name="USA-HBO COMEDY West (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/84/HBO_Comedy_logo.png" group-title="USA-ENTERTAINMENT",USA-HBO COMEDY West (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162703
+#EXTINF:-1 tvg-id="" tvg-name="USA-HBO EAST (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/a/a8/HBO_East.png" group-title="USA-ENTERTAINMENT",USA-HBO EAST (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162704
+#EXTINF:-1 tvg-id="" tvg-name="USA-HBO SIGNATURE West (L)(720)" tvg-logo="https://logos.xbots.com.mx/3940.png" group-title="USA-ENTERTAINMENT",USA-HBO SIGNATURE West (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162705
+#EXTINF:-1 tvg-id="" tvg-name="USA-HBO ZONE West (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/6a/HBO_Zone_logo.png" group-title="USA-ENTERTAINMENT",USA-HBO ZONE West (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162706
+#EXTINF:-1 tvg-id="" tvg-name="USA-HGTV (L)(720)" tvg-logo="https://logos.xbots.com.mx/2413.png" group-title="USA-DOCUMENTARY",USA-HGTV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162547
+#EXTINF:-1 tvg-id="" tvg-name="USA-History (L)(720)" tvg-logo="https://logos.xbots.com.mx/307500.png" group-title="USA-DOCUMENTARY",USA-History (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162548
+#EXTINF:-1 tvg-id="" tvg-name="USA-HLN (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/HLN_logo.svg/220px-HLN_logo.svg.png" group-title="USA-DOCUMENTARY",USA-HLN (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162549
+#EXTINF:-1 tvg-id="" tvg-name="USA-IFC (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/IFC_2018_logo.svg/1280px-IFC_2018_logo.svg.png" group-title="USA-ENTERTAINMENT",USA-IFC (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162707
+#EXTINF:-1 tvg-id="" tvg-name="USA-Investigation Discovery ID (L)(720)" tvg-logo="https://logos.xbots.com.mx/2199.png" group-title="USA-ENTERTAINMENT",USA-Investigation Discovery ID (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162708
+#EXTINF:-1 tvg-id="" tvg-name="USA-ION (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRtHX0Sns3JtNEKmMEXXpS-3K0snZ7xzW0MgymShu-f8Kmm7AlVuWDhEjXlkKu1zcMQ-xQMd6P6nGTnHXrul6vh0_s80VON_nmNWNVIzX-yRI.png" group-title="USA-ENTERTAINMENT",USA-ION (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162550
+#EXTINF:-1 tvg-id="" tvg-name="USA-Law & Crime (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/nulSsJO1HjtWmXnGvVQLKVVsT9SBFMZ2egBEu1e7ANjZVrm3amrzRi93_PjBHnIiqgRLrsKyRHH5ebAkjxf490rDmvATrzeI1So5_DnQtR8.png" group-title="USA-ENTERTAINMENT",USA-Law & Crime (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162552
+#EXTINF:-1 tvg-id="" tvg-name="USA-LIFETIME (L)(720)" tvg-logo="https://logos.xbots.com.mx/2414.png" group-title="USA-ENTERTAINMENT",USA-LIFETIME (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162553
+#EXTINF:-1 tvg-id="" tvg-name="USA-LIFETIME MOVIES NETWORK (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMJ1C6QUldUlzFAsvUMZZFnwo030q_Q7xZV5eW8ijxql30du1qUCEjr1AuE7erqRC-IEiMMixynL8GEHQ-co0bWGL-LrdxJSl7006gVoH7aXw.png" group-title="USA-ENTERTAINMENT",USA-LIFETIME MOVIES NETWORK (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162554
+#EXTINF:-1 tvg-id="" tvg-name="USA-Logo TV (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/nulSsJO1HjtWmXnGvVQLKVVsT9SBFMZ2egBEu1e7ANiEIq1QTLgXNufOj6woBo5D-xRBzkMZBKUSsDcp4VxhVriUeZSHO_j84YaboC3yFwU.png" group-title="USA-ENTERTAINMENT",USA-Logo TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162709
+#EXTINF:-1 tvg-id="" tvg-name="USA-Love Nature (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/1d/Love_Nature_TV.png" group-title="USA-DOCUMENTARY",USA-Love Nature (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162797
+#EXTINF:-1 tvg-id="" tvg-name="USA-Magnolia Network (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Magnolia_Network.svg/1200px-Magnolia_Network.svg.png" group-title="USA-ENTERTAINMENT",USA-Magnolia Network (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162555
+#EXTINF:-1 tvg-id="" tvg-name="USA-Marquee Sports Network (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRqFixdTcaVE-MWZeoywbgxamzczKFwX63Fy3lRPZol19uhduzunvKg5mtqqQ_DKqTSRWeke9WCPGG9Lu1GkrwVXmvNge2S0M0YqcERtPNVdRpQ8BwWRUU7SeSex2LzgDq.png" group-title="USA-SPORTS",USA-Marquee Sports Network (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162758
+#EXTINF:-1 tvg-id="" tvg-name="USA-MavTV (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/nulSsJO1HjtWmXnGvVQLKVVsT9SBFMZ2egBEu1e7ANj3HfIg7EQ-PBJURAi2aMSvN5eq22vD1vbghjo7HRBxhi6x1UGZjZSG0wxReGv-EwU.png" group-title="USA-ENTERTAINMENT",USA-MavTV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162556
+#EXTINF:-1 tvg-id="" tvg-name="USA-MEGA TV USA (L)(720)" tvg-logo="https://i0.wp.com/directostv.teleame.com/wp-content/uploads/2018/03/mega-tv-en-directo-online-en-vivo.png" group-title="USA-ENTERTAINMENT",USA-MEGA TV USA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162557
+#EXTINF:-1 tvg-id="" tvg-name="USA-MEGA TV USA (L)(720)" tvg-logo="https://i0.wp.com/directostv.teleame.com/wp-content/uploads/2018/03/mega-tv-en-directo-online-en-vivo.png" group-title="USA-ENTERTAINMENT",USA-MEGA TV USA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162558
+#EXTINF:-1 tvg-id="" tvg-name="USA-MoreMax (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/b0288019be44bf4326b182bddff3be49.png" group-title="USA-ENTERTAINMENT",USA-MoreMax (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162710
+#EXTINF:-1 tvg-id="" tvg-name="USA-MOTORTREND (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRO2_Ggsdzi1xDhxn7BiviLAs_zHoZlvm-GXEQm1DndTfmXjvbN1BDMbhl3_Zqv3-5IKLDRk7Fy6qO7s_J9ljTQg.png" group-title="USA-ENTERTAINMENT",USA-MOTORTREND (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162559
+#EXTINF:-1 tvg-id="" tvg-name="USA-MSG (L)(720)" tvg-logo="https://thestreamable.com/media/pages/channels/msg/6af5c5c2e7-1616525318/msg-banner-1536x864-crop.png" group-title="USA-ENTERTAINMENT",USA-MSG (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162773
+#EXTINF:-1 tvg-id="" tvg-name="USA-MSG Plus (L)(720)" tvg-logo="https://www.sportsvideo.org/wp-content/uploads/2023/03/MSGPLUS-BLACK-CIRCLE-LOGO.png" group-title="USA-ENTERTAINMENT",USA-MSG Plus (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162774
+#EXTINF:-1 tvg-id="" tvg-name="USA-MSG Plus 2 (L)(720)" tvg-logo="https://www.sportsvideo.org/wp-content/uploads/2023/03/MSGPLUS-BLACK-CIRCLE-LOGO.png" group-title="USA-ENTERTAINMENT",USA-MSG Plus 2 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162775
+#EXTINF:-1 tvg-id="" tvg-name="USA-MSG Plus 3 (L)(720)" tvg-logo="https://www.sportsvideo.org/wp-content/uploads/2023/03/MSGPLUS-BLACK-CIRCLE-LOGO.png" group-title="USA-ENTERTAINMENT",USA-MSG Plus 3 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162776
+#EXTINF:-1 tvg-id="" tvg-name="USA-MSNBC (L)(720)" tvg-logo="https://img.nbc.com/sites/nbcunbc/files/images/2020/2/14/MSNBC-Logo-FullColor-360x300.png" group-title="USA-NEWS/MISC",USA-MSNBC (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162560
+#EXTINF:-1 tvg-id="" tvg-name="USA-MTV (L)(720)" tvg-logo="https://logos.xbots.com.mx/MTV.png" group-title="USA-ENTERTAINMENT",USA-MTV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162602
+#EXTINF:-1 tvg-id="" tvg-name="USA-MTV 2 (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/jkDf-QiMjV7brA6RQkqlNMcO_qTAHKPGguHPl5ybnmNJlCDExEo4Br7wTR5lK-Ux.png" group-title="USA-ENTERTAINMENT",USA-MTV 2 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162561
+#EXTINF:-1 tvg-id="" tvg-name="USA-MTVU (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/ZFzQ5qQhItOTzs9LXCwlWPRd72WTz0a97h26XAKDrS8pdS-GCg7w4kisOqV7tiLT.png" group-title="USA-ENTERTAINMENT",USA-MTVU (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162562
+#EXTINF:-1 tvg-id="" tvg-name="USA-NAT GEO (L)(720)" tvg-logo="https://logos.xbots.com.mx/2421.png" group-title="USA-ENTERTAINMENT",USA-NAT GEO (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162757
+#EXTINF:-1 tvg-id="" tvg-name="USA-Nat Geo Mundo (L)(720)" tvg-logo="https://c3.klipartz.com/pngpicture/20/323/sticker-png-tv-channel-icons-pack-nat-geo-mundo-color-thumbnail.png" group-title="USA-DOCUMENTARY",USA-Nat Geo Mundo (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162795
+#EXTINF:-1 tvg-id="" tvg-name="USA-Nat Geo Mundo (L)(720)" tvg-logo="https://c3.klipartz.com/pngpicture/20/323/sticker-png-tv-channel-icons-pack-nat-geo-mundo-color-thumbnail.png" group-title="USA-DOCUMENTARY",USA-Nat Geo Mundo (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162796
+#EXTINF:-1 tvg-id="" tvg-name="USA-NAT GEO WILD (L)(720)" tvg-logo="https://logos.xbots.com.mx/92.png" group-title="USA-DOCUMENTARY",USA-NAT GEO WILD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162711
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBA TV (L)(720)" tvg-logo="https://www.sportsmediawatch.com/wp-content/uploads/2017/07/nba-logo.png" group-title="USA-SPORTS",USA-NBA TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162563
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC 10 Philadelphia (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/c3c95cf21f4bb1fc7394586f36fa0cf8.png" group-title="USA-NEWS/MISC",USA-NBC 10 Philadelphia (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162764
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC 11 Alive Atlanta WXIA (L)(720)" tvg-logo="https://yt3.ggpht.com/3Vk3dVCzS6rKVdckp0n9frBKQfTAUyz8qyu_cH1wkqDX6FkNdIiP4qKag8fHzVGW7ZYT9vuUr_w=ns-nd" group-title="USA-NEWS/MISC",USA-NBC 11 Alive Atlanta WXIA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162713
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC 12 KPNX | Phoenix (L)(720)" tvg-logo="https://yt3.ggpht.com/3Vk3dVCzS6rKVdckp0n9frBKQfTAUyz8qyu_cH1wkqDX6FkNdIiP4qKag8fHzVGW7ZYT9vuUr_w=ns-nd" group-title="USA-NEWS/MISC",USA-NBC 12 KPNX | Phoenix (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162714
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC 23 | McAllen (L)(720)" tvg-logo="https://yt3.ggpht.com/3Vk3dVCzS6rKVdckp0n9frBKQfTAUyz8qyu_cH1wkqDX6FkNdIiP4qKag8fHzVGW7ZYT9vuUr_w=ns-nd" group-title="USA-NEWS/MISC",USA-NBC 23 | McAllen (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162721
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC 4 Columbus (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/en/4/40/WCMH-TV_logo.png" group-title="USA-NEWS/MISC",USA-NBC 4 Columbus (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162761
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC 4 WSMV | Tennessee (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/57/WSMV-TV_4_logo.png" group-title="USA-NEWS/MISC",USA-NBC 4 WSMV | Tennessee (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162715
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC 5 Chicago WMAQ (L)(720)" tvg-logo="https://yt3.ggpht.com/3Vk3dVCzS6rKVdckp0n9frBKQfTAUyz8qyu_cH1wkqDX6FkNdIiP4qKag8fHzVGW7ZYT9vuUr_w=ns-nd" group-title="USA-NEWS/MISC",USA-NBC 5 Chicago WMAQ (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162716
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC 7 KNSD | San Diego (L)(720)" tvg-logo="https://yt3.ggpht.com/3Vk3dVCzS6rKVdckp0n9frBKQfTAUyz8qyu_cH1wkqDX6FkNdIiP4qKag8fHzVGW7ZYT9vuUr_w=ns-nd" group-title="USA-NEWS/MISC",USA-NBC 7 KNSD | San Diego (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162717
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC California Los Angeles 4 (L)(720)" tvg-logo="http://74.208.186.29:25461/ytv_locals/locals_logos/NBC.png" group-title="USA-NEWS/MISC",USA-NBC California Los Angeles 4 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162718
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC KCRA 3  Sacramento (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRys626MeaCQXSqM2aA8jh65i11Xl4Sf540GaT49F-HNJ5d3Q2wlPhtzjfQmuP4TMg.png" group-title="USA-NEWS/MISC",USA-NBC KCRA 3  Sacramento (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162720
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC KHNL Honolulu (L)(720)" tvg-logo="https://static.wikia.nocookie.net/the-alternate-tv/images/c/c3/KHNL-TV_13.png/revision/latest?cb=20171221005624" group-title="USA-NEWS/MISC",USA-NBC KHNL Honolulu (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162782
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC KJRH 2 Tulsa (L)(720)" tvg-logo="https://static-newson.akamaized.net/icons/v3/scripps/KJRH.png" group-title="USA-NEWS/MISC",USA-NBC KJRH 2 Tulsa (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162779
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC KSEE 24 | Fresno (L)(720)" tvg-logo="https://yt3.ggpht.com/3Vk3dVCzS6rKVdckp0n9frBKQfTAUyz8qyu_cH1wkqDX6FkNdIiP4qKag8fHzVGW7ZYT9vuUr_w=ns-nd" group-title="USA-NEWS/MISC",USA-NBC KSEE 24 | Fresno (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162793
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC KSNV Las Vegas (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRerjm2ovRHA9NLkSxmgZjiApcOabk-rHo-X2UBgF2uMNQxoUuPnuVt6Hq1XCNo8zO.png" group-title="USA-NEWS/MISC",USA-NBC KSNV Las Vegas (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162564
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC KXAN | AUSTIN (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZN2dgwdLQBWo5gaCxpeiamAXXZgkjOHAuq6w52fseivJ5QOpkOqrB2vQI6_Lx_KArU.png" group-title="USA-NEWS/MISC",USA-NBC KXAN | AUSTIN (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162722
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC KYMA-DT | Yuma (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/en/b/be/KYMA11.png" group-title="USA-NEWS/MISC",USA-NBC KYMA-DT | Yuma (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162712
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC New YORK WNBC (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/NBC_logo.svg/1200px-NBC_logo.svg.png" group-title="USA-NEWS/MISC",USA-NBC New YORK WNBC (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162565
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC SPORTS BOSTON (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZN4N7CxJreiziti0XjpDcvyD5nI5dZ3F2-WYz1mW3t2lphbU2w9SAzecro8jNmSRw0.png" group-title="USA-SPORTS",USA-NBC SPORTS BOSTON (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162566
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC SPORTS CALIFORNIA (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZOqpRNk9cK_UOwKT89FCqXWrTfv9mhv-njc51BxpgR1h9-dgJ_AJSM0KBtmGsoNkoQ.png" group-title="USA-SPORTS",USA-NBC SPORTS CALIFORNIA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162769
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC Sports Chicago (L)(720)" tvg-logo="https://s10019.cdn.ncms.io/wp-content/uploads/2023/03/NBC-sports-Chicago-logo.png" group-title="USA-SPORTS",USA-NBC Sports Chicago (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162770
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC Sports Chicago + (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRD1AkZUaTSF1epZGo_yFYjeP2uS-j9i4YpnIFhkfMTnlK0tOpHZWJZh5B9--z1z2R2idtkCzwNDyxGwKGajL5unqPLfAPWU0rQIFOoyTqgiE.png" group-title="USA-SPORTS",USA-NBC Sports Chicago + (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162603
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC WAVE Louisville (L)(720)" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc4BmPd6ak9rIYVeqsMIdONQHo_RkrUrXyZlUk1uN8fw&s" group-title="USA-NEWS/MISC",USA-NBC WAVE Louisville (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162786
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC WESH 2 Orlando (L)(720)" tvg-logo="https://yt3.ggpht.com/3Vk3dVCzS6rKVdckp0n9frBKQfTAUyz8qyu_cH1wkqDX6FkNdIiP4qKag8fHzVGW7ZYT9vuUr_w=ns-nd" group-title="USA-NEWS/MISC",USA-NBC WESH 2 Orlando (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162724
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC WKYC 3 Cleveland (L)(720)" tvg-logo="https://yt3.ggpht.com/3Vk3dVCzS6rKVdckp0n9frBKQfTAUyz8qyu_cH1wkqDX6FkNdIiP4qKag8fHzVGW7ZYT9vuUr_w=ns-nd" group-title="USA-NEWS/MISC",USA-NBC WKYC 3 Cleveland (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162725
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC WTVJD Miami 6 (L)(720)" tvg-logo="http://74.208.186.29:25461/ytv_locals/locals_logos/NBC.png" group-title="USA-NEWS/MISC",USA-NBC WTVJD Miami 6 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162719
+#EXTINF:-1 tvg-id="" tvg-name="USA-NBC | WAGT Augusta GA (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/dCOj9pGxTrHydGW3ZlM8eYFbBMqZifffLhgrRHMW5l-B1bWOcvkTUmY-gjSGyC1fWCSiPFYakpC7m4XmV9hhmzTLZSTi_FeuKfENVQxsq0Q.png" group-title="USA-NEWS/MISC",USA-NBC | WAGT Augusta GA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162726
+#EXTINF:-1 tvg-id="" tvg-name="USA-NESN (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/TVVoslwm7NJ6Zrs-BdrImPlUXu-ujBRaFVsY1LajF621lhwQkly0fZiO28Ma7kdWDsORmSVe8KRtG9D0rrrAbu9qiFmPNrdDcqwvJecZw1Q.png" group-title="USA-ENTERTAINMENT",USA-NESN (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162569
+#EXTINF:-1 tvg-id="" tvg-name="USA-NESN PLUS (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/qg4vRhyQcrmwSVRTvXE73mtC2qnBOgocGI-eAtyNnZZOelJpCUWjXpCHe4cYHPIgUivoRmsS3ItgNwHubLznaw.png" group-title="USA-ENTERTAINMENT",USA-NESN PLUS (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162570
+#EXTINF:-1 tvg-id="" tvg-name="USA-NewsNation (L)(720)" tvg-logo="https://cdn.mos.cms.futurecdn.net/7RkNcznqnBuUAmkomRXkV4-970-80.png" group-title="USA-ENTERTAINMENT",USA-NewsNation (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162727
+#EXTINF:-1 tvg-id="" tvg-name="USA-NFL Network HD (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/54/NFL-Network.png" group-title="USA-SPORTS",USA-NFL Network HD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162799
+#EXTINF:-1 tvg-id="" tvg-name="USA-NFL Network SD (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/54/NFL-Network.png" group-title="USA-SPORTS",USA-NFL Network SD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162798
+#EXTINF:-1 tvg-id="" tvg-name="USA-NICK JR. US (L)(720)" tvg-logo="https://logos.xbots.com.mx/41119.png" group-title="USA-CHILDREN",USA-NICK JR. US (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162571
+#EXTINF:-1 tvg-id="" tvg-name="USA-NICK MUSIC (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZM9QFKHRKa8oEVSAcaTDNqRRZ3HD7AFM-OBVcB4LLTZm_PBNOquFqWRmNoiRLKuY9E.png" group-title="USA-CHILDREN",USA-NICK MUSIC (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162572
+#EXTINF:-1 tvg-id="" tvg-name="USA-NICKELODEON (L)(720)" tvg-logo="https://logos.xbots.com.mx/41118.png" group-title="USA-CHILDREN",USA-NICKELODEON (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162573
+#EXTINF:-1 tvg-id="" tvg-name="USA-NICKTOONS (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMTf1Nm6iy86pTrjstvE3m4CmrnZjxw0tZrpFKY8Uk9R-XX5ICAJ55Mt8pc4i1G-4g.png" group-title="USA-CHILDREN",USA-NICKTOONS (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162574
+#EXTINF:-1 tvg-id="" tvg-name="USA-OUTDOOR HD (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Outdoor_Channel_logo_2017.svg/1280px-Outdoor_Channel_logo_2017.svg.png" group-title="USA-ENTERTAINMENT",USA-OUTDOOR HD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162575
+#EXTINF:-1 tvg-id="" tvg-name="USA-Outside TV (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/32b53a0ff114ecacb6daff67bf4d2ce9.png" group-title="USA-ENTERTAINMENT",USA-Outside TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162728
+#EXTINF:-1 tvg-id="" tvg-name="USA-Own (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/225c6eaaca439956f0d564f42bc2f3cc.png" group-title="USA-ENTERTAINMENT",USA-Own (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162729
+#EXTINF:-1 tvg-id="" tvg-name="USA-Oxygen HD (L)(720)" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/f/f8/Oxygen_HD_2011.png/revision/latest/scale-to-width-down/250?cb=20221220023228" group-title="USA-DOCUMENTARY",USA-Oxygen HD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162576
+#EXTINF:-1 tvg-id="" tvg-name="USA-PAC-12 Insider (L)(720)" tvg-logo="https://static.pac-12.com/images/logos/pac-12-network-logo.png" group-title="USA-SPORTS",USA-PAC-12 Insider (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162577
+#EXTINF:-1 tvg-id="" tvg-name="USA-PARAMOUNT US (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/uXM4_9fntIKIQx2733aXyUqLZ34PHkCWeucliRk0IyoORyIYQ--sy-WaJqFVXy9FTWc4F5Tihk23wxBNWWBqZuN333-Nk4kpg_bpEvgKZIs.png" group-title="USA-ENTERTAINMENT",USA-PARAMOUNT US (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162578
+#EXTINF:-1 tvg-id="" tvg-name="USA-Revolt (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/pNz7dBG-KVbUbxoheMlT_90UzhMaZGH3MSDWnHK2kurUwo97QNMOIhwghdp2cqThYWHPlHAO--UP2cJTym0lb1aQZd92tCSva2ELmMJGMXg.png" group-title="USA-ENTERTAINMENT",USA-Revolt (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162730
+#EXTINF:-1 tvg-id="" tvg-name="USA-SEC NETWORK (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/en/9/99/SEC_Network_Logo.png" group-title="USA-ENTERTAINMENT",USA-SEC NETWORK (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162732
+#EXTINF:-1 tvg-id="" tvg-name="USA-SHOWTIME 2 (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Showtime_2_logo.svg/699px-Showtime_2_logo.svg.png" group-title="USA-ENTERTAINMENT",USA-SHOWTIME 2 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162733
+#EXTINF:-1 tvg-id="" tvg-name="USA-SHOWTIME EAST (L)(720)" tvg-logo="https://image.flaticon.com/icons/png/512/871/871017.png" group-title="USA-ENTERTAINMENT",USA-SHOWTIME EAST (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162579
+#EXTINF:-1 tvg-id="" tvg-name="USA-SHOWTIME EXTREME (L)(720)" tvg-logo="https://www.lyngsat-logo.com/hires/ss/showtime_extreme.png" group-title="USA-ENTERTAINMENT",USA-SHOWTIME EXTREME (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162734
+#EXTINF:-1 tvg-id="" tvg-name="USA-SHOWTIME FAMILY ZONE (L)(720)" tvg-logo="https://vignette.wikia.nocookie.net/logopedia/images/2/23/Showtime_family_zone.png" group-title="USA-ENTERTAINMENT",USA-SHOWTIME FAMILY ZONE (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162580
+#EXTINF:-1 tvg-id="" tvg-name="USA-SHOWTIME NEXT (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Showtime_Next.svg/1200px-Showtime_Next.svg.png" group-title="USA-ENTERTAINMENT",USA-SHOWTIME NEXT (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162735
+#EXTINF:-1 tvg-id="" tvg-name="USA-SHOWTIME SHOWCASE (L)(720)" tvg-logo="https://planetdish.com/wp-content/uploads/2017/08/Showtime-Banner.png" group-title="USA-ENTERTAINMENT",USA-SHOWTIME SHOWCASE (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162581
+#EXTINF:-1 tvg-id="" tvg-name="USA-Showtime West (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/2acd188e4200d991ecbf67b5d666134b.png" group-title="USA-ENTERTAINMENT",USA-Showtime West (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162736
+#EXTINF:-1 tvg-id="" tvg-name="USA-SHOWTIME WOMEN (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Showtime_Women.svg/1200px-Showtime_Women.svg.png" group-title="USA-ENTERTAINMENT",USA-SHOWTIME WOMEN (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162582
+#EXTINF:-1 tvg-id="" tvg-name="USA-SHOxBET (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/a70d68e7237b6f05f7dd2332910c6c3d.png" group-title="USA-ENTERTAINMENT",USA-SHOxBET (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162737
+#EXTINF:-1 tvg-id="" tvg-name="USA-Sony HD (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/jkDf-QiMjV7brA6RQkqlNK-6-O0fFF_FRCBV3-qWPpxDES7-sweaP6eF8EQQBnGe.png" group-title="USA-ENTERTAINMENT",USA-Sony HD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162738
+#EXTINF:-1 tvg-id="" tvg-name="USA-Sony Movies (L)(720)" tvg-logo="https://logos.xbots.com.mx/3933.png" group-title="USA-ENTERTAINMENT",USA-Sony Movies (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162583
+#EXTINF:-1 tvg-id="" tvg-name="USA-Spectrum News 1 (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/ViJJt1oHo-StApF7hugsAHJyEUUwyXwUw9896RnEKCoNPedIfRxRANK_zDupR5d7YEOFmGTSSgKeoyu29c5yadIUwuEUK1vgqDH3FTnl5To.png" group-title="USA-ENTERTAINMENT",USA-Spectrum News 1 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162584
+#EXTINF:-1 tvg-id="" tvg-name="USA-SPECTRUM SPORTS NET LA Dodgers (L)(720)" tvg-logo="https://logos.xbots.com.mx/41042.png" group-title="USA-SPORTS",USA-SPECTRUM SPORTS NET LA Dodgers (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162585
+#EXTINF:-1 tvg-id="" tvg-name="USA-Spectrum Sportsnet Lakers (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e8/Spectrum_Sportsnet_logo.png" group-title="USA-SPORTS",USA-Spectrum Sportsnet Lakers (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162739
+#EXTINF:-1 tvg-id="" tvg-name="USA-SPORTSMAN CHANNEL (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/qg4vRhyQcrmwSVRTvXE73mtC2qnBOgocGI-eAtyNnZZOelJpCUWjXpCHe4cYHPIgUSs3ZTr91d1uo2W6VEIzsIo2sq4IkDlP1LIm1TU3hTU.png" group-title="USA-SPORTS",USA-SPORTSMAN CHANNEL (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162586
+#EXTINF:-1 tvg-id="" tvg-name="USA-Starz Cinema (L)(720)" tvg-logo="https://logos.xbots.com.mx/Starz_Cinema_2005.png" group-title="USA-ENTERTAINMENT",USA-Starz Cinema (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162740
+#EXTINF:-1 tvg-id="" tvg-name="USA-STARZ COMEDY (L)(720)" tvg-logo="https://logos.xbots.com.mx/Starz_Comedy.png" group-title="USA-ENTERTAINMENT",USA-STARZ COMEDY (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162741
+#EXTINF:-1 tvg-id="" tvg-name="USA-STARZ EDGE WEST (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Starz_Edge_logo.svg/1200px-Starz_Edge_logo.svg.png" group-title="USA-ENTERTAINMENT",USA-STARZ EDGE WEST (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162742
+#EXTINF:-1 tvg-id="" tvg-name="USA-Starz Encore Action (L)(720)" tvg-logo="https://logos.xbots.com.mx/starz-encore-action.png" group-title="USA-ENTERTAINMENT",USA-Starz Encore Action (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162743
+#EXTINF:-1 tvg-id="" tvg-name="USA-Starz Encore EAST (L)(720)" tvg-logo="https://logos.xbots.com.mx/starz-encore.png" group-title="USA-ENTERTAINMENT",USA-Starz Encore EAST (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162587
+#EXTINF:-1 tvg-id="" tvg-name="USA-Starz Encore Español (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/jkDf-QiMjV7brA6RQkqlNNKUh6GtmZDwoT1E4BGC8kNGNWCAua_ZCbGlLnwSWj5u.png" group-title="USA-ENTERTAINMENT",USA-Starz Encore Español (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162744
+#EXTINF:-1 tvg-id="" tvg-name="USA-STARZ ENCORE SUSPENSE (L)(720)" tvg-logo="https://cdn.tvpassport.com/image/station/240x135/starz-encore-suspense.png" group-title="USA-ENTERTAINMENT",USA-STARZ ENCORE SUSPENSE (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162745
+#EXTINF:-1 tvg-id="" tvg-name="USA-Starz InBlack (L)(720)" tvg-logo="https://logos.xbots.com.mx/starz-inblack.png" group-title="USA-ENTERTAINMENT",USA-Starz InBlack (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162747
+#EXTINF:-1 tvg-id="" tvg-name="USA-Starz Kids & Family West (L)(720)" tvg-logo="https://logos.xbots.com.mx/starz_family.png" group-title="USA-CHILDREN",USA-Starz Kids & Family West (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162748
+#EXTINF:-1 tvg-id="" tvg-name="USA-SUNDANCE TV (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/Tl6TRRr26yjS6StMPz2lnKa5DDtn4G8ATEOj1Ol5pwBAP8TujnsH1hYpSPY9y-mpTEKMNG2ZDUuyvNhE3U7oHMTQ5IuekV6JD4sgPo4Mv43DYLNnbHkV14PjFysvZcIw4zxmYzKdzqgNw1xCxxOYGg.png" group-title="USA-ENTERTAINMENT",USA-SUNDANCE TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162588
+#EXTINF:-1 tvg-id="" tvg-name="USA-Sunday NFL Red Zone (Z)" tvg-logo="https://www.rev.bs/wp-content/uploads/2021/09/REDZONE-LOGO-1-1024x478.png" group-title="USA-SPORTS",USA-Sunday NFL Red Zone (Z)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/169305
+#EXTINF:-1 tvg-id="" tvg-name="USA-SYFY USA (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMQNuNJQvXP9SzpYHyrEqLHMtEOSIh0Cx1HT3wwvQE755aP9bq6-MsEQSrcHYxAOlI.png" group-title="USA-ENTERTAINMENT",USA-SYFY USA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162589
+#EXTINF:-1 tvg-id="" tvg-name="USA-TBS (L)(720)" tvg-logo="https://logos.xbots.com.mx/81.png" group-title="USA-ENTERTAINMENT",USA-TBS (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162749
+#EXTINF:-1 tvg-id="" tvg-name="USA-TCM (L)(720)" tvg-logo="https://logos.xbots.com.mx/3936.png" group-title="USA-ENTERTAINMENT",USA-TCM (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162750
+#EXTINF:-1 tvg-id="" tvg-name="USA-THE FIGHT NETWORK (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRBSXGYzF9DiKa1ivhuo6bqFtjctDKX2HVPIKzbtDrD_Yam-sFPCYtiEsYKjvLZTUawCyv5uQ-3CeN_NshSnEJKf_jT4Gk5lSWJRwSL9fxyWw.png" group-title="USA-SPORTS",USA-THE FIGHT NETWORK (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162590
+#EXTINF:-1 tvg-id="" tvg-name="USA-THE WEATHER CHANNEL (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/The_Weather_Channel_logo_2005-present.svg/1200px-The_Weather_Channel_logo_2005-present.svg.png" group-title="USA-ENTERTAINMENT",USA-THE WEATHER CHANNEL (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162591
+#EXTINF:-1 tvg-id="" tvg-name="USA-TLC USA (L)(720)" tvg-logo="https://logos.xbots.com.mx/2197.png" group-title="USA-ENTERTAINMENT",USA-TLC USA (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162592
+#EXTINF:-1 tvg-id="" tvg-name="USA-TNT (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/TNT_%28TV_Channel%29.svg/1200px-TNT_%28TV_Channel%29.svg.png" group-title="USA-ENTERTAINMENT",USA-TNT (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162593
+#EXTINF:-1 tvg-id="" tvg-name="USA-TNT EAST (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/68/Logo_TNT_Series.png" group-title="USA-ENTERTAINMENT",USA-TNT EAST (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162594
+#EXTINF:-1 tvg-id="" tvg-name="USA-TRAVEL CHANNEL HD (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRU8RVymCNJ6twZA4MRqyfbOUh3rvwzVH-UV_dbAS-FGMBNn8o3XPfs9Frs80Q2yV0Gb0GaAwnXU36CWU2_XVkooqH-TGPzTGxfRohdOzpC08.png" group-title="USA-DOCUMENTARY",USA-TRAVEL CHANNEL HD (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162595
+#EXTINF:-1 tvg-id="" tvg-name="USA-TV LAND (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/d0qBv_KS-INV6jsoN1Bns3xtbQhVQIDY9BJ2vOAB8ZMPkqdyLYqDhy0_iB-TnrMRYxTLD2C7osaklit3mJzHj3dpvz6n8Q33iMFLj9wGjQzwsMpShrjnyi4jU1oPerpJ3xc25ri62Hs-JYRk90qIlZ3lZj8BqaKdRDg318J9k9I.png" group-title="USA-ENTERTAINMENT",USA-TV LAND (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162596
+#EXTINF:-1 tvg-id="" tvg-name="USA-TVG Network (L)(720)" tvg-logo="https://www.letsgambleusa.com/wp-content/uploads/2021/08/tvg-logo.png" group-title="USA-ENTERTAINMENT",USA-TVG Network (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162777
+#EXTINF:-1 tvg-id="" tvg-name="USA-U-vision WVEN | Orlando (L)(720)" tvg-logo="https://yt3.ggpht.com/-WZQ7WlNmDchw3rGfvlu2c-cl8z-od-B_CnWtrd9xmD5g2UV6c5wBZwp3qe0Uj-cL7juThPUjxpS=ns-nd" group-title="USA-ENTERTAINMENT",USA-U-vision WVEN | Orlando (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162751
+#EXTINF:-1 tvg-id="" tvg-name="USA-Ultra Cine (L)(720)" tvg-logo="https://assets.cdn.olympusat.com/wp-content/uploads/UltraCineLogoBlack.png" group-title="USA-ENTERTAINMENT",USA-Ultra Cine (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162792
+#EXTINF:-1 tvg-id="" tvg-name="USA-Ultra Clásico (L)(720)" tvg-logo="https://assets.cdn.olympusat.com/wp-content/uploads/UltraClasico_NLogo.png" group-title="USA-ENTERTAINMENT",USA-Ultra Clásico (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162791
+#EXTINF:-1 tvg-id="" tvg-name="USA-Ultra Familia (L)(720)" tvg-logo="https://assets.cdn.olympusat.com/wp-content/uploads/UltraFamilia_NLogo.png" group-title="USA-ENTERTAINMENT",USA-Ultra Familia (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162790
+#EXTINF:-1 tvg-id="" tvg-name="USA-Ultra Kidz (L)(720)" tvg-logo="https://assets.cdn.blog.olympusat.com/wp-content/uploads/2020/11/Ultra-kidz-Logo.png" group-title="USA-ENTERTAINMENT",USA-Ultra Kidz (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162789
+#EXTINF:-1 tvg-id="" tvg-name="USA-Ultra Mex (L)(720)" tvg-logo="https://assets.cdn.olympusat.com/wp-content/uploads/UltraMexLogoBlack.png" group-title="USA-ENTERTAINMENT",USA-Ultra Mex (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162788
+#EXTINF:-1 tvg-id="" tvg-name="USA-UNIVERSO (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/70/UNIVERSO_LOGO_color_black.png" group-title="USA-ENTERTAINMENT",USA-UNIVERSO (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162567
+#EXTINF:-1 tvg-id="" tvg-name="USA-UNIVERSO (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/70/UNIVERSO_LOGO_color_black.png" group-title="USA-ENTERTAINMENT",USA-UNIVERSO (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162568
+#EXTINF:-1 tvg-id="" tvg-name="USA-USA NETWORK (L)(720)" tvg-logo="https://i0.wp.com/www.jentel.mx/wp-content/uploads/2023/08/usa-network-logo-e1692825940934.png" group-title="USA-ENTERTAINMENT",USA-USA NETWORK (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162604
+#EXTINF:-1 tvg-id="" tvg-name="USA-VH1 (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/ymJLI381c5-qpiCXh2faOXJCalUqj1JUMLrkz-HQJPVK1Ld8cWwz-__LIhLN4fHWYC61BRnT2w1FJe2qKxDulQ.png" group-title="USA-ENTERTAINMENT",USA-VH1 (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162597
+#EXTINF:-1 tvg-id="" tvg-name="USA-VICE (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e2/Viceland_Logo.png" group-title="USA-ENTERTAINMENT",USA-VICE (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162598
+#EXTINF:-1 tvg-id="" tvg-name="USA-WCNC NBC Charlotte (L)(720)" tvg-logo="http://live.detodotvplay.com:8080/images/lzTpWXIfhUczp5vjDz6dbUMsAhaAZ7nPdfPRRTwTPY8Y67_Bzs9aRorBmECmrNjng480lPTQ2Kd1eDpj-CPveGJfX4dR7SC8gF8A258dt2g.png" group-title="USA-NEWS/MISC",USA-WCNC NBC Charlotte (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162752
+#EXTINF:-1 tvg-id="" tvg-name="USA-WE TV (L)(720)" tvg-logo="https://cdn6.aptoide.com/imgs/2/f/e/2fe8dfa4c3d6fd8e2bed4bc2e2695bd2_fgraphic.png" group-title="USA-ENTERTAINMENT",USA-WE TV (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162599
+#EXTINF:-1 tvg-id="" tvg-name="USA-YES Network (L)(720)" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/YES_Network_logo.svg/800px-YES_Network_logo.svg.png" group-title="USA-SPORTS",USA-YES Network (L)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/162753
+#EXTINF:-1 tvg-id="" tvg-name="USA-Vevo 2K (1080)(W)" tvg-logo="https://images.pluto.tv/channels/5fd7bca3e0a4ee0007a38e8c/featuredImage.jpg" group-title="USA-MUSICALS",USA-Vevo 2K (1080)(W)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160074
+#EXTINF:-1 tvg-id="" tvg-name="USA-Vevo 70s (1080)(W)" tvg-logo="https://images.pluto.tv/channels/5f32f26bcd8aea00071240e5/featuredImage.jpg" group-title="USA-MUSICALS",USA-Vevo 70s (1080)(W)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160075
+#EXTINF:-1 tvg-id="" tvg-name="USA-Vevo 80s (1080)(W)" tvg-logo="https://images.pluto.tv/channels/5fd7b8bf927e090007685853/featuredImage.jpg" group-title="USA-MUSICALS",USA-Vevo 80s (1080)(W)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160076
+#EXTINF:-1 tvg-id="" tvg-name="USA-Vevo 90s (1080)(W)" tvg-logo="https://images.pluto.tv/channels/5fd7bb1f86d94a000796e2c2/featuredImage.jpg" group-title="USA-MUSICALS",USA-Vevo 90s (1080)(W)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160077
+#EXTINF:-1 tvg-id="" tvg-name="USA-Vevo Country (1080)(W)" tvg-logo="https://images.pluto.tv/channels/5da0d75e84830900098a1ea0/featuredImage.jpg" group-title="USA-MUSICALS",USA-Vevo Country (1080)(W)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160078
+#EXTINF:-1 tvg-id="" tvg-name="USA-Vevo Latino (1080)(W)" tvg-logo="https://i.imgur.com/D7SwmuB.png" group-title="USA-MUSICALS",USA-Vevo Latino (1080)(W)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160080
+#EXTINF:-1 tvg-id="" tvg-name="USA-Vevo Pop (1080)(W)" tvg-logo="https://i.imgur.com/dZHktKR.png" group-title="USA-MUSICALS",USA-Vevo Pop (1080)(W)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160081
+#EXTINF:-1 tvg-id="" tvg-name="USA-Vevo R&B (1080)(W)" tvg-logo="https://images.pluto.tv/channels/5da0d83f66c9700009b96d0e/featuredImage.jpg" group-title="USA-MUSICALS",USA-Vevo R&B (1080)(W)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160082
+#EXTINF:-1 tvg-id="" tvg-name="USA-Vevo Retro Rock (W)(1080)" tvg-logo="https://i.imgur.com/H1Aap4E.png" group-title="USA-MUSICALS",USA-Vevo Retro Rock (W)(1080)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160083
+#EXTINF:-1 tvg-id="" tvg-name="USA-Vevo True School Hip-Hop (W)" tvg-logo="https://i.imgur.com/owUXUih.png" group-title="USA-MUSICALS",USA-Vevo True School Hip-Hop (W)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/160084
+#EXTINF:-1 tvg-id="" tvg-name="BRA-SBT Parana (M)(720)" tvg-logo="" group-title="BRASIL",BRA-SBT Parana (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180723
+#EXTINF:-1 tvg-id="" tvg-name="BRA-SBT Jangadeiro CE (M)(720)" tvg-logo="" group-title="BRASIL",BRA-SBT Jangadeiro CE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180725
+#EXTINF:-1 tvg-id="" tvg-name="BRA-SBT Interior (M)(720)" tvg-logo="" group-title="BRASIL",BRA-SBT Interior (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180726
+#EXTINF:-1 tvg-id="" tvg-name="BRA-SBT GO (M)(720)" tvg-logo="" group-title="BRASIL",BRA-SBT GO (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180727
+#EXTINF:-1 tvg-id="" tvg-name="BRA-SBT Brasilia" tvg-logo="" group-title="BRASIL",BRA-SBT Brasilia
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180728
+#EXTINF:-1 tvg-id="" tvg-name="BRA-SBT Aratu Bahia (M)(720)" tvg-logo="" group-title="BRASIL",BRA-SBT Aratu Bahia (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180729
+#EXTINF:-1 tvg-id="" tvg-name="BRA-SBT Alterosa MG" tvg-logo="" group-title="BRASIL",BRA-SBT Alterosa MG
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180730
+#EXTINF:-1 tvg-id="" tvg-name="BRA-SBT (M)(720)" tvg-logo="" group-title="BRASIL",BRA-SBT (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180731
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Globo Brasilia (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Globo Brasilia (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180732
+#EXTINF:-1 tvg-id="" tvg-name="BRA-A&E (M)(720)" tvg-logo="" group-title="BRASIL",BRA-A&E (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180733
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Animal Planet (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Animal Planet (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180734
+#EXTINF:-1 tvg-id="" tvg-name="BRA-AXN (M)(720)" tvg-logo="" group-title="BRASIL",BRA-AXN (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180735
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Band News (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Band News (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180737
+#EXTINF:-1 tvg-id="" tvg-name="BRA-BIS (M)(720)" tvg-logo="" group-title="BRASIL",BRA-BIS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180739
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Cartoonito (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Cartoonito (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180740
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Canal Brasil (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Canal Brasil (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180741
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Comedy Central (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Comedy Central (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180745
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Discovery CH. (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Discovery CH. (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180746
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Discovery CIVILIZATION (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Discovery CIVILIZATION (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180747
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Discovery H&H (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Discovery H&H (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180748
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Discovery KIDS (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Discovery KIDS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180750
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Discovery SCIENCE (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Discovery SCIENCE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180751
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Discovery THEATHER (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Discovery THEATHER (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180752
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Discovery WORLD (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Discovery WORLD (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180754
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Disney Channel (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Disney Channel (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180755
+#EXTINF:-1 tvg-id="" tvg-name="BRA-E! (M)(720)" tvg-logo="" group-title="BRASIL",BRA-E! (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180757
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Espn 2 (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Espn 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180758
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Espn 4" tvg-logo="" group-title="BRASIL",BRA-Espn 4
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180760
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Fish TV (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Fish TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180762
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Star Life (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Star Life (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180764
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Fox Sports (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Fox Sports (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180768
+#EXTINF:-1 tvg-id="" tvg-name="BRA-FX (M)(720)" tvg-logo="" group-title="BRASIL",BRA-FX (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180770
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Globo NEWS (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Globo NEWS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180771
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Globo SP (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Globo SP (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180773
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Gloob (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Gloob (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180774
+#EXTINF:-1 tvg-id="" tvg-name="BRA-HBO 2 (M)(720)" tvg-logo="" group-title="BRASIL",BRA-HBO 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180776
+#EXTINF:-1 tvg-id="" tvg-name="BRA-HBO Family (M)(720)" tvg-logo="" group-title="BRASIL",BRA-HBO Family (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180777
+#EXTINF:-1 tvg-id="" tvg-name="BRA-HBO (M)(720)" tvg-logo="" group-title="BRASIL",BRA-HBO (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180778
+#EXTINF:-1 tvg-id="" tvg-name="BRA-HBO Signature (M)(720)" tvg-logo="" group-title="BRASIL",BRA-HBO Signature (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180779
+#EXTINF:-1 tvg-id="" tvg-name="BRA-HBO Plus (M)(720)" tvg-logo="" group-title="BRASIL",BRA-HBO Plus (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180780
+#EXTINF:-1 tvg-id="" tvg-name="BRA-History 2 (M)(720)" tvg-logo="" group-title="BRASIL",BRA-History 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180781
+#EXTINF:-1 tvg-id="" tvg-name="BRA-History (M)(720)" tvg-logo="" group-title="BRASIL",BRA-History (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180782
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Lifetime (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Lifetime (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180783
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Mais Globosat (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Mais Globosat (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180784
+#EXTINF:-1 tvg-id="" tvg-name="BRA-MAX (M)(720)" tvg-logo="" group-title="BRASIL",BRA-MAX (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180785
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Telecine (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Telecine (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180787
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Megapix (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Megapix (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180788
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Multishow (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Multishow (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180789
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Natgeo Wild (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Natgeo Wild (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180791
+#EXTINF:-1 tvg-id="" tvg-name="BRA-OFF (M)(720)" tvg-logo="" group-title="BRASIL",BRA-OFF (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180795
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Paramount (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Paramount (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180796
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Premiere 4 (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Premiere 4 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180797
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Premiere 5 (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Premiere 5 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180798
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Premiere CLUBE (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Premiere CLUBE (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180801
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Prime Box Brasil (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Prime Box Brasil (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180802
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Record (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Record (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180803
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Record News (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Record News (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180804
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Rede Vida (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Rede Vida (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180805
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Sony (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Sony (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180806
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Space (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Space (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180807
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Sportv 2 (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Sportv 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180808
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Sportv 3 (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Sportv 3 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180809
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Sportv (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Sportv (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180810
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Studio Universal (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Studio Universal (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180811
+#EXTINF:-1 tvg-id="" tvg-name="BRA-SYFY (M)(720)" tvg-logo="" group-title="BRASIL",BRA-SYFY (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180812
+#EXTINF:-1 tvg-id="" tvg-name="BRA-TBS (M)(720)" tvg-logo="" group-title="BRASIL",BRA-TBS (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180813
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Telecine ACTION (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Telecine ACTION (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180814
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Telecine CULT (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Telecine CULT (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180815
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Telecine PIPOCA (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Telecine PIPOCA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180817
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Telecine Premium (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Telecine Premium (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180818
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Telecine Touch (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Telecine Touch (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180819
+#EXTINF:-1 tvg-id="" tvg-name="BRA-TNT (M)(720)" tvg-logo="" group-title="BRASIL",BRA-TNT (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180821
+#EXTINF:-1 tvg-id="" tvg-name="BRA-TNT Series (M)(720)" tvg-logo="" group-title="BRASIL",BRA-TNT Series (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180822
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Tooncast (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Tooncast (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180823
+#EXTINF:-1 tvg-id="" tvg-name="BRA-TV Câmara (M)(720)" tvg-logo="" group-title="BRASIL",BRA-TV Câmara (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180825
+#EXTINF:-1 tvg-id="" tvg-name="BRA-TV Gazeta (M)(720)" tvg-logo="" group-title="BRASIL",BRA-TV Gazeta (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180827
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Universal Channel (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Universal Channel (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180828
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Viva (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Viva (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180829
+#EXTINF:-1 tvg-id="" tvg-name="BRA-Woohoo (M)(720)" tvg-logo="" group-title="BRASIL",BRA-Woohoo (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180831
+#EXTINF:-1 tvg-id="" tvg-name="POR-Sport TV + (M)(720)" tvg-logo="" group-title="BRASIL",POR-Sport TV + (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180833
+#EXTINF:-1 tvg-id="" tvg-name="POR-Sport TV 1 (M)(720)" tvg-logo="" group-title="BRASIL",POR-Sport TV 1 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180834
+#EXTINF:-1 tvg-id="" tvg-name="POR-Sport TV 2 (M)(720)" tvg-logo="" group-title="BRASIL",POR-Sport TV 2 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180835
+#EXTINF:-1 tvg-id="" tvg-name="POR-Sport TV 3 (M)(720)" tvg-logo="" group-title="BRASIL",POR-Sport TV 3 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180836
+#EXTINF:-1 tvg-id="" tvg-name="POR-Sport TV 4 (M)(720)" tvg-logo="" group-title="BRASIL",POR-Sport TV 4 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180837
+#EXTINF:-1 tvg-id="" tvg-name="POR-Sport TV NBA (M)(720)" tvg-logo="" group-title="BRASIL",POR-Sport TV NBA (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180838
+#EXTINF:-1 tvg-id="" tvg-name="POR-SportING TV (M)(720)" tvg-logo="" group-title="BRASIL",POR-SportING TV (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180839
+#EXTINF:-1 tvg-id="" tvg-name="POR-Sport TV 5 (M)(720)" tvg-logo="" group-title="BRASIL",POR-Sport TV 5 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180840
+#EXTINF:-1 tvg-id="" tvg-name="POR-Sport TV 6 (M)(720)" tvg-logo="" group-title="BRASIL",POR-Sport TV 6 (M)(720)
+http://tv.diablotv.net:8080/yuliduran/3edd87689ce3/180841`
 

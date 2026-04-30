@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HOOD PROJECT</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="select-none text-white bg-black overflow-hidden font-sans">
+
+    <div id="loading" class="fixed inset-0 bg-black flex flex-col items-center justify-center z-[9999]">
+        <div class="w-12 h-12 border-4 border-green-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <div id="loading-status" class="text-green-600 font-black text-xs uppercase text-center mt-4 tracking-[3px]">
+            Iniciando sistema...
+        </div>
+    </div>
+
+    <aside id="side-menu" class="fixed inset-y-0 left-0 w-80 transform -translate-x-full bg-[#050505] z-[5000] transition-transform duration-300 border-r border-white/5">
+        <div class="p-12 pb-6">
+            <div class="font-black text-3xl italic text-green-600 uppercase tracking-tighter">Hood Project</div>
+            <div class="text-[10px] text-zinc-500 tracking-[4px] mt-2 opacity-50">MEDIA CENTER</div>
+        </div>
+        <div id="menu-list" class="flex flex-col gap-2 p-6"></div>
+    </aside>
+
+    <main id="app-content" class="h-screen flex flex-col transition-all duration-300">
+        <header class="p-12 pb-4">
+            <div id="section-title" class="text-7xl font-black italic uppercase opacity-10 tracking-tighter">TELEVISIÓN</div>
+        </header>
+        <div id="main-scroll" class="flex-1 overflow-hidden">
+            <div id="rows-container" class="pb-20"></div>
+        </div>
+    </main>
+
+    <div id="search-panel" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-[9000] -translate-x-full transition-transform duration-300 flex items-center justify-center p-8">
+        <div class="bg-[#0a0a0a] border-2 border-green-600 w-full max-w-3xl rounded-3xl p-8 shadow-2xl">
+            <div class="flex flex-col gap-1 mb-6">
+                <div class="text-green-600 font-black italic text-4xl uppercase tracking-tighter">Buscador</div>
+                <div id="current-search-text" class="text-3xl text-white font-bold bg-black/50 p-4 rounded-xl border border-white/10 min-h-[4rem] flex items-center overflow-hidden">
+                    </div>
+            </div>
+            <div id="keyboard-grid" class="grid grid-cols-9 gap-2 mb-6"></div>
+            <div class="flex gap-4 justify-center">
+                <div class="action-btn p-4 bg-zinc-800 rounded-xl font-bold" data-action="space">ESPACIO</div>
+                <div class="action-btn p-4 bg-zinc-800 rounded-xl font-bold" data-action="back">BORRAR</div>
+                <div class="action-btn p-4 bg-green-600 rounded-xl font-bold" data-action="done">LISTO</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-full" class="fixed inset-0 bg-black/95 z-[6000] hidden overflow-y-auto"></div>
+
+    <div id="modal-pin" class="hidden fixed inset-0 z-[10000] bg-black/95 flex items-center justify-center backdrop-blur-md">
+        <div class="bg-zinc-900 p-10 rounded-3xl border-2 border-green-600/30 text-center w-[400px]">
+            <div class="text-5xl mb-6">🔞</div>
+            <h2 class="text-white font-black italic uppercase text-2xl mb-2">Acceso Restringido</h2>
+            <div class="flex justify-center gap-4 my-8" id="pin-dots">
+                <div class="pin-dot w-4 h-4 rounded-full border-2 border-zinc-700"></div>
+                <div class="pin-dot w-4 h-4 rounded-full border-2 border-zinc-700"></div>
+                <div class="pin-dot w-4 h-4 rounded-full border-2 border-zinc-700"></div>
+                <div class="pin-dot w-4 h-4 rounded-full border-2 border-zinc-700"></div>
+            </div>
+            <div id="pin-keyboard" class="grid grid-cols-3 gap-3">
+                </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="tv.js"></script>
+    <script src="vod.js"></script>
+    <script src="adultos.js"></script>
+    <script src="ContentParser.js"></script>
+    <script src="Components.js"></script>
+    <script src="AppController.js"></script> 
+    <script src="dpad.js"></script> 
+  
+
+    <script>
+        // Configuración Global del Estado
+        const State = {
+            view: 'home', 
+            source: 'tv', 
+            catalog: {},
+            fila: 0, 
+            col: 0, 
+            menu: false, 
+            idxMenu: 1, // Empezamos en TV
+            currentGridCat: null,
+            secciones: [
+                { id: 'buscar', label: 'BUSCAR' },
+                { id: 'tv', label: 'TELEVISIÓN' },
+                { id: 'peliculas', label: 'PELÍCULAS' },
+                { id: 'series', label: 'SERIES' },
+                { id: 'adultos', label: 'ADULTOS' }
+            ]
+        };
+
+        // Puente Nativo
+        window.reproducir = function(item) {
+            if (!item || !item.url) return;
+            const titulo = item.titulo || "Hood Video";
+            if (window.AndroidInterface && window.AndroidInterface.playVideo) {
+                window.AndroidInterface.playVideo(item.url, titulo);
+            } else {
+                console.log("Simulación PC:", titulo, item.url);
+            }
+        };
+
+        // Inicialización
+        function bootstrap() {
+            if (window.m3uTV || window.m3uVOD) {
+                try {
+                    if(window.m3uTV) State.catalog.tv = ContentParser.parsearTV(window.m3uTV);
+                    if(window.m3uVOD) {
+                        const vod = ContentParser.parsearVOD(window.m3uVOD);
+                        State.catalog.peliculas = vod.peliculas;
+                        State.catalog.series = vod.series;
+                        State.catalog.adultos = vod.adultos;
+                    }
+                    renderMenu();
+                    AppController.renderHome();
+                    document.getElementById('loading').style.display = 'none';
+                    updateFocus();
+                } catch(e) {
+                    console.error("Error en bootstrap:", e);
+                }
+            } else {
+                setTimeout(bootstrap, 1000);
+            }
+        }
+
+        function renderMenu() {
+            document.getElementById('menu-list').innerHTML = State.secciones.map((s, i) => 
+                `<div id="menu-${i}" class="p-4 px-6 text-xl font-bold italic uppercase tracking-widest text-zinc-500 rounded-xl menu-item">${s.label}</div>`
+            ).join('');
+        }
+
+        window.onload = bootstrap;
+    </script>
+</body>
+</html>

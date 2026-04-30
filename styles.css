@@ -1,13 +1,10 @@
 /* styles.css - HOOD PROJECT (ADAPTABLE PRO) */
 
 :root {
-  /* Hacemos que la unidad base sea el 0.8% del ancho de la pantalla */
   font-size: 0.8vw;
 }
 
-/* Ajustes para ganar espacio en TVs Box viejas (SD) */
 @media (max-width: 1200px) { :root { font-size: 1vw; } }
-/* Ajustes para pantallas 4K */
 @media (min-width: 2800px) { :root { font-size: 20px; } }
 
 * { 
@@ -16,7 +13,7 @@
 }
 
 body { 
-  background: #080808; /* Fondo un poco más Pro */
+  background: #080808; 
   color: white; 
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
   overflow: hidden; 
@@ -25,18 +22,18 @@ body {
   height: 100vh;
 }
 
-/* --- MENÚ LATERAL (Adaptable) --- */
+/* --- MENÚ LATERAL --- */
 #side-menu { 
   background: linear-gradient(to right, #050505, #000); 
   border-right: 0.15rem solid #111; 
-  width: 17rem; /* Reducido de 300px */
+  width: 17rem; 
 }
 
 .menu-item { 
   padding: 1rem 2rem; 
   font-size: 1rem; 
   font-weight: 800; 
-  color: #333; /* Más contraste */
+  color: #333; 
   text-transform: uppercase; 
   border-left: 0.3rem solid transparent;
 }
@@ -55,13 +52,13 @@ body {
   gap: 1.2rem;
   overflow-x: auto !important; 
   overflow-y: visible !important; 
-  padding: 2rem 3rem !important; /* Respira más */
+  padding: 2rem 3rem !important; 
 }
 
-/* --- TARJETAS (HOME) --- */
+/* --- TARJETAS --- */
 .card { 
-  width: 10rem; /* Tamaño equilibrado para que entren 6-7 por fila */
-  height: 15rem; /* Forzamos la altura para mantener el 2:3 */
+  width: 10rem; 
+  height: 15rem; 
   background: #111; 
   border-radius: 0.6rem; 
   overflow: hidden; 
@@ -71,42 +68,49 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .card img { 
   width: 100% !important; 
   height: 100% !important; 
-  object-fit: cover !important; /* Esto evita que la imagen se estire o aplaste */
+  object-fit: cover !important; 
   display: block;
 }
 
 .focused { 
   border: 0.2rem solid #16a34a !important; 
   opacity: 1 !important; 
-  transform: scale(1.06) !important; /* Resalte suave */
+  transform: scale(1.06) !important; 
   z-index: 50 !important; 
   box-shadow: 0 0 1.5rem rgba(22, 163, 74, 0.4) !important;
 }
 
-/* --- MODAL DETALLES (FIXED) --- */
+/* --- MODAL DETALLES (ESTRUCTURA FIJA) --- */
 #modal-full {
-  background: radial-gradient(circle at top right, #0d0d0d, #000);
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: #080808 !important;
+    overflow-y: hidden !important; /* BLOQUEA el scroll vertical */
+    overflow-x: hidden !important;
+}
+/* Cabecera fija para que no se mueva con el carrusel */
+.details-header {
+    flex-shrink: 0;
+    width: 100%;
+    padding: 4rem;
+    z-index: 10;
 }
 
-/* Cover (Poster) más chico en detalles */
 #modal-full .cover-image {
-  width: 15rem !important; /* Reducido para ganar espacio */
+  width: 15rem !important; 
   border-radius: 1rem;
 }
 
-/* Botón Reproducir (Achicado y adaptable) */
+/* Botones */
 #btn-play, .btn-action {
   width: fit-content !important;
-  height: 3.2rem !important; /* Más Pro */
-  min-width: 14rem !important;
-  font-size: 1rem !important;
+  height: 3.6rem !important; 
+  min-width: 16rem !important;
+  font-size: 1.5rem !important;
   border-radius: 2rem !important;
 }
 
@@ -115,95 +119,210 @@ body {
   color: #000 !important;
 }
 
-#btn-play.focused span, 
-#btn-play.focused svg {
-  color: #000 !important;
-  fill: #000 !important;
-}
-
-/* --- SECCIÓN CAPÍTULOS (ACHICADA) --- */
-#contenedor-episodios {
-  display: flex !important;
-  gap: 1rem;
-  overflow-x: auto !important;
-  overflow-y: visible !important;
-  padding: 1rem 0;
-}
-
-/* EPISODIOS MÁS CHICOS (Adaptación rem) */
-[id^="ep-"] {
-  width: 12rem !important; /* Reducido significativamente */
-  height: 6.8rem !important; /* Proporción rem */
-  font-size: 0.8rem; /* Fuente base adaptable */
-}
-
-[id^="ep-"] .ep-title {
-    font-size: 0.9rem !important;
-}
-
-/* --- SECCIÓN SUGERENCIAS (ACHICADA) --- */
-#modal-full .similares-container {
-    padding-bottom: 3rem;
-    overflow-x: auto !important;
+/* --- SECCIÓN SUGERENCIAS (REPARADA) --- */
+.similares-container {
+    padding-top: 3rem !important; /* Espacio para que el zoom no se corte arriba */
+    padding-bottom: 3rem !important;
+    padding-left: 3rem;
+    overflow-x: auto !important; 
+    overflow-y: visible !important; 
     display: flex !important;
-    gap: 1.2rem;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
 [id^="sug-"] {
-  width: 12rem !important; /* Reducido */
-  aspect-ratio: 16/9;
-}
-/* Esto asegura que la tarjeta enfocada flote sobre todas las demás */
-[id^="sug-"].focused, 
-.card.focused, 
-.card-grid-item.focused {
-    z-index: 999 !important; /* Valor muy alto para que nada la tape */
-    position: relative; /* Necesario para que el z-index funcione */
+    flex-shrink: 0;
+    width: 14rem !important; 
+    aspect-ratio: 16/9;
+    position: relative;
+    border-radius: 0.6rem;
+    overflow: hidden;
+    background: #111;
 }
 
-/* Fix para el contenedor de recomendaciones */
-.similares-container, 
-#contenedor-episodios, 
-.flex-row {
-    overflow-y: visible !important; /* PERMITE que la escala del foco sobresalga hacia arriba/abajo */
-    padding-top: 1.5rem !important; /* Espacio extra para que el escalado no se corte arriba */
-    padding-bottom: 1.5rem !important;
-}
-#rows-container {
-  padding-bottom: 5rem;
+[id^="sug-"].focused {
+    transform: scale(1.1) translateY(-0.5rem) !important; 
+    z-index: 999 !important;
+    box-shadow: 0 0 2rem rgba(22, 163, 74, 0.6) !important;
+    border: 0.2rem solid #16a34a !important;
+    opacity: 1 !important;
 }
 
-.no-scrollbar::-webkit-scrollbar { display: none; }
+/* --- SECCIÓN CAPÍTULOS --- */
+#contenedor-episodios {
+  display: flex !important;
+  gap: 6rem;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  padding: 1.5rem 0;
+}
 
-/* --- ELIMINAR BARRA DE SCROLL GLOBAL --- */
+[id^="ep-"] {
+  width: 12rem !important; 
+  height: 3.9rem !important; 
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+/* --- GLOBAL Y SCROLLBARS --- */
 * {
-    scrollbar-width: none; /* Para Firefox */
-    -ms-overflow-style: none; /* Para Internet Explorer/Edge */
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
 }
 
-/* En lugar de display: none, la hacemos invisible */
 ::-webkit-scrollbar {
-    width: 0px !important;  /* Casi 0 para que no robe espacio */
+    width: 0px !important;
     height: 0px !important;
     background: transparent !important;
 }
 
-::-webkit-scrollbar-thumb {
-    background: transparent !important; /* El "palito" de la barra, invisible */
+.flex-row, .similares-container, #contenedor-episodios {
+    overflow-y: visible !important;
 }
 
-::-webkit-scrollbar-track {
-    background: transparent !important; /* El carril de la barra, invisible */
+/* --- BUSCADOR --- */
+#search-panel {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 25rem !important;
+    height: 100vh;
+    background: #080808 !important;
+    z-index: 9000 !important;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    border-right: 0.2rem solid #16a34a;
 }
 
-/* Y para asegurar que los contenedores no intenten "hacerle sitio" a la barra */
-* {
-    scrollbar-width: none !important; /* Para motores nuevos */
-    -ms-overflow-style: none !important;
+#search-panel.open {
+    transform: translateX(0) !important;
 }
 
-/* Forzar que el body y html no tengan scroll lateral */
-html, body {
-    overflow: hidden;
-    background: #000;
+#virtual-keyboard {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 0.8rem !important;
+    padding: 1rem;
+}
+
+.key-item {
+    background: #1a1a1a !important;
+    color: white !important;
+    padding: 1rem !important;
+    font-size: 1.2rem !important;
+    border-radius: 0.5rem;
+    text-align: center;
+    border: 0.2rem solid transparent;
+}
+
+.key-item.focused {
+    background: #16a34a !important; 
+    color: #000 !important;
+    border-color: #fff !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 1.5rem rgba(22, 163, 74, 0.8) !important;
+}
+/* Bloqueo total de desplazamiento horizontal en el modal */
+
+
+/* El carrusel es el ÚNICO que debe tener scroll */
+.similares-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    padding-top: 4rem !important; /* Espacio extra para que el zoom no se corte */
+    padding-bottom: 2rem !important;
+    scroll-behavior: smooth;
+    display: flex !important;
+}
+
+/* Evitar que las tarjetas "estiren" el contenedor */
+[id^="sug-"] {
+    flex: 0 0 auto !important;
+}
+/*::::::::::::::::::::::extras::::::::::::::::::*/
+/* 1. Reducir el padding general del modal para que el contenido suba */
+
+/* 2. Achicar el póster principal en detalles para que no empuje todo abajo */
+#modal-full .w-64.flex-shrink-0 {
+    width: 16rem !important; /* De 16rem a 12rem */
+}
+
+/* 3. Reducir el tamaño del título principal */
+#modal-full h1 {
+    font-size: 2rem !important; /* De 5xl/6xl a 2.5rem */
+    margin-bottom: 1rem !important;
+}
+
+/* 4. Ajustar el margen de la sinopsis */
+#p-sinopsis {
+   
+    max-width: 80% !important;
+}
+
+/* 5. Compactar las secciones de Capítulos y Sugerencias */
+.mt-8, .mt-12 {
+    margin-top: 0.05rem !important; /* Reducimos el espacio entre secciones */
+}
+/*::::::::::::selectores derango::::::::::::::::::::::*/
+/* Forzamos el diseño de los botones de rango */
+[id^="range-"] {
+    width: auto !important;
+    min-width: 40px !important;
+    height: 18px !important;
+    padding: 0 15px !important;
+    border-radius: 999px !important; /* Forma de pastilla */
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 10px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Efecto cuando tienen el foco */
+[id^="range-"].focused {
+    background: #16a34a !important; /* Verde Hood */
+    border-color: #fff !important;
+    color: #000 !important;
+    transform: scale(1.1);
+}
+/*efecnto elevador para vista detalles en series*/
+/* Estado normal de las sugerencias */
+.sugerencias-wrapper {
+    position: relative;
+    z-index: 20;
+    transform: translateY(0);
+}
+
+/* Cuando están enfocadas, suben y tapan los capítulos */
+.sugerencias-wrapper.subir-sugerencias {
+    transform: translateY(-300px); /* Ajusta este valor según necesites subir más o menos */
+    z-index: 50;
+}
+
+/* Difuminar y ocultar el resto cuando las sugerencias suben */
+.subir-sugerencias-active .seccion-capitulos,
+.subir-sugerencias-active .info-principal {
+    opacity: 0.1;
+    filter: blur(8px);
+    transform: scale(0.95);
+    pointer-events: none;
+}
+/* Esto asegura que los resultados de búsqueda dejen espacio al teclado lateral */
+#search-results-container {
+    margin-left: 420px !important; /* El ancho de tu teclado + un margen */
+    padding-top: 50px;
+    display: none; /* Se activa desde el SearchController */
+}
+
+/* Ajuste para que el teclado siempre esté arriba de todo */
+#search-panel {
+    z-index: 9000;
 }

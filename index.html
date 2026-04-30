@@ -2,37 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HOOD PROJECT</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Estilos críticos para el foco y scroll */
-        .focused {
-            border-color: #16a34a !important; /* Green-600 */
-            transform: scale(1.05);
-            z-index: 50;
-            box-shadow: 0 0 25px rgba(22, 163, 74, 0.5);
-            outline: none;
-        }
-        
-        /* Evita que el fondo se mueva lateralmente en detalle */
-        #modal-full { 
-            scroll-behavior: smooth; 
-            overflow-x: hidden !important; 
-        }
-
-        .card, .tv-row, .menu-item, .card-grid-item { transition: all 0.2s ease-in-out; }
-        
-        /* Ocultar scrollbars para que parezca una App */
-        ::-webkit-scrollbar { display: none; }
-        
-        /* Corrección para que el botón no se deforme al recibir foco */
-        #btn-play.focused {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(22, 163, 74, 0.8);
-        }
-    </style>
+    
 </head>
 <body class="select-none text-white bg-black overflow-hidden font-sans">
 
@@ -51,14 +25,21 @@
         <div id="menu-list" class="flex flex-col gap-2 p-6"></div>
     </aside>
 
-    <main id="app-content" class="h-screen flex flex-col transition-all duration-300">
-        <header class="p-12 pb-4">
-            <div id="section-title" class="text-7xl font-black italic uppercase opacity-10 tracking-tighter">TELEVISIÓN</div>
-        </header>
-        <div id="main-scroll" class="flex-1 overflow-hidden">
-            <div id="rows-container" class="pb-20"></div>
-        </div>
-    </main>
+   <main id="app-content" class="h-screen flex flex-col transition-all duration-300 relative">
+    <header class="p-12 pb-4">
+        <div id="section-title" class="text-7xl font-black italic uppercase opacity-10 tracking-tighter">TELEVISIÓN</div>
+    </header>
+
+    <div id="main-scroll" class="flex-1 overflow-y-auto custom-scroll">
+        
+        <div id="rows-container" class="pb-20">
+            </div>
+
+        <div id="search-results-container" class="hidden min-h-full p-12 pb-32 w-full bg-black/50">
+            </div>
+
+    </div>
+</main>
 
     <div id="modal-full" class="fixed inset-0 bg-black/95 z-[6000] hidden overflow-y-auto overflow-x-hidden"></div>
     <script src="api.js"></script>
@@ -70,9 +51,12 @@
     <script src="ContentParser.js"></script>
     <script src="AppController.js"></script> 
     <script src="dpad.js"></script> 
-
+    <script src="SearchController.js"></script>
+   
+    
     <script>
         // --- PUENTE NATIVO CON ANDROID ---
+
 window.reproducir = function(item) {
     if (!item || !item.url) {
         console.error("Error: Item sin URL de video", item);
@@ -93,26 +77,101 @@ window.reproducir = function(item) {
             titulo: titulo,
             url: url
         });
-        //alert("Simulación PC: Reproduciendo " + titulo);
+        alert("Simulación PC: Reproduciendo " + titulo);
     }
 };
         const State = {
-            view: 'home', 
-            source: 'tv', 
-            catalog: {},
-            fila: 0, 
-            col: 0, 
-            menu: false, 
-            idxMenu: 0,
-            currentGridCat: null,
+    view: 'home', 
+    source: 'tv', 
+    catalog: {},
+    fila: 0, 
+    col: 0, 
+    menu: false, 
+    idxMenu: 0,
+    currentGridCat: null,
+    resultsCount: 0, // <--- AÑADE ESTO
             secciones: [
+                 { id: 'buscar', label: 'BUSCAR' },
                 { id: 'tv', label: 'TELEVISIÓN' },
                 { id: 'peliculas', label: 'PELÍCULAS' },
                 { id: 'series', label: 'SERIES' },
                 { id: 'adultos', label: 'ADULTOS' }
             ]
         };
+        
+  // En tu INDEX.HTML
+// Variable global para evitar el doble Enter accidental
+window.reproducirItemDeBusqueda = (url, nombre, itemData) => {
+    if (!url) return;
 
+    // Mejoramos la detección de TV
+    const esTV = (itemData.grupo && itemData.grupo.toUpperCase().includes('TV')) || 
+                 (itemData.logo && !itemData.poster) || 
+                 itemData.tipo === 'tv';
+
+    if (esTV) {
+        if (window.cerrarBuscador) window.cerrarBuscador(); // ¡Cerramos para ver la TV limpia!
+        window.reproducir({ url: url, titulo: nombre });
+    } else {
+        if (window.cerrarBuscador) window.cerrarBuscador();
+
+        State.view = 'details';
+        State.col = 0; 
+        State.source = (itemData.episodios || itemData.temporadas) ? 'series' : 'peliculas';
+
+        // Aumentamos el tiempo a 300ms para que el buscador termine de irse
+        setTimeout(() => {
+            if (window.AppController && window.AppController.abrirDetalle) {
+                window.AppController.abrirDetalle({
+                    ...itemData,
+                    name: nombre,
+                    logo: itemData.poster || itemData.logo,
+                    grupo: itemData.grupo || (State.source === 'series' ? 'Series' : 'Películas')
+                });
+            }
+        }, 300); 
+    }
+};
+        // abre el teclado y cierra menu
+ function abrirBuscador() {
+    const panel = document.getElementById('search-panel');
+    const resultsContainer = document.getElementById('search-results-container');
+    
+    // Limpiamos resultados viejos al abrir
+    if (resultsContainer) resultsContainer.innerHTML = "";
+    
+    State.view = 'search';
+    State.menu = false;
+    State.col = 0; 
+
+    panel.style.zIndex = "9000"; 
+    panel.classList.add('open');
+    
+    if (window.SearchController) {
+        SearchController.renderKeyboard();
+    }
+
+    // Le damos un poco más de tiempo para que el DOM esté listo
+    setTimeout(() => {
+        window.updateFocus();
+    }, 250); 
+}
+function cerrarBuscador() {
+    const panel = document.getElementById('search-panel');
+    
+    panel.classList.remove('open'); 
+    
+    // --- NUEVO: Esto manda el buscador al fondo cuando se cierra ---
+    // Así no interfiere con los botones del modal de detalles
+    setTimeout(() => {
+        panel.style.zIndex = "1000";
+    }, 300); // Esperamos a que termine la animación de cierre
+
+    State.view = 'home';
+    State.menu = true; 
+    
+    updateFocus();
+}
         function bootstrap() {
             const status = document.getElementById('loading-status');
             
@@ -147,99 +206,192 @@ window.reproducir = function(item) {
             }
         }
 
-       function updateFocus() {
-    // 1. Limpiar focos previos
+function updateFocus() {
     document.querySelectorAll('.focused').forEach(e => e.classList.remove('focused'));
     
     const menu = document.getElementById('side-menu');
     const main = document.getElementById('app-content');
-    const title = document.getElementById('section-title');
+    const modal = document.getElementById('modal-full');
 
-    // Manejo del Menú Lateral
+    // 1. GESTIÓN DEL MODAL (Detalles o Grilla)
+    if (modal && !modal.classList.contains('hidden')) {
+        
+        // CASO A: Estamos viendo el DETALLE de una película/serie
+        if (State.view === 'details') {
+            const modalElements = modal.querySelectorAll('#btn-play, .btn-action, .card, [id^="sug-"], [id^="ep-"], [id^="range-"]');
+            const activeElement = modalElements[State.col];
+
+            if (activeElement) {
+                activeElement.classList.add('focused');
+                
+                // Lógica de persiana para sugerencias
+                const sugerenciasSeccion = document.getElementById('sugerencias-seccion');
+                const modalContent = document.querySelector('#modal-full .relative.z-10');
+                if (activeElement.id.startsWith('sug-')) {
+                    if (sugerenciasSeccion) sugerenciasSeccion.classList.add('subir-sugerencias');
+                    if (modalContent) modalContent.classList.add('subir-sugerencias-active');
+                } else {
+                    if (sugerenciasSeccion) sugerenciasSeccion.classList.remove('subir-sugerencias');
+                    if (modalContent) modalContent.classList.remove('subir-sugerencias-active');
+                }
+
+                const rowContainer = activeElement.closest('.similares-container, #contenedor-episodios');
+                if (rowContainer) {
+                    const scrollPos = activeElement.offsetLeft - 150;
+                    rowContainer.scrollTo({ left: scrollPos, behavior: 'smooth' });
+                } else {
+                    activeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        } 
+        // CASO B: Estamos viendo la GRILLA de "Ver más"
+        else if (State.view === 'grid') {
+            const activeElement = document.getElementById(`card-grid-${State.col}`);
+            if (activeElement) {
+                activeElement.classList.add('focused');
+                activeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        return; // Bloqueamos el foco del Home/Menú si el modal está arriba
+    }
+
+    // 2. LÓGICA DEL MENÚ LATERAL
     if (State.menu) {
-        menu.style.transform = 'translateX(0)';
-        main.style.opacity = '0.3';
+        if (menu) menu.style.transform = 'translateX(0)';
+        if (main) main.style.opacity = '0.3';
         const el = document.getElementById(`menu-${State.idxMenu}`);
         if(el) el.classList.add('focused');
         return;
     } 
 
-    menu.style.transform = 'translateX(-100%)';
-    main.style.opacity = '1';
+    if (menu) menu.style.transform = 'translateX(-100%)';
+    if (main) main.style.opacity = '1';
 
+    // 3. VISTAS DEL HOME Y BUSCADOR
     let activeElement = null;
 
-    // 2. Identificar el elemento activo según la vista
-    if (State.view === 'home') {
-        const seccionActiva = State.secciones.find(s => s.id === State.source);
-        if(seccionActiva) title.innerText = seccionActiva.label;
+    if (State.view === 'search') {
+        activeElement = document.getElementById(`key-${State.col}`);
+    } 
+    else if (State.view === 'search_results') {
+        activeElement = document.getElementById(`res-${State.col}`);
+    }
+    else if (State.view === 'home') {
         activeElement = document.getElementById(`card-${State.fila}-${State.col}`);
-    } 
-    else if (State.view === 'grid') {
-        activeElement = document.getElementById(`card-grid-${State.col}`);
-    } 
-    else if (State.view === 'details') {
-        const modalCards = document.querySelectorAll('#modal-full .card');
-        activeElement = modalCards[State.col];
     }
 
-    // 3. Aplicar el Foco y el Scroll Inteligente
-    if(activeElement) {
+    if (activeElement) {
         activeElement.classList.add('focused');
-
-        if (State.view === 'details') {
-            // BUSCAMOS SI EL ELEMENTO ESTÁ DENTRO DE UN CARRUSEL (Episodios o Sugerencias)
-            const parent = activeElement.parentElement;
-            
-            // Si el padre es un contenedor con scroll horizontal (carrusel)
-            if (parent && (parent.classList.contains('overflow-x-auto') || parent.scrollWidth > parent.clientWidth)) {
-                // Calculamos la posición: el offset del elemento menos un margen de 80px
-                const scrollTarget = activeElement.offsetLeft - parent.offsetLeft - 80;
-                
-                parent.scrollTo({
-                    left: scrollTarget,
-                    behavior: 'smooth'
-                });
-
-                // Para el scroll VERTICAL del modal completo (si la sección está muy abajo)
-                activeElement.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'nearest', 
-                    inline: 'nearest' // 'nearest' evita que se mueva horizontalmente el modal
-                });
-            } else {
-                // Si es el botón PLAY u otros elementos estáticos
-                activeElement.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center', 
-                    inline: 'nearest' 
-                });
-            }
-        } else {
-            // Comportamiento normal para el Home y Grid
-            activeElement.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'center', 
-                inline: State.view === 'home' ? 'start' : 'center' 
-            });
-        }
+        activeElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: (State.view === 'home') ? 'center' : 'nearest', 
+            inline: 'center' 
+        });
     }
 }
-        window.addEventListener('keydown', (e) => {
-            if (!window.DPad) return;
+window.addEventListener('keydown', (e) => {
+    if (!window.DPad || !window.DPad.handlers) return;
+
+    // 1. EL GLOBAL PRIMERO: Si es un botón de "Atrás", procesamos y CORTAMOS
+    // Esto evita que al cerrar un modal se ejecute también la lógica de lo que hay atrás
+    const backKeys = ['Escape', 'Back', 'Backspace'];
+    if (backKeys.includes(e.key) && document.activeElement.tagName !== 'INPUT') {
+        if (window.DPad.handlers.global) {
+            window.DPad.handlers.global(e);
             
-            if (window.DPad.handlers.global) window.DPad.handlers.global(e);
+            // Forzamos la actualización después del cierre
+            if (typeof updateFocus === 'function') updateFocus();
+            return; // <--- VITAL: Aquí cortamos la ejecución
+        }
+    }
 
-            if (State.menu) {
-                window.DPad.handlers.menu(e);
-            } else {
-                const currentHandler = window.DPad.handlers[State.view];
-                if (currentHandler) currentHandler(e);
-            }
-            updateFocus();
-        });
+    // 2. Lógica por vistas: Detalle, Menú, Búsqueda o Home
+    if (State.view === 'details') {
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(e.key)) e.preventDefault();
+        window.DPad.handlers.details(e);
+    } 
+    else if (State.menu) {
+        // Si el menú está abierto, las flechas van al handler del menú
+        window.DPad.handlers.menu(e);
+    } 
+    else if (State.view === 'search') {
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) e.preventDefault();
+        window.DPad.handlers.search(e);
+    } 
+    else if (State.view === 'search_results') {
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) e.preventDefault();
+        window.DPad.handlers.search_results(e);
+    } 
+    else {
+        // Este es el caso para 'home' o 'grid'
+        const currentHandler = window.DPad.handlers[State.view];
+        if (currentHandler) {
+            currentHandler(e);
+        }
+    }
 
-        window.onload = bootstrap;
+    // 3. Actualizamos el foco visual al final de cada pulsación
+    if (typeof updateFocus === 'function') updateFocus();
+});
+     window.onload = bootstrap;
+     // Esta función sirve para que el buscador se quite de en medio antes de abrir el detalle
+window.seleccionarDesdeBusqueda = function(item) {
+    // Solo reseteamos el índice para que el foco caiga en "Reproducir"
+    State.col = 0; 
+    State.view = 'details';
+    
+    // Abrimos el detalle directamente (el buscador se queda "debajo" en pausa)
+    AppController.abrirDetalle(item);
+};
+const CONFIG = {
+    parentalPin: "1234", // Tu contraseña
+    adultCategories: ["ADULTOS", "XXX", "PORNO", "HOT"] // Nombres de tus categorías
+};
     </script>
+    <div class="menu-item" data-section="search">Buscar</div>
+
+<div id="search-panel" class="fixed top-0 left-0 w-[30rem] h-full bg-[#080808] border-r-4 border-[#16a34a] -translate-x-full transition-transform duration-300 z-[9999] p-10 flex flex-col shadow-2xl">
+    
+    <div class="mb-6 flex flex-col gap-1">
+        <div class="text-[#16a34a] font-black italic text-5xl uppercase tracking-tighter">Buscador</div>
+        <div class="text-[0.7rem] text-zinc-500 tracking-[0.4rem] opacity-50 uppercase">Hood Project</div>
+    </div>
+    
+    <div id="search-input-display" class="w-full bg-black p-5 rounded-2xl border-2 border-[#16a34a] text-4xl mb-10 min-h-[5rem] flex items-center shadow-2xl">
+        <span id="current-search-text" class="text-white font-bold uppercase truncate"></span>
+        <span class="animate-pulse border-r-4 border-[#16a34a] h-10 ml-2"></span>
+    </div>
+
+    <div id="keyboard-grid" class="grid grid-cols-5 gap-3 mb-10"></div>
+
+   <div class="grid grid-cols-2 gap-4 mt-auto">
+    <div id="key-100" class="key-item p-5 bg-zinc-900 ..." onclick="SearchController.addLetter('BORRAR')">Borrar</div>
+    <div id="key-101" class="key-item p-5 bg-zinc-900 ..." onclick="SearchController.addLetter('ESPACIO')">Espacio</div>
+    <div id="key-102" class="key-item col-span-2 p-5 bg-green-700 ..." onclick="window.cerrarBuscador()">Cerrar / Buscar</div>
+</div>
+</div>
+
+<main id="main-content" class="ml-24 p-12 min-h-screen overflow-y-auto transition-all duration-500">
+        </main>
+
+
+    <div id="modal-pin" class="hidden fixed inset-0 z-[10000] bg-black/95 flex items-center justify-center backdrop-blur-md">
+        <div class="bg-zinc-900 p-10 rounded-3xl border-2 border-green-600/30 text-center w-[400px]">
+            <div class="text-5xl mb-6">🔞</div>
+            <h2 class="text-white font-black italic uppercase text-2xl mb-2">Acceso Restringido</h2>
+            <p class="text-zinc-500 text-[10px] font-bold tracking-[3px] uppercase mb-8">Ingrese PIN de Seguridad</p>
+            <div class="flex justify-center gap-4 mb-10">
+                <div id="dot-0" class="pin-dot w-4 h-4 rounded-full border-2 border-zinc-700 transition-all"></div>
+                <div id="dot-1" class="pin-dot w-4 h-4 rounded-full border-2 border-zinc-700 transition-all"></div>
+                <div id="dot-2" class="pin-dot w-4 h-4 rounded-full border-2 border-zinc-700 transition-all"></div>
+                <div id="dot-3" class="pin-dot w-4 h-4 rounded-full border-2 border-zinc-700 transition-all"></div>
+            </div>
+            <div id="pin-keyboard" class="grid grid-cols-3 gap-3">
+                ${[1,2,3,4,5,6,7,8,9,0].map(n => `<div class="pin-key card p-4 bg-zinc-800 rounded-xl font-black text-white border-2 border-transparent" data-val="${n}">${n}</div>`).join('')}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 </body>
 </html>

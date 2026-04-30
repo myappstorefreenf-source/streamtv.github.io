@@ -1,5 +1,90 @@
 window.DPad = {
     handlers: {
+   // --- DENTRO DE DPad.js -> handlers ---
+// --- DENTRO DE DPad.js -> handlers -> search ---
+// Dentro de DPad.handlers
+search: (e) => {
+    const cols = 5; 
+    const totalKeys = 36;
+
+    if (typeof State.col === 'undefined') State.col = 0;
+
+    if (e.key === 'ArrowRight') {
+        const esUltimaColumna = (State.col % cols === 4) || State.col === 102;
+        if (esUltimaColumna && State.resultsCount > 0) {
+            State.view = 'search_results';
+            State.col = 0;
+            window.updateFocus();
+            return;
+        }
+        if (State.col < totalKeys - 1) State.col++;
+        else if (State.col === 100) State.col = 101; 
+        else if (State.col === 101) State.col = 102; 
+    }
+    else if (e.key === 'ArrowLeft') {
+        if (State.col > 0 && State.col < 100) State.col--;
+        else if (State.col === 102) State.col = 101;
+        else if (State.col === 101) State.col = 100;
+        else if (State.col === 0) window.cerrarBuscador();
+    }
+    else if (e.key === 'ArrowDown') {
+        if (State.col + cols < totalKeys) State.col += cols;
+        else if (State.col < totalKeys) State.col = (State.col % cols < 2) ? 100 : 101; 
+        else if (State.col === 100 || State.col === 101) State.col = 102;
+    }
+    else if (e.key === 'ArrowUp') {
+        if (State.col === 102) State.col = 100;
+        else if (State.col >= 100) State.col = totalKeys - 1; 
+        else if (State.col - cols >= 0) State.col -= cols;
+    }
+    else if (e.key === 'Enter') {
+        const el = document.getElementById(`key-${State.col}`);
+        if (el) el.click();
+    }
+    // Si pulsas atrás en el teclado, cerramos el buscador
+    else if (['Escape', 'Back', 'Backspace'].includes(e.key) && !document.getElementById('current-search-text').innerText) {
+        window.cerrarBuscador();
+    }
+
+    e.preventDefault();
+},
+search_results: (e) => {
+    const cols = 5;
+
+    if (e.key === 'ArrowRight') {
+        if (State.col < State.resultsCount - 1) State.col++;
+    }
+    else if (e.key === 'ArrowLeft') {
+        if (State.col % cols === 0) {
+            State.view = 'search'; // Volvemos al teclado
+            State.col = 4; // Enfocamos la tecla 'E' (columna derecha)
+        } else {
+            State.col--;
+        }
+    }
+    else if (e.key === 'ArrowDown') {
+        if (State.col + cols < State.resultsCount) State.col += cols;
+    }
+    else if (e.key === 'ArrowUp') {
+        if (State.col - cols >= 0) State.col -= cols;
+        else {
+            State.view = 'search';
+            State.col = 0;
+        }
+    }
+    else if (e.key === 'Enter') {
+        const el = document.getElementById(`res-${State.col}`);
+        if (el) el.click();
+    }
+    // NUEVO: Al dar atrás en los resultados, vuelve al teclado
+    else if (['Escape', 'Back'].includes(e.key)) {
+        State.view = 'search';
+        State.col = 0;
+        window.updateFocus();
+    }
+    
+    e.preventDefault();
+},
         home: (e) => {
             const data = State.catalog[State.source] || {};
             const categories = Object.keys(data);
@@ -82,7 +167,6 @@ window.DPad = {
             }
         },
 
-       // --- NAVEGACIÓN EN DETALLES (SISTEMA HÍBRIDO PELÍCULAS/SERIES) ---
         details: (e) => {
             const cards = Array.from(document.querySelectorAll('#modal-full .card'));
             if (cards.length === 0) return;
@@ -90,14 +174,11 @@ window.DPad = {
             const currentCard = cards[State.col];
             if (!currentCard) return;
 
-            // Identificamos zona actual
             const isBtnPlay = currentCard.id === 'btn-play';
             const isEpisodio = currentCard.id.startsWith('ep-');
             const isSugerencia = currentCard.id.startsWith('sug-');
-            // Un rango es lo que sea 'card' pero que no sea play, ep ni sug
             const isRango = !isBtnPlay && !isEpisodio && !isSugerencia;
 
-            // Buscador inteligente de secciones
             const findSection = (type) => {
                 if (type === 'play') return cards.findIndex(c => c.id === 'btn-play');
                 if (type === 'rango') return cards.findIndex(c => !c.id.startsWith('ep-') && !c.id.startsWith('sug-') && c.id !== 'btn-play');
@@ -108,20 +189,17 @@ window.DPad = {
 
             if (e.key === 'ArrowDown') {
                 if (isBtnPlay) {
-                    // Intenta bajar a: Rango -> Si no, Episodio -> Si no, Sugerencia
                     let target = findSection('rango');
                     if (target === -1) target = findSection('ep');
                     if (target === -1) target = findSection('sug');
                     if (target !== -1) State.col = target;
                 } 
                 else if (isRango) {
-                    // De Rango intenta bajar a: Episodio -> Si no, Sugerencia
                     let target = findSection('ep');
                     if (target === -1) target = findSection('sug');
                     if (target !== -1) State.col = target;
                 }
                 else if (isEpisodio) {
-                    // De Episodio siempre baja a Sugerencia
                     let target = findSection('sug');
                     if (target !== -1) State.col = target;
                 }
@@ -129,27 +207,22 @@ window.DPad = {
             } 
             else if (e.key === 'ArrowUp') {
                 if (isSugerencia) {
-                    // Intenta subir a: Episodio -> Si no, Rango -> Si no, Play
                     let target = findSection('ep');
                     if (target === -1) target = findSection('rango');
                     if (target === -1) target = findSection('play');
                     if (target !== -1) State.col = target;
                 } 
                 else if (isEpisodio) {
-                    // Intenta subir a: Rango -> Si no, Play
                     let target = findSection('rango');
                     if (target === -1) target = findSection('play');
                     if (target !== -1) State.col = target;
                 }
                 else if (isRango) {
-                    // De Rango siempre sube a Play
                     let target = findSection('play');
                     if (target !== -1) State.col = target;
                 }
                 e.preventDefault();
             }
-
-            // --- NAVEGACIÓN LATERAL ---
             else if (e.key === 'ArrowRight') {
                 if (State.col < cards.length - 1) {
                     const nextCard = cards[State.col + 1];
@@ -172,33 +245,61 @@ window.DPad = {
             
             if (window.updateFocus) window.updateFocus();
         },
-        global: (e) => {
-            const backKeys = ['Escape', 'Backspace', 'GoBack', 'Back'];
-            const isBack = backKeys.includes(e.key) || e.keyCode === 10009 || e.keyCode === 461;
 
-            if (isBack) {
-                if (State.menu) {
-                    State.menu = false;
-                    e.preventDefault();
-                } else if (State.view !== 'home') {
-                    window.AppController.cerrarModal();
-                    e.preventDefault();
-                }
-            }
-        },
+ global: (e) => {
+    const backKeys = ['Escape', 'Back', 'Backspace'];
+    if (!backKeys.includes(e.key)) return;
 
-        menu: (e) => {
-            if (e.key === 'ArrowDown') State.idxMenu = (State.idxMenu + 1) % State.secciones.length;
-            if (e.key === 'ArrowUp') State.idxMenu = (State.idxMenu - 1 + State.secciones.length) % State.secciones.length;
-            if (e.key === 'ArrowRight' || e.key === 'Enter') {
-                const nueva = State.secciones[State.idxMenu].id;
-                if (State.source !== nueva) {
-                    State.source = nueva; State.fila = 0; State.col = 0;
-                    window.AppController.renderHome();
-                }
-                State.menu = false;
-            }
-            if (e.key === 'ArrowLeft') State.menu = false;
+    e.preventDefault();
+
+    // Caso A: Si el modal de detalles o grilla está abierto, lo cerramos
+    const modal = document.getElementById('modal-full');
+    if (modal && !modal.classList.contains('hidden')) {
+        window.AppController.cerrarModal();
+        return;
+    }
+
+    // Caso B: Si estamos en los RESULTADOS de búsqueda, volvemos al TECLADO
+    if (State.view === 'search_results') {
+        State.view = 'search';
+        State.col = 0; // O podés poner 4 para que caiga en la 'E' del teclado
+        window.updateFocus();
+        return;
+    }
+
+    // Caso C: Si estamos en el TECLADO, cerramos el buscador y vamos al Home
+    if (State.view === 'search') {
+        window.AppController.limpiarYRegresarAlHome();
+        window.cerrarBuscador();
+    }
+},
+
+       menu: (e) => {
+    if (e.key === 'ArrowDown') State.idxMenu = (State.idxMenu + 1) % State.secciones.length;
+    if (e.key === 'ArrowUp') State.idxMenu = (State.idxMenu - 1 + State.secciones.length) % State.secciones.length;
+    
+    if (e.key === 'ArrowRight' || e.key === 'Enter') {
+        const seccion = State.secciones[State.idxMenu];
+        
+        if (seccion.id === 'buscar') {
+            if (window.abrirBuscador) window.abrirBuscador();
+            return;
         }
+
+        // --- NUEVO: Si cambiamos a cualquier otra sección, limpiamos búsqueda ---
+        if (window.AppController && window.AppController.limpiarYRegresarAlHome) {
+            window.AppController.limpiarYRegresarAlHome();
+        }
+
+        if (State.source !== seccion.id) {
+            State.source = seccion.id; 
+            State.fila = 0; 
+            State.col = 0;
+            window.AppController.renderHome();
+        }
+        State.menu = false;
+    }
+    if (e.key === 'ArrowLeft') State.menu = false;
+}
     }
 };
